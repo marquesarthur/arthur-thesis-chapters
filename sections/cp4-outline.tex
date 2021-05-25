@@ -18,3 +18,200 @@
 \end{enumerate}
 
 \vspace{1mm}
+
+--- Chapter introduction 
+
+------ Use findings of characterization studies (cp3) to motivate the need for the techniques proposed in this chapter
+
+------ Brief summary of techniques we propose
+
+------ Brief summary of evaluation and results
+
+
+
+\section{Approach}
+
+--- We address the problem of automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
+
+--- To design our approaches, we use the manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
+
+--- We investigate two main approaches:
+
+------ \textit{Unsupervised}: describe a set of features (including \textit{frame semantics}~\cite{fillmore1976frame}) used to determine if a given sentence is relevant to the input task
+
+------ \textit{Supervised}: uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
+
+\clearpage
+
+--- Explain why we have selected these two approaches
+
+------ Given the unbounded number of artifact types a developer may refer to, a light-weight unsupervised approach is appealing
+
+------ Although our dataset is fairly small (6 tasks and 20 artifacts), we want to investigate 
+the applicability of pre-trained models that do not require large amounts of training data
+to our domain problem~\cite{devlin2018bert, Ye2016, Bavota2016}
+
+\section{Task-relevant Artifacts Corpus}
+
+--- To evaluate the techniques proposed in this chapter, we require a sufficiently large corpus containing 
+software tasks and associated artifacts originating from heterogeneous sources.
+Each of the artifacts pertinent to a task must also contain text marked as relevant for the given task.
+Unfortunately, such a corpus is not promptly available and thus, 
+this section outlines the steps we took for its creation.
+
+
+\section{Software Tasks}
+
+--- We consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}. 
+Two common places a software task can be found are:
+
+\begin{itemize}
+    \item the description of a bug or feature request reported in a bug tracking systems; or in
+    \item a post in a community forum, development mailing lists, and others.
+\end{itemize}
+
+\vspace{3mm}
+
+--- Given this definition, we select tasks from StackOverflow and GitHub to build our corpus
+
+------ We scope task selection to the \textit{Android} development domain such that we can select common tasks across the two sources \vspace{3mm}
+
+
+
+--- Detail that StackOverflow tasks were selected from Baltes et al. dataset~\cite{baltes2019-rep}
+
+------ Give example of a StackOverflow task 
+
+
+\clearpage
+
+--- Because there is no GitHub dataset promptly available, we selected GitHub issues from the top starred Android projects on GitHub 
+
+------ Projects were selected among Open Source Systems that had the \textit{Java} and \textit{Android} tags. 
+
+------ We randomly sampled issues from a total of 10 distinct projects
+
+------ Give example of a GitHub task 
+
+\section{Artifact Selection}
+
+
+--- Our artifact selection approach seeks to simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017} \vspace{3mm}
+
+--- To that end, we consider a task's title (i.e., SO question or GitHub issue title) as the seed used to search for pertinent artifacts in a search engine
+
+------ This is a common procedure adopted by many studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}). \vspace{3mm}
+
+
+--- As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}
+
+
+\begin{itemize}
+    \item Android and Java SE API documentation
+    \item Github issues
+    \item StackOverflow answers 
+    \item blogs and tutorials from the java and android categories on Alexa.com~\cite{alexa}
+\end{itemize}
+
+
+\vspace{3mm}
+
+--- We use the \texttt{googlesearch} API~\cite{googlesearch} to perform Web searches
+
+------ Results were limited to English
+
+------ A maximum of 5 resources were fetched per category.
+
+------ This was necessary because of throttling or even blocking mechanisms \vspace{3mm}
+
+--- Provide descriptive statistics for the corpus
+
+------ 300 tasks, 150 from SO and 150 from Git
+
+------ Approximatedly 2,500 artifacts
+
+------ Total of 260,000 sentences
+
+
+\section{Analytic Evaluation}
+
+--- To be able to judge the accuracy of any technique used to automatically identify sentences relevant to a task,
+we require test data comprising sentences that contain information needed for task completion. \vspace{3mm}
+
+
+--- We rely on human experts to produce a set of sentences that are relevant for a given task \vspace{3mm}
+
+
+--- With this data, we compare the accuracy of our approaches to the state-of-the-art
+------ Due to such a comparison, we focus on artifact types that have been previously evaluated in the literature, i.e., APi documentation, GitHub issues, and StackOverflow answers
+
+
+
+\subsection{Golden Standard}
+
+--- Creating test data for the entirity of our corpus is infisable so we restrict our evaluation to a subset of 10 tasks in our corpus according to the following procedures \vspace{3mm}
+
+--- Our intention is that the data of these tasks reflects what an \textit{expert} would share with someone new to their project \vspace{3mm}
+
+
+\subsubsection{Annotators}
+
+--- We recruited \red{n} graduate students with professional programming experience to produce \textit{golden} data for these 10 tasks. \vspace{3mm}
+
+
+\subsubsection{Annotation Procedures}
+
+--- Three different individuals performed each task. \vspace{3mm}
+
+
+--- For a given task, annotators had the task description and a set of links to artifacts 
+pertinent to the task at their disposal \vspace{3mm}
+
+------ We asked annotators to write a short comment with instructions that a newcomer could follow to successfully complete the task.
+
+------ The purpose of the comment was to ensure that evaluators built enough context about the task 
+
+------ Once the comment was written,  evaluators had to manually highlight sentences that they deemed useful and that provide information that assists task completion.
+
+\subsubsection{Task-relevant Text}
+
+--- Goldens for our test data consist in any sentence highlighted by two or more annotators \vspace{3mm}
+
+--- Inter-rate agreement \vspace{3mm}
+
+
+\subsection{Method}
+
+---  \vspace{3mm}
+
+\subsection{Results}
+
+---  \vspace{3mm}
+
+\subsection{Threats to Validity}
+
+---  \vspace{3mm}
+
+\section{Human Evaluation}
+
+---  \vspace{3mm}
+
+\subsection{Participants}
+
+---  \vspace{3mm}
+
+\subsection{Method}
+
+---  \vspace{3mm}
+
+\subsection{Results}
+
+---  \vspace{3mm}
+
+\subsection{Threats to Validity}
+
+---  \vspace{3mm}
+
+\section{Summary}
+
+--- Summary of contributions for the chapter \vspace{3mm}
