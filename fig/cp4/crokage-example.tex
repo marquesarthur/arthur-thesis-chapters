@@ -1,0 +1,33 @@
+
+\begin{table}[H]
+\centering    
+\begin{scriptsize}
+\begin{threeparttable}
+\rowcolors{2}{}{lightgray}    
+\begin{tabular}{cl}
+
+\hline
+
+\cmark &
+\parbox[l][.5cm][c]{10.6cm}{I use this code to get all ZIP files in a folder.} \\
+
+\cmark &
+\parbox[l][1.3cm][c]{10.6cm}{You could use Apache Commons FileUtils and specifically the listFiles method there, which can do this recursively and use filters (so it saves you the writing of the recursion yourself and answers the search you mentioned).} \\
+
+\cmark &
+\parbox[l][.5cm][c]{10.6cm}{Why are you using Strings / the filename instead of File objects?} \\
+
+\xmark &
+\parbox[l][.5cm][c]{10.6cm}{Then it's just a matter of using isDirectory() and recursing to search an entire file tree.} \\
+
+\xmark &
+\parbox[l][.5cm][c]{10.6cm}{For example, you can use the list() to get a list of the contents of a directory.} \\
+
+\hline
+
+\end{tabular}
+\end{threeparttable}
+\end{scriptsize}
+\caption{Top 5 sentences extracted by PM-DeTRI for a programming task asking how to compress or zip a directory recursively}
+\label{tbl:PM-DeTRI-CROKAGE}
+\end{table}

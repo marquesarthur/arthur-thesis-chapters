@@ -1,14 +1,220 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+% For submission to GPS hello
+\documentclass[gpscopy,onehalfspacing,11pt]{ubcdiss}
 
-\title{arthur-thesis-chapters}
-\author{marques.s.arthur }
-\date{May 2021}
+
+%% NFSS font specification (New Font Selection Scheme)
+\usepackage{times,mathptmx,courier}
+\usepackage[scaled=.92]{helvet}
+
+%% Math or theory people may want to include the handy AMS macros
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+
+\usepackage{pifont}
+\usepackage{multirow}
+
+\usepackage{nicefrac}
+
+% https://stackoverflow.com/questions/1673942/latex-table-positioning
+\usepackage{float}
+\restylefloat{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[table]{xcolor}
+\usepackage{multicol}
+\usepackage{threeparttable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{checkend}	% better error messages on left-open environments
+
+\usepackage[pdftex]{graphicx} % for incorporating external images
+% declare the path(s) where your graphic files are
+\graphicspath{ {./fig/} }
+% % and their extensions so you won't have to specify these with
+% % every instance of \includegraphics
+\DeclareGraphicsExtensions{.png,PNG,.pdf,.jpg,.jpeg}
+
+
+%% booktabs: provides some special commands for typesetting tables as used
+%% in excellent journals.  Ignore the examples in the Lamport book!
+\usepackage{booktabs}
+
+\usepackage{listings}
+\lstset{basicstyle=\sffamily\scriptsize,showstringspaces=false,fontadjust}
+
+%% The acronym package provides support for defining acronyms, providing
+\usepackage[printonlyused,nohyperlinks]{acronym}
+\renewcommand{\acsfont}[1]{{\scshape \MakeTextLowercase{#1}}}
+
+\usepackage{color}
+\definecolor{greytext}{gray}{0.5}
+\definecolor{lightgray}{gray}{0.9}
+
+\usepackage{comment}
+
+\usepackage[numbers,sort&compress]{natbib}
+\newcommand{\citeeg}[1]{\citep[e.g.,][]{#1}}
+
+%% The titlesec package provides commands to vary how chapter and
+\usepackage[compact]{titlesec}
+\titleformat*{\section}{\singlespacing\raggedright\bfseries\Large}
+\titleformat*{\subsection}{\singlespacing\raggedright\bfseries\large}
+\titleformat*{\subsubsection}{\singlespacing\raggedright\bfseries}
+\titleformat*{\paragraph}{\singlespacing\raggedright\itshape}
+
+%% The caption package provides support for varying how table and
+\usepackage[format=hang,indention=-1cm,labelfont={bf},margin=1em]{caption}
+
+%% url: for typesetting URLs and smart(er) hyphenation.
+%% \url{http://...} 
+\usepackage{url}
+\urlstyle{sf}	% typeset urls in sans-serif
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Other possibly useful packages
+
+\usepackage{soul}
+\usepackage{lipsum}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{hanging}
+\usepackage{tikz}
+
+% https://tex.stackexchange.com/questions/172475/how-can-i-define-a-custom-tcolorbox-environment-with-color-as-a-parameter
+% https://tex.stackexchange.com/questions/66154/how-to-construct-a-coloured-box-with-rounded-corners
+\usepackage{tcolorbox}
+% \newtcolorbox{rndbox}{colback=red!5!white,colframe=red!75!black}
+
+\newtcolorbox{rndbox}[1]{coltitle=black,colframe=blackcolor,fonttitle=\bfseries,title=#1}
+%  https://tex.stackexchange.com/questions/19646/how-to-typeset-special-apple-mac-keyboard-symbols
+\usepackage{menukeys}
+
+% https://tex.stackexchange.com/questions/316334/after-clearpage-move-the-figure-to-the-top
+\usepackage{afterpage}
+
+\usepackage[bookmarks,bookmarksnumbered,%
+    allbordercolors={0.8 0.8 0.8},%
+    pagebackref,linktocpage%
+    ]{hyperref}
+
+    
+%% The following change how the the back-references text is typeset in a
+\newcommand{\nocitations}{\relax}
+
+\renewcommand*{\backrefsep}{,~}%
+\renewcommand*{\backreftwosep}{,~}% ', and~'
+\renewcommand*{\backreflastsep}{,~}% ' and~'
+\renewcommand*{\backrefalt}[4]{%
+\textcolor{greytext}{\ifcase #1%
+\nocitations%
+\or
+\(\rightarrow\) page #2%
+\else
+\(\rightarrow\) pages #2%
+\fi}}
+
+
+%% The following uses most defaults, which causes hyperlinks to be
+% \usepackage[bookmarks,bookmarksnumbered]{hyperref}
+
+% \usepackage[bookmarks,bookmarksnumbered,pdfborder={0 0 0}]{hyperref}
+
+%% The following disables all hyperlinking, but still enabled use of
+%% \autoref{}
+%\usepackage[draft]{hyperref}
+
+%% The following commands causes chapter and section references to
+%% uppercase the part name.
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Some special settings that controls how text is typeset
+%%
+% \raggedbottom		% pages don't have to line up nicely on the last line
+% \sloppy		% be a bit more relaxed in inter-word spacing
+% \clubpenalty=10000	% try harder to avoid orphans
+% \widowpenalty=10000	% try harder to avoid widows
+% \tolerance=1000
+
+%% And include some of our own useful macros
+\input{macros}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{title}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\maketitle
+% TODO uncomment
+% \maketitle
 
-\section{Introduction}
+% \makecommitteepage
+
+% \input{sections/abstract}
+% \cleardoublepage
+
+% \input{meta/laysummary}
+% \cleardoublepage
+
+% \input{meta/preface}
+% \cleardoublepage
+
+% \tableofcontents
+% \cleardoublepage	% required by tocloft package
+
+% \listoftables
+% \cleardoublepage	% required by tocloft package
+
+% \listoffigures
+% \cleardoublepage	% required by tocloft package
+
+% \input{meta/glossary}	% always input, since other macros may rely on it
+
+% \textspacing		% begin one-half or double spacing
+
+% \input{meta/ack}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Body of Thesis (not all sections may apply)
+\mainmatter
+
+\acresetall	% reset all acronyms used so far
+
+
+\input{sections/cp4-outline}
+\clearpage
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{singlespace}
+\raggedright
+\bibliographystyle{abbrvnat}
+\bibliography{biblio}
+\end{singlespace}
+
+\appendix
+%    6. Appendices (including copies of all required UBC Research
+%       Ethics Board's Certificates of Approval)
+% \input{appendix/appendix}
+
+\backmatter
+%    7. Index
+% See the makeindex package: the following page provides a quick overview
+% <http://www.image.ufl.edu/help/latex/latex_indexes.shtml>
+
 
 \end{document}

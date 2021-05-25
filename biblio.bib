@@ -1,0 +1,3240 @@
+%%% ====================================================================
+%%%     author          = "Gerry Murray",
+%%%     version         = "1.2",
+%%%     date            = "2 April 2012",
+%%%     address         = "ACM, NY",
+%%%     email           = "murray at hq.acm.org",
+%%%     codetable       = "ISO/ASCII",
+%%%     supported       = "yes",
+%%%                        that 'match' the examples provided in the Specifications Document
+%%%                        AND, also, 'legacy'-type bibs. It should assist authors in
+%%%                        choosing the 'correct' at-bibtype and necessary bib-fields
+%%%                        so as to obtain the appropriate ACM Reference Format output.
+%%%                        It also contains many 'Standard Abbreviations'. "
+%%%  }
+%%% ====================================================================
+
+% Journals
+
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
+
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Int'l of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
+
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
+
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
+
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Int'l of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
+
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Int'l of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
+
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
+
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
+
+% Publishers % ================================================= |
+
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
+
+%Entries
+
+@article{Bavota2016,
+author = {Bavota, G},
+isbn = {VO  - 5},
+journal = {2016 IEEE 23rd Int'l Conf. on Software Analysis, Evolution, and Reengineering (SANER)},
+pages = {1--12},
+title = {{Mining Unstructured Data in Software Repositories: Current and Future Trends}},
+volume = {5},
+year = {2016}
+}
+
+@INPROCEEDINGS{Ko2006,
+  author={A. J. {Ko} and B. A. {Myers} and }, 
+  booktitle={Visual Languages and Human-Centric Computing (VL/HCC'06)}, 
+  title={A Linguistic Analysis of How People Describe Software Problems}, 
+  year={2006}, 
+  volume={}, 
+  number={}, 
+  pages={127-134}, 
+  ISSN={1943-6092}, 
+  month={Sep.},
+}
+
+@article{Wu2018,
+author = {Wu, Di and Jing, Xiao-yuan and Chen, Haowen and Zhu, Xiaoke and Zhang, Hongyu and Zuo, Mei and Zi, Lu and Zhu, Chen},
+isbn = {9781450356633},
+issn = {02705257},
+pages = {270--271},
+title = {{Automatically Answering {API}-Related Questions}},
+year = {2018}
+}
+
+@inproceedings{Jiang2017,
+  author={H. {Jiang} and J. {Zhang} and Z. {Ren} and T. {Zhang}}, 
+  booktitle={2017 IEEE/ACM 39th International Conf. on SE}, 
+  title={An Unsupervised Approach for Discovering Relevant Tutorial Fragments for {API}s}, 
+  year={2017}, 
+  volume={}, 
+  number={}, 
+  pages={38-48}, 
+  ISSN={1558-1225}, 
+  month={May},
+}
+
+@inproceedings{Jiang2016b,
+  author={H. {Jiang} and J. {Zhang} and X. {Li} and Z. {Ren} and D. {Lo}}, 
+  booktitle={2016 IEEE 23rd Int'l Conf. on Software Analysis, Evolution, and Reengineering (SANER)}, 
+  title={A More Accurate Model for Finding Tutorial Segments Explaining {API}s}, 
+  year={2016}, 
+  volume={1}, 
+  number={}, 
+  pages={157-167}, 
+  ISSN={}, 
+  month={March},
+}
+
+@inproceedings{Petrosyan2015,
+ author = {Petrosyan, Gayane and Robillard, Martin P. and De Mori, Renato},
+ title = {Discovering Information Explaining {API} Types Using Text Classification},
+ booktitle = {Proc. of the 37th Int'l Conf. on SE - Volume 1},
+ year = {2015},
+ isbn = {978-1-4799-1934-5},
+ location = {Florence, Italy},
+ pages = {869--879},
+ numpages = {11},
+ acmid = {2818859},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@article{Robillard2015,
+author = {Robillard, Martin P. and Chhetri, Yam B.},
+issn = {15737616},
+journal = {Empirical SE},
+number = {6},
+pages = {1558--1586},
+title = {{Recommending reference {API} documentation}},
+volume = {20},
+year = {2015}
+}
+
+@inproceedings{Huang2018,
+address = {New York, New York, USA},
+author = {Huang, Qiao and Xia, Xin and Xing, Zhenchang and Lo, David and Wang, Xinyu},
+booktitle = {Proc. of the 33rd ACM/IEEE Int'l Conf. on Automated SE},
+isbn = {9781450359375},
+pages = {293--304},
+publisher = {ACM Press},
+title = {{API method recommendation without worrying about the task-API knowledge gap}},
+year = {2018}
+}
+
+@article{Ponzanelli2015,
+author = {Ponzanelli, Luca and Mocci, Andrea and Lanza, Michele},
+isbn = {9780769555942},
+issn = {21601860},
+journal = {IEEE Int'l Working Conf. on Mining Software Repositories},
+pages = {401--405},
+title = {{Summarizing complex development artifacts by mining heterogeneous data}},
+volume = {2015-Augus},
+year = {2015}
+}
+
+@inproceedings{Ponzanelli2014b,
+ author = {Ponzanelli, Luca and Bavota, Gabriele and Di Penta, Massimiliano and Oliveto, Rocco and Lanza, Michele},
+ title = {Mining StackOverflow to Turn the IDE into a Self-confident Programming Prompter},
+ booktitle = {Proceedings of the 11th Working Conference on Mining Software Repositories},
+ series = {MSR 2014},
+ year = {2014},
+ isbn = {978-1-4503-2863-0},
+ location = {Hyderabad, India},
+ pages = {102--111},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/2597073.2597077},
+ doi = {10.1145/2597073.2597077},
+ acmid = {2597077},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Developers Support, Empirical Studies, Recommender Systems},
+} 
+
+@inproceedings{Ponzanelli2017,
+ author = {Ponzanelli, Luca and Scalabrino, Simone and Bavota, Gabriele and Mocci, Andrea and Oliveto, Rocco and Di Penta, Massimiliano and Lanza, Michele},
+ title = {Supporting Software Developers with a Holistic Recommender System},
+ booktitle = {Proc. of the 39th Int'l Conf. on SE},
+ year = {2017},
+ isbn = {978-1-5386-3868-2},
+ location = {Buenos Aires, Argentina},
+ pages = {94--105},
+ numpages = {12},
+ acmid = {3097381},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@article{Kevic2017,
+author = {Kevic, Katja and Fritz, Thomas},
+isbn = {9781538609927},
+journal = {Proc. - 2017 IEEE Int'l Conf. on Software Maintenance and Evolution, ICSME 2017},
+pages = {171--182},
+title = {{Towards activity-aware tool support for change tasks}},
+year = {2017}
+}
+
+@inproceedings{Murphy2005,
+  title={The emergent structure of development tasks},
+  author={Murphy, Gail C and Kersten, Mik and Robillard, Martin P and {\v{C}}ubrani{\'c}, Davor},
+  booktitle={European Conference on Object-Oriented Programming},
+  pages={33--48},
+  year={2005},
+  organization={Springer}
+}
+
+@inproceedings{Kersten2006,
+ author = {Kersten, Mik and Murphy, Gail C.},
+ title = {Using Task Context to Improve Programmer Productivity},
+ booktitle = {Proc. of the 14th ACM SIGSOFT Int'l Symp. on Foundations of SE},
+ year = {2006},
+ isbn = {1-59593-468-5},
+ location = {Portland, Oregon, USA},
+ pages = {1--11},
+ numpages = {11},
+ acmid = {1181777},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+}
+
+@inproceedings{Chaparro2017,
+ author = {Chaparro, Oscar and Lu, Jing and Zampetti, Fiorella and Moreno, Laura and Di Penta, Massimiliano and Marcus, Andrian and Bavota, Gabriele and Ng, Vincent},
+ title = {Detecting Missing Information in Bug Descriptions},
+ booktitle = {Proc. of the 2017 11th Joint Meeting on Foundations of SE},
+ year = {2017},
+ isbn = {978-1-4503-5105-8},
+ location = {Paderborn, Germany},
+ pages = {396--407},
+ numpages = {12},
+ acmid = {3106285},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+@inproceedings{Lotufo2012, 
+author={R. {Lotufo} and Z. {Malik} and K. {Czarnecki}}, 
+booktitle={2012 28th IEEE Int'l Conf. on Software Maintenance (ICSM)}, 
+title={Modelling the 'Hurried' bug report reading process to summarize bug reports}, 
+year={2012}, 
+volume={}, 
+number={}, 
+pages={430-439}, 
+ISSN={1063-6773}, 
+month={Sep.},
+}
+
+
+@inproceedings{Rastkar2010,
+ author = {Rastkar, Sarah and Murphy, Gail C. and Murray, Gabriel},
+ title = {Summarizing Software Artifacts: A Case Study of Bug Reports},
+ booktitle = {Proc. of the 32Nd ACM/IEEE Int'l Conf. on SE - Volume 1},
+ year = {2010},
+ isbn = {978-1-60558-719-6},
+ location = {Cape Town, South Africa},
+ pages = {505--514},
+ numpages = {10},
+ acmid = {1806872},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+}
+
+
+
+@article{Stol2015,
+author = {Stol, Klaas-Jan and Ralph, Paul and Fitzgerald, Brian},
+isbn = {9781450339001},
+issn = {02705257},
+journal = {Proc. of the 37th Int'l Conf. on SE},
+number = {Aug},
+pages = {120--131},
+title = {{Grounded Theory in SE Research : A Critical Review and Guidelines}},
+year = {2015}
+}
+
+@INPROCEEDINGS{Li2013,
+  author={H. {Li} and Z. {Xing} and X. {Peng} and W. {Zhao}}, 
+  booktitle={2013 20th Working Conf. on Reverse Engineering (WCRE)}, 
+  title={What help do developers seek, when and how?}, 
+  year={2013}, 
+  volume={}, 
+  number={}, 
+  pages={142-151}, 
+  ISSN={1095-1350}, 
+  month={Oct},
+}
+
+@article{Starke2009,
+author = {Starke, Jamie and Luce, Chris and Sillito, Jonathan},
+isbn = {9781424448289},
+issn = {1063-6773},
+journal = {IEEE Int'l Conf. on Software Maintenance, ICSM},
+pages = {157--166},
+title = {{Searching and skimming: An exploratory study}},
+year = {2009}
+}
+
+@inproceedings{DeGraaf2014,
+ author = {de Graaf, Klaas Andries and Liang, Peng and Tang, Antony and van Vliet, Hans},
+ title = {The Impact of Prior Knowledge on Searching in Software Documentation},
+ booktitle = {Proc. of the 2014 ACM Symposium on Document Engineering},
+ year = {2014},
+ isbn = {978-1-4503-2949-1},
+ location = {Fort Collins, Colorado, USA},
+ pages = {189--198},
+ numpages = {10},
+ acmid = {2644878},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+
+@article{Ko2006a,
+author = {Ko, Andrew J. and Myers, Brad A. and Coblenz, Michael J. and Aung, Htet Htet},
+isbn = {0098-5589},
+issn = {00985589},
+journal = {IEEE Transactions on SE},
+number = {12},
+pages = {971--987},
+pmid = {4016573},
+title = {{An exploratory study of how developers seek, relate, and collect relevant information during software maintenance tasks}},
+volume = {32},
+year = {2006}
+}
+
+@book{Pirolli2007,
+ author = {Pirolli, Peter L. T.},
+ title = {Information Foraging Theory: Adaptive Interaction with Information},
+ year = {2007},
+ isbn = {0195173325, 9780195173321},
+ edition = {1},
+ publisher = {Oxford University Press, Inc.},
+ address = {New York, NY, USA},
+} 
+
+@article{Pirolli1999,
+  title={Information foraging.},
+  author={Pirolli, Peter and Card, Stuart},
+  journal={Psychological review},
+  volume={106},
+  number={4},
+  pages={643},
+  year={1999},
+  publisher={American Psychological Association}
+}
+
+@article{Xia2017,
+ author = {Xia, Xin and Bao, Lingfeng and Lo, David and Kochhar, Pavneet Singh and Hassan, Ahmed E. and Xing, Zhenchang},
+ title = {What Do Developers Search for on the Web?},
+ journal = {Empirical Softw. Engg.},
+ issue_date = {December  2017},
+ volume = {22},
+ number = {6},
+ month = dec,
+ year = {2017},
+ issn = {1382-3256},
+ pages = {3149--3185},
+ numpages = {37},
+ acmid = {3147800},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+} 
+
+@article{Barry1994,
+  title={User-defined relevance criteria: An exploratory study},
+  author={Barry, Carol L},
+  journal={Journal of the American Society for Information Science},
+  volume={45},
+  number={3},
+  pages={149--159},
+  year={1994},
+  publisher={Wiley Online Library}
+}
+
+@article{Barry1998,
+author = {Barry, Carol L.},
+isbn = {1097-4571},
+issn = {1097-4571},
+journal = {Journal of the American Society for Information Science},
+number = {14},
+pages = {1293--1303},
+title = {{Document representations and clues to document relevance}},
+volume = {49},
+year = {1998}
+}
+
+@article{Cool1993a,
+author = {Cool, Colleen and Belkin, Nicholas J. and Frieder, Ophir and Kantor, Paul},
+isbn = {0938734733},
+issn = {07391471},
+journal = {National Online Meeting},
+pages = {77},
+title = {{Characteristics of text affecting relevance judgments}},
+url = {http://comminfo.rutgers.edu/{~}cgal/CV PDFs/online93{\_}paper.pdf},
+volume = {14},
+year = {1993}
+}
+
+@article{Freund2013,
+author = {Freund, Luanne},
+isbn = {0306-4573},
+issn = {03064573},
+journal = {Information Processing and Management},
+number = {5},
+pages = {1108--1121},
+publisher = {Elsevier Ltd},
+title = {{A cross-domain analysis of task and genre effects on perceptions of usefulness}},
+volume = {49},
+year = {2013}
+}
+@article{Freund2015,
+archivePrefix = {arXiv},
+arxivId = {0803.1716},
+author = {Freund, Luanne},
+eprint = {0803.1716},
+isbn = {9783848215430},
+issn = {23301635},
+journal = {Journal of the Association for Information Science and Technology},
+month = {aug},
+number = {8},
+pages = {1594--1605},
+pmid = {502955140},
+title = {{Contextualizing the information-seeking behavior of software engineers}},
+volume = {66},
+year = {2015}
+}
+@article{Nenkova2004,
+author = {Nenkova, A and Passonneau, R},
+journal = {Proc. of HLT-NAACL},
+pages = {145--152},
+title = {{Evaluating content selection in summarization: The pyramid method}},
+volume = {2004},
+year = {2004}
+}
+
+@article{Maalej2013,
+ author = {Maalej, Walid and Robillard, Martin P.},
+ title = {Patterns of Knowledge in {API} Reference Documentation},
+ journal = {IEEE Trans. Softw. Eng.},
+ issue_date = {September 2013},
+ volume = {39},
+ number = {9},
+ month = sep,
+ year = {2013},
+ issn = {0098-5589},
+ pages = {1264--1282},
+ numpages = {19},
+ acmid = {2554417},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+}
+
+
+@inproceedings{Sawadsky2011,
+ author = {Sawadsky, Nicholas and Murphy, Gail C.},
+ title = {Fishtail: From Task Context to Source Code Examples},
+ booktitle = {Proceedings of the 1st Workshop on Developing Tools As Plug-ins},
+ series = {TOPI '11},
+ year = {2011},
+ isbn = {978-1-4503-0599-0},
+ location = {Waikiki, Honolulu, HI, USA},
+ pages = {48--51},
+ numpages = {4},
+ url = {http://doi.acm.org/10.1145/1984708.1984722},
+ doi = {10.1145/1984708.1984722},
+ acmid = {1984722},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {degree-of-interest, development environment, example-centric development, interaction history, program views},
+} 
+
+@inproceedings{Ponzanelli2013,
+ author = {Ponzanelli, Luca and Bacchelli, Alberto and Lanza, Michele},
+ title = {Seahawk: Stack Overflow in the IDE},
+ booktitle = {Proc. of the 2013 Int'l Conf. on SE},
+ year = {2013},
+ isbn = {978-1-4673-3076-3},
+ location = {San Francisco, CA, USA},
+ pages = {1295--1298},
+ numpages = {4},
+ acmid = {2486988},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+}
+
+@article{Bystrom1995,
+author = {Bystr{\"o}m, Katriina and J{\"a}rvelin, Kalervo},
+isbn = {0306-4573},
+issn = {03064573},
+journal = {Information Processing and Management},
+number = {2},
+pages = {191--213},
+pmid = {1774},
+title = {{Task complexity affects information seeking and use}},
+volume = {31},
+year = {1995}
+}
+
+
+@inproceedings{Baker1998,
+ author = {Baker, Collin F. and Fillmore, Charles J. and Lowe, John B.},
+ title = {The Berkeley FrameNet Project},
+ booktitle = {Proc. of the 36th Annual Meeting of the Association for Computational Linguistics and 17th Int'l Conf. on Computational Linguistics - Volume 1},
+ year = {1998},
+ location = {Montreal, Quebec, Canada},
+ pages = {86--90},
+ numpages = {5},
+ acmid = {980860},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+
+@article{Robillard1999,
+ author = {Robillard, Pierre N.},
+ title = {The Role of Knowledge in Software Development},
+ journal = {Commun. ACM},
+ issue_date = {Jan. 1999},
+ volume = {42},
+ number = {1},
+ month = jan,
+ year = {1999},
+ issn = {0001-0782},
+ pages = {87--92},
+ numpages = {6},
+ acmid = {291476},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@inproceedings{Sogaard2015,
+ author = {S{\o}gaard, Anders and Plank, Barbara and Alonso, Hector Martinez},
+ title = {Using Frame Semantics for Knowledge Extraction from Twitter},
+ booktitle = {Proc. of the Twenty-Ninth AAA Conf. on Artificial Intelligence},
+ year = {2015},
+ isbn = {0-262-51129-0},
+ location = {Austin, Texas},
+ pages = {2447--2452},
+ numpages = {6},
+ acmid = {2886661},
+ publisher = {AAAI Press},
+}
+
+@article{Benamara2017,
+ author = {Benamara, Farah and Taboada, Maite and Mathieu, Yannick},
+ title = {Evaluative Language Beyond Bags of Words: Linguistic Insights and Computational Applications},
+ journal = {Comput. Linguist.},
+ issue_date = {April 2017},
+ volume = {43},
+ number = {1},
+ month = apr,
+ year = {2017},
+ issn = {0891-2017},
+ pages = {201--264},
+ numpages = {64},
+ acmid = {3097261},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+} 
+
+
+@inbook{Brooks2008,
+	Abstract = {We provide motivation for researchers to replicate experiments in SE. The ideology of replication is discussed. We address the question: Is an experiment worth repeating? The current lack of replication studies is highlighted. We make clear that exact replication is unattainable and we draw on our first experience of performing an external replication. To categorise various kinds of replication, we propose a simple extension to Basili et al.'s framework for experimentation in SE. We present guidance as to the level of reported detail required to enable others perform a replication. Our conclusion is that there is only one route for empirical SE to follow: to make available laboratory packages of experimental materials to facilitate internal and external replications, especially the latter, which have greater confirming power.},
+	Address = {London},
+	Author = {Brooks, A. and Roper, M. and Wood, M. and Daly, J. and Miller, J.},
+	Booktitle = {Guide to Advanced Empirical SE},
+	Editor = {Shull, Forrest and Singer, Janice and Sj{\o}berg, Dag I. K.},
+	Isbn = {978-1-84800-044-5},
+	Pages = {365--379},
+	Publisher = {Springer London},
+	Title = {Replication's Role in SE},
+	Year = {2008}
+}
+
+
+@inproceedings{Kevic2014,
+ author = {Kevic, Katja and Fritz, Thomas},
+ title = {Automatic Search Term Identification for Change Tasks},
+ booktitle = {Companion Proc. of the 36th Int'l Conf. on SE},
+ year = {2014},
+ isbn = {978-1-4503-2768-8},
+ location = {Hyderabad, India},
+ pages = {468--471},
+ numpages = {4},
+ acmid = {2591117},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+
+
+@inproceedings{Wildemuth2012,
+ author = {Wildemuth, Barbara M. and Freund, Luanne},
+ title = {Assigning Search Tasks Designed to Elicit Exploratory Search Behaviors},
+ booktitle = {Proc. of the Symposium on Human-Computer Interaction and Information Retrieval},
+ year = {2012},
+ isbn = {978-1-4503-1796-2},
+ location = {Cambridge, California, USA},
+ pages = {4:1--4:10},
+ articleno = {4},
+ numpages = {10},
+ acmid = {2391228},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+
+@article{Moreno2017,
+author = {Moreno, Laura and Marcus, Andrian},
+isbn = {9781538615898},
+journal = {Proc. - 2017 IEEE/ACM 39th Int'l Conf. on SE Companion},
+pages = {511--512},
+title = {{Automatic software summarization: The state of the art}},
+year = {2017}
+}
+
+@article{Goldsteinet1999,
+author = {Goldstein  et.al., J},
+isbn = {1581130961},
+journal = {In Proceeding of SIGIR'99},
+pages = {121--128},
+title = {{Summarizing Text Document: Sentence Selection and Evaluation Metrics}},
+year = {1999}
+}
+
+@book{Bavota2014,
+author = {Bavota, Gabriele and Lucia, Andrea De and Marcus, Andrian and Oliveto, Rocco},
+isbn = {978-3-642-45134-8},
+title = {{Recommendation Systems in Software Engineering}},
+year = {2014}
+}
+
+
+
+@INPROCEEDINGS{Ye2016, 
+author={X. {Ye} and H. {Shen} and X. {Ma} and R. {Bunescu} and C. {Liu}}, 
+booktitle={2016 IEEE/ACM 38th Int'l Conf. on SE}, 
+title={From Word Embeddings to Document Similarities for Improved Information Retrieval in Software Engineering}, 
+year={2016}, 
+volume={}, 
+number={}, 
+pages={404-415}, 
+ISSN={1558-1225}, 
+month={May},}
+
+
+@INPROCEEDINGS{Steinmacher2016, 
+author={I. {Steinmacher} and T. U. {Conte} and C. {Treude} and M. A. {Gerosa}}, 
+booktitle={2016 IEEE/ACM 38th Int'l Conf. on SE}, 
+title={Overcoming Open Source Project Entry Barriers with a Portal for Newcomers}, 
+year={2016}, 
+volume={}, 
+number={}, 
+pages={273-284}, 
+ISSN={1558-1225}, 
+month={May},}
+
+
+
+@inproceedings{Ponzanelli2014,
+ author = {Ponzanelli, Luca},
+ title = {Holistic Recommender Systems for SE},
+ booktitle = {Companion Proc. of the 36th Int'l Conf. on SE},
+ year = {2014},
+ isbn = {978-1-4503-2768-8},
+ location = {Hyderabad, India},
+ pages = {686--689},
+ numpages = {4},
+ acmid = {2591081},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@INPROCEEDINGS{Steinmacher2014, 
+author={I. Steinmacher and A. P. Chaves and T. U. Conte and M. A. Gerosa}, 
+booktitle={2014 Brazilian Symp. on SE}, 
+title={Preliminary Empirical Identification of Barriers Faced by Newcomers to Open Source Software Projects}, 
+year={2014}, 
+volume={}, 
+number={}, 
+pages={51-60}, 
+ISSN={}, 
+month={Sept},}
+
+
+@inproceedings{Mikolov2013,
+ author = {Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg and Dean, Jeffrey},
+ title = {Distributed Representations of Words and Phrases and Their Compositionality},
+ booktitle = {Proc. of the 26th Int'l Conf. on Neural Information Processing Systems - Volume 2},
+ year = {2013},
+ location = {Lake Tahoe, Nevada},
+ pages = {3111--3119},
+ numpages = {9},
+ url = {http://dl.acm.org/citation.cfm?id=2999792.2999959},
+ acmid = {2999959},
+ publisher = {Curran Associates Inc.},
+ address = {USA},
+} 
+
+
+@inproceedings{fritz2011,
+  title={Determining relevancy: how software developers determine relevant information in feeds},
+  author={Fritz, Thomas and Murphy, Gail C},
+  booktitle={Proc. of the SIGCHI Conf. on Human Factors in Computing Systems},
+  pages={1827--1830},
+  year={2011},
+  organization={ACM}
+}
+@article{Brandt2009a,
+author = {Brandt, Joel and Guo, Philip J. and Lewenstein, Joel and Dontcheva, Mira and Klemmer, Scott R.},
+isbn = {9781605582467},
+journal = {Proc. of the 27th Int'l Conf. on Human factors in computing systems - CHI 09},
+pages = {1589},
+title = {{Two studies of opportunistic programming}},
+year = {2009}
+}
+
+@INPROCEEDINGS{Rahman2016, 
+author={M. M. Rahman and C. K. Roy and D. Lo}, 
+booktitle={2016 IEEE 23rd Int'l Conf. on Software Analysis, Evolution, and Reengineering (SANER)}, 
+title={{RACK}: Automatic {API} Recommendation Using Crowdsourced Knowledge}, 
+year={2016}, 
+volume={1}, 
+number={}, 
+pages={349-359}, 
+ISSN={}, 
+month={March},}
+
+@article{Cubranic2005,
+ author = {Cubranic, Davor and Murphy, Gail C. and Singer, Janice and Booth, Kellogg S.},
+ title = {Hipikat: A Project Memory for Software Development},
+ journal = {IEEE Trans. Softw. Eng.},
+ issue_date = {June 2005},
+ volume = {31},
+ number = {6},
+ month = jun,
+ year = {2005},
+ issn = {0098-5589},
+ pages = {446--465},
+ numpages = {20},
+ acmid = {1080067},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@inproceedings{Holmes2008,
+ author = {Holmes, Reid and Begel, Andrew},
+ title = {Deep Intellisense: A Tool for Rehydrating Evaporated Information},
+ booktitle = {Proc. of the 2008 Int'l Working Conf. on Mining Software Repositories},
+ year = {2008},
+ isbn = {978-1-60558-024-1},
+ location = {Leipzig, Germany},
+ pages = {23--26},
+ numpages = {4},
+ acmid = {1370755},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@article{Just1980,
+author = {Just, Marcel Adam and Carpenter, Patricia A},
+journal = {Psychological Review},
+number = {4},
+pages = {329--354},
+title = {{A theory of reading: From eye fixations ot comprehension}},
+volume = {87},
+year = {1980},
+doi = {10.1037/0033-295X.87.4.329},
+publisher = {American Psychological Association}
+}
+
+@article{Ingwersen1996,
+author = {Ingwersen, Peter},
+issn = {0022-0418},
+journal = {Journal of Documentation},
+month = {jan},
+number = {1},
+pages = {3--50},
+title = {{Cognitive Perspectives of Information Retrieval Interaction: Elements of a Cognitive IR Theory}},
+volume = {52},
+year = {1996}
+}
+
+@article{Passonneau2004,
+author = {Passonneau, Rebecca J},
+isbn = {2951740816},
+journal = {Language Resources and Evaluation (LREC)},
+number = {May},
+pages = {1503--1506},
+title = {{Computing reliability for coreference annotation}},
+year = {2004}
+}
+
+@misc{Krippendorff1980,
+  title={Content analysis: An introduction to its methodology},
+  author={Klaus, Krippendorff},
+  year={1980},
+  publisher={Sage Publications}
+}
+
+@misc{CambridgePhrase,
+  url={https://dictionary.cambridge.org/dictionary/english/phrase},
+  note = {Accessed: 2019-02-12},
+  title = {Cambridge Dictionary},
+}
+
+@inproceedings{kshirsagar2015,
+  title={Frame-semantic role labeling with heterogeneous annotations},
+  author={Kshirsagar, Meghana and Thomson, Sam and Schneider, Nathan and Carbonell, Jaime and Smith, Noah A and Dyer, Chris},
+  booktitle={Proc. of the 53rd Annual Meeting of the Association for Comp. Linguistics and the 7th Int'l Joint Conf. on Natural Language Processing},
+  volume={2},
+  pages={218--224},
+  year={2015}
+}
+
+@inproceedings{Canfora2011,
+ author = {Canfora, Gerardo and Cerulo, Luigi and Cimitile, Marta and Di Penta, Massimiliano},
+ title = {Social Interactions Around Cross-system Bug Fixings: The Case of FreeBSD and OpenBSD},
+ booktitle = {Proc. of the 8th Working Conf. on Mining Software Repositories},
+ year = {2011},
+ isbn = {978-1-4503-0574-7},
+ location = {Waikiki, Honolulu, HI, USA},
+ pages = {143--152},
+ numpages = {10},
+ acmid = {1985463},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@article{fillmore1976frame,
+  title={Frame semantics and the nature of language},
+  author={Fillmore, Charles J},
+  journal={Annals of the New York Academy of Sciences},
+  volume={280},
+  number={1},
+  pages={20--32},
+  year={1976},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{Baker1998frame,
+ author = {Baker, Collin F. and Fillmore, Charles J. and Lowe, John B.},
+ title = {The Berkeley FrameNet Project},
+ booktitle = {Proc. of the 17th Int'l Conf. on Computational Linguistics - Volume 1},
+ year = {1998},
+ location = {Montreal, Quebec, Canada},
+ pages = {86--90},
+ numpages = {5},
+ acmid = {980860},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+@article{nivre2007maltparser,
+  title={MaltParser: A language-independent system for data-driven dependency parsing},
+  author={Nivre, Joakim and Hall, Johan and Nilsson, Jens and Chanev, Atanas and Eryigit, G{\"u}l{\c{s}}en and K{\"u}bler, Sandra and Marinov, Svetoslav and Marsi, Erwin},
+  journal={Natural Language Engineering},
+  volume={13},
+  number={2},
+  pages={95--135},
+  year={2007},
+  publisher={Cambridge University Press}
+}
+
+@book{Manning2009IR,
+  title={Introduction to information retrieval},
+  author={Manning, Christopher D and Raghavan, Prabhakar and Sch{\"u}tze, Hinrich},
+  year={2009},
+  publisher={Cambridge University Press}
+}
+
+@inproceedings{umarji2008archetypal,
+  author={Umarji, Medha and Sim, Susan Elliott and Lopes, Crista},
+  editor={Russo, Barbara and Damiani, Ernesto and Hissam, Scott and Lundell, Bj{\"o}rn and Succi, Giancarlo},
+  title={Archetypal Internet-Scale Source Code Searching},
+  booktitle={Open Source Development, Communities and Quality},
+  year={2008},
+  publisher={Springer US},
+  address={Boston, MA},
+  pages={257--263},
+  isbn={978-0-387-09684-1}
+}
+
+
+
+@inproceedings{Breu2010,
+ author = {Breu, Silvia and Premraj, Rahul and Sillito, Jonathan and Zimmermann, Thomas},
+ title = {Information Needs in Bug Reports: Improving Cooperation Between Developers and Users},
+ booktitle = {Proc. of the 2010 ACM Conf. on Computer Supported Cooperative Work},
+ year = {2010},
+ isbn = {978-1-60558-795-0},
+ location = {Savannah, Georgia, USA},
+ pages = {301--310},
+ numpages = {10},
+ acmid = {1718973},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+@article{Treude2011a,
+author = {Treude, Christoph and Barzilay, Ohad and Storey, Margaret-Anne},
+isbn = {9781450304450},
+issn = {0270-5257},
+journal = {Proc. of the 33rd Int'l Conf. on SE},
+pages = {804},
+pmid = {15374886},
+title = {{How do programmers ask and answer questions on the web?}},
+year = {2011}
+}
+
+@article{robillard2011field,
+  title={A field study of {API} learning obstacles},
+  author={Robillard, Martin P and Deline, Robert},
+  journal={Empirical Software Engineering},
+  volume={16},
+  number={6},
+  pages={703--732},
+  year={2011},
+  publisher={Springer}
+}
+
+@book{wohlin2012,
+  title={Experimentation in software engineering},
+  author={Wohlin, Claes and Runeson, Per and H{\"o}st, Martin and Ohlsson, Magnus C and Regnell, Bj{\"o}rn and Wessl{\'e}n, Anders},
+  year={2012},
+  publisher={Springer Science \& Business Media}
+}
+
+@article{Saracevic2007b,
+archivePrefix = {arXiv},
+arxivId = {0803.1716},
+author = {Saracevic, Tefko},
+eprint = {0803.1716},
+isbn = {9783848215430},
+issn = {15322882},
+journal = {Journal of the American Society for Information Science and Technology},
+month = {nov},
+number = {13},
+pages = {2126--2144},
+pmid = {502955140},
+title = {{Relevance: A review of the literature and a framework for thinking on the notion in information science. Part III: Behavior and effects of relevance}},
+volume = {58},
+year = {2007}
+}
+
+@article{Saracevic2007c,
+archivePrefix = {arXiv},
+arxivId = {0803.1716},
+author = {Saracevic, Tefko},
+eprint = {0803.1716},
+isbn = {9783848215430},
+issn = {15322882},
+journal = {Journal of the American Society for Information Science and Technology},
+month = {nov},
+number = {13},
+pages = {1915--1933},
+pmid = {502955140},
+title = {{Relevance: A review of the literature and a framework for thinking on the notion in information science. Part II: nature and manifestations of relevance}},
+volume = {58},
+year = {2007}
+}
+
+@inproceedings{Haiduc2010,
+  title={On the use of automated text summarization techniques for summarizing source code},
+  author={Haiduc, Sonia and Aponte, Jairo and Moreno, Laura and Marcus, Andrian},
+  booktitle={Reverse Engineering (WCRE), 2010 17th Working Conf. on},
+  pages={35--44},
+  year={2010},
+  organization={IEEE}
+}
+
+@inproceedings{Moreno2015,
+ author = {Moreno, Laura and Bavota, Gabriele and Di Penta, Massimiliano and Oliveto, Rocco and Marcus, Andrian},
+ title = {How Can I Use This Method?},
+ booktitle = {Proc. of the 37th Int'l Conf. on SE - Volume 1},
+ year = {2015},
+ isbn = {978-1-4799-1934-5},
+ location = {Florence, Italy},
+ pages = {880--890},
+ numpages = {11},
+ url = {http://dl.acm.org/citation.cfm?id=2818754.2818860},
+ acmid = {2818860},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@inproceedings{Treude2016,
+  author={C. {Treude} and M. P. {Robillard}}, 
+  booktitle={2016 IEEE/ACM 38th Int'l Conf. on SE}, 
+  title={Augmenting {API} Documentation with Insights from Stack Overflow}, 
+  year={2016}, 
+  volume={}, 
+  number={}, 
+  pages={392-403}, 
+  ISSN={1558-1225}, 
+  month={May},
+}
+
+@article{mccrudden2007,
+  title={Relevance and goal-focusing in text processing},
+  author={McCrudden, Matthew T and Schraw, Gregory},
+  journal={Educational psychology review},
+  volume={19},
+  number={2},
+  pages={113--139},
+  year={2007},
+  publisher={Springer}
+}
+
+@article{Meyer2017,
+  author={A. N. {Meyer} and L. E. {Barton} and G. C. {Murphy} and T. {Zimmermann} and T. {Fritz}}, 
+  journal={IEEE Transactions on Software Engineering}, 
+  title={The Work Life of Developers: Activities, Switches and Perceived Productivity}, 
+  year={2017}, 
+  volume={43}, 
+  number={12}, 
+  pages={1178-1193}, 
+  keywords={regression analysis;software development management;software engineering;developer productivity;software development organizations;personal productivity;work unrelated websites;perceived productivity;highly fragmented work;professional software developers;Productivity;Software development;Encoding;Human factors;Monitoring;Productivity;developer activity;work fragmentation;interruptions;human factors;user studies}, 
+  doi={10.1109/TSE.2017.2656886}, 
+  ISSN={0098-5589}, 
+  month={Dec}
+}
+
+
+@INPROCEEDINGS{Singer1998, 
+author={J. Singer and T. Lethbridge}, 
+booktitle={Pro. 6th Int'l Workshop on Program Comprehension. IWPC'98}, 
+title={Studying work practices to assist tool design in software engineering}, 
+year={1998}, 
+volume={}, 
+number={}, 
+pages={173-179}, 
+ISSN={1092-8138}, 
+month={June},}
+
+
+@inproceedings{CubraniC2004,
+ author = {\v{C}ubrani\'{C}, Davor and Murphy, Gail C. and Singer, Janice and Booth, Kellogg S.},
+ title = {Learning from Project History: A Case Study for Software Development},
+ booktitle = {Proc. of the 2004 ACM Con. on Computer Supported Cooperative Work},
+ year = {2004},
+ isbn = {1-58113-810-5},
+ location = {Chicago, Illinois, USA},
+ pages = {82--91},
+ numpages = {10},
+ acmid = {1031622},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@inproceedings{BenCharrada2016,
+ author = {Ben Charrada, Eya and Mussato, Stefan},
+ title = {An Exploratory Study on Managing and Searching for Documents in Software Engineering Environments},
+ booktitle = {Proc of the 2016 ACM Symp. on Document Engineering},
+ year = {2016},
+ isbn = {978-1-4503-4438-8},
+ location = {Vienna, Austria},
+ pages = {189--192},
+ numpages = {4},
+ acmid = {2967149},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@inproceedings{chatterjee2017,
+  title={What information about code snippets is available in different software-related documents? an exploratory study},
+  author={Chatterjee, Preetha and Nishi, Manziba Akanda and Damevski, Kostadin and Augustine, Vinay and Pollock, Lori and Kraft, Nicholas A},
+  booktitle={IEEE 24th Int'l Conf on Software Analysis, Evolution and Reengineering},
+  pages={382--386},
+  year={2017},
+  organization={IEEE}
+}
+
+@article{Piorkowski2015,
+author = {Piorkowski, David and Fleming, Scott D. and Scaffidi, Christopher and Burnett, Margaret and Kwan, Irwin and Henley, Austin Z. and Macbeth, Jamie and Hill, Charles and Horvath, Amber},
+isbn = {9781467375320},
+journal = {2015 IEEE 31st Int'l Conf. on Software Maintenance and Evolution, ICSME 2015 - Proc.},
+pages = {11--20},
+title = {{To fix or to learn? How production bias affects developers' information foraging during debugging}},
+year = {2015}
+}
+
+@article{Piorkowski2016,
+author = {Piorkowski, David and Henley, Austin Z. and Nabi, Tahmid and Fleming, Scott D. and Scaffidi, Christopher and Burnett, Margaret},
+isbn = {9781450342186},
+journal = {Proc. of the 2016 24th ACM SIGSOFT Int'l Symp. on Foundations of Software Engineering},
+pages = {97--108},
+title = {{Foraging and navigations, fundamentally: developers' predictions of value and cost}},
+year = {2016}
+}
+
+@article{Vakkari1999,
+author = {Vakkari, Pertti},
+isbn = {3583215656},
+issn = {03064573},
+journal = {Information Processing and Management},
+number = {6},
+pages = {819--837},
+title = {{Task complexity, problem structure and information actions. Integrating studies on information seeking and retrieval}},
+volume = {35},
+year = {1999}
+}
+
+
+@article{Kintsch1978a,
+author = {Kintsch, Walter and van Dijk, Teun A.},
+isbn = {0033-295X},
+issn = {0033295X},
+journal = {Psychological Review},
+number = {5},
+pages = {363--394},
+pmid = {6571423},
+title = {{Toward a model of text comprehension and production}},
+volume = {85},
+year = {1978}
+}
+
+
+@inproceedings{robillard2004,
+  title={Program navigation analysis to support task-aware software development environments},
+  author={Robillard, Martin P and Murphy, Gail C},
+  booktitle={Proc. of the ICSE Workshop on Directions in SE Environments},
+  pages={83--88},
+  year={2004},
+  organization={IET}
+}
+
+@inproceedings{endrikat2014,
+  author = {Endrikat, Stefan and Hanenberg, Stefan and Robbes, Romain and Stefik, Andreas},
+  title = {How Do {API} Documentation and Static Typing Affect {API} Usability?},
+  booktitle = {Proc. of the 36th Int'l Conf. on SE},
+  year = {2014},
+  isbn = {978-1-4503-2756-5},
+  location = {Hyderabad, India},
+  pages = {632--642},
+  numpages = {11},
+  acmid = {2568299},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+} 
+
+@inproceedings{Begel2008,
+ author = {Begel, Andrew and Simon, Beth},
+ title = {Novice Software Developers, All over Again},
+ booktitle = {Proc. of the Fourth Int'l Workshop on Computing Education Research},
+ year = {2008},
+ isbn = {978-1-60558-216-0},
+ location = {Sydney, Australia},
+ pages = {3--14},
+ numpages = {12},
+ acmid = {1404522},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@inproceedings{Haiduc2013,
+ author = {Haiduc, Sonia and Bavota, Gabriele and Marcus, Andrian and Oliveto, Rocco and De Lucia, Andrea and Menzies, Tim},
+ title = {Automatic Query Reformulations for Text Retrieval in Software Engineering},
+ booktitle = {Proc. of the 2013 Int'l Conf. on SE},
+ year = {2013},
+ isbn = {978-1-4673-3076-3},
+ location = {San Francisco, CA, USA},
+ pages = {842--851},
+ numpages = {10},
+ acmid = {2486898},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@article{Smedt2012,
+  title={Pattern for python},
+  author={Smedt, Tom De and Daelemans, Walter},
+  journal={Journal of Machine Learning Research},
+  volume={13},
+  number={Jun},
+  pages={2063--2067},
+  year={2012}
+}
+
+@article{das2014frame,
+  title={Frame-semantic parsing},
+  author={Das, Dipanjan and Chen, Desai and Martins, Andr{\'e} FT and Schneider, Nathan and Smith, Noah A},
+  journal={Computational linguistics},
+  volume={40},
+  number={1},
+  pages={9--56},
+  year={2014},
+  publisher={MIT Press}
+}
+
+
+
+@inproceedings{Conll2000,
+ author = {Tjong Kim Sang, Erik F. and Buchholz, Sabine},
+ title = {Introduction to the {CoNLL-2000} Shared Task: Chunking},
+ booktitle = {Proc. of the 2Nd Workshop on Learning Language in Logic and the 4th Conf. on Computational Natural Language Learning - Volume 7},
+ year = {2000},
+ location = {Lisbon, Portugal},
+ pages = {127--132},
+ numpages = {6},
+ acmid = {1117631},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+@inproceedings{aranda2009secret,
+  title={The secret life of bugs: Going past the errors and omissions in software repositories},
+  author={Aranda, Jorge and Venolia, Gina},
+  booktitle={Proc. of the 31st Int'l Conf. on SE},
+  pages={298--308},
+  year={2009},
+  organization={IEEE Computer Society}
+}
+
+@misc{speer2017conceptnet,
+    title={{ConceptNet} 5.5: An Open Multilingual Graph of General Knowledge},
+    author={Robyn Speer and Joshua Chin and Catherine Havasi},
+    year={2016},
+    eprint={1612.03975},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+
+
+@article{saracevic1975,
+ title={Relevance: A review of and a framework for the thinking on the notion in information science},
+ author={Saracevic, Tefko},
+ journal={Journal of the American Society for information science},
+ volume={26},
+ number={6},
+ pages={321--343},
+ year={1975},
+ publisher={Wiley Online Library}
+}
+
+@book{clark2013relevance,
+  title={Relevance theory},
+  author={Clark, Billy},
+  year={2013},
+  publisher={Cambridge University Press}
+}
+
+@article{white2017relevance,
+  title={Relevance theory and distributions of judgments in document retrieval},
+  author={White, Howard D},
+  journal={Information Processing \& Management},
+  volume={53},
+  number={5},
+  pages={1080--1102},
+  year={2017},
+  publisher={Elsevier}
+}
+
+@inproceedings{Forward2002,
+ author = {Forward, Andrew and Lethbridge, Timothy C.},
+ title = {The Relevance of Software Documentation, Tools and Technologies: A Survey},
+ booktitle = {Proc. of the 2002 ACM Symposium on Document Engineering},
+ year = {2002},
+ isbn = {1-58113-594-7},
+ location = {McLean, Virginia, USA},
+ pages = {26--33},
+ numpages = {8},
+ acmid = {585065},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@inproceedings{Maletic2001,
+ author = {Maletic, Jonathan I. and Marcus, Andrian},
+ title = {Supporting Program Comprehension Using Semantic and Structural Information},
+ booktitle = {Proc. of the 23rd Int'l Conf. on SE},
+ year = {2001},
+ isbn = {0-7695-1050-7},
+ location = {Toronto, Ontario, Canada},
+ pages = {103--112},
+ numpages = {10},
+ url = {http://dl.acm.org/citation.cfm?id=381473.381484},
+ acmid = {381484},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+} 
+
+
+@INPROCEEDINGS{Zhang2013, 
+author={Y. {Zhang} and D. {Hou}}, 
+booktitle={2013 21st Int'l Conf. on Program Comprehension}, 
+title={Extracting problematic {API} features from forum discussions}, 
+year={2013}, 
+volume={}, 
+number={}, 
+pages={142-151}, 
+ISSN={1092-8138}, 
+month={May},}
+
+@article{huang2018automating,
+  title={Automating Intention Mining},
+  author={Huang, Qiao and Xia, Xin and Lo, David and Murphy, Gail C},
+  journal={IEEE Transactions on Software Engineering},
+  year={2018},
+  publisher={IEEE}
+}
+
+@inproceedings{walenstein2003observing,
+  title={Observing and measuring cognitive support: Steps toward systematic tool evaluation and engineering},
+  author={Walenstein, Andrew},
+  booktitle={11th IEEE Int'l Workshop on Program Comprehension, 2003.},
+  pages={185--194},
+  year={2003},
+  organization={IEEE}
+}
+
+@inproceedings{Singer1997,
+ author = {Singer, Janice and Lethbridge, Timothy and Vinson, Norman and Anquetil, Nicolas},
+ title = {An Examination of Software Engineering Work Practices},
+ booktitle = {Proceedings of the 1997 Conference of the Centre for Advanced Studies on Collaborative Research},
+ series = {CASCON '97},
+ year = {1997},
+ location = {Toronto, Ontario, Canada},
+ pages = {21--},
+ url = {http://dl.acm.org/citation.cfm?id=782010.782031},
+ acmid = {782031},
+ publisher = {IBM Press},
+
+
+} @article{Dit2013,
+  title={Feature location in source code: a taxonomy and survey},
+  author={Dit, Bogdan and Revelle, Meghan and Gethers, Malcom and Poshyvanyk, Denys},
+  journal={Journal of software: Evolution and Process},
+  volume={25},
+  number={1},
+  pages={53--95},
+  year={2013},
+  publisher={Wiley Online Library}
+}
+
+@INPROCEEDINGS{Ferreira2016, 
+author={I. {Ferreira} and E. {Cirilo} and V. {Vieira} and F. {Mourão}}, 
+booktitle={2016 X Brazilian Symposium on Software Components, Architectures and Reuse (SBCARS)}, 
+title={Bug Report Summarization: An Evaluation of Ranking Techniques}, 
+year={2016}, 
+volume={}, 
+number={}, 
+pages={101-110}, 
+keywords={management of change;program debugging;software maintenance;bug report summarization;ranking techniques;software artifacts;change management tasks;maintenance tasks;Computer bugs;Software;Euclidean distance;Computer architecture;Electronic mail;Face;Context;text summarization;bug;bug reports;ranking;bug reports summarization}, 
+doi={10.1109/SBCARS.2016.17}, 
+ISSN={}, 
+month={Sep.},}
+
+@inproceedings{Mani2012,
+ author = {Mani, Senthil and Catherine, Rose and Sinha, Vibha Singhal and Dubey, Avinava},
+ title = {{AUSUM}: Approach for Unsupervised Bug Report Summarization},
+ booktitle = {Proceedings of the ACM SIGSOFT 20th International Symposium on the Foundations of Software Engineering},
+ series = {FSE '12},
+ year = {2012},
+ isbn = {978-1-4503-1614-9},
+ location = {Cary, North Carolina},
+ pages = {11:1--11:11},
+ articleno = {11},
+ numpages = {11},
+ url = {http://doi.acm.org/10.1145/2393596.2393607},
+ doi = {10.1145/2393596.2393607},
+ acmid = {2393607},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {bug report, summarization, unsupervised},
+} 
+
+@inproceedings{mcburney2014,
+  title={Automatic documentation generation via source code summarization of method context},
+  author={McBurney, Paul W and McMillan, Collin},
+  booktitle={Proceedings of the 22nd International Conference on Program Comprehension},
+  pages={279--290},
+  year={2014},
+  organization={ACM}
+}
+
+@INPROCEEDINGS{Moreno2013, 
+author={L. {Moreno} and J. {Aponte} and G. {Sridhara} and A. {Marcus} and L. {Pollock} and K. {Vijay-Shanker}}, 
+booktitle={2013 21st International Conference on Program Comprehension (ICPC)}, 
+title={Automatic generation of natural language summaries for Java classes}, 
+year={2013}, 
+volume={}, 
+number={}, 
+pages={23-32}, 
+keywords={Java;natural language processing;software engineering;system documentation;automatic generation;natural language summary;Java classes;software engineering tasks;source code;internal documentation;external documentation;human readable summary;summarization tool;stereotypes;lexicalization tools;essential information;Java;Production facilities;Context;Documentation;Taxonomy;Natural languages;Educational institutions;Source code summarization;program comprehension;documentation generation}, 
+doi={10.1109/ICPC.2013.6613830}, 
+ISSN={1092-8138}, 
+month={May},}
+
+@article{manning2010IR,
+  title={Introduction to information retrieval},
+  author={Manning, Christopher and Raghavan, Prabhakar and Sch{\"u}tze, Hinrich},
+  journal={Natural Language Engineering},
+  volume={16},
+  number={1},
+  pages={100--103},
+  year={2010},
+  publisher={Cambridge university press}
+}
+
+@article{dumais1994latent,
+  title={Latent semantic indexing ({LSI}) and {TREC-2}},
+  author={Dumais, Susan T and others},
+  journal={Nist Special Publication Sp},
+  pages={105--105},
+  year={1994},
+  publisher={NATIONAL INSTIUTE OF STANDARDS \& TECHNOLOGY}
+}
+
+@article{blei2003latent,
+  title={Latent dirichlet allocation},
+  author={Blei, David M and Ng, Andrew Y and Jordan, Michael I},
+  journal={Journal of machine Learning research},
+  volume={3},
+  number={Jan},
+  pages={993--1022},
+  year={2003}
+}
+
+@article{salton1975vector,
+  title={A vector space model for automatic indexing},
+  author={Salton, Gerard and Wong, Anita and Yang, Chung-Shu},
+  journal={Communications of the ACM},
+  volume={18},
+  number={11},
+  pages={613--620},
+  year={1975},
+  publisher={ACM}
+}
+
+@phdthesis{kersten2007,
+  title={Focusing knowledge work with task context},
+  author={Kersten, Mik},
+  year={2007},
+  school={University of British Columbia}
+}
+
+@inproceedings{Xiao2018,
+  title={Bug Localization with Semantic and Structural Features using Convolutional Neural Network and Cascade Forest},
+  author={Xiao, Yan and Keung, Jacky and Mi, Qing and Bennin, Kwabena E},
+  booktitle={Proceedings of the 22nd International Conference on Evaluation and Assessment in Software Engineering 2018},
+  pages={101--111},
+  year={2018},
+  organization={ACM}
+}
+
+@inproceedings{marcus2003,
+  title={Recovering documentation-to-source-code traceability links using latent semantic indexing},
+  author={Marcus, Andrian and Maletic, Jonathan I},
+  booktitle={Proceedings of the 25th international conference on software engineering},
+  pages={125--135},
+  year={2003},
+  organization={IEEE Computer Society}
+}
+
+
+@article{Kintsch1978,
+    author = {Kintsch, Walter and van Dijk, Teun},
+    year = {1978},
+    month = {09},
+    pages = {363-394},
+    title = {Toward a Model of Text Comprehension and Production},
+    volume = {85},
+    journal = {Psychological Review},
+    doi = {10.1037/0033-295X.85.5.363}
+}
+
+
+
+@inproceedings{Fritz2014,
+ author = {Fritz, Thomas and Shepherd, David C. and Kevic, Katja and Snipes, Will and Br\"{a}unlich, Christoph},
+ title = {Developers' Code Context Models for Change Tasks},
+ booktitle = {Proceedings of the 22Nd ACM SIGSOFT International Symposium on Foundations of Software Engineering},
+ series = {FSE 2014},
+ year = {2014},
+ isbn = {978-1-4503-3056-5},
+ location = {Hong Kong, China},
+ pages = {7--18},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/2635868.2635905},
+ doi = {10.1145/2635868.2635905},
+ acmid = {2635905},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Context models, change task, navigation, search, user study},
+} 
+
+@article{SaltonTF-IDF,
+ author = {Salton, Gerard and Buckley, Christopher},
+ title = {Term-weighting Approaches in Automatic Text Retrieval},
+ journal = {Inf. Process. Manage.},
+ issue_date = {1988},
+ volume = {24},
+ number = {5},
+ month = aug,
+ year = {1988},
+ issn = {0306-4573},
+ pages = {513--523},
+ numpages = {11},
+ url = {http://dx.doi.org/10.1016/0306-4573(88)90021-0},
+ doi = {10.1016/0306-4573(88)90021-0},
+ acmid = {54260},
+ publisher = {Pergamon Press, Inc.},
+ address = {Tarrytown, NY, USA},
+} 
+
+
+@inproceedings{Robertson-BM25,
+ author = {Robertson, S. E. and Walker, S.},
+ title = {Some Simple Effective Approximations to the 2-Poisson Model for Probabilistic Weighted Retrieval},
+ booktitle = {Proceedings of the 17th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+ series = {SIGIR '94},
+ year = {1994},
+ isbn = {0-387-19889-X},
+ location = {Dublin, Ireland},
+ pages = {232--241},
+ numpages = {10},
+ url = {http://dl.acm.org/citation.cfm?id=188490.188561},
+ acmid = {188561},
+ publisher = {Springer-Verlag New York, Inc.},
+ address = {New York, NY, USA},
+} 
+
+@inproceedings{Xu2017,
+ author = {Xu, Bowen and Xing, Zhenchang and Xia, Xin and Lo, David},
+ title = {AnswerBot: Automated Generation of Answer Summary to Developers Technical Questions},
+ booktitle = {Proceedings of the 32Nd IEEE/ACM International Conference on Automated Software Engineering},
+ series = {ASE 2017},
+ year = {2017},
+ isbn = {978-1-5386-2684-9},
+ location = {Urbana-Champaign, IL, USA},
+ pages = {706--716},
+ numpages = {11},
+ url = {http://dl.acm.org/citation.cfm?id=3155562.3155650},
+ acmid = {3155650},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+ keywords = {Summary generation, question retrieval},
+} 
+
+
+@article{Silva2019,
+ author = {Rodrigo Fernandes Gomes Da Silva and Chanchal K. Roy and Md Masudur Rahman and Kevin Schneider and Kl\'{e}risson Paix{\~a}o and Marcelo Maia},
+ title = {Recommending Comprehensive Solutions for Programming Tasks by Mining Crowd Knowledge},
+ journal = {27th IEEE/ACM International Conference on Program Comprehension 2019},
+ year = {2019},
+ pages = {to appear}
+} 
+
+@inproceedings{Czerwinski2004,
+ author = {Czerwinski, Mary and Czerwinski, Mary and Horvitz, Eric and Wilhite, Susan},
+ title = {A Diary Study of Task Switching and Interruptions},
+ booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
+ series = {CHI '04},
+ year = {2004},
+ isbn = {1-58113-702-8},
+ location = {Vienna, Austria},
+ pages = {175--182},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/985692.985715},
+ doi = {10.1145/985692.985715},
+ acmid = {985715},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {diary study, information worker, interruptions, multitasking, office and workplace, task switching},
+} 
+
+
+@inproceedings{Stol2016,
+ author = {Stol, Klaas-Jan and Ralph, Paul and Fitzgerald, Brian},
+ title = {Grounded Theory in Software Engineering Research: A Critical Review and Guidelines},
+ booktitle = {Proceedings of the 38th International Conference on Software Engineering},
+ series = {ICSE '16},
+ year = {2016},
+ isbn = {978-1-4503-3900-1},
+ location = {Austin, Texas},
+ pages = {120--131},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/2884781.2884833},
+ doi = {10.1145/2884781.2884833},
+ acmid = {2884833},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {grounded theory, guidelines, review, software engineering},
+} 
+
+@Inbook{Sjoberg2008,
+author={Sj{\o}berg, Dag I. K. and Dyb{\aa}, Tore and Anda, Bente C. D. and Hannay, Jo E.},
+editor={Shull, Forrest and Singer, Janice and Sj{\o}berg, Dag I. K.},
+title={Building Theories in Software Engineering},
+bookTitle={Guide to Advanced Empirical Software Engineering},
+year={2008},
+publisher={Springer London},
+address={London},
+pages={312--336},
+isbn={978-1-84800-044-5},
+doi={10.1007/978-1-84800-044-5_12},
+url={https://doi.org/10.1007/978-1-84800-044-5_12}
+}
+
+
+@article{Nenkova2007,
+ author = {Nenkova, Ani and Passonneau, Rebecca and McKeown, Kathleen},
+ title = {The Pyramid Method: Incorporating Human Content Selection Variation in Summarization Evaluation},
+ journal = {ACM Trans. Speech Lang. Process.},
+ issue_date = {May 2007},
+ volume = {4},
+ number = {2},
+ month = may,
+ year = {2007},
+ issn = {1550-4875},
+ articleno = {4},
+ url = {http://doi.acm.org/10.1145/1233912.1233913},
+ doi = {10.1145/1233912.1233913},
+ acmid = {1233913},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Evaluation, semantic analysis, summarization},
+} 
+
+@article{Zhang2019,
+  title={Pretraining-Based Natural Language Generation for Text Summarization},
+  author={Haoyu Zhang and Yeyun Gong and Yu Yan and Nan Duan and Jianjun Xu and Ji Wang and Ming Gong and Ming Zhou},
+  journal={CoRR},
+  year={2019},
+  volume={abs/1902.09243}
+}
+
+@inproceedings{Bowman2015,
+  title={A large annotated corpus for learning natural language inference},
+  author={Samuel R. Bowman and Gabor Angeli and Christopher Potts and Christopher D. Manning},
+  booktitle={EMNLP},
+  year={2015}
+}
+
+@book{Katz1972,
+	author = {Jerrold J. Katz},
+	title = {Semantic Theory},
+	publisher = {New York: Harper \& Row},
+	year = {1972}
+}
+
+@phdthesis{Maccartney2009b,
+ author = {Maccartney, Bill},
+ advisor = {Manning, Christopher D.},
+ title = {Natural Language Inference},
+ year = {2009},
+ isbn = {978-1-109-24088-7},
+ note = {AAI3364139},
+ publisher = {Stanford University},
+ address = {Stanford, CA, USA},
+} 
+
+@inproceedings{MacCartney2009a,
+ author = {MacCartney, Bill and Manning, Christopher D.},
+ title = {An Extended Model of Natural Logic},
+ booktitle = {Proceedings of the Eighth International Conference on Computational Semantics},
+ series = {IWCS-8 '09},
+ year = {2009},
+ isbn = {978-90-74029-34-6},
+ location = {Tilburg, The Netherlands},
+ pages = {140--156},
+ numpages = {17},
+ url = {http://dl.acm.org/citation.cfm?id=1693756.1693772},
+ acmid = {1693772},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+
+@article{dejong1978,
+  title={Fast skimming of news stories: the FRUMP system},
+  author={DeJong, Gerald Francis},
+  journal={New Haven: Yale University},
+  year={1978}
+}
+
+@inproceedings{Rau1991,
+ author = {Rau, Lisa F. and Jacobs, Paul S.},
+ title = {Creating Segmented Databases from Free Text for Text Retrieval},
+ booktitle = {Proceedings of the 14th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+ series = {SIGIR '91},
+ year = {1991},
+ isbn = {0-89791-448-1},
+ location = {Chicago, Illinois, USA},
+ pages = {337--346},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/122860.122894},
+ doi = {10.1145/122860.122894},
+ acmid = {122894},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@INPROCEEDINGS{Naubourg2008, 
+author={P. {Naubourg} and V. {Lopes} and L. {Bossu}}, 
+booktitle={2008 IEEE International Conference on Signal Image Technology and Internet Based Systems}, 
+title={A Case Study of Open Source Software Development in Proteomic Area: The LIMS ePims}, 
+year={2008}, 
+volume={}, 
+number={}, 
+pages={555-562}, 
+keywords={biology computing;proteomics;public domain software;software packages;software reusability;open source software development;LIMS ePims;software package;laboratory information management system;biology applications;multilicensing;code source reuse;proteomics;Open source software;Proteomics;Laboratories;Information management;Costs;Licenses;Software packages;Application software;Software tools;Project management;open source;case study;LIMS;licenses}, 
+doi={10.1109/SITIS.2008.83}, 
+ISSN={}, 
+month={Nov},}
+
+@inproceedings{Fernandez2016,
+ author = {Fern\'{a}ndez, Daniel M{\'e}ndez and Wagner, Stefan},
+ title = {Case Studies in Industry: What We Have Learnt},
+ booktitle = {Proceedings of the 4th International Workshop on Conducting Empirical Studies in Industry},
+ series = {CESI '16},
+ year = {2016},
+ isbn = {978-1-4503-4154-7},
+ location = {Austin, Texas},
+ pages = {25--31},
+ numpages = {7},
+ url = {http://doi.acm.org/10.1145/2896839.2896844},
+ doi = {10.1145/2896839.2896844},
+ acmid = {2896844},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {case study research, experience report, lessons learnt},
+} 
+
+@book{tourangeau2000psychology,
+  title={The psychology of survey response},
+  author={Tourangeau, Roger and Rips, Lance J and Rasinski, Kenneth},
+  year={2000},
+  publisher={Cambridge University Press}
+}
+
+
+
+@INPROCEEDINGS{Pacione2004, 
+author={M. J. {Pacione} and M. {Roper} and M. {Wood}}, 
+booktitle={11th Working Conference on Reverse Engineering}, 
+title={A novel software visualisation model to support software comprehension}, 
+year={2004}, 
+volume={}, 
+number={}, 
+pages={70-79}, 
+keywords={program visualisation;object-oriented programming;software visualisation model;visualisation tools;object-oriented software comprehension;statically extracted information;dynamically extracted information;evaluation task;abstraction generation;abstraction levels;software support;Visualization;Object oriented modeling;Software tools;Software systems;Reverse engineering;Software performance;Data mining;Large-scale systems;Poles and towers;Refining}, 
+doi={10.1109/WCRE.2004.7}, 
+ISSN={1095-1350}, 
+month={Nov},}
+
+
+@inproceedings{Alimadadi2018,
+ author = {Alimadadi, Saba and Mesbah, Ali and Pattabiraman, Karthik},
+ title = {Inferring Hierarchical Motifs from Execution Traces},
+ booktitle = {Proceedings of the 40th International Conference on Software Engineering},
+ series = {ICSE '18},
+ year = {2018},
+ isbn = {978-1-4503-5638-1},
+ location = {Gothenburg, Sweden},
+ pages = {776--787},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/3180155.3180216},
+ doi = {10.1145/3180155.3180216},
+ acmid = {3180216},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {behavioural model, hierarchical motifs, program comprehension},
+} 
+
+@article{prana2019,
+  title={Categorizing the content of GitHub README files},
+  author={Prana, Gede Artha Azriadi and Treude, Christoph and Thung, Ferdian and Atapattu, Thushari and Lo, David},
+  journal={Empirical Software Engineering},
+  volume={24},
+  number={3},
+  pages={1296--1327},
+  year={2019},
+  publisher={Springer}
+}
+
+
+
+@inproceedings{Carbonell1998,
+ author = {Carbonell, Jaime and Goldstein, Jade},
+ title = {The Use of MMR, Diversity-based Reranking for Reordering Documents and Producing Summaries},
+ booktitle = {Proceedings of the 21st Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+ series = {SIGIR '98},
+ year = {1998},
+ isbn = {1-58113-015-5},
+ location = {Melbourne, Australia},
+ pages = {335--336},
+ numpages = {2},
+ url = {http://doi.acm.org/10.1145/290941.291025},
+ doi = {10.1145/290941.291025},
+ acmid = {291025},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@article{Jarvelin2002,
+ author = {J\"{a}rvelin, Kalervo and Kek\"{a}l\"{a}inen, Jaana},
+ title = {Cumulated Gain-based Evaluation of IR Techniques},
+ journal = {ACM Trans. Inf. Syst.},
+ issue_date = {October 2002},
+ volume = {20},
+ number = {4},
+ month = oct,
+ year = {2002},
+ issn = {1046-8188},
+ pages = {422--446},
+ numpages = {25},
+ url = {http://doi.acm.org/10.1145/582415.582418},
+ doi = {10.1145/582415.582418},
+ acmid = {582418},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Graded relevance judgments, cumulated gain},
+} 
+
+
+@inproceedings{Bacchelli2012,
+ author = {Bacchelli, Alberto and Dal Sasso, Tommaso and D'Ambros, Marco and Lanza, Michele},
+ title = {Content Classification of Development Emails},
+ booktitle = {Proceedings of the 34th International Conference on Software Engineering},
+ series = {ICSE '12},
+ year = {2012},
+ isbn = {978-1-4673-1067-3},
+ location = {Zurich, Switzerland},
+ pages = {375--385},
+ numpages = {11},
+ url = {http://dl.acm.org/citation.cfm?id=2337223.2337268},
+ acmid = {2337268},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@INPROCEEDINGS{Ponzanelli2013b, 
+author={L. {Ponzanelli} and A. {Bacchelli} and M. {Lanza}}, 
+booktitle={2013 17th European Conference on Software Maintenance and Reengineering}, 
+title={Leveraging Crowd Knowledge for Software Comprehension and Development}, 
+year={2013}, 
+volume={}, 
+number={}, 
+pages={57-66}, 
+keywords={application program interfaces;query processing;question answering (information retrieval);software engineering;crowd knowledge;software comprehension;software development;question-and-answer service;stack overflow service;Web browser;integrated development environment;IDE;query formulation;Seahawk Eclipse plugin;Engines;XML;Search engines;Java;Software;Navigation;User interfaces;Q&amp;A services;recommendation systems}, 
+doi={10.1109/CSMR.2013.16}, 
+ISSN={1534-5351}, 
+month={March},}
+
+@article{likert1932technique,
+  title={A technique for the measurement of attitudes.},
+  author={Likert, Rensis},
+  journal={Archives of psychology},
+  year={1932}
+}
+
+
+@Article{Pinto2018,
+author="Pinto, Gustavo
+and Steinmacher, Igor
+and Dias, Luiz Felipe
+and Gerosa, Marco",
+title="On the challenges of open-sourcing proprietary software projects",
+journal="Empirical Software Engineering",
+year="2018",
+month="Dec",
+day="01",
+volume="23",
+number="6",
+pages="3221--3247",
+abstract="The open source software (OSS) movement has become widely recognized as an effective way to deliver software. Even big software companies, well-known for being restrictive when it comes to publishing their source code artifacts, have recently adopted open source initiatives and released for general use the source code of some of their most notable products. We conducted an exploratory study on merits of the widespread belief that open-sourcing a proprietary software project will attract external developers, like casual contributors, and therefore improve software quality (e.g., ``given enough eyeballs, all bugs are shallow''). By examining the pre- and post-migration software history of eight active, popular, non-trivial proprietary projects that became open source, we characterize the phenomenon and identify some challenges. Contrary to what many believe, we found that only a few projects experienced a growth in newcomers, contributions, and popularity; furthermore, this growth does not last long. The results from the study can be useful for helping software companies to better understand the hidden challenges of open-sourcing their software projects to attract external developers.",
+issn="1573-7616",
+doi="10.1007/s10664-018-9609-6",
+url="https://doi.org/10.1007/s10664-018-9609-6"
+}
+
+
+@article{Pearson1900Chi2,
+  author = { Karl   Pearson   F.R.S. },
+  title = {X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling},
+  journal = {The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science},
+  volume = {50},
+  number = {302},
+  pages = {157-175},
+  year  = {1900},
+  publisher = {Taylor & Francis},
+  doi = {10.1080/14786440009463897},
+  URL = {https://doi.org/10.1080/14786440009463897},
+  eprint = {https://doi.org/10.1080/14786440009463897}
+}
+
+@book{urdan2011statistics,
+  title={Statistics in plain English},
+  author={Urdan, Timothy C},
+  year={2011},
+  publisher={Routledge}
+}
+
+@article{Varian1995,
+ ISSN = {00368733, 19467087},
+ URL = {http://www.jstor.org/stable/24981798},
+ author = {Hal R. Varian},
+ journal = {Scientific American},
+ number = {3},
+ pages = {200--202},
+ publisher = {Scientific American, a division of Nature America, Inc.},
+ title = {The Information Economy},
+ volume = {273},
+ year = {1995}
+}
+
+@Inbook{Simon1977,
+  author="Simon, Herbert A.",
+  title="The Structure of Ill-Structured Problems",
+  bookTitle="Models of Discovery: And Other Topics in the Methods of Science",
+  year="1977",
+  publisher="Springer Netherlands",
+  address="Dordrecht",
+  pages="304--325",
+  abstract="Certain concepts are defined mainly as residuals --- in terms of what they are not. Thus a UFO is an aerial phenomenon not explainable in terms of known laws and objects; and ESP is communication between persons, without evidence of the transmission of signals of any kind.",
+  isbn="978-94-010-9521-1",
+  doi="10.1007/978-94-010-9521-1_17",
+  url="https://doi.org/10.1007/978-94-010-9521-1_17"
+}
+
+
+@article{Deerwester1990LSI,
+  title={Indexing by latent semantic analysis},
+  author={Deerwester, Scott and Dumais, Susan T and Furnas, George W and Landauer, Thomas K and Harshman, Richard},
+  journal={Journal of the American society for information science},
+  volume={41},
+  number={6},
+  pages={391--407},
+  year={1990},
+  publisher={Wiley Online Library}
+}
+
+@techreport{Page1999,
+  number = {1999-66},
+  month = {November},
+  author = {Lawrence Page and Sergey Brin and Rajeev Motwani and Terry Winograd},
+  note = {Previous number = SIDL-WP-1999-0120},
+  title = {The PageRank Citation Ranking: Bringing Order to the Web.},
+  type = {Technical Report},
+  publisher = {Stanford InfoLab},
+  year = {1999},
+  institution = {Stanford InfoLab},
+  url = {http://ilpubs.stanford.edu:8090/422/},
+}
+
+
+@article{Erkan2004,
+  author = {Erkan, G\"{u}nes and Radev, Dragomir R.},
+  title = {LexRank: Graph-based Lexical Centrality As Salience in Text Summarization},
+  journal = {J. Artif. Int. Res.},
+  issue_date = {July 2004},
+  volume = {22},
+  number = {1},
+  month = dec,
+  year = {2004},
+  issn = {1076-9757},
+  pages = {457--479},
+  numpages = {23},
+  url = {http://dl.acm.org/citation.cfm?id=1622487.1622501},
+  acmid = {1622501},
+  publisher = {AI Access Foundation},
+  address = {USA},
+} 
+
+
+@article{goldman2009,
+  author={M. {Goldman} and R. C. {Miller}}, 
+  booktitle={2008 IEEE Symposium on Visual Languages and Human-Centric Computing}, 
+  title={Codetrail: Connecting source code and web resources}, 
+  year={2008}, 
+  volume={}, 
+  number={}, 
+  pages={65-72}, 
+  keywords={Internet;online front-ends;source code;Codetrail;Web resources;Web browser;Eclipse IDE;Firefox;Documentation;Fires;Joining processes;Programming;Java;Navigation;Libraries}, 
+  doi={10.1109/VLHCC.2008.4639060}, 
+  ISSN={1943-6092}, 
+  month={Sep.},
+}
+
+@article{ko2015,
+  title={A practical guide to controlled experiments of software engineering tools with human participants},
+  author={Ko, Amy J and LaToza, Thomas D and Burnett, Margaret M},
+  journal={Empirical Software Engineering},
+  volume={20},
+  number={1},
+  pages={110--141},
+  year={2015},
+  publisher={Springer}
+}
+
+
+@INPROCEEDINGS{Kononenko2012, 
+author={O. {Kononenko} and D. {Dietrich} and R. {Sharma} and R. {Holmes}}, 
+booktitle={2012 IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC)}, 
+title={Automatically locating relevant programming help online}, 
+year={2012}, 
+volume={}, 
+number={}, 
+pages={127-134}, 
+keywords={help systems;Internet;query processing;software tools;online programming help;software system;compilation error;runtime exception;online discussion;query;programming problem;Dora tool;Visual Studio;development task;search session;search approach;Programming;Message systems;Visualization;Runtime;Documentation;Software;Google}, 
+doi={10.1109/VLHCC.2012.6344497}, 
+ISSN={1943-6106}, 
+month={Sep.},}
+
+@book{jurafsky2014speech,
+  title={Speech and language processing},
+  author={Jurafsky, Dan and Martin, James H},
+  volume={3},
+  year={2014},
+  publisher={Pearson London}
+}
+
+
+@incollection{Joachims1999,
+ author = {Joachims, Thorsten},
+ chapter = {Making Large-scale Support Vector Machine Learning Practical},
+ title = {Advances in Kernel Methods},
+ editor = {Sch\"{o}lkopf, Bernhard and Burges, Christopher J. C. and Smola, Alexander J.},
+ year = {1999},
+ isbn = {0-262-19416-3},
+ pages = {169--184},
+ numpages = {16},
+ url = {http://dl.acm.org/citation.cfm?id=299094.299104},
+ acmid = {299104},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+} 
+
+@inproceedings{Bacchelli2010,
+ author = {Bacchelli, Alberto and Lanza, Michele and Robbes, Romain},
+ title = {Linking e-Mails and Source Code Artifacts},
+ booktitle = {Proceedings of the 32Nd ACM/IEEE International Conference on Software Engineering - Volume 1},
+ series = {ICSE '10},
+ year = {2010},
+ isbn = {978-1-60558-719-6},
+ location = {Cape Town, South Africa},
+ pages = {375--384},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1806799.1806855},
+ doi = {10.1145/1806799.1806855},
+ acmid = {1806855},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+@inproceedings{Li2018,
+ author = {Li, Xiaochen and Jiang, He and Liu, Dong and Ren, Zhilei and Li, Ge},
+ title = {Unsupervised Deep Bug Report Summarization},
+ booktitle = {Proceedings of the 26th Conference on Program Comprehension},
+ series = {ICPC '18},
+ year = {2018},
+ isbn = {978-1-4503-5714-2},
+ location = {Gothenburg, Sweden},
+ pages = {144--155},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/3196321.3196326},
+ doi = {10.1145/3196321.3196326},
+ acmid = {3196326},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@INPROCEEDINGS{Wong2013, 
+author={E. {Wong} and {Jinqiu Yang} and {Lin Tan}}, 
+booktitle={2013 28th IEEE/ACM International Conference on Automated Software Engineering (ASE)}, 
+title={AutoComment: Mining question and answer sites for automatic comment generation}, 
+year={2013}, 
+volume={}, 
+number={}, 
+pages={562-567}, 
+keywords={Android (operating system);data mining;Java;public domain software;question answering (information retrieval);software maintenance;AutoComment;programming question-and-answer site mining;automatic comment generation;code comments;software maintainability improvement;comment scarcity issue;code segments;open-source projects;Java tagged Q&A post analysis;Android tagged Q&A post analysis;code-description mapping extraction;program comprehension;natural language processing;software engineering;Java;Software;Androids;Humanoid robots;Databases;Cloning;Natural language processing;automated comment generation;documentation;program comprehension;natural language processing for software engineering}, 
+doi={10.1109/ASE.2013.6693113}, 
+ISSN={}, 
+month={Nov},}
+
+@article{bojanowski2017FastText,
+  title = "Enriching Word Vectors with Subword Information",
+  author = "Bojanowski, Piotr  and   Grave, Edouard  and   Joulin, Armand  and   Mikolov, Tomas",
+  journal = "Transactions of the Association for Computational Linguistics",
+  volume = "5",
+  month = dec,
+  year = "2017",
+  url = "https://www.aclweb.org/anthology/Q17-1010",
+  doi = "10.1162/tacl_a_00051",
+  pages = "135--146",
+}
+
+@inproceedings{Murray2008,
+ author = {Murray, Gabriel and Carenini, Giuseppe},
+ title = {Summarizing Spoken and Written Conversations},
+ booktitle = {Proceedings of the Conference on Empirical Methods in Natural Language Processing},
+ series = {EMNLP '08},
+ year = {2008},
+ location = {Honolulu, Hawaii},
+ pages = {773--782},
+ numpages = {10},
+ url = {http://dl.acm.org/citation.cfm?id=1613715.1613813},
+ acmid = {1613813},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+
+@INPROCEEDINGS{Lin2018, 
+author={B. {Lin} and F. {Zampetti} and G. {Bavota} and M. {Di Penta} and M. {Lanza} and R. {Oliveto}}, 
+booktitle={2018 IEEE/ACM 40th International Conference on Software Engineering (ICSE)}, 
+title={Sentiment Analysis for Software Engineering: How Far Can We Go?}, 
+year={2018}, 
+volume={}, 
+number={}, 
+pages={94-104}, 
+keywords={Sentiment analysis;Tools;Software engineering;Software;Task analysis;Training;Motion pictures;sentiment analysis;software engineering;NLP}, 
+doi={10.1145/3180155.3180195}, 
+ISSN={1558-1225}, 
+month={May},}
+
+@ARTICLE{Seaman1999, 
+author={C. B. {Seaman}}, 
+journal={IEEE Transactions on Software Engineering}, 
+title={Qualitative methods in empirical studies of software engineering}, 
+year={1999}, 
+volume={25}, 
+number={4}, 
+pages={557-572}, 
+keywords={user interfaces;human factors;software development management;project management;qualitative methods;empirical studies;software engineering;research community;human aspects;software development;research questions;research methods;nontechnical aspects;qualitative research methods;human behaviour;data collection;quantitative methods;real software engineering studies;Software engineering;Humans;Programming;Data analysis;Design for experiments;Laboratories;Computer industry;Software development management;Design methodology}, 
+doi={10.1109/32.799955}, 
+ISSN={0098-5589}, 
+month={July},}
+
+
+@Article{Hubert1985,
+author="Hubert, Lawrence
+and Arabie, Phipps",
+title="Comparing partitions",
+journal="Journal of Classification",
+year="1985",
+month="Dec",
+day="01",
+volume="2",
+number="1",
+pages="193--218",
+issn="1432-1343",
+doi="10.1007/BF01908075",
+url="https://doi.org/10.1007/BF01908075"
+}
+
+
+@article{Vinh2010,
+ author = {Vinh, Nguyen Xuan and Epps, Julien and Bailey, James},
+ title = {Information Theoretic Measures for Clusterings Comparison: Variants, Properties, Normalization and Correction for Chance},
+ journal = {J. Mach. Learn. Res.},
+ issue_date = {3/1/2010},
+ volume = {11},
+ month = dec,
+ year = {2010},
+ issn = {1532-4435},
+ pages = {2837--2854},
+ numpages = {18},
+ url = {http://dl.acm.org/citation.cfm?id=1756006.1953024},
+ acmid = {1953024},
+ publisher = {JMLR.org},
+} 
+
+
+@article{Cho2014seq2seq,
+  author    = {Kyunghyun Cho and Bart van Merrienboer and {\c{C}}aglar G{\"{u}}l{\c{c}}ehre and Fethi Bougares and Holger Schwenk and Yoshua Bengio},
+  title     = {Learning Phrase Representations using {RNN} Encoder-Decoder for Statistical Machine Translation},
+  journal   = {CoRR},
+  volume    = {abs/1406.1078},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1406.1078},
+  archivePrefix = {arXiv},
+  eprint    = {1406.1078},
+  timestamp = {Mon, 13 Aug 2018 16:46:44 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/ChoMGBSB14},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@article{Devlin2018Bert,
+  author    = {Jacob Devlin and Ming{-}Wei Chang and Kenton Lee and Kristina Toutanova},
+  title     = {{BERT:} Pre-training of Deep Bidirectional Transformers for Language Understanding},
+  journal   = {CoRR},
+  volume    = {abs/1810.04805},
+  year      = {2018},
+  url       = {http://arxiv.org/abs/1810.04805},
+  archivePrefix = {arXiv},
+  eprint    = {1810.04805},
+  timestamp = {Tue, 30 Oct 2018 20:39:56 +0100},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1810-04805},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{bahdanau2014neural,
+  title={Neural machine translation by jointly learning to align and translate},
+  author={Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua},
+  journal={arXiv preprint arXiv:1409.0473},
+  year={2014}
+}
+
+@article{Vaswani2017attention,
+  author    = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+  title     = {Attention Is All You Need},
+  journal   = {CoRR},
+  volume    = {abs/1706.03762},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1706.03762},
+  archivePrefix = {arXiv},
+  eprint    = {1706.03762},
+  timestamp = {Mon, 13 Aug 2018 16:48:37 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/VaswaniSPUJGKP17},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Lloyd2006Kmeans,
+ author = {Lloyd, S.},
+ title = {Least Squares Quantization in PCM},
+ journal = {IEEE Trans. Inf. Theor.},
+ issue_date = {March 1982},
+ volume = {28},
+ number = {2},
+ month = sep,
+ year = {2006},
+ issn = {0018-9448},
+ pages = {129--137},
+ numpages = {9},
+ url = {http://dx.doi.org/10.1109/TIT.1982.1056489},
+ doi = {10.1109/TIT.1982.1056489},
+ acmid = {2269955},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@article{steinhaus1956Kmeans,
+  title={Sur la division des corp materiels en parties},
+  author={Steinhaus, Hugo},
+  journal={Bull. Acad. Polon. Sci},
+  volume={1},
+  number={804},
+  pages={801},
+  year={1956}
+}
+
+@INPROCEEDINGS{Pelleg00xmeans,
+    author = {Dau Pelleg and Andrew Moore},
+    title = {X-means: Extending K-means with Efficient Estimation of the Number of Clusters},
+    booktitle = {In Proceedings of the 17th International Conf. on Machine Learning},
+    year = {2000},
+    pages = {727--734},
+    publisher = {Morgan Kaufmann}
+}
+
+@inproceedings{manning2014stanfordNLP,
+  title = "The {S}tanford {C}ore{NLP} Natural Language Processing Toolkit",
+  author = "Manning, Christopher  and Surdeanu, Mihai  and Bauer, John  and Finkel, Jenny  and Bethard, Steven  and McClosky, David",
+  booktitle = "Proceedings of 52nd Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
+  month = jun,
+  year = "2014",
+  address = "Baltimore, Maryland",
+  publisher = "Association for Computational Linguistics",
+  url = "https://www.aclweb.org/anthology/P14-5010",
+  doi = "10.3115/v1/P14-5010",
+  pages = "55--60",
+}
+
+@inproceedings{Gorla2014,
+ author = {Gorla, Alessandra and Tavecchia, Ilaria and Gross, Florian and Zeller, Andreas},
+ title = {Checking App Behavior Against App Descriptions},
+ booktitle = {Proceedings of the 36th International Conference on Software Engineering},
+ series = {ICSE 2014},
+ year = {2014},
+ isbn = {978-1-4503-2756-5},
+ location = {Hyderabad, India},
+ pages = {1025--1035},
+ numpages = {11},
+ url = {http://doi.acm.org/10.1145/2568225.2568276},
+ doi = {10.1145/2568225.2568276},
+ acmid = {2568276},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Android, clustering, description analysis, malware detection},
+} 
+
+
+@article{Rousseeuw1987,
+  title = "Silhouettes: A graphical aid to the interpretation and validation of cluster analysis",
+  journal = "Journal of Computational and Applied Mathematics",
+  volume = "20",
+  pages = "53 - 65",
+  year = "1987",
+  issn = "0377-0427",
+  doi = "https://doi.org/10.1016/0377-0427(87)90125-7",
+  url = "http://www.sciencedirect.com/science/article/pii/0377042787901257",
+  author = "Peter J. Rousseeuw",
+  keywords = "Graphical display, cluster analysis, clustering validity, classification",
+}
+
+
+@INPROCEEDINGS{DeLucia2012, 
+  author={A. {De Lucia} and M. {Di Penta} and R. {Oliveto} and A. {Panichella} and S. {Panichella}}, 
+  booktitle={2012 20th IEEE International Conference on Program Comprehension (ICPC)}, 
+  title={Using IR methods for labeling source code artifacts: Is it worthwhile?}, 
+  year={2012}, 
+  volume={}, 
+  number={}, 
+  pages={193-202}, 
+  doi={10.1109/ICPC.2012.6240488}, 
+  ISSN={1092-8138}, 
+  month={June},
+}
+
+@inproceedings{Sridhara2010,
+  author = {Sridhara, Giriprasad and Hill, Emily and Muppaneni, Divya and Pollock, Lori and Vijay-Shanker, K.},
+  title = {Towards Automatically Generating Summary Comments for Java Methods},
+  booktitle = {Proceedings of the IEEE/ACM International Conference on Automated Software Engineering},
+  series = {ASE '10},
+  year = {2010},
+  isbn = {978-1-4503-0116-9},
+  location = {Antwerp, Belgium},
+  pages = {43--52},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/1858996.1859006},
+  doi = {10.1145/1858996.1859006},
+  acmid = {1859006},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  keywords = {comment generation, method summarization, natural language program analysis},
+} 
+
+
+@article{Henninger1994,
+ author = {Henninger, Scott},
+ title = {Using Iterative Refinement to Find Reusable Software},
+ journal = {IEEE Softw.},
+ issue_date = {September 1994},
+ volume = {11},
+ number = {5},
+ month = sep,
+ year = {1994},
+ issn = {0740-7459},
+ pages = {48--59},
+ numpages = {12},
+ url = {https://doi.org/10.1109/52.311059},
+ doi = {10.1109/52.311059},
+ acmid = {625378},
+ publisher = {IEEE Computer Society Press},
+ address = {Los Alamitos, CA, USA},
+} 
+
+@article{rodriguez2006rforest,
+  title={Rotation forest: A new classifier ensemble method},
+  author={Rodriguez, Juan Jos{\'e} and Kuncheva, Ludmila I and Alonso, Carlos J},
+  journal={IEEE transactions on pattern analysis and machine intelligence},
+  volume={28},
+  number={10},
+  pages={1619--1630},
+  year={2006},
+  publisher={IEEE}
+}
+
+@inproceedings{ho1995rforest,
+  title={Random decision forests},
+  author={Ho, Tin Kam},
+  booktitle={Proceedings of 3rd international conference on document analysis and recognition},
+  volume={1},
+  pages={278--282},
+  year={1995},
+  organization={IEEE}
+}
+
+@inproceedings{Rastkar2013,
+ author = {Rastkar, Sarah and Murphy, Gail C.},
+ title = {Why Did This Code Change?},
+ booktitle = {Proceedings of the 2013 International Conference on Software Engineering},
+ series = {ICSE '13},
+ year = {2013},
+ isbn = {978-1-4673-3076-3},
+ location = {San Francisco, CA, USA},
+ pages = {1193--1196},
+ numpages = {4},
+ url = {http://dl.acm.org/citation.cfm?id=2486788.2486959},
+ acmid = {2486959},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@INPROCEEDINGS{Rastkar2011, 
+author={S. {Rastkar} and G. C. {Murphy} and A. W. J. {Bradley}}, 
+booktitle={2011 27th IEEE International Conference on Software Maintenance (ICSM)}, 
+title={Generating natural language summaries for crosscutting source code concerns}, 
+year={2011}, 
+volume={}, 
+number={}, 
+pages={103-112}, 
+keywords={abstracting;natural language processing;source coding;system documentation;natural language summary generation;system code base;software change task;Natural languages;Ontologies;Resource description framework;Data mining;Software;Documentation;Java}, 
+doi={10.1109/ICSM.2011.6080777}, 
+ISSN={1063-6773}, 
+month={Sep.},}
+
+@INPROCEEDINGS{Aghajani2018, 
+author={E. {Aghajani}}, 
+booktitle={2018 IEEE International Conference on Software Maintenance and Evolution (ICSME)}, 
+title={Context-Aware Software Documentation}, 
+year={2018}, 
+volume={}, 
+number={}, 
+pages={727-731}, 
+keywords={document handling;information retrieval;Internet;recommender systems;software maintenance;system documentation;ubiquitous computing;Web sites;contextual information;context-aware proactive recommender system;code comprehension process;generated documentation;fine-grained code comments;context-aware software documentation;software developers;official documentation;online resources;automatic documentation;software artifacts;source code;time-consuming;developer profile;stack overflow;information retrieval;Documentation;Recommender systems;Task analysis;Software;Knowledge based systems;Data mining;Cloning;software documentation;program comprehension;context-aware;recommender system}, 
+doi={10.1109/ICSME.2018.00090}, 
+ISSN={2576-3148}, 
+month={Sep.},}
+
+
+@inproceedings{Goldstein2000,
+ author = {Goldstein, Jade and Mittal, Vibhu and Carbonell, Jaime and Kantrowitz, Mark},
+ title = {Multi-document Summarization by Sentence Extraction},
+ booktitle = {Proceedings of the 2000 NAACL-ANLPWorkshop on Automatic Summarization - Volume 4},
+ series = {NAACL-ANLP-AutoSum '00},
+ year = {2000},
+ location = {Seattle, Washington},
+ pages = {40--48},
+ numpages = {9},
+ url = {https://doi.org/10.3115/1117575.1117580},
+ doi = {10.3115/1117575.1117580},
+ acmid = {1117580},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+@incollection{spanoudakis2005,
+  title={Software traceability: a roadmap},
+  author={Spanoudakis, George and Zisman, Andrea},
+  booktitle={Handbook Of Software Engineering And Knowledge Engineering: Vol 3: Recent Advances},
+  pages={395--428},
+  year={2005},
+  publisher={World Scientific}
+}
+
+@article{Liu2018Unakite,
+  title={{UNAKITE}: Support Developers for Capturing and Persisting Design Rationales When Solving Problems Using Web Resources},
+  booktitle={Proceedings of the Workshop on Designing Technologies to Support Human Problem Solving},
+  author={Michael Xieyang Liu and Nathan Hahn and Angelina Zhou and Shaun Burley and Emily Deng and Jane Hsieh and Brad A. Myers and Aniket Kittur},
+  year={2018},
+  location={Lisbon, Portugal}
+}
+
+@INPROCEEDINGS{Hsieh2018, 
+  author={J. {Hsieh} and M. X. {Liu} and B. A. {Myers} and A. {Kittur}}, 
+  booktitle={2018 IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC)}, 
+  title={An Exploratory Study of Web Foraging to Understand and Support Programming Decisions}, 
+  year={2018}, 
+  volume={}, 
+  number={}, 
+  pages={305-306}, 
+  doi={10.1109/VLHCC.2018.8506517}, 
+  ISSN={1943-6106}, 
+  month={Oct},
+}
+
+
+@article{Rahman2015RecommendingIC,
+  title={Recommending insightful comments for source code using crowdsourced knowledge},
+  author={Mohammad Masudur Rahman and Chanchal Kumar Roy and Iman Keivanloo},
+  journal={2015 IEEE 15th International Working Conference on Source Code Analysis and Manipulation (SCAM)},
+  year={2015},
+  pages={81-90}
+}
+
+@INPROCEEDINGS{Moonen2001, 
+  author={L. {Moonen}}, 
+  booktitle={Proceedings Eighth Working Conference on Reverse Engineering}, 
+  title={Generating robust parsers using island grammars}, 
+  year={2001}, 
+  volume={}, 
+  number={}, 
+  pages={13-22}, 
+  doi={10.1109/WCRE.2001.957806}, 
+  ISSN={1095-1350}, 
+  month={Oct},
+}
+
+@INPROCEEDINGS{Sorbo2015, 
+author={A. D. {Sorbo} and S. {Panichella} and C. A. {Visaggio} and M. D. {Penta} and G. {Canfora} and H. C. {Gall}}, 
+booktitle={2015 30th IEEE/ACM International Conference on Automated Software Engineering (ASE)}, 
+title={Development Emails Content Analyzer: Intention Mining in Developer Discussions (T)}, 
+year={2015}, 
+volume={}, 
+number={}, 
+pages={12-23}, 
+keywords={data mining;electronic mail;grammars;learning (artificial intelligence);natural language processing;pattern classification;program compilers;recommender systems;software engineering;source code (software);development emails content analyzer;DECA;intention mining;software development;semisupervised approach;natural language parsing;content classification;source code;recommender system;Electronic mail;Proposals;Natural languages;Taxonomy;Bandwidth;Pragmatics;Software;Unstructured Data Mining;Natural Language Processing;Empirical Study}, 
+doi={10.1109/ASE.2015.12}, 
+ISSN={}, 
+month={Nov},}
+
+
+@article{d2006dna,
+  title={What are DNA sequence motifs?},
+  author={D'haeseleer, Patrik},
+  journal={Nature biotechnology},
+  volume={24},
+  number={4},
+  pages={423},
+  year={2006},
+  publisher={Nature Publishing Group}
+}
+
+@article{Hahsler2005,
+   author = {Michael Hahsler and Bettina Gr{\"u}n and Kurt Hornik},
+   title = {{arules - A Computational Environment for Mining Association Rules and Frequent Item Sets}},
+   journal = {Journal of Statistical Software, Articles},
+   volume = {14},
+   number = {15},
+   year = {2005},
+   keywords = {},
+   issn = {1548-7660},
+   pages = {1--25},
+   doi = {10.18637/jss.v014.i15},
+   url = {https://www.jstatsoft.org/v014/i15}
+}
+
+@article{Mikolov2013space,
+author = {Mikolov, T and Yih, W.-T and Zweig, G},
+year = {2013},
+month = {01},
+pages = {746-751},
+title = {Linguistic regularities in continuous space word representations},
+journal = {Proceedings of NAACL-HLT}
+}
+
+
+@article{Bengio2003:wordembedding,
+ author = {Bengio, Yoshua and Ducharme, R{\'e}jean and Vincent, Pascal and Janvin, Christian},
+ title = {A Neural Probabilistic Language Model},
+ journal = {J. Mach. Learn. Res.},
+ issue_date = {3/1/2003},
+ volume = {3},
+ month = mar,
+ year = {2003},
+ issn = {1532-4435},
+ pages = {1137--1155},
+ numpages = {19},
+ url = {http://dl.acm.org/citation.cfm?id=944919.944966},
+ acmid = {944966},
+ publisher = {JMLR.org},
+}
+
+
+@article{Jarvelin1983,
+ author = {K J{\"a}rvelin and A Repo},
+ title = {{On the impacts of modern information technology on information needs and seeking: A framework}},
+ journal = {Representation and exchange of knowledge as a basis of information processes},
+ year = {1983},
+ pages = {207-230},
+ numpages = {23},
+ publisher = {North‐Holland},
+}
+
+
+
+@INPROCEEDINGS{Yamashita2009, 
+author={A. F. {Yamashita} and H. C. {Benestad} and B. {Anda} and P. E. {Arnstad} and D. I. K. {Sjoberg} and L. {Moonen}}, 
+booktitle={2009 3rd International Symposium on Empirical Software Engineering and Measurement}, 
+title={Using concept mapping for maintainability assessments}, 
+year={2009}, 
+volume={}, 
+number={}, 
+pages={378-389}, 
+keywords={program diagnostics;software maintenance;software metrics;concept mapping;software engineering;software maintainability;software costs;static code analysis;expert judgment;software measures;Software maintenance;Software measurement;Software engineering;Particle measurements;Costs;Concrete;Displays;ISO standards;IEC standards;Software quality}, 
+doi={10.1109/ESEM.2009.5314234}, 
+ISSN={1949-3770}, 
+month={Oct},}
+
+@book{cormen2009introduction,
+  title={Introduction to algorithms},
+  author={Cormen, Thomas H and Leiserson, Charles E and Rivest, Ronald L and Stein, Clifford},
+  year={2009},
+  publisher={MIT press}
+}
+
+@INPROCEEDINGS{Alwis2007, 
+author={B. {de Alwis} and G. C. {Murphy} and M. P. {Robillard}}, 
+booktitle={15th IEEE International Conference on Program Comprehension (ICPC '07)}, 
+title={A Comparative Study of Three Program Exploration Tools}, 
+year={2007}, 
+volume={}, 
+number={}, 
+pages={103-112}, 
+keywords={software prototyping;software tools;task analysis;program exploration tool;large software systems;software evolution task;professional programmer;medium-sized code base;NASA task load index;Programming profession;Software tools;Computer science;Software systems;NASA;Delay;Software performance;Recruitment;Open source software;Text recognition}, 
+doi={10.1109/ICPC.2007.6}, 
+ISSN={1092-8138}, 
+month={June},}
+
+@inproceedings{vaz2018,
+  title={An empirical study on task documentation in software crowdsourcing: the case of the TopCoder platform},
+  author={Vaz, Luis and Marczak, Sabrina and Steinmacher, Igor},
+  booktitle={Proceedings of the XXXII Brazilian Symposium on Software Engineering},
+  pages={62--71},
+  year={2018},
+  organization={ACM}
+}
+
+@inproceedings{Efstathiou2018,
+author = {Efstathiou, Vasiliki and Chatzilenas, Christos and Spinellis, Diomidis},
+title = {Word Embeddings for the Software Engineering Domain},
+year = {2018},
+isbn = {9781450357166},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3196398.3196448},
+doi = {10.1145/3196398.3196448},
+booktitle = {Proceedings of the 15th International Conference on Mining Software Repositories},
+pages = {38–41},
+numpages = {4},
+keywords = {skip-gram, natural language processing, stack overflow, word2vec},
+location = {Gothenburg, Sweden},
+series = {MSR ’18}
+}
+
+@article{Hearst1998,
+author = {Hearst, Marti A.},
+title = {Support Vector Machines},
+year = {1998},
+issue_date = {July 1998},
+publisher = {IEEE Educational Activities Department},
+address = {USA},
+volume = {13},
+number = {4},
+issn = {1541-1672},
+url = {https://doi.org/10.1109/5254.708428},
+doi = {10.1109/5254.708428},
+journal = {IEEE Intelligent Systems},
+month = jul,
+pages = {18–28},
+numpages = {11}
+}
+
+@article{Breiman2001,
+author = {Breiman, Leo},
+title = {Random Forests},
+year = {2001},
+issue_date = {October 1 2001},
+publisher = {Kluwer Academic Publishers},
+address = {USA},
+volume = {45},
+number = {1},
+issn = {0885-6125},
+url = {https://doi.org/10.1023/A:1010933404324},
+doi = {10.1023/A:1010933404324},
+journal = {Mach. Learn.},
+month = oct,
+pages = {5–32},
+numpages = {28},
+keywords = {ensemble, regression, classification}
+}
+  
+@article{Cover2006,
+author = {Cover, T. and Hart, P.},
+title = {Nearest Neighbor Pattern Classification},
+year = {2006},
+issue_date = {January 1967},
+publisher = {IEEE Press},
+volume = {13},
+number = {1},
+issn = {0018-9448},
+url = {https://doi.org/10.1109/TIT.1967.1053964},
+doi = {10.1109/TIT.1967.1053964},
+journal = {IEEE Trans. Inf. Theor.},
+month = sep,
+pages = {21–27},
+numpages = {7}
+}
+  
+@article{Bergstra2012,
+author = {Bergstra, James and Bengio, Yoshua},
+title = {Random Search for Hyper-Parameter Optimization},
+year = {2012},
+issue_date = {3/1/2012},
+publisher = {JMLR.org},
+volume = {13},
+number = {null},
+issn = {1532-4435},
+journal = {J. Mach. Learn. Res.},
+month = feb,
+pages = {281–305},
+numpages = {25},
+keywords = {model selection, global optimization, deep learning, neural networks, response surface modeling}
+}
+  
+
+@book{Deng2018,
+author = {Deng, Li and Liu, Yang},
+title = {Deep Learning in Natural Language Processing},
+year = {2018},
+isbn = {9789811052088},
+publisher = {Springer Publishing Company, Incorporated},
+edition = {1st}
+}
+
+@inproceedings{nanz2015,
+  title={A comparative study of programming languages in rosetta code},
+  author={Nanz, Sebastian and Furia, Carlo A},
+  booktitle={2015 IEEE/ACM 37th IEEE International Conference on Software Engineering},
+  volume={1},
+  pages={778--788},
+  year={2015},
+  organization={IEEE}
+}
+
+@manual{rosetta,
+  title  = "Rosetta Code",
+  author = "Michael Mol ",
+  note   = "\url{http://rosettacode.org/wiki/Rosetta_Code}",
+  year   = "2020 (accessed June 25, 2014)"
+}
+
+@inproceedings{nadi2020,
+title={Essential Sentences for Navigating Stack Overflow Answers},
+author={Nadi, Sarah and Treude, Christoph},
+booktitle={2020 IEEE 27th International Conference on Software Analysis, Evolution and Reengineering (SANER)},
+pages={229--239},
+year={2020},
+}
+
+@misc{nadi2019Rep, 
+title={Essential Sentences for Navigating Stack Overflow Answers}, 
+url={https://figshare.com/articles/software/Essential_Sentences_for_Navigating_Stack_Overflow_Answers/10005515/3}, 
+DOI={10.6084/m9.figshare.10005515.v3}, 
+publisher={figshare}, 
+author={Nadi, Sarah and Treude, Christoph}, 
+year={2019}, 
+month={Dec}
+} 
+
+@misc{AnsBotRep,
+  title = {{AnswerBot}},
+  howpublished = {\url{https://github.com/XBWer/AnswerBot}},
+  note = {Accessed: 2020-10-06}
+}
+
+@article{baltes2020,
+  title={Contextual Documentation Referencing on Stack Overflow},
+  author={Baltes, Sebastian and Treude, Christoph and Robillard, Martin P},
+  journal={IEEE Transactions on Software Engineering},
+  year={2020},
+  publisher={IEEE}
+}
+
+@article{baltes2019,
+  title={Usage and attribution of Stack Overflow code snippets in GitHub projects},
+  author={Baltes, Sebastian and Diehl, Stephan},
+  journal={Empirical Software Engineering},
+  volume={24},
+  number={3},
+  pages={1259--1295},
+  year={2019},
+  publisher={Springer}
+}
+
+@INPROCEEDINGS{SOTorrent2019,  
+author={S. {Baltes} and C. {Treude} and S. {Diehl}},  
+booktitle={2019 IEEE/ACM 16th International Conference on Mining Software Repositories (MSR)},   
+title={SOTorrent: Studying the Origin, Evolution, and Usage of Stack Overflow Code Snippets},   
+year={2019},  
+volume={},  number={},  pages={191-194},
+}
+
+@inproceedings{manes2019,
+  title={How often and what StackOverflow posts do developers reference in their GitHub projects?},
+  author={Manes, Saraj Singh and Baysal, Olga},
+  booktitle={2019 IEEE/ACM 16th International Conference on Mining Software Repositories (MSR)},
+  pages={235--239},
+  year={2019},
+  organization={IEEE}
+}
+
+@book{bennett2008,
+  title={Using and understanding mathematics: A quantitative reasoning approach},
+  author={Bennett, Jeffrey O and Briggs, William L and Badalamenti, Anthony},
+  year={2008},
+  publisher={Pearson Addison Wesley Reading}
+}
+
+
+@inproceedings{bettenburg2008,
+  title={Duplicate bug reports considered harmful… really?},
+  author={Bettenburg, Nicolas and Premraj, Rahul and Zimmermann, Thomas and Kim, Sunghun},
+  booktitle={2008 IEEE International Conference on Software Maintenance},
+  pages={337--345},
+  year={2008},
+  organization={IEEE}
+}
+
+@inproceedings{fucci2019,
+  title={On using machine learning to identify knowledge in API reference documentation},
+  author={Fucci, Davide and Mollaalizadehbahnemiri, Alireza and Maalej, Walid},
+  booktitle={Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+  pages={109--119},
+  year={2019}
+}
+
+
+@article{parnin2012,
+  title={Crowd documentation: Exploring the coverage and the dynamics of API discussions on Stack Overflow},
+  author={Parnin, Chris and Treude, Christoph and Grammel, Lars and Storey, Margaret-Anne},
+  journal={Georgia Institute of Technology, Tech. Rep},
+  volume={11},
+  year={2012}
+}
+
+@inproceedings{chaparro2019,
+  title={Assessing the quality of the steps to reproduce in bug reports},
+  author={Chaparro, Oscar and Bernal-C{\'a}rdenas, Carlos and Lu, Jing and Moran, Kevin and Marcus, Andrian and Di Penta, Massimiliano and Poshyvanyk, Denys and Ng, Vincent},
+  booktitle={Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+  pages={86--96},
+  year={2019}
+}
+
+@inproceedings{linares2014,
+  title={How do api changes trigger stack overflow discussions? a study on the android sdk},
+  author={Linares-V{\'a}squez, Mario and Bavota, Gabriele and Di Penta, Massimiliano and Oliveto, Rocco and Poshyvanyk, Denys},
+  booktitle={proceedings of the 22nd International Conference on Program Comprehension},
+  pages={83--94},
+  year={2014}
+}
+
+@article{bavota2014b,
+  title={The impact of api change-and fault-proneness on the user ratings of android apps},
+  author={Bavota, Gabriele and Linares-Vasquez, Mario and Bernal-Cardenas, Carlos Eduardo and Di Penta, Massimiliano and Oliveto, Rocco and Poshyvanyk, Denys},
+  journal={IEEE Transactions on Software Engineering},
+  volume={41},
+  number={4},
+  pages={384--407},
+  year={2014},
+  publisher={IEEE}
+}
+
+@inproceedings{mcdonnell2013,
+  title={An empirical study of api stability and adoption in the android ecosystem},
+  author={McDonnell, Tyler and Ray, Baishakhi and Kim, Miryung},
+  booktitle={2013 IEEE International Conference on Software Maintenance},
+  pages={70--79},
+  year={2013},
+  organization={IEEE}
+}
+
+@dataset{baltes2019-rep,
+  author       = {Baltes, Sebastian and
+                  Treude, Christoph and
+                  Robillard, Martin P.},
+  title        = {{Contextual Documentation Referencing on Stack 
+                   Overflow — Supplementary Material}},
+  month        = mar,
+  year         = 2019,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.2585828},
+  url          = {https://doi.org/10.5281/zenodo.2585828}
+}
+
+@misc{rao2020,
+  title={Analyzing Web Search Behavior for Software Engineering Tasks}, 
+  author={Nikitha Rao and Chetan Bansal and Thomas Zimmermann and Ahmed Hassan Awadallah and Nachiappan Nagappan},
+  year={2020},
+  eprint={1912.09519},
+  archivePrefix={arXiv},
+  primaryClass={cs.SE}
+}
+
+@misc{googlesearch,
+  title = {googlesearch},
+  howpublished = {\url{https://pypi.org/project/googlesearch-python/}},
+  note = {Verified: 2020-10-27}
+}
+
+@inproceedings{liu2020,
+  title={BugSum: Deep Context Understanding for Bug Report Summarization},
+  author={Liu, Haoran and Yu, Yue and Li, Shanshan and Guo, Yong and Wang, Deze and Mao, Xiaoguang},
+  booktitle={Proceedings of the 28th International Conference on Program Comprehension},
+  pages={94--105},
+  year={2020}
+}
+
+@inproceedings{kalliamvakou2014,
+  title={The promises and perils of mining GitHub},
+  author={Kalliamvakou, Eirini and Gousios, Georgios and Blincoe, Kelly and Singer, Leif and German, Daniel M and Damian, Daniela},
+  booktitle={Proceedings of the 11th working conference on mining software repositories},
+  pages={92--101},
+  year={2014}
+}
+
+@INPROCEEDINGS{marques2020,
+  author={A. {Marques} and N. C. {Bradley} and G. C. {Murphy}},
+  booktitle={2020 IEEE International Conference on Software Maintenance and Evolution (ICSME)}, 
+  title={Characterizing Task-Relevant Information in Natural Language Software Artifacts}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={476-487},
+  doi={10.1109/ICSME46990.2020.00052}
+}
+
+@book{grissom2005effect,
+  title={Effect sizes for research: A broad practical approach.},
+  author={Grissom, Robert J and Kim, John J},
+  year={2005},
+  publisher={Lawrence Erlbaum Associates Publishers}
+}
+
+@book{2004merriam,
+  title={Merriam-Webster's collegiate dictionary},
+  author={Staff, Merriam-Webster},
+  volume={2},
+  year={2004},
+  publisher={Merriam-Webster}
+}
+
+
+@misc{mturk,
+  title = {{Amazon Mechanical Turk}},
+  howpublished = {\url{https://www.mturk.com/}},
+  note = {Verified: 2021-04-08}
+}
+
+@misc{git3578,
+  title = {{No lock screen controls ever \#3578}},
+  howpublished = {\url{https://github.com/AntennaPod/AntennaPod/issues/3578}},
+  note = {Verified: 2021-04-08}
+}
+
+@misc{so18607655,
+  title = {{Saving WebView page to cache}},
+  howpublished = {\url{https://stackoverflow.com/questions/18607655}},
+  note = {Verified: 2021-04-08}
+}
+
+@misc{apiWebView,
+  title = {{Managing WebView objects}},
+  howpublished = {\url{https://developer.android.com/guide/webapps/managing-webview}},
+  note = {Verified: 2021-04-08}
+}
+
+@misc{apiLockTask,
+  title = {{Lock task mode}},
+  howpublished = {\url{https://developer.android.com/work/dpc/dedicated-devices/lock-task-mode}},
+  note = {Verified: 2021-04-08}
+}
+
+@misc{mediumLockApp,
+  title = {{Create A React Native App Which works on Lock Screen (Android)}},
+  howpublished = {\url{https://bit.ly/3dNF8I5}},
+  note = {Verified: 2021-04-08}
+}
+
+@misc{alexa,
+  title = {{Alexa}},
+  howpublished = {\url{https://alexa.com}},
+  note = {Verified: 2021-04-08}
+}
+
+@misc{so8410830,
+  title = {{Saving webpage in cache using webview in android}},
+  howpublished = {\url{https://stackoverflow.com/questions/8410830}},
+  note = {Verified: 2021-04-08}
+}
+
+
+
+@misc{acm-artifact-review,
+  title = {{Artifact Review and Badging}},
+  howpublished = {\url{https://www.acm.org/publications/policies/artifact-review-and-badging-current}},
+  note = {Verified: 2021-05-10}
+}
+
+
+@incollection{wilcoxon1992,
+  title={Individual comparisons by ranking methods},
+  author={Wilcoxon, Frank},
+  booktitle={Breakthroughs in statistics},
+  pages={196--202},
+  year={1992},
+  publisher={Springer}
+}
+
+@article{kampenes2007,
+  title={A systematic review of effect size in software engineering experiments},
+  author={Kampenes, Vigdis By and Dyb{\aa}, Tore and Hannay, Jo E and Sj{\o}berg, Dag IK},
+  journal={Information and Software Technology},
+  volume={49},
+  number={11-12},
+  pages={1073--1086},
+  year={2007},
+  publisher={Elsevier}
+}
+
+@article{hedges1984meta-analysis,
+  title={Nonparametric estimators of effect size in meta-analysis.},
+  author={Hedges, Larry V and Olkin, Ingram},
+  journal={Psychological Bulletin},
+  volume={96},
+  number={3},
+  pages={573},
+  year={1984},
+  publisher={American Psychological Association}
+}
+
+@techreport{keele2007,
+  title={Guidelines for performing systematic literature reviews in software engineering},
+  author={Keele, Staffs and others},
+  year={2007},
+  institution={Citeseer}
+}
+
+@article{cohen-kappa,
+  title={Interjudge agreement and the maximum value of kappa},
+  author={Umesh, Uchila N and Peterson, Robert A and Sauber, Matthew H},
+  journal={Educational and Psychological Measurement},
+  volume={49},
+  number={4},
+  pages={835--850},
+  year={1989},
+  publisher={Sage Publications Sage CA: Thousand Oaks, CA}
+}
+
+@article{fleiss-kappa,
+  title={The measurement of interrater agreement},
+  author={Fleiss, Joseph L and Levin, Bruce and Paik, Myunghee Cho and others},
+  journal={Statistical methods for rates and proportions},
+  volume={2},
+  number={212-236},
+  pages={22--23},
+  year={1981},
+  publisher={Citeseer}
+}
+
+@article{landis1977,
+  title={The measurement of observer agreement for categorical data},
+  author={Landis, J Richard and Koch, Gary G},
+  journal={biometrics},
+  pages={159--174},
+  year={1977},
+  publisher={JSTOR}
+}
+
+@article{cumming2005,
+  title={Inference by eye: confidence intervals and how to read pictures of data.},
+  author={Cumming, Geoff and Finch, Sue},
+  journal={American psychologist},
+  volume={60},
+  number={2},
+  pages={170},
+  year={2005},
+  publisher={American Psychological Association}
+}
+
+@article{cross-validation,
+  title={Cross-validation.},
+  author={Refaeilzadeh, Payam and Tang, Lei and Liu, Huan},
+  journal={Encyclopedia of database systems},
+  volume={5},
+  pages={532--538},
+  year={2009},
+  publisher={Springer: New York}
+}
+
+@article{delfim2016,
+  title={{Redocumenting APIs with crowd knowledge: a coverage analysis based on question types}},
+  author={Delfim, Fernanda Madeiral and Paix{\~a}o, Kl{\'e}risson VR and Cassou, Damien and de Almeida Maia, Marcelo},
+  journal={Journal of the Brazilian Computer Society},
+  volume={22},
+  number={1},
+  pages={1--34},
+  year={2016},
+  publisher={Springer}
+}

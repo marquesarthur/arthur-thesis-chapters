@@ -1,0 +1,18 @@
+
+\begin{figure}
+\centering
+\begin{frameEnv}{{\small Canvas is drawing too slowly}}
+\begin{small}
+    I have one ImageView that is showing one bitmap at a time. The problem I am having is that drawing the image to the ImageView is taking roughly 30ms. Since the frames need to be playing back at their original framerate, this is a problem. There are other operations going on as well that are also slowing the process down, but the drawing certainly isn't helping.
+\end{small}
+\end{frameEnv}
+\smallskip
+\begin{frameEnv}{{Timers can be wiped out when using GestureDetector}}
+\begin{small}
+    Due to the introduction of checkStatics, if any Timer is created within libGDX, it runs the risk of wiping out user-created timers. Specifically, if one is created after a pause event, and before a resume event, the Timer constructor will call checkStatics and will clear existing Timer instances.
+\end{small}        
+\end{frameEnv}
+\caption{Sample software task (and excerpt of their content) from \texttt{SO\#6522541} and GitHub \texttt{libgdx\#2274}, respectively}
+\label{fig:cp4:sample-tasks}
+\end{figure}
+    
