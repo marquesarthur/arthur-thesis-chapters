@@ -45,7 +45,7 @@
 
 --- Explain why we have selected these two approaches
 
------- Given the unbounded number of artifact types a developer may refer to, a light-weight unsupervised approach is appealing
+------ Given the unbounded number of artifact types a developer may refer to, a light-weight unsupervised approach applicable to any artifact is appealing to us
 
 ------ Although our dataset is fairly small (6 tasks and 20 artifacts), we want to investigate 
 the applicability of pre-trained models that do not require large amounts of training data
@@ -55,7 +55,6 @@ to our domain problem~\cite{devlin2018bert, Ye2016, Bavota2016}
 
 --- To evaluate the techniques proposed in this chapter, we require a sufficiently large corpus containing 
 software tasks and associated artifacts originating from heterogeneous sources.
-Each of the artifacts pertinent to a task must also contain text marked as relevant for the given task.
 Unfortunately, such a corpus is not promptly available and thus, 
 this section outlines the steps we took for its creation.
 
@@ -85,7 +84,7 @@ Two common places a software task can be found are:
 
 \clearpage
 
---- Because there is no GitHub dataset promptly available, we selected GitHub issues from the top starred Android projects on GitHub 
+--- Because there is no GitHub dataset promptly available, we selected GitHub issues from top starred Android projects on GitHub 
 
 ------ Projects were selected among Open Source Systems that had the \textit{Java} and \textit{Android} tags. 
 
@@ -103,34 +102,32 @@ Two common places a software task can be found are:
 ------ This is a common procedure adopted by many studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}). \vspace{3mm}
 
 
---- As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}
+--- As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}:
 
 
 \begin{itemize}
-    \item Android and Java SE API documentation
-    \item Github issues
-    \item StackOverflow answers 
-    \item blogs and tutorials from the java and android categories on Alexa.com~\cite{alexa}
+    \item Android and Java SE API documentation;
+    \item Github issues;
+    \item StackOverflow answers; and
+    \item websites from the java and android categories on Alexa.com~\cite{alexa}.
 \end{itemize}
 
 
 \vspace{3mm}
 
---- We use the \texttt{googlesearch} API~\cite{googlesearch} to perform Web searches
+--- For these sources, we use the \texttt{googlesearch} API~\cite{googlesearch} to perform Web searches
 
------- Results were limited to English
+------ Results were limited to English and maximum of 5 resources were fetched for each type
 
------- A maximum of 5 resources were fetched per category.
-
------- This was necessary because of throttling or even blocking mechanisms \vspace{3mm}
+------ These limitations were necessary because of throttling or even blocking mechanisms in the APIs used the fetch data in each of the sources considered \vspace{3mm}
 
 --- Provide descriptive statistics for the corpus
 
 ------ 300 tasks, 150 from SO and 150 from Git
 
------- Approximatedly 2,500 artifacts
+------ Approximately 2,500 artifacts
 
------- Total of 260,000 sentences
+------ Almost 260,000 sentences
 
 
 \section{Analytic Evaluation}
@@ -139,19 +136,23 @@ Two common places a software task can be found are:
 we require test data comprising sentences that contain information needed for task completion. \vspace{3mm}
 
 
---- We rely on human experts to produce a set of sentences that are relevant for a given task \vspace{3mm}
+--- That is, for each artifact pertinent to a task, its text should be marked as relevant (or not) for that task. \vspace{3mm}
+
+--- Since we are not aware of a dataset with such data, we rely on human experts to produce it \vspace{3mm}
 
 
---- With this data, we compare the accuracy of our approaches to the state-of-the-art
------- Due to such a comparison, we focus on artifact types that have been previously evaluated in the literature, i.e., APi documentation, GitHub issues, and StackOverflow answers
+--- With this data, we compare the accuracy of our approaches to state-of-the-art techniques
+
+------ Due to such a comparison, this evaluation focuses on artifact types that have been previously evaluated in the literature, i.e., API documentation, GitHub issues, and StackOverflow answers
 
 
 
 \subsection{Golden Standard}
 
---- Creating test data for the entirity of our corpus is infisable so we restrict our evaluation to a subset of 10 tasks in our corpus according to the following procedures \vspace{3mm}
+--- Creating test data for the entirety of our corpus is infeasible so we restrict our evaluation to a subset of 10 tasks evenly sampled from the two types of tasks in the corpus (i.e., 5 GitHub tasks and 5 StackOverflow tasks) \vspace{3mm}
 
---- Our intention is that the data of these tasks reflects what an \textit{expert} would share with someone new to their project \vspace{3mm}
+--- For these tasks, golden data consists of any sentence that two or more experts have deemed as useful for task-completion \vspace{3mm}
+
 
 
 \subsubsection{Annotators}
@@ -161,40 +162,75 @@ we require test data comprising sentences that contain information needed for ta
 
 \subsubsection{Annotation Procedures}
 
+--- Our intention is that goldens reflect text that an \textit{expert} would deem as useful for task completion. \vspace{3mm}
+
+
+--- To produce such data, annotators had a set of randomly assigned tasks description and links to artifacts 
+pertinent to the respective task at their disposal \vspace{3mm}
+
+--- We asked annotators to write a short comment with instructions that a newcomer could follow to successfully complete the task.
+
+------ The purpose of the comment was to ensure that evaluators built enough context about the task \vspace{3mm}
+
+--- Once the comment was written,  evaluators had to manually highlight sentences that they deemed useful and that provide information that assists task completion.
+
 --- Three different individuals performed each task. \vspace{3mm}
-
-
---- For a given task, annotators had the task description and a set of links to artifacts 
-pertinent to the task at their disposal \vspace{3mm}
-
------- We asked annotators to write a short comment with instructions that a newcomer could follow to successfully complete the task.
-
------- The purpose of the comment was to ensure that evaluators built enough context about the task 
-
------- Once the comment was written,  evaluators had to manually highlight sentences that they deemed useful and that provide information that assists task completion.
-
-\subsubsection{Task-relevant Text}
-
---- Goldens for our test data consist in any sentence highlighted by two or more annotators \vspace{3mm}
-
---- Inter-rate agreement \vspace{3mm}
-
 
 \subsection{Method}
 
----  \vspace{3mm}
+--- For each task, we have a set of artifacts with sentences---identified by experts--- that contain information relevant to the task \vspace{3mm}
+
+--- These artifacts originate from three sources (i.e., API documentation, GitHub issues, and StackOverflow answers) and we apply a state-of-the-art technique able to automatically identify text considered key for the input task and artifact~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}. \vspace{3mm}
+
+--- We use the accuracy of these techniques as a means to compare how our artifact-agnostic approaches perform for the same task and artifact source
+
+
+
+\subsubsection{Baselines}
+
+--- We systematically reviewed related work and we identified techniques based on availability in existing replication packages and their readiness for use.
+
+------ We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of ~\cite{Chaparro2017, fucci2019} \vspace{3mm}
+
+
+--- Based on these criteria, we selected the following techniques for comparison:
+
+
+\begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
+    \item \textit{SO Answers} (\texttt{AnsBot})~\cite{Xu2017} --- short description of the approach;
+    
+    \item \textit{API Documentation} (\texttt{APIRef})~\cite{Robillard2015} --- short description of the approach;
+    
+    \item \textit{GitHub issues} (\texttt{HurriedBug})~\cite{Lotufo2012} --- short description of the approach;
+\end{itemize}
+
+
+
+
+
+\subsubsection{Evaluation Metrics}
+
+--- For each task and artifact type, we apply the appropriate state-of-the-art technique for automatically detecting task-relevant text in that artifact and report the technique's precision
+
+--- We use such information to investigate how our proposed approaches compare for the same task and artifact type
+
 
 \subsection{Results}
 
----  \vspace{3mm}
+--- Discuss results \vspace{3mm}
 
 \subsection{Threats to Validity}
 
----  \vspace{3mm}
+--- Discuss threats \vspace{3mm}
 
 \section{Human Evaluation}
 
----  \vspace{3mm}
+--- Ultimately, we seek to reduce the time and effort developers need to locate task-relevant information.
+This is only possible if a developer, working on a given task, deems the sentences detected by our proposed technique as useful \vspace{3mm}
+
+--- To provide empirical data
+
+ 
 
 \subsection{Participants}
 
