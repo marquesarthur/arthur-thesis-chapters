@@ -29,7 +29,11 @@
 
 
 
+\clearpage
+
+
 \section{Approach}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- We address the problem of automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
 
@@ -37,21 +41,22 @@
 
 --- We investigate two main approaches:
 
------- \textit{Heuristic-based}: uses a set of properties in the text (including \textit{frame semantics}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
+------ \textit{Heuristic-based}: uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
 
 ------ \textit{ML-based}: uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
 
-\clearpage
-
 --- Explain why we have selected these two approaches
 
------- Given the unbounded number of artifact types a developer may refer to, a light-weight approach applicable to any artifact is appealing to us
+------ With our first approach, we investigate whether a light-weight technique addresses the need of automatically identifying task-relevant text, what could potentially discourage the need for more complex and computationally expensive solutions~\cite{Bavota2016}
 
------- Although our dataset is fairly small (6 tasks and 20 artifacts), we want to investigate 
-the applicability of pre-trained models that do not require large amounts of training data
-to our domain problem~\cite{devlin2018bert, Ye2016, Bavota2016}
+------ Our second approach investigates the applicability of pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
 
-\section{Task-relevant Artifacts Corpus}
+
+
+\clearpage
+
+\section{Task-pertinent Artifacts Corpus}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- To evaluate the techniques proposed in this chapter, we require a sufficiently large corpus containing 
 software tasks and associated artifacts originating from heterogeneous sources.
@@ -60,6 +65,7 @@ this section outlines the steps we took for its creation.
 
 
 \section{Software Tasks}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- We consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}. 
 Two common places a software task can be found are:
@@ -79,20 +85,21 @@ Two common places a software task can be found are:
 
 --- Detail that StackOverflow tasks were selected from Baltes et al. dataset~\cite{baltes2019-rep}
 
------- Give example of a StackOverflow task 
-
-
-\clearpage
+------ Give example of a StackOverflow task \vspace{5mm}
 
 --- Because there is no GitHub dataset promptly available, we selected GitHub issues from top starred Android projects on GitHub 
 
 ------ Projects were selected among Open Source Systems that had the \textit{Java} and \textit{Android} tags. 
 
------- We randomly sampled issues from a total of 10 distinct projects
+------ We randomly sampled 15 issues from a total of 10 distinct projects
+
+------ Describe how we avoid common pitfalls  when mining GitHub~\cite{kalliamvakou2014}
 
 ------ Give example of a GitHub task 
 
 \section{Artifact Selection}
+\label{cp4:corpus-artifacts}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 
 --- Our artifact selection approach seeks to simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017} \vspace{3mm}
@@ -109,7 +116,7 @@ Two common places a software task can be found are:
     \item Android and Java SE API documentation;
     \item Github issues;
     \item StackOverflow answers; and
-    \item websites from the java and android categories on Alexa.com~\cite{alexa}.
+    \item Websites from the java and android categories on Alexa~\cite{alexa}.
 \end{itemize}
 
 
@@ -117,7 +124,7 @@ Two common places a software task can be found are:
 
 --- For these sources, we use the \texttt{googlesearch} API~\cite{googlesearch} to perform Web searches
 
------- Results were limited to English and maximum of 5 resources were fetched for each type
+------ Results were limited to English and a maximum of 5 resources per source 
 
 ------ These limitations were necessary because of throttling or even blocking mechanisms in the APIs used the fetch data in each of the sources considered \vspace{3mm}
 
@@ -129,25 +136,29 @@ Two common places a software task can be found are:
 
 ------ Almost 260,000 sentences
 
+\clearpage
+
 
 \section{Analytic Evaluation}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- To be able to judge the accuracy of any technique used to automatically identify sentences relevant to a task,
 we require test data comprising sentences that contain information needed for task completion. \vspace{3mm}
 
-
---- That is, for each artifact pertinent to a task, its text should be marked as relevant (or not) for that task. \vspace{3mm}
-
---- Since we are not aware of a dataset with such data, we rely on human experts to produce it \vspace{3mm}
+--- We rely on human experts to produce this data \vspace{3mm}
 
 
---- With this data, we compare the accuracy of our approaches to state-of-the-art techniques
+--- With the experts data, we report a technique's accuracy for the given task and artifact source
 
------- Due to such a comparison, this evaluation focuses on artifact types that have been evaluated in a similar context, e.g., API documentation~\cite{Robillard2015}, GitHub issues~\cite{Lotufo2012}, and StackOverflow answers~\cite{Xu2017}
+------ For sources that have been evaluated in other studies, i.e., API documentation~\cite{Robillard2015}, GitHub issues~\cite{Lotufo2012}, and StackOverflow answers~\cite{Xu2017}, we compare the accuracy of our techniques 
+to the state-of-the-art
+
+------ To show that our techniques extend beyond well known/studied sources, we also report our techniques accuracy on miscellaneous sources, e.g., Websites from Alexa
 
 
 
 \subsection{Golden Standard}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- Creating test data for the entirety of our corpus is infeasible so we restrict our evaluation to a subset of 10 tasks evenly sampled from the two types of tasks in the corpus (i.e., 5 GitHub tasks and 5 StackOverflow tasks) \vspace{3mm}
 
@@ -156,11 +167,13 @@ we require test data comprising sentences that contain information needed for ta
 
 
 \subsubsection{Annotators}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- We recruited \red{n} graduate students with professional programming experience to produce \textit{golden} data for these 10 tasks. \vspace{3mm}
 
 
 \subsubsection{Annotation Procedures}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- Our intention is that goldens reflect text that an \textit{expert} would deem as useful for task completion. \vspace{3mm}
 
@@ -168,7 +181,7 @@ we require test data comprising sentences that contain information needed for ta
 --- To produce such data, annotators had a set of randomly assigned tasks description and links to artifacts 
 pertinent to the respective task at their disposal \vspace{3mm}
 
---- We asked annotators to write a short comment with instructions that a newcomer could follow to successfully complete the task.
+--- We asked annotators to write a short comment (250 words max~\cite{Rastkar2010}) with instructions that a newcomer could follow to successfully complete the task.
 
 ------ The purpose of the comment was to ensure that annotators built enough context about the task \vspace{3mm}
 
@@ -179,17 +192,21 @@ pertinent to the respective task at their disposal \vspace{3mm}
 --- An in-house tool in the form of a Web browser plugin facilitated annotation procedures
 
 \subsection{Method}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
---- For each task, we have a set of artifacts with sentences---identified by experts--- that contain information relevant to the task \vspace{3mm}
+--- For each task, we have a set of artifacts with sentences identified by experts that contain information relevant to the task \vspace{3mm}
 
---- These artifacts originate from three sources (i.e., API documentation, GitHub issues, and StackOverflow answers) and we apply a state-of-the-art technique able to automatically identify text considered key for the input task and artifact~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}. \vspace{3mm}
+--- For each task and artifact type, we apply the appropriate technique (baseline and ours) to automatically detect task-relevant text in that artifact
 
---- We use the accuracy of these techniques as a means to compare how our artifact-agnostic approaches perform for the same task and artifact source
+--- We then compute the technique's accuracy against the experts' highlights 
+
+--- We use the obtained values to discuss the accuracy of each technique on their respective artifacts
 
 
 
 \subsubsection{Baselines}
 \label{cp4:comparison-techniques}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- We systematically reviewed related work and we identified techniques applicable to our domain problem
 
@@ -207,22 +224,44 @@ pertinent to the respective task at their disposal \vspace{3mm}
     \item \textit{API Documentation} (\texttt{APIRef})~\cite{Robillard2015} --- short description of the approach;
     
     \item \textit{GitHub issues} (\texttt{HurriedBug})~\cite{Lotufo2012} --- short description of the approach;
+
+    \item \textit{Miscellaneous} (\texttt{LexRank})~\cite{Erkan2004} --- in the lack of an artifact-specific technique for this category, we use LexRank as a baseline because it has been evaluated in several studies that address the identification of textual information in natural language software artifacts~\cite{nadi2020, Ponzanelli2017}
 \end{itemize}
 
 
 
 
 
+
 \subsubsection{Evaluation Metrics}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
---- For each task and artifact type, we apply the appropriate state-of-the-art technique to automatically detect task-relevant text in that artifact
+--- We use the golden data to compute precision and recall
 
---- We then compute a technique's precision against the experts' highlights
 
---- We use such information to investigate how our proposed approaches compare for the same task and artifact type
+--- For a given task $t$ and artifact $a$, precision is computed as the ratio between the sentences identified that are indeed relevant (i.e., sentences identified by the experts) and the total number of sentences identified by the technique
+
+
+\begin{equation}
+    Precision(t, a) = \frac{\# \text{\textit{sentences identified that were marked as relevant by the experts}}}{\# \text{\textit{sentences identified}}}
+\end{equation}
+
+\vspace{3mm}
+
+--- Recall represents how many relevant sentences are identified by a technique
+
+
+\begin{equation}
+    Recall(t, a) = \frac{\# \text{\textit{sentences identified that were marked as relevant by the experts}}}{\# \text{\textit{sentences marked as relevant by the experts}}}
+\end{equation}
+
+\vspace{3mm}
+
+--- When comparing techniques, we favor precision instead of recall because false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
 
 
 \subsection{Results}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- Discuss results \vspace{3mm}
 
@@ -234,17 +273,22 @@ pertinent to the respective task at their disposal \vspace{3mm}
 
 
 \section{Human Evaluation}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
---- This section reports on an empirical experiment where human evaluators 
-indicated the perceived usefulness of text identified by automatic approaches on several software tasks.
+\red{argument to justify this second evaluation}
 
---- For a random sample of 30 tasks in our corpus, software developers indicated if automatically detected text provided important/useful information needed to correctly accomplish a task.
+--- Although our analytic evaluation gives insight on how accurately can we identify text relevant to a task within a natural language artifact, we seek to provide further evidence on whether software developers consider automatically detected text as useful for a task 
 
---- To avoid confirmation biases, developers provided input for both text detected by our approaches and text detected by approaches in the literature (Section~\ref{cp4:comparison-techniques})
+--- In this study, we asked software developers to indicate if automatically detected text provided important/useful information needed to correctly accomplish a task.
+
+--- This evaluation was performed on a random sample of 30 tasks in our corpus (distinct from the expert tasks)
+
+--- To avoid confirmation biases, developers provided input for both text detected by one of our approaches (i.e., the approach that had the best results in our analytic evaluation) and text detected by approaches in the literature (Section~\ref{cp4:comparison-techniques})
 
 
 
 \subsection{Participants}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- For this evaluation, we consider the challenges of recruiting software developers in the local area and we instead opt to use 
 \textit{Amazon Mechanical Turk}~\cite{mturk} (MTurk).
@@ -265,6 +309,7 @@ indicated the perceived usefulness of text identified by automatic approaches on
    
 
 \subsection{Method}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 
 --- All the evaluation was performed in the Mechanical Turk platform. \vspace{3mm}
@@ -281,27 +326,36 @@ indicated the perceived usefulness of text identified by automatic approaches on
 --- We deliberately word the question as close as possible to other peer-reviewed studies in the field~\cite{nadi2020, Xu2017}. \vspace{3mm}
 
 
---- Due to constraints on the platform, the evaluators judged individually, i.e., without access to the context in which the sentences appeared. \vspace{3mm}
+--- Due to constraints on the platform, the evaluators judged sentences individually, i.e., without access to the context in which the sentences appeared. \vspace{3mm}
 
---- Turkers also had to answer a \textit{quality-gate task} derived from the experts' highlights.
+--- Turkers also had to answer a \textit{quality-gate task} randomly drawn from the experts' tasks.
 
 ------ The task showed five expert-curated sentences (all marked by the experts as relevant) and a turker had to indicate the sentences' usefulness as in any other task.
 
 ------ We discarded responses from any turker who deemed less than three out of the five sentences as useful for the task
 
 
+\subsubsection{Evaluation Metrics}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- We report a quantitative analysis of the ratings provided by the turkers
+
+
+
 
 \subsection{Results}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
----  \vspace{3mm}
+--- Discuss results \vspace{3mm}
 
 \subsection{Threats to Validity}
 
----  \vspace{3mm}
+--- Discuss threats \vspace{3mm}
 
 \clearpage
 
 \section{Summary}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- Summary of contributions for the chapter \vspace{3mm}
 
@@ -309,7 +363,7 @@ indicated the perceived usefulness of text identified by automatic approaches on
 
 ------ Two artifact-agnostic techniques for automatically detecting text relevant to an input task in a given artifact
 
------- Empirical comparison of our proposed approach to existing techniques in the literature
+------ Empirical comparison of our techniques to existing techniques in the literature
 
 ------ Study with human evaluators on whether they consider automatically detected text as useful for task completion
 
