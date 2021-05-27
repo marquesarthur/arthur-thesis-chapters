@@ -37,15 +37,15 @@
 
 --- We investigate two main approaches:
 
------- \textit{Unsupervised}: describe a set of features (including \textit{frame semantics}~\cite{fillmore1976frame}) used to determine if a given sentence is relevant to the input task
+------ \textit{Heuristic-based}: uses a set of properties in the text (including \textit{frame semantics}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
 
------- \textit{Supervised}: uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
+------ \textit{ML-based}: uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
 
 \clearpage
 
 --- Explain why we have selected these two approaches
 
------- Given the unbounded number of artifact types a developer may refer to, a light-weight unsupervised approach applicable to any artifact is appealing to us
+------ Given the unbounded number of artifact types a developer may refer to, a light-weight approach applicable to any artifact is appealing to us
 
 ------ Although our dataset is fairly small (6 tasks and 20 artifacts), we want to investigate 
 the applicability of pre-trained models that do not require large amounts of training data
@@ -143,7 +143,7 @@ we require test data comprising sentences that contain information needed for ta
 
 --- With this data, we compare the accuracy of our approaches to state-of-the-art techniques
 
------- Due to such a comparison, this evaluation focuses on artifact types that have been previously evaluated in the literature, i.e., API documentation, GitHub issues, and StackOverflow answers
+------ Due to such a comparison, this evaluation focuses on artifact types that have been evaluated in a similar context, e.g., API documentation~\cite{Robillard2015}, GitHub issues~\cite{Lotufo2012}, and StackOverflow answers~\cite{Xu2017}
 
 
 
@@ -170,11 +170,13 @@ pertinent to the respective task at their disposal \vspace{3mm}
 
 --- We asked annotators to write a short comment with instructions that a newcomer could follow to successfully complete the task.
 
------- The purpose of the comment was to ensure that evaluators built enough context about the task \vspace{3mm}
+------ The purpose of the comment was to ensure that annotators built enough context about the task \vspace{3mm}
 
---- Once the comment was written,  evaluators had to manually highlight sentences that they deemed useful and that provide information that assists task completion.
+--- Once the comment was written,  annotators had to manually highlight sentences that they deemed useful and that provide information that assists task completion.
 
 --- Three different individuals performed each task. \vspace{3mm}
+
+--- An in-house tool in the form of a Web browser plugin facilitated annotation procedures
 
 \subsection{Method}
 
@@ -187,8 +189,11 @@ pertinent to the respective task at their disposal \vspace{3mm}
 
 
 \subsubsection{Baselines}
+\label{cp4:comparison-techniques}
 
---- We systematically reviewed related work and we identified techniques based on availability in existing replication packages and their readiness for use.
+--- We systematically reviewed related work and we identified techniques applicable to our domain problem
+
+------ Selection criteria considered each technique's availability in existing replication packages and their readiness for use.
 
 ------ We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of ~\cite{Chaparro2017, fucci2019} \vspace{3mm}
 
@@ -210,7 +215,9 @@ pertinent to the respective task at their disposal \vspace{3mm}
 
 \subsubsection{Evaluation Metrics}
 
---- For each task and artifact type, we apply the appropriate state-of-the-art technique for automatically detecting task-relevant text in that artifact and report the technique's precision
+--- For each task and artifact type, we apply the appropriate state-of-the-art technique to automatically detect task-relevant text in that artifact
+
+--- We then compute a technique's precision against the experts' highlights
 
 --- We use such information to investigate how our proposed approaches compare for the same task and artifact type
 
@@ -223,22 +230,66 @@ pertinent to the respective task at their disposal \vspace{3mm}
 
 --- Discuss threats \vspace{3mm}
 
+\clearpage
+
+
 \section{Human Evaluation}
 
---- Ultimately, we seek to reduce the time and effort developers need to locate task-relevant information.
-This is only possible if a developer, working on a given task, deems the sentences detected by our proposed technique as useful \vspace{3mm}
+--- This section reports on an empirical experiment where human evaluators 
+indicated the perceived usefulness of text identified by automatic approaches on several software tasks.
 
---- To provide empirical data
+--- For a random sample of 30 tasks in our corpus, software developers indicated if automatically detected text provided important/useful information needed to correctly accomplish a task.
 
- 
+--- To avoid confirmation biases, developers provided input for both text detected by our approaches and text detected by approaches in the literature (Section~\ref{cp4:comparison-techniques})
+
+
 
 \subsection{Participants}
 
----  \vspace{3mm}
+--- For this evaluation, we consider the challenges of recruiting software developers in the local area and we instead opt to use 
+\textit{Amazon Mechanical Turk}~\cite{mturk} (MTurk).
+
+--- Background questions ensured that individuals had Java development experience and that they had familiarity with the artifact sources in our corpus.
+
+--- Specifically, a MTurk evaluator---\textit{turker}--- had to answer the following background questions:
+
+
+\begin{enumerate}[leftmargin=\parindent, font=\normalfont\itshape, label=BQ\textsubscript{\arabic*.}]
+    \item Is developing software part of your job? Yes, no 
+    \item For how many years have you been developing software? Free text
+    \item How would you rate your development expertise in Java? No experience at all developing Java, Beginner, Intermediate, Expert
+    \item How would you rate your development expertise in Android? No experience at all developing Android, Beginner, Intermediate, Expert
+    \item When performing a software task, what sources do you normally seek information on? Multiple choice: API documentation, Stack Overflow, Github, Medium, ...
+\end{enumerate}
+
+   
 
 \subsection{Method}
 
----  \vspace{3mm}
+
+--- All the evaluation was performed in the Mechanical Turk platform. \vspace{3mm}
+
+--- Turkers indicated the relevancy of a sentence to a given task  by answering the question: \vspace{3mm}
+
+\begin{enumerate}[leftmargin=\parindent, font=\normalfont\itshape, label=SR\textsubscript{\arabic*}]
+    \item Which of the following statements best describes this sentence? 
+    \textit{(a)} The sentence is meaningful and provides important/useful information needed to correctly accomplish the task in question, 
+    \textit{(b)} The sentence is meaningful, but does not provide any important/useful information to correctly accomplish the task in question, 
+    \textit{(c)} The sentence does not make sense to me.
+\end{enumerate}
+
+--- We deliberately word the question as close as possible to other peer-reviewed studies in the field~\cite{nadi2020, Xu2017}. \vspace{3mm}
+
+
+--- Due to constraints on the platform, the evaluators judged individually, i.e., without access to the context in which the sentences appeared. \vspace{3mm}
+
+--- Turkers also had to answer a \textit{quality-gate task} derived from the experts' highlights.
+
+------ The task showed five expert-curated sentences (all marked by the experts as relevant) and a turker had to indicate the sentences' usefulness as in any other task.
+
+------ We discarded responses from any turker who deemed less than three out of the five sentences as useful for the task
+
+
 
 \subsection{Results}
 
@@ -248,6 +299,17 @@ This is only possible if a developer, working on a given task, deems the sentenc
 
 ---  \vspace{3mm}
 
+\clearpage
+
 \section{Summary}
 
 --- Summary of contributions for the chapter \vspace{3mm}
+
+------ A corpus containing 300 software tasks originating from StackOverflow and Github and associated artifacts containing potentially relevant information to correctly completing the task \vspace{3mm}
+
+------ Two artifact-agnostic techniques for automatically detecting text relevant to an input task in a given artifact
+
+------ Empirical comparison of our proposed approach to existing techniques in the literature
+
+------ Study with human evaluators on whether they consider automatically detected text as useful for task completion
+
