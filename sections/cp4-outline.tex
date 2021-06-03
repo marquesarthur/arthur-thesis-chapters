@@ -10,21 +10,33 @@
 \vspace{1mm}
 
 --- One of the challenges for characterizing task-relevant information as well as for proposing automatic techniques to automatically identify task-relevant text is 
-the lack of corpora containing 
+the lack of large corpora containing 
 software tasks and associated artifacts originating from heterogeneous sources.
 
 
---- To fill this gap, this chapter contributes with the Andorid tasks corpus (\acs{DS-android}), a dataset with 300 tasks originating from StackOverflow questions comprising Andorid development
+--- To fill this gap, this chapter contributes with the Andorid tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks originating from StackOverflow questions comprising Andorid development
 as well as from GitHub issues on a variety of Android Open-Source Systems. 
 
 
 
---- Creating a foundation, well-structured corpusis itself a contribution to scientific progress. It lays the foundation 
-for several studies that explore relationships between software tasks and natural language artifacts. Therefore, this chapter describes our methodology for the creation of such a corpus.
+--- Creating a foundation, well-structured corpus is itself a contribution to scientific progress. It lays the foundation 
+for several studies that explore relationships between software tasks and natural language artifacts. Therefore, we describe our methodology for the creation of such a corpus.
 
 
+\section{Motivation}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
-\section{Software Tasks}
+--- Describe existing corpora and why they are not sufficient for our domain problem
+
+\clearpage
+
+\section{Methodology}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- Provide an overview of the corpus creation procedures 
+
+
+\subsection{Software Tasks}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
 --- We consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}. 
@@ -42,10 +54,15 @@ Two common places a software task can be found are:
 ------ We scope task selection to the \textit{Android} development domain such that we can select common tasks across the two sources \vspace{3mm}
 
 
+\subsubsection{StackOverflow tasks}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- Detail that StackOverflow tasks were selected from Baltes et al. dataset~\cite{baltes2019-rep}
 
 ------ Give example of a StackOverflow task \vspace{5mm}
+
+\subsubsection{GitHub tasks}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- Because there is no GitHub dataset promptly available, we selected GitHub issues from top starred Android projects on GitHub 
 
@@ -57,17 +74,16 @@ Two common places a software task can be found are:
 
 ------ Give example of a GitHub task 
 
-\section{Artifact Selection}
+\subsection{Artifact Selection}
 \label{cp4:corpus-artifacts}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
 
 --- Our artifact selection approach seeks to simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017} \vspace{3mm}
 
---- To that end, we consider a task's title (i.e., SO question or GitHub issue title) as the seed used to search for pertinent artifacts in a search engine
 
------- This is a common procedure adopted by many studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}). \vspace{3mm}
-
+\subsubsection{Artifact sources}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
 --- As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}:
 
@@ -76,19 +92,48 @@ Two common places a software task can be found are:
     \item Android and Java SE API documentation;
     \item Github issues;
     \item StackOverflow answers; and
-    \item Websites from the java and android categories on Alexa~\cite{alexa}.
+    \item Web tutorials or blog posts from java and android development.
 \end{itemize}
 
 
 \vspace{3mm}
 
+
+\subsubsection{Query formulation}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- To that end, we consider a task's title (i.e., SO question or GitHub issue title) as the seed used to search for pertinent artifacts in a search engine
+
+------ This is a common procedure adopted by many studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}). \vspace{3mm}
+
+
 --- For these sources, we use the \texttt{googlesearch} API~\cite{googlesearch} to perform Web searches
 
------- Results were limited to English and a maximum of 5 resources per source 
 
------- These limitations were necessary because of throttling or even blocking mechanisms in the APIs used the fetch data in each of the sources considered \vspace{3mm}
+\subsubsection{Artifact selection}
+\textcolor{white}{force ident} % this is just for the chapter outline
 
---- Provide descriptive statistics for the corpus
+--- We fetch a maximum of 5 resources per artifact source --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used the fetch data \vspace{3mm}
+
+--- We exclude results that do not appear in Alexa~\cite{alexa} Java and Android categories in the period from 2020/04/01
+to 2021/03/01
+
+
+
+
+
+\subsection{Corpus Summary}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+
+--- Summary of contributions for the chapter \vspace{3mm}
+
+------ A corpus containing 300 software tasks originating from StackOverflow and Github and associated artifacts containing potentially relevant information to correctly completing the task \vspace{3mm}
+
+------ Methodology for the corpus creation as well as a replication package with the scripts used to create the Android task corpus \vspace{3mm}
+
+
+--- Provide descriptive summary of the corpus
 
 ------ 300 tasks, 150 from SO and 150 from Git
 
