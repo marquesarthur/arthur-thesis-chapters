@@ -21,9 +21,9 @@
 
 --- Chapter introduction 
 
------- Use findings of characterization studies (cp3) to motivate the need for the techniques proposed in this chapter
+------ Use findings of characterization studies (Chapter \red{2}) to motivate the need for the techniques proposed in this chapter
 
------- Summary of techniques we propose
+------ Description of techniques that we propose
 
 
 ------ Summary of evaluation and results
@@ -36,19 +36,31 @@
 \section{Approach}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
---- We address \gm{present/develop?} the problem of automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
+--- We present a technique for automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
 
---- To design our approaches \gm{are you aiming for one final approach or more?}, we use the manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
+--- Our goal is to to identify task-relevant text over distinct types of natural language software artifacts with high accuracy.  \vspace{3mm}
 
---- We investigate two main approaches:
+--- To this end, we explore a set of approaches (or their combination) and we evaluate their accuracy on detecting task-relevant text. 
 
------- \textit{Heuristic-based}: uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
+--- When developing our techniques, we use the \acs{DS-synthetic} dataset of manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
 
------- \textit{ML-based}: uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
 
---- Explain why we have selected these two approaches
+\subsection{Sentence-based approach}
+
+uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
+
+
+
+--- Explain why we have selected the approach:
 
 ------ With our first approach, we investigate whether a light-weight technique addresses the need of automatically identifying task-relevant text, what could potentially discourage the need for more complex and computationally expensive solutions~\cite{Bavota2016}
+
+
+\subsection{Word-based approach}
+
+--- uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
+
+--- Explain why we have selected the approach:
 
 ------ Our second approach investigates the applicability of pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
 
@@ -56,104 +68,16 @@
 
 \clearpage
 
-\section{Task-pertinent Artifacts Corpus}
-
-\gm{Shouldn't all evaluation go later? i.e.,
-develop techniques, express what they are,
-then evaluate?}
-
-
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- To evaluate the techniques proposed in this chapter, we require a sufficiently large corpus containing 
-software tasks and associated artifacts originating from heterogeneous sources.
-Unfortunately, such a corpus is not promptly available and thus, 
-this section outlines the steps we took for its creation.
-
-
-\section{Software Tasks}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- We consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}. 
-Two common places a software task can be found are:
-
-\begin{itemize}
-    \item the description of a bug or feature request reported in a bug tracking systems; or in
-    \item a post in a community forum, development mailing lists, and others.
-\end{itemize}
-
-\vspace{3mm}
-
---- Given this definition, we select tasks from StackOverflow and GitHub to build our corpus
-
------- We scope task selection to the \textit{Android} development domain such that we can select common tasks across the two sources \vspace{3mm}
-
-
-
---- Detail that StackOverflow tasks were selected from Baltes et al. dataset~\cite{baltes2019-rep}
-
------- Give example of a StackOverflow task \vspace{5mm}
-
---- Because there is no GitHub dataset promptly available, we selected GitHub issues from top starred Android projects on GitHub 
-
------- Projects were selected among Open Source Systems that had the \textit{Java} and \textit{Android} tags. 
-
------- We randomly sampled 15 issues from a total of 10 distinct projects
-
------- Describe how we avoid common pitfalls  when mining GitHub~\cite{kalliamvakou2014}
-
------- Give example of a GitHub task 
-
-\section{Artifact Selection}
-\label{cp4:corpus-artifacts}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
-
---- Our artifact selection approach seeks to simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017} \vspace{3mm}
-
---- To that end, we consider a task's title (i.e., SO question or GitHub issue title) as the seed used to search for pertinent artifacts in a search engine
-
------- This is a common procedure adopted by many studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}). \vspace{3mm}
-
-
---- As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}:
-
-
-\begin{itemize}
-    \item Android and Java SE API documentation;
-    \item Github issues;
-    \item StackOverflow answers; and
-    \item Websites from the java and android categories on Alexa~\cite{alexa}.
-\end{itemize}
-
-
-\vspace{3mm}
-
---- For these sources, we use the \texttt{googlesearch} API~\cite{googlesearch} to perform Web searches
-
------- Results were limited to English and a maximum of 5 resources per source 
-
------- These limitations were necessary because of throttling or even blocking mechanisms in the APIs used the fetch data in each of the sources considered \vspace{3mm}
-
---- Provide descriptive statistics for the corpus
-
------- 300 tasks, 150 from SO and 150 from Git
-
------- Approximately 2,500 artifacts
-
------- Almost 260,000 sentences
-
-\clearpage
 
 
 \section{Analytic Evaluation}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
-\gm{Can you introduce the 30 task version of the corpus here? Does it matter it is 30 selected
-from 300? An alternative approach is to introduce
-a chapter before this that forms the larger
-task corpus and then you select from
-it in this chapter.} 
+% \gm{Can you introduce the 30 task version of the corpus here? Does it matter it is 30 selected
+% from 300? An alternative approach is to introduce
+% a chapter before this that forms the larger
+% task corpus and then you select from
+% it in this chapter.} 
 
 --- To be able to judge the accuracy of any technique used to automatically identify sentences relevant to a task,
 we require test data comprising sentences that contain information needed for task completion. \vspace{3mm}

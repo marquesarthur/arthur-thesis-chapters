@@ -9,69 +9,19 @@
 
 \vspace{1mm}
 
---- Chapter introduction 
-
------- Use findings of characterization studies (cp3) to motivate the need for the techniques proposed in this chapter
-
------- Brief summary of techniques we propose
-\gm{Why brief? This is a thesis :) }
-
------- Brief summary of evaluation and results 
-
-\acs{AnsBot} 
-
-\acs{Krec} 
-
-\acs{Hurried} 
-
-\acs{DS-synthetic} 
-
-\acs{DS-android}
-
-\acs{DS-android-small}
-
-\acs{DS-android-large}
-
-
-\clearpage
-
-
-\section{Approach}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- We address \gm{present/develop?} the problem of automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
-
---- To design our approaches \gm{are you aiming for one final approach or more?}, we use the manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
-
---- We investigate two main approaches:
-
------- \textit{Heuristic-based}: uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
-
------- \textit{ML-based}: uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
-
---- Explain why we have selected these two approaches
-
------- With our first approach, we investigate whether a light-weight technique addresses the need of automatically identifying task-relevant text, what could potentially discourage the need for more complex and computationally expensive solutions~\cite{Bavota2016}
-
------- Our second approach investigates the applicability of pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
-
-
-
-\clearpage
-
-\section{Task-pertinent Artifacts Corpus}
-
-\gm{Shouldn't all evaluation go later? i.e.,
-develop techniques, express what they are,
-then evaluate?}
-
-
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- To evaluate the techniques proposed in this chapter, we require a sufficiently large corpus containing 
+--- One of the challenges for characterizing task-relevant information as well as for proposing automatic techniques to automatically identify task-relevant text is 
+the lack of corpora containing 
 software tasks and associated artifacts originating from heterogeneous sources.
-Unfortunately, such a corpus is not promptly available and thus, 
-this section outlines the steps we took for its creation.
+
+
+--- To fill this gap, this chapter contributes with the Andorid tasks corpus (\acs{DS-android}), a dataset with 300 tasks originating from StackOverflow questions comprising Andorid development
+as well as from GitHub issues on a variety of Android Open-Source Systems. 
+
+
+
+--- Creating a foundation, well-structured corpusis itself a contribution to scientific progress. It lays the foundation 
+for several studies that explore relationships between software tasks and natural language artifacts. Therefore, this chapter describes our methodology for the creation of such a corpus.
+
 
 
 \section{Software Tasks}
@@ -146,252 +96,18 @@ Two common places a software task can be found are:
 
 ------ Almost 260,000 sentences
 
-\clearpage
 
 
-\section{Analytic Evaluation}
-\textcolor{white}{force ident} % this is just for the chapter outline
+% \acs{AnsBot} 
 
-\gm{Can you introduce the 30 task version of the corpus here? Does it matter it is 30 selected
-from 300? An alternative approach is to introduce
-a chapter before this that forms the larger
-task corpus and then you select from
-it in this chapter.} 
+% \acs{Krec} 
 
---- To be able to judge the accuracy of any technique used to automatically identify sentences relevant to a task,
-we require test data comprising sentences that contain information needed for task completion. \vspace{3mm}
+% \acs{Hurried} 
 
---- We rely on human experts to produce this data \vspace{3mm}
+% \acs{DS-synthetic} 
 
+% 
 
---- With the experts data, we report a technique's accuracy for the given task and artifact source
+% \acs{DS-android-small}
 
------- For sources that have been evaluated in other studies, i.e., API documentation~\cite{Robillard2015}, GitHub issues~\cite{Lotufo2012}, and StackOverflow answers~\cite{Xu2017}, we compare the accuracy of our techniques 
-to the state-of-the-art
-
------- To show that our techniques extend beyond well known/studied sources, we also report our techniques accuracy on miscellaneous sources, e.g., Websites from Alexa
-
-
-
-\subsection{Golden Standard}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- Creating test data for the entirety of our corpus is infeasible so we restrict our evaluation to a subset of 10 tasks evenly sampled from the two types of tasks in the corpus (i.e., 5 GitHub tasks and 5 StackOverflow tasks) \vspace{3mm}
-
---- For these tasks, golden data consists of any sentence that two or more experts have deemed as useful for task-completion \vspace{3mm}
-
-
-
-\subsubsection{Annotators}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- We recruited \red{n} graduate students with professional programming experience to produce \textit{golden} data for these 10 tasks. \vspace{3mm}
-
-
-\subsubsection{Annotation Procedures}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- Our intention is that goldens reflect text that an \textit{expert} would deem as useful for task completion. \vspace{3mm}
-
-\gm{Is it an expert or someone just experienced
-in software development?}
-
-
---- To produce such data, annotators had a set of randomly assigned tasks description and links to artifacts 
-pertinent to the respective task at their disposal \vspace{3mm}
-
---- We asked annotators to write a short comment (250 words max~\cite{Rastkar2010}) with instructions that a newcomer could follow to successfully complete the task.
-
-\gm{Comment is probably too overused a term - a plan?}
-
------- The purpose of the comment was to ensure that annotators built enough context about the task \vspace{3mm}
-
---- Once the comment was written,  annotators had to manually highlight sentences that they deemed useful and that provide information that assists task completion.
-
---- Three different individuals performed each task. \vspace{3mm}
-
---- An in-house tool in the form of a Web browser plugin facilitated annotation procedures
-
-\subsection{Method}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
-\gm{Separate the corpus creation from
-the method. Name each corpus.}
-
---- For each task, we have a set of artifacts with sentences identified by experts that contain information relevant to the task \vspace{3mm}
-
---- For each task and artifact type, we apply the appropriate technique (baseline and ours) to automatically detect task-relevant text in that artifact
-
-\gm{Where will the baseline techniques be explained? This is why I think you probably need to put corpus creation in a separate earlier chapter.}
-
---- We then compute the technique's accuracy against the experts' highlights 
-
---- We use the obtained values to discuss the accuracy of each technique on their respective artifacts
-
-
-
-\subsubsection{Baselines}
-\label{cp4:comparison-techniques}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- We systematically reviewed related work and we identified techniques applicable to our domain problem
-
------- Selection criteria considered each technique's availability in existing replication packages and their readiness for use.
-
------- We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of ~\cite{Chaparro2017, fucci2019} \vspace{3mm}
-
-
---- Based on these criteria, we selected the following techniques for comparison:
-
-
-\begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
-    \item \textit{SO Answers} (\texttt{AnsBot})~\cite{Xu2017} --- short description of the approach;
-    
-    \item \textit{API Documentation} (\texttt{APIRef})~\cite{Robillard2015} --- short description of the approach;
-    
-    \item \textit{GitHub issues} (\texttt{HurriedBug})~\cite{Lotufo2012} --- short description of the approach;
-
-    \item \textit{Miscellaneous} (\texttt{LexRank})~\cite{Erkan2004} --- in the lack of an artifact-specific technique for this category, we use LexRank as a baseline because it has been evaluated in several studies that address the identification of textual information in natural language software artifacts~\cite{nadi2020, Ponzanelli2017}
-\end{itemize}
-
-
-
-
-
-
-\subsubsection{Evaluation Metrics}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- We use the golden data to compute precision and recall
-
-
---- For a given task $t$ and artifact $a$, precision is computed as the ratio between the sentences identified that are indeed relevant (i.e., sentences identified by the experts) and the total number of sentences identified by the technique
-
-
-\begin{equation}
-    Precision(t, a) = \frac{\# \text{\textit{sentences identified that were marked as relevant by the experts}}}{\# \text{\textit{sentences identified}}}
-\end{equation}
-
-\vspace{3mm}
-
---- Recall represents how many relevant sentences are identified by a technique
-
-
-\begin{equation}
-    Recall(t, a) = \frac{\# \text{\textit{sentences identified that were marked as relevant by the experts}}}{\# \text{\textit{sentences marked as relevant by the experts}}}
-\end{equation}
-
-\vspace{3mm}
-
---- When comparing techniques, we favor precision instead of recall because false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
-
-
-\subsection{Results}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- Discuss results \vspace{3mm}
-
-\subsection{Threats to Validity}
-
---- Discuss threats \vspace{3mm}
-
-\clearpage
-
-
-\section{Evaluation at Scale}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
-\gm{Isn't this about scale more than human evaluation?}
-
-\red{argument to justify this second evaluation}
-
---- Although our analytic evaluation gives insight on how accurately can we identify text relevant to a task within a natural language artifact, we seek to provide further evidence on whether software developers consider automatically detected text as useful for a task 
-
---- In this study, we asked software developers to indicate if automatically detected text provided important/useful information needed to correctly accomplish a task.
-
---- This evaluation was performed on a random sample of 30 tasks in our corpus (distinct from the expert tasks)
-
---- To avoid confirmation biases, developers provided input for both text detected by one of our approaches (i.e., the approach that had the best results in our analytic evaluation) and text detected by approaches in the literature (Section~\ref{cp4:comparison-techniques})
-
-
-
-\subsection{Participants}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- For this evaluation, we consider the challenges of recruiting software developers in the local area and we instead opt to use 
-\textit{Amazon Mechanical Turk}~\cite{mturk} (MTurk).
-
---- Background questions ensured that individuals had Java development experience and that they had familiarity with the artifact sources in our corpus.
-
---- Specifically, a MTurk evaluator---\textit{turker}--- had to answer the following background questions:
-
-
-\begin{enumerate}[leftmargin=\parindent, font=\normalfont\itshape, label=BQ\textsubscript{\arabic*.}]
-    \item Is developing software part of your job? Yes, no 
-    \item For how many years have you been developing software? Free text
-    \item How would you rate your development expertise in Java? No experience at all developing Java, Beginner, Intermediate, Expert
-    \item How would you rate your development expertise in Android? No experience at all developing Android, Beginner, Intermediate, Expert
-    \item When performing a software task, what sources do you normally seek information on? Multiple choice: API documentation, Stack Overflow, Github, Medium, ...
-\end{enumerate}
-
-   
-
-\subsection{Method}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
-
---- All the evaluation was performed in the Mechanical Turk platform. \vspace{3mm}
-
---- Turkers indicated the relevancy of a sentence to a given task  by answering the question: \vspace{3mm}
-
-\begin{enumerate}[leftmargin=\parindent, font=\normalfont\itshape, label=SR\textsubscript{\arabic*}]
-    \item Which of the following statements best describes this sentence? 
-    \textit{(a)} The sentence is meaningful and provides important/useful information needed to correctly accomplish the task in question, 
-    \textit{(b)} The sentence is meaningful, but does not provide any important/useful information to correctly accomplish the task in question, 
-    \textit{(c)} The sentence does not make sense to me.
-\end{enumerate}
-
---- We deliberately word the question as close as possible to other peer-reviewed studies in the field~\cite{nadi2020, Xu2017}. \vspace{3mm}
-
-
---- Due to constraints on the platform, the evaluators judged sentences individually, i.e., without access to the context in which the sentences appeared. \vspace{3mm}
-
---- Turkers also had to answer a \textit{quality-gate task} randomly drawn from the experts' tasks.
-
------- The task showed five expert-curated sentences (all marked by the experts as relevant) and a turker had to indicate the sentences' usefulness as in any other task.
-
------- We discarded responses from any turker who deemed less than three out of the five sentences as useful for the task
-
-
-\subsubsection{Evaluation Metrics}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- We report a quantitative analysis of the ratings provided by the turkers
-
-
-
-
-\subsection{Results}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- Discuss results \vspace{3mm}
-
-\subsection{Threats to Validity}
-
---- Discuss threats \vspace{3mm}
-
-\clearpage
-
-\section{Summary}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- Summary of contributions for the chapter \vspace{3mm}
-
------- A corpus containing 300 software tasks originating from StackOverflow and Github and associated artifacts containing potentially relevant information to correctly completing the task \vspace{3mm}
-
------- Two artifact-agnostic techniques for automatically detecting text relevant to an input task in a given artifact
-
------- Empirical comparison of our techniques to existing techniques in the literature
-
------- Study with human evaluators on whether they consider automatically detected text as useful for task completion
-
+% \acs{DS-android-large}
