@@ -39,77 +39,29 @@ as when they:
     
 
 A common aspect to these activities is the need to work with unstructured textual data, which comprises 80\% of the overall information created and used in enterprises~\cite{Bavota2014, holzinger2013}.
-Due to its prevalence, there has been a large body of studies utilizing various techniques to extract
+Due to such prevalence, there has been a large body of studies utilizing various techniques to extract
 information from this text that can be embedded in
-tools for software developers~\cite{Bavota2014, Xu2017, Robillard2015, Lotufo2012}. For example, Xu et al. proposes to mine relevant text from Stack Overflow
+tools for software developers~\cite{Bavota2014, Xu2017, Robillard2015, Lotufo2012}. For example, Xu et al. propose to mine relevant text from Stack Overflow
 to generate answers to developers' technical question~\cite{Xu2017}
 while FRAPT identifies key paragraphs explaining API elements in code tutorials~\cite{Jiang2017}.
+As other examples, Lotufo et al. proposed a technique to identify sentences a developer would first read when inspecting bug reports~\cite{Lotufo2012} while Nadi and Treude investigated sentences that help a developer decide whether a Stack Overflow post is relevant to her task~\cite{nadi2020}
 
 
 
 
---- Need a link to jumping from one artifact to several
+Although these studies provide significant contributions, the fact that information to answer a question a developer has is usually located across many artifacts~\cite{Rastkar2013t} is often overlooked.
+Hence existing techniques operate in an artifact-centric basis
+what can be insufficient to provide to developers all the information needed 
+to completely and correctly accomplish a software task.
 
 
 
-
-
-% An
-% early example is Maarek and Smadja's use of lexical relations to index
-% software libraries~\cite{maarek1989}. Since this early use, software engineering
-% researchers have continued to leverage advances in
-% these approaches, such as when
-% Maletic and Marcus applied Latent Semantic
-% Analysis (LSA)~\cite{deerwester1990LSI} to help cluster software components to aid
-% program comprehension of a software system~\cite{Marcus2003}, or when Nguyen and colleagues
-% applied Word2Vec~\cite{mikolov2013word2vec} to support the retrieval of API
-% examples~\cite{nguyen2017}.
+Since several studies suggest that developers use heterogeneous sources to put together the information needed for task completion~\cite{josyula2018, Li2013, rao2020} we seek to design techniques or approaches that can scale to cover different types of artifacts.
+As a first step towards this goal, we require a corpus with heterogenous sources that a developer 
+might use to locate information relevant to her task.
 
 
 
-
-
-
-
----in the form of natural language text---
-
-
-The need to read and find information is a common aspect to the aforementioned activities.
-
-
-
-
-
-Information-seeking is a common aspect to these activities and there has been a large body of studies 
-that characterize how a software developer:
-
-
-
-Based on
-observations about the most common information sources sought in
-development tasks,
-we focused on API documentation, Q\&A websites, and
-bug reports~\cite{Li2013, Ponzanelli2017}.
-For each task, a participant should consider on average three artifacts extracted
-from one or more information sources.
-We describe selection criteria for the artifacts and information sources as follows.
-
-
-
-
-we chose artifact types that relate to program comprehension tasks~\cite{Li2013, Ponzanelli2017}.
-These artifact types have been the target
-of many researchers given the prominent role they play in the activities of software developers:
-
-\begin{itemize}
-    \item developers seek Q\&A websites, such as Stack Overflow, to analyze and adapt solutions available online for their current development tasks~\cite{Zhang2019, Xia2017, umarji2008archetypal, Brandt2009a, Treude2011a}; and
-    \item bug reports serve as a central place for several program comprehension activities, such as documentation, coding, or testing~\cite{Rastkar2010, aranda2009secret, Lotufo2012}.
-\end{itemize}
-
-
-To minimize any bias in our selection of artifacts, we chose to rely on existing datasets published at
-major software engineering conferences. For this investigation, we use the
-first three  datasets listed in Table~\ref{tbl:datasets}.
 
 
 
