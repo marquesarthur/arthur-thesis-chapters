@@ -3,30 +3,118 @@
 
 
 \chapter{Android Task Corpus}
-\label{ch:identifying}
+\label{ch:android-corpus}
 
 
 
-\vspace{1mm}
-
---- One of the challenges for characterizing task-relevant information as well as for proposing automatic techniques to automatically identify task-relevant text is 
+One of the challenges for characterizing task-relevant information as well as for proposing automatic techniques to automatically identify task-relevant text is 
 the lack of large corpora containing 
 software tasks and associated artifacts originating from heterogeneous sources.
-
-
---- To fill this gap, this chapter contributes with the Andorid tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks originating from StackOverflow questions comprising Andorid development
+To fill this gap, this chapter contributes with the Android tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks comprising Android development and originating from StackOverflow questions 
 as well as from GitHub issues on a variety of Android Open-Source Systems. 
 
 
 
---- Creating a foundation, well-structured corpus is itself a contribution to scientific progress. It lays the foundation 
-for several studies that explore relationships between software tasks and natural language artifacts. Therefore, we describe our methodology for the creation of such a corpus.
+This chapter main contributions are \textit{(i)} the procedures for the corpus creation, and; \textit{(ii)} the corpus itself. A well-structured corpus lays the foundation for several studies that explore relationships between software tasks, natural language artifacts, and text within these artifacts. 
+
+
 
 
 \section{Motivation}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
---- Describe existing corpora and why they are not sufficient for our domain problem
+
+When performing a software task, a software developer does not restrict her work 
+solely to coding~\cite{Meyer2017}.
+Rather, there are many activities that a developer undertakes to complete a software task
+as when they:
+
+
+
+\begin{itemize}
+\item refer to API documentation or Q\&A websites for API usage purposes~\cite{umarji2008archetypal, Singer1998, robillard2011field};
+\item exchange emails discussing a possible reusable library to be incorporated into their implementation~\cite{umarji2008archetypal, Bacchelli2012}; or
+\item confirm a system's behaviour referring to past discussions in community forums or in the system's documentation~\cite{Arya2019, Lotufo2012, Singer1998}.
+\end{itemize}
+    
+
+A common aspect to these activities is the need to work with unstructured textual data, which comprises 80\% of the overall information created and used in enterprises~\cite{Bavota2014, holzinger2013}.
+Due to its prevalence, there has been a large body of studies utilizing various techniques to extract
+information from this text that can be embedded in
+tools for software developers~\cite{Bavota2014, Xu2017, Robillard2015, Lotufo2012}. For example, Xu et al. proposes to mine relevant text from Stack Overflow
+to generate answers to developers' technical question~\cite{Xu2017}
+while FRAPT identifies key paragraphs explaining API elements in code tutorials~\cite{Jiang2017}.
+
+
+
+
+--- Need a link to jumping from one artifact to several
+
+
+
+
+
+% An
+% early example is Maarek and Smadja's use of lexical relations to index
+% software libraries~\cite{maarek1989}. Since this early use, software engineering
+% researchers have continued to leverage advances in
+% these approaches, such as when
+% Maletic and Marcus applied Latent Semantic
+% Analysis (LSA)~\cite{deerwester1990LSI} to help cluster software components to aid
+% program comprehension of a software system~\cite{Marcus2003}, or when Nguyen and colleagues
+% applied Word2Vec~\cite{mikolov2013word2vec} to support the retrieval of API
+% examples~\cite{nguyen2017}.
+
+
+
+
+
+
+
+---in the form of natural language text---
+
+
+The need to read and find information is a common aspect to the aforementioned activities.
+
+
+
+
+
+Information-seeking is a common aspect to these activities and there has been a large body of studies 
+that characterize how a software developer:
+
+
+
+Based on
+observations about the most common information sources sought in
+development tasks,
+we focused on API documentation, Q\&A websites, and
+bug reports~\cite{Li2013, Ponzanelli2017}.
+For each task, a participant should consider on average three artifacts extracted
+from one or more information sources.
+We describe selection criteria for the artifacts and information sources as follows.
+
+
+
+
+we chose artifact types that relate to program comprehension tasks~\cite{Li2013, Ponzanelli2017}.
+These artifact types have been the target
+of many researchers given the prominent role they play in the activities of software developers:
+
+\begin{itemize}
+    \item developers seek Q\&A websites, such as Stack Overflow, to analyze and adapt solutions available online for their current development tasks~\cite{Zhang2019, Xia2017, umarji2008archetypal, Brandt2009a, Treude2011a}; and
+    \item bug reports serve as a central place for several program comprehension activities, such as documentation, coding, or testing~\cite{Rastkar2010, aranda2009secret, Lotufo2012}.
+\end{itemize}
+
+
+To minimize any bias in our selection of artifacts, we chose to rely on existing datasets published at
+major software engineering conferences. For this investigation, we use the
+first three  datasets listed in Table~\ref{tbl:datasets}.
+
+
+
+
+
 
 \clearpage
 
