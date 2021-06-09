@@ -7,24 +7,24 @@
 
 
 
-One of the challenges for characterizing task-relevant information as well as for proposing automatic techniques to automatically identify task-relevant text is 
-the lack of large corpora containing 
+One of the challenges for characterizing task-relevant information as well as for proposing automatic techniques to automatically identify task-relevant text is
+the lack of large corpora containing
 software tasks and associated artifacts originating from heterogeneous sources.
-To fill this gap, this chapter contributes with the Android tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks comprising Android development and originating from StackOverflow questions 
-as well as from GitHub issues on a variety of Android Open-Source Systems. 
+To fill this gap, this chapter contributes with the Android tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks comprising Android development and originating from Stack Overflow questions
+as well as from GitHub issues on a variety of Android Open-Source Systems.
 
 
 
-This chapter main contributions are \textit{(i)} the procedures for the corpus creation, and; \textit{(ii)} the corpus itself. A well-structured corpus lays the foundation for several studies that explore relationships between software tasks, natural language artifacts, and text within these artifacts. 
+This chapter main contributions are \textit{(i)} the procedures for the corpus creation, and; \textit{(ii)} the corpus itself. A well-structured corpus lays the foundation for several studies that explore relationships between software tasks, natural language artifacts, and text within these artifacts. \red{eval \& corpus summary}
 
 
 
 
 \section{Motivation}
-\textcolor{white}{force ident} % this is just for the chapter outline
+\label{cp4:motivation}
 
 
-When performing a software task, a software developer does not restrict her work 
+When performing a software task, a software developer does not restrict her work
 solely to coding~\cite{Meyer2017}.
 Rather, there are many activities that a developer undertakes to complete a software task
 as when they:
@@ -32,32 +32,34 @@ as when they:
 
 
 \begin{itemize}
-\item refer to API documentation or Q\&A websites for API usage purposes~\cite{umarji2008archetypal, Singer1998, robillard2011field};
-\item exchange emails discussing a possible reusable library to be incorporated into their implementation~\cite{umarji2008archetypal, Bacchelli2012}; or
-\item confirm a system's behaviour referring to past discussions in community forums or in the system's documentation~\cite{Arya2019, Lotufo2012, Singer1998}.
+    \item refer to API documentation or Q\&A websites for API usage purposes~\cite{umarji2008archetypal, Singer1998, robillard2011field};
+    \item discuss in mailing lists a possible reusable library to be incorporated into their implementation~\cite{umarji2008archetypal, Bacchelli2012}; or
+    \item confirm a system's behaviour referring to past discussions in community forums or in the system's documentation~\cite{Arya2019, Lotufo2012, Singer1998}.
 \end{itemize}
-    
+
 
 A common aspect to these activities is the need to work with unstructured textual data, which comprises 80\% of the overall information created and used in enterprises~\cite{Bavota2014, holzinger2013}.
 Due to such prevalence, there has been a large body of studies utilizing various techniques to extract
-information from this text that can be embedded in
-tools for software developers~\cite{Bavota2014, Xu2017, Robillard2015, Lotufo2012}. For example, Xu et al. propose to mine relevant text from Stack Overflow
+information from this text so that it can be embedded in
+tools to software developers~\cite{Bavota2014, Xu2017, Robillard2015, Lotufo2012}. For instance, Xu et al. propose to mine relevant text from Stack Overflow
 to generate answers to developers' technical question~\cite{Xu2017}
 while FRAPT identifies key paragraphs explaining API elements in code tutorials~\cite{Jiang2017}.
-As other examples, Lotufo et al. proposed a technique to identify sentences a developer would first read when inspecting bug reports~\cite{Lotufo2012} while Nadi and Treude investigated sentences that help a developer decide whether a Stack Overflow post is relevant to her task~\cite{nadi2020}
+As other examples, Lotufo et al. proposed a technique to identify sentences a developer would first read when inspecting bug reports~\cite{Lotufo2012} while Nadi and Treude investigated sentences that help a developer decide whether a Stack Overflow post is relevant to her task~\cite{nadi2020}.
 
 
 
 
 Although these studies provide significant contributions, the fact that information to answer a question a developer has is usually located across many artifacts~\cite{Rastkar2013t} is often overlooked.
 Hence existing techniques operate in an artifact-centric basis
-what can be insufficient to provide to developers all the information needed 
-to completely and correctly accomplish a software task.
+what can be insufficient to provide to developers all the information needed
+to completely and correctly accomplish a software task as several studies suggest that developers use heterogeneous sources to put together the information needed for task completion~\cite{josyula2018, Li2013, rao2020}.
 
 
 
-Since several studies suggest that developers use heterogeneous sources to put together the information needed for task completion~\cite{josyula2018, Li2013, rao2020} we seek to design techniques or approaches that can scale to cover different types of artifacts.
-As a first step towards this goal, we require a corpus with heterogenous sources that a developer 
+
+We seek to design techniques that can scale to cover different types of artifacts
+so that can be integrated into developers' information-seeking activities regardless of the artifact that a developer browses/inspects.
+To design such techniques, we require a corpus with heterogenous sources that a developer
 might use to locate information relevant to her task.
 
 
@@ -68,18 +70,19 @@ might use to locate information relevant to her task.
 
 
 
-\clearpage
-
 \section{Methodology}
-\textcolor{white}{force ident} % this is just for the chapter outline
+\label{cp4:methodology}
 
---- Provide an overview of the corpus creation procedures 
+Corpus creation consists of three main stages, namely \textit{(1)} selection of tasks, \textit{(2)} selection of artifacts, and \textit{(3)} identification of relevant text within the selected artifacts. We detail each of these steps in the following sections.
+
+
 
 
 \subsection{Software Tasks}
-\textcolor{white}{force ident} % this is just for the chapter outline
+\label{cp4:corpus-tasks}
 
---- We consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}. 
+
+We consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}.
 Two common places a software task can be found are:
 
 \begin{itemize}
@@ -87,76 +90,144 @@ Two common places a software task can be found are:
     \item a post in a community forum, development mailing lists, and others.
 \end{itemize}
 
-\vspace{3mm}
+GitHub issues or Stack Overflow (SO) posts are resources promptly available on the Web that align with our task definition.
+In fact, several studies have used both as sources for software tasks~\cite{Arya2019, baltes2019, nadi2020, Xu2017}. Nonetheless, the sheer amount of data available on GitHub and Stack Overflow poses challenges to the selection of tasks for our corpus.
+Baltes et al.~\cite{baltes2019} argues that even a cursory inspection of a sample set
+of Stack Overflow posts shows clear differences in a post's content or structure due to aspects such as programming languages, frameworks, associated technologies, and others.
 
---- Given this definition, we select tasks from StackOverflow and GitHub to build our corpus
 
------- We scope task selection to the \textit{Android} development domain such that we can select common tasks across the two sources \vspace{3mm}
+We scope task selection to
+the \textit{Android} development domain as a means to define a common topic from which we can extract tasks from each source. This decision
+restricts our selection to a single programming language (\textit{Java})
+while it still allows us to investigate a domain that has been
+widely discussed by practitioners and researchers alike.
+For instance, over 35,000 developers have used Q\&A forums to discuss tasks covering 87\% of the Android API~\cite{parnin2012}
+while researchers have investigated how changes to the Android SDK impact its ecosystem and development community~\cite{linares2014, bavota2014b, mcdonnell2013}.
 
 
-\subsubsection{StackOverflow tasks}
-\textcolor{white}{force ident} % this is just for the chapter outline
+\subsubsection{Stack Overflow tasks}
 
---- Detail that StackOverflow tasks were selected from Baltes et al. dataset~\cite{baltes2019-rep}
+Provided that we restrict our corpus to tasks related to the Android development domain,
+we randomly select 150 SO post from a curated list about Android development~\cite{baltes2019-rep}.
 
------- Give example of a StackOverflow task \vspace{5mm}
+
+\textit{Saving WebView page to cache}~\cite{so18607655}
+is the title of tasks in our corpus extracted from Stack Overflow. In this task, a developer describes the need
+to
+``\textit{save the website the first time it is connected to the internet so that a further connection is no longer needed}''.
+To complete this task, a developer might refer to the Android Webview API~\cite{apiWebView}
+or Q\&A forums about the Android cache system~\cite{so8410830}.
+
 
 \subsubsection{GitHub tasks}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
---- Because there is no GitHub dataset promptly available, we selected GitHub issues from top starred Android projects on GitHub 
+Since we are not aware of a comprehensive dataset of GitHub issues related to Android development, we devised our own strategy to fetch such data.
 
------- Projects were selected among Open Source Systems that had the \textit{Java} and \textit{Android} tags. 
 
------- We randomly sampled 15 issues from a total of 10 distinct projects
+We selected 15 of top starred Android projects on GitHub by filtering the list of projects to the ones that contained the \textit{Java} and \textit{Android} tags.
+For each of these projects, we randomly select 10 issues as the GitHub tasks of our corpus for a total of 150 distinct issues.
+While selecting issues, we took care to check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
+so that our selection ignored issues automatically created by scripts or bots---a common pitfall that researchers must be aware of when mining GitHub~\cite{kalliamvakou2014}.
 
------- Describe how we avoid common pitfalls  when mining GitHub~\cite{kalliamvakou2014}
 
------- Give example of a GitHub task 
+
+
+\textit{No lock screen controls ever}~\cite{git3578}
+is an example of one of the issues in our corpus extracted from the \texttt{AntennaPod} open-source project.
+Although the expected behaviour is that the app controls should be visible even with the screen locked,  a user reports that the app screen is missing.
+A developer addressing this issue might review the Android lock task documentation~\cite{apiLockTask}
+or refer to examples of applications that use the Android lock screen~\cite{mediumLockApp}.
+
+
+
+
 
 \subsection{Artifact Selection}
 \label{cp4:corpus-artifacts}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
 
---- Our artifact selection approach seeks to simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017} \vspace{3mm}
+Our artifact selection approach seeks to simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017}. That is, we formulate a query for each task and use a Web search engine to retrieve artifacts that are pertinent to that task.
 
 
 \subsubsection{Artifact sources}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
---- As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}:
+As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}, i.e.,
+Android and Java SE API documentation, Github issues, Stack Overflow answers; and Web tutorials or blog posts from Java and Android development.
 
-
-\begin{itemize}
-    \item Android and Java SE API documentation;
-    \item Github issues;
-    \item StackOverflow answers; and
-    \item Web tutorials or blog posts from java and android development.
-\end{itemize}
-
-
-\vspace{3mm}
 
 
 \subsubsection{Query formulation}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
---- To that end, we consider a task's title (i.e., SO question or GitHub issue title) as the seed used to search for pertinent artifacts in a search engine
-
------- This is a common procedure adopted by many studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}). \vspace{3mm}
 
 
---- For these sources, we use the \texttt{googlesearch} API~\cite{googlesearch} to perform Web searches
+
+We consider a task's title (i.e., SO question or GitHub issue title) as the seed used to search artifacts
+using the \texttt{googlesearch} API~\cite{googlesearch}.
+Coming up with proper search terms is a critical step of any search~\cite{Haiduc2013}
+and, ideally, we should be able to formulate a query with terms able to retrieve exactly the most pertinent artifacts for a software task.
+However, studies have shown that developers perform poorly in identifying good search terms~\cite{Starke2009,Kevic2014, Li2013} and thus, using a task's title
+as an educated approximation to terms that a developer might use is a common procedure adopted by many studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}).
 
 
-\subsubsection{Artifact selection}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
---- We fetch a maximum of 5 resources per artifact source --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used the fetch data \vspace{3mm}
 
---- We exclude results that do not appear in Alexa~\cite{alexa} Java and Android categories in the period from 2020/04/01
-to 2021/03/01
+
+
+
+\subsubsection{Search results}
+
+
+We fetch a maximum of 5 resources per artifact source --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used to get the content of each source considered. To ensure that results 
+are indeed related to Android development, we exclude search results that do not appear in the Amazon Alexa Web pages traffic statistics~\cite{alexa}
+for Android and Java development in the period from April 2020 to March 2021.
+
+
+Tables~\ref{tbl:googlesearch-example-so} and~\ref{tbl:googlesearch-example-git} show one search result per artifact source for the tasks introduced in Section~\ref{cp4:corpus-tasks}.
+Note that, due to the Alexa filter, we could only obtain a miscellaneous Web page for the Github task.
+
+
+\input{sections/cp4/tbl-googlesearch-results.tex}
+
+
+
+
+\subsection{Relevant text detection}
+\label{cp4:corpus-relevant-text}
+
+
+
+
+ 
+We rely on state-of-the-art approaches able to automatically identify relevant text for the tasks and artifacts in our corpus~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
+
+
+We systematically reviewed related work and we identified techniques applicable to our domain problem. Selection criteria considered each technique's availability in existing replication packages and their readiness for use.
+We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of the challenges related to parameter tuning~\cite{Chaparro2017, fucci2019}.
+
+
+
+Based on these criteria, three techniques were selected for the following sources:
+
+
+\begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
+    \item \texttt{\acs{AnsBot}} (\textit{SO Answers}) uses several features (e.g., information entropy, textual patterns, entity overlap, etc.) to determine that a sentence has useful information to a developer's technical question~\cite{Xu2017}.
+    
+    \item \texttt{\acs{Krec}} (\textit{API Documentation}) identifies text fragments that reflect ``potentially important text that programmers cannot afford to ignore when using the API''~\cite{Robillard2015}.
+    
+    \item \texttt{\acs{Hurried}} (\textit{GitHub issues}) identify the most relevant sentences in a bug report based on three factors used to assess a sentence's relevancy (i.e., sentence's prominence, topicality, and commonality)~\cite{Lotufo2012}.
+\end{itemize}
+
+
+Tables~\ref{tbl:git-example-ansbot} to~\ref{tbl:git-example-hurried}
+illustrate sentences selected by each approach\footnote{The number of sentences shown per technique
+differs slightly due to a technique's input parameters and the length of the input artifact.}
+ for pertinent artifacts retrieved for our Github lock screen task. 
+% The techniques precision range from 71\% (\texttt{HurriedBug}) to 90\% (\texttt{APIRef}) and thus, we observe some unrelated sentences,
+% such as a sentence expressing gratitude in Table~\ref{tbl:git-example-ansbot}.
+
+
+\input{sections/cp4/tbl-git-example-ansbot.tex}
+\input{sections/cp4/tbl-git-example-apiref.tex}
+\input{sections/cp4/tbl-git-example-hurried.tex}
 
 
 
@@ -180,6 +251,19 @@ to 2021/03/01
 ------ Approximately 2,500 artifacts
 
 ------ Almost 260,000 sentences
+
+
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{cp4/annotation-tool}
+    \caption{Annotation tool and relevant sentences marked by an annotator}
+    \label{fig:corpus-annotation-tool}
+\end{figure}
+
+
 
 
 
