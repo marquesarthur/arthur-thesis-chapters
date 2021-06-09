@@ -73,7 +73,7 @@ might use to locate information relevant to her task.
 \section{Methodology}
 \label{cp4:methodology}
 
-Corpus creation consists of three main stages, namely \textit{(1)} selection of tasks, \textit{(2)} selection of artifacts, and \textit{(3)} identification of relevant text within the selected artifacts. We detail each of these steps in the following sections.
+Corpus creation consists of three main steps, namely \textit{(1)} selection of tasks, \textit{(2)} selection of artifacts, and \textit{(3)} identification of relevant text within the selected artifacts. We detail each of these steps in the following sections.
 
 
 
@@ -178,11 +178,18 @@ as an educated approximation to terms that a developer might use is a common pro
 
 We fetch a maximum of 5 resources per artifact source --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used to get the content of each source considered. To ensure that results 
 are indeed related to Android development, we exclude search results that do not appear in the Amazon Alexa Web pages traffic statistics~\cite{alexa}
-for Android and Java development in the period from April 2020 to March 2021.
+for Android and Java development in the period from April 2020 to March 2021. Table~\ref{tbl:googlesearch-example-git} shows one search result per artifact source for the tasks introduced in Section~\ref{cp4:corpus-tasks}.
 
 
-Tables~\ref{tbl:googlesearch-example-so} and~\ref{tbl:googlesearch-example-git} show one search result per artifact source for the tasks introduced in Section~\ref{cp4:corpus-tasks}.
-Note that, due to the Alexa filter, we could only obtain a miscellaneous Web page for the Github task.
+Processing the HTML content into a sequence of individual sentences 
+followed procedures analogous to other studies in the field~\cite{Arya2019, nadi2020}.
+Given a search result \texttt{URL}, we use the \texttt{BeautifulSoup}~\cite{beautifulsoup4}
+to process the HTML content and the Stanford CoreNLP toolkit~\cite{CoreNLP} to identify sentences in each paragraph.
+
+
+
+
+
 
 
 \input{sections/cp4/tbl-googlesearch-results.tex}
@@ -237,22 +244,107 @@ differs slightly due to a technique's input parameters and the length of the inp
 \textcolor{white}{force ident} % this is just for the chapter outline
 
 
---- Summary of contributions for the chapter \vspace{3mm}
 
------- A corpus containing 300 software tasks originating from StackOverflow and Github and associated artifacts containing potentially relevant information to correctly completing the task \vspace{3mm}
-
------- Methodology for the corpus creation as well as a replication package with the scripts used to create the Android task corpus \vspace{3mm}
-
-
---- Provide descriptive summary of the corpus
-
------- 300 tasks, 150 from SO and 150 from Git
-
------- Approximately 2,500 artifacts
-
------- Almost 260,000 sentences
+Figure~\ref{fig:corpus-creation-pipeline} summarizes procedures for corpus creation.
+We randomly sample a set of Android development tasks from Stack Overflow and GitHub
+and use the Google search engine to find potential resources that might have
+information for a task. We only consider resources highly ranked at Amazon Alexa and, for these resources, we apply state of the art techniques to detect relevant text in the artifact's content.
 
 
+
+Overall, our corpus comprises 300 tasks evenly selected from SO and Git. 
+There is a total of 262,278 sentences in 2,586 artifacts pertaining API documentation, Stack Overflow answers, Github issue discussions, and miscellaneous Web tutorials or blog posts. 
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{cp4/corpus-creation-pipeline}
+    \caption{Summary of procedures for corpus creation}
+    \label{fig:corpus-creation-pipeline}
+\end{figure}
+
+
+
+
+
+
+\section{Evaluation}
+\label{cp4:evaluation}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+% \gm{Can you introduce the 30 task version of the corpus here? Does it matter it is 30 selected
+% from 300? An alternative approach is to introduce
+% a chapter before this that forms the larger
+% task corpus and then you select from
+% it in this chapter.} 
+
+--- To be able to judge that our techniques \textit{correctly} identify sentences relevant to a task,
+we require test data comprising sentences that contain information needed for task completion. \vspace{3mm}
+
+--- We rely on experienced software developers to produce this data for 10 tasks randomly sampled from the \acs{DS-android} corpus. \vspace{3mm}
+
+
+--- With this data, we report a technique's accuracy
+
+------ For sources that have been evaluated in other studies, i.e., API documentation~\cite{Robillard2015}, GitHub issues~\cite{Lotufo2012}, and StackOverflow answers~\cite{Xu2017}, we compare the accuracy of our techniques 
+to the state-of-the-art
+
+------ We also report our techniques accuracy on miscellaneous sources to show that our techniques apply to a variety of artifact sources
+
+
+
+\subsection{Testing Data}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- Creating test data for the entirety of the \acs{DS-android} corpus is infeasible. Hence, we restrict our evaluation to a subset of 10 tasks evenly sampled from the two types of tasks in the corpus (i.e., 5 GitHub tasks and 5 StackOverflow tasks). \vspace{3mm}
+
+--- From now on, we refer to this subset as the \textbf{\acs{DS-android-small}} dataset \vspace{3mm}
+
+--- Golden data in \acs{DS-android-small} consists of any sentence that two or more annotators have deemed as useful for task-completion \vspace{3mm}
+
+
+
+\subsubsection{Annotators}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- We recruited \red{n} graduate students with professional programming experience to produce \textit{golden} data for these 10 tasks. \vspace{3mm}
+
+
+\subsubsection{Annotation Procedures}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- Our intention is that goldens reflect text that a experienced developer would deem as useful for task completion. \vspace{3mm}
+
+--- To produce such data, annotators had a set of randomly assigned tasks description and links to artifacts 
+pertinent to the respective task at their disposal \vspace{3mm}
+
+--- We asked annotators to write a short plan (250 words max~\cite{Rastkar2010}) with instructions that a newcomer could follow to successfully complete the task. 
+
+------ The purpose of the plan was to ensure that annotators built enough context about the task \vspace{3mm}
+
+--- Once the plan was written,  annotators had to manually highlight sentences that they deemed useful and that provide information that assists task completion. \vspace{3mm}
+
+--- Three different individuals performed each task. \vspace{3mm}
+
+--- An in-house tool in the form of a Web browser plugin facilitated annotation procedures
+
+
+
+\subsection{Method}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+% \gm{Separate the corpus creation from the method. Name each corpus.}
+
+--- For each task, we have a set of artifacts with sentences identified by experienced developers that contain information relevant to the task \vspace{3mm}
+
+--- We then apply the appropriate technique (baseline and ours) to automatically detect task-relevant text in that artifact
+
+\gm{Where will the baseline techniques be explained? This is why I think you probably need to put corpus creation in a separate earlier chapter.}
+
+--- We compute the technique's accuracy against the highlights in \acs{DS-android-small}
+
+--- We use the obtained values to discuss the correctness of each technique
 
 
 
@@ -265,17 +357,44 @@ differs slightly due to a technique's input parameters and the length of the inp
 
 
 
+\subsubsection{Evaluation Metrics}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- We use the golden data in \acs{DS-android-small} to compute precision and recall
 
 
-% \acs{AnsBot} 
+--- For a given task $t$ and artifact $a$, precision is computed as the ratio between the sentences identified that are indeed relevant (i.e., sentences highlighted by the annotators) and the total number of sentences identified by the technique
 
-% \acs{Krec} 
 
-% \acs{Hurried} 
+\begin{equation}
+    Precision(t, a) = \frac{\# \text{\textit{sentences identified that were marked by annotators}}}{\# \text{\textit{sentences identified}}}
+\end{equation}
 
-% \acs{DS-synthetic} 
+\vspace{3mm}
 
-% 
+--- Recall represents how many relevant sentences are identified by a technique
+
+
+\begin{equation}
+    Recall(t, a) = \frac{\# \text{\textit{sentences identified that were marked by annotators}}}{\text{\textit{total \# of sentences marked by annotators}}}
+\end{equation}
+
+\vspace{3mm}
+
+--- When comparing techniques, we favor precision instead of recall because false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
+
+
+\subsection{Results}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- Discuss results \vspace{3mm}
+
+\subsection{Threats to Validity}
+
+--- Discuss threats \vspace{3mm}
+
+
+
 
 % \acs{DS-android-small}
 
