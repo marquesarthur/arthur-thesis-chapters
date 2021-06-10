@@ -21,10 +21,8 @@ This chapter main contributions are \textit{(i)} the procedures for the corpus c
 
 \input{sections/cp4/motivation.tex}
 
-\input{sections/cp4/methodology.tex}
+\input{sections/cp4/corpus.tex}
 
-
-\clearpage
 
 \section{Evaluation}
 \label{cp4:evaluation}
@@ -47,34 +45,23 @@ If we can show that the techniques identify relevant text with some \textit{marg
 future research can use our corpus for the design and comparison of techniques that identify task-relevant text automatically.
 
 
-% --- To be able to judge that our techniques \textit{correctly} identify sentences relevant to a task,
-% we require test data comprising sentences that contain information needed for task completion. \vspace{3mm}
-
-% ---  this data for 10 tasks randomly sampled from the \acs{DS-android} corpus. \vspace{3mm}
-
-
-% --- With this data, we report a technique's accuracy
-
-% ------ For sources that have been evaluated in other studies, i.e., API documentation~\cite{Robillard2015}, GitHub issues~\cite{Lotufo2012}, and StackOverflow answers~\cite{Xu2017}, we compare the accuracy of our techniques 
-% to the state-of-the-art
-
-% ------ We also report our techniques accuracy on miscellaneous sources to show that our techniques apply to a variety of artifact sources
-
 
 
 \subsection{Golden Data}
 
 
-Creating golden data for the entirety of the \acs{DS-android} corpus is infeasible.
+Creating golden data for the entirety of the \acs{DS-android} corpus is infeasible
 since it would require asking human evaluators to inspect thousands of artifacts and more than 260,000 sentences.
-Due to this reason, we restrict this evaluation to a subset of 10 tasks evenly sampled from the two types of tasks in our corpus (i.e., 5 GitHub tasks and 5 Stack Overflow tasks). 
+Due to this reason, we restrict this evaluation to a random subset of 10 tasks in our corpus (i.e., 5 GitHub tasks and 5 Stack Overflow tasks). 
 From now on, we refer to this subset as the \textbf{\acs{DS-android-small}} corpus.
 
 
 For each one of the tasks in the \acs{DS-android-small} corpus, we also randomly selected 
 one artifact per source type to a maximun of 4 artifacts per tasks, i.e., one API document, a Github issue discussion, one Stack Overflow answer, and a blog or Web tutorial.
+% As an example, Table~\ref{tbl:googlesearch-example-git} shows the 
+% artifacts an annotator inspected for the lock screen controls task.
 Overall, this corpus has 2,375 sentences with an average of 64 sentences per artifact---
-a size comparable to the \acs{DS-synthetic} corpus.
+a size comparable to the \acs{DS-synthetic} corpus~\cite{marques2020}.
 % ($\mypm$ 72)
 
 
@@ -91,7 +78,6 @@ Golden data in \acs{DS-android-small} consists of any sentence that two or more 
 
 
 \subsubsection{Annotation Procedures}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
 Our intention is that goldens reflect text that a experienced developer would deem as useful for task completion and that they would share with someone eager to make their \textit{first contribution} in an open-source project.
 
@@ -115,57 +101,72 @@ This would instrument the HTML of a page and identify each sentence in a paragra
 
 
 
-\subsection{Method}
-\textcolor{white}{force ident} % this is just for the chapter outline
+\subsection{Evaluation Metrics}
 
-% \gm{Separate the corpus creation from the method. Name each corpus.}
+For each task in \acs{DS-android-small}, we have a set of artifacts with task-relevant sentences identified by experienced developers. We  
+compute a technique's accuracy using standard \textit{precision} and \textit{recall} metrics~\cite{Manning2009IR} by comparing the relevant text automatically identified by a technique
+against the golden relevant text.
 
---- For each task, we have a set of artifacts with sentences identified by experienced developers that contain information relevant to the task \vspace{3mm}
 
---- We then apply the appropriate technique (baseline and ours) to automatically detect task-relevant text in that artifact
 
-\gm{Where will the baseline techniques be explained? This is why I think you probably need to put corpus creation in a separate earlier chapter.}
-
---- We compute the technique's accuracy against the highlights in \acs{DS-android-small}
-
---- We use the obtained values to discuss the correctness of each technique
+To ease interpreting evaluation metrics, Table~\ref{tbl:type-I-II-errors} show all possible evaluation outcomes. The \textit{relevant} and \textit{not-relevant} columns represent the text 
+marked (or not) by the annotators. Rows represent the text automatically identified by a technique.
 
 
 
 
+\input{sections/cp4/tbl-eval-outcomes.tex}
 
 
-\subsubsection{Evaluation Metrics}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
---- We use the golden data in \acs{DS-android-small} to compute precision and recall
-
-
---- For a given task $t$ and artifact $a$, precision is computed as the ratio between the sentences identified that are indeed relevant (i.e., sentences highlighted by the annotators) and the total number of sentences identified by the technique
+For a given task $t$ and artifact $a$, precision is the ratio between the sentences identified that are marked as relevant and the total number of sentences identified, as shown in Equation~\ref{eq:cp4:precision}.
 
 
 \begin{equation}
-    Precision(t, a) = \frac{\# \text{\textit{sentences identified that were marked by annotators}}}{\# \text{\textit{sentences identified}}}
+\label{eq:cp4:precision}    
+    Precision(t, a) = \frac{TP}{TP + FP}
+\end{equation}
+
+
+Recall represents how many of all marked sentences are identified by a technique (Equation~\ref{eq:cp4:recall}).
+
+
+
+\begin{equation}
+\label{eq:cp4:recall}        
+    Recall(t, a) = \frac{TP}{TP + FN}
 \end{equation}
 
 \vspace{3mm}
 
---- Recall represents how many relevant sentences are identified by a technique
 
-
-\begin{equation}
-    Recall(t, a) = \frac{\# \text{\textit{sentences identified that were marked by annotators}}}{\text{\textit{total \# of sentences marked by annotators}}}
-\end{equation}
-
-\vspace{3mm}
-
---- When comparing techniques, we favor precision instead of recall because false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
 
 
 \subsection{Results}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
+
 --- Discuss results \vspace{3mm}
+
+
+
+--- Precision~\ref{tbl:ds-small-results-precision} \vspace{3mm}
+
+
+--- Recall~\ref{tbl:ds-small-results-recall} \vspace{3mm}
+
+--- Likely explanation for the results obtained.
+
+% When interpreting results, we favor precision instead of recall.
+% A false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
+
+
+
+
+\input{sections/cp4/tbl-results-precision.tex}
+
+\input{sections/cp4/tbl-results-recall.tex}
+
 
 \subsection{Threats to Validity}
 
