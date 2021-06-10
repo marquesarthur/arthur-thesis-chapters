@@ -1,0 +1,43 @@
+
+
+\section{Motivation}
+\label{cp4:motivation}
+
+
+When performing a software task, a software developer does not restrict her work
+solely to coding~\cite{Meyer2017}.
+Rather, there are many activities that a developer undertakes to complete a software task
+as when they:
+
+
+
+\begin{itemize}
+    \item refer to API documentation or Q\&A websites for API usage purposes~\cite{umarji2008archetypal, Singer1998, robillard2011field};
+    \item discuss in mailing lists a possible reusable library to be incorporated into their implementation~\cite{umarji2008archetypal, Bacchelli2012}; or
+    \item confirm a system's behaviour referring to past discussions in community forums or in the system's documentation~\cite{Arya2019, Lotufo2012, Singer1998}.
+\end{itemize}
+
+
+A common aspect to these activities is the need to work with unstructured textual data, which comprises 80\% of the overall information created and used in enterprises~\cite{Bavota2014, holzinger2013}.
+Due to such prevalence, there has been a large body of studies utilizing various techniques to extract
+information from this text so that it can be embedded in
+tools to software developers~\cite{Bavota2014, Xu2017, Robillard2015, Lotufo2012}. For instance, Xu et al. propose to mine relevant text from Stack Overflow
+to generate answers to developers' technical question~\cite{Xu2017}
+while FRAPT identifies key paragraphs explaining API elements in code tutorials~\cite{Jiang2017}.
+As other examples, Lotufo et al. proposed a technique to identify sentences a developer would first read when inspecting bug reports~\cite{Lotufo2012} while Nadi and Treude investigated sentences that help a developer decide whether a Stack Overflow post is relevant to her task~\cite{nadi2020}.
+
+
+
+
+Although these studies provide significant contributions, the fact that information to answer a question a developer has is usually located across many artifacts~\cite{Rastkar2013t} is often overlooked.
+Hence existing techniques operate in an artifact-centric basis
+what can be insufficient to provide to developers all the information needed
+to completely and correctly accomplish a software task as several studies suggest that developers use heterogeneous sources to put together the information needed for task completion~\cite{josyula2018, Li2013, rao2020}.
+
+
+
+
+We seek to design techniques that can scale to cover different types of artifacts
+so that can be integrated into developers' information-seeking activities regardless of the artifact that a developer browses/inspects.
+To design such techniques, we require a corpus with heterogeneous sources that a developer
+might use to locate information relevant to her task.

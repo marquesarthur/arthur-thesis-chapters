@@ -103,7 +103,13 @@ innerrightmargin=4pt,innertopmargin=4pt,innerbottommargin=4pt]{mybox}
 % Highlight package, default colour set to ligthgray
 \sethlcolor{lightgray}
 
-
+% https://tex.stackexchange.com/questions/50792/a-better-pm-symbol
+\makeatletter
+\newcommand{\mypm}{\mathbin{\mathpalette\@mypm\relax}}
+\newcommand{\@mypm}[2]{\ooalign{%
+  \raisebox{.1\height}{$#1+$}\cr
+  \smash{\raisebox{-.6\height}{$#1-$}}\cr}}
+\makeatother
 
 
 % https://tex.stackexchange.com/questions/22798/nice-looking-empty-set
