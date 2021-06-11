@@ -1,0 +1,66 @@
+
+\section{Artifact Selection}
+\label{cp4:corpus-artifacts}
+
+
+When selecting artifacts pertinent to a task in our corpus, we simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017}. That is, we formulate a query for each task and use a Web search engine to retrieve artifacts that are pertinent to that task.
+
+
+\subsubsection{Artifact sources}
+
+As there are many different sources of artifacts, we restrict artifact selection to well known and studied sources~\cite{Starke2009,Kevic2014, Li2013}, i.e.,
+Android and Java SE API documentation, Github issues, Stack Overflow answers; and Web tutorials or blog posts from Java and Android development.
+
+
+
+\subsubsection{Query formulation}
+
+
+
+We consider a task's title (i.e., SO question or GitHub issue title) as the seed used to search artifacts
+using the \texttt{googlesearch} API~\cite{googlesearch}.
+
+
+Coming up with proper search terms is a critical step of any search~\cite{Haiduc2013}
+and, ideally, we should be able to formulate a query with terms able to retrieve the most pertinent artifacts for a software task.
+However, studies have shown that developers perform poorly in identifying good search terms~\cite{Starke2009,Kevic2014, Li2013} and thus, using a task's title
+as an educated approximation to terms that a developer might use is a common procedure adopted by other studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}).
+
+
+
+
+
+
+
+\subsubsection{Search results}
+
+
+We fetch a maximum of 5 resources per artifact source --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used to get the content of each source considered. 
+
+
+When selecting results, we exclude any result that does not appear in the Amazon Alexa~\cite{alexa} Web  traffic for Java and Android development in the period from April 2020 to March 2021. 
+While applying this filter potentially decreased the number of artifacts per task, it ensured that results were indeed related to Android development. 
+For instance, for a task discussing ``\textit{left and right-hand swap}'' 
+filtering avoided fetching unrelated resources, such as a Web page on  ``\textit{stock swap}''.
+Table~\ref{tbl:googlesearch-example-git} shows one search result per artifact source for the GitHub task introduced in Section~\ref{cp4:corpus-tasks}.
+
+
+\input{sections/cp4/tbl-googlesearch-results.tex}
+
+\subsubsection{Artifact's content}
+
+
+Processing an artifact's content into a sequence of individual sentences 
+followed procedures analogous to other studies in the field~\cite{Arya2019, nadi2020}.
+Given a search result \texttt{URL}, we use \texttt{BeautifulSoup}~\cite{beautifulsoup4},
+\texttt{StackAPI}~\cite{StackAPI} and \texttt{PyGithub}~\cite{PyGithub}
+to fetch the artifacts' content. Sentences in each paragraph
+were identified using the Stanford CoreNLP toolkit~\cite{CoreNLP}.
+
+
+
+
+
+
+
+

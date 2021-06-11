@@ -33,89 +33,89 @@
 \clearpage
 
 
-\section{Approach}
-\textcolor{white}{force ident} % this is just for the chapter outline
+% \section{Approach}
+% \textcolor{white}{force ident} % this is just for the chapter outline
 
---- We present a technique for automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
+% --- We present a technique for automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
 
---- Our goal is to to identify task-relevant text over distinct types of natural language software artifacts with high accuracy.  \vspace{3mm}
+% --- Our goal is to to identify task-relevant text over distinct types of natural language software artifacts with high accuracy.  \vspace{3mm}
 
---- To this end, we explore a set of approaches (or their combination) and we evaluate their accuracy on detecting task-relevant text. 
+% --- To this end, we explore a set of approaches (or their combination) and we evaluate their accuracy on detecting task-relevant text. 
 
---- When developing our techniques, we use the \acs{DS-synthetic} dataset of manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
-
-
-\subsection{Sentence-based approach}
-
-\red{REVIEW}
-
-uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
+% --- When developing our techniques, we use the \acs{DS-synthetic} dataset of manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
 
 
+% \subsection{Sentence-based approach}
 
---- Explain why we have selected the approach:
+% \red{REVIEW}
 
------- With our first approach, we investigate whether a light-weight technique addresses the need of automatically identifying task-relevant text, what could potentially discourage the need for more complex and computationally expensive solutions~\cite{Bavota2016}
-
-
-\subsection{Word-based approach}
-
-\red{REVIEW}
-
---- uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
-
---- Explain why we have selected the approach:
-
------- Our second approach investigates the applicability of pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
+% uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
 
 
 
-\clearpage
+% --- Explain why we have selected the approach:
+
+% ------ With our first approach, we investigate whether a light-weight technique addresses the need of automatically identifying task-relevant text, what could potentially discourage the need for more complex and computationally expensive solutions~\cite{Bavota2016}
+
+
+% \subsection{Word-based approach}
+
+% \red{REVIEW}
+
+% --- uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
+
+% --- Explain why we have selected the approach:
+
+% ------ Our second approach investigates the applicability of pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
+
+
+
+% \clearpage
 
 
 
 
-\subsubsection{Baselines}
-\label{cp4:comparison-techniques}
-\textcolor{white}{force ident} % this is just for the chapter outline
+% \subsubsection{Baselines}
+% \label{cp4:comparison-techniques}
+% \textcolor{white}{force ident} % this is just for the chapter outline
 
---- We systematically reviewed related work and we identified techniques applicable to our domain problem
+% --- We systematically reviewed related work and we identified techniques applicable to our domain problem
 
------- Selection criteria considered each technique's availability in existing replication packages and their readiness for use.
+% ------ Selection criteria considered each technique's availability in existing replication packages and their readiness for use.
 
------- We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of ~\cite{Chaparro2017, fucci2019} \vspace{3mm}
-
-
---- Based on these criteria, we selected the following techniques for comparison:
+% ------ We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of ~\cite{Chaparro2017, fucci2019} \vspace{3mm}
 
 
-\begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
-    \item \textit{SO Answers} (\texttt{\acs{AnsBot}})~\cite{Xu2017} --- short description of the approach;
+% --- Based on these criteria, we selected the following techniques for comparison:
+
+
+% \begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
+%     \item \textit{SO Answers} (\texttt{\acs{AnsBot}})~\cite{Xu2017} --- short description of the approach;
     
-    \item \textit{API Documentation} (\texttt{\acs{Krec}})~\cite{Robillard2015} --- short description of the approach;
+%     \item \textit{API Documentation} (\texttt{\acs{Krec}})~\cite{Robillard2015} --- short description of the approach;
     
-    \item \textit{GitHub issues} (\texttt{\acs{Hurried}})~\cite{Lotufo2012} --- short description of the approach;
+%     \item \textit{GitHub issues} (\texttt{\acs{Hurried}})~\cite{Lotufo2012} --- short description of the approach;
 
-    % \item \textit{Miscellaneous} (\texttt{LexRank})~\cite{Erkan2004} --- in the lack of an artifact-specific technique for this category, we use LexRank as a baseline because it has been evaluated in several studies that address the identification of textual information in natural language software artifacts~\cite{nadi2020, Ponzanelli2017}
-\end{itemize}
-
-
+%     % \item \textit{Miscellaneous} (\texttt{LexRank})~\cite{Erkan2004} --- in the lack of an artifact-specific technique for this category, we use LexRank as a baseline because it has been evaluated in several studies that address the identification of textual information in natural language software artifacts~\cite{nadi2020, Ponzanelli2017}
+% \end{itemize}
 
 
 
 
+% ------------------------------ OLD ------------------------------
 
 
 
 
-\section{Large-scale Evaluation}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
-\gm{Isn't this about scale more than human evaluation?}
+% \section{Large-scale Evaluation}
+% \textcolor{white}{force ident} % this is just for the chapter outline
 
-\red{PLACEHOLDER - revisit this section once I finish the correctness evaluation}
+% \gm{Isn't this about scale more than human evaluation?}
 
-\red{argument to justify this second evaluation}
+% \red{PLACEHOLDER - revisit this section once I finish the correctness evaluation}
+
+% \red{argument to justify this second evaluation}
 
 % --- Although our analytic evaluation gives insight on how accurately can we identify text relevant to a task within a natural language artifact, we seek to provide further evidence on whether software developers consider automatically detected text as useful for a task 
 
