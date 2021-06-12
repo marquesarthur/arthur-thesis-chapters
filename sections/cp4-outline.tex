@@ -10,29 +10,46 @@
 
 To produce a solution for a task, a developer engages in a variety of
 information-seeking activities.  One of these activities involves
-the identification of relevant text in artifacts. In this
-paper, we focus primarily on the results of this activity,
-considering which
-text, from a variety of different artifact types, developers deem
-relevant to working on for a particular software task.
-
-
-One of the challenges for characterizing task-relevant information as well as for proposing automatic techniques to automatically identify task-relevant text is
-the lack of large corpora containing
-software tasks and associated artifacts originating from heterogeneous sources.
-
-\red{statement about the relevant sentences here}
-
-
-To fill this gap, this chapter contributes with the Android tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks comprising Android development and originating from Stack Overflow questions
-as well as from GitHub issues on a variety of Android Open-Source Systems.
+the identification of relevant text in artifacts
+and one of the challenges for proposing automatic solutions to 
+assist developers in this activity
+is
+the lack of corpora containing
+software tasks, 
+and text, from a variety of different artifact types, that developers deem
+relevant to that task.
 
 
 
-\red{add more motivation here}
+
+To fill this gap, 
+this chapter contributes with 
+a set of procedures used to create
+the Android tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks comprising Android development and originating from Stack Overflow questions
+as well as from GitHub issues from a variety of Android Open-Source Systems.
 
 
-This chapter main contributions are \textit{(i)} the procedures for the corpus creation, and; \textit{(ii)} the corpus itself. A well-structured corpus lays the foundation for several studies that explore relationships between software tasks, natural language artifacts, and text within these artifacts. \red{eval \& corpus summary}
+
+
+Figure~\ref{fig:corpus-creation-pipeline}
+summarizes our corpus creation pipeline.
+We randomly sample a set of Android development tasks from Stack Overflow and GitHub.
+For each of these tasks, we use the Google search engine to find potential resources that might have
+text relevant for that task. For these resources, we apply state-of-the-art techniques to detect the relevant text.
+Sections~\ref{cp4:corpus-tasks},~\ref{cp4:corpus-artifacts} and ~\ref{cp4:corpus-relevant-text}
+provide details to each of these steps, respectively.
+Section~\ref{cp4:corpus-summary} provides a summary for the \acs{DS-android} corpus.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{cp4/corpus-creation-pipeline}
+    \caption{Summary of procedures for corpus creation}
+    \label{fig:corpus-creation-pipeline}
+\end{figure}
+
+\clearpage
+
 
 
 
@@ -41,6 +58,8 @@ This chapter main contributions are \textit{(i)} the procedures for the corpus c
 \input{sections/cp4/artifacts.tex}
 
 \input{sections/cp4/sentences.tex}
+
+\input{sections/cp4/summary.tex}
 
 
 

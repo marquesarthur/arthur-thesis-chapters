@@ -2,21 +2,22 @@
 \centering    
 \begin{scriptsize}
 \begin{threeparttable}
-\begin{tabular}{lcccccccccccc}
+\begin{tabular}{lcccccc}
 
 \hline
 
 
 \multirow{2.5}{*}{Technique}
-& \multicolumn{10}{c}{\textit{Tasks}} 
-& \multicolumn{2}{c}{\textit{Precision}}
-\\  \cmidrule(l){2-11} \cmidrule(l){12-13} 
+& \multicolumn{2}{c}{\textit{$Precision_{n=3}$}}
+& \multicolumn{2}{c}{\textit{$Precision_{n=2}$}}
+& \multicolumn{2}{c}{\textit{$Precision_{n=1}$}}
+\\ \cmidrule(l){2-3} \cmidrule(l){4-5} \cmidrule(l){6-7} 
 
 
-
-&
-\textit{T1} & \textit{T2} & \textit{T3} & \textit{T4} & \textit{T5}
-& \textit{T6} & \textit{T7} & \textit{T8} & \textit{T9} & \textit{T10}
+& \textit{mean}
+& \textit{std}
+& \textit{mean}
+& \textit{std}
 & \textit{mean}
 & \textit{std}
 \\
@@ -26,24 +27,21 @@
 \hline
 
 \acs{AnsBot} 
-& 0.5 & 0.5 & 0.5 & 0.5 & 0.5
-& 0.5 & 0.5 & 0.5 & 0.5 & 0.5
-& 0.5 % mean
-& 0.5 % std
+& 0.5 & 0.5 % = 3
+& 0.5 & 0.5 % = 2
+& 0.5 & 0.5 % = 1
 \\
 
 \acs{Krec} 
-& 0.5 & 0.5 & 0.5 & 0.5 & 0.5
-& 0.5 & 0.5 & 0.5 & 0.5 & 0.5
-& 0.5 % mean
-& 0.5 % std
+& 0.5 & 0.5 % = 3
+& 0.5 & 0.5 % = 2
+& 0.5 & 0.5 % = 1
 \\
 
 \acs{Hurried} 
-& 0.5 & 0.5 & 0.5 & 0.5 & 0.5
-& 0.5 & 0.5 & 0.5 & 0.5 & 0.5
-& 0.5 % mean
-& 0.5 % std
+& 0.5 & 0.5 % = 3
+& 0.5 & 0.5 % = 2
+& 0.5 & 0.5 % = 1
 \\
 
 \hline
@@ -54,5 +52,64 @@
 \caption{Precision of each technique for the tasks of \acs{DS-android-small}}
 \label{tbl:ds-small-results-precision}
 \end{table}
+
+    
+
+% \begin{table}[H]
+% \centering    
+% \begin{scriptsize}
+% \begin{threeparttable}
+% \begin{tabular}{lcccccccccccc}
+
+% \hline
+
+
+% \multirow{2.5}{*}{Technique}
+% & \multicolumn{10}{c}{\textit{Tasks}} 
+% & \multicolumn{2}{c}{\textit{Precision}}
+% \\  \cmidrule(l){2-11} \cmidrule(l){12-13} 
+
+
+
+% &
+% \textit{T1} & \textit{T2} & \textit{T3} & \textit{T4} & \textit{T5}
+% & \textit{T6} & \textit{T7} & \textit{T8} & \textit{T9} & \textit{T10}
+% & \textit{mean}
+% & \textit{std}
+% \\
+
+
+% \hline
+% \hline
+
+% \acs{AnsBot} 
+% & 0.5 & 0.5 & 0.5 & 0.5 & 0.5
+% & 0.5 & 0.5 & 0.5 & 0.5 & 0.5
+% & 0.5 % mean
+% & 0.5 % std
+% \\
+
+% \acs{Krec} 
+% & 0.5 & 0.5 & 0.5 & 0.5 & 0.5
+% & 0.5 & 0.5 & 0.5 & 0.5 & 0.5
+% & 0.5 % mean
+% & 0.5 % std
+% \\
+
+% \acs{Hurried} 
+% & 0.5 & 0.5 & 0.5 & 0.5 & 0.5
+% & 0.5 & 0.5 & 0.5 & 0.5 & 0.5
+% & 0.5 % mean
+% & 0.5 % std
+% \\
+
+% \hline
+
+% \end{tabular}
+% \end{threeparttable}
+% \end{scriptsize}
+% \caption{Precision of each technique for the tasks of \acs{DS-android-small}}
+% \label{tbl:ds-small-results-precision}
+% \end{table}
 
     

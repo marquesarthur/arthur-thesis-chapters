@@ -3,14 +3,14 @@
 
 
 We start corpus creation with the need to identify software tasks that require
-the identification of relevant text in software artifacts. 
+a developer to forage information across different artifact sources. 
 In such context, we consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}.
 
 
 Two common places a software task can be found are:
 
 \begin{itemize}
-    \item the description of a bug or feature request reported in a bug tracking systems; or in
+    \item the description of a bug or feature request reported in a bug tracking system; or in
     \item a post in a community forum, development mailing lists, and others.
 \end{itemize}
 
@@ -19,7 +19,7 @@ In fact, several studies have used both as sources for software tasks~\cite{Arya
 
 
 
-For selecting tasks in these sources, a major challenge arises due to the sheer amount of data available on GitHub and Stack Overflow.
+For selecting tasks in GitHub and Stack Overflow, a major challenge arises due to the sheer amount of data available.
 Baltes et al.~\cite{baltes2019} argues that even a cursory inspection of a sample set
 of Stack Overflow posts shows clear differences in a post's content or structure due to aspects such as programming languages, frameworks, associated technologies, and others.
 
@@ -35,7 +35,7 @@ while researchers have investigated how changes to the Android SDK impact its ec
 \subsubsection{Stack Overflow tasks}
 
 Provided that we restrict our corpus to tasks related to the Android development domain,
-we randomly select 150 SO post from a curated list about Android development~\cite{baltes2019-rep}.
+we randomly select 150 SO posts from a curated list about Android development~\cite{baltes2019-rep}.
 
 
 \textit{Saving WebView page to cache}~\cite{so18607655}
@@ -45,7 +45,7 @@ to
 and their struggle in understanding documentation explaining the WebView component.
 To complete this task, a developer will refer to the Android Webview API~\cite{apiWebView}
 or Q\&A forums about the Android cache system~\cite{so8410830} so that they can 
-formulate a plan with instructions on how to properly use the API.
+formulate a plan with instructions on how to use the API properly.
 
 \begin{figure}
     \centering
@@ -60,7 +60,7 @@ formulate a plan with instructions on how to properly use the API.
 Since we are not aware of a comprehensive dataset of GitHub issues related to Android development, we devised our own strategy to fetch such data.
 
 
-We selected 15 of top starred Android projects on GitHub\footnote{\red{info about each project on Appendix}} by filtering the list of projects to the ones that contained the \textit{Java} and \textit{Android} tags.
+We selected 15 top-starred Android projects on GitHub\footnote{\red{info about each project on Appendix}} by filtering the list of projects in the platform to the ones that contained the \textit{Java} and \textit{Android} tags.
 For each of these projects, we randomly select 10 issues as the GitHub tasks of our corpus for a total of 150 distinct issues.
 While selecting issues, we took care to check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
 so that our selection ignored issues automatically created by scripts or bots---a common pitfall that researchers must be aware of when mining GitHub~\cite{kalliamvakou2014}.
