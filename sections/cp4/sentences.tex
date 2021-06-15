@@ -5,9 +5,23 @@
 \label{cp4:corpus-relevant-text}
 
 
-Provided that we have a set of software tasks and pertinent artifacts associated with each task, 
-the last step in our corpus creation pipeline is the detection of relevant information within 
-each pertinent artifact. To that end, we rely on state-of-the-art approaches able to automatically identify relevant text for the tasks and artifacts in our corpus~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
+%Provided that we have a set of software tasks and pertinent artifacts associated with each task, 
+%the last step in our corpus creation pipeline is the detection of relevant information within 
+%each pertinent artifact. 
+\gm{Next, we need to identify relevant
+text for the task in selected
+artifacts for the task.}
+
+\gm{I think you need to set up
+that you want the state-of-the-art
+because you want to do at least
+this good with your newly developed
+techniques that motivates the creation
+of this corpus in the first place.
+You'll also have to explain the
+Misc ones.}
+
+To that end, we rely on state-of-the-art approaches able to automatically identify relevant text for the tasks and artifacts in our corpus~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
 
 
 To identify techniques applicable to the creation of our corpus, we systematically reviewed related work. We searched for techniques based on their availability in existing replication packages and their readiness for use.
@@ -26,10 +40,15 @@ We also refrained from using approaches with training procedures (e.g., ~\cite{l
 
 While our corpus also has miscellaneous Web pages (i.e., Web tutorials or blog posts), we are not aware of a technique able to identify task-relevant text for such sources. We detail how we make use of miscellaneous sources in Section~\ref{}.
 
+\gm{I think you have to be clearer  that
+Misc are included as non-annotated artifacts.}
+
+
 
 For the pertinent artifacts of our running example (Figure~\ref{fig:lock-screen-task}), 
 Tables~\ref{tbl:git-example-ansbot} to~\ref{tbl:git-example-hurried}
 illustrate sentences automatically detected by \acs{AnsBot}, \acs{Krec}, and \acs{Hurried}, respectively.
+\gm{Why give these three examples?}
  
 
 \input{sections/cp4/tbl-git-example-ansbot.tex}
@@ -45,8 +64,15 @@ illustrate sentences automatically detected by \acs{AnsBot}, \acs{Krec}, and \ac
 \subsection{Ratio of Task-relevant Sentences}
 \label{cp4:corpus-relevant-text-ratio}
 
+\gm{You need to get across that in applying
+the techniques to this new data you need to
+check if the results are similar to what was
+reported for the technique authors. Doesn't
+this require you to speak to whether the accuracy
+is similar to what the authors reported for
+the techniques?}
 
-To construct our corpus, we apply a set of techniques 
+\gm{W}e apply a set of techniques 
 to tasks/artifacts outside the ones where the techniques were originally proposed and evaluated~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
 For instance, \acs{AnsBot}'s design was based on general Java programming tasks~\cite{Xu2017} while the tasks in our corpus comprise Android development and originate both from GitHub and from Stack Overflow. Because of such differences, we ask:
 
@@ -87,13 +113,19 @@ From now on, we refer to this subset as the \textbf{\acs{DS-android-small}} corp
 For each one of the tasks in the \acs{DS-android-small} corpus, we also randomly selected 
 one artifact for each of the techniques we intend to use, i.e., one API document, a Github issue discussion, one Stack Overflow answer, as well as two randomly selected miscellaneous artifacts for a maximum of 5 artifacts per task.
 
+\gm{Are you not having the annotators do all artifacts?
+Isn't it only 50? If you only have three annotators otherwise you don't get enough data?}
+
 %  TODO: update this once I review the web tutorials/blogs
 % Overall, this corpus has 2,375 sentences with an average of 64 sentences per artifact---
 % a size comparable to the \acs{DS-synthetic} corpus~\cite{marques2020}.
 % ($\mypm$ 72)
 
+\gm{There is no evaluation, so use annotators not
+evaluators}
 
-We asked human evaluators to read the content of these artifacts and 
+We asked human evaluators to read the content of these
+artifacts and 
 to mark sentences that they deemed useful and that provide information that assisted task completion---instructions similar to the ones used for the creation of the 
 data in the \acs{DS-synthetic} corpus~\cite{marques2020}.
 Since individuals might use different criteria to
@@ -117,8 +149,15 @@ Due to this reason, golden data in \acs{DS-android-small} consists of any senten
 
 \subsubsection{Annotation Procedures}
 
+\gm{golden data, rather than goldens}
+
 Our intention is that goldens reflect text that an experienced developer would deem as useful for task completion and that they would share with someone eager to make their \textit{first contribution} in an open-source project.
 
+\gm{Is this goal consistent with what the
+original techniques sought to do as well?}
+
+\gm{Doesn't each annotator get each of the 10
+tasks so there is no randomly assigned task?}
 
 To produce such data, annotators had at their disposal a set of randomly assigned task descriptions and links to artifacts pertinent to the respective task. We asked annotators to write a short plan (250 words max~\cite{Rastkar2010}) with instructions that a newcomer could follow to successfully complete the task. 
 The purpose of the plan was to ensure that annotators built enough context about the task.
@@ -148,6 +187,8 @@ Based on the golden data, we use a sliding scale to determine the ratio of task-
 We  
 compute the ratio of sentences identified by a technique using standard \textit{precision} and \textit{recall} metrics~\cite{Manning2009IR}. When computing metrics, we compare the relevant text automatically identified by a technique against the golden relevant text 
 selected by a given number of annotators (i.e., $n=1, 2,$ or $3$)
+
+\gm{I am not quite following ratio here...}
 
 
 

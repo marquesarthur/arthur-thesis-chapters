@@ -10,35 +10,47 @@
 
 To produce a solution for a task, a developer engages in a variety of
 information-seeking activities.  One of these activities involves
-the identification of relevant text in artifacts
-and one of the challenges for proposing automatic solutions to 
-assist developers in this activity
-is
-the lack of corpora containing
-software tasks, 
-and text, from a variety of different artifact types, that developers deem
-relevant to that task.
+the identification of  text in artifacts \gm{relevant to helping solve the task}.
 
-
-
-
-To fill this gap, 
-this chapter contributes with 
-a set of procedures used to create
-the Android tasks corpus (\textbf{\acs{DS-android}}), a dataset with 300 tasks comprising Android development and originating from Stack Overflow questions
+\gm{Probably you can just start here as above
+should be clear at this point in the thesis...
+The development of techniques
+to automate the identification of text
+in relevant to solving a task in artifacts
+pertinent to the task requires a
+means of evaluating newly developed
+techniques. Evaluation can be conducted
+analytically if suitable corpa are
+available. Unfortunately, no such corpa
+exist. This chapter describes the
+development of a suitable corpus
+containing
+software tasks
+and a variety of different artifacts pertinent
+to the task in which text relevant to the
+task is identified.}
+This corpus consists of 
+%To fill this gap, 
+%this chapter contributes with 
+%a set of procedures used to create
+%the Android tasks corpus %(\textbf{\acs{DS-android}}), a dataset with 
+300 tasks comprising Android development and originating from Stack Overflow questions
 as well as from GitHub issues from a variety of Android Open-Source Systems.
 
-
-
-
 Figure~\ref{fig:corpus-creation-pipeline}
-summarizes our corpus creation pipeline.
-We randomly sample a set of Android development tasks from Stack Overflow and GitHub.
-For each of these tasks, we use the Google search engine to find potential resources that might have
-text relevant for that task. For these resources, we apply state-of-the-art techniques to detect the relevant text.
+summarizes \gm{the process we use to create the corpus.} 
+We randomly sample a set of Android development tasks from \gm{two common
+task sources}, GitHub\footnote{\url{}} and Stack Overflow\footnote{\url{}}.
+For each of these tasks, we use the Google search engine to find potential artifacts that likely contain relevant
+information for that task. For these artifacts, we apply state-of-the-art techniques to detect the relevant text.
+\gm{Don't you also choose other artifacts?}
+We detail each of these steps in turn in 
 Sections~\ref{cp4:corpus-tasks},~\ref{cp4:corpus-artifacts} and ~\ref{cp4:corpus-relevant-text}
-provide details to each of these steps, respectively.
-Section~\ref{cp4:corpus-summary} provides a summary for the \acs{DS-android} corpus.
+%provide details to each of these steps, respectively.
+We provide a summary of the final created corpus we call \acs{DS-android} corpus in Section~\ref{cp4:corpus-summary}.
+
+\gm{Pointer to how to get
+the corpus online right up front?}
 
 
 \begin{figure}
