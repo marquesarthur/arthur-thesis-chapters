@@ -5,13 +5,6 @@
 \label{cp4:corpus-relevant-text}
 
 
-%Provided that we have a set of software tasks and pertinent artifacts associated with each task, 
-%the last step in our corpus creation pipeline is the detection of relevant information within 
-%each pertinent artifact. 
-\gm{Next, we need to identify relevant
-text for the task in selected
-artifacts for the task.}
-
 \gm{I think you need to set up
 that you want the state-of-the-art
 because you want to do at least
@@ -21,87 +14,45 @@ of this corpus in the first place.
 You'll also have to explain the
 Misc ones.}
 
-To that end, we rely on state-of-the-art approaches able to automatically identify relevant text for the tasks and artifacts in our corpus~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
 
 
-To identify techniques applicable to the creation of our corpus, we systematically reviewed related work. We searched for techniques based on their availability in existing replication packages and their readiness for use.
-We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of the challenges related to correctly tuning such supervised approaches~\cite{Chaparro2017, fucci2019}. Based on these criteria, three techniques were selected for the artifact sources in parenthesis:
+Next, we need to identify relevant text for a task and its selected pertinent artifacts.
+This will produce \textit{golden data} that one can use to evaluate  
+techniques that identify text relevant to a task across different artifact types. 
 
 
-\begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
-    \item \texttt{\acs{AnsBot}} (\textit{SO Answers}) uses several features (e.g., information entropy, textual patterns, entity overlap, etc.) to determine that a sentence has useful information to a developer's technical question~\cite{Xu2017}.
-    
-    \item \texttt{\acs{Krec}} (\textit{API Documentation}) identifies text fragments that reflect ``potentially important text that programmers cannot afford to ignore when using the API''~\cite{Robillard2015}.
-    
-    \item \texttt{\acs{Hurried}} (\textit{GitHub issues}) identify the most relevant sentences in a bug report based on three factors used to assess a sentence's relevancy (i.e., sentence's prominence in the issue, topic, and its similarity to the task)~\cite{Lotufo2012}.
+% However, the size of our corpus represents a major challenge on determining the text within 
+% an artifact that is relevant to a task. 
+
+A common procedure to produce such data is to ask human annotators to
+mark the text that they deem useful and that provide information that assists task completion~\cite{nadi2020, Robillard2015, marques2020}.
+A second approach is to rely on techniques that, for a specific type of artifact, are able to automatically 
+identify the relevant text.
+Both alternatives have advantages and drawbacks:
+
+
+\begin{itemize}
+    \item Asking human evaluators to read thousands of artifacts and to inspect more than 260,000 sentences
+    is a costly and time consuming activity, but that could produce highly reliable golden data; 
+    \item Automatic techniques can quickly process large amounts of data, but they may not generalize to all the artifact types in our corpus and, due to their accuracy, they could fail to detect all the relevant text within an artifact.
 \end{itemize}
 
 
 
-While our corpus also has miscellaneous Web pages (i.e., Web tutorials or blog posts), we are not aware of a technique able to identify task-relevant text for such sources. We detail how we make use of miscellaneous sources in Section~\ref{}.
-
-\gm{I think you have to be clearer  that
-Misc are included as non-annotated artifacts.}
+To strike a balance between these two choices, we asked human annotators to produce golden data for a random subset of 10 tasks in our corpus; we also use state-of-the-art approaches~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017} to automatically identify relevant text for a parcel of the artifacts in our corpus, i.e., all but miscellaneous sources. 
+This will allow the evaluation of techniques using a small yet diverse set of tasks/artifacts with highly curated golden data as well as using golden data produced by state-of-the-art approaches as a baseline.
 
 
-
-For the pertinent artifacts of our running example (Figure~\ref{fig:lock-screen-task}), 
-Tables~\ref{tbl:git-example-ansbot} to~\ref{tbl:git-example-hurried}
-illustrate sentences automatically detected by \acs{AnsBot}, \acs{Krec}, and \acs{Hurried}, respectively.
-\gm{Why give these three examples?}
- 
-
-\input{sections/cp4/tbl-git-example-ansbot.tex}
-\input{sections/cp4/tbl-git-example-apiref.tex}
-\input{sections/cp4/tbl-git-example-hurried.tex}
+Sections~\ref{cp4:relevant-text-manual} and \ref{cp4:relevant-text-auto} respectively detail procedures for 
+relevant text manually and automatically detected.
 
 
 
 
 
+\subsection{Manual relevant text detection}
+\label{cp4:relevant-text-manual}
 
-
-\subsection{Ratio of Task-relevant Sentences}
-\label{cp4:corpus-relevant-text-ratio}
-
-\gm{You need to get across that in applying
-the techniques to this new data you need to
-check if the results are similar to what was
-reported for the technique authors. Doesn't
-this require you to speak to whether the accuracy
-is similar to what the authors reported for
-the techniques?}
-
-\gm{W}e apply a set of techniques 
-to tasks/artifacts outside the ones where the techniques were originally proposed and evaluated~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
-For instance, \acs{AnsBot}'s design was based on general Java programming tasks~\cite{Xu2017} while the tasks in our corpus comprise Android development and originate both from GitHub and from Stack Overflow. Because of such differences, we ask:
-
-
-\begin{enumerate}[label={},leftmargin=0.7cm]
-\item \textit{Within the artifacts in our corpus, what is the average ratio of sentences relevant to a task detected by the selected techniques?} 
-
-\end{enumerate}
-
-
-
-Answering this question will assist in defining \textit{thresholds} or the \textit{ratio}
-of the text in each artifact that our selected techniques identify as useful to a particular task.
-In turn, this information will allow us to use the \acs{DS-android} corpus for the design and evaluation of techniques that we later propose (Chapter~\ref{ch:identifying}).
-
-
-
-To answer this question, we rely on three reference answers produced by 
-experienced software developers to define \textit{golden relevant sentences} 
-and to compute ratios for a sample of 10 tasks and associated artifacts in our corpus.
-The following subsections provide further details on how we compute ratios.
-
-\art{I used `ratio' to move away from `evaluation'. Accuracy can be better, but just thinking if it still implies an evaluation. Does it?}
-
-
-
-
-
-\subsubsection{Golden Data}
 
 
 Creating golden data for the entirety of the \acs{DS-android} corpus is infeasible
@@ -178,22 +129,121 @@ This would instrument the HTML of a page and identify each sentence in a paragra
 
 
 
-\subsection{Metrics}
-
-
-Based on the golden data, we use a sliding scale to determine the ratio of task-relevant text identified by each technique. That is, we compute ratios considering when one, two or the three annotators have marked a sentence as relevant.
-
-
-We  
-compute the ratio of sentences identified by a technique using standard \textit{precision} and \textit{recall} metrics~\cite{Manning2009IR}. When computing metrics, we compare the relevant text automatically identified by a technique against the golden relevant text 
-selected by a given number of annotators (i.e., $n=1, 2,$ or $3$)
-
-\gm{I am not quite following ratio here...}
+\subsection{Automatic relevant text detection}
+\label{cp4:relevant-text-auto}
 
 
 
-To ease interpreting precision and recall, Table~\ref{tbl:type-I-II-errors} show all possible evaluation outcomes. The \textit{relevant} and \textit{not-relevant} columns represent the text 
-marked (or not) by the annotators. Rows represent the text automatically identified by a technique.
+% \gm{I think you need to set up
+% that you want the state-of-the-art
+% because you want to do at least
+% this good with your newly developed
+% techniques that motivates the creation
+% of this corpus in the first place.
+% You'll also have to explain the
+% Misc ones.}
+
+
+
+
+% To identify techniques applicable to the creation of our corpus, we systematically reviewed related work. We searched for techniques based on their availability in existing replication packages and their readiness for use.
+% We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of the challenges related to correctly tuning such supervised approaches~\cite{Chaparro2017, fucci2019}. Based on these criteria, three techniques were selected for the artifact sources in parenthesis:
+
+
+% \begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
+%     \item \texttt{\acs{AnsBot}} (\textit{SO Answers}) uses several features (e.g., information entropy, textual patterns, entity overlap, etc.) to determine that a sentence has useful information to a developer's technical question~\cite{Xu2017}.
+    
+%     \item \texttt{\acs{Krec}} (\textit{API Documentation}) identifies text fragments that reflect ``potentially important text that programmers cannot afford to ignore when using the API''~\cite{Robillard2015}.
+    
+%     \item \texttt{\acs{Hurried}} (\textit{GitHub issues}) identify the most relevant sentences in a bug report based on three factors used to assess a sentence's relevancy (i.e., sentence's prominence in the issue, topic, and its similarity to the task)~\cite{Lotufo2012}.
+% \end{itemize}
+
+
+
+% While our corpus also has miscellaneous Web pages (i.e., Web tutorials or blog posts), we are not aware of a technique able to identify task-relevant text for such sources. We detail how we make use of miscellaneous sources in Section~\ref{}.
+
+% \gm{I think you have to be clearer  that
+% Misc are included as non-annotated artifacts.}
+
+
+
+% For the pertinent artifacts of our running example (Figure~\ref{fig:lock-screen-task}), 
+% Tables~\ref{tbl:git-example-ansbot} to~\ref{tbl:git-example-hurried}
+% illustrate sentences automatically detected by \acs{AnsBot}, \acs{Krec}, and \acs{Hurried}, respectively.
+% \gm{Why give these three examples?}
+ 
+
+% \input{sections/cp4/tbl-git-example-ansbot.tex}
+% \input{sections/cp4/tbl-git-example-apiref.tex}
+% \input{sections/cp4/tbl-git-example-hurried.tex}
+
+
+
+
+
+
+
+% \subsection{Ratio of Task-relevant Sentences}
+% \label{cp4:corpus-relevant-text-ratio}
+
+% \gm{You need to get across that in applying
+% the techniques to this new data you need to
+% check if the results are similar to what was
+% reported for the technique authors. Doesn't
+% this require you to speak to whether the accuracy
+% is similar to what the authors reported for
+% the techniques?}
+
+% \gm{W}e apply a set of techniques 
+% to tasks/artifacts outside the ones where the techniques were originally proposed and evaluated~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
+% For instance, \acs{AnsBot}'s design was based on general Java programming tasks~\cite{Xu2017} while the tasks in our corpus comprise Android development and originate both from GitHub and from Stack Overflow. Because of such differences, we ask:
+
+
+% \begin{enumerate}[label={},leftmargin=0.7cm]
+% \item \textit{Within the artifacts in our corpus, what is the average ratio of sentences relevant to a task detected by the selected techniques?} 
+
+% \end{enumerate}
+
+
+
+% Answering this question will assist in defining \textit{thresholds} or the \textit{ratio}
+% of the text in each artifact that our selected techniques identify as useful to a particular task.
+% In turn, this information will allow us to use the \acs{DS-android} corpus for the design and evaluation of techniques that we later propose (Chapter~\ref{ch:identifying}).
+
+
+
+% To answer this question, we rely on three reference answers produced by 
+% experienced software developers to define \textit{golden relevant sentences} 
+% and to compute ratios for a sample of 10 tasks and associated artifacts in our corpus.
+% The following subsections provide further details on how we compute ratios.
+
+% \art{I used `ratio' to move away from `evaluation'. Accuracy can be better, but just thinking if it still implies an evaluation. Does it?}
+
+
+
+
+
+% \subsubsection{Golden Data}
+
+
+
+
+% \subsection{Metrics}
+
+
+% Based on the golden data, we use a sliding scale to determine the ratio of task-relevant text identified by each technique. That is, we compute ratios considering when one, two or the three annotators have marked a sentence as relevant.
+
+
+% We  
+% compute the ratio of sentences identified by a technique using standard \textit{precision} and \textit{recall} metrics~\cite{Manning2009IR}. When computing metrics, we compare the relevant text automatically identified by a technique against the golden relevant text 
+% selected by a given number of annotators (i.e., $n=1, 2,$ or $3$)
+
+% \gm{I am not quite following ratio here...}
+
+
+
+% To ease interpreting precision and recall, Table~\ref{tbl:type-I-II-errors} show all possible evaluation outcomes. The \textit{relevant} and \textit{not-relevant} columns represent the text 
+% marked (or not) by the annotators. Rows represent the text automatically identified by a technique.
 
 
 
@@ -201,66 +251,66 @@ marked (or not) by the annotators. Rows represent the text automatically identif
  
 
 
-\input{sections/cp4/tbl-eval-outcomes.tex}
+% \input{sections/cp4/tbl-eval-outcomes.tex}
 
 
 
-For a given task $t$ and artifact $a$, $precision_n$ is the ratio between the sentences identified that are marked as relevant by $n$ annotators and the total number of sentences identified, as shown in Equation~\ref{eq:cp4:precision}. For example,  \textit{precision(t, API documentation)\textsubscript{2}} computes the number of sentences identified by \acs{Krec} for the task $t$ when 
-goldens consist of sentences marked by two or more annotators.
+% For a given task $t$ and artifact $a$, $precision_n$ is the ratio between the sentences identified that are marked as relevant by $n$ annotators and the total number of sentences identified, as shown in Equation~\ref{eq:cp4:precision}. For example,  \textit{precision(t, API documentation)\textsubscript{2}} computes the number of sentences identified by \acs{Krec} for the task $t$ when 
+% goldens consist of sentences marked by two or more annotators.
 
 
-\begin{equation}
-\label{eq:cp4:precision}    
-    Precision(t, a)_n = \frac{TP}{TP + FP}
-\end{equation}
+% \begin{equation}
+% \label{eq:cp4:precision}    
+%     Precision(t, a)_n = \frac{TP}{TP + FP}
+% \end{equation}
 
 
-Recall ($recall_n$) represents how many of all sentences marked by at least $n$ annotators are identified by a technique (Equation~\ref{eq:cp4:recall}).
-
-
-
-\begin{equation}
-\label{eq:cp4:recall}        
-    Recall(t, a)_n = \frac{TP}{TP + FN}
-\end{equation}
-
-\vspace{3mm}
+% Recall ($recall_n$) represents how many of all sentences marked by at least $n$ annotators are identified by a technique (Equation~\ref{eq:cp4:recall}).
 
 
 
+% \begin{equation}
+% \label{eq:cp4:recall}        
+%     Recall(t, a)_n = \frac{TP}{TP + FN}
+% \end{equation}
 
-\subsection{Results}
-\textcolor{white}{force ident} % this is just for the chapter outline
-
-
---- Discuss results.\footnote{\red{think which summary tables should I have in the thesis body and which I can move to Appendices}} \vspace{3mm}
-
-
-
---- Precision~\ref{tbl:ds-small-results-precision}  \vspace{3mm}
-
-
---- Recall~\ref{tbl:ds-small-results-recall} \vspace{3mm}
-
---- Likely explanation for the results obtained.
-
-% When interpreting results, we favor precision instead of recall.
-% A false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
+% \vspace{3mm}
 
 
 
 
-\input{sections/cp4/tbl-results-precision.tex}
+% \subsection{Results}
+% \textcolor{white}{force ident} % this is just for the chapter outline
 
-\input{sections/cp4/tbl-results-recall.tex}
+
+% --- Discuss results.\footnote{\red{think which summary tables should I have in the thesis body and which I can move to Appendices}} \vspace{3mm}
 
 
-\subsection{Threats}
-\label{cp4:corpus-threats}
 
---- \red{Argue that this is not a replication study but rather establishing thresholds} \vspace{3mm}
+% --- Precision~\ref{tbl:ds-small-results-precision}  \vspace{3mm}
 
---- Discuss threats \vspace{3mm}
+
+% --- Recall~\ref{tbl:ds-small-results-recall} \vspace{3mm}
+
+% --- Likely explanation for the results obtained.
+
+% % When interpreting results, we favor precision instead of recall.
+% % A false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
+
+
+
+
+% \input{sections/cp4/tbl-results-precision.tex}
+
+% \input{sections/cp4/tbl-results-recall.tex}
+
+
+% \subsection{Threats}
+% \label{cp4:corpus-threats}
+
+% --- \red{Argue that this is not a replication study but rather establishing thresholds} \vspace{3mm}
+
+% --- Discuss threats \vspace{3mm}
 
 
 

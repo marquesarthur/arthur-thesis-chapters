@@ -4,53 +4,59 @@
 
 
 When selecting artifacts pertinent to a task in our corpus, we seek to simulate everyday practices on how developers search the Web~\cite{rao2020, Xia2017}.
-\gm{We}
-%That is, our corpus creation pipeline
-formulate a query for each task and use a Web search engine to retrieve artifacts that are pertinent to that task, as described below.
+We formulate a query for each task and use a Web search engine to retrieve artifacts that are pertinent to that task, as described below.
 
 
 \subsubsection{Artifact sources}
 
-\gm{Aren't most of these artifact
-types chosen because there are existing
-techniques? Have you considered doing
-this more empirically - report on the
-kinds of artifact types and select
-most common?}
+% \gm{Aren't most of these artifact
+% types chosen because there are existing
+% techniques? Have you considered doing
+% this more empirically - report on the
+% kinds of artifact types and select
+% most common?}
 
-As there are many different sources of artifacts, we restrict artifact selection to well-known and studied sources~\cite{Starke2009,Kevic2014, Li2013}, namely
+
+The artifacts sought to find useful information or knowledge for completing a task
+highly depend on the type of task a developer performs.
+For example, when using a new framework or library, a developer refers to official API documentation more often~\cite{Li2013,robillard2011field} while, for debugging or error diagnostic tasks, community-based sources are preferred~\cite{Li2013,Breu2010}.
+Despite such variability, researchers have observed that 
+technical blogs, API documentation, and community forums are sources
+commonly used by developer to forage information~\cite{Li2013, josyula2018}.
+
+
+
+We use this knowledge to restrict artifact selection to well-known and studied artifacts within these sources~\cite{Starke2009,Kevic2014, Li2013}, namely
 Android and Java SE API documentation, Github issues, Stack Overflow answers; and Web tutorials or blog posts from Java and Android development.
+
+
 
 
 
 \subsubsection{Query formulation}
 
 
-
-We consider a task's title (i.e., SO \gm{I don't think you have introduced
-this short form?} question or GitHub issue title) as the seed used to search artifacts
-using the \texttt{googlesearch} API~\cite{googlesearch}. \gm{Seems like
-motivation that is in next paragraph
-should come first.}
+%  \gm{Seems like
+% motivation that is in next paragraph
+% should come first.}
 
 
 Coming up with proper search terms is a critical step of any search~\cite{Haiduc2013}
 and, ideally, we should be able to formulate a query with terms able to retrieve the most pertinent artifacts for a software task.
-However, studies have shown that developers perform poorly in identifying good search terms~\cite{Starke2009,Kevic2014, Li2013} and thus, using a task's title
+However, studies have shown that developers perform poorly in identifying good search terms~\cite{Starke2009,Kevic2014} and thus, using a task's title
 as an educated approximation to terms that a developer might use is a common procedure adopted by other studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}).
-
-
-
-
+Hence, we use a task's title (i.e., SO question or GitHub issue title) as the seed to search for pertinent artifacts.
 
 
 
 \subsubsection{Search results}
 
 
+We use \texttt{googlesearch} API~\cite{googlesearch} to get the results of a query. 
 We fetch a maximum of 5 resources per artifact source --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used to get the content of each source considered.
 \gm{Isn't the real reason because you
 don't want more?}
+\art{I think it's both. I don't want more and there's throttling/IP blocking}
 
 
 When selecting results, we exclude any result that does not appear in the Amazon Alexa~\cite{alexa} Web traffic for Java and Android development in the period from April 2020 to March 2021\footnote{\red{Review filter --- it may be too strict at the moment}}. 
