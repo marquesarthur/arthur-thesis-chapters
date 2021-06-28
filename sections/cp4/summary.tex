@@ -2,19 +2,35 @@
 \section{Corpus Summary}
 \label{cp4:corpus-summary}
 
-This chapter main contributions are \textit{(i)} the procedures for the corpus creation, and; \textit{(ii)} the \acs{DS-android} corpus itself. A well-structured corpus lays the foundation for several studies that explore relationships between software tasks, natural language artifacts, and text within these artifacts. 
-
-Our corpus comprises 300 tasks evenly selected from SO and Git. 
-There is a total of \red{x} sentences in \red{y} artifacts pertaining API documentation, Stack Overflow answers, Github issue discussions, and miscellaneous Web tutorials or blog posts. 
-
---- Description of the number of task-relevant sentences in the corpus based on Section~\ref{cp4:corpus-relevant-text-ratio}
-
-Overall, text in 
-the \acs{DS-android} corpus consists of  
+In this chapter, we introduced the need of corpora 
+for the development of 
+automatic techniques able to identify relevant text
+to solving a task in artifacts
+pertinent to the task.
+Since  no such corpora
+existed, we have detailed 
+a set of structured procedures for its creation. 
+The \acs{DS-android} corpus consists of  
 12,401 unique sentences
-originating from artifacts associated to 50 Android development tasks and 
-marked by three annotators as being relevant
-to a task. 
+originating from artifacts associated to 50 software tasks
+drawn from GitHub issues and Stack Overflow posts about Android development. 
+We found that 
+three annotators with professional experience indicated that,
+out of these 12,401 unique sentences, 
+\red{n} of them were relevant to a particular task and that 
+annotators agreed on the relevancy of  
+only a fraction of the marked sentences (\red{n\%}).
+Due to these characteristics, 
+we outline how our corpus can be used for evaluation purposes 
+using both standard precision and recall metrics as well as using
+metrics that equate how many annotators marked a sentence. 
+Ultimately, we expect that the \acs{DS-android} corpus
+lays the foundation for studies that explore relationships between software tasks
+and the text within different types of natural language artifacts.
+
+
+
+
 
 % \section{Corpus Creation}
 % \label{cp4:corpus-creation}
