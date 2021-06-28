@@ -10,37 +10,28 @@
 Next, we need text in a set of artifacts that could provide information that assists a developer solving her task.
 In our corpus, this text represents \textit{golden data} that one can use to design and evaluate  
 automatic tools that assist developers in the identification of  information useful to their tasks. 
-
-
-
-
-To produce golden data, we follow the footsteps studies that 
+To produce it, we follow the footsteps of studies that 
 ask human annotators to
 mark the text that they deem useful and that provide information that could assist task completion~\cite{nadi2020, Robillard2015, marques2020}.
-Overall, 
-the \acs{DS-android} corpus consists of  
-12,401 unique sentences
-originating from artifacts associated to 50 Android development tasks and 
-marked by three annotators as being relevant (or not)
-to a task, as the following sections further detail. 
-
-
-% \begin{itemize}
-%     \item reliable golden data in a small yet diverse set of tasks and artifact types, including miscellaneous sources, which can provide new opportunities for the design of techniques that automatically detect text relevant to a task across different artifact types; and over
-%     \item automatically produced golden data in a large number of
-%     task and well-known artifact types where the relevant text detected by automatic approaches can serves as
-%     baseline for comparison.
-% \end{itemize}
 
 
 
-\subsection{Tasks and artifacts}
+\subsection{Annotation process}
+
+
+Our intention is that golden data reflect text that instruct developers to perform important actions to accomplish their task~\cite{Robillard2015, Lotufo2012}.
+To that end, the following sections describe the text inspected, annotators' background as well as annotation procedures.
+
+
+
+
+\subsubsection{Text inspected}
 
 
 
 
 We restrict the manual identification of text relevant to a task to a random subset of 
-50  out of the 300 initially gathered tasks (Section~\ref{cp4:corpus-tasks}).
+50  out of the 300  tasks initially gathered (Section~\ref{cp4:corpus-tasks}).
 This decision was motivated by the fact that 
 creating golden data for the entirety of our tasks 
 would require asking human evaluators to inspect thousands of artifacts and more than 260,000 sentences, which would be a costly and time consuming activity. 
@@ -49,57 +40,38 @@ would require asking human evaluators to inspect thousands of artifacts and more
 
 For each one of the tasks in this set (i.e., 25 GitHub tasks and 25 Stack Overflow tasks), we randomly selected 
 one API document, a GitHub issue discussion, one Stack Overflow answer, as well as two  miscellaneous artifacts for a maximum of 5 artifacts per task for inspection.
-Overall, 
+In total, this comprises the inspection of  
+12,401 unique sentences, with an average of 63.59 sentences (stdv 66.28) per artifact.
 
-comprises the inspection of 
-12,401 unique sentences with an average of 63.59 sentences ($\pm 66.28$) per artifact 
-
-
-\gm{There is no evaluation, so use annotators not
-evaluators}
-\art{updated}
-
-We asked human annotators to read the content of these
-artifacts and 
-to mark sentences that they deemed useful and that provide information that assisted task completion---instructions similar to the ones used for the creation of the 
-data in the \acs{DS-synthetic} corpus~\cite{marques2020}.
-Since individuals might use different criteria to
-assess relevance~\cite{Barry1994, Barry1998, Freund2015},
-there is a risk that
-the text selected by annotators does not overlap~\cite{Freund2013, Freund2015}.
-Due to this reason, golden data in \acs{DS-android-small} consists of any sentence marked by annotators. 
-
-% Section~\ref{cp4:threats} further details threats that might arise from this decision.
-
-
-
-% Additionally, the text selected by a single annotator may still be crucial for task completion~\cite{marques2020}.
 
 
 \subsubsection{Annotators}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
---- We recruited \red{n} graduate students with professional programming experience to produce \textit{golden} data for our tasks sample. \vspace{3mm}
+We recruited \red{3} graduate students with professional programming experience to produce \textit{golden} data for our corpus. Annotators had to have experience with Java development and they also had to be familiar with the types of artifacts that they would encounter throughout the annotation process. 
+On average, annotators self-reported \red{3} years of professional
+programming experience (stdv 4, ranging from \red{1} to \red{2} years).
+
 
 
 \subsubsection{Annotation procedures}
 
-\gm{Is this goal consistent with what the
-original techniques sought to do as well?} \art{rephrased to be consistent with the original techniques}
 
-\gm{Doesn't each annotator get each of the 10
-tasks so there is no randomly assigned task?}
-\art{Sorry. I missed this paragraph}
 
-Our intention is that golden data reflect text that instruct developers to perform important actions to accomplish their task~\cite{Robillard2015, Lotufo2012}.
-To produce such data, annotators had task descriptions and links to artifacts pertinent to the respective task at their disposal. We asked annotators to write a short plan (250 words max~\cite{Rastkar2010}) with instructions that a developer could follow to successfully complete the task. 
+We divided tasks into batches of 10 tasks each as to avoid fatigue effects~\cite{Ponzanelli2017}. For each batch, annotators had task descriptions and links to artifacts pertinent to the respective task at their disposal. We asked annotators to write a short plan (250 words max~\cite{Rastkar2010}) with instructions that a developer could follow to successfully complete the task. 
 The purpose of the plan was to ensure that annotators built enough context about the task.
-While perusing artifacts, annotators also had to manually highlight sentences that they deemed useful and that provided information that assisted task completion. 
+While perusing artifacts, annotators also had to manually highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the 
+ data in the \acs{DS-synthetic} corpus~\cite{marques2020}.
 
 
 The annotation process was facilitated by an in-house tool---in the form of a Web browser plugin shown in Figure~\ref{fig:corpus-annotation-tool}. In the figure, the top-right corner panel shows the browser extension. Annotators could start an annotation session and click the highlight button.
 This would instrument the HTML of a page and identify each sentence in a paragraph. The tool allowed annotators to hove over individual sentences and select them as relevant (text in orange) by clicking on the hovered text. For example, the figure depicts that an annotator selected  the sentence
-``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant for the lock mode task.
+``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant for the lock mode task (Figure~\ref{fig:lock-screen-task}).
+
+
+
+
+
 
 
 \begin{figure}
@@ -110,18 +82,56 @@ This would instrument the HTML of a page and identify each sentence in a paragra
 \end{figure}
 
 
-\subsubsection{Results}
-
---- Provide summary of size of \acs{DS-android-small}. 
-
---- Descriptive statistics for marked sentences, similar to ICPC paper
-
---- State how the manually produced data can be used for the evaluation newly developed
-techniques
 
 
+\subsection{Results}
 
 
+Annotation required a total of \red{$\approx60$} hours of manual work and it was done throughout the course of 4 weeks.
+On average the text deemed useful to a software task in the annotated artifacts comprises 
+\red{5} sentences. 
+Table~\ref{tbl:corpus-annotation-summary} provides summary statistics for the text marked by 
+the annotators over all the artifacts inspected as well as on an artifact type basis.
+
+
+\input{sections/cp4/tbl-corpus-annotation-summary}
+
+
+
+To that end, we use Nenkova and Passonneau's
+pyramid method~\cite{Nenkova2004}. This method was originally used
+to quantify the content of summaries produced by different annotators.
+The more annotators who include the same content in their summaries,
+the more consistent the view of information relevant to a summary and
+the more weight given the selected content. We apply the same rationale
+to assess the level of agreement of which HUs are relevant to a task
+and whether agreement relates to how correctly
+a participant completes a task.
+
+
+
+
+To construct the pyramid, we assign a weight to each HU
+corresponding to the number of participants who highlighted that HU during
+a task.
+Figure~\ref{fig:highlights-distribution} shows the distribution of these weights.
+From the 602 HUs, we observe that 18\% of them are considered relevant by eight or more participants while 58\% are relevant to only one or two participants.
+
+
+
+
+
+% Since individuals might use different criteria to
+% assess relevance~\cite{Barry1994, Barry1998, Freund2015},
+% there is a risk that
+% the text selected by annotators does not overlap~\cite{Freund2013, Freund2015}.
+% Due to this reason, golden data in \acs{DS-android-small} consists of any sentence marked by annotators. 
+
+% Section~\ref{cp4:threats} further details threats that might arise from this decision.
+
+
+
+% Additionally, the text selected by a single annotator may still be crucial for task completion~\cite{marques2020}.
 
 
 \subsubsection{Metrics}
