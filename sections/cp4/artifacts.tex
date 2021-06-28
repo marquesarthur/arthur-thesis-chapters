@@ -19,15 +19,15 @@ We formulate a query for each task and use a Web search engine to retrieve artif
 
 The artifacts sought to find useful information or knowledge for completing a task
 highly depend on the type of task a developer performs.
-For example, when using a new framework or library, a developer refers to official API documentation more often~\cite{Li2013,robillard2011field} while, for debugging or error diagnostic tasks, community-based sources are preferred~\cite{Li2013,Breu2010}.
+For example, when using a new framework or library, a developer refers to official API documentation~\cite{Li2013,robillard2011field} while, for debugging or error diagnostic tasks, community-based sources are preferred~\cite{Li2013,Breu2010}.
 Despite such variability, researchers have observed that 
 technical blogs, API documentation, and community forums are sources
-commonly used by developer to forage information~\cite{Li2013, josyula2018}.
+commonly used by developer to forage information that assists task completion~\cite{Li2013, josyula2018}.
 
 
 
 We use this knowledge to restrict artifact selection to well-known and studied artifacts within these sources~\cite{Starke2009,Kevic2014, Li2013}, namely
-Android and Java SE API documentation, Github issues, Stack Overflow answers; and Web tutorials or blog posts from Java and Android development.
+Android and Java SE API documentation, GitHub issues, Stack Overflow answers; and Web tutorials or blog posts on Java and Android development.
 
 
 
@@ -60,9 +60,9 @@ don't want more?}
 
 
 When selecting results, we exclude any result that does not appear in the Amazon Alexa~\cite{alexa} Web traffic for Java and Android development in the period from April 2020 to March 2021\footnote{\red{Review filter --- it may be too strict at the moment}}. 
-While applying this filter potentially decreased the number of artifacts per task, it ensured that results were indeed related to Android development. 
+While applying this filter can significantly decrease the number of artifacts per task, it ensures that results are indeed related to software development. 
 For instance, for a task discussing ``\textit{left and right-hand swap}'' 
-filtering avoided fetching unrelated resources, such as a Web page on  \textit{stock swap} operations.
+filtering avoided fetching resources about  \textit{stock swap} operations.
 Table~\ref{tbl:googlesearch-example-git} shows one search result per artifact source for the GitHub task introduced in Section~\ref{cp4:corpus-tasks}.
 
 

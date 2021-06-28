@@ -1,0 +1,96 @@
+
+\subsection{Automatic relevant text detection}
+\label{cp4:relevant-text-auto}
+
+
+
+
+
+We rely on state-of-the-art approaches~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017} able to automatically identify relevant text for a parcel of the  artifact types in our corpus, namely API documentation, GitHub issues, and Stack Overflow answers.
+The text automatically identified by these approaches can serve as a baseline for 
+any new technique applied to the same artifact types. 
+To establish this baseline we use the text identified by human annotators and report the accuracy of the approaches we make use of.
+
+
+\subsubsection{Automatic approaches}
+
+
+To identify approaches applicable to the artifacts in our corpus, we systematically reviewed related work. We searched for approaches based on their availability in existing replication packages and their readiness for use.
+We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of the challenges related to correctly tuning such supervised approaches~\cite{Chaparro2017, fucci2019}. Based on these criteria, three approaches were selected for the artifact sources in parenthesis:
+
+
+\begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
+    \item \texttt{\acs{AnsBot}} (\textit{SO Answers}) uses several features (e.g., information entropy, textual patterns, entity overlap, etc.) to determine that a sentence has useful information to a developer's technical question~\cite{Xu2017}.
+    
+    \item \texttt{\acs{Krec}} (\textit{API Documentation}) identifies text fragments that reflect ``potentially important text that programmers cannot afford to ignore when using the API''~\cite{Robillard2015}.
+    
+    \item \texttt{\acs{Hurried}} (\textit{GitHub issues}) identify the most relevant sentences in a bug report based on three factors used to assess a sentence's relevancy (i.e., sentence's prominence in the issue, topic, and its similarity to the task)~\cite{Lotufo2012}.
+\end{itemize}
+
+
+\gm{I think you have to be clearer  that
+Misc are included as non-annotated artifacts.}
+\art{rephrased}
+
+Due to the amount of variety in the content of miscellaneous sources, 
+applying automatic approaches to detect relevant text for these types of artifacts
+incurs the risk of using an approach for an artifact that the approach was not designed for.
+Therefore, we refrain from using automatic approaches for miscellaneous artifacts.
+With the exception of \acs{DS-android-small}, miscellaneous artifacts do not have associated task-relevant text detected and we leave this to future work.
+
+
+
+% For the pertinent artifacts of our running example (Figure~\ref{fig:lock-screen-task}), 
+% Tables~\ref{tbl:git-example-ansbot} to~\ref{tbl:git-example-hurried}
+% illustrate sentences automatically detected by \acs{AnsBot}, \acs{Krec}, and \acs{Hurried}, respectively.
+% \gm{Why give these three examples?}
+
+ 
+
+% \input{sections/cp4/tbl-git-example-ansbot.tex}
+% \input{sections/cp4/tbl-git-example-apiref.tex}
+% \input{sections/cp4/tbl-git-example-hurried.tex}
+
+
+
+
+
+
+
+\subsection{Accuracy}
+\label{cp4:relevant-text-accuracy}
+
+\gm{You need to get across that in applying
+the techniques to this new data you need to
+check if the results are similar to what was
+reported for the technique authors. Doesn't
+this require you to speak to whether the accuracy
+is similar to what the authors reported for
+the techniques?}
+
+\vspace{3mm}
+\art{I'm stuck here because of two potential result outcomes: similar results VS negative results.}
+
+
+
+\vspace{3mm}
+\gm{W}e apply a set of approaches 
+to tasks and artifacts outside the ones where they were originally proposed and evaluated~\cite{nadi2020, Robillard2015, Lotufo2012, Xu2017}.
+For instance, \acs{AnsBot}'s design was based on general Java programming tasks~\cite{Xu2017} while the tasks in our corpus comprise Android development and originate both from GitHub and from Stack Overflow. 
+Likewise, \acs{Krec} was originally designed using the Java SE documentation~\cite{Robillard2015} 
+while API documents in \acs{DS-android} comprise Android development\footnote{\url{https://developer.android.com/docs}}.
+Because of such differences, we ask:
+
+
+\begin{enumerate}[label={},leftmargin=0.7cm]
+\item \textit{What is the accuracy of the approaches used to automatically detect text relevant in the task and artifacts in \acs{DS-android}?} 
+
+\end{enumerate}
+
+
+Answering this question will determine the portion of the text in \acs{DS-android} identified by an approach that 
+is indeed relevant (i.e., precision) and how much 
+of the relevant text an approach is able to detect (i.e., recall).
+In turn, this information will help future research in understanding
+how the automatically detected text in our corpus can be used in evaluation of new techniques for the automatic detection of relevant text. 
+

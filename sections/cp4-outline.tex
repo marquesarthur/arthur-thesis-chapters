@@ -29,7 +29,7 @@ and a variety of different artifacts pertinent
 to the task in which text relevant to the
 task is identified.
 This corpus consists of 
-300 tasks comprising Android development and originating from \acf{SO} questions
+50 tasks comprising Android development and originating from \acf{SO} questions
 as well as from GitHub issues from a variety of Android Open-Source Systems.
 
 Figure~\ref{fig:corpus-creation-pipeline}
@@ -39,9 +39,11 @@ task sources, GitHub\footnote{\url{https://github.com/}} and Stack Overflow\foot
 For each of these tasks, we use the Google search engine to find potential artifacts that likely contain relevant
 information for that task. 
 We parse the content (i.e., natural language English text) of obtained artifacts 
-and we use state-of-the-art techniques to detect the relevant text, when applicable.
+and we rely of the input of experienced 
+software developers for the identification of the relevant text.
 We detail each of these steps in turn in 
-Sections~\ref{cp4:corpus-tasks},~\ref{cp4:corpus-artifacts} and ~\ref{cp4:corpus-relevant-text}
+Sections~\ref{cp4:corpus-tasks},~\ref{cp4:corpus-artifacts} and ~\ref{cp4:corpus-relevant-text},
+respectively.
 We provide a summary of the final created corpus we call \acs{DS-android} corpus in Section~\ref{cp4:corpus-summary}.
 
 \gm{Pointer to how to get the corpus online right up front?}
@@ -50,7 +52,7 @@ We provide a summary of the final created corpus we call \acs{DS-android} corpus
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{cp4/corpus-creation-pipeline}
-    \caption{Summary of procedures for corpus creation}
+    \caption{Summary of procedures for corpus creation. \red{UPDATE}}
     \label{fig:corpus-creation-pipeline}
 \end{figure}
 
