@@ -69,14 +69,16 @@ Table~\ref{tbl:googlesearch-example-git} shows one search result per artifact so
 
 \subsubsection{Artifact's content}
 
-\gm{Explain why you have to do this step.}
-
-Processing an artifact's content into a sequence of individual sentences 
-followed procedures analogous to other studies in the field~\cite{Arya2019, nadi2020}.
+Last, we need to extract the natural language text within an artifact so that 
+techniques that automate the identification of text relevant to a task can be built 
+using our corpus.  This step requires processing an artifact's content 
+into a sequence of individual sentences.
 Given a search result \texttt{URL}, we use \texttt{BeautifulSoup}~\cite{beautifulsoup4},
 \texttt{StackAPI}~\cite{StackAPI} and \texttt{PyGithub}~\cite{PyGithub}
-to fetch the artifacts' content. Sentences in each paragraph
-were identified using the Stanford CoreNLP toolkit~\cite{CoreNLP}.
+to fetch the artifacts' content
+and the Stanford CoreNLP toolkit~\cite{CoreNLP} for the identification of 
+individual sentences,
+which are common procedures for processing the artifact types found in our corpus~\cite{Arya2019, nadi2020}.
 
 
 
