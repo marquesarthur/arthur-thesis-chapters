@@ -21,13 +21,12 @@ Two common places a software task can be found are:
 
 \begin{itemize}
     \item the description of an issue
-    (e.g., a bug or feature request) reported in a issue tracking system; or in
+    (e.g., a bug or feature request) reported in an issue tracking system; or in
     \item a post in a community forum, development mailing lists, and others.
 \end{itemize}
 
-Several studies have used such  sources for software tasks~\cite{Arya2019, baltes2019, nadi2020, Xu2017}. Following the lead
-of these studies, we select
-GitHub issues and Stack Overflow (SO) posts as sources for potential tasks.
+Several studies have used such sources for software tasks~\cite{Arya2019, baltes2019, nadi2020, Xu2017}. Following the lead
+of these studies, we select GitHub issues and \acf{SO} posts as sources for potential tasks.
 
 When selecting tasks in GitHub and Stack Overflow, a major challenge arises due to the sheer amount of data available.
 Baltes et al.~\cite{baltes2019} argues that even a cursory inspection of a sample set
@@ -52,11 +51,6 @@ We selected 15 projects,
 ranging from mail clients\footnote{\url{https://github.com/k9mail/k-9}}
 to development frameworks\footnote{\url{https://github.com/libgdx/libgdx}},
 by filtering the list of top-starred projects in the platform to the ones that contained the \textit{Java} and \textit{Android} tags.
-
-
-
-
-
 For each of these projects, we randomly select 10 issues as the GitHub tasks of our corpus for a total of 150 distinct issues.
 While selecting issues, we took care to check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
 so that our selection ignored issues automatically created by scripts or bots---a common pitfall that researchers must be aware of when mining GitHub~\cite{kalliamvakou2014}.
@@ -81,25 +75,36 @@ For the remainder of this chapter, we use the lock screen task as a running exam
 \subsubsection{Stack Overflow tasks}
 
 %Provided that we restrict our corpus to tasks related to %the Android development domain,
-We randomly select 150 Stack Overflow posts from a curated list about Android development~\cite{baltes2020}.
-This list was built by Baltes et al. 
-by identifying 209,536 unique posts that contained the the \textit{Java} and \textit{Android} tags in the Stack Overflow dump published on June 5, 2018~\cite{baltes2019-rep, SOTorrent2019}.
 
 
-We consider Stack Overflow posts as software tasks because, to answer a post,
+We consider Stack Overflow posts as software tasks because to answer a post,
 a developer often needs to provide references
 supporting their answer~\cite{yazdaninia2021}.
 Finding these references in a timely manner and writing the key information that helps a user understand 
-their problem and the provided solution encompass many of the activities found in a developer's daily work, e.g., work related browsing, coding, debugging, and reading/writing documentation~\cite{Meyer2017}.
-For example, Figure~\ref{fig:webview-task} depicts a task where a developer 
-describes her struggles using the Android WebView component.
-To answer this question, a developer will not only provide a code snippet but 
-also explain key points of the Android Webview API~\cite{apiWebView}
-and how they were used in the solution provided to the task.
+ the provided solution encompasses many of the activities found in a developer's daily work, e.g., work-related browsing, coding, debugging, and reading/writing documentation~\cite{Meyer2017}.
+For example, Figure~\ref{fig:webview-task} depicts a task where a developer describes her struggles using the Android WebView component.
+To answer this question, a developer will not only provide a code snippet but also explain key points of the Android Webview API~\cite{apiWebView}
+and how they were used in the solution provided to the task, 
+as presented in Figure~\ref{fig:webview-task-answer}.
+
 
 \begin{figure}
     \centering
     \includegraphics[width=0.85\textwidth]{cp4/webview-task}
-    \caption{Sample Stack Overflow task from our corpus}
+    \caption{Sample Stack Overflow question}
     \label{fig:webview-task}
 \end{figure}
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{cp4/webview-task-answer}
+    \caption{Excerpt of a Stack Overflow answer}
+    \label{fig:webview-task-answer}
+\end{figure}
+
+We randomly select 150 Stack Overflow posts from a curated list about Android development~\cite{baltes2020}.
+This list was built by Baltes et al. 
+using the Stack Overflow dump published on June 5, 2018~\cite{baltes2019-rep, SOTorrent2019}
+and it contains 209,536 unique posts with the \textit{Java} and \textit{Android} tags.

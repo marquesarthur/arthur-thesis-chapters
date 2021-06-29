@@ -7,21 +7,21 @@
 
 
 
-Next, we need text in a set of artifacts that could provide information that assists a developer solving her task.
-In our corpus, this text represents \textit{golden data} that one can use to design and evaluate  
-automatic tools that assist developers in the identification of  information useful to their tasks. 
+Next, we need text in a set of artifacts that could provide information that assists a developer in solving her task.
+In our corpus, this text represents \textit{golden data} that one can use to design and evaluate automatic tools that assist developers in the identification of information useful to their tasks. 
 To produce it, we follow the footsteps of studies that 
 ask human annotators to
-mark the text that they deem useful and that provide information that could assist task completion~\cite{nadi2020, Robillard2015, marques2020}.
+mark the text that they deem useful and that provide information for tasks assigned to them~\cite{nadi2020, Robillard2015, marques2020}.
 
 
 
 \subsection{Annotation process}
 
 
-Our intention is that golden data reflect text that instruct developers to perform important actions to accomplish their task~\cite{Robillard2015, Lotufo2012}.
-To that end, the following sections describe the text inspected, annotators' background as well as annotation procedures.
-
+Our intention is that golden data reflect text that instructs developers to perform important actions to accomplish their task~\cite{Robillard2015, Lotufo2012}.
+To this end, we describe the text inspected by the annotators, the annotators' background as well as annotation procedures.
+% FIXME: find a way to format the standard deviation acronym
+\textcolor{white}{\acs{stdv}} % force acronym to appear in the glossary for the time being
 
 
 
@@ -34,21 +34,28 @@ We restrict the manual identification of text relevant to a task to a random sub
 50  out of the 300  tasks initially gathered (Section~\ref{cp4:corpus-tasks}).
 This decision was motivated by the fact that 
 creating golden data for the entirety of our tasks 
-would require asking human annotators to inspect thousands of artifacts and more than 260,000 sentences, which would be a costly and time consuming activity. 
+would require asking human annotators to inspect thousands of artifacts and more than 260,000 sentences, which would be a costly and time-consuming activity. 
 
 
-
-For each one of the tasks in this subset (i.e., 25 GitHub tasks and 25 Stack Overflow tasks), we randomly selected 
-one API document, a GitHub issue discussion, one Stack Overflow answer, as well as two  miscellaneous Web pages for a maximum of 5 artifacts per task.
+For each one of the 25 Stack Overflow tasks and the 25 GitHub tasks in this subset, we randomly selected 
+one API document, a GitHub issue discussion, one Stack Overflow answer, as well as two miscellaneous Web pages for a maximum of 5 artifacts per task.
 In total, this comprises the inspection of  
 12,401 unique sentences, with an average of 63.59 sentences per artifact (stdv 66.28).
 
 
 
+Although the number of sentences in the tasks selected for inspection represents 
+only a fraction of the initial data gathered, 
+the number of sentences inspected in \acs{DS-android}
+is still significantly higher than 
+artifact-specific corpora, such as the \textit{McGill} corpus on information correspondence with 2,445 sentences~\cite{arya2020} or the information types corpus with 4,656 labeled sentences~\cite{Arya2019}.
+\art{I'm trying to justify that the size of the corpus is still considerable.}
+
+
 \subsubsection{Annotators}
 \textcolor{white}{force ident} % this is just for the chapter outline
 
-We recruited \red{3} graduate students with professional programming experience to produce \textit{golden} data for our corpus. Annotators had to have experience with Java development and they also had to be familiar with the types of artifacts that they would encounter throughout the annotation process. 
+We recruited \red{3} graduate students with professional programming experience to produce \textit{golden} data for our corpus. Annotators had to have experience with Java development and they also had to be familiar with the types of artifacts they would encounter throughout the annotation process. 
 On average, annotators self-reported \red{3} years of professional
 programming experience (stdv 4, ranging from \red{1} to \red{2} years).
 
@@ -58,15 +65,14 @@ programming experience (stdv 4, ranging from \red{1} to \red{2} years).
 
 
 
-We divided tasks into batches of 10 tasks each as to avoid fatigue effects~\cite{Ponzanelli2017}. For each batch, annotators had task descriptions and links to artifacts pertinent to the respective task at their disposal. We asked annotators to write a short plan (250 words max~\cite{Rastkar2010}) with instructions that a developer could follow to successfully complete the task. 
+We divided tasks into batches of 10 tasks each as to avoid fatigue effects~\cite{Ponzanelli2017}. For each batch, annotators had task descriptions and links to artifacts pertinent to the respective task at their disposal. We asked annotators to write a short plan (250 words max~\cite{Rastkar2010}) with instructions that a developer could follow to complete the task successfully. 
 The purpose of the plan was to ensure that annotators built enough context about the task.
-While perusing artifacts, annotators also had to manually highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the 
- data in the \acs{DS-synthetic} corpus~\cite{marques2020}.
+While perusing artifacts, annotators also had to manually highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the data in the \acs{DS-synthetic} corpus~\cite{marques2020}.
 
 
-The annotation process was facilitated by an in-house tool---in the form of a Web browser plugin shown in Figure~\ref{fig:corpus-annotation-tool}. In the figure, the top-right corner panel shows the browser extension. Annotators could start an annotation session and click the highlight button.
-This would instrument the HTML of a page and identify each sentence in a paragraph. The tool allowed annotators to hove over individual sentences and select them as relevant by clicking on the hovered text. For example, the figure depicts that an annotator selected  the sentence
-``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant for the lock mode task (Figure~\ref{fig:lock-screen-task}).
+The annotation process was facilitated by an in-house tool, in the form of a Web browser plugin, shown in Figure~\ref{fig:corpus-annotation-tool}. In the figure, the top-right corner panel shows the browser extension. Annotators could start an annotation session and click the highlight button.
+This would instrument the HTML of a page and identify each sentence in a paragraph. The tool allowed annotators to hover over individual sentences and select them as relevant by clicking on the hovered text. For example, the figure depicts that an annotator selected  the sentence
+``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant to the Android lock mode task (Figure~\ref{fig:lock-screen-task}).
 
 
 
@@ -88,10 +94,12 @@ This would instrument the HTML of a page and identify each sentence in a paragra
 
 
 Annotation required a total of \red{$\approx60$} hours of manual work and it was done throughout the course of 4 weeks.
-On average the text deemed useful to a software task in the annotated artifacts comprises 
-\red{5} sentences. 
 Table~\ref{tbl:corpus-annotation-summary} provides summary statistics for the text marked by 
 the annotators over all the artifacts inspected as well as on an artifact type basis.
+On average the text deemed useful to a software task in the artifacts inspected comprises 
+\red{5} sentences. 
+We observe that the highest number of sentences marked originate from \red{artifact type}
+while the lowest from \red{artifact} type. Potential explanation for that...
 
 
 \input{sections/cp4/tbl-corpus-annotation-summary}
@@ -116,99 +124,25 @@ This result is not surprising and it corroborates
 results on the construction of the \acs{DS-synthetic} 
 corpus, where we observe that complete agreement 
 occurred on 17\% of the annotated text.
-
+\art{I can also present this data in a bar graph}
 
 
 
 Due to how the text marked by the annotators differ
-and considering the purpose which motivated creation of the \acs{DS-android} corpus
-(i.e., to evaluate techniques able to automatically detect the text relevant to a task),
-we suggest usage of  metrics outlined by Lotufo et al.~\cite{Lotufo2012} for evaluation purposes. 
+and considering the purpose which motivated the creation of the \acs{DS-android} corpus
+(i.e., to evaluate techniques able to detect the text relevant to a task automatically),
+we suggest the usage of metrics outlined by Lotufo et al.~\cite{Lotufo2012} for evaluation purposes. 
 That is,
 one can consider the text marked only by two or more annotators as relevant
-and use standard precision and recall metrics~\cite{Manning2009IR}. 
-On the other hand, one can consider that
+and use standard precision and recall metrics~\cite{Manning2009IR}, or one can consider that
 any of the text marked by the annotators 
 contributes to task completion and weight the number of 
-annotators who marked the text through usage of pyramid 
+annotators who marked the text through the usage of the pyramid 
 precision and pyramid recall metrics~\cite{Nenkova2004, Lotufo2012}. 
 \art{I wanted to give a quick summary of how the text in the corpus can be used for the purpose to which it was created. I am not certain if this would be better here or in another secion.}
 
 
 
-
-
-
-
-
-
-% To understand precision and recall metrics metrics, Table~\ref{tbl:type-I-II-errors} show all possible outcomes  when evaluating a technique able to automatically detect text relevant to a software task. The \textit{relevant} and \textit{not-relevant} columns represent the text 
-% marked (or not) by \textit{at least two} annotators~\cite{Lotufo2012}. Rows represent the text identified by an automatic approach.
-
-
-% \input{sections/cp4/tbl-eval-outcomes.tex}
-
-
-
-% For a given task $t$ and artifact $a$, $precision$ is the fraction of the sentences identified that are marked as relevant by at least two annotators over the total number of sentences identified, as shown in Equation~\ref{eq:cp4:precision}.
-
-
-% \begin{equation}
-% \label{eq:cp4:precision}    
-%     Precision(t, a) = \frac{TP}{TP + FP}
-% \end{equation}
-
-
-% Recall ($recall$) represents how many of all sentences marked by at least two annotators are identified by a technique (Equation~\ref{eq:cp4:recall}).
-
-
-% \begin{equation}
-% \label{eq:cp4:recall}        
-%     Recall(t, a) = \frac{TP}{TP + FN}
-% \end{equation}
-
-
-
-
-
-
-% \vspace{3mm}
-
-
-
-
-% \subsection{Results}
-% \textcolor{white}{force ident} % this is just for the chapter outline
-
-
-% --- Discuss results.\footnote{\red{think which summary tables should I have in the thesis body and which I can move to Appendices}} \vspace{3mm}
-
-
-
-% --- Precision~\ref{tbl:ds-small-results-precision}  \vspace{3mm}
-
-
-% --- Recall~\ref{tbl:ds-small-results-recall} \vspace{3mm}
-
-% --- Likely explanation for the results obtained.
-
-% % When interpreting results, we favor precision instead of recall.
-% % A false positives may contribute to a developer abandoning reading of an artifact that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
-
-
-
-
-% \input{sections/cp4/tbl-results-precision.tex}
-
-% \input{sections/cp4/tbl-results-recall.tex}
-
-
-% \subsection{Threats}
-% \label{cp4:corpus-threats}
-
-% --- \red{Argue that this is not a replication study but rather establishing thresholds} \vspace{3mm}
-
-% --- Discuss threats \vspace{3mm}
 
 
 
