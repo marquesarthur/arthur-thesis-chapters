@@ -1,0 +1,94 @@
+\section{Evaluation}
+\label{cp5:evaluation}
+
+
+
+
+\subsection{Method}
+
+
+
+--- We use the \acs{DS-android} corpus to evaluate our proposed techniques  \vspace{3mm}
+
+
+\subsubsection{Setup}
+
+--- We consider the following configurations  \vspace{3mm}
+
+\begin{enumerate}
+    \item Word-based properties
+    \item Sentence-based properties
+    \item Combination of Word-based + Sentence-based properties
+\end{enumerate}
+
+
+
+\subsubsection{Metrics}
+
+
+
+--- Since the number of annotators that deemed a sentence as useful to a task 
+in the \acs{DS-android} corpus varies, we consider 
+two main evaluation scenarios:
+
+
+% --- Guided by Lotufo et al.'s evaluation of techniques for the 
+% detection of the most relevant sentences in a bug report based~\cite{Lotufo2012},
+% we consider two evaluation scenarios:
+\begin{itemize}
+    \item only text marked by the majority of the annotators is relevant to a task.
+    
+    \item text marked by any annotator contains valuable information.
+\end{itemize}
+ 
+
+
+The first is a conservative scenario where text marked by a single annotator can be an indicator of unrelated information, which may not contribute to task completion. 
+We use precision and recall~\cite{Manning2009IR} as metrics for this evaluation scenario. 
+
+
+Pyramid 
+precision and pyramid recall metrics, as reported by Lotufo et al.~\cite{Nenkova2004, Lotufo2012}, are suitable metrics for the second evaluation scenario. 
+If more annotators marked a sentence, it is likely that that sentence contains key information for completing a task albeit the metrics do not exclude sentences marked by a single annotator because these sentences provide a glimpse of an individual's perception of relevancy~\cite{Petrosyan2015}. 
+
+% For instance, 
+% a sentence describing how to use a certain API may be relevant to a novice developer using that API for the first time while it may be ``common knowledge'' to a more experienced developer.
+
+
+% To understand precision and recall metrics metrics, Table~\ref{tbl:type-I-II-errors} show all possible outcomes  when evaluating a technique able to automatically detect text relevant to a software task. The \textit{relevant} and \textit{not-relevant} columns represent the text 
+% marked (or not) by \textit{at least two} annotators~\cite{Lotufo2012}. Rows represent the text identified by an automatic approach.
+
+
+% \input{sections/cp5/tbl-eval-outcomes.tex}
+
+
+
+% For a given task $t$ and artifact $a$, $precision$ is the fraction of the sentences identified that are marked as relevant by at least two annotators over the total number of sentences identified, as shown in Equation~\ref{eq:cp4:precision}.
+
+
+% \begin{equation}
+% \label{eq:cp4:precision}    
+%     Precision(t, a) = \frac{TP}{TP + FP}
+% \end{equation}
+
+
+% Recall ($recall$) represents how many of all sentences marked by at least two annotators are identified by a technique (Equation~\ref{eq:cp4:recall}).
+
+
+% \begin{equation}
+% \label{eq:cp4:recall}        
+%     Recall(t, a) = \frac{TP}{TP + FN}
+% \end{equation}
+
+
+
+\subsection{Results}
+
+
+
+\subsection{Threats to validity}
+
+
+
+
+

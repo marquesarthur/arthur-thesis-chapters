@@ -1,0 +1,136 @@
+
+% \clearpage
+
+
+
+
+% \subsubsection{Baselines}
+% \label{cp4:comparison-techniques}
+% \textcolor{white}{force ident} % this is just for the chapter outline
+
+% --- We systematically reviewed related work and we identified techniques applicable to our domain problem
+
+% ------ Selection criteria considered each technique's availability in existing replication packages and their readiness for use.
+
+% ------ We also refrained from using approaches with training procedures (e.g., ~\cite{liu2020} or ~\cite{Treude2016}) because of ~\cite{Chaparro2017, fucci2019} \vspace{3mm}
+
+
+% --- Based on these criteria, we selected the following techniques for comparison:
+
+
+% \begin{itemize}[leftmargin=\parindent, font=\normalfont\itshape]
+%     \item \textit{SO Answers} (\texttt{\acs{AnsBot}})~\cite{Xu2017} --- short description of the approach;
+    
+%     \item \textit{API Documentation} (\texttt{\acs{Krec}})~\cite{Robillard2015} --- short description of the approach;
+    
+%     \item \textit{GitHub issues} (\texttt{\acs{Hurried}})~\cite{Lotufo2012} --- short description of the approach;
+
+%     % \item \textit{Miscellaneous} (\texttt{LexRank})~\cite{Erkan2004} --- in the lack of an artifact-specific technique for this category, we use LexRank as a baseline because it has been evaluated in several studies that address the identification of textual information in natural language software artifacts~\cite{nadi2020, Ponzanelli2017}
+% \end{itemize}
+
+
+
+
+% ------------------------------ OLD ------------------------------
+
+
+
+
+
+% \section{Large-scale Evaluation}
+% \textcolor{white}{force ident} % this is just for the chapter outline
+
+% \gm{Isn't this about scale more than human evaluation?}
+
+% \red{PLACEHOLDER - revisit this section once I finish the correctness evaluation}
+
+% \red{argument to justify this second evaluation}
+
+% --- Although our analytic evaluation gives insight on how accurately can we identify text relevant to a task within a natural language artifact, we seek to provide further evidence on whether software developers consider automatically detected text as useful for a task 
+
+% --- In this study, we asked software developers to indicate if automatically detected text provided important/useful information needed to correctly accomplish a task.
+
+% --- This evaluation was performed on a random sample of 30 tasks in our corpus (distinct from the expert tasks)
+
+% --- To avoid confirmation biases, developers provided input for both text detected by one of our approaches (i.e., the approach that had the best results in our analytic evaluation) and text detected by approaches in the literature (Section~\ref{cp4:comparison-techniques})
+
+
+
+% \subsection{Participants}
+% \textcolor{white}{force ident} % this is just for the chapter outline
+
+% --- For this evaluation, we consider the challenges of recruiting software developers in the local area and we instead opt to use 
+% \textit{Amazon Mechanical Turk}~\cite{mturk} (MTurk).
+
+% --- Background questions ensured that individuals had Java development experience and that they had familiarity with the artifact sources in our corpus.
+
+% --- Specifically, a MTurk evaluator---\textit{turker}--- had to answer the following background questions:
+
+
+% \begin{enumerate}[leftmargin=\parindent, font=\normalfont\itshape, label=BQ\textsubscript{\arabic*.}]
+%     \item Is developing software part of your job? Yes, no 
+%     \item For how many years have you been developing software? Free text
+%     \item How would you rate your development expertise in Java? No experience at all developing Java, Beginner, Intermediate, Expert
+%     \item How would you rate your development expertise in Android? No experience at all developing Android, Beginner, Intermediate, Expert
+%     \item When performing a software task, what sources do you normally seek information on? Multiple choice: API documentation, Stack Overflow, Github, Medium, ...
+% \end{enumerate}
+
+   
+
+% \subsection{Method}
+% \textcolor{white}{force ident} % this is just for the chapter outline
+
+
+% --- All the evaluation was performed in the Mechanical Turk platform. \vspace{3mm}
+
+% --- Turkers indicated the relevancy of a sentence to a given task  by answering the question: \vspace{3mm}
+
+% \begin{enumerate}[leftmargin=\parindent, font=\normalfont\itshape, label=SR\textsubscript{\arabic*}]
+%     \item Which of the following statements best describes this sentence? 
+%     \textit{(a)} The sentence is meaningful and provides important/useful information needed to correctly accomplish the task in question, 
+%     \textit{(b)} The sentence is meaningful, but does not provide any important/useful information to correctly accomplish the task in question, 
+%     \textit{(c)} The sentence does not make sense to me.
+% \end{enumerate}
+
+% --- We deliberately word the question as close as possible to other peer-reviewed studies in the field~\cite{nadi2020, Xu2017}. \vspace{3mm}
+
+
+% --- Due to constraints on the platform, the evaluators judged sentences individually, i.e., without access to the context in which the sentences appeared. \vspace{3mm}
+
+% --- Turkers also had to answer a \textit{quality-gate task} randomly drawn from the \red{experts}' tasks.
+
+% ------ The task showed five expert-curated sentences (all marked by the \red{experts} as relevant) and a turker had to indicate the sentences' usefulness as in any other task.
+
+% ------ We discarded responses from any turker who deemed less than three out of the five sentences as useful for the task
+
+
+% \subsubsection{Evaluation Metrics}
+% \textcolor{white}{force ident} % this is just for the chapter outline
+
+% --- We report a quantitative analysis of the ratings provided by the turkers
+
+
+
+
+% \subsection{Results}
+% \textcolor{white}{force ident} % this is just for the chapter outline
+
+% --- Discuss results \vspace{3mm}
+
+% \subsection{Threats to Validity}
+
+% --- Discuss threats \vspace{3mm}
+
+% \clearpage
+
+% \section{Summary}
+% \textcolor{white}{force ident} % this is just for the chapter outline
+
+% --- Summary of contributions for the chapter \vspace{3mm}
+
+% ------ A technique for automatically detecting text relevant to an input task in a given artifact
+
+% ------ Empirical comparison of our technique to existing techniques in the literature
+
+% ------ Study with human evaluators on whether they consider automatically detected text as useful for task completion
+

@@ -1,0 +1,39 @@
+\section{Approach}
+\label{cp5:approaches}
+\textcolor{white}{force ident} % this is just for the chapter outline
+
+--- We present a technique for automatically detecting task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
+
+--- Our goal is to to identify task-relevant text over distinct types of natural language software artifacts with high accuracy.  \vspace{3mm}
+
+--- To this end, we explore a set of approaches (or their combination)
+that exploit 
+natural language processing techniques at 
+the word and sentence level.  \vspace{3mm}
+
+
+--- When developing our techniques, we use the \acs{DS-synthetic} dataset of manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
+
+
+\subsection{Sentence-based approach}
+
+\red{REVIEW}
+
+% uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
+
+
+
+% --- Explain why we have selected the approach:
+
+% ------ With our first approach, we investigate whether a light-weight technique addresses the need of automatically identifying task-relevant text, what could potentially discourage the need for more complex and computationally expensive solutions~\cite{Bavota2016}
+
+
+\subsection{Word-based approach}
+
+\red{REVIEW}
+
+% --- uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
+
+% --- Explain why we have selected the approach:
+
+% ------ Our second approach investigates the applicability of pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
