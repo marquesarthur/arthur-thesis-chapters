@@ -9,8 +9,8 @@
 
 Next, we need text in a set of artifacts that could provide information that assists a developer in solving her task.
 In our corpus, this text represents \textit{golden data} that one can use to design and evaluate automatic tools that assist developers in the identification of information useful to their tasks. 
-To produce it, we follow the footsteps of studies that 
-ask human annotators to
+To produce it, we 
+ask human experts to
 mark the text that they deem useful and that provide information for tasks assigned to them~\cite{nadi2020, Robillard2015, marques2020}.
 
 
@@ -32,14 +32,15 @@ To this end, we describe the text inspected by the annotators, the annotators' b
 
 We restrict the manual identification of text relevant to a task to a random subset of 
 50  out of the 300  tasks initially gathered (Section~\ref{cp4:corpus-tasks}).
+\gm{-Why select 300? Just select 25 and 25 originally.}
 This decision was motivated by the fact that 
 creating golden data for the entirety of our tasks 
 would require asking human annotators to inspect thousands of artifacts and more than 260,000 sentences, which would be a costly and time-consuming activity. 
 
 
-For each one of the 25 Stack Overflow tasks and the 25 GitHub tasks in this subset, we randomly selected 
-one API document, a GitHub issue discussion, one Stack Overflow answer, as well as two miscellaneous Web pages for a maximum of 5 artifacts per task.
-In total, this comprises the inspection of  
+For each one of the 25 Stack Overflow tasks and the 25 GitHub tasks in this subset, we randomly selected 5 artifacts of at least three different types: 
+one API document, a GitHub issue discussion, one Stack Overflow answer, aand two miscellaneous Web pages.
+In total, our corpus contains
 12,401 unique sentences, with an average of 63.59 sentences per artifact (stdv 66.28).
 
 
@@ -70,8 +71,10 @@ The purpose of the plan was to ensure that annotators built enough context about
 While perusing artifacts, annotators also had to manually highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the data in the \acs{DS-synthetic} corpus~\cite{marques2020}.
 
 
-The annotation process was facilitated by an in-house tool, in the form of a Web browser plugin, shown in Figure~\ref{fig:corpus-annotation-tool}. In the figure, the top-right corner panel shows the browser extension. Annotators could start an annotation session and click the highlight button.
-This would instrument the HTML of a page and identify each sentence in a paragraph. The tool allowed annotators to hover over individual sentences and select them as relevant by clicking on the hovered text. For example, the figure depicts that an annotator selected  the sentence
+The annotation process was facilitated by a tool we created for this purpose. Figure~\ref{fig:corpus-annotation-tool} shows a screenshot from the tool in 
+action, which works as a browser plug-in. The top-right corner panel in the figure shows the browser extension. Annotators  start an annotation session and click the highlight button.
+\gm{Not quite following previous sentence.}
+The tool instruments the HTML of a page and identifies each sentence. The tool allows annotators to hover over individual sentences and select them as relevant by clicking on the hovered text. For example, the figure depicts that an annotator selected  the sentence
 ``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant to the Android lock mode task (Figure~\ref{fig:lock-screen-task}).
 
 
@@ -139,7 +142,8 @@ any of the text marked by the annotators
 contributes to task completion and weight the number of 
 annotators who marked the text through the usage of the pyramid 
 precision and pyramid recall metrics~\cite{Nenkova2004, Lotufo2012}. 
-\art{I wanted to give a quick summary of how the text in the corpus can be used for the purpose to which it was created. I am not certain if this would be better here or in another secion.}
+\art{I wanted to give a quick summary of how the text in the corpus can be used for the purpose to which it was created. I am not certain if this would be better here or in another secion.} \gm{I think a different place is better. The important point here is what
+is in the corpus - all sentences marked by annotators and who marked which?}
 
 
 

@@ -1,11 +1,15 @@
 \section{Software Tasks}
 \label{cp4:corpus-tasks}
 
-
-We start corpus creation by identifying software tasks for which a 
-developer can benefit
-from
-foraging information across different artifact types. 
+We start corpus creation by identifying software tasks 
+\gm{for which a developer will likely benefit from 
+the use of additional information to complete.}
+\gm{-I think you need to argue why Android upfront and then
+get into issues and posts.}
+%for which a 
+%developer can benefit
+%from
+%foraging information across different artifact types. 
 Two common places a software task can be found are:
 
 % ART: move definition to an early chapter
@@ -31,9 +35,12 @@ of these studies, we select GitHub issues and \acf{SO} posts as sources for pote
 When selecting tasks in GitHub and Stack Overflow, a major challenge arises due to the sheer amount of data available.
 Baltes et al.~\cite{baltes2019} argues that even a cursory inspection of a sample set
 of Stack Overflow posts shows clear differences in a post's content or structure due to aspects such as programming languages, frameworks, associated technologies, and others.
+\gm{-It feels like there is a missing sentence about how differences relate
+to the 'sheer amount of data' and why the differences matter.}
 
 To ensure the tasks in the corpus we produce
-circumvent the heterogeneity of data on GitHub and Stack Overflow, we scope task selection to the \textit{Android} development domain. This decision
+circumvent \gm{-circumvent has a negative connotation - is there a way
+to say this positively?} the heterogeneity of data on GitHub and Stack Overflow, we scope task selection to the \textit{Android} development domain. This decision
 restricts task selection to a single programming language (\textit{Java})
 while still enabling investigation of a domain that has been
 widely discussed by practitioners and researchers alike.
@@ -46,14 +53,14 @@ while researchers have investigated how changes to the Android SDK impact its ec
 
 To select tasks from GitHub, we are guided by studies that use 
 stars~\cite{borges2016, borges2018}
-as a proxy for a projet's popularity~\cite{Ferreira2016, Xavier2020}.
+as a proxy for a project's popularity~\cite{Ferreira2016, Xavier2020}.
 We selected 15 projects,
 ranging from mail clients\footnote{\url{https://github.com/k9mail/k-9}}
 to development frameworks\footnote{\url{https://github.com/libgdx/libgdx}},
-by filtering the list of top-starred projects in the platform to the ones that contained the \textit{Java} and \textit{Android} tags.
+by filtering the list of top-starred projects in GitHub to those with the \textit{Java} and \textit{Android} tags.
 For each of these projects, we randomly select 10 issues as the GitHub tasks of our corpus for a total of 150 distinct issues.
 While selecting issues, we took care to check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
-so that our selection ignored issues automatically created by scripts or bots---a common pitfall that researchers must be aware of when mining GitHub~\cite{kalliamvakou2014}.
+as these words indicate issues  created automatically by scripts or bots---a common pitfall that researchers must be aware of when mining GitHub~\cite{kalliamvakou2014}.
 
 
 Figure~\ref{fig:lock-screen-task} shows an example of a GitHub task in our corpus.
@@ -83,7 +90,7 @@ supporting their answer~\cite{yazdaninia2021}.
 Finding these references in a timely manner and writing the key information that helps a user understand 
  the provided solution encompasses many of the activities found in a developer's daily work, e.g., work-related browsing, coding, debugging, and reading/writing documentation~\cite{Meyer2017}.
 For example, Figure~\ref{fig:webview-task} depicts a task where a developer describes her struggles using the Android WebView component.
-To answer this question, a developer will not only provide a code snippet but also explain key points of the Android Webview API~\cite{apiWebView}
+To answer this question, a developer will not only provide a code snippet, but also explain key points of the Android Webview API~\cite{apiWebView}
 and how they were used in the solution provided to the task, 
 as presented in Figure~\ref{fig:webview-task-answer}.
 
