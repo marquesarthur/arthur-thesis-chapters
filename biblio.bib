@@ -3378,3 +3378,39 @@ series = {MSR '20}
   year={2020},
   publisher={Springer}
 }
+
+
+@inproceedings{Li2018android,
+author = {Li, Li and Gao, Jun and Bissyand\'{e}, Tegawend\'{e} F. and Ma, Lei and Xia, Xin and Klein, Jacques},
+title = {Characterising Deprecated Android APIs},
+year = {2018},
+isbn = {9781450357166},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3196398.3196419},
+doi = {10.1145/3196398.3196419},
+abstract = {Because of functionality evolution, or security and performance-related changes, some APIs eventually become unnecessary in a software system and thus need to be cleaned to ensure proper maintainability. Those APIs are typically marked first as deprecated APIs and, as recommended, follow through a deprecated-replaceremove cycle, giving an opportunity to client application developers to smoothly adapt their code in next updates. Such a mechanism is adopted in the Android framework development where thousands of reusable APIs are made available to Android app developers.In this work, we present a research-based prototype tool called CDA and apply it to different revisions (i.e., releases or tags) of the Android framework code for characterising deprecated APIs. Based on the data mined by CDA, we then perform an exploratory study on API deprecation in the Android ecosystem and the associated challenges for maintaining quality apps. In particular, we investigate the prevalence of deprecated APIs, their annotations and documentation, their removal and consequences, their replacement messages, as well as developer reactions to API deprecation. Experimental results reveal several findings that further provide promising insights for future research directions related to deprecated Android APIs. Notably, by mining the source code of the Android framework base, we have identified three bugs related to deprecated APIs. These bugs have been quickly assigned and positively appreciated by the framework maintainers, who claim that these issues will be updated in future releases.},
+booktitle = {Proceedings of the 15th International Conference on Mining Software Repositories},
+pages = {254–264},
+numpages = {11},
+location = {Gothenburg, Sweden},
+series = {MSR '18}
+}
+
+@inproceedings{Mateus2020,
+author = {Mateus, Bruno Gois and Martinez, Matias},
+title = {On the Adoption, Usage and Evolution of Kotlin Features in Android Development},
+year = {2020},
+isbn = {9781450375801},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3382494.3410676},
+doi = {10.1145/3382494.3410676},
+abstract = {Background: Google announced Kotlin as an Android official programming language in 2017, giving developers an option of writing applications using a language that combines object-oriented and functional features. Aims: The goal of this work is to understand the usage of Kotlin features considering four aspects: i) which features are adopted, ii) what is the degree of adoption, iii) when are these features added into Android applications for the first time, and iv) how the usage of features evolves along with applications' evolution. Method: Exploring the source code of 387 Android applications, we identify the usage of Kotlin features on each version application's version and compute the moment that each feature is used for the first time. Finally, we identify the evolution trend that better describes the usage of these features. Results: 15 out of 26 features are used on at least 50% of applications. Moreover, we found that type inference, lambda and safe call are the most used features. Also, we observed that the most used Kotlin features are those first included on Android applications. Finally, we report that the majority of applications tend to add more instances of 24 out of 26 features along with their evolution. Conclusions: Our study generates 7 main findings. We present their implications, which are addressed to developers, researchers and tool builders in order to foster the use of Kotlin features to develop Android applications.},
+booktitle = {Proceedings of the 14th ACM / IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)},
+articleno = {15},
+numpages = {12},
+keywords = {Evolution trends, Android, Kotlin, Features adoption},
+location = {Bari, Italy},
+series = {ESEM '20}
+}

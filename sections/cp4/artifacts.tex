@@ -52,12 +52,32 @@ Hence, we use a task's title (i.e., SO question or GitHub issue title) as the se
 
 
 We use \texttt{googlesearch} API~\cite{googlesearch} to get the results of a query. 
-We fetch a maximum of 5 resources per artifact source --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used to get the content of each source considered.
-\gm{Isn't the real reason because you
-don't want more?}
-\art{I think it's both. I don't want more and there's throttling/IP blocking}
-\gm{-the throttling argument is weak. You could just wait more time to search. I think this
-is about the human evaluation capability so suggest you rely on that part of the argument.}
+
+
+
+We fetch a maximum of 5 resources per artifact source, i.e., 
+one API document, a GitHub issue discussion, one Stack Overflow answer, and two miscellaneous Web pages.
+
+
+% --- a limitation necessary due to throttling or even blocking mechanisms in the APIs used to get the content of each source considered.
+% \gm{Isn't the real reason because you
+% don't want more?}
+% \art{I think it's both. I don't want more and there's throttling/IP blocking}
+% \gm{-the throttling argument is weak. You could just wait more time to search. I think this
+% is about the human evaluation capability so suggest you rely on that part of the argument.}
+
+
+We restrict the manual identification of text relevant to a task to a random subset of 
+50  out of the 300  tasks initially gathered (Section~\ref{cp4:corpus-tasks}).
+\gm{-Why select 300? Just select 25 and 25 originally.}
+This decision was motivated by the fact that 
+creating golden data for the entirety of our tasks 
+would require asking human annotators to inspect thousands of artifacts and more than 260,000 sentences, which would be a costly and time-consuming activity. 
+
+
+% This imperative process cannot be re- placed by existing natural language processing techniques, which are inca- pable of accurately determining the level of relatedness between highly tech- nical text (Cleland-Huang and Guo, 2014; Al Omran and Treude, 2017).
+
+
 
 
 When selecting results, we exclude any entry that does not appear in the Amazon Alexa~\cite{alexa} Web traffic for Java and Android development in the period from April 2020 to March 2021. 

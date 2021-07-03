@@ -2,25 +2,18 @@
 \label{cp4:corpus-tasks}
 
 We start corpus creation by identifying software tasks 
-\gm{for which a developer will likely benefit from 
-the use of additional information to complete.}
-\gm{-I think you need to argue why Android upfront and then
-get into issues and posts.}
-%for which a 
-%developer can benefit
-%from
-%foraging information across different artifact types. 
-Two common places a software task can be found are:
-
-% ART: move definition to an early chapter
-% We consider a software task as a piece of work undertaken by a developer that often has to be finished within a certain time~\cite{2004merriam}.
-% \gm{Is there a reference you
-% could give to a definition
-% of a software task in 
-% software? Or can you relate to
-% a definition in a previous chapter?}
+for which a developer will likely benefit from 
+the use of additional information to complete.
+\red{
+We scope task selection to \textit{Android development} 
+because the 
+Android \acf{SDK} is always evolving due to 
+functionality, security and performance-related improvements~\cite{Li2018android, Mateus2020}, what impact its development community~\cite{linares2014, bavota2014b, mcdonnell2013}
+and, among other reasons, is a likely cause for why 
+over 35,000 developers have used Q\&A forums to discuss tasks covering 87\% of the classes in the Android API~\cite{parnin2012}.}
 
 
+Two common places where Android task can be found are:
 
 
 \begin{itemize}
@@ -29,23 +22,10 @@ Two common places a software task can be found are:
     \item a post in a community forum, development mailing lists, and others.
 \end{itemize}
 
-Several studies have used such sources for software tasks~\cite{Arya2019, baltes2019, nadi2020, Xu2017}. Following the lead
-of these studies, we select GitHub issues and \acf{SO} posts as sources for potential tasks.
-
-When selecting tasks in GitHub and Stack Overflow, a major challenge arises due to the sheer amount of data available.
-Baltes et al.~\cite{baltes2019} argues that even a cursory inspection of a sample set
-of Stack Overflow posts shows clear differences in a post's content or structure due to aspects such as programming languages, frameworks, associated technologies, and others.
-\gm{-It feels like there is a missing sentence about how differences relate
-to the 'sheer amount of data' and why the differences matter.}
-
-To ensure the tasks in the corpus we produce
-circumvent \gm{-circumvent has a negative connotation - is there a way
-to say this positively?} the heterogeneity of data on GitHub and Stack Overflow, we scope task selection to the \textit{Android} development domain. This decision
-restricts task selection to a single programming language (\textit{Java})
-while still enabling investigation of a domain that has been
-widely discussed by practitioners and researchers alike.
-For instance, over 35,000 developers have used Q\&A forums to discuss tasks covering 87\% of the Android API~\cite{parnin2012}
-while researchers have investigated how changes to the Android SDK impact its ecosystem and development community~\cite{linares2014, bavota2014b, mcdonnell2013}.
+Several studies have used such sources for software tasks~\cite{Arya2019, baltes2019, nadi2020, Xu2017}
+and, following the lead
+of these studies, we select GitHub issues and \acf{SO} posts on Android development as 
+the two sources for the tasks in our corpus.
 
 
 
@@ -54,11 +34,13 @@ while researchers have investigated how changes to the Android SDK impact its ec
 To select tasks from GitHub, we are guided by studies that use 
 stars~\cite{borges2016, borges2018}
 as a proxy for a project's popularity~\cite{Ferreira2016, Xavier2020}.
-We selected 15 projects,
+We selected 14 projects,
 ranging from mail clients\footnote{\url{https://github.com/k9mail/k-9}}
 to development frameworks\footnote{\url{https://github.com/libgdx/libgdx}},
 by filtering the list of top-starred projects in GitHub to those with the \textit{Java} and \textit{Android} tags.
-For each of these projects, we randomly select 10 issues as the GitHub tasks of our corpus for a total of 150 distinct issues.
+\red{We then randomly selected 25 distinct issues originating from these starred projects as the GitHub tasks of our corpus.}
+%  with an average of 1.78 issues per project
+% For each of these projects, we randomly select 10 issues as the GitHub tasks of our corpus for a total of 150 distinct issues.
 While selecting issues, we took care to check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
 as these words indicate issues  created automatically by scripts or bots---a common pitfall that researchers must be aware of when mining GitHub~\cite{kalliamvakou2014}.
 
@@ -111,7 +93,22 @@ as presented in Figure~\ref{fig:webview-task-answer}.
     \label{fig:webview-task-answer}
 \end{figure}
 
-We randomly select 150 Stack Overflow posts from a curated list about Android development~\cite{baltes2020}.
+We randomly select \red{25} Stack Overflow posts from a curated list about Android development~\cite{baltes2020}.
 This list was built by Baltes et al. 
 using the Stack Overflow dump published on June 5, 2018~\cite{baltes2019-rep, SOTorrent2019}
 and it contains 209,536 unique posts with the \textit{Java} and \textit{Android} tags.
+
+
+
+% When selecting tasks in GitHub and Stack Overflow, a major challenge arises due to the sheer amount of data available.
+% Baltes et al.~\cite{baltes2019} argues that even a cursory inspection of a sample set
+% of Stack Overflow posts shows clear differences in a post's content or structure due to aspects such as programming languages, frameworks, associated technologies, and others.
+% \gm{-It feels like there is a missing sentence about how differences relate
+% to the 'sheer amount of data' and why the differences matter.}
+
+% To ensure the tasks in the corpus we produce
+% circumvent \gm{-circumvent has a negative connotation - is there a way
+% to say this positively?} the heterogeneity of data on GitHub and Stack Overflow, we scope task selection to the \textit{Android} development domain. This decision
+% restricts task selection to a single programming language (\textit{Java})
+% while still enabling investigation of a domain that has been
+% widely discussed by practitioners and researchers alike.
