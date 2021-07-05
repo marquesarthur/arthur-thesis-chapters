@@ -26,6 +26,23 @@
 \subsubsection{Metrics}
 
 
+Due to how the text marked by the annotators differ
+and considering the purpose which motivated the creation of the \acs{DS-android} corpus
+(i.e., to evaluate techniques able to detect the text relevant to a task automatically),
+we suggest the usage of metrics outlined by Lotufo et al.~\cite{Lotufo2012} for evaluation purposes. 
+That is,
+one can consider the text marked only by two or more annotators as relevant
+and use standard precision and recall metrics~\cite{Manning2009IR}, or one can consider that
+any of the text marked by the annotators 
+contributes to task completion and weight the number of 
+annotators who marked the text through the usage of the pyramid 
+precision and pyramid recall metrics~\cite{Nenkova2004, Lotufo2012}. 
+\art{I wanted to give a quick summary of how the text in the corpus can be used for the purpose to which it was created. I am not certain if this would be better here or in another secion.} \gm{I think a different place is better. The important point here is what
+is in the corpus - all sentences marked by annotators and who marked which?}
+
+
+
+
 
 --- Since the number of annotators that deemed a sentence as useful to a task 
 in the \acs{DS-android} corpus varies, we consider 

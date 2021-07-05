@@ -7,7 +7,8 @@
 
 
 
-Next, we need text in a set of artifacts that could provide information that assists a developer in solving her task.
+Next, \red{we need to determine which 
+of the text in the gathered artifacts could} provide information that assists a developer in solving her task.
 In our corpus, this text represents \textit{golden data} that one can use to design and evaluate automatic tools that assist developers in the identification of information useful to their tasks. 
 To produce it, we 
 ask human experts to
@@ -53,12 +54,16 @@ artifact-specific corpora, such as the \textit{McGill} corpus on information cor
 \art{I'm trying to justify that the size of the corpus is still considerable.}
 
 
-\subsubsection{Annotators}
-\textcolor{white}{force ident} % this is just for the chapter outline
 
-We recruited \red{3} graduate students with professional programming experience to produce \textit{golden} data for our corpus. Annotators had to have experience with Java development and they also had to be familiar with the types of artifacts they would encounter throughout the annotation process. 
-On average, annotators self-reported \red{4} years of professional
-programming experience (stdv 1.0, ranging from \red{3} to \red{5} years).
+\input{sections/cp4/tbl-corpus-summary}
+
+
+\subsubsection{Annotators}
+
+
+We recruited 3 graduate students with professional programming experience to produce \textit{golden} data for our corpus. Annotators had to have experience with Java development and they also had to be familiar with the types of artifacts they would encounter throughout the annotation process. 
+On average, annotators self-reported 4.6 years of professional
+programming experience (stdv 2.49, ranging from 1 to 7 years).
 
 
 
@@ -72,9 +77,8 @@ While perusing artifacts, annotators also had to manually highlight sentences th
 
 
 The annotation process was facilitated by a tool we created for this purpose. Figure~\ref{fig:corpus-annotation-tool} shows a screenshot from the tool in 
-action, which works as a browser plug-in. The top-right corner panel in the figure shows the browser extension. Annotators  start an annotation session and click the highlight button.
-\gm{Not quite following previous sentence.}
-The tool instruments the HTML of a page and identifies each sentence. The tool allows annotators to hover over individual sentences and select them as relevant by clicking on the hovered text. For example, the figure depicts that an annotator selected  the sentence
+action, which works as a browser plug-in. The top-right corner panel in the figure shows the browser extension. \red{When an annotator clicked the \texttt{highlight} button, }
+the tool instrumented the HTML of a page identifying individual sentences. The tool then allowed annotators to hover over identified sentences and to select them as relevant by clicking on the hovered text. For example, in the first paragraph, an annotator selected  the sentence
 ``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant to the Android lock mode task (Figure~\ref{fig:lock-screen-task}).
 
 
@@ -130,20 +134,6 @@ occurred on 17\% of the annotated text.
 \art{I can also present this data in a bar graph}
 
 
-
-Due to how the text marked by the annotators differ
-and considering the purpose which motivated the creation of the \acs{DS-android} corpus
-(i.e., to evaluate techniques able to detect the text relevant to a task automatically),
-we suggest the usage of metrics outlined by Lotufo et al.~\cite{Lotufo2012} for evaluation purposes. 
-That is,
-one can consider the text marked only by two or more annotators as relevant
-and use standard precision and recall metrics~\cite{Manning2009IR}, or one can consider that
-any of the text marked by the annotators 
-contributes to task completion and weight the number of 
-annotators who marked the text through the usage of the pyramid 
-precision and pyramid recall metrics~\cite{Nenkova2004, Lotufo2012}. 
-\art{I wanted to give a quick summary of how the text in the corpus can be used for the purpose to which it was created. I am not certain if this would be better here or in another secion.} \gm{I think a different place is better. The important point here is what
-is in the corpus - all sentences marked by annotators and who marked which?}
 
 
 
