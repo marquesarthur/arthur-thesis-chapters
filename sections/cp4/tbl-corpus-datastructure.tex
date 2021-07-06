@@ -3,8 +3,8 @@
 \begin{scriptsize}
 % \vspace{-3mm}        
 \begin{tabular}{cl}
-\multicolumn{2}{l}{
-\textbf{Task}
+\multicolumn{2}{l}{\cellcolor{lightgray}
+    \textbf{Task}
 }
 \\
 \multicolumn{2}{l}{\hspace{3mm}
@@ -13,8 +13,8 @@
 }}}
 \href{https://github.com/AntennaPod/AntennaPod/issues/3578}{link}
 \\
-\multicolumn{2}{l}{
-\textbf{Description}
+\multicolumn{2}{l}{\cellcolor{lightgray}
+    \textbf{Description}
 }
 \\
 \multicolumn{2}{l}{
@@ -31,7 +31,8 @@
 \\
 \hline
 \hline
-\multicolumn{2}{l}{\textbf{Artifact}$_1$}
+\multicolumn{2}{l}{\cellcolor{lightgray}
+    \textbf{Artifact}$_1$ - \textbf{API documentation}}
 \\
 \multicolumn{2}{l}{\hspace{3mm}
 \parbox[l][0.7cm][c]{16cm}{
@@ -39,27 +40,28 @@
 }}}
 \href{https://developer.android.com/work/dpc/dedicated-devices/lock-task-mode}{link}
 \\
-\multicolumn{2}{l}{\textbf{Content}}
+\multicolumn{2}{l}{\cellcolor{lightgray}
+    \textbf{Content}}
 \\
-- & 
+\texttt{none} & 
 \parbox[l][0.6cm][c]{20cm}{
 {\ttfamily    
     Android can run tasks in an immersive, kiosk-like fashion called lock task mode.
 }}
 \\
-A1 & 
+\texttt{A1} & 
 \parbox[l][0.6cm][c]{20cm}{
 {\ttfamily    
     Only apps that have been allowlisted by a device policy controller (DPC) can run when the system is in lock task mode.
 }} 
 \\
-- & 
+\texttt{none} & 
 \parbox[l][0.6cm][c]{20cm}{
 {\ttfamily    
     A DPC must allowlist apps before they can be used in lock task mode. 
 }} 
 \\
-A1, A2 & 
+\texttt{A1, A2} & 
 \parbox[l][0.6cm][c]{20cm}{
 {\ttfamily    
     Call DevicePolicyManager.setLockTaskPackages() to allowlist apps for lock task mode as shown in the following sample
@@ -70,7 +72,8 @@ A1, A2 &
 \\
 \hline
 \hline
-\multicolumn{2}{l}{\textbf{Artifact}$_2$}
+\multicolumn{2}{l}{\cellcolor{lightgray}
+    \textbf{Artifact}$_2$ - \textbf{Stack Overflow answer}}
 \\
 \multicolumn{2}{l}{\hspace{3mm}
 \parbox[l][0.7cm][c]{16cm}{
@@ -78,15 +81,16 @@ A1, A2 &
 }}}
 \href{https://stackoverflow.com/questions/24652078/media-control-on-lock-screen-like-google-play-music-in-android}{link}
 \\
-\multicolumn{2}{l}{\textbf{Content}}
+\multicolumn{2}{l}{\cellcolor{lightgray}
+    \textbf{Content}}
 \\
-A1, A2, A3 & 
+\texttt{A1, A2, A3} & 
 \parbox[l][0.6cm][c]{20cm}{
 {\ttfamily    
 Have you checked RemoteControlClient? 
 }}
 \\
-- & 
+\texttt{none} & 
 \parbox[l][0.6cm][c]{20cm}{
 {\ttfamily    
     it is used for the Android Music Remote control even if the App is in Lock mode.
@@ -95,9 +99,10 @@ Have you checked RemoteControlClient?
 \multicolumn{2}{c}{\texttt{...}}
 \\
 \hline
+
 \end{tabular}
 \end{scriptsize}
-\caption{Example of a task in the \acs{DS-android}. Each task has a link, title, description, and a set of pertinent artifacts. Each artifact has a link, title, and content. For each of the sentences in the content, we store the set of annotators who marked the sentence as useful to the task }
+\caption{Example of how data is structured in the \acs{DS-android} corpus. Each task has a  title, link, description, and a set of pertinent artifacts. Each artifact has a title, link, and content. For each of the sentences in the content, we store the set of annotators (i.e., \texttt{none}, \texttt{A1}, \texttt{A2}, or \texttt{A3}) who marked the sentence as useful to the task }
 \label{tbl:corpus-data-structure}
 \end{table}
 

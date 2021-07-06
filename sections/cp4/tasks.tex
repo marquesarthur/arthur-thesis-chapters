@@ -4,11 +4,11 @@
 We start corpus creation by identifying software tasks 
 for which a developer will likely benefit from 
 the use of additional information to complete.
-\red{
+\rev{
 We scope task selection to \textit{Android development} 
 because the 
 Android \acf{SDK} is always evolving due to 
-functionality, security and performance-related improvements~\cite{Li2018android, Mateus2020}, what impact its development community and often require developers to seek information regarding changes in the Android SDK~\cite{linares2014, bavota2014b, mcdonnell2013}.
+functionality, security and performance-related improvements~\cite{Li2018android, Mateus2020}, what impact its development community and often require developers to seek information regarding changes in the SDK~\cite{linares2014, bavota2014b, mcdonnell2013}.
 For example, over 35,000 developers have used Q\&A forums to discuss tasks covering 87\% of the classes in the Android API~\cite{parnin2012}.}
 
 
@@ -37,7 +37,7 @@ We selected 14 projects,
 ranging from mail clients\footnote{\url{https://github.com/k9mail/k-9}}
 to development frameworks\footnote{\url{https://github.com/libgdx/libgdx}},
 by filtering the list of top-starred projects in GitHub to those with the \textit{Java} and \textit{Android} tags.
-\red{We then randomly selected 25 distinct issues originating from these starred projects as the GitHub tasks of our corpus (average of 1.78 issues per project).}
+\rev{We then randomly selected 25 distinct issues originating from these starred projects as the GitHub tasks of our corpus (average of 1.78 issues per project).}
 %  with an average of 1.78 issues per project
 % For each of these projects, we randomly select 10 issues as the GitHub tasks of our corpus for a total of 150 distinct issues.
 While selecting issues, we took care to check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
@@ -92,7 +92,7 @@ as presented in Figure~\ref{fig:webview-task-answer}.
     \label{fig:webview-task-answer}
 \end{figure}
 
-We randomly select \red{25} Stack Overflow posts from a curated list about Android development~\cite{baltes2020}.
+We randomly select \rev{25} Stack Overflow posts from a curated list about Android development~\cite{baltes2020}.
 This list was built by Baltes et al. 
 using the Stack Overflow dump published on June 5, 2018~\cite{baltes2019-rep, SOTorrent2019}
 and it contains 209,536 unique posts with the \textit{Java} and \textit{Android} tags.
