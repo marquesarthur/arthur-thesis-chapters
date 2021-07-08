@@ -13,60 +13,57 @@
 
 \subsubsection{Setup}
 
---- We consider the following configurations  \vspace{3mm}
-
-\begin{enumerate}
-    \item Word-based properties
-    \item Sentence-based properties
-    \item Combination of Word-based + Sentence-based properties
-\end{enumerate}
+--- Explain each evaluation scenario, e.g., using only word-level properties, sentence-level properties, etc.
 
 
 
 \subsubsection{Metrics}
 
 
-Due to how the text marked by the annotators differ
-and considering the purpose which motivated the creation of the \acs{DS-android} corpus
-(i.e., to evaluate techniques able to detect the text relevant to a task automatically),
-we suggest the usage of metrics outlined by Lotufo et al.~\cite{Lotufo2012} for evaluation purposes. 
+
+
+
+
+Motivated by the fact that the text marked by the annotators in the \acs{DS-android} differs
+(Section~\ref{cp4:corpus-relevant-text}),
+we follow evaluation metrics outlined by Lotufo et al.~\cite{Lotufo2012}
+to measure how accurately the techniques that are part of our approach identify text relevant to a task.
 That is,
 one can consider the text marked only by two or more annotators as relevant
 and use standard precision and recall metrics~\cite{Manning2009IR}, or one can consider that
 any of the text marked by the annotators 
-contributes to task completion and weight the number of 
-annotators who marked the text through the usage of the pyramid 
-precision and pyramid recall metrics~\cite{Nenkova2004, Lotufo2012}. 
-\art{I wanted to give a quick summary of how the text in the corpus can be used for the purpose to which it was created. I am not certain if this would be better here or in another secion.} \gm{I think a different place is better. The important point here is what
-is in the corpus - all sentences marked by annotators and who marked which?}
+contributes to task completion and use pyramid 
+precision and pyramid recall metrics
+to compute accuracy based on how many annotators marked the text~\cite{Nenkova2004, Lotufo2012}. 
+
+
+--- Detail each metric
 
 
 
+% --- Since the number of annotators that deemed a sentence as useful to a task 
+% in the \acs{DS-android} corpus varies, we consider 
+% two main evaluation scenarios:
 
 
---- Since the number of annotators that deemed a sentence as useful to a task 
-in the \acs{DS-android} corpus varies, we consider 
-two main evaluation scenarios:
-
-
-% --- Guided by Lotufo et al.'s evaluation of techniques for the 
-% detection of the most relevant sentences in a bug report based~\cite{Lotufo2012},
-% we consider two evaluation scenarios:
-\begin{itemize}
-    \item only text marked by the majority of the annotators is relevant to a task.
+% % --- Guided by Lotufo et al.'s evaluation of techniques for the 
+% % detection of the most relevant sentences in a bug report based~\cite{Lotufo2012},
+% % we consider two evaluation scenarios:
+% \begin{itemize}
+%     \item only text marked by the majority of the annotators is relevant to a task.
     
-    \item text marked by any annotator contains valuable information.
-\end{itemize}
+%     \item text marked by any annotator contains valuable information.
+% \end{itemize}
  
 
 
-The first is a conservative scenario where text marked by a single annotator can be an indicator of unrelated information, which may not contribute to task completion. 
-We use precision and recall~\cite{Manning2009IR} as metrics for this evaluation scenario. 
+% The first is a conservative scenario where text marked by a single annotator can be an indicator of unrelated information, which may not contribute to task completion. 
+% We use precision and recall~\cite{Manning2009IR} as metrics for this evaluation scenario. 
 
 
-Pyramid 
-precision and pyramid recall metrics, as reported by Lotufo et al.~\cite{Nenkova2004, Lotufo2012}, are suitable metrics for the second evaluation scenario. 
-If more annotators marked a sentence, it is likely that that sentence contains key information for completing a task albeit the metrics do not exclude sentences marked by a single annotator because these sentences provide a glimpse of an individual's perception of relevancy~\cite{Petrosyan2015}. 
+% Pyramid 
+% precision and pyramid recall metrics, as reported by Lotufo et al.~\cite{Nenkova2004, Lotufo2012}, are suitable metrics for the second evaluation scenario. 
+% If more annotators marked a sentence, it is likely that that sentence contains key information for completing a task albeit the metrics do not exclude sentences marked by a single annotator because these sentences provide a glimpse of an individual's perception of relevancy~\cite{Petrosyan2015}. 
 
 % For instance, 
 % a sentence describing how to use a certain API may be relevant to a novice developer using that API for the first time while it may be ``common knowledge'' to a more experienced developer.
