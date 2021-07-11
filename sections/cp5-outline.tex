@@ -6,36 +6,153 @@
 \label{ch:identifying}
 
 
-% \begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=1.4cm]
+
+
+
+% Short motivation for the chapter
+
+
+% variety of artifacts a  developer may refer to when performing a 
+
+Designing an automatic technique able to identify text relevant to a task across a range of natural language artifacts means using 
+properties of the text itself to determine its relevance to the task.
+We have shown how  prior work uses syntactic properties (alongside an artifact's meta-data)
+to detect relevant text in specific artifact types.
+We have also shown that, in a small set of tasks and artifacts, task-relevant text might be identified thorough its semantics.
+A natural question that follows is whether these properties 
+extend across a variety of software tasks and artifacts
+and how can we use them as part of an approach that 
+helps developers identifying text that might assist them completing their tasks?
+
+
+% data common to the software task.
+%  i.e., 
+
+% Natural language written text is commonly found across these artifacts  
+% and properties of the text itself may be an indicator
+% of . 
+%  For example, w
+
+% (alongside an artifact's meta-data)
+
+
+
+
+
+
+
+% describe an approach based on previous related work 
+% and 
+
+%  existing work and of our own can be used to automatically identify text relevant to a task.
+
+
+
+To answer this question, this chapter describes an 
+approach 
+that embeds properties from previous related work and of our own
+to automate the identification of relevant text to solving a task. 
+\red{Need to be upfront about it being a classfier, supervised, unsupervised, etc.}
+We begin detailing our approach and the properties we make use of in Section~\ref{cp5:approaches}. 
+Section~\ref{cp5:evaluation}
+describes how can
+\red{we use such properties to accurately
+identify relevant text 
+and} whether certain properties are better indicators of the relevance of the text to a task.
+Section~\ref{cp5:summary} concludes summarizing our key findings.
+
+
+% how we use the \acs{DS-android} corpus
+% to investigate 
+
+% , as captured by \textit{semantic frames}
+
+
+
+%  commonly found across a range of artifacts
+% that a developer may refer to when she requires information that might assist her 
+% completing a software task.
+
+
+
+
+% might capture important clues 
+% to what aspects of the text are indicative of its relevancy to a software task.
+
+
+
+
+% we investigate whether syntactic and semantic clues of the text within an artifact are indicative of its relevancy to a software task.
+
+
+
+% Natural language written text is 
+% a common denominator 
+
+
+
+% % what the chapter is about
+% In this chapter, 
+
+% Our approach is based on syntactic and semantic features 
+% available in prior work and of our own. 
+
+
+
+% we discuss the design 
+% of an approach able to automatically
+% identify text relevant to a particular task across a different range of artifact types.
+
+
+
+
+
+
+
+% \begin{enumerate}[label=\textit{},leftmargin=1.4cm]
 %     \setcounter{enumi}{\the\numexpr \arabic{rq}\relax}
     
-%     \item \textit{What techniques can we use to automatically detect text relevant to a software developer's task in artifacts pertinent to the task?} 
+%     \item \textit{
+%         We hypothesize that syntactic and semantic features extracted from  capture important clues 
+%         to what aspects of the text are indicative of its relevancy to a software task.
+%     } 
     
 % \end{enumerate}
-% \stepcounter{rq}
+% % \stepcounter{rq}
 
-% \vspace{1mm}
-
-
-In this chapter, we discuss the design 
-of an approach able to automatically
-identify text relevant to a particular task across a range of artifact types.
-Our approach called \red{placeholder} opts to accurately determine relevant text within an artifact pertinent to a task such that it encourages a developer to carefully read an artifact that could have been otherwise abandoned by a developer in her search for information relevant to her task.
+% % \vspace{1mm}
 
 
-We guide the design of our approach by using data produced earlier in this thesis, namely the \acs{DS-synthetic} and the \acs{DS-android} corpa, and by using existing techniques 
-able to extract text properties at the word level and sentence level. 
-We begin detailing the techniques
-we explore in Section~\ref{cp5:approaches}. 
-In section Section~\ref{cp5:evaluation}, 
-we make use of the \acs{DS-android} corpus
-to evaluate whether the explored techniques, or their combination, 
-are able to detect text that human annotators identified 
-as relevant to a task. 
-In turn, Section~\ref{cp5:summary} summarizes our key findings.
 
 
-\art{I want to state that ultimately, I'll have a single approach that may leverages one or more techniques --- word level + sentence level properties}
+
+% A classifier can be trained on human-annotated data 
+% can be used to automatically identify text relevant to 
+% text relevant to the
+% task is identified
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Our approach called \red{placeholder} opts to accurately determine relevant text within an artifact pertinent to a task such that it encourages a developer to carefully read an artifact that could have been otherwise abandoned by a developer in her search for information relevant to her task.
+
+
+% We guide the design of our approach by using data produced earlier in this thesis, namely the \acs{DS-synthetic} and the \acs{DS-android} corpa, and by using existing techniques 
+% able to extract text properties at the word level and sentence level. 
+
+
+
+% \art{I want to state that ultimately, I'll have a single approach that may leverages one or more techniques --- word level + sentence level properties}
 
 
 \clearpage
