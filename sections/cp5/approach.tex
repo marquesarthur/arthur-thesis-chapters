@@ -2,9 +2,6 @@
 \label{cp5:approaches}
 
 
-
-
-
 Our goal is to design an \textit{artifact-agnostic} approach
 to identify sentences relevant to a task in an artifact pertinent to that task.
 We formulate this goal as an extractive query-based summarization problem~\cite{Goldsteinet1999}.
@@ -19,7 +16,6 @@ the \textit{textual features} from related work and of our own used to identify 
 
 
 
-
 \subsection{Summary Generation}
 
 
@@ -31,7 +27,6 @@ establishes edges between all the node pairs using a similarity function, ultima
 The more edges a node has, more central the node is to the graph and the more likely it is that the sentence 
 which that node represents contains key information. 
 Thus, we can obtain a summary of the content of a pertinent artifact selecting the $n$ most central nodes of the graph. 
-% To produce the summary, we select the $n$ nodes with the highest number of edges. 
 
 
 To include information about a task, one can build a bipartite graph.
@@ -39,8 +34,6 @@ A first set of nodes represent sentences originating from a task while a second 
 This time,  a similarity function 
 establishes edges only  between the nodes of each one of the sets, i.e., edges from nodes in the artifact to nodes in the task.
 By focusing our attention to the nodes (or sentences) with the most edges belonging to the pertinent artifact set, we can produce a summary with information relevant to that task.
-% That is, the more edges a node in the set has, the more it relates to the input task and thus, that 
-% it contains information . 
 
 
 
@@ -49,16 +42,9 @@ At this point, it is noticeable that the similarity function used by the algorit
 is the stepping stone for determining the summary's output.  
 To devise a similarity function that accounts for the richness of data available in the 
 text, we base our approach on Ponzanelli el al.'s meta-information model~\cite{Ponzanelli2015}.
-This model 
-defines a similarity function that uses a set of properties 
-or features to compute similarity and thus, establish edges in the graph.
-The overall similarity value of the model is the 
-normalized sum of similarity values for each individual feature or property.
+This model defines a similarity function that uses a set of properties or features to compute similarity and thus, establish edges in the graph.
+The overall similarity value of the model is the normalized sum of individual values obtained for each feature or property.
 
-% has been used in subsequent studies
-% Cosine similarity using term-frequency inverse-document-frequency (\textit{tf-idf})
-% vectors of the text in a task and a pertinent artifact
-% is a simple 
 
 \art{Provide formulas/formal definitions once we've agreed upon approach/chapter outline}
 
@@ -75,69 +61,57 @@ Table~\ref{tbl:approach-textual-features} groups features based on the textual p
 
 
 
-\art{Expand section detailing features from Table~\ref{tbl:approach-textual-features}}
+\art{Expand section detailing features from Table~\ref{tbl:approach-textual-features}. For now, there's a short sentence for the novel features}
+
+\vspace{3mm}
+\begin{hangparas}{1em}{1}
+    \textbf{Semantic frame patterns:} We have shown that certain semantic frames are more prominent in sentences deemed relevant in the annotated text of \acs{DS-android}.
+    Thus, we encode semantic frames in a set of \textit{relevancy patterns}. 
+    Guided by Xu et al.~\cite{Xu2017}, we set the value for this property to 1 if a sentence in a pertinent artifact contains at least one relevancy pattern, otherwise 0.
+\end{hangparas}
+
+
+\vspace{3mm}
+\begin{hangparas}{1em}{1}
+    \textbf{Semantic frame similarity:} The intentionality of a task might assist us determining sentences relevant to that task. 
+    This feature computes the cosine similarity between the vectors representing the semantic frames present in the task's title with the frames of each sentence within a pertinent artifact. \art{I need to explore this in \acs{DS-android}}
+\end{hangparas}
+
+
+\vspace{3mm}
+\begin{hangparas}{1em}{1}
+    \textbf{Word embeddings similarity:} Semantic similarity, as captured via word embeddings, might be an indicator of the relevance of a sentence to a task. With this property, we measure semantic similarity using the cosine similarity between the embedding vectors of a task's title and a sentence within a pertinent artifact. 
+    For that, we use the \textit{FastText} model~\cite{bojanowski2017FastText} and the asymmetric semantic similarity function described by Ye et al.~\cite{Ye2016} and used in several other studies~\cite{silva2019, Huang2018, Xu2017}.
+    
+    
+\end{hangparas}
 
 
 \input{sections/cp5/tbl-textual-features}
 
+\clearpage
 
-\subsection{Implementation}
-
-
-
-% to summarize software artifacts usually using artifact-specific properties~\cite{Xu2017, Li2018}.
+\subsection{Approach Overview}
 
 
+Putting it all together, our approach is based on the LexRank algorithm.
+We build a bipartite graph with textual data originating from a task as well as textual data originating from a pertinent artifact.
+Then, we establish relationships between these using a custom similarity function.
+Our custom function combines lexical properties from previous related work 
+and also semantic properties at the word and sentence-level.
+Through this function, we can identify a number of prominent nodes (or sentences)
+in an artifact that likely contain information relevant to a task.
 
 
-
-% In a later work, they use this model to 
-% help developers navigate through the artifacts retrieved in a Web search~\cite{Ponzanelli2017}.
-% Orthogonal to Ponzanelli et al.~\cite{Ponzanelli2015},
-% the same concept has been used by Xu et al. to 
-% select relevant and
-% salient sentences  in a Stack Overflow answer for summarization.
+\vspace{3mm}
+--- Emphasize properties of our approach.
 
 
-
-
-
-
-% We present an approach to automatically detect task-relevant text in a \textit{artifact-agnostic} way. \vspace{3mm}
-
-% % --- Our goal is to to identify task-relevant text over distinct types of natural language software artifacts with high accuracy.  \vspace{3mm}
-
-% % --- To this end, we explore a set of approaches (or their combination)
-% % that exploit 
-% % natural language processing techniques at 
-% % the word and sentence level.  \vspace{3mm}
-
-
-% --- When developing our approach, we use the \acs{DS-synthetic} dataset of manually curated task-relevant sentences produced in our characterization study~\cite{marques2020} \vspace{3mm}
-
-
-\subsection{Word-level properties}
-
-\rev{REVIEW}
-
-% --- uses the novel \textit{Transformer}~\cite{Vaswani2017attention} neural network to jointly model the relevancy of a given input sentence with respect to a task. 
-
-% --- Explain why we have selected the approach:
-
-% ------ Our second approach investigates the applicability of pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
+------ Approach is unsupervised and thus, does not require training procedures. 
 
 
 
-\subsection{Sentence-level properties}
+------ Approach can be augmented with artifact-specific meta-data, what might tailor the identification of task relevant information to specific types of artifacts.
 
-\rev{REVIEW}
-
-% uses a set of properties in the text (including \textit{semantic frames}~\cite{fillmore1976frame}) to determine if a given sentence is relevant to the input task
-
-
-
-% --- Explain why we have selected the approach:
-
-% ------ With our first approach, we investigate whether a light-weight technique addresses the need of automatically identifying task-relevant text, what could potentially discourage the need for more complex and computationally expensive solutions~\cite{Bavota2016}
 
 

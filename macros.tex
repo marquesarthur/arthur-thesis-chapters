@@ -123,6 +123,17 @@ innerrightmargin=4pt,innertopmargin=4pt,innerbottommargin=4pt]{mybox}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 
+\newtcolorbox{bluequote}{enhanced,
+  boxrule=0pt,
+  frame hidden,
+  borderline west={4pt}{0pt}{blue!25!white},
+  colback=white,
+  sharp corners,
+  right=0pt, 
+  top=0pt, 
+  bottom=0pt}
+
+
 % https://tex.stackexchange.com/questions/69148/how-to-insert-title-in-mdframed
 \newenvironment{frameEnv}[1]
   {\mdfsetup{

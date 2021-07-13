@@ -2,17 +2,138 @@
 \label{cp5:evaluation}
 
 
+Evaluation focuses on two main questions:
+
+\begin{enumerate}
+    \item How accurately can our approach detect text considered by humans as being relevant to a particular task?
+    
+    \item When identifying text relevant to a task, are certain features (i.e., lexical, word-semantics, and sentence-semantics) more informative than others?
+\end{enumerate}
 
 
-Evaluation has two major goals
+To answer these questions, we use our approach to produce summaries for 
+the tasks and artifacts in the \acs{DS-android} corpus,
+comparing the sentences identified in a summary against the 
+sentences in the corpus' golden data. 
+
+For this evaluation, the summaries produced that comprise 20\% of the content of an artifact,
+which is a value derived from our study on characterizing 
+task-relevant information in natural language artifacts~\cite{marques2020}.
 
 
 
-\subsection{Method}
+
+
+
+\subsection{Accuracy}
+
+
+
+
+
+Motivated by the fact that the text marked by the annotators in the \acs{DS-android} differs
+(Section~\ref{cp4:corpus-relevant-text}),
+we follow procedures outlined by Lotufo et al.~\cite{Lotufo2012}
+to measure how accurately our approach identifies text relevant to a task considering two evaluation scenarios:
+
+
+\begin{enumerate}
+    \item one where the text marked only by two or more annotators is considered relevant, and;
+    
+    \item a second where we consider that any of the text marked by the annotators contributes towards task completion.
+\end{enumerate}
+
+
+
+Standard precision and recall metrics~\cite{Manning2009IR} are suitable metrics for the first scenario. In the second, we use pyramid precision and pyramid recall metrics
+to compute accuracy based on how many annotators marked the text~\cite{Nenkova2004, Lotufo2012}. 
+To understand these metrics, we refer to the evaluation outcomes of Table~\ref{tbl:type-I-II-errors}. 
+The \textit{relevant} and \textit{not-relevant} columns represent the text 
+marked (or not) by annotators~\cite{Lotufo2012} for a particular task and a pertinent artifact. Rows represent the text in a summary produced automatically by our approach for the same task and pertinent artifact.
+
+
+\input{sections/cp5/tbl-eval-outcomes.tex}
+
+
+\subsubsection{Precision and recall}
+
+
+For standard precision and recall metrics, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by two or more annotators}. 
+In this scenario, $precision$ is the fraction of the sentences
+ in the summary that are relevant over the summary's total number of sentences, as shown in Equation~\ref{eq:cp5:precision}.
+
+
+\begin{equation}
+\label{eq:cp5:precision}    
+    Precision = \frac{TP}{TP + FP}
+\end{equation}
+
+\vspace{2mm}
+Recall represents how many of all marked sentences are present in a summary (Equation~\ref{eq:cp5:recall}).
+
+
+\begin{equation}
+\label{eq:cp5:recall}        
+    Recall = \frac{TP}{TP + FN}
+\end{equation}
+
+
+
+
+\subsubsection{Pyramid precision and pyramid recall}
+
+
+For pyramid precision and pyramid recall, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by any annotator}. 
+
+
+Pyramid precision considers the ``optimal'' sentences that could be part of a summary, i.e., the sentences marked by most of the annotators, and compares that to the sentences  automatically identified. Let $marked(s)$ be a function that returns the number of annotators who marked the sentence $s$, pyramid precision is defined as 
+the summation of $marked(s)$ for the set of sentences in a summary ($s \in S$) over the set of optimal sentences derived from the golden data ($s \in G$).
+
+
+
+\begin{equation}
+\label{eq:cp5:pyramid-precision}    
+    Pyramid Precision =  \frac{\sum_{s \in S} \text{ } marked(s)}{\sum_{s \in G} \text{ } marked(s)}
+\end{equation}
+
+
+% \vspace{3mm}
+% As an example consider an artifact with a total of 6 marked sentences,
+% where 2 sentences were marked by the three annotators, 3 by two annotators and 1 sentence by a single annotator. 
+% When identifying three sentences, the optimal solution is $8$ $(2 \times 3 + 1 \times 2)$.
+% Hence, an approach that identifies three sentences maked by one, two and all annotators 
+% would have a pyramid precision score of $0.75$ or $\frac{ (1 + 2 + 3)}{(2 \times 3 + 1 \times 2)}$.
+
+
+
+
+\vspace{2mm}
+Pyramid recall calculates the fraction of sentences in a summary over 
+any of the sentences marked by the annotators. As we updated the set of $TP$ and $FN$ of Table~\ref{tbl:type-I-II-errors}, we can still compute pyramid precision using Equation~\ref{eq:cp5:recall}.
+
+
+
+
+
+\subsubsection{Results}
+
+
+
+
+
+\subsection{Feature evaluation}
+
+
+
+\subsubsection{Results}
 
 
 
 --- We use the \acs{DS-android} corpus to evaluate our proposed techniques  \vspace{3mm}
+
+
+
+
 
 
 \subsubsection{Setup}
@@ -27,21 +148,6 @@ Evaluation has two major goals
 
 
 
-
-Motivated by the fact that the text marked by the annotators in the \acs{DS-android} differs
-(Section~\ref{cp4:corpus-relevant-text}),
-we follow evaluation metrics outlined by Lotufo et al.~\cite{Lotufo2012}
-to measure how accurately the techniques that are part of our approach identify text relevant to a task.
-That is,
-one can consider the text marked only by two or more annotators as relevant
-and use standard precision and recall metrics~\cite{Manning2009IR}, or one can consider that
-any of the text marked by the annotators 
-contributes to task completion and use pyramid 
-precision and pyramid recall metrics
-to compute accuracy based on how many annotators marked the text~\cite{Nenkova2004, Lotufo2012}. 
-
-
---- Detail each metric
 
 
 
@@ -73,38 +179,9 @@ to compute accuracy based on how many annotators marked the text~\cite{Nenkova20
 % a sentence describing how to use a certain API may be relevant to a novice developer using that API for the first time while it may be ``common knowledge'' to a more experienced developer.
 
 
-% To understand precision and recall metrics metrics, Table~\ref{tbl:type-I-II-errors} show all possible outcomes  when evaluating a technique able to automatically detect text relevant to a software task. The \textit{relevant} and \textit{not-relevant} columns represent the text 
-% marked (or not) by \textit{at least two} annotators~\cite{Lotufo2012}. Rows represent the text identified by an automatic approach.
-
-
-% \input{sections/cp5/tbl-eval-outcomes.tex}
 
 
 
-% For a given task $t$ and artifact $a$, $precision$ is the fraction of the sentences identified that are marked as relevant by at least two annotators over the total number of sentences identified, as shown in Equation~\ref{eq:cp4:precision}.
-
-
-% \begin{equation}
-% \label{eq:cp4:precision}    
-%     Precision(t, a) = \frac{TP}{TP + FP}
-% \end{equation}
-
-
-% Recall ($recall$) represents how many of all sentences marked by at least two annotators are identified by a technique (Equation~\ref{eq:cp4:recall}).
-
-
-% \begin{equation}
-% \label{eq:cp4:recall}        
-%     Recall(t, a) = \frac{TP}{TP + FN}
-% \end{equation}
-
-
-
-\subsection{Results}
-
-
-
-\subsection{Threats to validity}
 
 
 
