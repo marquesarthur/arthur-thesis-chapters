@@ -1,0 +1,80 @@
+\begin{table}[!b]
+\begin{small}
+% \vspace{-3mm}        
+\begin{tabular}{lr}
+
+\hline
+
+\parbox[l][0.5cm][c]{11cm}{
+    \textbf{Features}
+} & \\    
+
+% -----------------------------------------------------------------------------------
+\hline
+\parbox[l][0.5cm][c]{11cm}{\cellcolor{lightgray} 
+    \textbf{Lexical features:}
+} & \cellcolor{lightgray} \\  
+
+\parbox[l][1cm][c]{11cm}{ 
+    \textbf{API word pattern:} indicates if a sentence matches a pattern that captures 
+     indispensable information. 
+} & \cite{nadi2020, Robillard2015} \\  
+
+
+\parbox[l][0.5cm][c]{11cm}{ 
+    \textbf{Conditional sentence:} indicates if a sentence contains a condition.
+} & \cite{nadi2020} \\  
+
+\parbox[l][1cm][c]{11cm}{ 
+    \textbf{Entity overlap:} indicates if software specific terms mentioned in the task also appear in the sentences within a pertinent artifact.
+} & \cite{Xu2017, Ponzanelli2015, Ponzanelli2017} \\  
+
+\parbox[l][1.2cm][c]{11cm}{ 
+    \textbf{Lexical similarity of the task's content and the artifact's content:}
+    cosine similarity based on term-frequency inverse-document-frequency (\textit{tf-idf})
+    between a task's title and each sentence within a pertinent artifact.
+} & \cite{Lotufo2012, Ponzanelli2015, Ponzanelli2017} \\  
+
+% -----------------------------------------------------------------------------------
+\hline
+
+\parbox[l][0.5cm][c]{11cm}{\cellcolor{lightgray}
+    \textbf{Semantic features}
+} & \cellcolor{lightgray} \\ 
+
+\parbox[l][1.2cm][c]{11cm}{ 
+    \textbf{Information entropy:} indicates the entropy of each sentence within a pertinent artifact. High-entropy sentences often represent unique and useful information.
+} & \cite{Xu2017,Rastkar2010} \\  
+
+\parbox[l][1cm][c]{11cm}{ 
+    \textbf{Semantic frame patterns:} indicates if a sentence contains a set of semantic 
+    frames commonly observed in sentences deemed relevant.    
+} & - \\  
+
+\parbox[l][1cm][c]{11cm}{ 
+    \textbf{Semantic frame similarity:} cosine similarity based on the frames that appear 
+    in a task's and the frames of each sentence within a pertinent artifact.
+} & - \\  
+
+\parbox[l][1.2cm][c]{11cm}{ 
+    \textbf{Word embeddings similarity:} asymmetric similarity based on the word embedding vector representations of a task's title and each sentence within a pertinent artifact.
+} & \cite{Xu2017, silva2019} \\  
+
+
+\parbox[l][0.5cm][c]{11cm}{ 
+    \art{Other potential features}
+} & \\  
+
+\hline
+
+\end{tabular}
+\end{small}
+\caption{Features explored}
+\label{tbl:approach-textual-features}
+\end{table}
+
+
+% highly rated sentences contain explanations or specific conditions.
+
+
+% essential sentences may contain contextual information which may often be expressed in the form of conditions. Thus, 
