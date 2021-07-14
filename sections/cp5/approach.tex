@@ -87,14 +87,13 @@ Table~\ref{tbl:approach-textual-features} groups features based on the textual p
 \vspace{3mm}
 \begin{hangparas}{1em}{1}
     \textbf{Word embeddings similarity:} Semantic similarity, as captured via word embeddings, might be an indicator of the relevance of a sentence to a task. With this property, we measure semantic similarity using the cosine similarity between the embedding vectors of a task's title and a sentence within a pertinent artifact. 
-    For that, we use the \textit{FastText} model~\cite{bojanowski2017FastText} and the asymmetric semantic similarity function described by Ye et al.~\cite{Ye2016} and used in several other studies~\cite{silva2019, Huang2018, Xu2017}.
+    For that, we use the \textit{FastText} model~\cite{bojanowski2017FastText} and the asymmetric semantic similarity function described by Ye et al.~\cite{Ye2016} and used in several other studies~\cite{Huang2018, Xu2017, silva2019}.
 \end{hangparas}
 
 
 \input{sections/cp5/tbl-textual-features}
 
-\art{I may need an implementation section to state that I validated this properties 
-in the \acs{DS-synthetic} corpus}
+\art{I may need an implementation section to state that I validated these features/properties in the \acs{DS-synthetic} corpus}
 
 \subsection{Approach Overview}
 

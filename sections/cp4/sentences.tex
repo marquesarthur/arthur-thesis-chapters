@@ -9,8 +9,8 @@
 
 
 
-Next, \rev{we need to determine which 
-of the text in the gathered artifacts could} provide information that assists a developer in solving her task.
+Next, we need to determine which 
+of the text in the gathered artifacts could provide information that assists a developer in solving her task.
 In our corpus, this text represents \textit{golden data} that one can use to design and evaluate automatic tools that assist developers in the identification of information useful to their tasks. 
 To produce it, we 
 ask experienced developers to
@@ -50,7 +50,7 @@ While perusing artifacts, annotators also had to manually highlight sentences th
 
 
 The annotation process was facilitated by a tool we created for this purpose. Figure~\ref{fig:corpus-annotation-tool} shows a screenshot from the tool in 
-action, which works as a browser plug-in. The top-right corner panel in the figure shows the browser extension. \rev{When an annotator clicked the \texttt{highlight} button, }
+action, which works as a browser plug-in. The top-right corner panel in the figure shows the browser extension. When an annotator clicked the \texttt{highlight} button, 
 the tool instrumented the HTML of a page identifying individual sentences. The tool then allowed annotators to hover over identified sentences and to select them as relevant by clicking on the hovered text. For example, in the first paragraph, an annotator selected  the sentence
 ``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant to the Android lock mode task (Figure~\ref{fig:lock-screen-task}).
 
@@ -76,35 +76,31 @@ the tool instrumented the HTML of a page identifying individual sentences. The t
 
 
 
-\rev{
 Annotators had to inspect a total of 12,401 sentences originating from API documentation, Stack Overflow answers, GitHub issue discussion and miscellaneous Web pages.
-These sentences comprise natural language written text---in this case, English---and do not involve source code snippets that may appear alongside the text.}
+These sentences comprise natural language written text---in this case, English---and do not involve source code snippets that may appear alongside the text.
 
 
-\rev{
 Table~\ref{tbl:corpus-summary} gives insight into the number of sentences inspected per artifact type. 
 We observe that API documents and miscellaneous Web pages contain the highest number of sentences in our corpus.
 This is not surprising because API documents often contain boilerplate text 
 and all the information needed for the usage of an API element is usually found in a single document~\cite{robillard2011field}.
 Miscellaneous Web pages comprise blogs or tutorials, 
 which often provide step-by-step instructions and accompanying examples, 
-what likely explains the large number of sentences for this type of artifact~\cite{arya2020, Jiang2016b}.}
+what likely explains the large number of sentences for this type of artifact~\cite{arya2020, Jiang2016b}.
 
 
-\rev{
 The content of GitHub issues mostly resembles conversations~\cite{Rastkar2010}
 and, beyond code snippets and minimal structured fields, the 
-1,890 sentences inspected in this type of artifact comprise the description of a reported bug or a feature request as well as questions, answers, and discussion from  community members who are interested in resolving the issue at hand~\cite{zimmermann2010}.}
+1,890 sentences inspected in this type of artifact comprise the description of a reported bug or a feature request as well as questions, answers, and discussion from  community members who are interested in resolving the issue at hand~\cite{zimmermann2010}.
 
 
 
-\rev{
 For SO answers, the fewer number of inspected sentences (1,420) potentially relates to 
 the fact that Stack Overflow offers little incentive for further discussion once a post has been answered.
 Nonetheless, it is worthy noting that sentences with crucial information 
 are not limited to the ones in an accepted answer~\cite{nadi2020}
 and that later comments can be equally or more informative,
-often providing notes about updates in an API component or framework~\cite{zhang2019so}.}
+often providing notes about updates in an API component or framework~\cite{zhang2019so}.
 
 
 
@@ -112,18 +108,17 @@ often providing notes about updates in an API component or framework~\cite{zhang
 \input{sections/cp4/tbl-corpus-summary}
 
 
-\art{I am mostly trying to give a sense of the content of each artifact type}
 
 
 \subsection{Corpus Description}
 
-\gm{The important point here is what
-is in the corpus - all sentences marked by annotators and who marked which?}
-\art{I tried to open the section showing an example of the data in the corpus}
+% \gm{The important point here is what
+% is in the corpus - all sentences marked by annotators and who marked which?}
 
-\rev{
+
+% \gm{Need to move table up so it is Table 4.3} -- OK
 We structure tasks and annotation results in a format similar to the one shown in 
-Table~\ref{tbl:corpus-data-structure}. \gm{Need to move table up so it is Table 4.3}
+Table~\ref{tbl:corpus-data-structure}. 
 Each task has a  title, link, description, and a set of pertinent artifacts.
 In turn, each artifact has a type, title, link, and content,
 where each sentence within an artifact's content
@@ -132,7 +127,6 @@ annotators (i.e., \texttt{none}, \texttt{A1}, \texttt{A2}, or \texttt{A3}) who m
 As an example, in a Stack Overflow answer (artifact$_2$), all three annotators 
 marked the sentence ``\textit{Have you checked RemoteControlClient?}''
 as relevant to the lock mode task.
-}
 
 Overall, annotation required a total of $\approx60$ hours of manual work and it was done throughout the course of 4 weeks.
 Table~\ref{tbl:corpus-annotation-summary} provides summary statistics for the text marked by 
@@ -168,6 +162,7 @@ while the lowest from \red{artifact} type. Potential explanation for that...
 Since individuals might use different criteria to
 assess the usefulness of a sentence to a given task~\cite{Barry1994, Barry1998, Freund2015},
 we also report how many sentences marked by the annotators overlap.
+\rev{Table~\ref{tbl:corpus-annotation-overlap} summarizes the amount of overlap between annotators' responses.}
 Out of \red{n}
 unique marked
 sentences, 
@@ -181,12 +176,20 @@ occurred on 17\% of the annotated text.
 
 
 
-\red{TODO: No bar graphs, mostly only tables}
+\input{sections/cp4/tbl-corpus-annotation-overlap}
 
-\red{TODO: break analysis per type of task: GitHub and Stack Overflow}
 
-\red{TODO: Analysis should justify if data can be threated homogeneously}
 
+\rev{We also ask if data in the \acs{DS-android}  can be threated homogeneously. 
+To answer this question, we break down results by type of task, i.e., GitHub or Stack Overflow, as shown in Tables~\ref{tbl:corpus-annotation-summary-by-task} and~\ref{tbl:corpus-annotation-overlap-by-task}.
+We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if differences in the results are statistically significant.
+In case of differences, we also compute effect size~\cite{grissom2005effect}.
+}
+
+\input{sections/cp4/tbl-corpus-annotation-summary-by-task}
+
+
+\input{sections/cp4/tbl-corpus-annotation-overlap-by-task}
 
 
 % a number significantly higher than 

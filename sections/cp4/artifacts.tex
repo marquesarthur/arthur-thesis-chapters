@@ -43,7 +43,7 @@ We use this knowledge to restrict artifact selection to well-known and studied a
 Coming up with proper search terms is a critical step of any search~\cite{Haiduc2013}
 and, ideally, we should be able to formulate a query with terms able to retrieve the most pertinent artifacts for a software task.
 However, studies have shown that developers perform poorly in identifying good search terms~\cite{latoza2006, Starke2009,Kevic2014} and thus, using a task's title
-as an educated approximation to terms that a developer might use is a common procedure adopted by other studies in the field (e.g.,~\cite{Xu2017} or ~\cite{Silva2019}).
+as an educated approximation to terms that a developer might use is a common procedure adopted by other studies in the field (e.g.,~\cite{Xu2017} or ~\cite{silva2019}).
 Hence, we use a task's title (i.e., SO question or GitHub issue title) as the seed to search for pertinent artifacts.
 
 
@@ -52,13 +52,13 @@ Hence, we use a task's title (i.e., SO question or GitHub issue title) as the se
 
 
 We use \texttt{googlesearch} API~\cite{googlesearch} to get the results of a query,
-\rev{fetching a maximum of 5 resources per task 
+fetching a maximum of 5 resources per task 
 (one API document, a GitHub issue discussion, one Stack Overflow answer, and two miscellaneous Web pages).
 Our decision to limit the number of artifacts fetched for a task relates to the
 time-consuming~\cite{Zhang2013, al2017} and cognitively demanding~\cite{Piorkowski2016, Bystrom1995, clark2013relevance} 
 nature of asking annotators to carefully read, understand, and decide whether the text
 within the fetched artifacts is relevant to a given task, as Section~\ref{cp4:corpus-relevant-text} further details.
-}
+
 
 
 
