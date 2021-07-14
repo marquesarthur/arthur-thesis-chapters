@@ -10,7 +10,7 @@ and a natural language software artifact as inputs,
 identify a number of sentences from the input artifact that
 most likely contain information relevant to that task. 
 Thus, the output of our approach is a set of sentences,
-which can  be also seen as extractive summary.
+what can also be seen as an extractive summary.
 
 
 
@@ -30,24 +30,21 @@ It is based on the PageRank~\cite{Page1999} algorithm
 and, on its most simplistic form, LexRank threats each sentence in an artifact as a node.
 Then, the algorithm
 establishes edges between all the node pairs using a similarity function, ultimately producing a graph. 
-The more edges a node has, more central the node is to the graph and the more likely it is that the sentence 
-which that node represents contains key information. 
+The more edges a node has, the more central the node is to the graph and the more likely it is that the sentence which that node represents contains key information. 
 Thus, we can obtain a summary of the content of a pertinent artifact selecting the $n$ most central nodes of the graph. 
 
 
 To include information about a task, one can build a bipartite graph.
 A first set of nodes represent sentences originating from a task while a second set, sentences in a pertinent artifact.
 This time,  a similarity function 
-establishes edges only  between the nodes of each one of the sets, i.e., edges from nodes in the artifact to nodes in the task.
+establishes edges only between the nodes of each one of the sets, i.e., edges from nodes in the artifact to nodes in the task.
 By focusing our attention to the nodes (or sentences) with the most edges belonging to the pertinent artifact set, we can produce a summary with information relevant to that task.
 
 
 
 
-At this point, it is noticeable that the similarity function used by the algorithm 
-is the stepping stone for determining the summary's output.  
-To devise a similarity function that accounts for the richness of data available in the 
-text, we base our approach on Ponzanelli el al.'s meta-information model~\cite{Ponzanelli2015}.
+At this point, it is noticeable that the similarity function used by the algorithm is the stepping stone for determining the summary's output.  
+To devise a similarity function that accounts for the richness of data available in the text, we base our approach on Ponzanelli et al.'s meta-information model~\cite{Ponzanelli2015}.
 This model defines a similarity function that uses a set of properties or features to compute similarity and thus, establish edges in the graph.
 The overall similarity value of the model is the normalized sum of individual values obtained for each feature or property.
 
@@ -79,7 +76,7 @@ Table~\ref{tbl:approach-textual-features} groups features based on the textual p
 
 \vspace{3mm}
 \begin{hangparas}{1em}{1}
-    \textbf{Semantic frame similarity:} The intentionality of a task might assist us determining sentences relevant to that task. 
+    \textbf{Semantic frame similarity:} The intentionality of a task might assist us in determining sentences relevant to that task. 
     This feature computes the cosine similarity between the vectors representing the semantic frames present in the task's title with the frames of each sentence within a pertinent artifact. \art{I need to explore this in \acs{DS-android}}
 \end{hangparas}
 
@@ -102,21 +99,8 @@ Putting it all together, our approach is based on the LexRank algorithm.
 We build a bipartite graph with textual data originating from a task as well as textual data originating from a pertinent artifact.
 Relationships between nodes in the graph are established using a custom similarity function.
 This custom function combines lexical properties from previous related work 
-and also semantic properties at the word and sentence-level.
+and also semantic properties at the word and sentence level.
 Through this function, we can identify a number of prominent nodes (or sentences)
-in an artifact that likely contain information relevant to a task.
-
-
-% \vspace{3mm}
-% --- Emphasize properties of our approach.
-
-
-% ------ Approach is unsupervised and thus, does not require training procedures. 
-
-
-% ------ Allowing the creation of shorter or longer summaries might be beneficial to accomodate the amount of information sought by newcomers or experienced developers
-
-% ------ Approach can be augmented with artifact-specific meta-data, what might tailor the identification of task relevant information to specific types of artifacts.
-
+in an artifact that likely contains information relevant to a task.
 
 

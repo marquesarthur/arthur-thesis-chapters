@@ -42,7 +42,7 @@ In this scenario, $precision$ is the fraction of the sentences
 \end{equation}
 
 \vspace{2mm}
-Recall represents how many of all marked sentences are present identified by our approach (Equation~\ref{eq:cp5:recall}).
+Recall represents how many of all marked sentences are identified by our approach (Equation~\ref{eq:cp5:recall}).
 
 
 \begin{equation}
@@ -59,7 +59,7 @@ Recall represents how many of all marked sentences are present identified by our
 For pyramid precision and pyramid recall, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by any annotator}. 
 
 
-Pyramid precision considers the ``optimal'' sentences that could be identified, i.e., the sentences marked by most of the annotators, and compares that to the sentences  actually identified. Let $marked(s)$ be a function that returns the number of annotators who marked the sentence $s$, pyramid precision is defined as 
+Pyramid precision considers the ``optimal'' sentences that could be identified, i.e., the sentences marked by most of the annotators, and compares that to the sentences actually identified. Let $marked(s)$ be a function that returns the number of annotators who marked the sentence $s$, pyramid precision is defined as 
 the summation of $marked(s)$ for the set of sentences identified ($s \in S$) over the set of optimal sentences derived from the golden data ($s \in G$).
 
 
@@ -94,11 +94,10 @@ any of the sentences marked by the annotators. As we updated the set of $TP$ and
 \subsubsection{Results}
 
 
-When interpreting results, we favor precision/pyramid precision instead of recall/pyramid recall.
-Our rationale is that a developer might completly abandon reading of an artifact 
-due to a false positive~\cite{Singer1998, Brandt2009a}.
+When interpreting results, we favour precision/pyramid precision instead of recall/pyramid recall.
+Our rationale is that a developer might completely abandon reading of an artifact due to a false positive~\cite{Singer1998, Brandt2009a}.
 Thus, even if we are not able to identify all sentences that are indeed relevant, true positives may encourage a developer to inspect the said artifact more thoroughly.
-% that would otherwise provide crucial information for her task~\cite{Rastkar2010}.
+
 
 
 
@@ -115,4 +114,4 @@ Table~\ref{tbl:approach-results-task} shows evaluation metrics by type of task, 
 \input{sections/cp5/tbl-results-by-task}
 
 \art{Detail accuracy per type of artifact. 
-It may be worth doing it only for all features, otherwise table will have too much information.}
+It may be worth doing it only for all features; otherwise, the table will have too much information.}
