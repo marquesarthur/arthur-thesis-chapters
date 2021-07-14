@@ -9,10 +9,16 @@ That is, given a query (i.e., a software task),
 and a natural language software artifact as inputs,
 identify a number of sentences from the input artifact that
 most likely contain information relevant to that task. 
+Thus, the output of our approach is a set of sentences,
+which can  be also seen as extractive summary.
+
+
+
 We provide details about steps towards this goal
 in a top-down manner, i.e., we first introduce general concepts
 used to produce a summary and then, we describe
 the \textit{textual features} from related work and of our own used to identify task-relevant sentences.
+
 
 
 
@@ -82,8 +88,6 @@ Table~\ref{tbl:approach-textual-features} groups features based on the textual p
 \begin{hangparas}{1em}{1}
     \textbf{Word embeddings similarity:} Semantic similarity, as captured via word embeddings, might be an indicator of the relevance of a sentence to a task. With this property, we measure semantic similarity using the cosine similarity between the embedding vectors of a task's title and a sentence within a pertinent artifact. 
     For that, we use the \textit{FastText} model~\cite{bojanowski2017FastText} and the asymmetric semantic similarity function described by Ye et al.~\cite{Ye2016} and used in several other studies~\cite{silva2019, Huang2018, Xu2017}.
-    
-    
 \end{hangparas}
 
 
@@ -96,22 +100,23 @@ Table~\ref{tbl:approach-textual-features} groups features based on the textual p
 
 Putting it all together, our approach is based on the LexRank algorithm.
 We build a bipartite graph with textual data originating from a task as well as textual data originating from a pertinent artifact.
-Then, we establish relationships between these using a custom similarity function.
-Our custom function combines lexical properties from previous related work 
+Relationships between nodes in the graph are established using a custom similarity function.
+This custom function combines lexical properties from previous related work 
 and also semantic properties at the word and sentence-level.
 Through this function, we can identify a number of prominent nodes (or sentences)
 in an artifact that likely contain information relevant to a task.
 
 
-\vspace{3mm}
---- Emphasize properties of our approach.
+% \vspace{3mm}
+% --- Emphasize properties of our approach.
 
 
------- Approach is unsupervised and thus, does not require training procedures. 
+% ------ Approach is unsupervised and thus, does not require training procedures. 
 
 
+% ------ Allowing the creation of shorter or longer summaries might be beneficial to accomodate the amount of information sought by newcomers or experienced developers
 
------- Approach can be augmented with artifact-specific meta-data, what might tailor the identification of task relevant information to specific types of artifacts.
+% ------ Approach can be augmented with artifact-specific meta-data, what might tailor the identification of task relevant information to specific types of artifacts.
 
 
 
