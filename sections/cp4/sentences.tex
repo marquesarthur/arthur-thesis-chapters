@@ -35,8 +35,8 @@ the text inspected by the annotators.
 
 
 We recruited 3 graduate students with professional programming experience to produce \textit{golden} data for our corpus. Annotators had to have experience with Java development and they also had to be familiar with the types of artifacts they would encounter throughout the annotation process. 
-On average, annotators self-reported 4.6 years of professional
-programming experience (stdv 2.49, ranging from 1 to 7 years).
+On average, annotators self-reported 3.0 years of professional
+programming experience (stdv 1.63, ranging from 1 to 5 years).
 
 
 
@@ -52,7 +52,7 @@ While perusing artifacts, annotators also had to manually highlight sentences th
 The annotation process was facilitated by a tool we created for this purpose. Figure~\ref{fig:corpus-annotation-tool} shows a screenshot from the tool in 
 action, which works as a browser plug-in. The top-right corner panel in the figure shows the browser extension. When an annotator clicked the \texttt{highlight} button, 
 the tool instrumented the HTML of a page identifying individual sentences. The tool then allowed annotators to hover over identified sentences and to select them as relevant by clicking on the hovered text. For example, in the first paragraph, an annotator selected  the sentence
-``\textit{Call {\small \texttt{ActivityOptions.setLockTaskEnabled()}} ... when starting the activity}'' as relevant to the Android lock mode task (Figure~\ref{fig:lock-screen-task}).
+``\textit{Call ActivityOptions.setLockTaskEnabled() ... when starting the activity}'' as relevant to the Android lock task (Figure~\ref{fig:lock-screen-task}).
 
 
 
@@ -142,12 +142,18 @@ the annotators over all the artifacts inspected as well as on an artifact type b
 
 \clearpage
 
-
+\rev{
+Table~\ref{tbl:corpus-summary} summarizes results from the corpus annotation.
 On average the text deemed useful to a software task in the artifacts inspected comprises 
-\red{5} sentences. 
-We observe that the highest number of sentences marked originate from \red{artifact type}
-while the lowest from \red{artifact} type. Potential explanation for that...
-
+9 sentences. 
+We observe that the highest number of sentences marked originate from miscellaneous artifacts
+while the lowest come from GitHub issue discussions. 
+The high number of sentences marked in the former might relate to the fact that tutorials 
+dilute and exemplify much of the information that a developer would also find in official API documentation~\cite{arya2020, Jiang2017}.
+For the latter, the content on GitHub may be too project-specific and thus, 
+a developer trying to find information useful for her task in this source
+may have to prune large amounts of project-specific discussions to find the
+pieces that interest her.}
 
 \input{sections/cp4/tbl-corpus-annotation-summary}
 
@@ -158,32 +164,31 @@ while the lowest from \red{artifact} type. Potential explanation for that...
 
 
 
-
+\rev{
 Since individuals might use different criteria to
 assess the usefulness of a sentence to a given task~\cite{Barry1994, Barry1998, Freund2015},
-we also report how many sentences marked by the annotators overlap.
-\rev{Table~\ref{tbl:corpus-annotation-overlap} summarizes the amount of overlap between annotators' responses.}
-Out of \red{n}
+we also report the percentage of sentences marked by one, two or three annotators.
+Out of 1145
 unique marked
 sentences, 
-\red{x} were marked by all annotators,
-\red{y} by two of them and the remainder
----\red{z} sentences---by a single annotator.
-This result is not surprising and it corroborates 
-results on the construction of the \acs{DS-synthetic} 
-corpus, where we observe that complete agreement 
-occurred on 17\% of the annotated text.
+10\% were marked by all annotators,
+20\% by two of them and the remainder
+---801 sentences---by a single annotator.
+These results follow a similar trend to the ones observed in the 
+\acs{DS-synthetic},
+where sentences marked by a single annotator comprise the majority of the 
+data.
+}
 
 
-
-\input{sections/cp4/tbl-corpus-annotation-overlap}
+% \input{sections/cp4/tbl-corpus-annotation-overlap}
 
 
 
 \rev{We also ask if data in the \acs{DS-android}  can be threated homogeneously. 
 To answer this question, we break down results by type of task, i.e., GitHub or Stack Overflow, as shown in Tables~\ref{tbl:corpus-annotation-summary-by-task} and~\ref{tbl:corpus-annotation-overlap-by-task}.
-We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if differences in the results are statistically significant.
-In case of differences, we also compute effect size~\cite{grissom2005effect}.
+We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are any statistically significant differences between the number of sentences marked in each type of task,
+computing effect size~\cite{grissom2005effect} in case of differences.
 }
 
 \input{sections/cp4/tbl-corpus-annotation-summary-by-task}
