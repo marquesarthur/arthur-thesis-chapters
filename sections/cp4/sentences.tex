@@ -128,11 +128,10 @@ As an example, in a Stack Overflow answer (artifact$_2$), all three annotators
 marked the sentence ``\textit{Have you checked RemoteControlClient?}''
 as relevant to the lock mode task.
 
-Overall, annotation required a total of $\approx60$ hours of manual work and it was done throughout the course of 4 weeks.
+
+Overall, annotation required a total of $\approx54$ hours of manual work and it was done throughout the course of 5 weeks.
 Table~\ref{tbl:corpus-annotation-summary} provides summary statistics for the text marked by 
-the annotators over all the artifacts inspected as well as on an artifact type basis.
-
-
+the annotators over all the artifacts inspected as well as on an artifact type basis.    
 
 
 
@@ -143,9 +142,8 @@ the annotators over all the artifacts inspected as well as on an artifact type b
 \clearpage
 
 \rev{
-Table~\ref{tbl:corpus-summary} summarizes results from the corpus annotation.
 On average the text deemed useful to a software task in the artifacts inspected comprises 
-\red{8.88} sentences. 
+8.93 sentences. 
 We observe that the highest number of sentences marked originate from miscellaneous artifacts
 while the lowest come from GitHub issue discussions. 
 The high number of sentences marked in the former might relate to the fact that tutorials 
@@ -165,13 +163,13 @@ We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are an
 GitHub and Stack Overflow task.
 Results show a statistically significant difference 
 between the number of sentences 
-marked with a medium effect size~\cite{cohen2013statistical}.
+marked with an effect size (\textit{Cohen's d = 0.29})~\cite{grissom2005effect} in between the small and medium thresholds~\cite{cohen2013statistical}.
 Based on this analysis, later evaluation provides results considering
 both the entirety of the data as well as on a per type of task basis.
 }
 
 % ($\alpha \le .05$)
-%  (\textit{Cohen's d = 0.41})
+%  
 
 
 % \smallskip
@@ -188,11 +186,11 @@ both the entirety of the data as well as on a per type of task basis.
 \rev{
 Table~\ref{tbl:corpus-summary} also reports the percentage of sentences marked by one, two or three annotators since individuals might use different criteria to
 assess the usefulness of a sentence to a given task~\cite{Barry1994, Barry1998}.
-Out of 1145
+Out of 1393
 unique marked
 sentences, 
 10\% were marked by all annotators,
-20\% by two of them and the remainder---801 sentences---by a single annotator.
+19\% by two of them and the remainder---996 sentences---by a single annotator.
 These ratios follow Nenkova and Passonneau's empirical findings on 
 content selection~\cite{Nenkova2004}
 and are a similar to the ratios in the \acs{DS-synthetic} corpus,
@@ -203,14 +201,14 @@ where sentences marked by a single annotator comprise the majority of the data.}
 % Following our analysis through the annotators' perspective,
 \rev{
 Table~\ref{tbl:corpus-summary-per-annotator} provides further details on the annotators' background and the text marked by each individual. 
-An average of 529.33 sentences were marked by the annotators (std 126.34) and 
-we observe differences in the text marked.
+An average of 645 sentences were marked by the annotators (std 160.53) and 
+we also observe differences in the text marked.
 For example,
 the most experienced annotator---with 5 years of professional programming experience---had the
 least amount of text marked while less experienced ones leaned towards selecting more sentences.
 Although we leave the in-depth analysis of how an individual's background plays a role in what they perceive as relevant for future studies, the differences observed
 suggest that no unique set of task-relevant text exists~\cite{Nenkova2004} and that evaluation metrics should clearly outline how they make use of the golden data
-in our corpus to assess techniques that can automatically identify text relevant to a task.
+provided in our corpus.
 }
 
 % 
