@@ -145,11 +145,11 @@ the annotators over all the artifacts inspected as well as on an artifact type b
 \rev{
 Table~\ref{tbl:corpus-summary} summarizes results from the corpus annotation.
 On average the text deemed useful to a software task in the artifacts inspected comprises 
-9 sentences. 
+\red{8.88} sentences. 
 We observe that the highest number of sentences marked originate from miscellaneous artifacts
 while the lowest come from GitHub issue discussions. 
 The high number of sentences marked in the former might relate to the fact that tutorials 
-dilute and exemplify much of the information that a developer would also find in official API documentation~\cite{arya2020, Jiang2017}.
+dilute and exemplify much of the information that a developer would find in official API documentation~\cite{arya2020, Jiang2017}.
 For the latter, the content on GitHub may be too project-specific and thus, 
 a developer trying to find information useful for her task in this source
 may have to prune large amounts of project-specific discussions to find the
@@ -158,78 +158,77 @@ pieces that interest her.}
 \input{sections/cp4/tbl-corpus-annotation-summary}
 
 
+\rev{
+To identify if data in the corpus can be homogeneously used for evaluation purposes,
+we divide the number of sentences marked according to a task's origin, as Tables~\ref{tbl:corpus-annotation-summary-by-task} shows.
+We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are any statistically significant differences between the number of sentences marked in 
+GitHub and Stack Overflow task.
+Results show a statistically significant difference 
+between the number of sentences 
+marked with a medium effect size~\cite{cohen2013statistical}.
+Based on this analysis, later evaluation provides results considering
+both the entirety of the data as well as on a per type of task basis.
+}
+
+% ($\alpha \le .05$)
+%  (\textit{Cohen's d = 0.41})
 
 
+% \smallskip
+% \begin{bluequote}
+%     evaluation results for both the entire data as well as on a per type of task basis.
+% \end{bluequote}
+
+
+\input{sections/cp4/tbl-corpus-annotation-summary-by-task}
 
 
 
 
 \rev{
-Since individuals might use different criteria to
-assess the usefulness of a sentence to a given task~\cite{Barry1994, Barry1998, Freund2015},
-we also report the percentage of sentences marked by one, two or three annotators.
+Table~\ref{tbl:corpus-summary} also reports the percentage of sentences marked by one, two or three annotators since individuals might use different criteria to
+assess the usefulness of a sentence to a given task~\cite{Barry1994, Barry1998}.
 Out of 1145
 unique marked
 sentences, 
 10\% were marked by all annotators,
-20\% by two of them and the remainder
----801 sentences---by a single annotator.
-These results follow a similar trend to the ones observed in the 
-\acs{DS-synthetic},
-where sentences marked by a single annotator comprise the majority of the 
-data.
+20\% by two of them and the remainder---801 sentences---by a single annotator.
+These ratios follow Nenkova and Passonneau's empirical findings on 
+content selection~\cite{Nenkova2004}
+and are a similar to the ratios in the \acs{DS-synthetic} corpus,
+where sentences marked by a single annotator comprise the majority of the data.}
+
+
+
+% Following our analysis through the annotators' perspective,
+\rev{
+Table~\ref{tbl:corpus-summary-per-annotator} provides further details on the annotators' background and the text marked by each individual. 
+An average of 529.33 sentences were marked by the annotators (std 126.34) and 
+we observe differences in the text marked.
+For example,
+the most experienced annotator---with 5 years of professional programming experience---had the
+least amount of text marked while less experienced ones leaned towards selecting more sentences.
+Although we leave the in-depth analysis of how an individual's background plays a role in what they perceive as relevant for future studies, the differences observed
+suggest that no unique set of task-relevant text exists~\cite{Nenkova2004} and that evaluation metrics should clearly outline how they make use of the golden data
+in our corpus to assess techniques that can automatically identify text relevant to a task.
 }
 
-
-% \input{sections/cp4/tbl-corpus-annotation-overlap}
-
-
-
-\rev{We also ask if data in the \acs{DS-android}  can be threated homogeneously. 
-To answer this question, we break down results by type of task, i.e., GitHub or Stack Overflow, as shown in Tables~\ref{tbl:corpus-annotation-summary-by-task} and~\ref{tbl:corpus-annotation-overlap-by-task}.
-We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are any statistically significant differences between the number of sentences marked in each type of task,
-computing effect size~\cite{grissom2005effect, cohen2013statistical} in case of differences.
-Results suggest a statistically significant difference ($\alpha \le .05$)
-between the number of sentences 
-marked in Stack Overflow tasks with an average of 10.38 sentences marked per pertinent artifact versus GitHub tasks average of 7.12 sentences per pertinent artifact.
-Since a medium effect size (\textit{Cohen's d = 0.41})~\cite{cohen2013statistical} 
-follows from this comparison, later analyses should provide results both for the entirety of the corpus as well as on a per type of task basis.
-}
-% Due to these results, 
-% later analyses should 
-% However, the small difference in the effect size
-% does not justify distinctions and thus, later analyses treat text marked for each type of task equally. 
-
-\input{sections/cp4/tbl-corpus-annotation-summary-by-task}
-
-
-\input{sections/cp4/tbl-corpus-annotation-overlap-by-task}
-
-
+% 
 
 
 \input{sections/cp4/tbl-corpus-annotation-summary-by-annotator}
 
 
-% a number significantly higher than 
-% artifact-specific corpora, such as the \textit{McGill} corpus on information correspondence with 2,445 sentences~\cite{arya2020} or the information types corpus with 4,656 labeled sentences~\cite{Arya2019}.
-% Although only small parts of API documents or miscellaneous Web pages are likely to
-% apply to a particular task~\cite{robillard2011field, Jiang2016b, Jiang2017},
-% studies have shown that fragmenting API documentation 
-% makes the information less discoverable~\cite{robillard2011field}. Hence,
 
 
 
-% We restrict the manual identification of text relevant to a task to a random subset of 
-% 50  out of the 300  tasks initially gathered (Section~\ref{cp4:corpus-tasks}).
-% \gm{-Why select 300? Just select 25 and 25 originally.}
-% This decision was motivated by the fact that 
-% creating golden data for the entirety of our tasks 
-% would require asking human annotators to inspect thousands of artifacts and more than 260,000 sentences, which would be a costly and time-consuming activity. 
+%  with an average of 10.38 sentences marked per pertinent artifact
+% in Stack Overflow tasks and 
+% 7.12 sentences per pertinent artifact in GitHub tasks with
+
+% computing effect size~\cite{grissom2005effect, cohen2013statistical} in case of differences.
 
 
-% For each one of the 25 Stack Overflow tasks and the 25 GitHub tasks in this subset, we randomly selected 5 artifacts of at least three different types: 
-% one API document, a GitHub issue discussion, one Stack Overflow answer, aand two miscellaneous Web pages.
-% In total, our corpus contains
-% 12,401 unique sentences, with an average of 63.59 sentences per artifact (stdv 66.28).
+
+% \input{sections/cp4/tbl-corpus-annotation-overlap-by-task}
 

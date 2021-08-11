@@ -126,7 +126,7 @@ innerrightmargin=4pt,innertopmargin=4pt,innerbottommargin=4pt]{mybox}
 \newtcolorbox{bluequote}{enhanced,
   boxrule=0pt,
   frame hidden,
-  borderline west={4pt}{0pt}{blue!25!white},
+  borderline west={4pt}{0pt}{lightgray},
   colback=white,
   sharp corners,
   right=0pt, 
@@ -148,4 +148,18 @@ innerrightmargin=4pt,innertopmargin=4pt,innerbottommargin=4pt]{mybox}
   {\end{mdframed}}
 
 
-
+\newtcolorbox{keyobs}[1][]{
+  breakable,  
+  colback=white,
+  colbacktitle=white,
+  coltitle=black,
+  fonttitle=\bfseries,
+  bottomrule=0pt,
+  toprule=0pt,
+  leftrule=3pt,
+  rightrule=0pt,
+  titlerule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=black,
+}
