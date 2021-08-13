@@ -21,24 +21,31 @@ the \textit{textual features} from related work and of our own used to identify 
 
 
 
+\red{Can I discuss this as a classification problem?}
+
+
 
 \subsection{Summary Generation}
+
+
+\red{LexRank appeared out of nowhere. I need to be up-front about why am I basing my technique on it}
 
 
 LexRank~\cite{Erkan2004} is the backbone of our approach. 
 It is based on the PageRank~\cite{Page1999} algorithm
 and, on its most simplistic form, LexRank threats each sentence in an artifact as a node.
 The algorithm
-establishes edges between all the node pairs using a similarity function, ultimately producing a graph. 
+establishes edges between all the node pairs using a similarity function, what produces a graph. 
 The more edges a node has, the more central the node is to the graph and the more likely it is that the sentence which that node represents contains key information. 
-Thus, we can obtain a summary of the content of a pertinent artifact selecting $n$ of the most central nodes of the graph. 
+\red{confusing:} Thus, we can obtain a summary of the content of a pertinent artifact selecting $n$ of the most central nodes of the graph. 
 
 
 To include information about a task, one can build a bipartite graph.
 A first set of nodes represent sentences originating from a task while a second set, sentences in a pertinent artifact.
 This time,  a similarity function 
-establishes edges only between the nodes of each one of the sets in the bipartite graph.
-By focusing our attention to the nodes (or sentences) with the most edges belonging to the pertinent artifact set, we can produce a summary with information potentially relevant to that task.
+establishes edges both between the nodes belonging to a the task and to a pertinent artifact.
+By focusing our attention to the nodes (or sentences) with the most edges 
+exclusive to the pertinent artifact set, we can produce a summary with information potentially relevant to that task.
 
 
 
@@ -47,7 +54,7 @@ By focusing our attention to the nodes (or sentences) with the most edges belong
 
 At this point, it is noticeable that the similarity function used by the algorithm is the stepping stone for determining the summary's output.  
 To devise a similarity function that accounts for the richness of data available in the text, we base our approach on Ponzanelli et al.'s meta-information model~\cite{Ponzanelli2015}.
-This model defines a similarity function that uses a set of properties or features to compute similarity and thus, establish edges in the graph.
+\red{confusing:} This model defines a similarity function that uses a set of properties or features to compute similarity and thus, establish edges in the graph.
 The overall similarity value of the model is the normalized sum of individual values obtained for each feature or property.
 
 
@@ -97,6 +104,8 @@ Table~\ref{tbl:approach-textual-features} groups features based on the textual p
 
 \subsection{Approach Overview}
 
+
+\red{should appear at the star of the section even if I do a top-down description later on}
 
 Putting it all together, our approach is based on the LexRank algorithm.
 We build a bipartite graph with textual data originating from a task as well as textual data originating from a pertinent artifact.

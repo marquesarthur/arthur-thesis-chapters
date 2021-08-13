@@ -1,7 +1,7 @@
 \section{Evaluation}
 \label{cp5:evaluation}
 
-
+\red{confusing:}
 Evaluation focuses on two main questions:
 
 \begin{enumerate}
@@ -9,6 +9,10 @@ Evaluation focuses on two main questions:
     
     \item When identifying text relevant to a task, are certain features (i.e., lexical, word-semantics, and sentence-semantics) more informative than others?
 \end{enumerate}
+
+
+
+\red{should be something as in: determine which techniques work best for detecting task relevant text?}
 
 
 To answer these questions, we use our approach to identify sentences relevant to
@@ -38,6 +42,7 @@ to measure how accurately our approach identifies text relevant to a task consid
     \item a second where we consider that any of the text marked by the annotators contributes towards task completion.
 \end{enumerate}
 
+\red{flip the above discuss this as a classification problem?}
 
 
 Standard precision and recall metrics~\cite{Manning2009IR} are suitable metrics for the first scenario. In the second, we use pyramid precision and pyramid recall metrics
@@ -51,6 +56,8 @@ marked (or not) by annotators~\cite{Lotufo2012} for a particular task and a pert
 
 
 \subsubsection{Precision and recall}
+
+\red{I don't need recall anymore. Do I?}
 
 
 For standard precision and recall metrics, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by two or more annotators}. 
