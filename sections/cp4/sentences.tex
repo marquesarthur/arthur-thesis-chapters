@@ -147,11 +147,13 @@ On average the text deemed useful to a software task in the artifacts inspected 
 We observe that the highest number of sentences marked originate from miscellaneous artifacts
 while the lowest come from GitHub issue discussions. 
 The high number of sentences marked in the former might relate to the fact that tutorials 
-dilute and exemplify much of the information that a developer would find in official API documentation~\cite{arya2020, Jiang2017}.
-For the latter, the content on GitHub may be too project-specific and thus, 
-a developer trying to find information useful for her task in this source
-may have to prune large amounts of project-specific discussions to find the
-pieces that interest her.}
+dilute and exemplify much of the information that a developer would find in official API documentation in a more didactic way~\cite{arya2020, Jiang2017}.
+For the latter, the content on GitHub may be too project-specific what might 
+prevent a developer performing a task in a different context from benefiting from the project-specific information.
+For example, discussions about whether a certain design is the most appropriate~\cite{Viviani2019} might not extend to other projects, but instructions on how to use an API element might.
+}
+
+
 
 \input{sections/cp4/tbl-corpus-annotation-summary}
 
@@ -159,12 +161,12 @@ pieces that interest her.}
 \rev{
 To identify if data in the corpus can be homogeneously used for evaluation purposes,
 we divide the number of sentences marked according to a task's origin, as Tables~\ref{tbl:corpus-annotation-summary-by-task} shows.
-We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are any statistically significant differences between the number of sentences marked in 
+We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are any differences between the number of sentences marked in 
 GitHub and Stack Overflow task.
 Results show a statistically significant difference 
 between the number of sentences 
 marked with an effect size (\textit{Cohen's d = 0.29})~\cite{grissom2005effect} in between the small and medium thresholds~\cite{cohen2013statistical}.
-Based on this analysis, later evaluation provides results considering
+Based on this analysis, evaluation should provide results considering
 both the entirety of the data as well as on a per type of task basis.
 }
 
@@ -184,7 +186,8 @@ both the entirety of the data as well as on a per type of task basis.
 
 
 \rev{
-Table~\ref{tbl:corpus-summary} also reports the percentage of sentences marked by one, two or three annotators since individuals might use different criteria to
+Table~\ref{tbl:corpus-summary} also reports the percentage of sentences marked by one, two or the three annotators who inspect the artifacts in the corpus.
+Our rationale to provide this data is that individuals might use different criteria to
 assess the usefulness of a sentence to a given task~\cite{Barry1994, Barry1998}.
 Out of 1393
 unique marked
@@ -200,15 +203,16 @@ where sentences marked by a single annotator comprise the majority of the data.}
 
 % Following our analysis through the annotators' perspective,
 \rev{
-Table~\ref{tbl:corpus-summary-per-annotator} provides further details on the annotators' background and the text marked by each individual. 
+We provide further details on the annotators' background and the text marked by each individual in Table~\ref{tbl:corpus-summary-per-annotator}. 
 An average of 645 sentences were marked by the annotators (std 160.53) and 
 we also observe differences in the text marked.
 For example,
 the most experienced annotator---with 5 years of professional programming experience---had the
 least amount of text marked while less experienced ones leaned towards selecting more sentences.
 Although we leave the in-depth analysis of how an individual's background plays a role in what they perceive as relevant for future studies, the differences observed
-suggest that no unique set of task-relevant text exists~\cite{Nenkova2004} and that evaluation metrics should clearly outline how they make use of the golden data
-provided in our corpus.
+suggest that no unique set of task-relevant text exists~\cite{Nenkova2004}.
+Therefore, evaluation metrics should outline how these nuances are taken into account when 
+using the golden data provided in our corpus.
 }
 
 % 
