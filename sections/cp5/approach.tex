@@ -2,116 +2,116 @@
 \label{cp5:approaches}
 
 
-Our goal is to design an \textit{artifact-agnostic} approach
-to identify sentences relevant to a task in an artifact pertinent to that task.
-We formulate this goal as an extractive query-based summarization problem~\cite{Goldsteinet1999}.
-That is, given a query (i.e., a software task),
-and a natural language software artifact as inputs,
-identify a number of sentences from the input artifact that
-most likely contain information relevant to that task. 
-In this context, a summary, or the output of our approach, 
-merely represents the set of sentences identified as 
-the most relevant to a particular task.
+We have described how syntactic and semantic factors might assist 
+identifying  text relevant to a task. %  in a natural language artifact pertinent to that task
+We have also described how developers jump through the artifact's content when they  
+need to assess if an artifact is worthy of further inspection. 
+Given how these two aspects resemble the \textit{PageRank} algorithm~\cite{Page1999}, 
+we choose to investigate its applicability for identifying task-relevant text.
+
+
+In its most simplistic form, PageRank models the behaviour 
+of a ``random surfer'' in the Web~\cite{Page1999}, i.e., 
+a user who follows outgoing links in a Web page, but that 
+eventually starts their search again in a new page. 
+The algorithm represents Web pages as nodes in a graph and it
+establishes edges between them using a similarity function.
+The more edges a node has, the more central the node is to the graph
+and thus, the more relevant is the Web page that that node represents.
+
+
+In our context, central nodes represent the text in an artifact that most likely 
+contain key information for a given task while edges between the nodes, a trail of the information most relevant to the given task.
+To identify these nodes, we are guided by studies that 
+propose custom functions in place of the algorithm's original one~\cite{Lotufo2012, Ponzanelli2017}. Hence, we define a similarity function (detailed further in this section)
+that determines the relevance of text to an input task
+according to syntactic and semantic properties derived from the text.
+
+
+We provide details  our approach in a top-down manner, i.e., we first
+provide an overview of the PageRank algorithm via an example and
+then, we introduce the \textit{textual features} from related work and of our own used in our custom similarity function.
+
+
+\subsection{Overview}
+
+
+Our approach takes a task and an artifact as inputs and outputs 
+a probability score indicating the sentence's relevancy for the input task. 
+Based on such output, we can select the the top-n sentences with highest probability as the ones most likely to contain information that assists a developer in completing their task. 
+Note that, to identify these sentences, we need to not only identify the sentences most central to the artifact, as in a summarization problem~\cite{Rastkar2010,Lotufo2012},
+but also weight them against the input task, as in a query-based summarization problem~\cite{Xu2017, Goldsteinet1999}.
 
 
 
-We provide details about steps towards designing our approach in a top-down manner, i.e., we first introduce general concepts
-used to produce a summary and then, we describe
-the \textit{textual features} from related work and of our own used to identify task-relevant sentences.
+Given an input artifact $A$ and a query representing task $t$, we seek to determine the centrality of each sentence $s \in A$ with respect to task $t$.
+For that, we build an adjacency matrix representing the weight between nodes $s_i$ and $s_j$ according to some similarity function.
+To incorporates information about the task,
+we follow Lotufo et al. procedures~\cite{Lotufo2012} and we also weight every sentence $s_i$ against task $t$, resulting in a function  
+$f_{sim}(s_i, s_j, t)$. 
+PageRank takes the adjency matrix built by this function as an input and outputs the centrality of each node, which in our case indicates how likely the sentence which that node represents 
+is to contain information relevant to the input task.
 
 
 
-\red{Can I discuss this as a classification problem?}
+For example, consider an Android task\footnote{\url{https://github.com/Kotlin/anko/issues/135}} where a user describes that a feature that helps layout placement 
+is not working as expected.
+Table~\ref{tbl:gravity-task}, shows an excerpt of the sentences of a Stack Overflow answer\footnote{\url{https://stackoverflow.com/questions/19025301}}
+that might contain information relevant to this task.
+The table also shows probability outputs from PageRank when using some arbitrary function $f_{sim}(s_i, s_j, t)$.
+If our goal is to identify the most probable sentence that might be relevant to the Android gravity task, 
+we would first identify s\textsubscript{4}, which has the highest probability ($p=0.42$).
+Likewise, the three most relevant sentences for this example are sentences s\textsubscript{4}, s\textsubscript{5}, and s\textsubscript{3}, respectively.
 
 
-
-\subsection{Summary Generation}
-
-
-\red{LexRank appeared out of nowhere. I need to be up-front about why am I basing my technique on it}
+\input{sections/cp5/tbl-gravity-task-example}
 
 
-LexRank~\cite{Erkan2004} is the backbone of our approach. 
-It is based on the PageRank~\cite{Page1999} algorithm
-and, on its most simplistic form, LexRank threats each sentence in an artifact as a node.
-The algorithm
-establishes edges between all the node pairs using a similarity function, what produces a graph. 
-The more edges a node has, the more central the node is to the graph and the more likely it is that the sentence which that node represents contains key information. 
-\red{confusing:} Thus, we can obtain a summary of the content of a pertinent artifact selecting $n$ of the most central nodes of the graph. 
-
-
-To include information about a task, one can build a bipartite graph.
-A first set of nodes represent sentences originating from a task while a second set, sentences in a pertinent artifact.
-This time,  a similarity function 
-establishes edges both between the nodes belonging to a the task and to a pertinent artifact.
-By focusing our attention to the nodes (or sentences) with the most edges 
-exclusive to the pertinent artifact set, we can produce a summary with information potentially relevant to that task.
-
-
-
-\subsubsection{Similarity Function}
-
-
-At this point, it is noticeable that the similarity function used by the algorithm is the stepping stone for determining the summary's output.  
-To devise a similarity function that accounts for the richness of data available in the text, we base our approach on Ponzanelli et al.'s meta-information model~\cite{Ponzanelli2015}.
-\red{confusing:} This model defines a similarity function that uses a set of properties or features to compute similarity and thus, establish edges in the graph.
-The overall similarity value of the model is the normalized sum of individual values obtained for each feature or property.
-
-
-\art{Provide formulas/formal definitions once we've agreed upon approach/chapter outline}
 
 \subsection{Textual Features}
 
 
-
-To devise an artifact-agnostic similarity function, we need a set of features that apply to the different artifact types a developer might seek information as part of their task.
-Due to this need, we identify features that do not rely on artifact-specific data in existing related work. 
-We also define new features based 
-on heuristics derived from annotations from 20 participants of text deemed relevant
-for the six tasks of the \acs{DS-synthetic} corpus.
-Table~\ref{tbl:approach-textual-features} groups features based on the textual properties that they rely on. Details for each feature are discussed in the remainder of this section.
+At this point, it is noticeable that the similarity function used by the algorithm is the stepping stone for the identification of sentences that contain information that may be relevant to a task.  
+Hence, we seek to design a similarity function that accounts for the richness of data available in the text and that applies to different artifact types.
 
 
 
-\art{Expand section detailing features from Table~\ref{tbl:approach-textual-features}. For now, there's a short sentence for the novel features}
-
-\vspace{3mm}
-\begin{hangparas}{1em}{1}
-    \textbf{Semantic frame patterns:} Analyzing the annotated text of \acs{DS-android}, 
-    we found that certain semantic frames are more prominent in sentences deemed relevant.
-    We use this knowledge to encode semantic frames in a set of \textit{relevancy patterns}. 
-    Guided by Xu et al.~\cite{Xu2017}, we set the value for this property to 1 if a sentence in a pertinent artifact contains at least one relevancy pattern, otherwise 0.
-\end{hangparas}
+We base our function on prior work that uses lexical and artifact-specific properties
+to identify relevant text in certain artifact types~\cite{Ponzanelli2015, Xu2017,Lotufo2012}.
+Nonetheless, we do not use artifact-specific data and instead, we explore combining \textit{lexical, word semantics, and sentence semantics} to 
+compute similarity, where our overall similarity score is the normalized sum of the values obtained for each of the properties that we explore.
 
 
-\vspace{3mm}
-\begin{hangparas}{1em}{1}
-    \textbf{Semantic frame similarity:} The intentionality of a task might assist us in determining sentences relevant to that task. 
-    This feature computes the cosine similarity between the vectors representing the semantic frames present in the task's title and the frames of each sentence within a pertinent artifact. \art{I need to explore this in \acs{DS-android}}
-\end{hangparas}
+
+Table~\ref{tbl:approach-textual-features} provides a short description of the properties that we use. 
+They originate both from existing related work and also from heuristics that we derive from the text deemed relevant
+in the \acs{DS-synthetic} corpus.
+Certain properties have binary values (i.e., either $0$ or $1$), such as when the frames from a sentence 
+match a relevancy pattern. Other properties range from $0$ to $1.0$, such as
+the lexical cosine similarity value between two sentences.
+Note that, for binary values, we compute $f_{sim}(s_i, s_j, t)$ for that property
+with regards to $s_i$, what will give more weight to that sentence and thus, affect 
+its probability, as computed through PageRank.
 
 
-\vspace{3mm}
-\begin{hangparas}{1em}{1}
-    \textbf{Word embeddings similarity:} Semantic similarity, as captured via word embeddings, might be an indicator of the relevance of a sentence to a task. With this property, we measure semantic similarity using the cosine similarity between the embedding vectors of a task's title and a sentence within a pertinent artifact. 
-    For that, we use the \textit{FastText} model~\cite{bojanowski2017FastText} and the asymmetric semantic similarity function described by Ye et al.~\cite{Ye2016} and used in several other studies~\cite{Huang2018, Xu2017, silva2019}.
-\end{hangparas}
+
+
+
+
+
+
+
+
+
+% \art{Expand section detailing features from Table~\ref{tbl:approach-textual-features}. For now, there's a short sentence for the novel features}
 
 
 \input{sections/cp5/tbl-textual-features}
 
-\art{I may need an implementation section to state that I validated these features/properties in the \acs{DS-synthetic} corpus}
-
-\subsection{Approach Overview}
+\art{Evaluating these properties in the \acs{DS-synthetic} corpus, I currently got an average precision of $.75$ and pyramid-precision of $.52$}
 
 
-\red{should appear at the star of the section even if I do a top-down description later on}
+\clearpage
 
-Putting it all together, our approach is based on the LexRank algorithm.
-We build a bipartite graph with textual data originating from a task as well as textual data originating from a pertinent artifact.
-Relationships between nodes in the graph are established using a custom similarity function.
-This custom function combines lexical properties from previous related work 
-and also semantic properties at the word and sentence level.
-Through this function, we can identify a number of prominent nodes (or sentences)
-in an artifact that likely contains information relevant to a task.
 
+% To devise an artifact-agnostic similarity function that we can use in the PageRank algorithm, we need a set of features that apply to the different artifact types a developer might seek information as part of their task.

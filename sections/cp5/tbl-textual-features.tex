@@ -1,5 +1,5 @@
 \vspace{4mm}        
-\begin{table}[H]
+\begin{table}
 \begin{small}
 \begin{tabular}{lr}
 
@@ -25,20 +25,23 @@
     \textbf{Conditional sentence:} indicates if a sentence contains a condition.
 } & \cite{nadi2020} \\  
 
-\parbox[l][1cm][c]{11cm}{ 
+\parbox[l][1.1cm][c]{11cm}{ 
     \textbf{Entity overlap:} indicates if software specific terms mentioned in the task also appear in the sentences within a pertinent artifact.
 } & \cite{Xu2017, Ponzanelli2015, Ponzanelli2017} \\  
 
-\parbox[l][1.5cm][c]{11cm}{ 
-    \textbf{Information entropy:} indicates the entropy of each sentence within a pertinent artifact. High-entropy sentences often represent unique and useful information.
-} & \cite{Xu2017,Rastkar2010} \\  
 
-\parbox[l][1.5cm][c]{11cm}{ 
-    \textbf{Lexical similarity of the task's content and the artifact's content:}
-    cosine similarity based on term-frequency inverse-document-frequency (\textit{tf-idf})
-    between a task's title and each sentence within a pertinent artifact.
-} & \cite{Lotufo2012, Ponzanelli2015, Ponzanelli2017} \\  
 
+\parbox[l][1.1cm][c]{11cm}{ 
+\textbf{Sentences' lexical similarity:}
+cosine similarity based on term-frequency inverse-document-frequency (\textit{tf-idf})
+between sentences $s_i$ and $s_j$
+} & \cite{Lotufo2012, Ponzanelli2015, Ponzanelli2017} \\
+    
+\parbox[l][1.1cm][c]{11cm}{ 
+    \textbf{Task's lexical similarity:}
+    cosine similarity based on \textit{tf-idf}
+    between a task's title and sentence $s_j$.
+} & \cite{Lotufo2012} \\  
 % -----------------------------------------------------------------------------------
 
 \hline
@@ -47,9 +50,14 @@
     \textbf{Word semantics features}
 } & \cellcolor{lightgray} \\ 
 
-\parbox[l][1.5cm][c]{11cm}{ 
-    \textbf{Word embeddings similarity:} asymmetric similarity based on the word embedding vector representations of a task's title and each sentence within a pertinent artifact.
-} & \cite{Xu2017, silva2019} \\  
+
+\parbox[l][1.1cm][c]{11cm}{ 
+    \textbf{Sentence's word embeddings similarity:} similarity based on the word embedding vector representations of a task's title and sentence $s_j$.
+} & \cite{Ye2016} \\  
+
+\parbox[l][1.1cm][c]{11cm}{ 
+    \textbf{Task's word embeddings similarity:} similarity based on the word embedding vector representations of sentences $s_i$ and $s_j$
+} & \cite{Xu2017} \\  
 
 % -----------------------------------------------------------------------------------
 \hline
@@ -58,21 +66,17 @@
     \textbf{Sentence semantics features}
 } & \cellcolor{lightgray} \\ 
 
-\parbox[l][1cm][c]{11cm}{ 
-    \textbf{Semantic frame patterns:} indicates if a sentence contains a set of semantic 
-    frames commonly observed in sentences deemed relevant.    
+\parbox[l][1.6cm][c]{11cm}{ 
+    \textbf{Semantic frame patterns:} indicates if a sentence contains any of the  
+    frame patterns commonly observed in the \acs{DS-synthetic} corpus. Frame patterns were automatically derived from the data using association rules mining~\cite{Hahsler2005}
 } & - \\  
 
-\parbox[l][1cm][c]{11cm}{ 
-    \textbf{Semantic frame similarity:} cosine similarity based on the frames that appear 
-    in a task's and the frames of each sentence within a pertinent artifact.
+\parbox[l][1.5cm][c]{11cm}{ 
+    \textbf{Task sentence frame overlap:} indicates whether a task's title shares the intentionality
+    of a sentence based on the presence of semantic frames common to both
 } & - \\  
 
 \hline
-
-\parbox[l][0.5cm][c]{11cm}{ 
-    \art{Other potential features}
-} & \\
 
 \end{tabular}
 \end{small}
