@@ -386,3 +386,72 @@ in addition to allowing a custom function, the algorithm has a set of properties
     \textbf{Word embeddings similarity:} Semantic similarity, as captured via word embeddings, might be an indicator of the relevance of a sentence to a task. With this property, we measure semantic similarity using the cosine similarity between the embedding vectors of a task's title and a sentence within a pertinent artifact. 
     For that, we use the \textit{FastText} model~\cite{bojanowski2017FastText} and the asymmetric semantic similarity function described by Ye et al.~\cite{Ye2016} and used in several other studies~\cite{Huang2018, Xu2017, silva2019}.
 \end{hangparas}
+
+
+
+
+\subsection{Feature evaluation}
+
+
+We evaluate how each individual textual property contributes towards determining 
+that a sentence in a pertinent artifact is relevant to a task 
+using a \red{placeholder} test. 
+Informally, the higher the test output value for a feature, the more the observed outcome (i.e., whether a sentence is relevant or not to a task) depends 
+on that feature.
+We use this knowledge to identify if certain features contribute more or less 
+to the observed outcome.
+
+
+
+\art{I started reading chi square, but it does not apply to the features explored because some of them are continuous. I may need a logistic regression model to answer this question}
+
+
+\subsubsection{Results}
+
+
+
+Table~\ref{tbl:features-chi-square} gives insight into the predictive power of each feature we use as part of our approach. 
+
+
+
+\input{sections/cp5/tbl-features-chi-square}
+
+
+
+
+
+
+\vspace{1mm}
+\setcounter{rq}{2}
+\begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=1.4cm]
+\setcounter{enumi}{\the\numexpr \arabic{rq} - 1\relax}
+
+\item \textit{Which properties can better identify the text relevant to a task in an artifact pertinent to that task?} 
+
+\end{enumerate}
+
+
+
+
+\vspace{1mm}
+\setcounter{rq}{2}
+\begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=1.4cm]
+\setcounter{enumi}{\the\numexpr \arabic{rq} - 1\relax}
+
+\item \textit{What syntactic and semantic properties can better identify the text relevant to a task?} 
+
+\end{enumerate}
+
+
+
+
+\red{confusing:}
+Evaluation focuses on two main questions:
+
+\begin{enumerate}
+    \item How accurately can our approach detect text considered by humans as being relevant to a particular task?
+    
+    \item When identifying text relevant to a task, are certain features (i.e., lexical, word-semantics, and sentence-semantics) more informative than others?
+\end{enumerate}
+
+

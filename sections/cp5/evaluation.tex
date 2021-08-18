@@ -3,45 +3,11 @@
 
 
 
-\vspace{1mm}
-\setcounter{rq}{2}
-\begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=1.4cm]
-\setcounter{enumi}{\the\numexpr \arabic{rq} - 1\relax}
 
-\item \textit{Which properties can better identify the text relevant to a task in an artifact pertinent to that task?} 
-
-\end{enumerate}
+\red{begin with research question}
 
 
-
-
-\vspace{1mm}
-\setcounter{rq}{2}
-\begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=1.4cm]
-\setcounter{enumi}{\the\numexpr \arabic{rq} - 1\relax}
-
-\item \textit{What syntactic and semantic properties can better identify the text relevant to a task?} 
-
-\end{enumerate}
-
-
-
-
-\red{confusing:}
-Evaluation focuses on two main questions:
-
-\begin{enumerate}
-    \item How accurately can our approach detect text considered by humans as being relevant to a particular task?
-    
-    \item When identifying text relevant to a task, are certain features (i.e., lexical, word-semantics, and sentence-semantics) more informative than others?
-\end{enumerate}
-
-
-
-\red{should be something as in: determine which techniques work best for detecting task relevant text?}
-
-
-To answer these questions, we use our approach to identify sentences relevant to
+We use our approach to identify sentences relevant to
 the tasks in the \acs{DS-android} corpus,
 comparing the sentences identified against the 
 sentences in the corpus' golden data. 
@@ -83,7 +49,7 @@ marked (or not) by annotators~\cite{Lotufo2012} for a particular task and a pert
 
 \subsubsection{Precision and recall}
 
-\red{I don't need recall anymore. Do I?}
+
 
 
 For standard precision and recall metrics, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by two or more annotators}. 
@@ -178,34 +144,6 @@ We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if differences 
 type of artifact are statistically significant. Results of the test indicate that... 
 
 \input{sections/cp5/tbl-results-by-artifact}
-
-
-\subsection{Feature evaluation}
-
-
-We evaluate how each individual textual property contributes towards determining 
-that a sentence in a pertinent artifact is relevant to a task 
-using a \red{placeholder} test. 
-Informally, the higher the test output value for a feature, the more the observed outcome (i.e., whether a sentence is relevant or not to a task) depends 
-on that feature.
-We use this knowledge to identify if certain features contribute more or less 
-to the observed outcome.
-
-
-
-\art{I started reading chi square, but it does not apply to the features explored because some of them are continuous. I may need a logistic regression model to answer this question}
-
-
-\subsubsection{Results}
-
-
-
-Table~\ref{tbl:features-chi-square} gives insight into the predictive power of each feature we use as part of our approach. 
-
-
-
-\input{sections/cp5/tbl-features-chi-square}
-
 
 
 
