@@ -4,30 +4,58 @@
 
 When provided with a set of artifacts that potentially contain information relevant to their task,
 software developers must inspect the artifact's content and locate the portion of the text that might be relevant to the task-at-hand. 
-Some of the artifacts inspected are short enough that a developer can decide if they contain any helpful information at a quick glance.
+Some of the artifacts inspected are short enough that a developer can find if they contain any helpful information at a quick glance.
 Some others are lengthy~\cite{Rastkar2013t} and factors such
 as high time pressure or
 the need to meet deadlines~\cite{meyer2019}
-may lead a developer to quickly search the document
-in an attempt to find any of the text that is relevant to their task
-such that they can 
-decide if the artifact is worthy of careful inspection~\cite{Starke2009}.
+may lead a developer to quickly skim the document
+in an attempt to find any of the text that is relevant to their task~\cite{Starke2009},
+what Robillard and Chhetri summarize as the information \textit{filtering problem}:
+
+\smallskip
+\begin{bluequote}
+    \textit{The burden  of having to sit through large amounts of irrelevant text, e.g., because of legacy information, boilerplate text, or because the text is intended for a reader other than the developer who is currently inspecting the artifact}~\cite{Robillard2015}
+\end{bluequote}
 
 
 
-
-% often jumps through the sections and the sentences in the text~\cite{Brandt2009a, Starke2009}.
-% When doing so,
-As unfruitful searches can 
+As unfruitful readings/skimming can 
 cause a developer to abandon an artifact that could otherwise contain information  helpful to the developer's task~\cite{Brandt2009a, Starke2009},
 several studies have proposed automatic approaches to assist this activity. 
-For example, both Xu et al.~\cite{Xu2017} and Ponzanelli et al.~\cite{Ponzanelli2015}
+These approaches leverage textual cues as well as an artifact's meta-data and, ultimately, they have the goal of surfacing 
+the most important information in a document, e.g., highlighting the text identified as relevant so that a developer can quickly 
+locate it.
+
+
+As examples of approaches, Xu et al.~\cite{Xu2017} and Ponzanelli et al.~\cite{Ponzanelli2015}
 argue that sentences relevant to a particular software task might be automatically identified if they have keywords that also appear in a task description.
 In turn, Silva et al.~\cite{silva2019} discuss that 
 there is a lexical gap between a task description and the information associated 
 with the solution for that task, which lead them to identify
-relevant sentences based on their semantics.
+relevant sentences based on word meanings.
+In a similar vein, Di Sorbo et al. suggest that relevant information might be identifiable 
+according to the text's purpose, such as if it details a feature request, a problem, a solution proposal and others~\cite{Sorbo2015}.
 
+
+Although effective, the cues used to automatically identify text relevant to a software task in the aforementioned studies have focused on specific contexts (i.e., certain tasks and artifact types), what raises the question of 
+whether there are lexical and semantical cues able to identify relevant text across a wider range of artifact types and tasks.
+
+
+To answer this question, we set out to investigate whether:
+
+
+\begin{enumerate}
+    \item \textit{The relevance of a sentence is higher the more it shares words with a task.} Our qualitative analysis of the search strategies from 20 participants to find relevant information within an artifact has shown that keyword-matching is a commonly adopted search strategy. Hence, we investigate to witch extent lexical similarities help identifying task-relevant text.
+
+    \item \textit{The relevance of a sentence is higher the more its meaning match the task's meaning}.
+    Guided by studies that discuss there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019,fucci2019, Huang2018, Ye2016}, we investigate if semantic similarities might assist identifying task-relevant text. 
+
+    \item \textit{The relevance of a sentence depends on the sentence's meaning}. Our study on characterizing task-relevant text has show that text deemed relevant often contains semantic frames~\cite{fillmore1976frame} describing 
+     required events, obligations, actions evoking system calls, etc.
+    Given how these frames capture key factors used to understand a sentence's meaning
+    and also their prominence in relevant text, 
+    we argue that semantic frames might help identifying  task-relevant text.
+\end{enumerate}
 
 
 
