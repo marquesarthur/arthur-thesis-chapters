@@ -143,13 +143,13 @@ the annotators over all the artifacts inspected as well as on an artifact type b
 
 \rev{
 On average the text deemed useful to a software task in the artifacts inspected comprises 
-8.93 sentences. \gm{\textbf{\textit{per artifact?}}} \art{yes}
+8.93 sentences per artifact.
 We observe that the highest number of sentences marked originate from miscellaneous artifacts
 while the lowest come from GitHub issue discussions. 
 The high number of sentences marked in the former might relate to the fact that tutorials 
-dilute \gm{\textbf{\textit{dilute?}}} \art{ops will rewrite} and exemplify much of the information that a developer would find in official API documentation in a more didactic way~\cite{arya2020, Jiang2017}.
+detail and exemplify much of the information that a developer would find in official API documentation in a more didactic way~\cite{arya2020, Jiang2017}.
 For the latter, the content on GitHub may be too project-specific what might 
-prevent a developer performing a task in a different context from benefiting from the project-specific information.
+prevent a developer performing a task in a different context from benefiting from most of the content found in this type of artifact.
 For example, discussions about whether a certain design is the most appropriate~\cite{Viviani2019} might not extend to other projects, but instructions on how to use an API element might.
 }
 
@@ -159,16 +159,22 @@ For example, discussions about whether a certain design is the most appropriate~
 
 
 \rev{
-To identify if data in the corpus can be homogeneously used for evaluation purposes,
-we divide the number of sentences marked according to a task's origin, as Tables~\ref{tbl:corpus-annotation-summary-by-task} shows.
-We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are any differences between the number of sentences marked in 
-GitHub and Stack Overflow task.
-Results show a statistically significant difference 
-between the number of sentences 
-marked with an effect size (\textit{Cohen's d = 0.29})~\cite{grissom2005effect} in between the small and medium thresholds~\cite{cohen2013statistical}.
-Based on this analysis, evaluation should provide results considering
-both the entirety of the data as well as on a per type of task basis.
+Based on the text marked by the annotators,   
+we ask if the amount of information required to solve a task was similar in GitHub or Stack Overflow tasks.
+To answer this question, Table~\ref{tbl:corpus-annotation-summary-by-task} shows the number of sentences marked according to a task's origin.
+We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if there are any differences between the
+average number of sentences marked per type of artifact in GitHub and Stack Overflow task.
+Results show there is no statistically significant difference 
+between the number of sentences sentences marked.
+Hence, the corpus can be used for evaluation purposes without the need to distinguish tasks based on their origin.
 }
+
+% Based on this analysis, evaluation should provide results considering
+% both the entirety of the data as well as on a per type of task basis.
+
+% marked with an effect size (\textit{Cohen's d = 0.29})~\cite{grissom2005effect} in between the small and medium thresholds~\cite{cohen2013statistical}.
+
+% To identify if data in the corpus can be homogeneously used for evaluation purposes,
 
 % ($\alpha \le .05$)
 %  

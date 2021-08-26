@@ -3,62 +3,81 @@
 
 
 When provided with a set of artifacts that potentially contain information relevant to their task,
-software developers must inspect the artifact's content and locate the portion of the text that might assist them in completing their task. 
-Some of the artifacts inspected are short enough that a developer can decide if they contain any helpful information at a quick glance or without tool support.
-Some others are lengthy~\cite{Rastkar2013t} and factors such as high time pressure or the need to meet deadlines~\cite{meyer2019}
-may lead a developer to quickly skim the document
-in order to decide if it is worthy of careful inspection~\cite{Starke2009},
-often using tools to help in such activity.
-
-
-
-A developer that 
-reads an artifact in this quick manner
-often jumps through the sections and the sentences in the text~\cite{Brandt2009a, Starke2009}.
-When doing so, a series of intrinsic and extrinsic factors~\cite{Freund2015} 
-serve as indicators of the relevance of the text to the developer's task.
-For example, a code element that is mentioned in a task description 
-and that also appears in a sentence may lead 
-the developer to inspect the sentence more carefully and is an example of an extrinsic factor (i.e., shared keywords).
-The developer's familiarity with the document's structure
-may also guide her to skip certain parts of its content while focusing her attention to others and is 
-an example of an intrinsic factor (i.e., the developer's experience reading a certain type of artifact).
+software developers must inspect the artifact's content and locate the portion of the text that might be relevant to the task-at-hand. 
+Some of the artifacts inspected are short enough that a developer can decide if they contain any helpful information at a quick glance.
+Some others are lengthy~\cite{Rastkar2013t} and factors such
+as high time pressure or
+the need to meet deadlines~\cite{meyer2019}
+may lead a developer to quickly search the document
+in an attempt to find any of the text that is relevant to their task
+such that they can 
+decide if the artifact is worthy of careful inspection~\cite{Starke2009}.
 
 
 
 
-
-As Table~\ref{tbl:text-properties-references} shows, many studies have 
-provided possible factors that guide the automatic identification of text relevant to a particular task.
-These factors are used in automatic approaches that help a developer in identifying parts of an artifact worthy of their attention.
-As an example, Krec uses the presence of code elements in a sentence to identify 
-text that programmers cannot afford to ignore when using an API~\cite{Robillard2015}, 
-e.g., ``\textit{Use \hl{getName} to get the logical name of the font}''.
-As another example, Sara and Treude argue that relevant text is often found in sentences
-with usage conditions~\cite{nadi2020}, 
-e.g., ``\textit{\hl{If} the permission you need to add isn't listed under the normal permissions, you'll need to deal with Runtime Permissions}''.
-
-
-\input{sections/cp5/tbl-text-properties}
+% often jumps through the sections and the sentences in the text~\cite{Brandt2009a, Starke2009}.
+% When doing so,
+As unfruitful searches can 
+cause a developer to abandon an artifact that could otherwise contain information  helpful to the developer's task~\cite{Brandt2009a, Starke2009},
+several studies have proposed automatic approaches to assist this activity. 
+For example, both Xu et al.~\cite{Xu2017} and Ponzanelli et al.~\cite{Ponzanelli2015}
+argue that sentences relevant to a particular software task might be automatically identified if they have keywords that also appear in a task description.
+In turn, Silva et al.~\cite{silva2019} discuss that 
+there is a lexical gap between a task description and the information associated 
+with the solution for that task, which lead them to identify
+relevant sentences based on their semantics.
 
 
 
-While the factors outlined in Table~\ref{tbl:text-properties-references} rely on 
-syntactic properties, we hypothesize that one can determine the relevancy of a sentence based on its semantics. 
-More specifically, our study characterizing task-relevant text has shown that certain frames---identifiable through frame semantics~\cite{fillmore1976frame}---are more prominent in sentences deemed as relevant.
-For example, in the sentence about the ``\textit{getName}'' method,
-we can identify frames detailing \texttt{using} the method to achieve a \texttt{goal}:
-
-\input{sections/cp5/frame-example}
 
 
-The \texttt{Using} frame is one of the frames observed in annotations from 20 participants of text deemed as relevant,
- which among others, contain frames about required events, obligations, actions evoking system calls or executing some procedure.
-Given how these frames capture key factors used to understand a sentence's meaning
-and their prominence in relevant text, 
-we argue that semantic properties can enhance or complement the identification of task-relevant text.
+% When skimming through an artifact's content, a series of intrinsic and extrinsic factors~\cite{Freund2015} 
+% serve as indicators of the relevance of the text to the developer's task.
+% For example, a code element that is mentioned in a task description 
+% and that also appears in a sentence may lead 
+% the developer to inspect the sentence more carefully and is an example of an extrinsic factor (i.e., shared keywords).
+% The developer's familiarity with the document's structure
+% may also guide her to skip certain parts of its content while focusing her attention to others and is 
+% an example of an intrinsic factor (i.e., the developer's experience reading a certain type of artifact).
 
 
+
+
+
+% As Table~\ref{tbl:text-properties-references} shows, many studies have 
+% provided possible factors that guide the automatic identification of text relevant to a particular task.
+% These factors are used in automatic approaches that help a developer in identifying parts of an artifact worthy of their attention.
+% As an example, Krec uses the presence of code elements in a sentence to identify 
+% text that programmers cannot afford to ignore when using an API~\cite{Robillard2015}, 
+% e.g., ``\textit{Use \hl{getName} to get the logical name of the font}''.
+% As another example, Sara and Treude argue that relevant text is often found in sentences
+% with usage conditions~\cite{nadi2020}, 
+% e.g., ``\textit{\hl{If} the permission you need to add isn't listed under the normal permissions, you'll need to deal with Runtime Permissions}''.
+
+
+% \input{sections/cp5/tbl-text-properties}
+
+
+
+% While the factors outlined in Table~\ref{tbl:text-properties-references} rely on 
+% syntactic properties, we hypothesize that one can determine the relevancy of a sentence based on its semantics. 
+% More specifically, our study characterizing task-relevant text has shown that certain frames---identifiable through frame semantics~\cite{fillmore1976frame}---are more prominent in sentences deemed as relevant.
+% For example, in the sentence about the ``\textit{getName}'' method,
+% we can identify frames detailing \texttt{using} the method to achieve a \texttt{goal}:
+
+% \input{sections/cp5/frame-example}
+
+
+% The \texttt{Using} frame is one of the frames observed in annotations from 20 participants of text deemed as relevant,
+%  which among others, contain frames about required events, obligations, actions evoking system calls or executing some procedure.
+% Given how these frames capture key factors used to understand a sentence's meaning
+% and their prominence in relevant text, 
+% we argue that semantic properties can enhance or complement the identification of task-relevant text.
+
+
+
+\clearpage
 
 % \subsubsection{Summary}
 
