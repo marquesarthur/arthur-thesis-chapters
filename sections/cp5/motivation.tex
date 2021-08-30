@@ -28,7 +28,7 @@ locate it.
 
 
 As examples of approaches, Xu et al.~\cite{Xu2017} and Ponzanelli et al.~\cite{Ponzanelli2015}
-argue that sentences relevant to a particular software task might be automatically identified if they have keywords that also appear in a task description.
+argue that words that appear in a task description and also in sentences within an artifact serve to automatically identify information relevant to a task.
 In turn, Silva et al.~\cite{silva2019} discuss that 
 there is a lexical gap between a task description and the information associated 
 with the solution for that task, which lead them to identify
@@ -37,25 +37,40 @@ In a similar vein, Di Sorbo et al. suggest that relevant information might be id
 according to the text's purpose, such as if it details a feature request, a problem, a solution proposal and others~\cite{Sorbo2015}.
 
 
-Although effective, the cues used to automatically identify text relevant to a software task in the aforementioned studies have focused on specific contexts (i.e., certain tasks and artifact types), what raises the question of 
-whether there are lexical and semantical cues able to identify relevant text across a wider range of artifact types and tasks.
+Although effective, the cues used to automatically identify text relevant to a software task in the aforementioned studies have focused on specific tasks (\red{example + ref}) and artifact types (\red{example + ref}).
+Therefore, the question of whether these cues can identify relevant text across a wider range of artifact types and tasks remains open. 
 
 
-To answer this question, we set out to investigate whether:
+
+As a first step towards answering this question, we set out to investigate:
 
 
 \begin{enumerate}
-    \item \textit{The relevance of a sentence is higher the more it shares words with a task.} Our qualitative analysis of the search strategies from 20 participants to find relevant information within an artifact has shown that keyword-matching is a commonly adopted search strategy. Hence, we investigate to witch extent lexical similarities help identifying task-relevant text.
+    \item \textit{How accurately can lexical properties identify text deemed relevant to a task?}
+    We assess to what extent can a lexical similarity approach automatically identify text relevant to a software task.
+    We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} show
+    that developers often use keyword-matching as a simple and quick search strategy to locate relevant information in a software artifact.
 
-    \item \textit{The relevance of a sentence is higher the more its meaning match the task's meaning}.
-    Guided by studies that discuss there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019,fucci2019, Huang2018, Ye2016}, we investigate if semantic similarities might assist identifying task-relevant text. 
 
-    \item \textit{The relevance of a sentence depends on the sentence's meaning}. Our study on characterizing task-relevant text has show that text deemed relevant often contains semantic frames~\cite{fillmore1976frame} describing 
-     required events, obligations, actions evoking system calls, etc.
+    \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
+    Guided by studies that discuss there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019, Huang2018, Ye2016},
+    we ask if we can better identify text relevant to a software task by semantically matching the text in a task description and the text within an artifact.
+    To answer this question, we investigate both a word semantics similarity approach and also state-of-the-art language models~\cite{Devlin2018Bert}.
+
+    
+    \item \textit{Does the relevance of a sentence depend on the sentence's meaning?}
+    Our study on characterizing task-relevant text has show that text deemed relevant often contains semantic frames describing 
+     required events, obligations, actions evoking system calls, etc (\red{Section~\ref{aaa}}).
     Given how these frames capture key factors used to understand a sentence's meaning
     and also their prominence in relevant text, 
-    we argue that semantic frames might help identifying  task-relevant text.
+    we assess if semantic frames help to filter task-relevant text.
 \end{enumerate}
+
+
+% of the answers from 20 participants
+%     describing their strategies to find relevant information in 6 software tasks
+
+
 
 
 
