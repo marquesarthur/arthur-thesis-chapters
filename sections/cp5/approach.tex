@@ -2,96 +2,86 @@
 \label{cp5:approaches}
 
 
-We have described how syntactic and semantic factors might assist 
-identifying  text relevant to a task. %  in a natural language artifact pertinent to that task
-We have also described how developers jump through the artifact's content when they  
-need to assess if an artifact is worthy of further inspection. 
-Given how these two aspects resemble the \textit{PageRank} algorithm~\cite{Page1999}, 
-we choose to investigate its applicability for identifying task-relevant text.
-
-
-In its most simplistic form, PageRank models the behaviour 
-of a ``random surfer'' in the Web~\cite{Page1999}, i.e., 
-a user who follows outgoing links in a Web page, but that 
-eventually starts their search again in a new page. 
-The algorithm represents Web pages as nodes in a graph and it
-establishes edges between them using a similarity function.
-The more edges a node has, the more central the node is to the graph
-and thus, the more relevant is the Web page that that node represents.
-
-
-In our context, central nodes represent the text in an artifact that most likely 
-contain key information for a given task while edges between the nodes, a trail of the information most relevant to the given task.
-To identify these nodes, we are guided by studies that 
-propose custom functions in place of the algorithm's original one~\cite{Lotufo2012, Ponzanelli2017}. Hence, we define a similarity function (detailed further in this section)
-that determines the relevance of text to an input task
-according to syntactic and semantic properties derived from the text.
-
-
-We provide details  our approach in a top-down manner, i.e., we first
-provide an overview of the PageRank algorithm via an example and
-then, we introduce the \textit{textual features} from related work and of our own used in our custom similarity function.
-
-
-\subsection{Overview}
-
-
-Our approach takes a task and an artifact as inputs and outputs 
-a probability score indicating the sentence's relevancy for the input task. 
-Based on such output, we can select the the top-n sentences with highest probability as the ones most likely to contain information that assists a developer in completing their task. 
-Note that, to identify these sentences, we need to not only identify the sentences most central to the artifact, as in a summarization problem~\cite{Rastkar2010,Lotufo2012},
-but also weight them against the input task, as in a query-based summarization problem~\cite{Xu2017, Goldsteinet1999}.
+We explore three techniques to automatically identify text---in a software artifact---that is relevant to a particular software task.
+These techniques encompass lexical similarity, word semantics, and sentence semantics and are detailed later in this section.
 
 
 
-Given an input artifact $A$ and a query representing task $t$, we seek to determine the centrality of each sentence $s \in A$ with respect to task $t$.
-For that, we build an adjacency matrix representing the weight between nodes $s_i$ and $s_j$ according to some similarity function.
-To incorporates information about the task,
-we follow Lotufo et al. procedures~\cite{Lotufo2012} and we also weight every sentence $s_i$ against task $t$, resulting in a function  
-$f_{sim}(s_i, s_j, t)$. 
-PageRank takes the adjency matrix built by this function as an input and outputs the centrality of each node, which in our case indicates how likely the sentence which that node represents 
-is to contain information relevant to the input task.
+All techniques take a task and a pertinent artifact as inputs and output the sentences 
+that are most likely to contain information that assists a developer in completing their task. 
+To determine how many sentences a technique should identify, we consider that 
+no more than 20\% of the content in the artifacts in the
+ \acs{DS-synthetic} and the \acs{DS-android} corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences. 
+We approximate these values to a target number of 10 sentences per input task-artifact. 
+Our decision to output a certain number of sentences regardless of the technique is to have an easy framework for their evaluation.
 
 
 
-For example, consider an Android task\footnote{\url{https://github.com/Kotlin/anko/issues/135}} where a user describes that a feature that helps layout placement 
-is not working as expected.
-Table~\ref{tbl:gravity-task}, shows an excerpt of the sentences of a Stack Overflow answer\footnote{\url{https://stackoverflow.com/questions/19025301}}
-that might contain information relevant to this task.
-The table also shows probability outputs from PageRank when using some arbitrary function $f_{sim}(s_i, s_j, t)$.
-If our goal is to identify the most probable sentence that might be relevant to the Android gravity task, 
-we would first identify s\textsubscript{4}, which has the highest probability ($p=0.42$).
-Likewise, the three most relevant sentences for this example are sentences s\textsubscript{4}, s\textsubscript{5}, and s\textsubscript{3}, respectively.
+\subsection{Lexical Similarity}
 
-
-\input{sections/cp5/tbl-gravity-task-example}
+As a baseline technique, we use the Vector Space Model (VSM)~\cite{Salton1975vsm} from Information Retrieval
+to compute the lexical similarity between the sentences within a pertinent artifact and a task. 
+Using this model, we can identify the sentences with highest lexical similarity 
+as the ones most likely to contain information relevant to the input task.
 
 
 
-\subsection{Textual Features}
 
-
-At this point, it is noticeable that the similarity function used by the algorithm is the stepping stone for the identification of sentences that contain information that may be relevant to a task.  
-Hence, we seek to design a similarity function that accounts for the richness of data available in the text and that applies to different artifact types.
-
-
-
-We base our function on prior work that uses lexical and artifact-specific properties
-to identify relevant text in certain artifact types~\cite{Ponzanelli2015, Xu2017,Lotufo2012}.
-Nonetheless, we do not use artifact-specific data and instead, we explore combining \textit{lexical, word semantics, and sentence semantics} to 
-compute similarity, where our overall similarity score is the normalized sum of the values obtained for each of the properties that we explore.
+VSM represents both a task and individual sentences within an artifact as vectors of term weights,
+where the weight of a term
+can be computed using a Term-Frequency Inverse-Document-Frequency (\textit{tf.idf}) scheme.
+\textit{tf.idf} accounts for how frequent a term is in an artifact (\textit{tf}) as well as how 
+unique that term is across an entire corpora (\textit{idf})~\cite{Manning2009IR}.
+Once we obtain vector representations $t$ and $s$ 
+for an input task and an arbitrary artifact sentence, 
+their lexical similarity can be computed 
+using the cosine similarity between their vectors, as Equation~\ref{eq:lex-sim} shows:
 
 
 
-Table~\ref{tbl:approach-textual-features} provides a short description of the properties that we use. 
-They originate both from existing related work and also from heuristics that we derive from the text deemed relevant
-in the \acs{DS-synthetic} corpus.
-Certain properties have binary values (i.e., either $0$ or $1$), such as when the frames from a sentence 
-match a relevancy pattern. Other properties range from $0$ to $1.0$, such as
-the lexical cosine similarity value between two sentences.
-Note that, for binary values, we compute $f_{sim}(s_i, s_j, t)$ for that property
-with regards to $s_i$, what will give more weight to that sentence and thus, affect 
-its probability, as computed through PageRank.
+\begin{equation}
+    cos(t,s) = \frac{t^Ts}{\|t\| \|s\|}
+    \label{eq:lex-sim}
+\end{equation}
+
+
+By automatically ranking the sentences in an artifact according to their similarity scores, i.e., from highest to lowest 
+lexical,   we can  select the top-n sentences as the ones relevant to an input task.
+
+
+
+
+\subsection{Word Semantics}
+
+
+\art{This section may be hard to follow. Ideally, I want to provide general concepts here and expand them in the subsections below}
+
+
+Harris' distributional hypothesis states that words that appear in a similar context tend to have similar meanings~\cite{harris1954distributional}.
+This hypothesis is the base for neural language models~\cite{Mikolov2013, Devlin2018Bert} that capture words' semantics
+as vector representations, namely \textit{word embeddings}. 
+
+
+ 
+Early language models, such as the skip-gram model~\cite{Mikolov2013}, provide vector representations at the word level.
+If two words have embeddings close in the model's vector space, we can identify semantically similar words even when if these words are lexically different~\cite{Mikolov2013}. For example, 
+the model could identify that \textit{crane} and \textit{stretch} are similar words that represent the action of stretching \red{ref}.
+
+
+
+
+
+
+However, such models would not be able to disambiguate if the word \textit{crane} represented a machine, a bird, or a stretch, since they operate at the word level.
+In contrast, state-of-the-art models~\cite{Devlin2018Bert} can
+provide different vectors for the same word based on the sentence in which a word appears.
+This additional layer allows for more complex operations such as word disambiguation. 
+
+
+
+We apply both simple and state-of-the-art model to 
+automatically identify the sentences in a pertinent artifact most likely to contain information relevant to
+the input task as detailed below.
 
 
 
@@ -100,18 +90,69 @@ its probability, as computed through PageRank.
 
 
 
+\subsubsection{Semantic Similarity}
 
 
 
-% \art{Expand section detailing features from Table~\ref{tbl:approach-textual-features}. For now, there's a short sentence for the novel features}
 
 
-\input{sections/cp5/tbl-textual-features}
 
-\art{Evaluating these properties in the \acs{DS-synthetic} corpus, I currently got an average precision of $.75$ and pyramid-precision of $.52$}
+To compute the semantic similarity between the sentences within a pertinent artifact and a task,
+we use the Skip-gram model~\cite{Mikolov2013} with word embeddings specifically trained for the software engineering domain~\cite{Efstathiou2018}.
+Analogous to lexical similarity,  we can identify the sentences with highest semantical similarity 
+as the ones most likely to contain information relevant to the input task.
+
+
+
+Note that, since word embeddings provide vector representations at the word level, we compute vector representations 
+at the sentence level by averaging the sum of the word embeddings of some input text.
+Provided that we have sentence-level embeddings $w_t$ and $w_s$ for the text 
+of an input task and an arbitrary artifact sentence, 
+their semantic similarity can also be obtained 
+using the cosine similarity: 
+
+
+
+\begin{equation}
+    cos(w_t,w_s) = \frac{w_t^Tw_s}{\|w_t\| \|w_s\|}
+    \label{eq:word-sim}
+\end{equation}
+
+
+
+
+\subsubsection{BERT}
+
+% https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/
+% https://jalammar.github.io/illustrated-transformer/
+% https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html
+
+
+% At the time of their introduction, language models primarily used recurrent neural networks (RNN) and convolutional neural networks (CNN) to handle NLP tasks.
+
+
+
+
+% By looking at all surrounding words, the Transformer allows the BERT model to understand the full context of the word, and therefore better understand searcher intent.
+
+% This is contrasted against the traditional method of language processing, known as word embedding, in which previous models like GloVe and word2vec would map every single word to a vector, which represents only one dimension, a sliver, of that word's meaning.
+
+
+
+
+
+
+% Look at the set of encoder hidden states it received – each encoder hidden states is most associated with a certain word in the input sentence
+% Give each hidden states a score (let’s ignore how the scoring is done for now)
+% Multiply each hidden states by its softmaxed score, thus amplifying hidden states with high scores, and drowning out hidden states with low scores
+
+
+
+
+\subsection{Sentence Semantics}
+
 
 
 \clearpage
 
 
-% To devise an artifact-agnostic similarity function that we can use in the PageRank algorithm, we need a set of features that apply to the different artifact types a developer might seek information as part of their task.
