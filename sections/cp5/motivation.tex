@@ -10,18 +10,18 @@ as high time pressure or
 the need to meet deadlines~\cite{meyer2019}
 may lead a developer to quickly skim the document
 in an attempt to find any of the text that is relevant to their task~\cite{Starke2009},
-what Robillard and Chhetri summarize as the information \textit{filtering problem}:
+which Robillard and Chhetri summarize as the information \textit{filtering problem}:
 
 \smallskip
 \begin{bluequote}
-    \textit{The burden  of having to sit through large amounts of irrelevant text, e.g., because of legacy information, boilerplate text, or because the text is intended for a reader other than the developer who is currently inspecting the artifact, to locate the pieces relevant to them}~\cite{Robillard2015}
+    \textit{The burden  of having to sit through large amounts of irrelevant text, e.g., because of legacy information, boilerplate text, or because the text is intended for a reader other than the developer who is currently inspecting the artifact, to locate the pieces relevant to the developer's task}~\cite{Robillard2015}
 \end{bluequote}
 
 
 
-As \textit{unfruitful readings} can 
-cause a developer to abandon an artifact that could otherwise contain information  helpful to her task~\cite{Brandt2009a, Starke2009},
-several studies have proposed automatic approaches to assist this activity. 
+Failing to locate task-relevant text in these quick search episodes can 
+cause a developer to abandon an artifact that could otherwise contain information  helpful to her task~\cite{Brandt2009a, Starke2009}.
+Hence, several studies have proposed automatic approaches to assist this activity. 
 These approaches leverage textual cues as well as an artifact's meta-data and, ultimately, they have the goal of surfacing 
 the most important information in a document so that a developer can quickly 
 locate it.
@@ -54,7 +54,7 @@ As a first step towards answering this question, we set out to investigate:
 
     \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
     Guided by studies that discuss that there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019, Huang2018, Ye2016},
-    we ask if we can identify text relevant to a software task by semantically matching the text in a task and the text within an artifact.
+    we ask if we can identify text relevant to a software task through semantic matching.
     To answer this question, we explore how can we use language models~\cite{Devlin2018Bert, Mikolov2013} to identify  task-relevant text.
 
     
@@ -65,7 +65,4 @@ As a first step towards answering this question, we set out to investigate:
     and also their prominence in relevant text, 
     we assess if semantic frames help to filter task-relevant text.
 \end{enumerate}
-
-
-
 

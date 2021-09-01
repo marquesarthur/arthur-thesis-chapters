@@ -1,4 +1,4 @@
-\section{Approach}
+\section{Approaches}
 \label{cp5:approaches}
 
 In this section, we detail three approaches to automatically identify text that is relevant to a particular software task.
@@ -10,29 +10,23 @@ All approaches take a task and a pertinent artifact as inputs and output the sen
 that are most likely to contain information that assists a developer in completing their task. 
 To determine how many sentences an approach should identify, we consider that 
 no more than 20\% of the content in the artifacts in the
- \acs{DS-synthetic} and the \acs{DS-android} corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences. 
-We approximate these values to identifying a target number of 10 sentences per input task-artifact. 
+ \acs{DS-synthetic} and the \acs{DS-android} corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences
+ and we approximate these values to identifying a target number of 10 sentences per input task-artifact. 
 Our decision to output a certain number of sentences regardless of the approach is to have an easy framework for their comparison (Section~\ref{cp5:evaluation}).
 
 
 
 \subsection{Lexical Similarity}
 
-As a baseline, we use Vector Space Model (VSM)~\cite{Salton1975vsm} from Information Retrieval~\cite{Manning2009IR}
+As a baseline, we investigate if we sentences that are lexical similar
+to a task are more likely to contain information relevant to that task.
+
+
+We use Vector Space Model (VSM)~\cite{Salton1975vsm} from Information Retrieval~\cite{Manning2009IR}
 to compute the lexical similarity between the sentences within a pertinent artifact and a task. 
-Using this model, we can identify the sentences with highest lexical similarity 
-as the ones most likely to contain information relevant to the input task.
-
-
-
-
 VSM represents both a task and individual sentences within an artifact as vectors of term weights,
 where the weight of a term
-can be computed using a Term-Frequency Inverse-Document-Frequency scheme, where the scheme accounts for how frequent a term is in an artifact (\textit{tf}) as well as how 
-unique that term is across an entire corpora (\textit{idf})~\cite{Manning2009IR}. 
-
-
-
+can be computed using a Term-Frequency Inverse-Document-Frequency scheme (\textit{tf.idf})~\cite{Manning2009IR}. 
 Once we obtain vector representations $t$ and $s$ 
 for an input task and an arbitrary artifact sentence, 
 their lexical similarity can be computed 
@@ -56,18 +50,18 @@ we can  select the top-n sentences as the ones relevant to an input task.
 
 
 Language models capture words' semantics based on the context in which words appear~\cite{harris1954distributional}.
-They allow a more ``human-like reasoning'' even when words are lexically different, as in 
-inferring that both the words \textit{king} and \textit{queen} are semantically similar and that they represent \textit{royalty}~\cite{Mikolov2013}.
+They allow a more ``human-like reasoning'' even when words are lexically different, which 
+motivates investigating whether we can identify task-relevant text by semantically matching the text in a pertinent artifact to the text in a task.
 
 
-% Considering that language models make sense of words in the same way that a human reader does~\cite{Just1980},
-Considering how language models provide a semantic representation for words, we pose that we can identify task-relevant text by semantically matching the text in a pertinent artifact to the text in a task.
-To this end, we first introduce general concepts needed to understand language models\footnote{
+
+To detail how we use language models to automatically identify task-relevant text,
+ we first introduce general concepts\footnote{
     For a in-depth overview of the concepts behind language models, please refer to~\cite{zhang2021deep-learning}.
 } and then, 
-Sections~\ref{cp5:skip-gram} and~\ref{cp5:bert}
+Sections~\ref{cp5:skip-gram} and~\ref{cp5:bert} respectively
 detail how we use a baseline model and 
-a state-of-the-art model to automatically identify task-relevant text, respectively.
+a state-of-the-art model to automatically identify task-relevant text.
 
 
 
@@ -118,7 +112,7 @@ computing the cosine similarity between their corresponding word embedding repre
 % Overview of state-of-the-art model
 \medskip
 \begin{hangparas}{.0in}{0}
-     \textit{BERT model.} Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being in the company of someone. In contrast, state-of-the-art models, such as \textit{BERT}~\cite{Devlin2018Bert}, provide different representations for the same word based on the sentence in which a word appears.
+     \textit{BERT model.} Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this, however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being with someone. In contrast, state-of-the-art models, such as \textit{BERT}~\cite{Devlin2018Bert}, provide different representations for the same word based on the sentence in which a word appears.
     This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
 \end{hangparas}
 
@@ -139,7 +133,7 @@ is trained to predict the likelihood that sentence $B$ succeeds (or not) sentenc
 
 
 Since BERT addresses both next word prediction and next sentence prediction, the model can be used for several
-word semantics and two-sentences tasks such as  ours, i.e., determine the relevance of a sentence within an artifact based on a second sentence drawn from a task description.
+word semantics and sentence relationship tasks such as  ours, i.e., determine the relevance of a sentence within an artifact based on a second sentence representing a task description.
 
 
 % ------------------------------------------------
@@ -150,15 +144,11 @@ word semantics and two-sentences tasks such as  ours, i.e., determine the releva
 
 
 
+Similar to lexical similarity,  we investigate if the sentences with the highest semantical similarity are most likely to contain information relevant to the input task.
 
 
 To compute the semantic similarity between the sentences within a pertinent artifact and a task,
 we use the Skip-gram model~\cite{Mikolov2013} with word embeddings specifically trained for the software engineering domain~\cite{Efstathiou2018}.
-Analogous to lexical similarity,  we can identify the sentences with highest semantical similarity 
-as the ones most likely to contain information relevant to the input task.
-
-
-
 Since word embeddings provide vector representations at the word level, we follow Conneau et al.'s guidelines~\cite{conneau2018} 
 and compute vector representations for an entire sentence by averaging the sum of the word embeddings in that sentence.
 
@@ -166,7 +156,8 @@ and compute vector representations for an entire sentence by averaging the sum o
 Provided that we have embeddings $w_t$ and $w_s$ for the text 
 of an input task and an arbitrary artifact sentence, 
 their semantic similarity can also be obtained 
-using the cosine similarity. Hence, we can select the top-n sentences as the ones likely relevant to an input software task.
+using the cosine similarity. In turn, we can select the top-n sentences
+with the highest semantical similarity as the ones likely relevant to an input software task.
 
 
 % ------------------------------------------------
@@ -182,12 +173,11 @@ the sentences within an artifact that most likely contain information relevant t
 
 Since BERT requires training procedures, we start with an already pre-trained model, namely BERT\textsubscript{uncased}, and we tune it to  identifying task-relevant text.
 As done by several other studies (e.g., ~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation is also used
-during training procedures. More specifically, we use 10-fold cross validation in the \acs{DS-android} corpus 
-using 70\%, 20\% and 10\% splits for training, validation and testing. 
+during the model's training procedures. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. 
 
 
-Similar to the other approaches that we explore, we used the model's probability outputs to select 
-the top-n sentences predicted by the model as the ones likely relevant to an input software task.
+The model outputs probability scores indicating the likelihood of a sentence being relevant to an input task.
+We select the top-n sentences predicted by the model as relevant.
 
 
 
@@ -197,17 +187,32 @@ the top-n sentences predicted by the model as the ones likely relevant to an inp
 \subsection{Frame Semantics}
 
 
+\art{I still need to check frames based on the tasks in \acs{DS-synthetic}, so there might be updates to this section. }
+
+
+Given our analysis of relevant sentences in the \acs{DS-synthetic} corpus, we pose that 
+sentences with certain meanings, such as the ones that provide instructions on using an entity to achieve some goal,
+are sentences that a developer would first pay attention to when inspecting a software artifact and thus, they are more likely to contain task-relevant information.
+
+
+
+We implement this hypothesis as a post-filtering step~\cite{Manning2009IR} applied to the lexical similarity and word semantics approaches.
+Given a set of sentences returned by an approach, 
+we use the \textit{SEFrame} tool~\cite{marques2021} as a proxy to the sentence's meaning,
+checking if the semantic frames obtained by the tool appear in a set of frames drawn from  sentences annotated as relevant in the \acs{DS-synthetic} corpus.
 
 
 
 
 
+% ------------------------------------------------
 
-\subsection{Summary}
+
+\subsection{Approaches Summary}
 
 
 Table~\ref{tbl:approaches-summary} bundles the approaches that we explore.
-The table provides a short identifier for each approach, identifies the bases for each approach and provides a short description for them. From now on, we refer to each approach according to their short identifier.
+The table provides a short identifier for each approach, identifies the research topic that serve as a basis for each approach and provides a short description for them. From now on, we refer to each approach according to their short identifier.
 
 
 \input{sections/cp5/tbl-approaches-summary}
