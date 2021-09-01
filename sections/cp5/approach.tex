@@ -3,7 +3,7 @@
 
 
 We explore three approaches to automatically identify text that is relevant to a particular software task.
-These approaches encompass lexical similarity, word semantics, and sentence semantics and are detailed later in this section.
+These approaches encompass lexical similarity, word semantics, and frame semantics and are detailed later in this section.
 
 
 
@@ -19,7 +19,7 @@ Our decision to output a certain number of sentences regardless of the approach 
 
 \subsection{Lexical Similarity}
 
-As a baseline, we use the Vector Space Model (VSM)~\cite{Salton1975vsm} from Information Retrieval~\cite{Manning2009IR}
+As a baseline, we use Vector Space Model (VSM)~\cite{Salton1975vsm} from Information Retrieval~\cite{Manning2009IR}
 to compute the lexical similarity between the sentences within a pertinent artifact and a task. 
 Using this model, we can identify the sentences with highest lexical similarity 
 as the ones most likely to contain information relevant to the input task.
@@ -29,8 +29,7 @@ as the ones most likely to contain information relevant to the input task.
 
 VSM represents both a task and individual sentences within an artifact as vectors of term weights,
 where the weight of a term
-can be computed using a Term-Frequency Inverse-Document-Frequency (\textit{tf.idf}) scheme.
-\textit{tf.idf} accounts for how frequent a term is in an artifact (\textit{tf}) as well as how 
+can be computed using a Term-Frequency Inverse-Document-Frequency scheme---\textit{tf.idf} accounts for how frequent a term is in an artifact (\textit{tf}) as well as how 
 unique that term is across an entire corpora (\textit{idf})~\cite{Manning2009IR}. 
 \red{provide formulas for tf idf}
 
@@ -79,8 +78,8 @@ To this end, we first introduce general concepts needed to understand language m
 A core concept of a language model is Harris' distributional hypothesis~\cite{harris1954distributional}, which states that words that appear in a similar context tend to have similar meanings.
 
 
-A language model exploits this hypothesis by building vector representations, namely \textit{word embeddings}, for each of the words in some text corpus.
-For that, it requires a significantly large number of examples of sentences so that
+A language model exploits this hypothesis by building vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
+For that, it requires a significantly large number of sentences so that
 the model associates similar vector embeddings to words that are similar in meaning based on their context~\cite{Ye2016}. 
 
 % Overview of baseline model
@@ -93,17 +92,8 @@ the model associates similar vector embeddings to words that are similar in mean
 \end{hangparas}
 
 
-For example, using the skip-gram model, one can identify that words $t$ and $s$ are semantically similar 
-computing the cosine similarity between their corresponding word embedding representations ($w_t$ and $w_s$):
 
-
-\begin{equation}
-    cos(w_t,w_s) = \frac{w_t^Tw_s}{\|w_t\| \|w_s\|}
-    \label{eq:word-sim}
-\end{equation}
-
-
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=.65\linewidth]{fig/cp5/ye-skip-gram-example}
     \caption{Positive and negative training examples in the Skip-gram model. Figure from~\cite{Ye2016}}
@@ -112,16 +102,31 @@ computing the cosine similarity between their corresponding word embedding repre
 
 
 
+Using the skip-gram model, one can identify that words $t$ and $s$ are semantically similar 
+computing the cosine similarity between their corresponding word embedding representations ($w_t$ and $w_s$):
+
+
+
+\begin{equation}
+    cos(w_t,w_s) = \frac{w_t^Tw_s}{\|w_t\| \|w_s\|}
+    \label{eq:word-sim}
+\end{equation}
+
+
+
+
+
+
 % Overview of state-of-the-art model
 \smallskip
 \begin{hangparas}{.0in}{0}
-    {\small \textbf{BERT model.}} Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this however, does not allow the model to disambiguate words based on their context. For example, a Skip-gram model will have a single vector representation for the word \textit{company} even when the word can have different meanings, i.e., a business organization or being in the company of someone. In contrast, state-of-the-art models, such as \textit{BERT}~\cite{Devlin2018Bert}, provide different representations for the same word based on the sentence in which a word appears.
+    {\small \textbf{BERT model.}} Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being in the company of someone. In contrast, state-of-the-art models, such as \textit{BERT}~\cite{Devlin2018Bert}, provide different representations for the same word based on the sentence in which a word appears.
     This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
 \end{hangparas}
 
 % builts on top of several other studies in the natural language processing and deep learning communities \ref{ref ELMo, Transformer, Attention} and the model
 
-BERT architecture also addresses tasks that need to understand relationships between sentences, which is a task not directly captured by language modeling~\cite{Devlin2018Bert}.
+BERT also addresses tasks that need to understand relationships between sentences, which is a task not directly captured by language modeling~\cite{Devlin2018Bert}.
 To capture sentence relationships, BERT training procedures consider both next word prediction---as in any language model---and also next sentence prediction, i.e., given a pair of sentences $A$ and $B$ the model 
 is trained to predict the likelihood that sentence $B$ succeeds $A$ (Figure~\ref{fig:BERT}). 
 
@@ -129,13 +134,14 @@ is trained to predict the likelihood that sentence $B$ succeeds $A$ (Figure~\ref
 \begin{figure}
     \centering
     \includegraphics[width=.75\linewidth]{fig/cp5/BERT}
-    \caption{BERT two-sentence classification task \red{(temporary)}}
+    \caption{BERT sentence prediction training procedures \red{(temporary)}}
     \label{fig:BERT}
 \end{figure}
 
 
 
-Since BERT addresses both next word prediction and next sentence prediction, the model can be used for several two-sentences tasks such as  Question Answering or Natural Language Inference. Hence, we pose that the model can be used to determine the relevance of a sentence based on an input software task.
+Since BERT addresses both next word prediction and next sentence prediction, the model can be used for several two-sentences tasks such as  question answering or natural language inference. Through sentence relationships, 
+We pose that the model can be used to determine the relevance of a sentence based on an input software task.
 
 
 

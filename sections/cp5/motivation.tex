@@ -14,7 +14,7 @@ what Robillard and Chhetri summarize as the information \textit{filtering proble
 
 \smallskip
 \begin{bluequote}
-    \textit{The burden  of having to sit through large amounts of irrelevant text, e.g., because of legacy information, boilerplate text, or because the text is intended for a reader other than the developer who is currently inspecting the artifact}~\cite{Robillard2015}
+    \textit{The burden  of having to sit through large amounts of irrelevant text, e.g., because of legacy information, boilerplate text, or because the text is intended for a reader other than the developer who is currently inspecting the artifact, to locate the pieces relevant to them}~\cite{Robillard2015}
 \end{bluequote}
 
 
@@ -48,14 +48,14 @@ As a first step towards answering this question, we set out to investigate:
 \begin{enumerate}
     \item \textit{How accurately can lexical properties identify text deemed relevant to a task?}
     We assess to what extent can a lexical similarity approach automatically identify text relevant to a software task.
-    We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} show
+    We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown
     that developers often use keyword-matching as a simple and quick search strategy to locate relevant information in a software artifact.
 
 
     \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
     Guided by studies that discuss there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019, Huang2018, Ye2016},
-    we ask if we can better identify text relevant to a software task by semantically matching the text in a task and the text within an artifact.
-    To answer this question, we explore both a word semantics similarity approach and also a state-of-the-art language model~\cite{Devlin2018Bert}.
+    we ask if we can identify text relevant to a software task by semantically matching the text in a task and the text within an artifact.
+    To answer this question, we explore how can we use language models~\cite{Devlin2018Bert, Mikolov2013} to identify  task-relevant text.
 
     
     \item \textit{Does the relevance of a sentence depend on the sentence's meaning?}
