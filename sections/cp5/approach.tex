@@ -1,9 +1,8 @@
 \section{Approach}
 \label{cp5:approaches}
 
-
-We explore three approaches to automatically identify text that is relevant to a particular software task.
-These approaches encompass lexical similarity, word semantics, and frame semantics and are detailed later in this section.
+In this section, we detail three approaches to automatically identify text that is relevant to a particular software task.
+These approaches encompass lexical similarity, word semantics, and frame semantics.
 
 
 
@@ -12,7 +11,7 @@ that are most likely to contain information that assists a developer in completi
 To determine how many sentences an approach should identify, we consider that 
 no more than 20\% of the content in the artifacts in the
  \acs{DS-synthetic} and the \acs{DS-android} corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences. 
-We approximate these values to a target number of 10 sentences per input task-artifact. 
+We approximate these values to identifying a target number of 10 sentences per input task-artifact. 
 Our decision to output a certain number of sentences regardless of the approach is to have an easy framework for their comparison (Section~\ref{cp5:evaluation}).
 
 
@@ -29,9 +28,9 @@ as the ones most likely to contain information relevant to the input task.
 
 VSM represents both a task and individual sentences within an artifact as vectors of term weights,
 where the weight of a term
-can be computed using a Term-Frequency Inverse-Document-Frequency scheme---\textit{tf.idf} accounts for how frequent a term is in an artifact (\textit{tf}) as well as how 
+can be computed using a Term-Frequency Inverse-Document-Frequency scheme, where the scheme accounts for how frequent a term is in an artifact (\textit{tf}) as well as how 
 unique that term is across an entire corpora (\textit{idf})~\cite{Manning2009IR}. 
-\red{provide formulas for tf idf}
+
 
 
 Once we obtain vector representations $t$ and $s$ 
@@ -65,7 +64,10 @@ inferring that both the words \textit{king} and \textit{queen} are semantically 
 Considering how language models provide a semantic representation for words, we pose that we can identify task-relevant text by semantically matching the text in a pertinent artifact to the text in a task.
 To this end, we first introduce general concepts needed to understand language models\footnote{
     For a in-depth overview of the concepts behind language models, please refer to Zhang et al.~\cite{zhang2021deep-learning}.
-} and then, we detail how we use a baseline model~\cite{Mikolov2013} and also a state-of-the-art model~\cite{Devlin2018Bert} to automatically identify task-relevant text.
+} and then, 
+Sections~\ref{cp5:skip-gram} and~\ref{cp5:bert}
+detail how we use a baseline model and 
+a state-of-the-art model to automatically identify task-relevant text, respectively.
 
 
 
@@ -80,12 +82,12 @@ A core concept of a language model is Harris' distributional hypothesis~\cite{ha
 
 A language model exploits this hypothesis by building vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
 For that, it requires a significantly large number of sentences so that
-the model associates similar vector embeddings to words that are similar in meaning based on their context~\cite{Ye2016}. 
+the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}. 
 
 % Overview of baseline model
 \smallskip
 \begin{hangparas}{.0in}{0}
-    {\small \textbf{ Skip-gram model.}} One common challenge to language models is that they need to learn word vector representations that are good at predicting the nearby words at low computational costs, e.g., the time needed to train a model, the model size, etc.
+     \textit{ Skip-gram model.} One common challenge to language models is that they need to learn word vector representations that are good at predicting the nearby words at low computational costs, e.g., the time needed to train a model, the model size, etc.
     The \textit{Skip-gram} model~\cite{Mikolov2013}, proposed by Mikolov et al., addresses such challenges using simple yet efficient training procedures. As Figure~\ref{fig:skip-gram-example} illustrates, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceded and succeed word $w_t$
      as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context as negative training examples. Empirical results have shown that negative sampling allows for an accurate model able to handle noise data and that 
      the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
@@ -103,7 +105,7 @@ the model associates similar vector embeddings to words that are similar in mean
 
 
 Using the skip-gram model, one can identify that words $t$ and $s$ are semantically similar 
-computing the cosine similarity between their corresponding word embedding representations ($w_t$ and $w_s$):
+computing the cosine similarity between their corresponding word embedding representations, i.e., $w_t$ and $w_s$:
 
 
 
@@ -118,17 +120,17 @@ computing the cosine similarity between their corresponding word embedding repre
 
 
 % Overview of state-of-the-art model
-\smallskip
+\medskip
 \begin{hangparas}{.0in}{0}
-    {\small \textbf{BERT model.}} Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being in the company of someone. In contrast, state-of-the-art models, such as \textit{BERT}~\cite{Devlin2018Bert}, provide different representations for the same word based on the sentence in which a word appears.
+     \textit{BERT model.} Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being in the company of someone. In contrast, state-of-the-art models, such as \textit{BERT}~\cite{Devlin2018Bert}, provide different representations for the same word based on the sentence in which a word appears.
     This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
 \end{hangparas}
 
 % builts on top of several other studies in the natural language processing and deep learning communities \ref{ref ELMo, Transformer, Attention} and the model
 
 BERT also addresses tasks that need to understand relationships between sentences, which is a task not directly captured by language modeling~\cite{Devlin2018Bert}.
-To capture sentence relationships, BERT training procedures consider both next word prediction---as in any language model---and also next sentence prediction, i.e., given a pair of sentences $A$ and $B$ the model 
-is trained to predict the likelihood that sentence $B$ succeeds $A$ (Figure~\ref{fig:BERT}). 
+To capture sentence relationships, BERT training procedures consider both next word prediction---as in any language model---and also next sentence prediction, i.e., given a pair of sentences $A$ and $B$, the model 
+is trained to predict the likelihood that sentence $B$ succeeds (or not) sentence $A$ (Figure~\ref{fig:BERT}). 
 
 
 \begin{figure}
@@ -140,15 +142,15 @@ is trained to predict the likelihood that sentence $B$ succeeds $A$ (Figure~\ref
 
 
 
-Since BERT addresses both next word prediction and next sentence prediction, the model can be used for several two-sentences tasks such as  question answering or natural language inference. Through sentence relationships, 
-We pose that the model can be used to determine the relevance of a sentence based on an input software task.
+Since BERT addresses both next word prediction and next sentence prediction, the model can be used for several
+word semantics and two-sentences tasks such as  ours, i.e., determine the relevance of a sentence within an artifact based on a second sentence drawn from a task description.
 
 
 
 
 
 \subsubsection{Semantic Similarity}
-
+\label{cp5:skip-gram}
 
 
 
@@ -161,20 +163,35 @@ as the ones most likely to contain information relevant to the input task.
 
 
 
-Note that, since word embeddings provide vector representations at the word level, we compute vector representations 
-at the sentence level by averaging the sum of the word embeddings of some input text.
-Provided that we have sentence-level embeddings $w_t$ and $w_s$ for the text 
+Since word embeddings provide vector representations at the word level, we follow Conneau et al.'s guidelines~\cite{conneau2018} 
+and compute vector representations for an entire sentence by averaging the sum of the word embeddings in that sentence.
+
+
+Provided that we have embeddings $w_t$ and $w_s$ for the text 
 of an input task and an arbitrary artifact sentence, 
 their semantic similarity can also be obtained 
-using the cosine similarity: 
+using the cosine similarity. Hence, we can select the top-n sentences as the ones likely relevant to an input software task.
 
 
 
 
 
-\subsubsection{BERT}
+\subsubsection{Artifact-Task Sentence Relationships}
+\label{cp5:bert}
 
 
+We use the BERT model~\cite{Devlin2018Bert} to establish relationships between artifact and task sentences pairs and determine 
+the sentences within an artifact that most likely contain information relevant to the task.
+
+
+Since BERT requires training procedures, we start with an already pre-trained model, namely BERT\textsubscript{uncased}, and we tune it to  identifying task-relevant text.
+As done by several other studies (e.g., ~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation is also used
+during training procedures. More specifically, we use 10-fold cross validation in the \acs{DS-android} corpus 
+using 70\%, 20\% and 10\% splits for training, validation and testing. 
+
+
+Analogous to the other approaches that we explore, we used the model's probability outputs to select 
+the top-n sentences predicted by the model as the ones likely relevant to an input software task.
 
 
 

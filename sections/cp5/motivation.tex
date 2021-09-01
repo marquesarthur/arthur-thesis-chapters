@@ -19,11 +19,11 @@ what Robillard and Chhetri summarize as the information \textit{filtering proble
 
 
 
-As \textit{unfruitful filtering} can 
+As \textit{unfruitful readings} can 
 cause a developer to abandon an artifact that could otherwise contain information  helpful to her task~\cite{Brandt2009a, Starke2009},
 several studies have proposed automatic approaches to assist this activity. 
 These approaches leverage textual cues as well as an artifact's meta-data and, ultimately, they have the goal of surfacing 
-the most important information in a document, e.g., highlighting the text identified as relevant so that a developer can quickly 
+the most important information in a document so that a developer can quickly 
 locate it.
 
 
@@ -32,7 +32,7 @@ argue that words that appear in a task description and that also appear in sente
 In turn, Silva et al.~\cite{silva2019} discuss that 
 there is a lexical gap between a task description and the information associated 
 with the solution for that task, which lead them to identify
-relevant sentences based on word meanings.
+relevant sentences based on word semantics.
 In a similar vein, Di Sorbo et al. suggest that relevant information might be identifiable 
 according to the text's purpose, such as if it details a feature request, a problem, a solution proposal and others~\cite{Sorbo2015}.
 
@@ -49,11 +49,11 @@ As a first step towards answering this question, we set out to investigate:
     \item \textit{How accurately can lexical properties identify text deemed relevant to a task?}
     We assess to what extent can a lexical similarity approach automatically identify text relevant to a software task.
     We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown
-    that developers often use keyword-matching as a simple and quick search strategy to locate relevant information in a software artifact.
+    that developers often use keyword-matching as a simple and quick search strategy to locate task-relevant information in a software artifact.
 
 
     \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
-    Guided by studies that discuss there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019, Huang2018, Ye2016},
+    Guided by studies that discuss that there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019, Huang2018, Ye2016},
     we ask if we can identify text relevant to a software task by semantically matching the text in a task and the text within an artifact.
     To answer this question, we explore how can we use language models~\cite{Devlin2018Bert, Mikolov2013} to identify  task-relevant text.
 
