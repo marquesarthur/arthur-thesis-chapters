@@ -49,7 +49,7 @@ using the cosine similarity between their vectors, as Equation~\ref{eq:lex-sim} 
 By ranking the sentences in an artifact according to their similarity scores, i.e., from highest to lowest,
 we can  select the top-n sentences as the ones relevant to an input task.
 
-
+% ------------------------------------------------
 
 
 \subsection{Word Semantics}
@@ -63,7 +63,7 @@ inferring that both the words \textit{king} and \textit{queen} are semantically 
 % Considering that language models make sense of words in the same way that a human reader does~\cite{Just1980},
 Considering how language models provide a semantic representation for words, we pose that we can identify task-relevant text by semantically matching the text in a pertinent artifact to the text in a task.
 To this end, we first introduce general concepts needed to understand language models\footnote{
-    For a in-depth overview of the concepts behind language models, please refer to Zhang et al.~\cite{zhang2021deep-learning}.
+    For a in-depth overview of the concepts behind language models, please refer to~\cite{zhang2021deep-learning}.
 } and then, 
 Sections~\ref{cp5:skip-gram} and~\ref{cp5:bert}
 detail how we use a baseline model and 
@@ -84,6 +84,7 @@ A language model exploits this hypothesis by building vector representations, na
 For that, it requires a significantly large number of sentences so that
 the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}. 
 
+
 % Overview of baseline model
 \smallskip
 \begin{hangparas}{.0in}{0}
@@ -93,15 +94,12 @@ the model associates similar vector embeddings to words that are similar in mean
      the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
 \end{hangparas}
 
-
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=.65\linewidth]{fig/cp5/ye-skip-gram-example}
-    \caption{Positive and negative training examples in the Skip-gram model. Figure from~\cite{Ye2016}}
+    \caption{Positive and negative training examples in the Skip-gram model. Figure originally from~\cite{Ye2016}}
     \label{fig:skip-gram-example}
 \end{figure}
-
 
 
 Using the skip-gram model, one can identify that words $t$ and $s$ are semantically similar 
@@ -117,8 +115,6 @@ computing the cosine similarity between their corresponding word embedding repre
 
 
 
-
-
 % Overview of state-of-the-art model
 \medskip
 \begin{hangparas}{.0in}{0}
@@ -126,7 +122,7 @@ computing the cosine similarity between their corresponding word embedding repre
     This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
 \end{hangparas}
 
-% builts on top of several other studies in the natural language processing and deep learning communities \ref{ref ELMo, Transformer, Attention} and the model
+
 
 BERT also addresses tasks that need to understand relationships between sentences, which is a task not directly captured by language modeling~\cite{Devlin2018Bert}.
 To capture sentence relationships, BERT training procedures consider both next word prediction---as in any language model---and also next sentence prediction, i.e., given a pair of sentences $A$ and $B$, the model 
@@ -136,7 +132,7 @@ is trained to predict the likelihood that sentence $B$ succeeds (or not) sentenc
 \begin{figure}
     \centering
     \includegraphics[width=.75\linewidth]{fig/cp5/BERT}
-    \caption{BERT sentence prediction training procedures \red{(temporary)}}
+    \caption{BERT next sentence prediction training procedures. Figure originally from~\cite{jay-alammar-bert}}
     \label{fig:BERT}
 \end{figure}
 
@@ -146,7 +142,7 @@ Since BERT addresses both next word prediction and next sentence prediction, the
 word semantics and two-sentences tasks such as  ours, i.e., determine the relevance of a sentence within an artifact based on a second sentence drawn from a task description.
 
 
-
+% ------------------------------------------------
 
 
 \subsubsection{Semantic Similarity}
@@ -173,7 +169,7 @@ their semantic similarity can also be obtained
 using the cosine similarity. Hence, we can select the top-n sentences as the ones likely relevant to an input software task.
 
 
-
+% ------------------------------------------------
 
 
 \subsubsection{Artifact-Task Sentence Relationships}
@@ -190,41 +186,28 @@ during training procedures. More specifically, we use 10-fold cross validation i
 using 70\%, 20\% and 10\% splits for training, validation and testing. 
 
 
-Analogous to the other approaches that we explore, we used the model's probability outputs to select 
+Similar to the other approaches that we explore, we used the model's probability outputs to select 
 the top-n sentences predicted by the model as the ones likely relevant to an input software task.
 
 
 
-% https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/
-% https://jalammar.github.io/illustrated-transformer/
-% https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html
+% ------------------------------------------------
 
 
-% At the time of their introduction, language models primarily used recurrent neural networks (RNN) and convolutional neural networks (CNN) to handle NLP tasks.
-
-
-
-
-% By looking at all surrounding words, the Transformer allows the BERT model to understand the full context of the word, and therefore better understand searcher intent.
-
-% This is contrasted against the traditional method of language processing, known as word embedding, in which previous models like GloVe and word2vec would map every single word to a vector, which represents only one dimension, a sliver, of that word's meaning.
+\subsection{Frame Semantics}
 
 
 
 
 
 
-% Look at the set of encoder hidden states it received – each encoder hidden states is most associated with a certain word in the input sentence
-% Give each hidden states a score (let’s ignore how the scoring is done for now)
-% Multiply each hidden states by its softmaxed score, thus amplifying hidden states with high scores, and drowning out hidden states with low scores
 
 
+\subsection{Summary}
 
 
-\subsection{Sentence Semantics}
+Table~\ref{tbl:approaches-summary} bundles the approaches that we explore.
+The table provides a short identifier for each approach, identifies the bases for each approach and provides a short description for them. From now on, we refer to each approach according to their short identifier.
 
 
-
-\clearpage
-
-
+\input{sections/cp5/tbl-approaches-summary}

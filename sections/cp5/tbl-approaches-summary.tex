@@ -1,0 +1,70 @@
+
+\begin{table}[H]
+\centering    
+\begin{scriptsize}
+\begin{threeparttable}
+\rowcolors{2}{}{lightgray}    
+\begin{tabular}{lll}
+
+% \hline
+
+% \multicolumn{2}{c}{\textit{No lock screen controls ever}}  \\
+
+
+
+\textbf{Identifier} & \textbf{Based on} & \textbf{Description} \\
+
+\hline
+
+
+\texttt{baseline} & 
+\parbox[l][1cm][c] {1.5cm}{lexical\\similarity} &
+\parbox[l][1cm][c] {8.5cm}{
+    Uses VSM to identify the top-n sentences most lexically similar to a task description as task-relevant
+}
+\\
+
+
+\texttt{word2vec} & 
+\parbox[l][1cm][c] {1.5cm}{word\\semantics} &
+\parbox[l][1cm][c] {8.5cm}{
+    Uses the Skip-gram model to identify the top-n sentences most semantically similar to a task description as task-relevant
+}
+\\
+
+\texttt{BERT} & 
+\parbox[l][1cm][c] {1.5cm}{word\\semantics} &
+\parbox[l][1.4cm][c] {8.5cm}{
+    Uses BERT to establish relationships between a task description and sentences within an artifact, selecting the top-n sentences 
+    that the model predicts as task-relevant
+}
+\\
+
+
+\texttt{frame-meaning} & 
+\parbox[l][1cm][c] {1.5cm}{frame\\semantics} &
+\parbox[l][1cm][c] {8.5cm}{
+    \red{TODO}
+}
+\\
+
+
+\texttt{frame-matching} & 
+\parbox[l][1cm][c] {1.5cm}{frame\\semantics} &
+\parbox[l][1cm][c] {8.5cm}{
+    \red{TODO}
+}
+\\
+
+
+
+\hline
+
+
+\end{tabular}
+\end{threeparttable}
+\end{scriptsize}
+\caption{Summary of approaches used to automatically identify task-relevant text}
+\label{tbl:approaches-summary}
+\end{table}
+
