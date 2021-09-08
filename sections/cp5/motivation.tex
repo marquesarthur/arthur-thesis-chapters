@@ -2,67 +2,136 @@
 \label{cp5:motivation}
 
 
-When provided with a set of artifacts that potentially contain information relevant to their task,
-software developers must inspect the artifact's content and locate the portion of the text that might be relevant to the task-at-hand. 
-Some of the artifacts inspected are short enough that a developer can find if they contain any helpful information at a quick glance.
-Some others are lengthy~\cite{Rastkar2013t} and factors such
-as high time pressure or
-the need to meet deadlines~\cite{meyer2019}
-may lead a developer to quickly skim the document
-in an attempt to find any of the text that is relevant to their task~\cite{Starke2009},
-which Robillard and Chhetri summarize as the information \textit{filtering problem}:
 
-\smallskip
-\begin{bluequote}
-    \textit{The burden  of having to sit through large amounts of irrelevant text, e.g., because of legacy information, boilerplate text, or because the text is intended for a reader other than the developer who is currently inspecting the artifact, to locate the pieces relevant to the developer's task}~\cite{Robillard2015}
-\end{bluequote}
+More than often, the information associated 
+with the solution for a software task in a natural language artifact differs from the information provided in the task itself~\cite{silva2019, Ye2016}.
+These differences might arise from
+\textit{lexical gaps}, or the fact that the same semantic meaning can be expressed by different words, and
+\textit{knowledge gaps}, or the fact that text in a natural language artifact lacks concepts which are usually the key information in a task description~\cite{Huang2018}.
 
 
 
-Failing to locate task-relevant text in these quick search episodes can 
-cause a developer to abandon an artifact that could otherwise contain information  helpful to her task~\cite{Brandt2009a, Starke2009}.
-Hence, several studies have proposed automatic approaches to assist this activity. 
-These approaches leverage textual cues as well as an artifact's meta-data and, ultimately, they have the goal of surfacing 
-the most important information in a document so that a developer can quickly 
-locate it.
 
+These gaps might cause traditional \acf{IR}~\cite{Manning2009IR} or lexicon-based approaches (e.g.,~\cite{Ponzanelli2015} or ~\cite{Xu2017}) to fail at automatically identifying text that could assist a developer in completing their software task. 
+For example, Ye et al. has shown that a \acf{VSM}~\cite{salton1975vector} 
+approach fails at retrieving API documentation that is relevant to Java questions
+posted on Stack Overflow~\cite{Ye2016} while
+Di Sorbo and colleagues observed that a lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify 
+emails based on developers' intentions~\cite{Sorbo2015}.
 
-As examples of approaches, Xu et al.~\cite{Xu2017} and Ponzanelli et al.~\cite{Ponzanelli2015}
-argue that words that appear in a task description and that also appear in sentences within an artifact serve as indicators of the sentence's relevance to the developer's task.
-In turn, Silva et al.~\cite{silva2019} discuss that 
-there is a lexical gap between a task description and the information associated 
-with the solution for that task, which lead them to identify
-relevant sentences based on word semantics.
-In a similar vein, Di Sorbo et al. suggest that relevant information might be identifiable 
-according to the text's purpose, such as if it details a feature request, a problem, a solution proposal and others~\cite{Sorbo2015}.
-
-
-Although effective, the cues used to automatically identify text relevant to a software task in the aforementioned studies have focused on specific tasks (\red{example + ref}) and artifact types (\red{example + ref}).
-Therefore, the question of whether these cues can identify relevant text across a wider range of artifact types and tasks remains open. 
+% which prompted them to  
+%  define rules to distinguish sentences discussing feature requests, asking for an opinion, or proposing solutions, amongst others.
 
 
 
-As a first step towards answering this question, we set out to investigate:
+The argument that natural language lexicon-based approaches are not applicable is often based on the need for access to the \textit{meaning} of the text~\cite{Sorbo2015, gu2015, Arya2019}. If the meaning of the text is known, one may be able to use it to identify information relevant to a developer's task more accurately.
+For example, consider a task from an open-source system that describes the need to update an Android API component\footnote{\url{https://github.com/robolectric/robolectric/issues/1425}}. A developer inspecting the official documentation of this component may first look at sentences whose meaning reflect updating or usage instructions.
 
 
-\begin{enumerate}
-    \item \textit{How accurately can lexical properties identify text deemed relevant to a task?}
-    We assess to what extent can a lexical similarity approach automatically identify text relevant to a software task.
-    We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown
-    that developers often use keyword-matching as a simple and quick search strategy to locate task-relevant information in a software artifact.
+
+%  that lexicon-based natural language techniques
 
 
-    \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
-    Guided by studies that discuss that there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019, Huang2018, Ye2016},
-    we ask if we can identify text relevant to a software task through semantic matching.
-    To answer this question, we explore how can we use language models~\cite{Devlin2018Bert, Mikolov2013} to identify  task-relevant text.
+
+% are not  arises
+
+
+% is often 
+
+To bridge this gap, several studies have proposed 
+
+
+
+
+% in development mailing lists
+
+%  might be identifiable 
+% based on the text's purpose,
+% i.e., whether the information conveyed by the text details a feature request, a problem, a solution proposal and others~\cite{Sorbo2015}.
+% In a similar vein, Silva et al. use word semantics to identify text in Stack Overflow answers that explains code examples found within an answer. 
+
+
+
+
+
+% That is, \textit{semantics} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% can cause a developer to abandon an artifact that could otherwise contain information  helpful to her task~\cite{Brandt2009a, Starke2009}.
+
+
+
+% Hence, several studies have proposed automatic approaches to assist this activity. 
+% These approaches leverage textual cues as well as an artifact's meta-data and, ultimately, they have the goal of surfacing 
+% the most important information in a document so that a developer can quickly 
+% locate it.
+
+
+% As examples of approaches, Xu et al.~\cite{Xu2017} and Ponzanelli et al.
+% argue that words that appear in a task description and that also appear in sentences within an artifact serve as indicators of the sentence's relevance to the developer's task.
+% In turn, Silva et al.~\cite{silva2019}
+
+
+% discuss that 
+% there is a lexical gap between a task description and,
+
+
+% which lead them to identify
+% relevant sentences based on word semantics.
+% In a similar vein, 
+
+
+% Although effective, the cues used to automatically identify text relevant to a software task in the aforementioned studies have focused on specific tasks (\red{example + ref}) and artifact types (\red{example + ref}).
+% Therefore, the question of whether these cues can identify relevant text across a wider range of artifact types and tasks remains open. 
+
+
+
+% As a first step towards answering this question, we set out to investigate:
+
+
+% \begin{enumerate}
+%     \item \textit{How accurately can lexical properties identify text deemed relevant to a task?}
+%     We assess to what extent can a lexical similarity approach automatically identify text relevant to a software task.
+%     We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown
+%     that developers often use keyword-matching as a simple and quick search strategy to locate task-relevant information in a software artifact.
+
+
+%     \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
+%     Guided by studies that discuss that there are lexical gaps between a task description and the text related to that task's solution~\cite{silva2019, Huang2018, Ye2016},
+%     we ask if we can identify text relevant to a software task through semantic matching.
+%     To answer this question, we explore how can we use language models~\cite{Devlin2018Bert, Mikolov2013} to identify  task-relevant text.
 
     
-    \item \textit{Does the relevance of a sentence depend on the sentence's meaning?}
-    Our study on characterizing task-relevant text (\red{Section~\ref{aaa}}) has show that text deemed relevant often contains semantic frames describing 
-     required events, obligations, actions evoking system calls, etc.
-    Given how these frames capture key factors used to understand a sentence's meaning
-    and also their prominence in relevant text, 
-    we assess if semantic frames help to filter task-relevant text.
-\end{enumerate}
+%     \item \textit{Does the relevance of a sentence depend on the sentence's meaning?}
+%     Our study on characterizing task-relevant text (\red{Section~\ref{aaa}}) has show that text deemed relevant often contains semantic frames describing 
+%      required events, obligations, actions evoking system calls, etc.
+%     Given how these frames capture key factors used to understand a sentence's meaning
+%     and also their prominence in relevant text, 
+%     we assess if semantic frames help to filter task-relevant text.
+% \end{enumerate}
 
