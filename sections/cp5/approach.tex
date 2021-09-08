@@ -1,11 +1,18 @@
 \section{Approaches}
 \label{cp5:approaches}
 
+\gm{Perhaps you could consider a structure for this 
+chapter that has: 1) Problem Definition (which is the 'all approaches
+below' 2) Baseline 3) Approaches. The reason is to try to make
+it clear what is a baseline and what are new proposed
+approaches. Let's discuss.}
+
 In this section, we detail three approaches to automatically identify text that is relevant to a particular software task.
 These approaches encompass lexical similarity, word semantics, and frame semantics.
 
 
-
+\gm{Argument below will need specific references back
+to earlier chapters (eventually).}
 All approaches take a task and a pertinent artifact as inputs and output the sentences 
 that are most likely to contain information that assists a developer in completing their task. 
 To determine how many sentences an approach should identify, we consider that 
@@ -15,11 +22,10 @@ no more than 20\% of the content in the artifacts in the
 Our decision to output a certain number of sentences regardless of the approach is to have an easy framework for their comparison (Section~\ref{cp5:evaluation}).
 
 
-
 \subsection{Lexical Similarity}
 
-As a baseline, we investigate if we sentences that are lexical similar
-to a task are more likely to contain information relevant to that task.
+As a baseline, we investigate if the sentences that are lexical similar
+to a task are more likely to contain information relevant to that task. \gm{Need argument why this is a good baseline.}
 
 
 We use Vector Space Model (VSM)~\cite{Salton1975vsm} from Information Retrieval~\cite{Manning2009IR}
@@ -43,32 +49,28 @@ using the cosine similarity between their vectors, as Equation~\ref{eq:lex-sim} 
 By ranking the sentences in an artifact according to their similarity scores, i.e., from highest to lowest,
 we can  select the top-n sentences as the ones relevant to an input task.
 
+\gm{This section likely needs to provide a direct definition
+of document in terms of artifacts.}
+
 % ------------------------------------------------
 
 
 \subsection{Word Semantics}
 
 
-Language models capture words' semantics based on the context in which words appear~\cite{harris1954distributional}.
+Language models capture (\gm{or represent or describe?}) the semantics of words based on the context in which words appear~\cite{harris1954distributional}.
 They allow a more ``human-like reasoning'' even when words are lexically different, which 
 motivates investigating whether we can identify task-relevant text by semantically matching the text in a pertinent artifact to the text in a task.
 
 
 
-To detail how we use language models to automatically identify task-relevant text,
- we first introduce general concepts\footnote{
-    For a in-depth overview of the concepts behind language models, please refer to~\cite{zhang2021deep-learning}.
-} and then, 
-Sections~\ref{cp5:skip-gram} and~\ref{cp5:bert} respectively
-detail how we use a baseline model and 
+We first describe how we use language models to automatically identify task-relevant text, and then
+detail how we use a baseline model \gm{I think this overloads
+the word baseline} and 
 a state-of-the-art model to automatically identify task-relevant text.
-
-
-
-
+For an introduction of general concepts behind language models, please refer to~\cite{zhang2021deep-learning}.
 
 \subsubsection{Background}
-
 
 % introduce language models
 A core concept of a language model is Harris' distributional hypothesis~\cite{harris1954distributional}, which states that words that appear in a similar context tend to have similar meanings.
@@ -91,7 +93,7 @@ the model associates similar vector embeddings to words that are similar in mean
 \begin{figure}[H]
     \centering
     \includegraphics[width=.65\linewidth]{fig/cp5/ye-skip-gram-example}
-    \caption{Positive and negative training examples in the Skip-gram model. Figure originally from~\cite{Ye2016}}
+    \caption{Positive and negative training examples in the Skip-gram model. Figure originally from~\cite{Ye2016} \gm{Unfortunately you can't use this diagram without permission if it is from a published text.}}
     \label{fig:skip-gram-example}
 \end{figure}
 
@@ -118,7 +120,8 @@ computing the cosine similarity between their corresponding word embedding repre
 
 
 
-BERT also addresses tasks that need to understand relationships between sentences, which is a task not directly captured by language modeling~\cite{Devlin2018Bert}.
+BERT also addresses tasks that need to understand relationships between sentences, which is a task not directly captured by language modeling~\cite{Devlin2018Bert}. \gm{I am struggling with the
+idea that tasks 'need' to understand relationships between sentences. More explanation is likely needed.}
 To capture sentence relationships, BERT training procedures consider both next word prediction---as in any language model---and also next sentence prediction, i.e., given a pair of sentences $A$ and $B$, the model 
 is trained to predict the likelihood that sentence $B$ succeeds (or not) sentence $A$ (Figure~\ref{fig:BERT}). 
 
@@ -126,14 +129,18 @@ is trained to predict the likelihood that sentence $B$ succeeds (or not) sentenc
 \begin{figure}
     \centering
     \includegraphics[width=.75\linewidth]{fig/cp5/BERT}
-    \caption{BERT next sentence prediction training procedures. Figure originally from~\cite{jay-alammar-bert}}
+    \caption{BERT next sentence prediction training procedures. Figure originally from~\cite{jay-alammar-bert} \gm{Same issue
+    with re-using Figure}}
     \label{fig:BERT}
 \end{figure}
 
 
 
 Since BERT addresses both next word prediction and next sentence prediction, the model can be used for several
-word semantics and sentence relationship tasks such as  ours, i.e., determine the relevance of a sentence within an artifact based on a second sentence representing a task description.
+word semantics and sentence relationship tasks such as  ours, i.e., determine the relevance of a sentence within an artifact based on a second sentence representing a task description. \gm{How is
+this sentence prediction? Is there precendence for using
+BERT on two different artifacts (i.e., the task description
+can be considered an artifact or document.)}
 
 
 % ------------------------------------------------
@@ -142,7 +149,10 @@ word semantics and sentence relationship tasks such as  ours, i.e., determine th
 \subsubsection{Semantic Similarity}
 \label{cp5:skip-gram}
 
-
+\gm{Is this still part of background? There needs to be
+some more walking the reader through where this part is
+going. Maybe introduction some nomenclature for
+actual approaches you are introducing. Let's discuss.}
 
 Similar to lexical similarity,  we investigate if the sentences with the highest semantical similarity are most likely to contain information relevant to the input task.
 
@@ -172,6 +182,7 @@ the sentences within an artifact that most likely contain information relevant t
 
 
 Since BERT requires training procedures, we start with an already pre-trained model, namely BERT\textsubscript{uncased}, and we tune it to  identifying task-relevant text.
+\gm{Is BERT\textsubscript{uncased} something from elsewhere?}
 As done by several other studies (e.g., ~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation is also used
 during the model's training procedures. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. 
 
@@ -192,7 +203,8 @@ We select the top-n sentences predicted by the model as relevant.
 
 Given our analysis of relevant sentences in the \acs{DS-synthetic} corpus, we pose that 
 sentences with certain meanings, such as the ones that provide instructions on using an entity to achieve some goal,
-are sentences that a developer would first pay attention to when inspecting a software artifact and thus, they are more likely to contain task-relevant information.
+are sentences that a developer would first pay attention to when inspecting a software artifact and thus, they are more likely to contain task-relevant information. \gm{Will need more on why
+this hypothesis.}
 
 
 
@@ -214,5 +226,6 @@ checking if the semantic frames obtained by the tool appear in a set of frames d
 Table~\ref{tbl:approaches-summary} bundles the approaches that we explore.
 The table provides a short identifier for each approach, identifies the research topic that serve as a basis for each approach and provides a short description for them. From now on, we refer to each approach according to their short identifier.
 
+\gm{Isn't there multiple SEframes approaches?}
 
 \input{sections/cp5/tbl-approaches-summary}
