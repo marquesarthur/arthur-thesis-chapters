@@ -11,13 +11,12 @@ In this section, we detail three approaches to automatically identify text that 
 These approaches encompass lexical similarity, word semantics, and frame semantics.
 
 
-\gm{Argument below will need specific references back
-to earlier chapters (eventually).}
+% \gm{Argument below will need specific references back to earlier chapters (eventually).} 
 All approaches take a task and a pertinent artifact as inputs and output the sentences 
 that are most likely to contain information that assists a developer in completing their task. 
 To determine how many sentences an approach should identify, we consider that 
 no more than 20\% of the content in the artifacts in the
- \acs{DS-synthetic} and the \acs{DS-android} corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences
+ \acs{DS-synthetic} and the \acs{DS-android} corpora are deemed relevant to a task (\red{Chapter~\ref{}}), which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}})
  and we approximate these values to identifying a target number of 10 sentences per input task-artifact. 
 Our decision to output a certain number of sentences regardless of the approach is to have an easy framework for their comparison (Section~\ref{cp5:evaluation}).
 
@@ -93,7 +92,7 @@ the model associates similar vector embeddings to words that are similar in mean
 \begin{figure}[H]
     \centering
     \includegraphics[width=.65\linewidth]{fig/cp5/ye-skip-gram-example}
-    \caption{Positive and negative training examples in the Skip-gram model. Figure originally from~\cite{Ye2016} \gm{Unfortunately you can't use this diagram without permission if it is from a published text.}}
+    \caption{Positive and negative training examples in the Skip-gram model. Figure originally from~\cite{Ye2016} \gm{Unfortunately you can't use this diagram without permission if it is from a published text.} \art{Sorry. I'll update the figures}}
     \label{fig:skip-gram-example}
 \end{figure}
 
@@ -129,8 +128,7 @@ is trained to predict the likelihood that sentence $B$ succeeds (or not) sentenc
 \begin{figure}
     \centering
     \includegraphics[width=.75\linewidth]{fig/cp5/BERT}
-    \caption{BERT next sentence prediction training procedures. Figure originally from~\cite{jay-alammar-bert} \gm{Same issue
-    with re-using Figure}}
+    \caption{BERT next sentence prediction training procedures. Figure originally from~\cite{jay-alammar-bert} \gm{Same issue with re-using Figure} \art{TODO: update}}
     \label{fig:BERT}
 \end{figure}
 
