@@ -16,17 +16,16 @@ These differences might arise both from:
     \item \textit{knowledge gaps},
     or the fact that a developer's background may 
     influence how they describe a software task and, consequently,
-    the information that developers performing that task search for~\cite{Kevic2014}.
+    the information that developers performing that task will search for~\cite{Kevic2014}.
 \end{itemize}
 
 
 
 
 
-Because of both lexical and knowledge gaps, traditional \acf{IR}~\cite{Manning2009IR} or lexicon-based approaches (e.g.,~\cite{Ponzanelli2015} or ~\cite{Xu2017}) might fail at automatically identifying text that could assist a developer in completing their software task. 
+Due to these differences, traditional \acf{IR}~\cite{Manning2009IR} or lexicon-based approaches (e.g.,~\cite{Ponzanelli2015} or ~\cite{Xu2017}) might fail at automatically identifying information that is relevant to a developer's task. 
 For example, Ye et al. has shown that \acf{VSM}~\cite{salton1975vector} 
- fails at retrieving API references that are relevant to Java questions
-posted on Stack Overflow~\cite{Ye2016}.
+ fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016}.
 Similarly,
 Di Sorbo and colleagues observed that lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify 
 emails based on developers' intentions,
@@ -34,35 +33,28 @@ what prompted them to define linguistic patterns to classify a sentence's intent
 
 
 
-To address issues that might arise from such \acs{IR} or lexicon-based approaches, many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} have used 
+Many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} have used 
 techniques able to infer the
-meaning, or semantics, of text to aid activities such as bug localization or API recommendation. As an example, Nguyen and colleagues applied word semantic representations~\cite{Mikolov2013space} to improve  retrieval of API examples~\cite{nguyen2017}.
-As another example, Huang et al. have also used semantics 
+meaning, or semantics, of text to address issues that might arise from such \acs{IR} or lexicon-based approaches.
+As an example, Nguyen and colleagues applied word semantic representations~\cite{Mikolov2013space} to improve  retrieval of API examples~\cite{nguyen2017} while Huang et al. have used word semantics 
 to more accurately classify the intentions of text in development emails~\cite{huang2018automating}.
 
 
 
 Guided by these studies, we first consider if a general lexicon-based approach suffices to identify text that is relevant to a software task in a natural language artifact pertinent to that task. If we can show that a general approach, such as \acs{VSM}, is able to accurately identify relevant text across a wide variety of software tasks and artifacts, 
-it can be embedded into a tool that assists developers in locating task-relevant information at a low cost~\cite{Rastkar2013}.
+the approach can be embedded into a tool that assists developers in locating task-relevant information
+in a cost-effective way~\cite{Rastkar2013}.
 
 
-However, similar to related work, we may also observe that lexical approaches are not sufficient to address our domain problem. In such case, approaches that infer the meaning of the text can be also suitable.
-For example, in a task that requests updating an Android API component\footnote{\url{https://github.com/robolectric/robolectric/issues/1425}}, a technique
-able to access the meaning of the text could indicate that sentences whose meaning reflect updating or usage instructions
-are likely relevant to that task. Therefore, we consider 
-word semantics and sentence semantics techniques and we explore: 
+However, we may also observe that lexical approaches are not sufficient, what raises the question of whether approaches that infer the meaning of the text apply to our domain problem.
+Thus, we also explore approaches able to infer the semantic meaning of text at the word and sentence level 
+and we evaluate how accurately can these approaches identify text deemed relevant to a software task.
 
 
-
-\begin{enumerate}[label=\textit{RQ\arabic*}]
-
-    \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
-    With this question, we assess the applicability of models that provide semantic representations of words~\cite{Mikolov2013, Devlin2018Bert}  to the identification of  task-relevant text.
-    
-    
-    \item \textit{Do sentence semantics help to identify text relevant to a software task?}
-    With this question, we assess if the meaning of a sentence---captured through frame semantics~\cite{fillmore1976frame}---help to locate task-relevant text.
-\end{enumerate}
+\art{If motivation describes a design space, I think that research questions may fit better under evaluation?}
 
 
-Answering these questions will allow us to explore a \textit{design space} for building a technique that uses semantic approaches to automatically identify text in natural language software artifacts that is relevant to a particular task.
+% Exploring lexical and semantic-based approaches will allow us to explore a \textit{design space} for building a technique  to automatically identify text that is relevant to a particular task in natural language software artifacts
+% pertinent to that task.
+
+
