@@ -92,15 +92,52 @@ Following these procedures, during testing, we take a fully trained model and we
 \subsection{Identifying Task-relevant Text with Frame Semantics}
 
 
-
-
-\gm{Isn't there multiple SEframes approaches?}
-
+\marginpar{{\small \gm{Isn't there multiple SEframes approaches?} \art{There should be two techniques now}}}
 
 
 
 
+In Section~\ref{cp5:frame-semantics}, we described how frame semantics can help identify the meaning of software engineering text. Hence, we use semantic frames to identify sentences potentially relevant to a task based on the frame elements available in a sentence.
 
+
+
+To identify relevant sentences based on their meaning, we implement a set of filters that can be applied to the previous techniques as a post-processing step~\cite{Manning2009IR}.
+A first filter considers that sentences that give instructions, describe required events, obligations, and others are likely to contain information of interest. Therefore, this filter takes a sentence $a_i \in A$ and checks whether any of the frame elements of this sentence match one meaningful frame $f \in F$. 
+
+
+
+
+\begin{equation}
+\begin{split}
+F = \{ \text{required event}, \text{using}, \text{being obligated} ... \} \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\text{\textit{meaningful-frame}}(a_i) = \left \{
+\begin{aligned}
+    &1, && \text{if}\ frames(a_i) \cap F \ne \emptyset \\
+    &0, && \text{otherwise}
+\end{aligned} \right.
+\end{equation} 
+
+
+\smallskip
+A second filter takes into account the intentionally of a task, as identified through the frame elements in the task's tile, and asks if sentences with similar meaning are relevant to that task. 
+
+
+\begin{equation}
+\text{\textit{similar-meaning}}(a_i, T) = \left \{
+\begin{aligned}
+    &1, && \text{if}\ frames(a_i) \cap frames(T) \ne \emptyset \\
+    &0, && \text{otherwise}
+\end{aligned} \right.
+\end{equation} 
+
+
+
+Considering there two filters we take the output of a technique $O$ and produce output $O^{\prime}$ containing only the sentences that match one of the proposed filters.
 
 % ------------------------------------------------
 
@@ -108,8 +145,8 @@ Following these procedures, during testing, we take a fully trained model and we
 \subsection{Techniques Summary}
 
 
-Table~\ref{tbl:approaches-summary} bundles the approaches that we explore.
-The table provides a short identifier for each approach, identifies the research topic that serve as a basis for each approach and provides a short description for them. From now on, we refer to each approach according to their short identifier.
+Table~\ref{tbl:approaches-summary} bundles the techniques that we explore.
+The table provides a short identifier for each technique, identifies the approach that it builds upon, and provides a short description for the technique. From now on, we refer to each technique according to their short identifier.
 
 
 \input{sections/cp5/tbl-approaches-summary}
