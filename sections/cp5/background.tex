@@ -1,0 +1,146 @@
+
+\subsection{Background}
+\label{cp5:background}
+
+
+This section describes approaches that software engineering researchers have used to extract information from natural language artifacts, scenarios where they have been applied, and potential limitations of each approach. We present approaches incrementally, from early studies to techniques that build upon the findings
+and limitations outlined in these studies.
+
+
+
+\subsubsection{Lexical Approaches}
+
+
+A number of the techniques commonly employed by researchers are based on the
+frequency of co-occurrence of words (or phrases) in natural language artifacts, commonly referred to as \textit{documents}. 
+An early example is Maarek and Smadja's use of lexical relations to index
+software libraries~\cite{maarek1989}. 
+Since this early use, software engineering
+researchers have continued to leverage advances in
+these approaches, such as when 
+Maletic and Marcus applied \acf{LSI}~\cite{deerwester1990LSI} to help cluster software components to aid
+program comprehension of a software system~\cite{Marcus2003}, or when Lin and colleagues
+applied \acf{VSM}~\cite{salton1975vector}
+to support tracing software requirements to source code~\cite{Lin2021}.
+
+
+
+However, researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM} 
+fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016} while
+Di Sorbo and colleagues observed that a lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify emails based on developers' intentions~\cite{Sorbo2015}, what prompted them 
+to define rules to
+distinguish sentences discussing feature requests, asking for an
+opinion, or proposing solutions, amongst others.
+
+
+
+\subsubsection{Semantic Approaches}
+
+
+
+To address issues that might arise from lexicon-based approaches,
+many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} have used techniques able to infer the meaning, or semantics, of text. 
+\red{early examples and studies}
+
+
+
+\red{Connect early studies to approaches that have used language models in software engineering,} as  when Nguyen and colleagues
+applied Word2Vec~\cite{Mikolov2013} to support the retrieval of API
+examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}.
+
+
+
+\paragraph{\textbf{Language Models}}
+
+Language models represent the semantics of words based on the context in which words appear. They allow a more ``human-like reasoning'' even when words are lexically different. 
+
+
+A core concept of a language model is Harris' distributional hypothesis~\cite{harris1954distributional}, which states that words that appear in a similar context tend to have similar meanings. A language model exploits this hypothesis by building vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
+For that, it requires a significantly large amount of data so that
+the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}. 
+
+
+
+
+
+\paragraph{\textbf{Skip-gram Model}}
+\label{cp5:skip-gram}
+
+One common challenge to language models is that they need to learn word embeddings that are good at predicting the nearby words at a low computational costs, e.g., the time needed to train a model, the model size, etc.
+The \textit{Skip-gram} model, proposed by Mikolov et al.~\cite{Mikolov2013}, addresses such challenges using simple yet efficient training procedures. 
+That is, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceded and succeed word $w_t$
+as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context as negative training examples. 
+Empirical results have shown that negative sampling allows for an accurate model able to handle noise data and that 
+the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
+
+
+\red{references to papers in SE that have used the model to...}
+
+
+
+
+\paragraph{\textbf{BERT Model}}
+\label{cp5:bert}
+
+Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this, however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being with someone. In contrast, 
+the \acf{BERT} model, proposed by Google~\cite{Devlin2018Bert}, provides different representations for the same word based on the sentence in which a word appears.
+This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
+
+
+BERT is initially trained 
+on a massive amount of corpora. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token \texttt{[mask]} and the model is optimized to predict the masked tokens based on contextual information. 
+Training procedures create a base model that is then fine-tuned to specific natural language tasks. This procedure is often referred to as \textit{transfer learning} \red{ref} where one only needs to provide a dataset for the steps associated with fine-tuning the model. 
+
+\red{BERT usage in requirements eng}~\cite{Lin2021}
+~\cite{Araujo2021}
+
+
+
+
+\paragraph{\textbf{Frame Semantics}}
+\label{cp5:frame-semantics}
+
+
+Although word embeddings have provided significant improvements to a diverse set of NLP tasks \red{ref}, they may not be able to disambiguate similar sentences with slight differences that alter their meaning. To illustrate that, we utilize an example
+from Di Sorbo et al.~\cite{Sorbo2015}:
+% , whose approach aimed to classify the content of development emails in six categories, such as \textit{`solution proposal'} and \textit{`problem discovery`}. Let's consider the following two sentences
+
+% 0.82 sim
+\begin{itemize}
+\item  \textit{we could use a leaky bucket algorithm to limit the band-width}; and
+\item \textit{the leaky bucket algorithm fails in limiting the band-width}.
+\end{itemize}
+
+These two sentences are lexically similar, making it
+difficult to use lexicon techniques, such as \acs{VSM}, to distinguish them. Likewise, a Skip-gram model would still indicate that the vector representations for the two sentences are close, suggesting that the two sentences are also semantically similar. 
+To address these limitations, we turn towards \textit{frame
+semantics}~\cite{fillmore1976frame, Baker1998}, a 
+linguistic approach in the field of pragmatics~\cite{ariel2008pragmatics, austin1975pragmatics}.
+
+
+
+Frame semantics allows us to identify \textit{frames},
+or key events, that assist in inferring the meaning of a sentence.
+If we apply frame semantics to Di Sorbo's sentences, the differences become apparent.
+Figure~\ref{fig:frame-example} presents the results of a frame
+analysis for the sentences.
+The frames of each sentence (in grey) represent a
+triggering event and the \textit{frame elements (fe)} (in red) are arguments needed
+to understand the event. The enclosing square brackets
+mark all lexical units, or words,
+associated with either a frame or a frame element.
+In the first sentence, the \textit{Using} frame
+captures that an \texttt{instrument}, the leaky bucket algorithm, is
+manipulated to achieve a \texttt{purpose}, namely to limit band-width.
+In contrast, in the second sentence, the \textit{Success or Failure}
+frame identifies the entity, or \texttt{agent}, that fails to achieve the \texttt{goal} of limiting the band-width. 
+
+
+\input{fig/cp5/frame-example}
+
+
+\red{Examples of frame semantics in SE}
+
+
+
+\art{I'm not sure about the structure. This could be a section instead of a subsection?}
