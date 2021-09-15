@@ -36,12 +36,99 @@ As a first step towards addressing this problem, we consider a set of techniques
 
 
 
+ \subsection{Background}
+ \label{cp5:background}
+
+
+This section describes approaches that software engineering researchers have used to extract information from natural language artifacts, scenarios where they have been applied, and potential limitations of each approach. We present approaches incrementally, from early studies to techniques that build upon the findings
+and limitations outlined in these studies.
 
 
 
-% For example, researchers have observed \textit{lexical} gaps, i.e., the fact that the same meaning can be expressed by different words; and \textit{knowledge} gaps, or the fact that a developer's background influences how they describe a task and, consequently, what information developers performing that task might seek.
+\subsubsection{Lexical Approaches}
+
+
+A number of the techniques commonly employed by researchers are based on the
+frequency of co-occurrence of words (or phrases) in natural language artifacts, commonly referred to as \textit{documents}. 
+An early example is Maarek and Smadja's use of lexical relations to index
+software libraries~\cite{maarek1989}. 
+Since this early use, software engineering
+researchers have continued to leverage advances in
+these approaches, such as when 
+Maletic and Marcus applied \acf{LSI}~\cite{deerwester1990LSI} to help cluster software components to aid
+program comprehension of a software system~\cite{Marcus2003}, or when Lin and colleagues
+applied \acf{VSM}~\cite{salton1975vector}
+to support tracing software requirements to source code~\cite{Lin2021}.
+
+
+
+However, researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM} 
+fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016} while
+Di Sorbo and colleagues observed that a lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify emails based on developers' intentions~\cite{Sorbo2015}, what prompted them 
+to define rules to
+distinguish sentences discussing feature requests, asking for an
+opinion, or proposing solutions, amongst others.
+
+
+
+\subsubsection{Semantic Approaches}
+
+
+
+To address issues that might arise from lexicon-based approaches,
+many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} have used techniques able to infer the meaning, or semantics, of text. 
+\red{early examples and studies}
+
+
+
+\red{Connect early studies to approaches that have used language models in software engineering,} as  when Nguyen and colleagues
+applied Word2Vec~\cite{Mikolov2013} to support the retrieval of API
+examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}.
+
+
+
+\paragraph{\textbf{Language Models}}
+
+Language models represent the semantics of words based on the context in which words appear. They allow a more ``human-like reasoning'' even when words are lexically different. 
+
+
+A core concept of a language model is Harris' distributional hypothesis~\cite{harris1954distributional}, which states that words that appear in a similar context tend to have similar meanings. A language model exploits this hypothesis by building vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
+For that, it requires a significantly large amount of data so that
+the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}. 
 
 
 
 
-% Hence, identifying the text that is relevant to a software task is not trivial \red{ref}, and we must address the fact that:
+
+\paragraph{\textbf{Skip-gram Model}}
+
+One common challenge to language models is that they need to learn word embeddings that are good at predicting the nearby words at a low computational costs, e.g., the time needed to train a model, the model size, etc.
+The \textit{Skip-gram} model, proposed by Mikolov et al.~\cite{Mikolov2013}, addresses such challenges using simple yet efficient training procedures. 
+That is, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceded and succeed word $w_t$
+as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context as negative training examples. 
+Empirical results have shown that negative sampling allows for an accurate model able to handle noise data and that 
+the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
+
+
+\red{references to papers in SE that have used the model to...}
+
+
+
+
+\paragraph{\textbf{BERT Model}}
+
+Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this, however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being with someone. In contrast, 
+the \acf{BERT} model, proposed by Google~\cite{Devlin2018Bert}, provides different representations for the same word based on the sentence in which a word appears.
+This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
+
+
+To achieve such fine-grained contextual information, BERT is initially trained 
+on a massive amount of corpora, creating a base model that is then fine-tuned to specific natural language processing tasks. This procedure is often referred to as \textit{transfer learning} where one only needs to provide a dataset for the steps associated with fine-tuning the model. \red{BERT usage in requirements eng}~\cite{Lin2021}
+~\cite{Araujo2021}
+
+
+
+
+\paragraph{\textbf{Frame Semantics}}
+
+Context in the Skip-gram model refers to the positive/negative examples used during the model's t
