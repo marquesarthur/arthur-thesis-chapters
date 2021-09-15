@@ -69,3 +69,252 @@ As a first step towards answering this question, we set out to investigate:
     we assess if semantic frames help to filter task-relevant text.
 \end{enumerate}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\clearpage
+
+\section{Problem Statement}
+\label{cp5:motivation}
+
+
+% \gm{I think you may wish to redirect this section towards
+% being about the design space, drawing on the related work
+% chapter. I think leave for now and revist later.}
+
+
+
+% Designing an automatic technique able to identify information relevant to a task across the range of artifacts a developer might 
+% seek means solely using data common to these different artifacts. Natural language text is an example of such data---if not the most common one~\cite{Bavota2016}---available in 
+% versioning systems, issue trackers, archived communications, and many other software artifacts. 
+% Due to its prompt availability, we consider its usage for the automatic identification of information relevant to a software task. For that, we must take into account one underlying problem related to the text available in a software task and the text in an artifact pertinent to that task:
+
+
+
+
+Researchers have long recognized the value of natural language
+text, utilizing various techniques to extract
+information from this text that can be embedded in
+tools for software developers.
+A number of the techniques commonly employed by researchers are based on the
+frequency of co-occurrence of words (or phrases) in documents. 
+An early example is Maarek and Smadja's use of lexical relations to index
+software libraries~\cite{maarek1989}. 
+Since this early use, software engineering
+researchers have continued to leverage advances in
+these approaches, such as when 
+Maletic and Marcus applied \acf{LSI}~\cite{deerwester1990LSI} to help cluster software components to aid
+program comprehension of a software system~\cite{Marcus2003}.
+
+
+However, researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM}~\cite{salton1975vector} 
+fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016} while
+Di Sorbo and colleagues observed that lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify 
+emails based on developers' intentions~\cite{Sorbo2015}.
+
+
+
+
+
+
+
+
+\medskip
+\begin{bluequote}
+    \textit{The text  that contains information associated with the solution for a task in a natural language artifact often differs from the text in the software task itself.}
+\end{bluequote}
+% \smallskip
+
+
+Differences in the two sources (i.e., software task and natural language artifact) pose challenges to establishing relationships between the text within them and, consequently, identifying the text that is relevant to a task is not  trivial \red{ref}.
+
+
+As a first step towards addressing this problem, we consider a set of techniques
+ building on approaches to interpret the meaning, or semantics, of text.
+ For that, we first provide theoretical background for the approaches that we explore. Then, we detail how we use these approaches in the design space of a technique that automatically identifies text relevant to a software task.
+
+
+
+
+\subsection{Background}
+\label{cp5:background}
+
+
+
+
+
+
+
+
+
+In this section, we detail approaches that have been used in related-work to extract information from natural language software artifacts. We introduce core concepts related to each approach, provide examples of their usage in software engineering research, and detail their potential limitations.
+
+
+
+
+
+
+
+
+\subsubsection{Language Models}
+
+
+
+
+% Although lexicon-based approaches are a cheap and efficient way to identify relevant information in some domains, researchers have observed that lexicon-based approaches
+% may apply to natural language software artifacts~\cite{Huang2018, Kevic2014}.
+
+
+\red{need intro do previous semantic techniques}
+
+
+
+
+
+
+
+
+% introduce language models
+
+A language model provides  vector representations, namely \textit{word embeddings}, for each of the words in a text corpus, where similar vector embeddings represent words that are similar in meaning~\cite{Ye2016}, as in inferring that the word \textit{king} and \textit{queen} refer to \textit{royalty}~\cite{Mikolov2013}. 
+
+
+
+
+
+
+
+\subsubsection{BERT Model}
+
+Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this, however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being with someone. In contrast, state-of-the-art models, such as \textit{BERT}~\cite{Devlin2018Bert}, provide different representations for the same word based on the sentence in which a word appears.
+This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+\subsection{Design Space}
+\label{cp5:design-space}
+
+
+
+% Short, state that we first explore VSM
+% Then jump to semantic techniques
+% say how we use these in 
+
+
+%  traditional  (e.g., or ~\cite{}) might fail at automatically identifying information that is relevant to a developer's task. 
+
+
+
+
+As an example, Nguyen and colleagues applied word semantic representations~\cite{Mikolov2013space} to improve  retrieval of API examples~\cite{nguyen2017} while Huang et al. have used word semantics 
+to more accurately classify the intentions of text in development emails~\cite{huang2018automating}.
+
+
+
+Guided by these studies, we first consider if a general lexicon-based approach suffices to identify text that is relevant to a software task in a natural language artifact pertinent to that task. 
+If we can show that an off-the-shelf approach, such as \acs{VSM}, is able to accurately identify relevant text across a wide variety of software tasks and artifacts, 
+it may be embedded into a tool that assists developers in this endeavor without the need for more complex or costly approaches~\cite{Rastkar2013}.
+
+
+
+
+However, we may also observe that lexical approaches are not sufficient, what raises the question of whether approaches that infer the meaning of the text apply to our domain problem.
+Thus, we also explore approaches able to infer the semantic meaning of text at the word and sentence level 
+and we evaluate how accurately can these approaches identify text deemed relevant to a software task.
+
+
+
+
+\subsection{Background}
+
+
+
+
+
+
+
+
+
+% when Nguyen and colleagues
+% applied Word2Vec~\cite{mikolov2013word2vec} to support the retrieval of API
+% examples~\cite{nguyen2017}.
+
+
+
+
+
+
+
+
+
+
+% Start with tf-idf and lexicon approaches. 
+% Show their limitation, jump to word embeddings 
+% Jump to BERT
+
+
+
+Many studies have explored techniques building on traditional \acf{IR}~\cite{Manning2009IR} or lexicon-based approaches to identify relevant text in a natural language artifact pertinent to  
+certain software tasks (e.g., \red{examples} ). % ~\cite{Ponzanelli2015, Xu2017}
+However, when we consider the need to automatically identify information that is relevant to a developer's task
+in a variety of types of artifact, traditional \acs{IR} or  because:
+
+
+
+
+
+
+
+
+% \subsubsection{Vector Space Model}
+
+
+% Considering lexicon-based techniques, \acf{VSM}~\cite{Salton1975vsm} has been commonly used to compute lexical similarities between an element of interest, often referred to a as a \textit{query}, and artifacts in the software system, commonly called \textit{document}. \red{example}
+
+
+
+
+
+% \reversemarginpar
+% \marginnote{{\scriptsize \texttt{Vector Space Model}}}[3cm]
+
+
+
+
+% VSM represents both the text in a query and individual sentences within a document as vectors of term weights,
+% where the weight of a term
+% can be computed using a Term-Frequency Inverse-Document-Frequency scheme (\textit{tf.idf})~\cite{Manning2009IR}. 
+% Subsequent to obtaining vector representations $q$ and $s$ 
+% for a query and a arbitrary sentence, 
+% their lexical similarity can be computed 
+% using the cosine similarity between their vectors, as Equation~\ref{eq:lex-sim} shows:
+
+
+% \begin{equation}
+%     cos(q,s) = \frac{q^Ts}{\|q\| \|s\|}
+%     \label{eq:lex-sim}
+% \end{equation}
+% \smallskip
+
+
+
+% Researchers have used VSM as a means to extract information that
+% is relevant to certain software tasks by ranking the text in a document according to its similarity scores, i.e., from highest to lowest. 
