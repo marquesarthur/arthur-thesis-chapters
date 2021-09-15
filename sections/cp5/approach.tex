@@ -2,9 +2,7 @@
 \label{cp5:approaches}
 
 
-
-
-
+\art{I'm trying to be consistent with the nomenclature: \texttt{approaches} refer to the NLP approaches that I use while \texttt{techniques} how I use them to identify relevant text}
 
 
 We consider the approaches outlined in Section~\ref{cp5:background} and we explore 
@@ -20,16 +18,10 @@ Our design space considers establishing the relevance of a sentence to a given t
 \end{itemize}
 
 
-
-
-
 Details for each technique are presented in the following sections.
 Note that each techniques takes a task and a pertinent artifact as inputs and outputs the sentences 
 that are most likely to contain information that assists a developer in completing that task. 
 Details on how we determine the number of sentences outputed are available in Section~\ref{cp5:evaluation}.
-
-
-% ------------------------------------------------
 
 
 
@@ -43,30 +35,16 @@ As a first technique, we explore if the sentences with the highest semantical si
 To compute the semantic similarity between the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task,
 we first
  use the Skip-gram model (Section~\ref{cp5:skip-gram}) with word embeddings trained for the software engineering domain~\cite{Efstathiou2018} to covert each of the sentences to their respective vector representations, $\{ w_{a_1}, w_{a_2}, \dots, w_{a_n}\}$ and $\{ w_{t_1}, w_{t_2}, \dots, w_{t_m}\}$. For that, we follow Conneau et al.'s guidelines~\cite{conneau2018} 
- and average the sum of the word embeddings in a sentence to obtain vector representation for the entire sentence.
+ and average the sum of the word embeddings in a sentence to obtain a vector representation for the entire sentence.
 
-
-
-
-
-
- 
- 
- 
- 
- % Since word embeddings provide vector representations at the word level,
- 
- 
  
  Provided that we have embeddings for a sentence in an input task and an artifact, their semantic similarity is obtained computing the cosine similarity \red{ref} between their corresponding vectors:
-%  , i.e., $w_t$ and $w_a$
 
 
-
- \begin{equation}
-     sim(w_t,w_a) = \frac{w_t^Tw_a}{\|w_t\| \|w_a\|}
-     \label{eq:word-sim}
- \end{equation}
+\begin{equation}
+    sim(w_t,w_a) = \frac{w_t^Tw_a}{\|w_t\| \|w_a\|}
+    \label{eq:word-sim}
+\end{equation}
  
 \smallskip
  As there are multiple sentences in both entities, the semantic similarity of a sentence $a_i \in A$ is the maximun value obtained when computing the similarity of the vector for this sentence and the vectors for each of the sentences in a task $T$.
@@ -76,12 +54,39 @@ we first
 \end{equation}
 
 
- 
-
 Following these procedures, we sort the sentences in an artifact according to their semantic similarity, i.e., from highest to lowest, and output the top-n sentences as the ones likely relevant to an input software task.
 
 
 \subsection{Identifying Task-relevant Text with BERT}
+
+
+
+
+We fine-tune BERT to identify the sentences within an artifact that most likely contain information relevant to the task.
+
+
+
+As we described in Section~\ref{cp5:bert}, we use a BERT model that has been already pre-trained in a massive corpora, namely BERT\textsubscript{uncased}~\cite{Devlin2018Bert}, and we tune it to  identifying task-relevant text.
+To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task and we fed them to the model as sentence-artifact input pairs 
+alongside binary labels representing whether human annotators deemed that sentence relevant. 
+Using training data, the model will learn associations between each pair such that it can predict if a sentence is relevant for the task. 
+
+
+We train the model for up to 10 epochs with a \textit{batch size}, or the number of samples passed through the network at once, of 64. Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's sequence length to 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5}.
+As done by other studies (e.g.,~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation (i.e., testing) is also used
+during the model's training procedures. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. \red{ref}
+
+
+
+
+Following these procedures, during testing, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
+
+\begin{equation}
+    relevance(a_i, T) = mod(predict(a_i, t_1), ~\dots~ predict(a_i, t_m)) \\
+\end{equation}
+
+
+
 
 
 \subsection{Identifying Task-relevant Text with Frame Semantics}
@@ -89,6 +94,7 @@ Following these procedures, we sort the sentences in an artifact according to th
 
 
 
+\gm{Isn't there multiple SEframes approaches?}
 
 
 
@@ -99,12 +105,11 @@ Following these procedures, we sort the sentences in an artifact according to th
 % ------------------------------------------------
 
 
-\subsection{Approaches Summary}
+\subsection{Techniques Summary}
 
 
 Table~\ref{tbl:approaches-summary} bundles the approaches that we explore.
 The table provides a short identifier for each approach, identifies the research topic that serve as a basis for each approach and provides a short description for them. From now on, we refer to each approach according to their short identifier.
 
-\gm{Isn't there multiple SEframes approaches?}
 
 \input{sections/cp5/tbl-approaches-summary}
