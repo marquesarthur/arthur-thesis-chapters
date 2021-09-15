@@ -1,60 +1,47 @@
-\section{Motivation}
+\clearpage
+
+\section{Problem Statement}
 \label{cp5:motivation}
 
 
-\gm{I think you may wish to redirect this section towards
-being about the design space, drawing on the related work
-chapter. I think leave for now and revist later.}
-
-
-More than often, the information associated 
-with the solution for a software task in a natural language artifact differs from the information provided in the task itself~\cite{silva2019, Ye2016}.
-These differences might arise both from:
-
-\begin{itemize}
-    \item \textit{lexical gaps}, or the fact that the same semantic meaning can be expressed by different words~\cite{Huang2018}, and from;
-    \item \textit{knowledge gaps},
-    or the fact that a developer's background may 
-    influence how they describe a software task and, consequently,
-    the information that developers performing that task will search for~\cite{Kevic2014}.
-\end{itemize}
 
 
 
-
-
-Due to these differences, traditional \acf{IR}~\cite{Manning2009IR} or lexicon-based approaches (e.g.,~\cite{Ponzanelli2015} or ~\cite{Xu2017}) might fail at automatically identifying information that is relevant to a developer's task. 
-For example, Ye et al. has shown that \acf{VSM}~\cite{salton1975vector} 
- fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016}.
-Similarly,
-Di Sorbo and colleagues observed that lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify 
-emails based on developers' intentions,
-what prompted them to define linguistic patterns to classify a sentence's intention~\cite{Sorbo2015}.
-
-
-
-Many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} have used 
-techniques able to infer the
-meaning, or semantics, of text to address issues that might arise from such \acs{IR} or lexicon-based approaches.
-As an example, Nguyen and colleagues applied word semantic representations~\cite{Mikolov2013space} to improve  retrieval of API examples~\cite{nguyen2017} while Huang et al. have used word semantics 
-to more accurately classify the intentions of text in development emails~\cite{huang2018automating}.
+Researchers have long recognized the value of natural language
+text, utilizing various approaches to extract
+information from this text that can be embedded in
+tools for software developers.
+These approaches exploit lexical and semantic properties available in the text to determine 
+whether it contains information of interest to a developer \red{ref}. 
+In this work, information of interest represents text that a developer would consider as relevant to a specific software task. Ideally, this text could be identified if it shared  
+words (or terms) also present in a task description. However, differences between the two sources (i.e., software task and natural language artifacts) pose challenges to establishing relationships between the text within them. Most notably, we observe that:
 
 
 
-Guided by these studies, we first consider if a general lexicon-based approach suffices to identify text that is relevant to a software task in a natural language artifact pertinent to that task. If we can show that a general approach, such as \acs{VSM}, is able to accurately identify relevant text across a wide variety of software tasks and artifacts, 
-the approach can be embedded into a tool that assists developers in locating task-relevant information
-in a cost-effective way~\cite{Rastkar2013}.
+\medskip
+\begin{bluequote}
+    \textit{The text  that contains information associated with the solution for a task in a natural language artifact often differs from the text in the software task itself.}
+\end{bluequote}
+% \smallskip
 
 
-However, we may also observe that lexical approaches are not sufficient, what raises the question of whether approaches that infer the meaning of the text apply to our domain problem.
-Thus, we also explore approaches able to infer the semantic meaning of text at the word and sentence level 
-and we evaluate how accurately can these approaches identify text deemed relevant to a software task.
 
 
-\art{If motivation describes a design space, I think that research questions may fit better under evaluation?}
+
+As a first step towards addressing this problem, we consider a set of techniques
+ building on approaches to interpret the meaning, or semantics, of text.
+ For that, we first provide theoretical background for the approaches that we explore. Then, we detail how we use these approaches in the design space of a technique that automatically identifies text relevant to a software task.
 
 
-% Exploring lexical and semantic-based approaches will allow us to explore a \textit{design space} for building a technique  to automatically identify text that is relevant to a particular task in natural language software artifacts
-% pertinent to that task.
 
 
+
+
+
+
+% For example, researchers have observed \textit{lexical} gaps, i.e., the fact that the same meaning can be expressed by different words; and \textit{knowledge} gaps, or the fact that a developer's background influences how they describe a task and, consequently, what information developers performing that task might seek.
+
+
+
+
+% Hence, identifying the text that is relevant to a software task is not trivial \red{ref}, and we must address the fact that:

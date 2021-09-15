@@ -81,31 +81,17 @@ the model associates similar vector embeddings to words that are similar in mean
 
 
 % Overview of baseline model
-\smallskip
-\begin{hangparas}{.0in}{0}
-     \textit{ Skip-gram model.} One common challenge to language models is that they need to learn word vector representations that are good at predicting the nearby words at low computational costs, e.g., the time needed to train a model, the model size, etc.
-    The \textit{Skip-gram} model~\cite{Mikolov2013}, proposed by Mikolov et al., addresses such challenges using simple yet efficient training procedures. As Figure~\ref{fig:skip-gram-example} illustrates, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceded and succeed word $w_t$
-     as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context as negative training examples. Empirical results have shown that negative sampling allows for an accurate model able to handle noise data and that 
-     the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
-\end{hangparas}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.65\linewidth]{fig/cp5/ye-skip-gram-example}
-    \caption{Positive and negative training examples in the Skip-gram model. Figure originally from~\cite{Ye2016} \gm{Unfortunately you can't use this diagram without permission if it is from a published text.} \art{Sorry. I'll update the figures}}
-    \label{fig:skip-gram-example}
-\end{figure}
 
 
-Using the skip-gram model, one can identify that words $t$ and $s$ are semantically similar 
-computing the cosine similarity between their corresponding word embedding representations, i.e., $w_t$ and $w_s$:
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=.65\linewidth]{fig/cp5/ye-skip-gram-example}
+%     \caption{Positive and negative training examples in the Skip-gram model. Figure originally from~\cite{Ye2016} \gm{Unfortunately you can't use this diagram without permission if it is from a published text.} \art{Sorry. I'll update the figures}}
+%     \label{fig:skip-gram-example}
+% \end{figure}
 
 
 
-\begin{equation}
-    cos(w_t,w_s) = \frac{w_t^Tw_s}{\|w_t\| \|w_s\|}
-    \label{eq:word-sim}
-\end{equation}
 
 
 
