@@ -1,172 +1,152 @@
 \section{Evaluation}
 \label{cp5:evaluation}
 
-\red{I'm focusing on this section right now}
+
+Evaluation focuses 
+on answering the following research questions:
 
 
-% \begin{enumerate}[label=\textit{RQ\arabic*}]
-%     \item \textit{How accurately can word semantics identify text deemed relevant to a task?}
-%     With this question, we assess the applicability of models that provide semantic representations of words~\cite{Mikolov2013, Devlin2018Bert}  to the identification of  task-relevant text.
+\begin{enumerate}[label=\textit{RQ\arabic*}]
+
+    \item \textit{How accurately can techniques build upon word semantics identify text deemed relevant to a task?}
     
+    \item \textit{Do sentence semantics help to identify text relevant to a software task?}
+
+    \item \textit{How do semantic techniques compare to techniques in related work?}
+\end{enumerate}
     
-%     \item \textit{Do sentence semantics help to identify text relevant to a software task?}
-%     With this question, we assess if the meaning of a sentence---captured through frame semantics~\cite{fillmore1976frame}---help to locate task-relevant text.
-% \end{enumerate}
-    
 
 
-% \textit{How accurately can lexical properties identify text deemed relevant to a task?}
-% \gm{Are you really assessing or is this just simply the baseline and not a question? Describing as a design space would likely make this easier.}
-%     We assess to what extent can a lexical similarity approach automatically identify text relevant to a software task.
-%     We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown
-%     that developers often use keyword-matching as a simple and quick search strategy to locate task-relevant information in a software artifact.
 
 
 
-% \red{begin with research question}
+\subsection{Assessing the accuracy of word semantic techniques}
 
 
-% We use our approach to identify sentences relevant to
-% the tasks in the \acs{DS-android} corpus,
-% comparing the sentences identified against the 
-% sentences in the corpus' golden data. 
-% For this evaluation, we set the target number of sentences identified (i.e., length of a summary) to 20\% of the content of an artifact,
-% which is a value derived from our study on characterizing 
-% task-relevant information in natural language artifacts~\cite{marques2020}.
+To answer RQ1 we compute evaluation metrics when we try to identify the sentences deemed relevant by human annotators in the \acs{DS-android} dataset.
 
 
+Due to training procedures, BERT might be biased towards the tasks and text marked in this dataset. We minimize risks that might arise from this fact, by reporting results when we train the model using 10-fold cross-validation and by reporting results when we 
+train the model with a different dataset.
 
 
+\subsubsection{Metrics}
 
-% \subsection{Accuracy}
 
+Our aim is to identify text that contains information that a developer would deem relevant to the task that they are currently performing. 
+The text would be highlighted in an artifact so that the developer can quickly locate and inspect it. 
+This means that the text identified represents a set containing task-relevant and thus, 
+set-based metrics are appropriate to measure the accuracy of each technique~\cite{Manning2009IR}.
 
-% Motivated by the fact that the text marked by the annotators in the \acs{DS-android} differs
-% (Section~\ref{cp4:corpus-relevant-text}),
-% we follow procedures outlined by Lotufo et al.~\cite{Lotufo2012}
-% to measure how accurately our approach identifies text relevant to a task considering two evaluation scenarios:
 
+We use standard Precision and Recall metrics to measure accuracy.
 
-% \begin{enumerate}
-%     \item one where the text marked only by two or more annotators is considered relevant, and;
-    
-%     \item a second where we consider that any of the text marked by the annotators contributes towards task completion.
-% \end{enumerate}
 
-% \red{flip the above discuss this as a classification problem?}
 
 
-% Standard precision and recall metrics~\cite{Manning2009IR} are suitable metrics for the first scenario. In the second, we use pyramid precision and pyramid recall metrics
-% to compute accuracy based on how many annotators marked the text~\cite{Nenkova2004, Lotufo2012}. 
-% To understand these metrics, we refer to the evaluation outcomes of Table~\ref{tbl:type-I-II-errors}. 
-% The \textit{relevant} and \textit{not-relevant} columns represent the text 
-% marked (or not) by annotators~\cite{Lotufo2012} for a particular task and a pertinent artifact. Rows represent the text automatically identified by our approach for the same task and pertinent artifact.
 
+\paragraph{\textbf{Precision}}
 
-% \input{sections/cp5/tbl-eval-outcomes.tex}
+Provide details for metric.
 
 
-% \subsubsection{Precision and recall}
 
+\begin{equation}
+\label{eq:cp5:precision}    
+    Precision = \frac{TP}{TP + FP}
+\end{equation}
 
 
+\paragraph{\textbf{Recall}}
 
-% For standard precision and recall metrics, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by two or more annotators}. 
-% In this scenario, $precision$ is the fraction of the sentences
-%  identified that are relevant over the total number of sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
+Provide details for metric.
 
 
-% \begin{equation}
-% \label{eq:cp5:precision}    
-%     Precision = \frac{TP}{TP + FP}
-% \end{equation}
+\begin{equation}
+\label{eq:cp5:recall}        
+    Recall = \frac{TP}{TP + FN}
+\end{equation}
 
-% \vspace{2mm}
-% Recall represents how many of all marked sentences are identified by our approach (Equation~\ref{eq:cp5:recall}).
 
 
-% \begin{equation}
-% \label{eq:cp5:recall}        
-%     Recall = \frac{TP}{TP + FN}
-% \end{equation}
+\paragraph{\textbf{Pyramid Precision \& Pyramid Recall}} 
 
+Measure precision and recall when true positives (TP) represent text marked at least by two annotators.
 
 
+\subsection{Assessing the accuracy of sentence semantic techniques}
 
-% \subsubsection{Pyramid precision and pyramid recall}
 
+To answer RQ2 we apply the frame semantic filters described in Section~\ref{cp5:approach-filters} to the techniques that use word semantics and report precision and recall metrics to assess if the filters improve the detection of text relevant to a software task.
 
-% For pyramid precision and pyramid recall, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by any annotator}. 
 
 
-% Pyramid precision considers the ``optimal'' sentences that could be identified, i.e., the sentences marked by most of the annotators, and compares that to the sentences actually identified. Let $marked(s)$ be a function that returns the number of annotators who marked the sentence $s$, pyramid precision is defined as 
-% the summation of $marked(s)$ for the set of sentences identified ($s \in S$) over the set of optimal sentences derived from the golden data ($s \in G$).
 
+\subsection{Comparing techniques with related work}
 
 
-% \begin{equation}
-% \label{eq:cp5:pyramid-precision}    
-%     Pyramid Precision =  \frac{
-%         \sum_{s \in S} \text{ } marked(s)
-%     }{
-%         \sum_{s \in G} \text{ } marked(s)
-%     }
-% \end{equation}
+To answer RQ3, we apply a set of techniques, further detailed in this section, from related work to the tasks and artifacts used in our evaluation. 
 
 
-% % \vspace{3mm}
-% % As an example consider an artifact with a total of 6 marked sentences,
-% % where 2 sentences were marked by the three annotators, 3 by two annotators and 1 sentence by a single annotator. 
-% % When identifying three sentences, the optimal solution is $8$ $(2 \times 3 + 1 \times 2)$.
-% % Hence, an approach that identifies three sentences maked by one, two and all annotators 
-% % would have a pyramid precision score of $0.75$ or $\frac{ (1 + 2 + 3)}{(2 \times 3 + 1 \times 2)}$.
+In this evaluation, we compare techniques from related work to the technique that yielded the best evaluation results obtained in our investigation of RQ1 and RQ2.
 
 
+\subsubsection{VSM}
 
 
-% \vspace{2mm}
-% Pyramid recall calculates the fraction of the sentences identified by our approach over 
-% any of the sentences marked by the annotators. Since we updated the set of $TP$ and $FN$ of Table~\ref{tbl:type-I-II-errors}, we can still compute pyramid precision using Equation~\ref{eq:cp5:recall}.
 
+We use a standard VSM lexical similarity approach as a baseline for comparison. Our rationale to use 
+lexical similarity is based on the fact that 
+both our card sorting analysis (\red{Chapter~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown that developers often use keyword-matching as a simple and quick search strategy to locate text that might contain information relevant to their tasks.
 
 
+VSM has also been used by ~\cite{Lin2021} and ~\cite{Ye2016} to \dots
 
-% \subsubsection{Results}
 
 
-% When interpreting results, we favour precision/pyramid precision instead of recall/pyramid recall.
-% Our rationale is that a developer might completely abandon reading of an artifact due to a false positive.
-% Thus, even if we are not able to identify all sentences that are indeed relevant, true positives may encourage a developer to inspect a pertinent artifact more thoroughly~\cite{Singer1998, Brandt2009a}.
+\art{When I did a first run of these approaches, they did not detect much of the text marked by the annotators, so should I sill consider them for comparison purposes? If not, what are valid alternatives?}
 
 
+\subsubsection{AnswerBot}
 
 
-% Table~\ref{tbl:approach-results-overall} shows the accuracy of our approach 
-% over all features as well as per group of features (i.e., lexical, word-semantics, and sentence-semantics).
+\acf{AnsBot} automates generation of answer summaries for a developer's task for Stack Overflow posts.
 
+The tool uses a set of features, ranging from lexical and semantical features to features that leverage meta-data available in Stack Overflow to detect useful text that will be used in the answer summary provided by the tool. 
 
-% \input{sections/cp5/tbl-results-overall}
+Given the scope of the tool, we compare the accuracy our technique to AnswerBot when identifying relevant text in 
+Stack Overflow artifacts.
 
 
-% Table~\ref{tbl:approach-results-task} shows evaluation metrics by type of task, i.e., GitHub or StackOverflow.
+\subsubsection{Krec}
 
-% \input{sections/cp5/tbl-results-by-task}
 
+\acf{Krec} automates the identification of information fragments that a developer cannot afford to ignore when reading API documentation.
 
+To detect these fragments, the tool relies on a set of word patterns that indicate if a sentence contains useful information. Hence, we compare the accuracy our our technique to Krec when detecting relevant text in API documentation.
 
-% We also investigate if an artifact type influences the observed accuracy. 
-% Table~\ref{tbl:approach-results-artifacts} gives insight into the accuracy of our approach for the artifact types in the \acs{DS-android} corpus. Results comprise the set of features 
-% that provide the best accuracy results. A breakdown of results per group of features is available under Appendix~\ref{a}.
 
+\subsubsection{Hurried Bug Report}
 
-% We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if differences in the  results for each 
-% type of artifact are statistically significant. Results of the test indicate that... 
 
-% \input{sections/cp5/tbl-results-by-artifact}
+\acf{Hurried} estimates the attention that a developer would hypothetically give to different sentences in a bug report. 
 
 
+We consider that the text that the tool identifies as the one that a developer would attend to first most likely contains information relevant to a developer task. Hence we compare the accuracy of \acf{Hurried} to ours for the bug reports artifacts in our dataset.
 
 
-% \subsection{Threats to validity}
+\subsection{Results}
+
+
+
+
+\input{sections/cp5/tbl-results-overall}
+
+
+\input{sections/cp5/tbl-results-with-filters}
+
+
+\input{sections/cp5/tbl-results-by-artifact}
+
 
 

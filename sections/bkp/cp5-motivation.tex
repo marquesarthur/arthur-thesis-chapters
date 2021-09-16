@@ -318,3 +318,160 @@ in a variety of types of artifact, traditional \acs{IR} or  because:
 
 % Researchers have used VSM as a means to extract information that
 % is relevant to certain software tasks by ranking the text in a document according to its similarity scores, i.e., from highest to lowest. 
+
+
+
+
+
+
+
+
+
+% \textit{How accurately can lexical properties identify text deemed relevant to a task?}
+% \gm{Are you really assessing or is this just simply the baseline and not a question? Describing as a design space would likely make this easier.}
+%     We assess to what extent can a lexical similarity approach automatically identify text relevant to a software task.
+%     We use lexical similarity as a baseline since both our card sorting analysis (\red{Section~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown
+%     that developers often use keyword-matching as a simple and quick search strategy to locate task-relevant information in a software artifact.
+
+
+
+% \red{begin with research question}
+
+
+% We use our approach to identify sentences relevant to
+% the tasks in the \acs{DS-android} corpus,
+% comparing the sentences identified against the 
+% sentences in the corpus' golden data. 
+% For this evaluation, we set the target number of sentences identified (i.e., length of a summary) to 20\% of the content of an artifact,
+% which is a value derived from our study on characterizing 
+% task-relevant information in natural language artifacts~\cite{marques2020}.
+
+
+
+
+
+% \subsection{Accuracy}
+
+
+% Motivated by the fact that the text marked by the annotators in the \acs{DS-android} differs
+% (Section~\ref{cp4:corpus-relevant-text}),
+% we follow procedures outlined by Lotufo et al.~\cite{Lotufo2012}
+% to measure how accurately our approach identifies text relevant to a task considering two evaluation scenarios:
+
+
+% \begin{enumerate}
+%     \item one where the text marked only by two or more annotators is considered relevant, and;
+    
+%     \item a second where we consider that any of the text marked by the annotators contributes towards task completion.
+% \end{enumerate}
+
+% \red{flip the above discuss this as a classification problem?}
+
+
+% Standard precision and recall metrics~\cite{Manning2009IR} are suitable metrics for the first scenario. In the second, we use pyramid precision and pyramid recall metrics
+% to compute accuracy based on how many annotators marked the text~\cite{Nenkova2004, Lotufo2012}. 
+% To understand these metrics, we refer to the evaluation outcomes of Table~\ref{tbl:type-I-II-errors}. 
+% The \textit{relevant} and \textit{not-relevant} columns represent the text 
+% marked (or not) by annotators~\cite{Lotufo2012} for a particular task and a pertinent artifact. Rows represent the text automatically identified by our approach for the same task and pertinent artifact.
+
+
+% \input{sections/cp5/tbl-eval-outcomes.tex}
+
+
+% \subsubsection{Precision and recall}
+
+
+
+
+% For standard precision and recall metrics, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by two or more annotators}. 
+% In this scenario, $precision$ is the fraction of the sentences
+%  identified that are relevant over the total number of sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
+
+
+
+% \vspace{2mm}
+% Recall represents how many of all marked sentences are identified by our approach (Equation~\ref{eq:cp5:recall}).
+
+
+
+
+
+
+
+% \subsubsection{Pyramid precision and pyramid recall}
+
+
+% For pyramid precision and pyramid recall, the relevant column in Table~\ref{tbl:type-I-II-errors} represents \textit{text marked by any annotator}. 
+
+
+% Pyramid precision considers the ``optimal'' sentences that could be identified, i.e., the sentences marked by most of the annotators, and compares that to the sentences actually identified. Let $marked(s)$ be a function that returns the number of annotators who marked the sentence $s$, pyramid precision is defined as 
+% the summation of $marked(s)$ for the set of sentences identified ($s \in S$) over the set of optimal sentences derived from the golden data ($s \in G$).
+
+
+
+% \begin{equation}
+% \label{eq:cp5:pyramid-precision}    
+%     Pyramid Precision =  \frac{
+%         \sum_{s \in S} \text{ } marked(s)
+%     }{
+%         \sum_{s \in G} \text{ } marked(s)
+%     }
+% \end{equation}
+
+
+% % \vspace{3mm}
+% % As an example consider an artifact with a total of 6 marked sentences,
+% % where 2 sentences were marked by the three annotators, 3 by two annotators and 1 sentence by a single annotator. 
+% % When identifying three sentences, the optimal solution is $8$ $(2 \times 3 + 1 \times 2)$.
+% % Hence, an approach that identifies three sentences maked by one, two and all annotators 
+% % would have a pyramid precision score of $0.75$ or $\frac{ (1 + 2 + 3)}{(2 \times 3 + 1 \times 2)}$.
+
+
+
+
+% \vspace{2mm}
+% Pyramid recall calculates the fraction of the sentences identified by our approach over 
+% any of the sentences marked by the annotators. Since we updated the set of $TP$ and $FN$ of Table~\ref{tbl:type-I-II-errors}, we can still compute pyramid precision using Equation~\ref{eq:cp5:recall}.
+
+
+
+
+% \subsubsection{Results}
+
+
+% When interpreting results, we favour precision/pyramid precision instead of recall/pyramid recall.
+% Our rationale is that a developer might completely abandon reading of an artifact due to a false positive.
+% Thus, even if we are not able to identify all sentences that are indeed relevant, true positives may encourage a developer to inspect a pertinent artifact more thoroughly~\cite{Singer1998, Brandt2009a}.
+
+
+
+
+% Table~\ref{tbl:approach-results-overall} shows the accuracy of our approach 
+% over all features as well as per group of features (i.e., lexical, word-semantics, and sentence-semantics).
+
+
+% \input{sections/cp5/tbl-results-overall}
+
+
+% Table~\ref{tbl:approach-results-task} shows evaluation metrics by type of task, i.e., GitHub or StackOverflow.
+
+% \input{sections/cp5/tbl-results-by-task}
+
+
+
+% We also investigate if an artifact type influences the observed accuracy. 
+% Table~\ref{tbl:approach-results-artifacts} gives insight into the accuracy of our approach for the artifact types in the \acs{DS-android} corpus. Results comprise the set of features 
+% that provide the best accuracy results. A breakdown of results per group of features is available under Appendix~\ref{a}.
+
+
+% We use a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check if differences in the  results for each 
+% type of artifact are statistically significant. Results of the test indicate that... 
+
+% \input{sections/cp5/tbl-results-by-artifact}
+
+
+
+
+% \subsection{Threats to validity}
+
+

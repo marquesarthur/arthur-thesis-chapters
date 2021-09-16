@@ -2,10 +2,10 @@
 \centering    
 \begin{scriptsize}
 \begin{threeparttable}
-\begin{tabular}{lcccc}
+\begin{tabular}{llcccc}
 
 
-\textbf{Artifact type} & 
+\textbf{} & \textbf{Technique} &
 \textbf{Precision} & \textbf{Recall} & 
 \parbox[c][.7cm][c]{1.5cm}{\centering \textbf{Pyramid precision}} & 
 \parbox[c][.7cm][c]{1.5cm}{\centering \textbf{Pyramid recall}} \\
@@ -13,31 +13,58 @@
 
 \hline
 
-\textbf{API documentation}  &
+\multirow{ 2}{*}{\textbf{Baseline}}  & VSM &
 0.50 & 0.50 & 
 0.50 & 0.50 
 \\
 
-\textbf{GitHub issues} &
+& ours &
 0.50 & 0.50 & 
 0.50 & 0.50 
 \\
 
-\textbf{SO answers} &
+\hline
+
+\multirow{ 2}{*}{\textbf{API documentation}}  & Kreck &
 0.50 & 0.50 & 
 0.50 & 0.50 
 \\
 
-\textbf{Miscellaneous} &
+& ours &
 0.50 & 0.50 & 
 0.50 & 0.50 
 \\
+
+\hline
+
+\multirow{ 2}{*}{\textbf{GitHub issues}} & Hurried &
+0.50 & 0.50 & 
+0.50 & 0.50 
+\\
+
+ & Ours &
+0.50 & 0.50 & 
+0.50 & 0.50 
+\\
+
+\hline
+
+\multirow{ 2}{*}{\textbf{SO answers}} & AnsBot &
+0.50 & 0.50 & 
+0.50 & 0.50 
+\\
+
+ & Ours &
+0.50 & 0.50 & 
+0.50 & 0.50 
+\\
+
 \hline
 
 \end{tabular}
 \end{threeparttable}
 \end{scriptsize}
-\caption{Accuracy results per type of artifact}
+\caption{Techniques comparison}
 \label{tbl:approach-results-artifacts}
 \end{table}
 
