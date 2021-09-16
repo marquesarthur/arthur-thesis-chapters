@@ -15,7 +15,7 @@ and limitations outlined in these studies.
 
 
 A number of the techniques commonly employed by researchers are based on the
-frequency of co-occurrence of words (or phrases) in natural language artifacts, commonly referred to as \textit{documents}. 
+frequency of co-occurrence of words (or phrases) in natural language artifacts, also referred to as \textit{documents}. 
 An early example is Maarek and Smadja's use of lexical relations to index
 software libraries~\cite{maarek1989}. 
 Since this early use, software engineering
@@ -28,7 +28,7 @@ to support tracing software requirements to source code~\cite{Lin2021}.
 
 
 
-However, researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM} 
+Researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM} 
 fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016} while
 Di Sorbo and colleagues observed that a lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify emails based on developers' intentions~\cite{Sorbo2015}, what prompted them 
 to define rules to
@@ -49,7 +49,10 @@ many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} h
 
 \red{Connect early studies to approaches that have used language models in software engineering,} as  when Nguyen and colleagues
 applied Word2Vec~\cite{Mikolov2013} to support the retrieval of API
-examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}.
+examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}. 
+
+
+Techniques able to infer the semantics of text are of interest to us and thus, we further detail core concepts related to them. 
 
 
 
@@ -72,7 +75,7 @@ the model associates similar vector embeddings to words that are similar in mean
 One common challenge to language models is that they need to learn word embeddings that are good at predicting the nearby words at a low computational costs, e.g., the time needed to train a model, the model size, etc.
 The \textit{Skip-gram} model, proposed by Mikolov et al.~\cite{Mikolov2013}, addresses such challenges using simple yet efficient training procedures. 
 That is, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceded and succeed word $w_t$
-as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context as negative training examples. 
+as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context of $w_t$ as negative training examples. 
 Empirical results have shown that negative sampling allows for an accurate model able to handle noise data and that 
 the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
 
@@ -85,9 +88,9 @@ the vector representations provided by the model could be used to improve many n
 \paragraph{\textbf{BERT Model}}
 \label{cp5:bert}
 
-Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this, however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for the word \textit{company} even when it can have different meanings, i.e., a business organization or being with someone. In contrast, 
+Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this, however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for a word such as \textit{company} even when it can have different meanings, i.e., a business organization or being with someone. In contrast, 
 the \acf{BERT} model, proposed by Google~\cite{Devlin2018Bert}, provides different representations for the same word based on the sentence in which a word appears.
-This additional layer allows for more complex operations, such as word disambiguation \red{ref}.
+This additional layer allows the model to perform more complex operations, such as word disambiguation \red{ref}.
 
 
 BERT is initially trained 
