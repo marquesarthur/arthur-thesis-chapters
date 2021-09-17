@@ -2,33 +2,29 @@
 \label{cp5:comparison}
 
 
+\art{My goal here is to pick a technique from literature, most likely \acs{AnsBot}, and:}
 
-\subsubsection{AnswerBot}
-
-
-\acf{AnsBot} automates generation of answer summaries for a developer's task for Stack Overflow posts.
-
-The tool uses a set of features, ranging from lexical and semantical features to features that leverage meta-data available in Stack Overflow to detect useful text that will be used in the answer summary provided by the tool. 
-
-Given the scope of the tool, we compare the accuracy our technique to AnswerBot when identifying relevant text in 
-Stack Overflow artifacts.
+\begin{enumerate}
+    \item report their accuracy
+    \item report our accuracy fot the same artifact type
+    \item check if we have similar accuracy, better, or lower 
+\end{enumerate}
 
 
-\subsubsection{Krec}
+\art{Discuss and compare our technique to theirs based on (3). I may need to run their technique on our dataset and report results}
 
 
-\acf{Krec} automates the identification of information fragments that a developer cannot afford to ignore when reading API documentation.
-
-To detect these fragments, the tool relies on a set of word patterns that indicate if a sentence contains useful information. Hence, we compare the accuracy our our technique to Krec when detecting relevant text in API documentation.
+% \subsubsection{AnswerBot}
 
 
-\subsubsection{Hurried Bug Report}
+% \acf{AnsBot} automates generation of answer summaries for a developer's task using answers available on Stack Overflow.
+
+% The tool uses a set of features, ranging from textual features to features that leverage  Stack Overflow's meta-data (e.g., number of votes an answer got, if a user accepted an answer as correct, etc) to detect useful text that will be used in the answer summary provided by the tool. 
+
+% Given the scope of the tool, we compare the accuracy our technique to AnswerBot when identifying relevant text in 
+% Stack Overflow artifacts.
 
 
-\acf{Hurried} estimates the attention that a developer would hypothetically give to different sentences in a bug report. 
 
 
-We consider that the text that the tool identifies as the one that a developer would attend to first most likely contains information relevant to a developer task. Hence we compare the accuracy of \acf{Hurried} to ours for the bug reports artifacts in our dataset.
-
-
-\subsection{Results}
+% \subsection{Results}
