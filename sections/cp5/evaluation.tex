@@ -2,33 +2,18 @@
 \label{cp5:evaluation}
 
 
-Evaluation focuses 
-on answering the following research questions:
+Our evaluation focuses 
+on determining what portion of the text identified by human annotators the techniques that we explore can automatically identify.
+Our experimental setup is as follows.
 
-
-
-
-
-\subsection{Assessing the accuracy of word semantic techniques}
-
-
-To answer RQ1 we compute evaluation metrics when we try to identify the sentences deemed relevant by human annotators in the \acs{DS-android} dataset.
-
-
-Due to training procedures, BERT might be biased towards the tasks and text marked in this dataset. We minimize risks that might arise from this fact, by reporting results when we train the model using 10-fold cross-validation and by reporting results when we 
-train the model with a different dataset.
 
 
 \subsubsection{Metrics}
 
 
-Our aim is to identify text that contains information that a developer would deem relevant to the task that they are currently performing. 
-The text would be highlighted in an artifact so that the developer can quickly locate and inspect it. 
-This means that the text identified represents a set containing task-relevant and thus, 
-set-based metrics are appropriate to measure the accuracy of each technique~\cite{Manning2009IR}.
-
-
-We use standard Precision and Recall metrics to measure accuracy.
+Ultimately, the goal of our evaluation is to assist the design of tools that help developers quickly locate the text relevant to their tasks, surfacing (e.g., highlighting) the identified text in an artifact under inspection~\cite{Robillard2015}.
+This means that the text identified by a technique represents a set containing the information to be surfaced and thus, 
+set-based metrics, such as \textit{precision} and \textit{recall}~\cite{Manning2009IR}, are appropriate to measure the accuracy of each technique.
 
 
 
@@ -36,7 +21,7 @@ We use standard Precision and Recall metrics to measure accuracy.
 
 \paragraph{\textbf{Precision}}
 
-Provide details for metric.
+Precision measures the fraction of the sentences identified that are relevant over the total number of sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
 
 
 
@@ -46,9 +31,7 @@ Provide details for metric.
 \end{equation}
 
 
-\paragraph{\textbf{Recall}}
-
-Provide details for metric.
+\paragraph{\textbf{Recall}} Recall represents how many of all marked sentences are identified by a technique (Equation~\ref{eq:cp5:recall}).
 
 
 \begin{equation}
@@ -60,68 +43,61 @@ Provide details for metric.
 
 \paragraph{\textbf{Pyramid Precision \& Pyramid Recall}} 
 
-Measure precision and recall when true positives (TP) represent text marked at least by two annotators.
-
-
-\subsection{Assessing the accuracy of sentence semantic techniques}
-
-
-To answer RQ2 we apply the frame semantic filters described in Section~\ref{cp5:approach-filters} to the techniques that use word semantics and report precision and recall metrics to assess if the filters improve the detection of text relevant to a software task.
+Following evaluation procedures outlined by Lotufo et al.~\cite{Lotufo2012}, we measure precision and recall considering sentences marked by two or more annotators; this, however ignores the fact that text marked by a single annotator can equally contribute towards task completion~\cite{marques2020}. To address the text identified by a single annotator, we also report pyramid precision and pyramid recall. These metrics are similar to the ones defined in 
+Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat any of the text marked as relevant.
 
 
 
 
-\subsection{Comparing techniques with related work}
 
 
-To answer RQ3, we apply a set of techniques, further detailed in this section, from related work to the tasks and artifacts used in our evaluation. 
+\subsubsection{Baseline}
 
 
-In this evaluation, we compare techniques from related work to the technique that yielded the best evaluation results obtained in our investigation of RQ1 and RQ2.
-
-
-\subsubsection{VSM}
-
-
-
-We use a standard VSM lexical similarity approach as a baseline for comparison. Our rationale to use 
+As done by~\cite{Lin2021} and~\cite{Ye2016}, we use a standard VSM lexical similarity approach as a baseline. Our rationale to use 
 lexical similarity is based on the fact that 
 both our card sorting analysis (\red{Chapter~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown that developers often use keyword-matching as a simple and quick search strategy to locate text that might contain information relevant to their tasks.
 
 
-VSM has also been used by ~\cite{Lin2021} and ~\cite{Ye2016} to \dots
+Following procedures analogous to the semantic similarity-based technique (Section~\ref{cp5:approach-w2v}), we compute lexical similarity and output the top-n sentences with highest similarity as the ones likely relevant to an input software task.
 
 
 
-\art{When I did a first run of these approaches, they did not detect much of the text marked by the annotators, so should I sill consider them for comparison purposes? If not, what are valid alternatives?}
+
+\subsubsection{Techniques Configuration}
 
 
-\subsubsection{AnswerBot}
 
 
-\acf{AnsBot} automates generation of answer summaries for a developer's task for Stack Overflow posts.
-
-The tool uses a set of features, ranging from lexical and semantical features to features that leverage meta-data available in Stack Overflow to detect useful text that will be used in the answer summary provided by the tool. 
-
-Given the scope of the tool, we compare the accuracy our technique to AnswerBot when identifying relevant text in 
-Stack Overflow artifacts.
+Both the \texttt{baseline} and the \texttt{word2vec} techniques have a set number of sentences in the techniques output. To determine how many sentences these approaches should output, we consider that 
+no more than 20\% of the content in the corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}) and we approximate these values to identifying a target number of 10 sentences per input task-artifact. 
+This value will also allow us to compare the accuracy of our approach to previous work with similar experimental setup, e.g., ~\cite{Xu2017} or~\cite{Lotufo2012}.
 
 
-\subsubsection{Krec}
 
 
-\acf{Krec} automates the identification of information fragments that a developer cannot afford to ignore when reading API documentation.
-
-To detect these fragments, the tool relies on a set of word patterns that indicate if a sentence contains useful information. Hence, we compare the accuracy our our technique to Krec when detecting relevant text in API documentation.
-
-
-\subsubsection{Hurried Bug Report}
+% For this evaluation, we set the target number of sentences identified (i.e., length of a summary) to 20\% of the content of an artifact,
+% which is a value derived from our study on characterizing 
+% task-relevant information in natural language artifacts~\cite{marques2020}.
 
 
-\acf{Hurried} estimates the attention that a developer would hypothetically give to different sentences in a bug report. 
 
 
-We consider that the text that the tool identifies as the one that a developer would attend to first most likely contains information relevant to a developer task. Hence we compare the accuracy of \acf{Hurried} to ours for the bug reports artifacts in our dataset.
+For the BERT technique, we fine-tune the model training it for up to 10 epochs with a \textit{batch size}---the number of samples passed through the model network at once---of 64. Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's sequence length to 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5}. As for training data, we explore two evaluation scenarios:
+
+
+\boldparagraph{BERT\textsubscript{DS-android}}{
+We split the data available in the \acs{DS-android} dataset and use part of it for training. 
+As done by other studies (e.g.,~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation (i.e., testing) is also used
+during the model's training procedures. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. \red{ref} We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
+}
+
+\boldparagraph{BERT\textsubscript{DS-synthetic}}{
+To study the impacts of training data on the BERT technique, we train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience. The tasks in this dataset were not drawn from open-source systems, but rather created to stimulate the participants' information-seeking behaviour. Due to the synthetic nature of the tasks in this dataset, we refer to this configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
+}
+
+
+
 
 
 \subsection{Results}
@@ -129,7 +105,10 @@ We consider that the text that the tool identifies as the one that a developer w
 
 
 
-% \input{sections/cp5/tbl-results-overall}
+\input{sections/cp5/tbl-results-overall}
+
+
+\art{Change from tables to plots. Similar to Sarah and Treude~\cite{nadi2020}, show Venn diagram with how many sentences each approach identifies and overlaps between them}
 
 
 % \input{sections/cp5/tbl-results-with-filters}

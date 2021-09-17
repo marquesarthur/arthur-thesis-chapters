@@ -49,7 +49,7 @@ Then, we compute their semantic similarity as the cosine similarity \red{ref} be
     sim(a_i, T) = max(sim(w_{a_i}, w_{t_1}), sim(w_{a_i}, w_{t_2}) ~\dots~ sim(w_{a_i}, w_{t_m})) \\
 \end{equation}
 
-
+\smallskip
 Following these procedures, we sort the sentences in an artifact according to their semantic similarity, i.e., from highest to lowest, and output the top-n sentences as the ones likely relevant to an input software task.
 
 
@@ -68,14 +68,11 @@ alongside binary labels representing whether human annotators deemed that senten
 Using training data, the model will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. 
 
 
-We train the model for up to 10 epochs with a \textit{batch size}---the number of samples passed through the network at once---of 64. Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's sequence length to 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5}.
-As done by other studies (e.g.,~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation (i.e., testing) is also used
-during the model's training procedures. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. \red{ref}
 
 
 
 
-Following these procedures, during testing, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
+To identify sentence within an artifact that are likely relevant to an input task, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
 
 \begin{equation}
     relevance(a_i, T) = mod(predict(a_i, t_1), predict(a_i, t_2) ~\dots~ predict(a_i, t_m)) \\
@@ -111,7 +108,7 @@ F = \{ \text{required event}, \text{using}, \text{being obligated} ... \} \\
 \begin{equation}
 \text{\textit{meaningful}}(a_i) = \left \{
 \begin{aligned}
-    &1, && \text{if}\ frames(a_i) \cap F \ne \emptyset \\
+    &1, && \text{if}\ frames(a_i) \cap ~F \ne \emptyset \\
     &0, && \text{otherwise}
 \end{aligned} \right.
 \end{equation} 
@@ -125,17 +122,18 @@ A second filter takes into account the intentionally of a task, as identified th
 \begin{equation}
 \text{\textit{related}}(a_i, T) = \left \{
 \begin{aligned}
-    &1, && \text{if}\ frames(a_i, T) \cap P \ne \emptyset \\
+    &1, && \text{if}\ frame\_pairs(a_i, T) \cap ~P \ne \emptyset \\
     &0, && \text{otherwise}
 \end{aligned} \right.
 \end{equation} 
 
-
-To find frame pairs we \red{describe procedures on how we determine pairs}.
+\smallskip
+To find the frame pairs that compose $P$ we \red{describe procedures on how we determine pairs}.
 
 
 
 Considering these two filters we take the output of a technique $O$ and produce output $O^{\prime}$ containing only the sentences that match one of the proposed filters.
+\art{Do they need to be filters? Can they be heuristic-based techniques on their own?}
 
 % ------------------------------------------------
 
