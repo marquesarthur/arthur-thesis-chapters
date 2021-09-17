@@ -1,10 +1,7 @@
 
-\subsection{Background}
+\section{Background}
 \label{cp5:background}
 
-\marginpar{{\small
-\art{I'm not sure about the structure. This could be a section instead of a subsection?}
-}}
 
 This section describes approaches that software engineering researchers have used to extract information from natural language artifacts, scenarios where they have been applied, and potential limitations of each approach. We present approaches incrementally, from early studies to techniques that build upon the findings
 and limitations outlined in these studies.
@@ -15,7 +12,7 @@ and limitations outlined in these studies.
 
 
 A number of the techniques commonly employed by researchers are based on the
-frequency of co-occurrence of words (or phrases) in natural language artifacts, also referred to as \textit{documents}. 
+frequency of co-occurrence of words (or phrases) in natural language artifacts, which literature refers to as \textit{documents}. 
 An early example is Maarek and Smadja's use of lexical relations to index
 software libraries~\cite{maarek1989}. 
 Since this early use, software engineering
@@ -52,7 +49,7 @@ applied Word2Vec~\cite{Mikolov2013} to support the retrieval of API
 examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}. 
 
 
-Techniques able to infer the semantics of text are of interest to us and thus, we further detail core concepts related to them. 
+Since our main focus is on techniques able to infer the semantics of text, we further detail core concepts related to them. 
 
 
 
@@ -117,11 +114,10 @@ from Di Sorbo et al.~\cite{Sorbo2015}:
 \item \textit{the leaky bucket algorithm fails in limiting the band-width}.
 \end{itemize}
 
-These two sentences are lexically similar, making it
-difficult to use lexicon techniques, such as \acs{VSM}, to distinguish them. Likewise, a Skip-gram model would still indicate that the vector representations for the two sentences are close, suggesting that the two sentences are also semantically similar. 
-To address these limitations, we turn towards \textit{frame
-semantics}~\cite{fillmore1976frame, Baker1998}, a 
-linguistic approach in the field of pragmatics~\cite{ariel2008pragmatics, austin1975pragmatics}.
+Although these messages have different meaning, \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically similar or semantically similar. Hence, we turn towards \textit{frame
+semantics}~\cite{fillmore1976frame, Baker1998}---a 
+linguistic approach in the field of pragmatics~\cite{ariel2008pragmatics, austin1975pragmatics}---as an approach able to different
+the sentence's meaning.
 
 
 

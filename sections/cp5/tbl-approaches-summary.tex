@@ -4,7 +4,7 @@
 \begin{scriptsize}
 \begin{threeparttable}
 \rowcolors{2}{}{lightgray}    
-\begin{tabular}{lll}
+\begin{tabular}{ll}
 
 % \hline
 
@@ -12,7 +12,7 @@
 
 
 
-\textbf{Identifier} & \textbf{Based on} & \textbf{Description} \\
+\textbf{Identifier} &  \textbf{Description} \\
 
 \hline
 
@@ -26,24 +26,34 @@
 
 
 \texttt{word2vec} & 
-\parbox[l][1cm][c] {1.5cm}{Skip-gram\\model} &
-\parbox[l][1cm][c] {8.5cm}{
+\parbox[l][1cm][c] {9.5cm}{
     Uses the Skip-gram model to identify the top-n sentences most semantically similar to a task description as task-relevant
 }
 \\
 
 \texttt{BERT} & 
-\parbox[l][1cm][c] {1.5cm}{BERT\\model} &
-\parbox[l][1cm][c] {8.5cm}{
+\parbox[l][.7cm][c] {9.5cm}{
     Fine-tunes BERT to predict the sentences that are relevant to an input task
 }
 \\
 
 
-\texttt{} & 
-\parbox[l][0.5cm][c] {1.5cm}{ ... } &
-\parbox[l][0.5cm][c] {8.5cm}{ ... }
+
+\texttt{meaningful} & 
+\parbox[l][.7cm][c] {9.5cm}{
+    Indicates that a sentence is relevant if it contains certain frame elements
+}
 \\
+
+
+
+\texttt{related} & 
+\parbox[l][.7cm][c] {9.5cm}{
+    Indicates that a sentence is relevant if its frames match certain frames in a task title
+}
+\\
+
+
 
 
 
