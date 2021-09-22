@@ -2,31 +2,35 @@
 \centering    
 \begin{small}
 \begin{threeparttable}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
 
 
-\textbf{Technique} & 
-\textbf{Precision} & \textbf{Recall} & 
-\parbox[c][.9cm][c]{1.5cm}{\centering \textbf{Pyramid precision}} & 
-\parbox[c][.9cm][c]{1.5cm}{\centering \textbf{Pyramid recall}} \\
+\textbf{technique} & 
+\textbf{precision} & \textbf{recall} & \textbf{f1-score} & 
+$\Delta$ \textbf{precision} & $\Delta$ \textbf{recall} \\
 
 
 \hline
 
 
-\textbf{word2vec} &
-0.50 & 0.50 & 
-0.50 & 0.50 
+\texttt{baseline} &
+0.30 & 0.33 & 0.26 & 
+0.38 & 0.48 
 \\
 
-\textbf{BERT\textsubscript{DS-synthetic}} &
-0.50 & 0.50 & 
-0.50 & 0.50 
+\texttt{word2vec} &
+0.46 & 0.45 & 0.41 & 
+0.50 & 0.53 
 \\
 
-\textbf{BERT\textsubscript{DS-android}} &
-0.50 & 0.50 & 
-0.50 & 0.50 
+\texttt{BERT\textsubscript{DS-synthetic}} &
+0.50 & 0.53 & 0.41 & 
+0.52 & 0.55 
+\\
+
+\texttt{BERT\textsubscript{DS-android}} &
+0.54 & 0.60 & 0.46 & 
+0.56 & 0.58 
 \\
 
 \hline

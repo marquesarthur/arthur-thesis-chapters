@@ -11,11 +11,13 @@ Our experimental setup is as follows.
 \subsubsection{Metrics}
 
 
-Ultimately, the goal of our evaluation is to assist the design of tools that help developers quickly locate the text relevant to their tasks, surfacing (e.g., highlighting) the identified text in an artifact under inspection~\cite{Robillard2015}.
+Ultimately, the goal of our evaluation is to assist the design of tools that help developers quickly locate the text relevant to their tasks, surfacing or highlighting the identified text in an artifact under inspection~\cite{Robillard2015}.
 This means that the text identified by a technique represents a set containing the information to be surfaced and thus, 
-set-based metrics, such as \textit{precision} and \textit{recall}~\cite{Manning2009IR}, are appropriate to measure the accuracy of each technique.
+we use \textit{precision} and \textit{recall} to measure the accuracy of each technique~\cite{Manning2009IR}.
+We use the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors} to understand each metric.
 
-
+\medskip
+\input{sections/cp5/tbl-eval-outcomes}
 
 
 
@@ -43,7 +45,9 @@ Precision measures the fraction of the sentences identified that are relevant ov
 
 \paragraph{\textbf{Pyramid Precision \& Pyramid Recall}} 
 
-Following evaluation procedures outlined by Lotufo et al.~\cite{Lotufo2012}, we measure precision and recall considering sentences marked by two or more annotators; this, however ignores the fact that text marked by a single annotator can equally contribute towards task completion~\cite{marques2020}. To address the text identified by a single annotator, we also report pyramid precision and pyramid recall. These metrics are similar to the ones defined in 
+We measure precision and recall considering sentences marked by two or more annotators; this, however ignores the fact that text marked by a single annotator can equally contribute towards task completion~\cite{marques2020}. To address the text identified by a single annotator, we 
+follow evaluation procedures outlined by Lotufo et al.~\cite{Lotufo2012} and we
+also report pyramid precision and pyramid recall. These metrics are similar to the ones defined in 
 Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat any of the text marked as relevant.
 
 
@@ -67,11 +71,11 @@ Following procedures analogous to the semantic similarity-based technique (Secti
 \subsubsection{Techniques Configuration}
 
 
+\art{I could move this section to a subsection or a paragraph at the end of each technique in Section~\ref{cp5:approaches}}
 
 
 Both the \texttt{baseline} and the \texttt{word2vec} techniques have a set number of sentences in the techniques output. To determine how many sentences these approaches should output, we consider that 
-no more than 20\% of the content in the corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}) and we approximate these values to identifying a target number of 10 sentences per input task-artifact. 
-This value will also allow us to compare the accuracy of our approach to previous work with similar experimental setup, e.g., ~\cite{Xu2017} or~\cite{Lotufo2012}.
+no more than 20\% of the content in the corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}). We approximate these values to identifying a target number of 10 sentences per input task-artifact, a value that will also allow us to compare the accuracy of our approach to previous work with similar experimental setup, e.g., ~\cite{Xu2017} or~\cite{Lotufo2012}.
 
 
 
@@ -83,24 +87,30 @@ This value will also allow us to compare the accuracy of our approach to previou
 
 
 
-For the BERT technique, we fine-tune the model training it for up to 10 epochs with a \textit{batch size}---the number of samples passed through the model network at once---of 64. Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's sequence length to 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5}. As for training data, we explore two evaluation scenarios:
+For the BERT technique, we fine-tune the model training it for up to 10 epochs with a \textit{batch size}---the number of samples passed through the model network at once---of 64. Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's sequence length to 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with an early stopping criterion. As for training data, we explore two configurations:
 
 
 \boldparagraph{BERT\textsubscript{DS-android}}{
 We split the data available in the \acs{DS-android} dataset and use part of it for training. 
-As done by other studies (e.g.,~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation (i.e., testing) is also used
-during the model's training procedures. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. \red{ref} We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
+As done by other studies (e.g.,~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation, i.e., testing, is also used
+during the model's training procedures, i.e., training and validation. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. \red{ref} We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
 }
 
 \boldparagraph{BERT\textsubscript{DS-synthetic}}{
-To study the impacts of training data on the BERT technique, we train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience. The tasks in this dataset were not drawn from open-source systems, but rather created to stimulate the participants' information-seeking behaviour. Due to the synthetic nature of the tasks in this dataset, we refer to this configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
+To study the impacts of training data on BERT, we train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience (\red{Chapter~\ref{aaa}}). The tasks in this dataset were not drawn from open-source systems, but rather created to stimulate the participants' information-seeking behaviour. Due to the synthetic nature of the tasks in this dataset, we refer to this configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
 }
 
-
-
-
+\clearpage
 
 \subsection{Results}
+
+
+
+We have a total of 1393 sentences marked as relevant by human annotators. When compared to the text automatically identified by each approach,
+we observe that the baseline approach identifies, \texttt{VSM}, identifies \red{112} sentences while word2vec indentifies 
+
+
+
 
 
 
@@ -108,7 +118,24 @@ To study the impacts of training data on the BERT technique, we train the model 
 \input{sections/cp5/tbl-results-overall}
 
 
-\art{Change from tables to plots. Similar to Sarah and Treude~\cite{nadi2020}, show Venn diagram with how many sentences each approach identifies and overlaps between them}
+
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{cp5/results_lollipop}
+    \caption{Evaluation results for each technique configuration \red{Draft: I will split the figure in 3. One for each metric. The markers will represent the filters}}
+    % \label{fig:webview-task}
+\end{figure}
+
+
+
+
+
+
+
+% \art{Change from tables to plots. Similar to Sarah and Treude~\cite{nadi2020}, show Venn diagram with how many sentences each approach identifies and overlaps between them}
 
 
 % \input{sections/cp5/tbl-results-with-filters}
