@@ -74,6 +74,7 @@ Following procedures analogous to the semantic similarity-based technique (Secti
 \art{I could move this section to a subsection or a paragraph at the end of each technique in Section~\ref{cp5:approaches}}
 
 
+\red{TODO: this is true for all approaches not only IR based ones}
 Both the \texttt{baseline} and the \texttt{word2vec} techniques have a set number of sentences in the techniques output. To determine how many sentences these approaches should output, we consider that 
 no more than 20\% of the content in the corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}). We approximate these values to identifying a target number of 10 sentences per input task-artifact, a value that will also allow us to compare the accuracy of our approach to previous work with similar experimental setup, e.g., ~\cite{Xu2017} or~\cite{Lotufo2012}.
 
@@ -100,15 +101,8 @@ during the model's training procedures, i.e., training and validation. More spec
 To study the impacts of training data on BERT, we train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience (\red{Chapter~\ref{aaa}}). The tasks in this dataset were not drawn from open-source systems, but rather created to stimulate the participants' information-seeking behaviour. Due to the synthetic nature of the tasks in this dataset, we refer to this configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
 }
 
-\clearpage
 
 \subsection{Results}
-
-
-
-We have a total of 1393 sentences marked as relevant by human annotators. When compared to the text automatically identified by each approach,
-we observe that the baseline approach identifies, \texttt{VSM}, identifies \red{112} sentences while word2vec indentifies 
-
 
 
 
@@ -138,6 +132,7 @@ we observe that the baseline approach identifies, \texttt{VSM}, identifies \red{
 % \art{Change from tables to plots. Similar to Sarah and Treude~\cite{nadi2020}, show Venn diagram with how many sentences each approach identifies and overlaps between them}
 \art{Consider changing from tables to plots.}
 
+\art{I've got all results without seframe filters. This week, filters will be my main focus}
 
 % \input{sections/cp5/tbl-results-with-filters}
 
