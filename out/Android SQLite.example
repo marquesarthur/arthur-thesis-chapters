@@ -1,0 +1,22 @@
+Android SQLite performance in complex queries
+https://stackoverflow.com/questions/4015026
+
+[w=0][y=1][p=0.8673] You can have indexes that contain multiple columns -LRB- to assist queries with multiple predicates -RRB-.
+
+[w=3][y=1][p=0.8509] Pin down exactly which queries you need to optimize.
+
+[w=3][y=1][p=0.8487] For SELECTs and UPDATEs, indexes can things up, but only if the indexes you create can actually be used by the queries that you need speeding up.
+
+[w=1][y=1][p=0.8439] Using both WHERE predicates and ORDER BY both require an index and SQLite can only use one, so that can be a point where performance suffers.
+
+[w=1][y=1][p=0.8382] Grab a copy of a typical database and use the REPL to time queries.
+
+[w=1][y=1][p=0.8215] If you use an ordering predicate -LRB- <, < =, > etc -RRB- then that needs to be in the last used column of the index.
+
+[w=0][y=1][p=0.8158] SQLite LINK using savepoints, but I'm not sure that you'll gain anything there performance-wise.
+
+[w=1][y=1][p=0.8085] If you have multiple predicates, then the index that will be used is the one that is expected to reduce the result set the most -LRB- based on ANALYZE -RRB-.
+
+[w=0][y=1][p=0.8069] If you can recover from database corruption yourself, then this might work for you.
+
+[w=0][y=1][p=0.8061] LINK -LRB- of table structures -RRB- is also worth considering -LRB- if you haven't already -RRB- simply because it tends to provide the smallest representation of the data in the database ; this is a trade-off, less I/O for more CPU, and one that is usually worthwhile in medium-scale enterprise databases -LRB- the sort I'm most familiar with -RRB-, but I'm afraid I've no idea whether the trade-off works well on small-scale platforms like Android.

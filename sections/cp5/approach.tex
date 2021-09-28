@@ -1,27 +1,32 @@
+\clearpage
+
 \section{Techniques}
 \label{cp5:approaches}
 
 
-\art{I'm trying to be consistent with the nomenclature: \texttt{approaches} refer to the NLP approaches that I use while \texttt{techniques} how I use them to identify relevant text}
 
 
-We consider the approaches outlined in Section~\ref{cp5:background} and we explore 
+
+We consider the semantic approaches outlined in Section~\ref{cp5:background} and we explore 
 how can we use them, or their combination, in the design of techniques able to automatically identify text that likely contains information that is relevant to a developer task. 
-Our design space considers establishing the relevance of a sentence to a given task:
+More specifically, we investigate determining the relevance of a sentence to a given task using 
+\textit{(1)} word2vec, or the Skip-gram model, \textit{(2)} BERT, and \textit{(3)} frame semantics.
 
-\begin{itemize}
-    \item using \textit{Skip-gram model}, or \textit{word2vec}, to identify sentences that are semantically similar to an input task and thus, likely to contain information relevant to that task;
+% \begin{itemize}
+%     \item using \textit{Skip-gram model}, or \textit{word2vec}, to identify sentences that are semantically similar to an input task and thus, likely to contain information relevant to that task;
     
-    \item fine-tuning \textit{BERT} to identify sentences that are potentially relevant to an input task; and
+%     \item fine-tuning \textit{BERT} to identify sentences that are potentially relevant to an input task; and
 
-    \item using \textit{frame semantics} to filter relevant sentence's based on their meaning.
-\end{itemize}
+%     \item using \textit{frame semantics} to filter relevant sentence's based on their meaning.
+% \end{itemize}
 
 
+
+Each technique takes a task and a pertinent artifact as inputs and outputs the sentences 
+that are most likely to contain information that assists a developer in completing that task.
 Details for each technique are presented in the following sections.
-Note that each techniques takes a task and a pertinent artifact as inputs and outputs the sentences 
-that are most likely to contain information that assists a developer in completing that task. 
-Details on how we determine the number of sentences outputed are available in Section~\ref{cp5:evaluation}.
+
+% Details on how we determine the number of sentences outputed are available in Section~\ref{cp5:evaluation}.
 
 
 
@@ -29,12 +34,13 @@ Details on how we determine the number of sentences outputed are available in Se
 \label{cp5:approach-w2v}
 
 
-As a first technique we explore if the sentences with the highest semantical similarity are most likely to contain information relevant to the input task. 
+As a first technique, we explore if the sentences with the highest semantical similarity are most likely to contain information relevant to the input task. 
 
 
-To compute the semantic similarity between the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task, we use the Skip-gram model (Section~\ref{cp5:skip-gram}) with word embeddings trained for the software engineering domain~\cite{Efstathiou2018}. First, we covert each of the sentences to their respective vector representations, $\{ w_{a_1}, w_{a_2}, \dots, w_{a_n}\}$ and $\{ w_{t_1}, w_{t_2}, \dots, w_{t_m}\}$. For that, we follow Conneau et al.'s guidelines~\cite{conneau2018} 
- and average the sum of the word embeddings in a sentence to obtain a vector representation for the entire sentence.
-Then, we compute their semantic similarity as the cosine similarity \red{ref} between their corresponding vectors:
+To compute the semantic similarity between the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task, 
+we use the Skip-gram model (Section~\ref{cp5:skip-gram}) with word embeddings trained for the software engineering domain~\cite{Efstathiou2018}. 
+First, we covert each of the sentences to their respective vector representations (i.e., $w_t$ and $w_a$) following Conneau et al.'s guidelines~\cite{conneau2018}, i.e., we average the sum of the embeddings for each word in a sentence.
+Then, we compute their semantic similarity as the cosine similarity \red{ref} between their corresponding sentence vectors:
 
 
 \begin{equation}
@@ -43,14 +49,15 @@ Then, we compute their semantic similarity as the cosine similarity \red{ref} be
 \end{equation}
  
 \smallskip
- As there are multiple sentences in both entities, the semantic similarity of a sentence $a_i \in A$ is the maximun value obtained when computing the similarity of the vector for this sentence and the vectors for each of the sentences in a task $T$.
+ As there are multiple sentences in both entities, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained when computing the similarity of the vector for this sentence and the vectors for each of the sentences in a task $T$.
 
  \begin{equation}
     sim(a_i, T) = max(sim(w_{a_i}, w_{t_1}), sim(w_{a_i}, w_{t_2}) ~\dots~ sim(w_{a_i}, w_{t_m})) \\
 \end{equation}
 
 \smallskip
-Following these procedures, we sort the sentences in an artifact according to their semantic similarity, i.e., from highest to lowest, and output the top-n sentences as the ones likely relevant to an input software task.
+Following these procedures, we compute the semantic similarity of all the sentences in an input artifact with regards to an input task and then, 
+we sort the obtained values from highest to lowest. We output the top-n sentences with highest similarity as the ones likely relevant to an input software task.
 
 
 \subsection{Identifying Task-relevant Text with BERT}
@@ -58,25 +65,29 @@ Following these procedures, we sort the sentences in an artifact according to th
 
 
 
-We fine-tune BERT to identify the sentences within an artifact that most likely contain information relevant to the task.
+We fine-tune BERT to identify the sentences in a natural language artifact that are potentially relevant to an input task.
 
 
 
-As we described in Section~\ref{cp5:bert}, we use a BERT model that has been already pre-trained in a massive corpora, namely BERT\textsubscript{uncased}~\cite{Devlin2018Bert}, and we tune it to identify task-relevant text.
+As we described in Section~\ref{cp5:bert}, we use a BERT model that has been already pre-trained in a massive corpora, namely BERT\textsubscript{uncased}~\cite{Devlin2018Bert}, and we tune it classify if a sentence is relevant, or not, to a task.
 To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task and we fed them to the model as sentence-artifact input pairs 
 alongside binary labels representing whether human annotators deemed that sentence relevant. 
 Using training data, the model will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. 
 
+We fine-tune the model training it for up to 10 epochs with a \textit{batch size} of 64 and a sequence length of 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
+We take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
+
+
+Similar to the word2vec approach, we predict the relevance of all the sentences in an input artifact with regards to an input task and we use prediction probabilities to select 
+the top-n sentences with highest probability as the relevant ones.
+
+% Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's
 
 
 
-
-
-To identify sentence within an artifact that are likely relevant to an input task, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
-
-\begin{equation}
-    relevance(a_i, T) = mod(predict(a_i, t_1), predict(a_i, t_2) ~\dots~ predict(a_i, t_m)) \\
-\end{equation}
+% \begin{equation}
+%     relevance(a_i, T) = mod(predict(a_i, t_1), predict(a_i, t_2) ~\dots~ predict(a_i, t_m)) \\
+% \end{equation}
 
 
 
@@ -89,20 +100,26 @@ To identify sentence within an artifact that are likely relevant to an input tas
 
 
 
+We use frame semantics to identify sentences potentially relevant to a task based on the frame elements available in a sentence and task. 
+For that, we implement a set of filters that can be applied to the previous techniques as a post-processing step~\cite{Manning2009IR}.
+A filter takes the output of a technique $O$ and produces output $O^{\prime}$ where relevant sentences must match the filter's relevance criteria.
 
-In Section~\ref{cp5:frame-semantics}, we described how frame semantics can help identify the meaning of software engineering text. Hence, we identify sentences potentially relevant to a task based on the frame elements available in a sentence. For that, 
- we implement a set of filters that can be applied to the previous techniques as a post-processing step~\cite{Manning2009IR}.
 
-A first filter considers that sentences that give instructions, describe required events, obligations, and others are likely to contain information of interest. This filter takes a sentence $a_i \in A$ and checks whether any of the frame elements of this sentence match one meaningful frame $f \in F$. 
+A first filter considers that sentences that give instructions, describe required events, obligations, and others are likely to contain information of interest. 
+This filter takes a sentence $a_i \in A$ and checks whether any of the frame elements of this sentence match one meaningful frame $f \in F$. 
+
 
 
 
 
 \begin{equation}
 \begin{split}
-F = \{ \text{required event}, \text{using}, \text{being obligated} ... \} \\
+F = \{ \text{required event}, \text{using}, \text{being obligated}, \text{causation}, \text{attempt}, \text{execution} \} 
 \end{split}
 \end{equation}
+
+
+
 
 
 \begin{equation}
@@ -114,13 +131,17 @@ F = \{ \text{required event}, \text{using}, \text{being obligated} ... \} \\
 \end{equation} 
 
 
-\smallskip
-A second filter takes into account the intentionally of a task, as identified through the frame elements in the task's tile, and tries to match it to a set of meaningful frame pairs $p \in P$. For example, a sentence that has frames describing actions that one must take (\textit{required event})  is likely relevant to a task where a developer asks how to use some API element, as identified thorugh the \textit{using} frame.
-\marginpar{{\small \art{I need to find a better name for this function}}}
+\medskip
+A second filter considers that the relevance of a sentence depends on the intentionality of a task. 
+For example, for a task that requires diagnosing an error, sentences in a bug report that describe success or failure are likely relevant. 
+This rationale is represented by a set of associated frame pairs, where each element represents a frame originating from a sentence and another frame originating from a task.
+This filter checks if sentence-task frame pairs obtained from an input artifact and input task contain any of the pairs from a pre-established set.
+
+
 
 
 \begin{equation}
-\text{\textit{related}}(a_i, T) = \left \{
+\text{\textit{associated}}(a_i, T) = \left \{
 \begin{aligned}
     &1, && \text{if}\ frame\_pairs(a_i, T) \cap ~P \ne \emptyset \\
     &0, && \text{otherwise}
@@ -128,11 +149,14 @@ A second filter takes into account the intentionally of a task, as identified th
 \end{equation} 
 
 \smallskip
-To find the frame pairs that compose $P$ we \red{describe procedures on how we determine pairs}.
+We derive the frame pairs that compose $P$ by splitting the tasks in our corpus. Part of the tasks and artifacts are used to automatically
+mine associated frame pairs using the apriori algorithm~\cite{agrawal1994apriori}. We test the obtained pairs in tasks and artifacts from which no pairs were derived from. 
+Section~\ref{cp5:evaluation} further details how we split the data.
+\art{I'm not sure about the name for this filter}
 
 
 
-Considering these two filters we take the output of a technique $O$ and produce output $O^{\prime}$ containing only the sentences that match one of the proposed filters.
+
 
 
 % ------------------------------------------------
@@ -142,7 +166,7 @@ Considering these two filters we take the output of a technique $O$ and produce 
 
 
 Table~\ref{tbl:approaches-summary} bundles the techniques that we explore.
-The table provides provides a short description and identifier for the technique. From now on, we refer to each technique according to their short identifier.
+The table provides a short description and identifier for the technique. From now on, we refer to each technique according to their short identifier.
 
 
 \input{sections/cp5/tbl-approaches-summary}

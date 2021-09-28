@@ -1,3 +1,5 @@
+\clearpage
+
 \section{Evaluation}
 \label{cp5:evaluation}
 
@@ -71,12 +73,12 @@ Following procedures analogous to the semantic similarity-based technique (Secti
 \subsubsection{Techniques Configuration}
 
 
-\art{I could move this section to a subsection or a paragraph at the end of each technique in Section~\ref{cp5:approaches}}
 
-
-\red{TODO: this is true for all approaches not only IR based ones}
-Both the \texttt{baseline} and the \texttt{word2vec} techniques have a set number of sentences in the techniques output. To determine how many sentences these approaches should output, we consider that 
-no more than 20\% of the content in the corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}). We approximate these values to identifying a target number of 10 sentences per input task-artifact, a value that will also allow us to compare the accuracy of our approach to previous work with similar experimental setup, e.g., ~\cite{Xu2017} or~\cite{Lotufo2012}.
+We configure each technique to identify a target number of 10 relevant sentences per input task-artifact.
+Our decision is based on the fact that 
+no more than 20\% of the content in the corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}),
+and that other researchers have also used the same target number in their experimental setups, e.g., ~\cite{Xu2017} or~\cite{Lotufo2012},
+what will facilitate comparing our results to related work.
 
 
 
@@ -88,7 +90,7 @@ no more than 20\% of the content in the corpora are deemed relevant to a task, w
 
 
 
-For the BERT technique, we fine-tune the model training it for up to 10 epochs with a \textit{batch size}---the number of samples passed through the model network at once---of 64. Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's sequence length to 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with an early stopping criterion. As for training data, we explore two configurations:
+As for training data, we explore two configurations:
 
 
 \boldparagraph{BERT\textsubscript{DS-android}}{

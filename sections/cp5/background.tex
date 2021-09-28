@@ -1,3 +1,4 @@
+\clearpage
 
 \section{Background}
 \label{cp5:background}
@@ -12,7 +13,7 @@ and limitations outlined in these studies.
 
 
 A number of the techniques commonly employed by researchers are based on the
-frequency of co-occurrence of words (or phrases) in natural language artifacts, which literature refers to as \textit{documents}. 
+frequency of co-occurrence of words (or phrases) in natural language artifacts. 
 An early example is Maarek and Smadja's use of lexical relations to index
 software libraries~\cite{maarek1989}. 
 Since this early use, software engineering
@@ -49,18 +50,18 @@ applied Word2Vec~\cite{Mikolov2013} to support the retrieval of API
 examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}. 
 
 
-Since our main focus is on techniques able to infer the semantics of text, we further detail core concepts related to them. 
+Since our main focus is on techniques able to infer the semantics of text, we further detail core concepts related to these tecchniques. 
 
 
 
 \paragraph{\textbf{Language Models}}
 
-Language models represent the semantics of words based on the context in which words appear. They allow a more ``human-like reasoning'' even when words are lexically different. 
+Language models represent the semantics of words based on the context in which words appear. They allow a more ``human-like reasoning'' even when words are lexically different, as in inferring that the word \textit{king} and
+\textit{queen} refer to genders of \textit{royalty}~\cite{Mikolov2013}.
 
 
-A core concept of a language model is Harris' distributional hypothesis~\cite{harris1954distributional}, which states that words that appear in a similar context tend to have similar meanings. A language model exploits this hypothesis by building vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
-For that, it requires a significantly large amount of data so that
-the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}. 
+To infer the meaning of words, a language model exploits Harris' distributional hypothesis~\cite{harris1954distributional}---which states that words that appear in a similar context tend to have similar meanings---and builds vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
+With a significantly large text corpus, the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}. 
 
 
 
@@ -91,8 +92,10 @@ This additional layer allows the model to perform more complex operations, such 
 
 
 BERT is initially trained 
-on a massive amount of corpora. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token \texttt{[mask]} and the model is optimized to predict the masked tokens based on contextual information. 
-Training procedures create a base model that is then fine-tuned to specific natural language tasks. This procedure is often referred to as \textit{transfer learning} \red{ref} where one only needs to provide a dataset for the steps associated with fine-tuning the model. 
+on a massive amount of corpora. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token and the model is optimized to predict these replaced tokens based on contextual information. 
+BERT's training procedures first create a base model using a massive text corpora and then, this base model fine-tuned to specific tasks, such as text classification, using a dataset specific to the fine-tuning steps. 
+Empirical evaluation has show that BERT obtained state-of-the-art results in several natural language tasks including  question and answering and named entity recognition tasks~\cite{Devlin2018Bert}. 
+%  This procedure is often referred to as \textit{transfer learning} \red{ref} where one only needs to provide a dataset for the steps associated with fine-tuning the model. 
 
 \red{BERT usage in requirements eng}~\cite{Lin2021}
 ~\cite{Araujo2021}
@@ -104,7 +107,7 @@ Training procedures create a base model that is then fine-tuned to specific natu
 \label{cp5:frame-semantics}
 
 
-Although word embeddings have provided significant improvements to a diverse set of NLP tasks \red{ref}, they may not be able to disambiguate similar sentences with slight differences that alter their meaning. To illustrate that, we utilize an example
+Although word embeddings have provided significant improvements to a diverse set of NLP tasks \red{ref}, they may fail to disambiguate similar sentences with slight differences that alter their meaning. To illustrate that, we utilize an example
 from Di Sorbo et al.~\cite{Sorbo2015}:
 
 
@@ -114,33 +117,36 @@ from Di Sorbo et al.~\cite{Sorbo2015}:
 \item \textit{the leaky bucket algorithm fails in limiting the band-width}.
 \end{itemize}
 
-Although these messages have different meaning, \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically similar or semantically similar. Hence, we turn towards \textit{frame
-semantics}~\cite{fillmore1976frame, Baker1998}---a 
-linguistic approach in the field of pragmatics~\cite{ariel2008pragmatics, austin1975pragmatics}---as an approach able to different
-the sentence's meaning.
+Although these messages have different meaning, \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically and semantically similar, what is not sufficient to determine that the former sentence
+ is a \textit{solution proposal} while the latter, a \textit{problem discovery}, as discussed by Di Sorbo et al.~\cite{Sorbo2015}. 
+
+
+A potential reason that explains why these techniques fail to determine the topicality of each sentence is that they capture semantics at the word level. 
+An alternative would be to consider techniques in the field of pragmatics~\cite{ariel2008pragmatics, austin1975pragmatics}, i.e., techniques able to infer a sentence's meaning.
 
 
 
+We use \textit{frame semantics}~\cite{fillmore1976frame, Baker1998} as a proxy to a sentence's meaning.
 Frame semantics allows us to identify \textit{frames},
 or key events, that assist in inferring the meaning of a sentence.
-If we apply frame semantics to Di Sorbo's sentences, the differences become apparent.
 Figure~\ref{fig:frame-example} presents the results of a frame
-analysis for the sentences.
+analysis for Di Sorbo's sentences.
 The frames of each sentence (in grey) represent a
 triggering event and the \textit{frame elements (fe)} (in red) are arguments needed
 to understand the event. The enclosing square brackets
 mark all lexical units, or words,
 associated with either a frame or a frame element.
 In the first sentence, the \textit{Using} frame
-captures that an \texttt{instrument}, the leaky bucket algorithm, is
-manipulated to achieve a \texttt{purpose}, namely to limit band-width.
-In contrast, in the second sentence, the \textit{Success or Failure}
-frame identifies the entity, or \texttt{agent}, that fails to achieve the \texttt{goal} of limiting the band-width. 
+captures that an \textit{instrument}, the leaky bucket algorithm, is
+manipulated to achieve a \textit{purpose}, namely to limit band-width.
+In contrast, the second sentence contains a frame that represents the \textit{Success or Failure}
+of achieving the \textit{goal} of limiting the band-width. 
 
 
 \input{fig/cp5/frame-example}
 
 
+Although investigating if frame semantics assists discerning the topics in Di Sorbo's sentences requires further empirical evaluation, requirements engineering researchers have used frame semantics to 
 \red{Examples of frame semantics in SE}
 
 
