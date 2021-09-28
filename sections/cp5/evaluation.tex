@@ -4,19 +4,70 @@
 \label{cp5:evaluation}
 
 
-Our evaluation focuses 
+
+The goal of our evaluation is to assist the design of tools that use the explored techniques to help developers in locating text relevant to their task.
+Therefore, evaluation focuses 
 on determining what portion of the text identified by human annotators the techniques that we explore can automatically identify.
-Our experimental setup is as follows.
+Experimental setup is as follows.
+
+
+
+\subsubsection{Baseline}
+
+
+As done by~\cite{Lin2021} and~\cite{Ye2016}, we use a standard \texttt{VSM} lexical similarity approach as a baseline. Our rationale to use 
+lexical similarity as a baseline is based on the fact that 
+both our card sorting analysis (\red{Chapter~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown that developers often use keyword-matching as a first search strategy to locate text that might contain information relevant to their tasks.
+
+
+Analogous to the semantic similarity-based technique (Section~\ref{cp5:approach-w2v}), the baseline technique uses VSM to compute lexical similarity scores 
+for all the sentences in an input artifact with regards to an input task and then, it outputs the top-n sentences with highest similarity as the ones likely relevant to an input software task.
+
+
+
+
+\subsubsection{Techniques Configuration}
+
+
+
+We configure each technique to identify a target number of 10 relevant sentences per input task-artifact.
+This decision is based on the fact that 
+no more than 20\% of the content in the corpora is deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}).
+Researchers have also used the same target number in experimental setups evaluating techniques able to identify relevant text for certain kinds of artifacts (e.g., ~\cite{Xu2017} or~\cite{Lotufo2012})
+thus, having the same output will facilitate comparing our results to related work.
+
+
+
+Two of our techniques use part of the  \acs{DS-android} data either for fine-tuning purposes (\texttt{BERT}), or to derive sentence-task frame pairs (\texttt{association-pairs}).
+We ensure that no data used to evaluate these techniques is also used to derive frame pairs or to train the BERT model by 
+splitting the dataset using standard cross-validation techniques.
+We split the dataset into 10 folds, each containing 5 tasks, to evaluate these techniques. The remaining 45 tasks are used to mine sentence-task frame pairs
+and to train BERT. As done by other approaches that require training procedures~\cite{Chaparro2017, fucci2019, Petrosyan2015}, we further split the training data and use 10\% of it to validate the BERT model \red{ref}.
+We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
+
+
+To study the impacts of training data on BERT, we also train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience (\red{Chapter~\ref{aaa}}). Due to the synthetic nature of the tasks in this dataset, we refer to this 
+second configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
+
 
 
 
 \subsubsection{Metrics}
 
 
-Ultimately, the goal of our evaluation is to assist the design of tools that help developers quickly locate the text relevant to their tasks, surfacing or highlighting the identified text in an artifact under inspection~\cite{Robillard2015}.
-This means that the text identified by a technique represents a set containing the information to be surfaced and thus, 
-we use \textit{precision} and \textit{recall} to measure the accuracy of each technique~\cite{Manning2009IR}.
-We use the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors} to understand each metric.
+
+Since our goal is to embed the explored techniques into tools that 
+surface or highlight the identified text in an artifact ~\cite{Robillard2015}, 
+use use standard \textit{precision} and \textit{recall} metrics~\cite{manning2010IR} to measure the accuracy of each technique.
+
+
+
+
+
+We compute values for each metric using the golden labels available in the \acs{DS-android} corpus and sentences deemed relevant to a task by at least two human annotators. 
+To understand each metric, we refer to the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors}, where
+ columns represent  labels provided by the annotators and rows,
+the text identified as relevant or not by a technique.
 
 \medskip
 \input{sections/cp5/tbl-eval-outcomes}
@@ -35,7 +86,7 @@ Precision measures the fraction of the sentences identified that are relevant ov
 \end{equation}
 
 
-\paragraph{\textbf{Recall}} Recall represents how many of all marked sentences are identified by a technique (Equation~\ref{eq:cp5:recall}).
+\paragraph{\textbf{Recall}} Recall represents how many of all the annotated sentences are identified by a technique (Equation~\ref{eq:cp5:recall}).
 
 
 \begin{equation}
@@ -50,58 +101,10 @@ Precision measures the fraction of the sentences identified that are relevant ov
 We measure precision and recall considering sentences marked by two or more annotators; this, however ignores the fact that text marked by a single annotator can equally contribute towards task completion~\cite{marques2020}. To address the text identified by a single annotator, we 
 follow evaluation procedures outlined by Lotufo et al.~\cite{Lotufo2012} and we
 also report pyramid precision and pyramid recall. These metrics are similar to the ones defined in 
-Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat any of the text marked as relevant.
+Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat relevant text as the sentences marked by any of the annotators.
 
 
 
-
-
-
-\subsubsection{Baseline}
-
-
-As done by~\cite{Lin2021} and~\cite{Ye2016}, we use a standard VSM lexical similarity approach as a baseline. Our rationale to use 
-lexical similarity is based on the fact that 
-both our card sorting analysis (\red{Chapter~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown that developers often use keyword-matching as a simple and quick search strategy to locate text that might contain information relevant to their tasks.
-
-
-Following procedures analogous to the semantic similarity-based technique (Section~\ref{cp5:approach-w2v}), we compute lexical similarity and output the top-n sentences with highest similarity as the ones likely relevant to an input software task.
-
-
-
-
-\subsubsection{Techniques Configuration}
-
-
-
-We configure each technique to identify a target number of 10 relevant sentences per input task-artifact.
-Our decision is based on the fact that 
-no more than 20\% of the content in the corpora are deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}),
-and that other researchers have also used the same target number in their experimental setups, e.g., ~\cite{Xu2017} or~\cite{Lotufo2012},
-what will facilitate comparing our results to related work.
-
-
-
-
-% For this evaluation, we set the target number of sentences identified (i.e., length of a summary) to 20\% of the content of an artifact,
-% which is a value derived from our study on characterizing 
-% task-relevant information in natural language artifacts~\cite{marques2020}.
-
-
-
-
-As for training data, we explore two configurations:
-
-
-\boldparagraph{BERT\textsubscript{DS-android}}{
-We split the data available in the \acs{DS-android} dataset and use part of it for training. 
-As done by other studies (e.g.,~\cite{Chaparro2017, fucci2019, Petrosyan2015}), we use standard cross-validation techniques to ensure  that no data used for evaluation, i.e., testing, is also used
-during the model's training procedures, i.e., training and validation. More specifically, we use 10-fold cross-validation with 70\%, 20\% and 10\% splits for training, validation and testing. \red{ref} We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
-}
-
-\boldparagraph{BERT\textsubscript{DS-synthetic}}{
-To study the impacts of training data on BERT, we train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience (\red{Chapter~\ref{aaa}}). The tasks in this dataset were not drawn from open-source systems, but rather created to stimulate the participants' information-seeking behaviour. Due to the synthetic nature of the tasks in this dataset, we refer to this configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
-}
 
 
 \subsection{Results}
