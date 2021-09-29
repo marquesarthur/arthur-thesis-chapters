@@ -165,20 +165,30 @@ we observe gains on recall. Notably, the \texttt{frame-elements} filter achieves
 
 To get a better sense of the text identified, we compare the text that each technique identifies as relevant according to the golden data in the \acs{DS-android} corpus, i.e., the text that at least two annotators deemed relevant. For this analysis, 
 we use the best configuration for each technique. That is, both the word semantics and sentence semantic filters.
-With a target number of 10 sentences identified per technique, the \texttt{baseline} identifies a total of 110 sentences. In comparison, \texttt{word2vec} with \texttt{association-pairs} identifies 177 sentences and \texttt{BERT\textsubscript{DS-android}} alongisde \texttt{frame-elements}, \red{??} sentences. Similar Nadi and Treude analysis of essential sentences in Stack Overflow answers~\cite{nadi2020}, 
-we observe that the vast majority of the sentences are unique to each technique, suggesting that the techniques identify different 
-types of information.
+
+
+
+Figure~\ref{fig:text-overlap} shows the overlap between the text identified when the techniques identify up to 10 
+sentences per task and artifact.
+From 382 unique sentences, the \texttt{baseline} identifies a total of 110 sentences. In comparison, \texttt{word2vec} identifies a total of 213 sentences and \texttt{BERT\textsubscript{DS-android}}, 234 sentences. 
+We observe that with the exception of the baseline, the majority of the sentences 
+identified are technique-specific. Potential exmplanations for that are related to how each technique 
+determines relevance. That is, \texttt{word2vec} uses semantical similarity based on task and artifact's sentences embedding vectors while 
+\texttt{BERT} correlates the embeddings of a sentence from a task and from an artifact through the 
+\textit{transformers} attention function (Section~\ref{cp5:bert}).
 
 
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{cp5/results_venn.png}
+    \caption{Venn diagram illustrating the overlap between the 382 task-relevant sentences identified across the three techniques}
+    \label{fig:text-overlap}
+\end{figure}
 
 
-% Table~\ref{tbl:approach-results-overall} reports pyramid precision and pyramid recall values for the VSM \texttt{baseline} as well as for the best configuration of the semantic techniques, i.e., .
-
-% \input{sections/cp5/tbl-results-overall}
-
-
+Analysis of the text identified by each technique suggests that the techniques identify different types of information.
 
 
 % When interpreting results, it is worth noting that due to the nature of \acs{DS-android} corpus, the fraction of sentences annotated as relevant is considerable small,
