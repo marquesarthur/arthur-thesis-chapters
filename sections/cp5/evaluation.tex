@@ -8,7 +8,7 @@
 The goal of our evaluation is to assist the design of tools that use the explored techniques to help developers in locating text relevant to their task.
 Therefore, evaluation focuses 
 on determining what portion of the text identified by human annotators the techniques that we explore can automatically identify.
-Experimental setup is as follows.
+Experimental procedures are as follows.
 
 
 
@@ -26,7 +26,7 @@ for all the sentences in an input artifact with regards to an input task and the
 
 
 
-\subsubsection{Techniques Configuration}
+\subsubsection{Setup}
 
 
 
@@ -37,12 +37,12 @@ Researchers have also used the same target number in experimental setups evaluat
 thus, having the same output will facilitate comparing our results to related work.
 
 
-
-Two of our techniques use part of the  \acs{DS-android} data either for fine-tuning purposes (\texttt{BERT}), or to derive sentence-task frame pairs (\texttt{association-pairs}).
-We ensure that no data used to evaluate these techniques is also used to derive frame pairs or to train the BERT model by 
+In addition to configuring the techniques output, two of our techniques use part of the  \acs{DS-android} data for fine-tuning purposes (\texttt{BERT}) and to derive sentence-task frame pairs (\texttt{association-pairs}).
+We ensure that no data used to evaluate these techniques is also used in their setup by 
 splitting the dataset using standard cross-validation techniques.
-We split the dataset into 10 folds, each containing 5 tasks, to evaluate these techniques. The remaining 45 tasks are used to mine sentence-task frame pairs
-and to train BERT. As done by other approaches that require training procedures~\cite{Chaparro2017, fucci2019, Petrosyan2015}, we further split the training data and use 10\% of it to validate the BERT model \red{ref}.
+We split the dataset into 10 folds, each containing 5 tasks used for evaluation purposes. When evaluating a fold, the remaining 45 tasks are used to mine sentence-task frame pairs
+and to train BERT. 
+For the BERT technique, we further split the training data and use 10\% of it to validate the model~\cite{Chaparro2017, fucci2019, Petrosyan2015}.
 We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
 
 
@@ -56,9 +56,9 @@ second configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
 
 
 
-Since our goal is to embed the explored techniques into tools that 
-surface or highlight the identified text in an artifact ~\cite{Robillard2015}, 
-use use standard \textit{precision} and \textit{recall} metrics~\cite{manning2010IR} to measure the accuracy of each technique.
+Since our goal is assist developers locate text relevant tot their tasks (e.g., embedding the explored techniques into tools that 
+surface or highlight the identified text in an artifact~\cite{Robillard2015}), 
+we use standard \textit{precision} and \textit{recall} metrics~\cite{manning2010IR} to measure the accuracy of each technique.
 
 
 
@@ -112,34 +112,80 @@ Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat relevant text
 
 
 
-
-
-\input{sections/cp5/tbl-results-overall}
-
+Figure~\ref{fig:eval-metrics-results} shows values for F1-score, precision, and recall for each of the techniques that we explore as part of our design space. 
 
 
 
+The \texttt{baseline} technique, which uses VSM, achieves precision and recall scores of $0.30$ and $0.33$, respectively. 
+Although this result is not surprising, it corroborates results from related literature showing limitations of lexicon-based approaches, and 
+it further motivates the need for techniques able to relate the information associated with the solution for a task and the information provided in the software task.
 
+
+Using word semantics, precision and recall scores increase to $0.48$ and $0.53$ when using \texttt{word2vec}, and to $0.55$ and $0.56$ with \texttt{BERT}.
+With regards to BERT, we do not observe significant differences between the \texttt{BERT\textsubscript{DS-synthetic}}
+and the \texttt{BERT\textsubscript{DS-android}} configurations suggesting that the model predictions extend to datasets other than the ones used for training.
+A potential explanation for that is that 
+BERT uses \textit{transfer learning} \red{ref} and thus, the  
+large corpora used to train the model before fine-tuning (Section~\ref{cp5:bert}) assists prediction steps even for tasks and artifacts that the model was not trained upon.
+
+
+
+\clearpage
+\begin{landscape}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.95\textwidth]{cp5/results_lollipop}
-    \caption{Evaluation results for each technique configuration \red{Draft: I will split the figure in 3. One for each metric. The markers will represent the filters}}
-    % \label{fig:webview-task}
+    \includegraphics[width=1.8\textwidth]{cp5/results}
+    \caption{Evaluation metrics for each techniques \art{image resolution has been finicky. I'll fix it and have the image in-line with the rest of the results}}
+    \label{fig:eval-metrics-results}
 \end{figure}
+\end{landscape}
+
+\clearpage
 
 
+
+
+
+Figure~\ref{fig:eval-metrics-results} also shows results when applying sentence semantic filters to \texttt{word2vec} and \texttt{BERT}. 
+Both filters improve precision and recall values for the \texttt{word2vec} technique, where the \texttt{association-pairs} filter yields 
+the highest results ($0.53$ precision and $0.54$ recall). When paired with \texttt{BERT}, there are no noticeable changes to precision, but 
+we observe gains on recall. Notably, the \texttt{frame-elements} filter achieves $0.60$ recall for \texttt{BERT\textsubscript{DS-android}}. 
+
+
+\red{Conclusion for the results}
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Table~\ref{tbl:approach-results-overall} reports pyramid precision and pyramid recall values for the VSM \texttt{baseline} as well as for the best configuration of the semantic techniques, i.e., .
+
+% \input{sections/cp5/tbl-results-overall}
+
+
+
+
+% When interpreting results, it is worth noting that due to the nature of \acs{DS-android} corpus, the fraction of sentences annotated as relevant is considerable small,
+% e.g., API documents in the corpus have an average of 109.22 sentences per document while only an average of 9.62 sentences are relevant (Chapter~\ref{ch:android-corpus}). 
+% Hence, achieving 
+% This means that the data is unbalanced and achieving high accuracy is challenging even when using state-of-the-art techniques.
 
 
 
 
 
 % \art{Change from tables to plots. Similar to Sarah and Treude~\cite{nadi2020}, show Venn diagram with how many sentences each approach identifies and overlaps between them}
-\art{Consider changing from tables to plots.}
 
-\art{I've got all results without seframe filters. This week, filters will be my main focus}
 
-% \input{sections/cp5/tbl-results-with-filters}
 
 
 % \input{sections/cp5/tbl-results-by-artifact}

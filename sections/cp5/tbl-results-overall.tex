@@ -6,7 +6,7 @@
 
 
 \textbf{technique} & 
-\textbf{precision} & \textbf{recall} & \textbf{f1-score} & 
+\textbf{precision} & \textbf{recall} & 
 $\Delta$ \textbf{precision} & $\Delta$ \textbf{recall} \\
 
 
@@ -14,23 +14,23 @@ $\Delta$ \textbf{precision} & $\Delta$ \textbf{recall} \\
 
 
 \texttt{baseline} &
-0.30 & 0.33 & 0.26 & 
+0.30 & 0.33 &  
 0.38 & 0.48 
 \\
 
-\texttt{word2vec} &
-0.46 & 0.45 & 0.41 & 
-0.50 & 0.53
+\texttt{word2vec + association-pairs} &
+0.52 & 0.53 &  
+0.52 & 0.51
 \\
 
-\texttt{BERT\textsubscript{DS-synthetic}} &
-0.50 & 0.53 & 0.41 & 
-0.52 & 0.55 
-\\
+% \texttt{BERT\textsubscript{DS-synthetic}} &
+% 0.54 & 0.55 & 0.51 & 
+% 0.55 & 0.57 
+% \\
 
-\texttt{BERT\textsubscript{DS-android}} &
-0.54 & 0.60 & 0.46 & 
-0.56 & 0.58 
+\texttt{BERT\textsubscript{DS-android} + frame-elements} &
+0.55 & 0.56 & 
+0.55 & 0.56 
 \\
 
 \hline
@@ -38,7 +38,7 @@ $\Delta$ \textbf{precision} & $\Delta$ \textbf{recall} \\
 \end{tabular}
 \end{threeparttable}
 \end{small}
-\caption{Accuracy results}
+\caption{Pyramid precision, pyramid recall comparison}
 \label{tbl:approach-results-overall}
 \end{table}
 
