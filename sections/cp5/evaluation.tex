@@ -146,21 +146,28 @@ large corpora used to train the model before fine-tuning (Section~\ref{cp5:bert}
 
 
 
-
-Figure~\ref{fig:eval-metrics-results} also shows results when applying sentence semantic filters to \texttt{word2vec} and \texttt{BERT}. 
+Figure~\ref{fig:eval-metrics-results} also shows results when applying sentence semantic filters as
+ a post-processing step to the
+ \texttt{word2vec} and \texttt{BERT} techniques. 
 Both filters improve precision and recall values for the \texttt{word2vec} technique, where the \texttt{association-pairs} filter yields 
-the highest results ($0.53$ precision and $0.54$ recall). When paired with \texttt{BERT}, there are no noticeable changes to precision, but 
+the highest results ($0.53$ precision and $0.54$ recall). For \texttt{BERT}, there are no noticeable changes to precision, but 
 we observe gains on recall. Notably, the \texttt{frame-elements} filter achieves $0.60$ recall for \texttt{BERT\textsubscript{DS-android}}. 
 
 
-\red{Conclusion for the results}
+\subsubsection{Pyramid scores}
 
 
+\art{I did not observe differences between the metrics when considering all the text marked and the text marked only by two annotators. I'll have to further investigate why.}
 
 
+\subsubsection{Text identified}
 
 
-
+To get a better sense of the text identified, we compare the text that each technique identifies as relevant according to the golden data in the \acs{DS-android} corpus, i.e., the text that at least two annotators deemed relevant. For this analysis, 
+we use the best configuration for each technique. That is, both the word semantics and sentence semantic filters.
+With a target number of 10 sentences identified per technique, the \texttt{baseline} identifies a total of 110 sentences. In comparison, \texttt{word2vec} with \texttt{association-pairs} identifies 177 sentences and \texttt{BERT\textsubscript{DS-android}} alongisde \texttt{frame-elements}, \red{??} sentences. Similar Nadi and Treude analysis of essential sentences in Stack Overflow answers~\cite{nadi2020}, 
+we observe that the vast majority of the sentences are unique to each technique, suggesting that the techniques identify different 
+types of information.
 
 
 
