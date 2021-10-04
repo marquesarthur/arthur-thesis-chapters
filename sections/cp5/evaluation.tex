@@ -7,10 +7,9 @@
 
 The goal of our evaluation is to assist the design of tools that use the explored techniques to help developers in locating text relevant to their task. 
 To evaluate and compare the techniques,
-we measure what portion of the \acs{DS-android} text identified by human annotators the techniques automatically identify.
-We report \textit{precision} and \textit{recall} metrics~\cite{manning2010IR}
-focusing on recall since failure to identify text that is relevant to a task (false negatives)
-means that a developer will have an incomplete or partial view of the information needed for their task.
+we report \textit{precision} and \textit{recall} metrics~\cite{manning2010IR} measuring what portion of the \acs{DS-android} text identified by human annotators the techniques automatically identify.
+In this context, we believe recall to be the most important metric since failure to identify text that is relevant to a task means that a developer will have an incomplete or partial view of the information needed,
+what can lead to faults~\cite{Murphy2005}.
 Experimental procedures are as follows.
 
 
@@ -62,11 +61,11 @@ second configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
 \subsubsection{Metrics}
 
 
-We compute values for \textit{precision} and \textit{recall} metrics using the golden labels available in the \acs{DS-android} corpus and sentences deemed relevant to a task by at least two human annotators.
-
-Precision means identifying only text that is relevant whereas recall means identifying all relevant text.
+We compute values for \textit{precision} and \textit{recall} metrics based on the golden labels available in the \acs{DS-android} corpus and sentences deemed relevant to a task by at least two human annotators.
 For a detailed definition of each metric, we refer to the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors}, where  columns represent  labels provided by the annotators and rows,
 the text identified as relevant or not by a technique.
+
+% 
 
 \medskip
 \input{sections/cp5/tbl-eval-outcomes}
@@ -97,8 +96,9 @@ Precision measures the fraction of the sentences identified that are relevant ov
 
 
 \medskip
-Ideally, we would aim for a technique with both high precision and recall. In practice, this is often not possible and we must reach a compromise.
-Researchers have shown that, in a natural language artifact, developers face more challenges finding information that pertains to their task rather than judging whether the text is relevant or not~\cite{Robillard2015, Maalej2013}. Hence, in a bound number of sentences identified by a technique, we argue that developers can quickly discard what they judge that is not relevant and we aim to identify as much of the relevant text as possible.
+Precision means identifying only text that is relevant whereas recall means identifying all relevant text.
+Ideally, we would aim for a technique with high precision and recall. In practice, this is often not possible and we must reach a compromise.
+Based on studies that have observed that developers face more challenges finding information that pertains to their task rather than judging whether text is relevant or not~\cite{Robillard2015, Maalej2013}, we argue that in the bound number of sentences outputted by a technique, developers can quickly discard what they judge that is not relevant. Hence, our aim is to find as much of the relevant text within a technique's output and thus, the reason why we favor recall.
 
 
 
@@ -139,18 +139,18 @@ large corpora used to train the model before fine-tuning (Section~\ref{cp5:bert}
 
 
 
-\clearpage
-\begin{landscape}
+% \clearpage
+% \begin{landscape}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1.8\textwidth]{cp5/results}
-    \caption{Evaluation metrics for each techniques \art{image resolution has been finicky. I'll fix it and have the image in-line with the rest of the results}}
-    \label{fig:eval-metrics-results}
-\end{figure}
-\end{landscape}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=1.8\textwidth]{cp5/results}
+%     \caption{Evaluation metrics for each techniques \art{image resolution has been finicky. I'll fix it and have the image in-line with the rest of the results}}
+%     \label{fig:eval-metrics-results}
+% \end{figure}
+% \end{landscape}
 
-\clearpage
+% \clearpage
 
 
 
