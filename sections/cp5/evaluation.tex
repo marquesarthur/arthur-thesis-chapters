@@ -5,9 +5,12 @@
 
 
 
-The goal of our evaluation is to assist the design of tools that use the explored techniques to help developers in locating text relevant to their task.
-Therefore, evaluation focuses 
-on determining what portion of the text identified by human annotators the techniques that we explore can automatically identify.
+The goal of our evaluation is to assist the design of tools that use the explored techniques to help developers in locating text relevant to their task. 
+To evaluate and compare the techniques,
+we measure what portion of the \acs{DS-android} text identified by human annotators the techniques automatically identify.
+We report \textit{precision} and \textit{recall} metrics~\cite{manning2010IR}
+focusing on recall since failure to identify text that is relevant to a task (false negatives)
+means that a developer will have an incomplete or partial view of the information needed for their task.
 Experimental procedures are as follows.
 
 
@@ -17,7 +20,8 @@ Experimental procedures are as follows.
 
 As done by~\cite{Lin2021} and~\cite{Ye2016}, we use a standard \texttt{VSM} lexical similarity approach as a baseline. Our rationale to use 
 lexical similarity as a baseline is based on the fact that 
-both our card sorting analysis (\red{Chapter~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown that developers often use keyword-matching as a first search strategy to locate text that might contain information relevant to their tasks.
+both our qualitative analysis (\red{Chapter~\ref{aaa}}) and
+related work~\cite{Ko2006a, Freund2015} have shown that developers often use keyword-matching as a first search strategy to locate text that might contain information relevant to their tasks.
 
 
 Analogous to the semantic similarity-based technique (Section~\ref{cp5:approach-w2v}), the baseline technique uses VSM to compute lexical similarity scores 
@@ -32,9 +36,12 @@ for all the sentences in an input artifact with regards to an input task and the
 
 We configure each technique to identify a target number of 10 relevant sentences per input task-artifact.
 This decision is based on the fact that 
-no more than 20\% of the content in the corpora is deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}).
-Researchers have also used the same target number in experimental setups evaluating techniques able to identify relevant text for certain kinds of artifacts (e.g., ~\cite{Xu2017} or~\cite{Lotufo2012})
-thus, having the same output will facilitate comparing our results to related work.
+no more than 20\% of the content of any artifact in the corpora is deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}).
+Researchers have also used the same target number of 10 sentences when evaluating techniques  (e.g.,~\cite{Xu2017} or~\cite{Lotufo2012}) able to identify relevant text for certain kinds of artifacts
+what will also facilitate comparing our results to related work.
+
+
+\subsubsection{Training Data}
 
 
 In addition to configuring the techniques output, two of our techniques use part of the  \acs{DS-android} data for fine-tuning purposes (\texttt{BERT}) and to derive sentence-task frame pairs (\texttt{association-pairs}).
@@ -43,7 +50,7 @@ splitting the dataset using standard cross-validation techniques.
 We split the dataset into 10 folds, each containing 5 tasks used for evaluation purposes. When evaluating a fold, the remaining 45 tasks are used to mine sentence-task frame pairs
 and to train BERT. 
 For the BERT technique, we further split the training data and use 10\% of it to validate the model~\cite{Chaparro2017, fucci2019, Petrosyan2015}.
-We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
+We refer to this setup of BERT as \texttt{BERT\textsubscript{DS-android}}.
 
 
 To study the impacts of training data on BERT, we also train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience (\red{Chapter~\ref{aaa}}). Due to the synthetic nature of the tasks in this dataset, we refer to this 
@@ -55,18 +62,10 @@ second configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
 \subsubsection{Metrics}
 
 
+We compute values for \textit{precision} and \textit{recall} metrics using the golden labels available in the \acs{DS-android} corpus and sentences deemed relevant to a task by at least two human annotators.
 
-Since our goal is assist developers locate text relevant tot their tasks (e.g., embedding the explored techniques into tools that 
-surface or highlight the identified text in an artifact~\cite{Robillard2015}), 
-we use standard \textit{precision} and \textit{recall} metrics~\cite{manning2010IR} to measure the accuracy of each technique.
-
-
-
-
-
-We compute values for each metric using the golden labels available in the \acs{DS-android} corpus and sentences deemed relevant to a task by at least two human annotators. 
-To understand each metric, we refer to the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors}, where
- columns represent  labels provided by the annotators and rows,
+Precision means identifying only text that is relevant whereas recall means identifying all relevant text.
+For a detailed definition of each metric, we refer to the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors}, where  columns represent  labels provided by the annotators and rows,
 the text identified as relevant or not by a technique.
 
 \medskip
@@ -76,7 +75,7 @@ the text identified as relevant or not by a technique.
 
 \paragraph{\textbf{Precision}}
 
-Precision measures the fraction of the sentences identified that are relevant over the total number of sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
+Precision measures the fraction of the sentences identified that are relevant over the total number of target sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
 
 
 
@@ -84,6 +83,7 @@ Precision measures the fraction of the sentences identified that are relevant ov
 \label{eq:cp5:precision}    
     Precision = \frac{TP}{TP + FP}
 \end{equation}
+
 
 
 \paragraph{\textbf{Recall}} Recall represents how many of all the annotated sentences are identified by a technique (Equation~\ref{eq:cp5:recall}).
@@ -96,12 +96,21 @@ Precision measures the fraction of the sentences identified that are relevant ov
 
 
 
-\paragraph{\textbf{Pyramid Precision \& Pyramid Recall}} 
+\medskip
+Ideally, we would aim for a technique with both high precision and recall. In practice, this is often not possible and we must reach a compromise.
+Researchers have shown that, in a natural language artifact, developers face more challenges finding information that pertains to their task rather than judging whether the text is relevant or not~\cite{Robillard2015, Maalej2013}. Hence, in a bound number of sentences identified by a technique, we argue that developers can quickly discard what they judge that is not relevant and we aim to identify as much of the relevant text as possible.
 
-We measure precision and recall considering sentences marked by two or more annotators; this, however ignores the fact that text marked by a single annotator can equally contribute towards task completion~\cite{marques2020}. To address the text identified by a single annotator, we 
-follow evaluation procedures outlined by Lotufo et al.~\cite{Lotufo2012} and we
-also report pyramid precision and pyramid recall. These metrics are similar to the ones defined in 
-Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat relevant text as the sentences marked by any of the annotators.
+
+
+
+
+
+% \art{Removed pyramid precision and pyramid recall based on last conversations with Gail}
+% \paragraph{\textbf{Pyramid Precision \& Pyramid Recall}} 
+% We measure precision and recall considering sentences marked by two or more annotators; this, however ignores the fact that text marked by a single annotator can equally contribute towards task completion~\cite{marques2020}. To address the text identified by a single annotator, we 
+% follow evaluation procedures outlined by Lotufo et al.~\cite{Lotufo2012} and we
+% also report pyramid precision and pyramid recall. These metrics are similar to the ones defined in 
+% Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat relevant text as the sentences marked by any of the annotators.
 
 
 
