@@ -1,32 +1,29 @@
-\section{Comparison to Related Work}
+\section{Comparison to Prior Work}
 \label{cp5:comparison}
 
 
 
-
-
 In this section, we evaluate how the techniques that we have proposed and that build on semantic approaches
-compare to other techniques in the literature. Since we are not aware of approaches in the literature 
-that apply to all the tasks and artifacts in our corpus, we focus on two of the types of artifacts available, 
+compare to prior techniques in the literature. Since we are not aware of approaches that 
+apply to all the tasks and artifacts in our corpus, we focus on two of the types of artifacts available, 
 namely \red{Stack Overflow} answers and \red{Github} issue discussions.
-For these artifact types, we compare the text identified 
-by our techniques to the text identified by techniques that apply to the same artifacts: 
+For these artifact types, we compare our techniques to: 
 
 
 
 \begin{itemize}
-    \item \acf{AnsBot}, a tool that automates generation answers for a developer's task by identifying relevant information in Stack Overflow answers;
-    \item \acf{Hurried}, a tool that automates the identification of sentences a developer would first read when inspecting bug reports.
+    \item \acf{AnsBot}, a tool that automates generating answers for a developer's task by identifying relevant information on Stack Overflow~\cite{Xu2017};
+    \item \acf{Hurried}, a tool that automates the identification of sentences that a developer would first read when inspecting bug reports~\cite{Lotufo2012}.
 \end{itemize}
 
 
 
+This comparison follows experimental procedures similar to the ones outlined in Section~\ref{cp5:evaluation},
+where we report precision and recall metrics using the text in the \acs{DS-android} corpus marked by two or more annotators
+as our golden data.
 
-
-This comparison follows experimental procedures similar to the ones outlined in Section~\ref{cp5:evaluation}.
-We report results using the technique/configuration with the best evaluation metrics for the 
-kinds of artifacts considered, leaving a full comparison to \red{Appendix~\ref{}}.
-
+% We report results using the technique/configuration with the best evaluation metrics for the 
+% kinds of artifacts considered, leaving a full comparison to \red{Appendix~\ref{}}.
 
 
 
@@ -35,45 +32,55 @@ kinds of artifacts considered, leaving a full comparison to \red{Appendix~\ref{}
 
 
 \acs{AnsBot} produces an answer to a developer's technical questions through three steps. 
-First it identifies question on the Q\&A platform that are related to the developer's question. 
-In a second step, it identifies relevant text within the related posts, which are used 
-to produce an answer that is succinct yet diverse.
-This is the final step in the tool's approach, where the text identified in the related questions 
-is combined in an answer that has no repeated information.
+First it identifies question on the Q\&A platform that are related to the developer's task. 
+In a second step, it identifies relevant text within the related questions. 
+In the tool's final step, the text identified is used to produce an answer that is succinct yet diverse~\cite{Xu2017}.
 
 
-The tools uses both textual properties and meta-data available on Stack Overflow and, 
-on \acs{AnsBot}'s original evaluation, Xu et al. reported accuracy results ranging from 0.66 to 1.0. 
-These results would suggest that their tool performs better than our proposed techniques when identifying relevant text.
-However, these results arise from a different experimental setup. That is, Xu et al. asks human evaluators 
-to judge whether text identified by the tool contains information related to a task
-while we evaluate if we can identify text that human annotators 
-marked as relevant when inspecting the entire text of an artifact.
-
-
-Due to these differences, we decided to apply \acs{AnsBot} to the tasks and Stack Overflow artifacts in our corpus, 
-measuring precision and recall values for the relevant text identified by the tool.
-Results indicate that, in our corpus, \acs{AnsBot} achieves 0.59 precision and 0.57 recall. 
-In comparison, \texttt{BERT} with \texttt{frame-element} filters achieve 0.59 precision and 0.65 recall,
-suggesting that our approach achieves similar accuracy without relying on an artifact's meta-data.
-
-
-% \acs{AnsBot} has a comprehensive set of features related to the text itself. 
-% For instance, the tool uses \textit{(1)} a set of semantic patterns that often appear in text deemed relevant,
-% \textit{(2)} word embeddings trained on domain-specific corpora, and others.
-Due to similarities between the textual properties in \acs{AnsBot}  and our techniques, 
-we also investigate how the tool's accuracy when ignoring Stack Overflow specific data, such as the number of votes in the answer.
-For this comparison, we disable any of the features used by the tool which rely on meta-data and
-we compute evaluation metrics once more.
-Results indicate that, without artifact specific properties, \acs{AnsBot} achieves 0.54 precision and 
-0.53 recall, values lower than the ones reported by our best \texttt{BERT} technique, but still higher 
-than our best \texttt{word2vec} technique.
+AnswerBot uses both textual properties and meta-data available on Stack Overflow and, 
+on \acs{AnsBot}'s original evaluation, Xu et al. reported precision scores ranging from $0.66$ to $1.0$. 
+Although these results suggest that their tool performs better than our proposed techniques, their evaluation followed a different experimental setup. 
+\acs{AnsBot}'s accuracy represents how 
+ human evaluators judged the text identified in the tool's output, which comprises only a portion of the entire text of an artifact. On the other hand, 
+we evaluate if we can identify text that human annotators deemed relevant when they inspecting the entire text of an artifact.
 
 
 
+Due to these differences, we decided to apply \acs{AnsBot} to the tasks and Stack Overflow artifacts in our corpus, measuring precision and recall values for the text identified by the tool. 
+We compare results from \texttt{AnsBot} and each of our techniques using
+a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check for statistically significant differences
+and, in case of any, computing the magnitude of the difference~\cite{cohen2013statistical}. 
 
-Results from this evaluation suggest that, for Stack Overflow artifacts, we can achieve accuracy comparable  
-to a state-of-the-art approach.
+
+
+Table~\ref{tbl:techniques-results-stackoverflow} shows values of precision and recall for  \texttt{AnsBot} and the semantic techniques that we explore. 
+Overall, we observe that \acs{AnsBot} achieves 0.62 precision and 0.62 recall in our corpus.
+Table~\ref{tbl:techniques-results-stackoverflow} also highlights scenarios where \texttt{AnsBot} outperforms our techniques.
+Both \texttt{BERT} models achieve comparable results to \texttt{AnsBot}.
+We also observe statistically significant differences for 
+\texttt{word2vec} without any filters and with \texttt{frame-associations}, suggesting that the technique
+fails to identify relevant text identified by \texttt{AnsBot}.
+
+
+\input{sections/cp5/tbl-results-stackoverflow}
+
+
+
+Since \acs{AnsBot} uses both textual properties and meta-data, 
+we also investigate how much of the tool's accuracy relies on Stack Overflow specific data.
+We disable any of the features used by the tool that rely on meta-data and we compute evaluation metrics once more.
+We refer to this configuration in Table~\ref{tbl:techniques-results-stackoverflow} as \texttt{AnsBot\textsubscript{text}}.
+Results from this comparison indicate that, without meta-data, all \texttt{BERT} techniques
+achieve results 
+significantly higher than  \texttt{AnsBot\textsubscript{text}}
+while \texttt{word2vec} with \texttt{frame-elements} achieves comparable results.
+
+
+\medskip
+\begin{bluequote}
+    \textit{For Stack Overflow artifacts, we can achieve accuracy comparable  
+    to a state-of-the-art approach, namely AnswerBot, without relying on Stack Overflow's meta-data.}
+\end{bluequote}
 
 
 
@@ -109,3 +116,23 @@ to a state-of-the-art approach.
 % These features range from checking the co-occurrance of terms available in the developer's question 
 % and in a sentence under inspection to whether a sentence originates from the answer with the highest number 
 % of votes in the post. Therefore,
+
+
+
+
+
+% In turn, \texttt{AnsBot\textsubscript{text}} achieves 0.54 precision and 0.53 recall.
+% These 
+% results suggest that usage of meta-data plays an important role in identifying relevant text for this type of artifact.
+% When comparing \texttt{word2vec} to \acs{AnsBot}, we observe that 
+%  is the only configuration with results comparable to \acs{AnsBot}.
+
+% We argue similarities in the results arise from the fact that both approaches use the 
+% word embeddings trained for the software engineering domain~\cite{Efstathiou2018}
+% and that each approach defines a set of semantic filters based on the meaning of a sentence~\cite{Xu2017}. 
+
+
+
+% With reagrds to , \texttt{BERT\textsubscript{DS-android}} with 
+% \texttt{frame-associations} 
+
