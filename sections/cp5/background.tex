@@ -92,7 +92,7 @@ This additional layer allows the model to perform more complex operations, such 
 
 
 BERT is initially trained 
-on a massive amount of corpora. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token and the model is optimized to predict these replaced tokens based on contextual information. 
+on a massive amount of corpora. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token and the model is optimized to predict these replaced tokens based on contextual information, a procedure embedded into what is called an \textit{attention function} \red{ref}. 
 BERT's training procedures first create a base model using a massive text corpora and then, this base model fine-tuned to specific tasks, such as text classification, using a dataset specific to the fine-tuning steps. 
 Empirical evaluation has show that BERT obtained state-of-the-art results in several natural language tasks including  question and answering and named entity recognition tasks~\cite{Devlin2018Bert}. 
 %  This procedure is often referred to as \textit{transfer learning} \red{ref} where one only needs to provide a dataset for the steps associated with fine-tuning the model. 
