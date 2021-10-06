@@ -123,7 +123,7 @@ F = \{ \text{required event}, \text{using}, \text{being obligated}, \text{causat
 
 
 \begin{equation}
-\text{\textit{meaningful}}(a_i) = \left \{
+\text{\textit{frame-elements}}(a_i) = \left \{
 \begin{aligned}
     &1, && \text{if}\ frames(a_i) \cap ~F \ne \emptyset \\
     &0, && \text{otherwise}
@@ -141,7 +141,7 @@ This filter checks if sentence-task frame pairs obtained from an input artifact 
 
 
 \begin{equation}
-\text{\textit{association-pair}}(a_i, T) = \left \{
+\text{\textit{frame-association}}(a_i, T) = \left \{
 \begin{aligned}
     &1, && \text{if}\ frame\_pairs(a_i, T) \cap ~P \ne \emptyset \\
     &0, && \text{otherwise}
@@ -151,8 +151,8 @@ This filter checks if sentence-task frame pairs obtained from an input artifact 
 \smallskip
 We derive the frame pairs that compose $P$ by splitting the tasks in our corpus. Part of the tasks and artifacts are used to automatically
 mine associated frame pairs using the apriori algorithm~\cite{agrawal1994apriori}. We test the obtained pairs in tasks and artifacts from which no pairs were derived from. 
-Section~\ref{cp5:evaluation} further details how we split the data.
-\art{I'm not sure about the name for this filter}
+Section~\ref{cp5:evaluation} further details our data split.
+
 
 
 
