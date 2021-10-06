@@ -121,10 +121,10 @@ Based on studies that have observed that developers face more challenges finding
 
 
 Table~\ref{tbl:techniques-results-overall} shows evaluation results. 
-In the table, rows provide details about a specific technique. In turn, columns discriminate 
+In the table, rows provide details about a specific technique while columns discriminate 
 precision and recall values and which filters were applied. 
-When interpreting the results provided, it is worth noting that the fraction of sentences annotated as relevant
-in \acs{DS-android} is considerable small, what makes achieving high accuracy challenging. 
+When interpreting the results, it is worth noting that achieving high accuracy in \acs{DS-android} is challenging
+due to the fraction of sentences deemed relevant, which comprises 20\% of the entire data.
 For example, API documents in the corpus have an average of 109.22 sentences per document, from which 9.62 sentences are relevant. 
 This means that, with a target number of 10 sentences identified per technique, a $1.0$ recall is only possible when a technique identifies the exact 10 sentences that are relevant for this kind of artifact, i.e.,  with $1.0$ precision.
 
@@ -149,8 +149,9 @@ semantics shorten lexical gaps when identifying information relevant to a softwa
 Recall values for 
 \texttt{BERT} range from $0.57$ to $0.60$ for 
 the \texttt{DS-synthetic} and the \texttt{DS-android} configurations.
-Sentence semantic filters do not provide substantial changes for \texttt{BERT}, where \texttt{frame-associations} yields $0.61$ recall. We believe that the 
-results observed for \texttt{BERT} are explained by 
+Sentence semantic filters do not provide substantial changes for \texttt{BERT}, where \texttt{frame-associations} yields $0.61$ recall. 
+We believe that the 
+lack of differences between the two \texttt{BERT} models are explained by 
 the fact that the model uses \textit{transfer learning} and thus, the  
 large corpora used to train the model before fine-tuning assists prediction steps even for tasks and artifacts that the model was not trained upon. In turn, the lack of improvements when applying  semantic filters might relate to how the model's \textit{attention mechanism} may already correlate the text in a task and an artifact, as detailed in Section~\ref{cp5:bert}.
 

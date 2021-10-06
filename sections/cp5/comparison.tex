@@ -17,6 +17,7 @@ For these artifact types, we compare our techniques to:
 \end{itemize}
 
 
+\red{Explain up front why these two}
 
 This comparison follows experimental procedures similar to the ones outlined in Section~\ref{cp5:evaluation},
 where we report precision and recall metrics using the text in the \acs{DS-android} corpus marked by two or more annotators
@@ -28,17 +29,17 @@ as our golden data.
 
 
 \subsubsection{Comparing the text identified in Stack Overflow answers}
-
+\label{cp5:comparison-answerbot}
 
 
 \acs{AnsBot} produces an answer to a developer's technical questions through three steps. 
 First it identifies question on the Q\&A platform that are related to the developer's task. 
-In a second step, it identifies relevant text within the related questions. 
+In a second step, it identifies relevant text within the related questions
+using both textual properties and meta-data available on Stack Overflow. 
 In the tool's final step, the text identified is used to produce an answer that is succinct yet diverse~\cite{Xu2017}.
 
 
-AnswerBot uses both textual properties and meta-data available on Stack Overflow and, 
-on \acs{AnsBot}'s original evaluation, Xu et al. reported precision scores ranging from $0.66$ to $1.0$. 
+On \acs{AnsBot}'s original evaluation, Xu et al. reported precision scores ranging from $0.66$ to $1.0$. 
 Although these results suggest that their tool performs better than our proposed techniques, their evaluation followed a different experimental setup. 
 \acs{AnsBot}'s accuracy represents how 
  human evaluators judged the text identified in the tool's output, which comprises only a portion of the entire text of an artifact. On the other hand, 
@@ -54,11 +55,13 @@ and, in case of any, computing the magnitude of the difference~\cite{cohen2013st
 
 
 Table~\ref{tbl:techniques-results-stackoverflow} shows values of precision and recall for  \texttt{AnsBot} and the semantic techniques that we explore. 
-Overall, we observe that \acs{AnsBot} achieves 0.62 precision and 0.62 recall in our corpus.
-Table~\ref{tbl:techniques-results-stackoverflow} also highlights scenarios where \texttt{AnsBot} outperforms our techniques.
-Both \texttt{BERT} models achieve comparable results to \texttt{AnsBot}.
+Overall, we observe that \acs{AnsBot} achieves 0.62 precision and 0.62 recall in our corpus---values explainable by the fact that the tool is tailored specifically to Stack Overflow.
+
+
+When we compare \texttt{AnsBot} to our techniques, we observe that 
+both \texttt{BERT} models achieve comparable results.
 We also observe statistically significant differences for 
-\texttt{word2vec} without any filters and with \texttt{frame-associations}, suggesting that the technique
+\texttt{word2vec} without any filters and with \texttt{frame-associations}, suggesting that these techniques
 fails to identify relevant text identified by \texttt{AnsBot}.
 
 
@@ -68,7 +71,7 @@ fails to identify relevant text identified by \texttt{AnsBot}.
 
 Since \acs{AnsBot} uses both textual properties and meta-data, 
 we also investigate how much of the tool's accuracy relies on Stack Overflow specific data.
-We disable any of the features used by the tool that rely on meta-data and we compute evaluation metrics once more.
+We disable any meta-data specific features used by the tool and we compute evaluation metrics once more.
 We refer to this configuration in Table~\ref{tbl:techniques-results-stackoverflow} as \texttt{AnsBot\textsubscript{text}}.
 Results from this comparison indicate that, without meta-data, all \texttt{BERT} techniques
 achieve results 
@@ -76,17 +79,53 @@ significantly higher than  \texttt{AnsBot\textsubscript{text}}
 while \texttt{word2vec} with \texttt{frame-elements} achieves comparable results.
 
 
-\medskip
-\begin{bluequote}
-    \textit{For Stack Overflow artifacts, we can achieve accuracy comparable  
-    to a state-of-the-art approach, namely AnswerBot, without relying on Stack Overflow's meta-data.}
-\end{bluequote}
+
+
+Result from this comparison indicate that we can achieve accuracy comparable  
+to a state-of-the-art approach, namely AnswerBot, 
+when identifying relevant information Stack Overflow artifacts.
+
 
 
 
 
 
 \subsubsection{Comparing the text identified in GitHub issue discussions}
+\label{cp5:comparison-hurried}
+
+
+\acs{Hurried} produces a summary to a bug report according to three major hypotheses on what makes a sentence relevant. 
+That is, the relevance of a sentence is higher 
+\textit{(1)} the more topics, or terms, it shares with other sentences  in the issue discussion, as for example when multiple sentences discuss about same software component;
+\textit{(2)} the more a sentence shares terms with a tasks's title or description; and 
+\textit{(3)} the more that sentence is evaluated by other sentences.
+These three hypotheses are used to build a graph of relationships between all the sentences in a bug report, which 
+the tool inputs to PageRank~\cite{Page1999} to identify a target number of sentences as the the most 
+ones relevant to the task at hand. 
+
+
+
+\acs{Hurried} original evaluation focuses on identifying sentences that summarize the information in a bug report, where the tool achieves precision and recall values of $0.59$ and $0.51$, respectively.
+Our evaluation differs from theirs as we focus on sentences containing key information to complete a software task, which is essentially different from summarizing a bug report on its own. These differences prompted us to 
+apply \acs{Hurried} to the tasks and Github issues available in our corpus, where instead of using the bug's own title and description in the second hypothesis, we use the task data\footnote{This does not require modifications to the tool. We only change the tool's input parameters.}. When comparing \acs{Hurried} to our techniques, we follow procedures analogous to the ones used for AnswerBot (Section~\ref{cp5:comparison-answerbot}).
+
+
+
+Table~\ref{tbl:techniques-results-github} presents evaluation metrics when identifying text that is relevant to a task 
+in GitHub artifacts. In our corpus, \texttt{Hurried} achieves 0.53 precision and 0.51 recall---values that support their findings on the fact that 50\% of the information in a summary is not relevant~\cite{Lotufo2012}.
+We observe that, with the exception of \texttt{word2vec}, all our techniques achieve comparable results
+and that \texttt{BERT\textsubscript{DS-synthetic}} yields the best results. 
+
+
+
+
+\input{sections/cp5/tbl-results-github}
+
+
+
+Result from this comparison suggest that we can achieve accuracy comparable or higher than 
+bug summarizers when identifying relevant information in artifacts from GitHub.
+
 
 
 
