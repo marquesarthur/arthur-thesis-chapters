@@ -23,8 +23,7 @@ both our qualitative analysis (\red{Chapter~\ref{aaa}}) and
 related work~\cite{Ko2006a, Freund2015} have shown that developers often use keyword-matching as a first search strategy to locate text that might contain information relevant to their tasks.
 
 
-Analogous to the semantic similarity-based technique (Section~\ref{cp5:approach-w2v}), the baseline technique uses VSM to compute lexical similarity scores 
-for all the sentences in an input artifact with regards to an input task and then, it outputs the top-n sentences with highest similarity as the ones likely relevant to an input software task.
+Analogous to the semantic similarity-based technique (Section~\ref{cp5:approach-w2v}), the baseline technique uses VSM to compute lexical similarity scores. The baseline outputs the top-n sentences with the highest similarity as the ones likely relevant to an input software task.
 
 
 
@@ -34,21 +33,18 @@ for all the sentences in an input artifact with regards to an input task and the
 
 
 We configure each technique to identify a target number of 10 relevant sentences per input task-artifact.
-This decision is based on the fact that 
-no more than 20\% of the content of any artifact in the corpora is deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}).
-Researchers have also used the same target number of 10 sentences when evaluating techniques  (e.g.,~\cite{Xu2017} or~\cite{Lotufo2012}) able to identify relevant text for certain kinds of artifacts
-what will also facilitate comparing our results to related work.
+This decision is based on the fact that no more than 20\% of the content of any artifact in the corpora is deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}).
+Researchers have also used the same target number of 10 sentences when evaluating techniques  (e.g.,~\cite{Xu2017} or~\cite{Lotufo2012}) able to identify relevant text for certain kinds of artifacts what will also facilitate comparing our results to related work.
 
 
 \subsubsection{Training Data}
 
 
-In addition to configuring the techniques output, two of our techniques use part of the  \acs{DS-android} data for fine-tuning purposes (\texttt{BERT}) and to derive sentence-task frame pairs (\texttt{frame-associations}).
+In addition to configuring the techniques' output, two of our techniques use part of the  \acs{DS-android} data for fine-tuning purposes (\texttt{BERT}) and to derive sentence-task frame pairs (\texttt{frame-associations}).
 We ensure that no data used to evaluate these techniques is also used in their setup by 
 splitting the dataset using standard cross-validation techniques.
 We split the dataset into 10 folds, each containing 5 tasks used for evaluation purposes. 
-The remaining 45 tasks are used to mine sentence-task frame pairs
-and to train BERT. 
+We use the remaining 45 tasks to mine sentence-task frame pairs and to train BERT. 
 For BERT, we further split the training data and use 10\% of it to validate the model~\cite{Chaparro2017, fucci2019, Petrosyan2015}.
 We refer to this setup of BERT as \texttt{BERT\textsubscript{DS-android}}.
 
@@ -97,9 +93,9 @@ Precision measures the fraction of the sentences identified that are relevant ov
 
 
 \medskip
-Precision means identifying only text that is relevant whereas recall means identifying all relevant text.
-Ideally, we would aim for a technique with high precision and recall. In practice, this is often not possible and we must reach a compromise.
-Based on studies that have observed that developers face more challenges finding information that pertains to their task rather than judging whether text is relevant or not~\cite{Robillard2015, Maalej2013}, we argue that in the bound number of sentences outputted by a technique, developers can quickly discard what they judge that is not relevant. Hence, our aim is to find as much of the relevant text within a technique's output and thus, the reason why our evaluation favors recall.
+Precision means identifying only text that is relevant, whereas recall means identifying all relevant text.
+Ideally, we would aim for a technique with high precision and recall. Unfortunately, this is often not possible and we must reach a compromise.
+Based on studies that have observed that developers face more challenges finding information related to their task~\cite{Robillard2015, Maalej2013}, we argue that in the bound number of sentences outputted by a technique, developers can quickly discard what they judge that is not relevant. Hence, we aim to find as much of the relevant text within a technique's output, thus the reason why we favour recall.
 
 
 
@@ -116,7 +112,7 @@ precision and recall values and which filters were applied.
 When interpreting the results, it is worth noting that achieving high accuracy in \acs{DS-android} is challenging
 due to the fraction of sentences deemed relevant, which comprises 20\% of the entire data.
 For example, API documents in the corpus have an average of 109.22 sentences per document, from which 9.62 sentences are relevant. 
-This means that, with a target number of 10 sentences identified per technique, a $1.0$ recall is only possible when a technique identifies the exact 10 sentences that are relevant for this kind of artifact, i.e.,  with $1.0$ precision.
+This means that, with a target number of 10 sentences identified per technique, a $1.0$ recall is only possible when a technique identifies the exact 10 sentences that are relevant for this kind of artifact.
 
 
 
@@ -131,7 +127,7 @@ Although this result is not surprising, it corroborates results from related lit
 
 
 
-Using \texttt{word2vec}, precision and recall scores increase to $0.46$ and $0.45$. We also observe that applying sentence semantic filters to \texttt{word2vec}'s output further improve precision and recall values. Notably, the 
+Using \texttt{word2vec}, precision and recall scores increase to $0.46$ and $0.45$. We also observe that applying sentence-semantic filters to \texttt{word2vec}'s output further improves precision and recall values. Notably, the 
 \texttt{frame-associations} filter achieves up to $0.52$ recall. These results suggest that both word semantics and sentence
 semantics shorten lexical gaps when identifying information relevant to a software task.
 
@@ -143,7 +139,7 @@ Sentence semantic filters do not provide substantial changes for \texttt{BERT}, 
 We believe that the 
 lack of differences between the two \texttt{BERT} models are explained by 
 the fact that the model uses \textit{transfer learning} and thus, the  
-large corpora used to train the model before fine-tuning assists prediction steps even for tasks and artifacts that the model was not trained upon. In turn, the lack of improvements when applying  semantic filters might relate to how the model's \textit{attention mechanism} may already correlate the text in a task and an artifact, as detailed in Section~\ref{cp5:bert}.
+large corpora used to train the model before fine-tuning assists prediction steps even for tasks and artifacts that the model was not trained on. In turn, the lack of improvements when applying semantic filters might relate to how the model's \textit{attention mechanism} may already correlate the text in a task and an artifact (Section~\ref{cp5:bert}).
 
 
 

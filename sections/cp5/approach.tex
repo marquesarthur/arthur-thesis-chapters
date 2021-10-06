@@ -22,11 +22,9 @@ More specifically, we investigate determining the relevance of a sentence to a g
 
 
 
-Each technique takes a task and a pertinent artifact as inputs and outputs the sentences 
-that are most likely to contain information that assists a developer in completing that task.
-Details for each technique are presented in the following sections.
+Each technique takes a task and a pertinent artifact as inputs and outputs the sentences that are most likely to contain information that assists a developer in completing that task.
+We present details for each technique in the following sections.
 
-% Details on how we determine the number of sentences outputed are available in Section~\ref{cp5:evaluation}.
 
 
 
@@ -49,7 +47,7 @@ Then, we compute their semantic similarity as the cosine similarity \red{ref} be
 \end{equation}
  
 \smallskip
- As there are multiple sentences in both entities, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained when computing the similarity of the vector for this sentence and the vectors for each of the sentences in a task $T$.
+ As there are multiple sentences in both entities, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained for this sentence and each of the sentences in a task $T$.
 
  \begin{equation}
     sim(a_i, T) = max(sim(w_{a_i}, w_{t_1}), sim(w_{a_i}, w_{t_2}) ~\dots~ sim(w_{a_i}, w_{t_m})) \\
@@ -69,12 +67,12 @@ We fine-tune BERT to identify the sentences in a natural language artifact that 
 
 
 
-As we described in Section~\ref{cp5:bert}, we use a BERT model that has been already pre-trained in a massive corpora, namely BERT\textsubscript{uncased}~\cite{Devlin2018Bert}, and we tune it classify if a sentence is relevant, or not, to a task.
+As we described in Section~\ref{cp5:bert}, we use a BERT model that has been already pre-trained in a massive corpora, namely BERT\textsubscript{uncased}~\cite{Devlin2018Bert}, and we tune it to classify if a sentence is relevant, or not, to a task.
 To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task and we fed them to the model as sentence-artifact input pairs 
 alongside binary labels representing whether human annotators deemed that sentence relevant. 
 Using training data, the model will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. 
 
-We fine-tune the model training it for up to 10 epochs with a \textit{batch size} of 64 and a sequence length of 64. Cross Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
+We fine-tune the model by training it for up to 10 epochs with a \textit{batch size} of 64 and a sequence length of 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
 We take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
 
 
@@ -166,7 +164,7 @@ Section~\ref{cp5:evaluation} further details our data split.
 
 
 Table~\ref{tbl:approaches-summary} bundles the techniques that we explore.
-The table provides a short description and identifier for the technique. From now on, we refer to each technique according to their short identifier.
+The table provides a short description and identifier for the technique. From now on, we refer to each technique according to its short identifier.
 
 
 \input{sections/cp5/tbl-approaches-summary}

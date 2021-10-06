@@ -50,7 +50,7 @@ applied Word2Vec~\cite{Mikolov2013} to support the retrieval of API
 examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}. 
 
 
-Since our main focus is on techniques able to infer the semantics of text, we further detail core concepts related to these tecchniques. 
+Since our main focus is on techniques able to infer the semantics of text, we further detail core concepts related to these techniques. 
 
 
 
@@ -72,7 +72,7 @@ With a significantly large text corpus, the model associates similar vector embe
 
 One common challenge to language models is that they need to learn word embeddings that are good at predicting the nearby words at a low computational costs, e.g., the time needed to train a model, the model size, etc.
 The \textit{Skip-gram} model, proposed by Mikolov et al.~\cite{Mikolov2013}, addresses such challenges using simple yet efficient training procedures. 
-That is, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceded and succeed word $w_t$
+That is, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceed and succeed word $w_t$
 as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context of $w_t$ as negative training examples. 
 Empirical results have shown that negative sampling allows for an accurate model able to handle noise data and that 
 the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
@@ -95,9 +95,9 @@ BERT is initially trained
 on a massive amount of corpora. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token and the model is optimized to predict these replaced, or \textit{masked}, tokens. 
 Prediction relies on a mechanism, called \textit{attention} \red{ref}, that correlates and weights all non-replaced tokens in the input so that the model maximizes predictions.
 BERT's training procedures make use of transfer learning  \red{ref}, i.e., 
-first one creates a base model using a massive text corpora and the general token prediction task. 
-Then, this base model is fine-tuned to specific tasks, such as text classification, using a dataset specific to the fine-tuning steps. 
-Empirical evaluation has show that BERT obtained state-of-the-art results in several natural language tasks including  question and answering and named entity recognition tasks~\cite{Devlin2018Bert}. 
+first one creates a base model using massive text corpora and the general token prediction task. 
+Then, this base model is fine-tuned to specific tasks, such as text classification, using a dataset-specific to the fine-tuning steps. 
+Empirical evaluation has shown that BERT obtained state-of-the-art results in several natural language tasks including question and answering and named entity recognition tasks~\cite{Devlin2018Bert}. 
 %  This procedure is often referred to as \textit{transfer learning} \red{ref} where one only needs to provide a dataset for the steps associated with fine-tuning the model. 
 
 \red{BERT usage in requirements eng}~\cite{Lin2021}
@@ -120,7 +120,7 @@ from Di Sorbo et al.~\cite{Sorbo2015}:
 \item \textit{the leaky bucket algorithm fails in limiting the band-width}.
 \end{itemize}
 
-Although these messages have different meaning, \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically and semantically similar, what is not sufficient to determine that the former sentence
+Although these messages have different meanings, \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically and semantically similar, what is not sufficient to determine that the former sentence
  is a \textit{solution proposal} while the latter, a \textit{problem discovery}, as discussed by Di Sorbo et al.~\cite{Sorbo2015}. 
 
 
@@ -141,9 +141,9 @@ mark all lexical units, or words,
 associated with either a frame or a frame element.
 In the first sentence, the \textit{Using} frame
 captures that an \textit{instrument}, the leaky bucket algorithm, is
-manipulated to achieve a \textit{purpose}, namely to limit band-width.
+manipulated to achieve a \textit{purpose}, namely to limit bandwidth.
 In contrast, the second sentence contains a frame that represents the \textit{Success or Failure}
-of achieving the \textit{goal} of limiting the band-width. 
+of achieving the \textit{goal} of limiting the bandwidth. 
 
 
 \input{fig/cp5/frame-example}
