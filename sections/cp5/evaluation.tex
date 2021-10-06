@@ -5,9 +5,11 @@
 
 
 
-The goal of our evaluation is to assist the design of tools that use the explored techniques to help developers in locating text relevant to their task.
-Therefore, evaluation focuses 
-on determining what portion of the text identified by human annotators the techniques that we explore can automatically identify.
+The goal of our evaluation is to assist the design of tools that use the explored techniques to help developers in locating text relevant to their task. 
+To evaluate and compare the techniques,
+we report \textit{precision} and \textit{recall} metrics~\cite{manning2010IR} measuring what portion of the \acs{DS-android} text identified by human annotators the techniques automatically identify.
+In this context, we believe recall to be the most important metric since failure to identify text that is relevant to a task means that a developer will have an incomplete or partial view of the information needed,
+what can lead to faults~\cite{Murphy2005}.
 Experimental procedures are as follows.
 
 
@@ -17,7 +19,8 @@ Experimental procedures are as follows.
 
 As done by~\cite{Lin2021} and~\cite{Ye2016}, we use a standard \texttt{VSM} lexical similarity approach as a baseline. Our rationale to use 
 lexical similarity as a baseline is based on the fact that 
-both our card sorting analysis (\red{Chapter~\ref{aaa}}) and related work~\cite{Ko2006a, Freund2015} has shown that developers often use keyword-matching as a first search strategy to locate text that might contain information relevant to their tasks.
+both our qualitative analysis (\red{Chapter~\ref{aaa}}) and
+related work~\cite{Ko2006a, Freund2015} have shown that developers often use keyword-matching as a first search strategy to locate text that might contain information relevant to their tasks.
 
 
 Analogous to the semantic similarity-based technique (Section~\ref{cp5:approach-w2v}), the baseline technique uses VSM to compute lexical similarity scores 
@@ -32,18 +35,22 @@ for all the sentences in an input artifact with regards to an input task and the
 
 We configure each technique to identify a target number of 10 relevant sentences per input task-artifact.
 This decision is based on the fact that 
-no more than 20\% of the content in the corpora is deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}).
-Researchers have also used the same target number in experimental setups evaluating techniques able to identify relevant text for certain kinds of artifacts (e.g., ~\cite{Xu2017} or~\cite{Lotufo2012})
-thus, having the same output will facilitate comparing our results to related work.
+no more than 20\% of the content of any artifact in the corpora is deemed relevant to a task, which, on average, accounts for 8.93 sentences (\red{Chapter~\ref{}}).
+Researchers have also used the same target number of 10 sentences when evaluating techniques  (e.g.,~\cite{Xu2017} or~\cite{Lotufo2012}) able to identify relevant text for certain kinds of artifacts
+what will also facilitate comparing our results to related work.
 
 
-In addition to configuring the techniques output, two of our techniques use part of the  \acs{DS-android} data for fine-tuning purposes (\texttt{BERT}) and to derive sentence-task frame pairs (\texttt{association-pairs}).
+\subsubsection{Training Data}
+
+
+In addition to configuring the techniques output, two of our techniques use part of the  \acs{DS-android} data for fine-tuning purposes (\texttt{BERT}) and to derive sentence-task frame pairs (\texttt{frame-associations}).
 We ensure that no data used to evaluate these techniques is also used in their setup by 
 splitting the dataset using standard cross-validation techniques.
-We split the dataset into 10 folds, each containing 5 tasks used for evaluation purposes. When evaluating a fold, the remaining 45 tasks are used to mine sentence-task frame pairs
+We split the dataset into 10 folds, each containing 5 tasks used for evaluation purposes. 
+The remaining 45 tasks are used to mine sentence-task frame pairs
 and to train BERT. 
-For the BERT technique, we further split the training data and use 10\% of it to validate the model~\cite{Chaparro2017, fucci2019, Petrosyan2015}.
-We refer to this configuration as \texttt{BERT\textsubscript{DS-android}}.
+For BERT, we further split the training data and use 10\% of it to validate the model~\cite{Chaparro2017, fucci2019, Petrosyan2015}.
+We refer to this setup of BERT as \texttt{BERT\textsubscript{DS-android}}.
 
 
 To study the impacts of training data on BERT, we also train the model in a smaller dataset containing six tasks and a total of 1874 sentences, from which 602 of them were deemed relevant by 20 participants with software development experience (\red{Chapter~\ref{aaa}}). Due to the synthetic nature of the tasks in this dataset, we refer to this 
@@ -55,19 +62,11 @@ second configuration as \texttt{BERT\textsubscript{DS-synthetic}}.
 \subsubsection{Metrics}
 
 
-
-Since our goal is assist developers locate text relevant tot their tasks (e.g., embedding the explored techniques into tools that 
-surface or highlight the identified text in an artifact~\cite{Robillard2015}), 
-we use standard \textit{precision} and \textit{recall} metrics~\cite{manning2010IR} to measure the accuracy of each technique.
-
-
-
-
-
-We compute values for each metric using the golden labels available in the \acs{DS-android} corpus and sentences deemed relevant to a task by at least two human annotators. 
-To understand each metric, we refer to the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors}, where
- columns represent  labels provided by the annotators and rows,
+We compute values for \textit{precision} and \textit{recall} metrics based on the golden labels available in the \acs{DS-android} corpus and sentences deemed relevant to a task by at least two human annotators.
+For a detailed definition of each metric, we refer to the evaluation outcomes detailed in Table~\ref{tbl:type-I-II-errors}, where  columns represent  labels provided by the annotators and rows,
 the text identified as relevant or not by a technique.
+
+% 
 
 \medskip
 \input{sections/cp5/tbl-eval-outcomes}
@@ -76,7 +75,7 @@ the text identified as relevant or not by a technique.
 
 \paragraph{\textbf{Precision}}
 
-Precision measures the fraction of the sentences identified that are relevant over the total number of sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
+Precision measures the fraction of the sentences identified that are relevant over the total number of target sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
 
 
 
@@ -84,6 +83,7 @@ Precision measures the fraction of the sentences identified that are relevant ov
 \label{eq:cp5:precision}    
     Precision = \frac{TP}{TP + FP}
 \end{equation}
+
 
 
 \paragraph{\textbf{Recall}} Recall represents how many of all the annotated sentences are identified by a technique (Equation~\ref{eq:cp5:recall}).
@@ -96,12 +96,12 @@ Precision measures the fraction of the sentences identified that are relevant ov
 
 
 
-\paragraph{\textbf{Pyramid Precision \& Pyramid Recall}} 
+\medskip
+Precision means identifying only text that is relevant whereas recall means identifying all relevant text.
+Ideally, we would aim for a technique with high precision and recall. In practice, this is often not possible and we must reach a compromise.
+Based on studies that have observed that developers face more challenges finding information that pertains to their task rather than judging whether text is relevant or not~\cite{Robillard2015, Maalej2013}, we argue that in the bound number of sentences outputted by a technique, developers can quickly discard what they judge that is not relevant. Hence, our aim is to find as much of the relevant text within a technique's output and thus, the reason why our evaluation favors recall.
 
-We measure precision and recall considering sentences marked by two or more annotators; this, however ignores the fact that text marked by a single annotator can equally contribute towards task completion~\cite{marques2020}. To address the text identified by a single annotator, we 
-follow evaluation procedures outlined by Lotufo et al.~\cite{Lotufo2012} and we
-also report pyramid precision and pyramid recall. These metrics are similar to the ones defined in 
-Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat relevant text as the sentences marked by any of the annotators.
+
 
 
 
@@ -110,104 +110,40 @@ Equations~\ref{eq:cp5:precision} and~\ref{eq:cp5:recall} but treat relevant text
 \subsection{Results}
 
 
+Table~\ref{tbl:techniques-results-overall} shows evaluation results. 
+In the table, rows provide details about a specific technique while columns discriminate 
+precision and recall values and which filters were applied. 
+When interpreting the results, it is worth noting that achieving high accuracy in \acs{DS-android} is challenging
+due to the fraction of sentences deemed relevant, which comprises 20\% of the entire data.
+For example, API documents in the corpus have an average of 109.22 sentences per document, from which 9.62 sentences are relevant. 
+This means that, with a target number of 10 sentences identified per technique, a $1.0$ recall is only possible when a technique identifies the exact 10 sentences that are relevant for this kind of artifact, i.e.,  with $1.0$ precision.
 
 
-Figure~\ref{fig:eval-metrics-results} shows values for F1-score, precision, and recall for each of the techniques that we explore as part of our design space. 
+
+\input{sections/cp5/tbl-results-overall}
 
 
 
 The \texttt{baseline} technique, which uses VSM, achieves precision and recall scores of $0.30$ and $0.33$, respectively. 
-Although this result is not surprising, it corroborates results from related literature showing limitations of lexicon-based approaches, and 
-it further motivates the need for techniques able to relate the information associated with the solution for a task and the information provided in the software task.
-
-
-Using word semantics, precision and recall scores increase to $0.48$ and $0.53$ when using \texttt{word2vec}, and to $0.55$ and $0.56$ with \texttt{BERT}.
-With regards to BERT, we do not observe significant differences between the \texttt{BERT\textsubscript{DS-synthetic}}
-and the \texttt{BERT\textsubscript{DS-android}} configurations suggesting that the model predictions extend to datasets other than the ones used for training.
-A potential explanation for that is that 
-BERT uses \textit{transfer learning} \red{ref} and thus, the  
-large corpora used to train the model before fine-tuning (Section~\ref{cp5:bert}) assists prediction steps even for tasks and artifacts that the model was not trained upon.
-
-
-
-\clearpage
-\begin{landscape}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=1.8\textwidth]{cp5/results}
-    \caption{Evaluation metrics for each techniques \art{image resolution has been finicky. I'll fix it and have the image in-line with the rest of the results}}
-    \label{fig:eval-metrics-results}
-\end{figure}
-\end{landscape}
-
-\clearpage
-
-
-
-
-Figure~\ref{fig:eval-metrics-results} also shows results when applying sentence semantic filters as
- a post-processing step to the
- \texttt{word2vec} and \texttt{BERT} techniques. 
-Both filters improve precision and recall values for the \texttt{word2vec} technique, where the \texttt{association-pairs} filter yields 
-the highest results ($0.53$ precision and $0.54$ recall). For \texttt{BERT}, there are no noticeable changes to precision, but 
-we observe gains on recall. Notably, the \texttt{frame-elements} filter achieves $0.60$ recall for \texttt{BERT\textsubscript{DS-android}}. 
-
-
-
-\subsubsection{Pyramid scores}
-
-
-\art{I did not observe differences between the metrics when considering all the text marked and the text marked only by two annotators. I'll have to further investigate why.}
-
-
-\subsubsection{Text identified}
-
-
-To get a better sense of the text identified, we compare the text that each technique identifies as relevant 
-against the text that annotators deemed relevant. For this analysis, 
-we use the best configuration for each technique. 
-
-
-
-Figure~\ref{fig:text-overlap} shows the overlap between the text identified when the techniques identify up to 10 
-sentences per task and artifact.
-From 382 unique sentences, the \texttt{baseline} identifies a total of 110 sentences. In comparison, \texttt{word2vec} identifies a total of 213 sentences and \texttt{BERT\textsubscript{DS-android}}, 234 sentences. 
-We observe that with the exception of the baseline, the majority of the sentences 
-identified are technique-specific. Potential exmplanations for that are related to how each technique 
-determines relevance. That is, \texttt{word2vec} uses semantical similarity based on task and artifact's sentences embedding vectors while 
-\texttt{BERT} correlates the embeddings of a sentence from a task and from an artifact through the 
-\textit{transformers} attention function (Section~\ref{cp5:bert}).
-
-
-
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.4\textwidth]{cp5/results_venn.png}
-    \caption{Venn diagram illustrating the overlap between the 382 task-relevant sentences identified across the three techniques}
-    \label{fig:text-overlap}
-\end{figure}
-
-
-Analysis of the text identified by each technique suggests that the techniques identify different types of information.
-
-
-% When interpreting results, it is worth noting that due to the nature of \acs{DS-android} corpus, the fraction of sentences annotated as relevant is considerable small,
-% e.g., API documents in the corpus have an average of 109.22 sentences per document while only an average of 9.62 sentences are relevant (Chapter~\ref{ch:android-corpus}). 
-% Hence, achieving 
-% This means that the data is unbalanced and achieving high accuracy is challenging even when using state-of-the-art techniques.
+Although this result is not surprising, it corroborates results from related literature showing limitations of lexicon-based approaches, as detailed in Section~\ref{cp5:background}.
 
 
 
 
 
-% \art{Change from tables to plots. Similar to Sarah and Treude~\cite{nadi2020}, show Venn diagram with how many sentences each approach identifies and overlaps between them}
+Using \texttt{word2vec}, precision and recall scores increase to $0.46$ and $0.45$. We also observe that applying sentence semantic filters to \texttt{word2vec}'s output further improve precision and recall values. Notably, the 
+\texttt{frame-associations} filter achieves up to $0.52$ recall. These results suggest that both word semantics and sentence
+semantics shorten lexical gaps when identifying information relevant to a software task.
 
 
-
-
-% \input{sections/cp5/tbl-results-by-artifact}
+Recall values for 
+\texttt{BERT} range from $0.57$ to $0.60$ for 
+the \texttt{DS-synthetic} and the \texttt{DS-android} configurations.
+Sentence semantic filters do not provide substantial changes for \texttt{BERT}, where \texttt{frame-associations} yields $0.61$ recall. 
+We believe that the 
+lack of differences between the two \texttt{BERT} models are explained by 
+the fact that the model uses \textit{transfer learning} and thus, the  
+large corpora used to train the model before fine-tuning assists prediction steps even for tasks and artifacts that the model was not trained upon. In turn, the lack of improvements when applying  semantic filters might relate to how the model's \textit{attention mechanism} may already correlate the text in a task and an artifact, as detailed in Section~\ref{cp5:bert}.
 
 
 
