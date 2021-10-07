@@ -94,13 +94,13 @@ the top-n sentences with highest probability as the relevant ones.
 \subsection{Identifying Task-relevant Text with Frame Semantics}
 \label{cp5:approach-filters}
 
-\marginpar{{\small \gm{Isn't there multiple SEframes approaches?} \art{There should be two techniques now}}}
+% \marginpar{{\small \gm{Isn't there multiple SEframes approaches?} \art{There should be two techniques now}}}
 
 
 
 We use frame semantics to identify sentences potentially relevant to a task based on the frame elements available in a sentence and task. 
 For that, we implement a set of filters that can be applied to the previous techniques as a post-processing step~\cite{Manning2009IR}.
-A filter takes the output of a technique $O$ and produces output $O^{\prime}$ where relevant sentences must match the filter's relevance criteria.
+A filter takes the output of a technique $O$ and produces output $O^{\prime}$ where a sentence must match the filter's relevance criteria.
 
 
 A first filter considers that sentences that give instructions, describe required events, obligations, and others are likely to contain information of interest. 
@@ -164,7 +164,7 @@ Section~\ref{cp5:evaluation} further details our data split.
 
 
 Table~\ref{tbl:approaches-summary} bundles the techniques that we explore.
-The table provides a short description and identifier for the technique. From now on, we refer to each technique according to its short identifier.
+The table provides a short description and identifier for each technique. From now on, we refer to each technique according to its short identifier.
 
 
 \input{sections/cp5/tbl-approaches-summary}
