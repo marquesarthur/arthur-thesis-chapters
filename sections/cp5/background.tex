@@ -18,15 +18,13 @@ An early example is Maarek and Smadja's use of lexical relations to index
 software libraries~\cite{maarek1989}. 
 Since this early use, software engineering
 researchers have continued to leverage advances in
-these approaches, such as when 
-Maletic and Marcus applied \acf{LSI}~\cite{deerwester1990LSI} to help cluster software components to aid
-program comprehension of a software system~\cite{Marcus2003}, or when Lin and colleagues
-applied \acf{VSM}~\cite{salton1975vector}
-to support tracing software requirements to source code~\cite{Lin2021}.
+these approaches, such as when De Lucia et al. applied \acf{VSM}~\cite{DeLucia2012}
+to support identification of human labelled source code components~\cite{Lin2021}.
 
 
 
-Researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM} 
+As detailed in the motivation of this chapter, 
+researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM} 
 fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016} while
 Di Sorbo and colleagues observed that a lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify emails based on developers' intentions~\cite{Sorbo2015}, what prompted them 
 to define rules to
@@ -41,23 +39,28 @@ opinion, or proposing solutions, amongst others.
 
 To address issues that might arise from lexicon-based approaches,
 many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} have used techniques able to infer the meaning, or semantics, of text. 
-\red{early examples and studies}
+In such context, semantics is often built by identifying co-occurrence of terms such that one can infer that certain terms are related. For example 
+the terms \textit{car} and \textit{automobile} are likely to co-occur in different phrases with terms like \textit{motor} and \textit{wheel}~\cite{Bavota2016}
+what can be used to establish relationships or associations between these words.
+This concept is used in techniques such as \acf{LSI}~\cite{deerwester1990LSI} or language models~\cite{Mikolov2013} to infer the meaning of the text,
+where Maletic and Marcus application of \acs{LSI} to help cluster software components to aid
+program comprehension of a software system
+is an early example on the usage of semantics by software engineering researchers~\cite{Marcus2003}.
 
 
-
-\red{Connect early studies to approaches that have used language models in software engineering,} as  when Nguyen and colleagues
+Ever since these early examples, advancements in the \acf{NLP} field have lead software engineering researchers 
+to investigate and apply a set of \acs{NLP} techniques to assist software engineering tasks. For instance,
+Nguyen and colleagues
 applied Word2Vec~\cite{Mikolov2013} to support the retrieval of API
-examples~\cite{nguyen2017} or when Lin et al. used BERT to assist software traceability~\cite{Lin2021}. 
-
-
-Since our main focus is on techniques able to infer the semantics of text, we further detail core concepts related to these techniques. 
+examples~\cite{nguyen2017} while Lin et al. used BERT to assist software traceability~\cite{Lin2021}. 
+Since our focus is on techniques able to infer the semantics of text, we further detail core concepts related to these techniques. 
 
 
 
 \paragraph{\textbf{Language Models}}
 
 Language models represent the semantics of words based on the context in which words appear. They allow a more ``human-like reasoning'' even when words are lexically different, as in inferring that the word \textit{king} and
-\textit{queen} refer to genders of \textit{royalty}~\cite{Mikolov2013}.
+\textit{queen} refer to \textit{royalty}~\cite{Mikolov2013}.
 
 
 To infer the meaning of words, a language model exploits Harris' distributional hypothesis~\cite{harris1954distributional}---which states that words that appear in a similar context tend to have similar meanings---and builds vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
@@ -72,9 +75,9 @@ With a significantly large text corpus, the model associates similar vector embe
 
 One common challenge to language models is that they need to learn word embeddings that are good at predicting the nearby words at a low computational costs, e.g., the time needed to train a model, the model size, etc.
 The \textit{Skip-gram} model, proposed by Mikolov et al.~\cite{Mikolov2013}, addresses such challenges using simple yet efficient training procedures. 
-That is, the model learns vector representations by \textit{(i)} looking at the $n$ words that preceed and succeed word $w_t$
+The model learns vector representations by \textit{(i)} looking at the $n$ words that preceed and succeed word $w_t$
 as positive training examples, and by \textit{(ii)} randomly sampling words that do not appear in the same context of $w_t$ as negative training examples. 
-Empirical results have shown that negative sampling allows for an accurate model able to handle noise data and that 
+Empirical results have shown that such procedures allow for an accurate model able to handle noise data and that 
 the vector representations provided by the model could be used to improve many natural language processing tasks~\cite{mikolov2013efficient}.
 
 
@@ -87,21 +90,22 @@ the vector representations provided by the model could be used to improve many n
 \label{cp5:bert}
 
 Context in the Skip-gram model refers to the positive/negative examples used during the model's training procedures; this, however, does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for a word such as \textit{company} even when it can have different meanings, i.e., a business organization or being with someone. In contrast, 
-the \acf{BERT} model, proposed by Google~\cite{Devlin2018Bert}, provides different representations for the same word based on the sentence in which a word appears.
+the \acf{BERT}~\cite{Devlin2018Bert} model provides different representations for the same word based on the sentence in which a word appears.
 This additional layer allows the model to perform more complex operations, such as word disambiguation \red{ref}.
 
 
 BERT is initially trained 
 on a massive amount of corpora. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token and the model is optimized to predict these replaced, or \textit{masked}, tokens. 
-Prediction relies on a mechanism, called \textit{attention} \red{ref}, that correlates and weights all non-replaced tokens in the input so that the model maximizes predictions.
-BERT's training procedures make use of transfer learning  \red{ref}, i.e., 
+The model relies on a mechanism, called \textit{attention} \red{ref}, that correlates and weights all non-replaced tokens in the input so that the model maximizes predictions.
+A fully trained BERT model also uses transfer learning  \red{ref}, i.e., 
 first one creates a base model using massive text corpora and the general token prediction task. 
-Then, this base model is fine-tuned to specific tasks, such as text classification, using a dataset-specific to the fine-tuning steps. 
+Then, this base model is fine-tuned to specific tasks, such as text classification, using a dataset specific to the fine-tuning steps. 
 Empirical evaluation has shown that BERT obtained state-of-the-art results in several natural language tasks including question and answering and named entity recognition tasks~\cite{Devlin2018Bert}. 
 %  This procedure is often referred to as \textit{transfer learning} \red{ref} where one only needs to provide a dataset for the steps associated with fine-tuning the model. 
 
-\red{BERT usage in requirements eng}~\cite{Lin2021}
-~\cite{Araujo2021}
+Within software engineering, BERT has been applied to requirements traceability, where
+Lin et al. has shown that a BERT model can generate trace links between natural language artifacts and programming language artifacts~\cite{Lin2021} when applied to the CodeSearchNet dataset. In turn, Araujo used the model to identify software requirements from app reviews,
+showing that BERT achieved state-of-the-art results for this traceability problem~\cite{Araujo2021}.
 
 
 
@@ -122,14 +126,12 @@ from Di Sorbo et al.~\cite{Sorbo2015}:
 
 Although these messages have different meanings, \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically and semantically similar, what is not sufficient to determine that the former sentence
  is a \textit{solution proposal} while the latter, a \textit{problem discovery}, as discussed by Di Sorbo et al.~\cite{Sorbo2015}. 
-
-
 A potential reason that explains why these techniques fail to determine the topicality of each sentence is that they capture semantics at the word level. 
-An alternative would be to consider techniques in the field of pragmatics~\cite{ariel2008pragmatics, austin1975pragmatics}, i.e., techniques able to infer a sentence's meaning.
+An alternative would be to consider linguistic approaches~\cite{ariel2008pragmatics, austin1975pragmatics} able to infer a sentence's meaning.
 
 
 
-We use \textit{frame semantics}~\cite{fillmore1976frame, Baker1998} as a proxy to a sentence's meaning.
+In this work, we use \textit{frame semantics}~\cite{fillmore1976frame, Baker1998} as a proxy to a sentence's meaning.
 Frame semantics allows us to identify \textit{frames},
 or key events, that assist in inferring the meaning of a sentence.
 Figure~\ref{fig:frame-example} presents the results of a frame
@@ -144,14 +146,21 @@ captures that an \textit{instrument}, the leaky bucket algorithm, is
 manipulated to achieve a \textit{purpose}, namely to limit bandwidth.
 In contrast, the second sentence contains a frame that represents the \textit{Success or Failure}
 of achieving the \textit{goal} of limiting the bandwidth. 
+This example shows that the frames identified in Figure~\ref{fig:frame-example} might assist discerning the topics in Di Sorbo's sentences\footnote{We leave empirical evaluation of this hypothesis as future work.}.
 
 
 \input{fig/cp5/frame-example}
 
 
-Although investigating if frame semantics assists discerning the topics in Di Sorbo's sentences requires further empirical evaluation, requirements engineering researchers have used frame semantics to 
-\red{Examples of frame semantics in SE}
-
-
+Within software engineering, frame semantics have largely been applied to problems related
+to requirements engineering.
+Among other work, we cite 
+Jah and Mahmoud use of frame semantics
+to determine which app user reviews are feature requests, which are problem reports and which
+are something else~\cite{jha2017},
+Kundi and Chitchyan use of frame semantics to assist with requirements
+elicitation~\cite{kundi2017}, and Alhoshan et al. technique to 
+to identify textual related requirements, which they use to establish traceability links 
+over multiple requirement documents~\cite{alhoshan2019using}.
 
 

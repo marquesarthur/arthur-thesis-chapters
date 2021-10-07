@@ -80,7 +80,7 @@ while \texttt{word2vec} with \texttt{frame-elements} achieves comparable results
 
 Results from this comparison indicate that we can achieve accuracy comparable  
 to a state-of-the-art approach, namely AnswerBot, 
-when identifying relevant information Stack Overflow artifacts.
+when identifying relevant information in Stack Overflow artifacts.
 
 
 
@@ -98,12 +98,12 @@ That is, the relevance of a sentence is higher:
 \textit{(3)} the more that sentence is evaluated by other sentences.
 These three hypotheses are used to build a graph of relationships between all the sentences in a bug report, which 
 the tool inputs to PageRank~\cite{Page1999} to identify a target number of sentences as the most 
-ones relevant to the task at hand. 
+ relevant ones to the task at hand. 
 
 
 
 \acs{Hurried} original evaluation focuses on identifying sentences that summarize the information in a bug report, where the tool achieves precision and recall values of $0.59$ and $0.51$, respectively.
-Our evaluation differs from theirs as we focus on sentences containing key information to complete a software task, which is essentially different from summarizing a bug report on its own. These differences prompted us to apply \acs{Hurried} to the tasks and Github issues available in our corpus, where instead of using the bug's own title and description in the second hypothesis, we use the task data\footnote{This does not require modifications to the tool. We only change the tool's input parameters.}. When comparing \acs{Hurried} to our techniques, we follow procedures analogous to the ones used for AnswerBot (Section~\ref{cp5:comparison-answerbot}).
+Our evaluation differs from theirs as we focus on sentences containing key information to complete a software task, which is essentially different from summarizing a bug report on its own. These differences prompted us to apply \acs{Hurried} to the tasks and Github issues available in our corpus\footnote{This does not require modifications to the tool. We only change the tool's input parameters.}. When comparing \acs{Hurried} to our techniques, we follow procedures analogous to the ones used for AnswerBot (Section~\ref{cp5:comparison-answerbot}).
 
 
 
@@ -120,7 +120,7 @@ and that \texttt{BERT\textsubscript{DS-synthetic}} yields the best results.
 
 
 Results from this comparison suggest that we can achieve accuracy comparable to or higher than 
-bug summarizers when identifying relevant information in artifacts from GitHub.
+bug summarizers when identifying relevant information in artifacts from Github.
 
 
 
