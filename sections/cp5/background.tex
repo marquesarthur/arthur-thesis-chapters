@@ -26,12 +26,14 @@ to support identification of human labelled source code components~\cite{Lin2021
 As detailed in the motivation of this chapter, 
 researchers have also identified limitations on the applicability of lexical-based techniques~\cite{silva2019, Ye2016, Sorbo2015}. For example, Ye et al. has shown that \acs{VSM} 
 fails at retrieving API references that are relevant to Stack Overflow Java questions~\cite{Ye2016} while
-Di Sorbo and colleagues observed that a lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify emails based on developers' intentions~\cite{Sorbo2015}, what prompted them 
+Di Sorbo and colleagues observed that a lexicon analysis, like \acs{LDA}~\cite{blei2003latent}, was insufficient to classify emails based on developers' intentions~\cite{Sorbo2015}, which prompted them 
 to define rules to
 distinguish sentences discussing feature requests, asking for an
 opinion, or proposing solutions, amongst others.
 
-
+\gm{It is a bit odd to have lexical approaches in background, discuss syntactic
+properties briefly above and then jump to semantic. Why discuss lexical if not also
+discussing structural?}
 
 \subsubsection{Semantic Approaches}
 
@@ -41,11 +43,11 @@ To address issues that might arise from lexicon-based approaches,
 many existing studies~\cite{silva2019, Huang2018, Ye2016, huang2018automating} have used techniques able to infer the meaning, or semantics, of text. 
 In such context, semantics is often built by identifying co-occurrence of terms such that one can infer that certain terms are related. For example 
 the terms \textit{car} and \textit{automobile} are likely to co-occur in different phrases with terms like \textit{motor} and \textit{wheel}~\cite{Bavota2016}
-what can be used to establish relationships or associations between these words.
-This concept is used in techniques such as \acf{LSI}~\cite{deerwester1990LSI} or language models~\cite{Mikolov2013} to infer the meaning of the text,
-where Maletic and Marcus application of \acs{LSI} to help cluster software components to aid
-program comprehension of a software system
-is an early example on the usage of semantics by software engineering researchers~\cite{Marcus2003}.
+which can be used to establish relationships or associations between these words.
+This concept is used in techniques such as \acf{LSI}~\cite{deerwester1990LSI} or language models~\cite{Mikolov2013} to infer the meaning of the text.
+As one example of the use of semantics in
+software enigneering, Maletic and Marcus apply \acs{LSI} to help cluster software components to aid
+program comprehension of a software systems~\cite{Marcus2003}.
 
 
 Ever since these early examples, advancements in the \acf{NLP} field have lead software engineering researchers 
@@ -124,7 +126,7 @@ from Di Sorbo et al.~\cite{Sorbo2015}:
 \item \textit{the leaky bucket algorithm fails in limiting the band-width}.
 \end{itemize}
 
-Although these messages have different meanings, \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically and semantically similar, what is not sufficient to determine that the former sentence
+Although these messages have different meanings, a \acs{VSM} or a Skip-gram model would indicate that the sentences are lexically and semantically similar, which is not sufficient to determine that the former sentence
  is a \textit{solution proposal} while the latter, a \textit{problem discovery}, as discussed by Di Sorbo et al.~\cite{Sorbo2015}. 
 A potential reason that explains why these techniques fail to determine the topicality of each sentence is that they capture semantics at the word level. 
 An alternative would be to consider linguistic approaches~\cite{ariel2008pragmatics, austin1975pragmatics} able to infer a sentence's meaning.

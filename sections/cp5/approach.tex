@@ -37,7 +37,7 @@ As a first technique, we explore if the sentences with the highest semantical si
 
 To compute the semantic similarity between the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task, 
 we use the Skip-gram model (Section~\ref{cp5:skip-gram}) with word embeddings trained for the software engineering domain~\cite{Efstathiou2018}. 
-First, we covert each of the sentences to their respective vector representations (i.e., $w_t$ and $w_a$) following Conneau et al.'s guidelines~\cite{conneau2018}, i.e., we average the sum of the embeddings for each word in a sentence.
+First, we convert each of the sentences to their respective vector representations (i.e., $w_t$ and $w_a$) following the guidelines from Conneau et al.~\cite{conneau2018}, i.e., we average the sum of the embeddings for each word in a sentence.
 Then, we compute their semantic similarity as the cosine similarity \red{ref} between their corresponding sentence vectors:
 
 
@@ -68,7 +68,7 @@ We fine-tune BERT to identify the sentences in a natural language artifact that 
 
 
 As we described in Section~\ref{cp5:bert}, we use a BERT model that has been already pre-trained in a massive corpora, namely BERT\textsubscript{uncased}~\cite{Devlin2018Bert}, and we tune it to classify if a sentence is relevant, or not, to a task.
-To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task and we fed them to the model as sentence-artifact input pairs 
+To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task and we feed them to the model as sentence-artifact input pairs 
 alongside binary labels representing whether human annotators deemed that sentence relevant. 
 Using training data, the model will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. 
 
@@ -103,7 +103,8 @@ For that, we implement a set of filters that can be applied to the previous tech
 A filter takes the output of a technique $O$ and produces output $O^{\prime}$ where a sentence must match the filter's relevance criteria.
 
 
-A first filter considers that sentences that give instructions, describe required events, obligations, and others are likely to contain information of interest. 
+A first filter considers that sentences that give instructions, describe required events, obligations, and others \gm{is there a full list to refer to?}
+are likely to contain information of interest. \gm{Why?}
 This filter takes a sentence $a_i \in A$ and checks whether any of the frame elements of this sentence match one meaningful frame $f \in F$. 
 
 
@@ -133,7 +134,7 @@ F = \{ \text{required event}, \text{using}, \text{being obligated}, \text{causat
 A second filter considers that the relevance of a sentence depends on the intentionality of a task. 
 For example, for a task that requires diagnosing an error, sentences in a bug report that describe success or failure are likely relevant. 
 This rationale is represented by a set of associated frame pairs, where each element represents a frame originating from a sentence and another frame originating from a task.
-This filter checks if sentence-task frame pairs obtained from an input artifact and input task contain any of the pairs from a pre-established set.
+This filter checks if sentence-task frame pairs obtained from an input artifact and input task contain any of the pairs from a pre-established set. \gm{Where do these pairs come from?}
 
 
 
@@ -146,9 +147,14 @@ This filter checks if sentence-task frame pairs obtained from an input artifact 
 \end{aligned} \right.
 \end{equation} 
 
+\gm{where is P defined?}
+
 \smallskip
-We derive the frame pairs that compose $P$ by splitting the tasks in our corpus. Part of the tasks and artifacts are used to automatically
-mine associated frame pairs using the apriori algorithm~\cite{agrawal1994apriori}. We test the obtained pairs in tasks and artifacts from which no pairs were derived from. 
+We derive the frame pairs that compose $P$ by splitting the tasks in our corpus.
+\gm{Just the tasks or the artifacts? Which tasks? Which corpus?}
+Part of the tasks and artifacts are used to automatically
+mine associated frame pairs using the apriori algorithm~\cite{agrawal1994apriori}. 
+\gm{More detail needed.} We test the obtained pairs in tasks and artifacts from which no pairs were derived from.  \gm{How do you test?}
 Section~\ref{cp5:evaluation} further details our data split.
 
 
@@ -163,7 +169,7 @@ Section~\ref{cp5:evaluation} further details our data split.
 \subsection{Techniques Summary}
 
 
-Table~\ref{tbl:approaches-summary} bundles the techniques that we explore.
+Table~\ref{tbl:approaches-summary} summarizes the techniques that we explore.
 The table provides a short description and identifier for each technique. From now on, we refer to each technique according to its short identifier.
 
 

@@ -53,6 +53,8 @@ a Wilcoxon-Mann-Whitney test~\cite{mannWhitneyU} to check for statistically sign
 
 Table~\ref{tbl:techniques-results-stackoverflow} shows values of precision and recall for  \texttt{AnsBot} and the semantic techniques that we explore. 
 Overall, we observe that \acs{AnsBot} achieves 0.62 precision and 0.62 recall in our corpus---values explainable by the fact that the tool is tailored specifically to Stack Overflow.
+\gm{So when you say "our corpus" do you mean the corpus restricted to StackOverflow artifacts?}
+
 
 
 When we compare \texttt{AnsBot} to our techniques, we observe that 
@@ -68,6 +70,7 @@ fails to identify relevant text identified by \texttt{AnsBot}.
 
 Since \acs{AnsBot} uses both textual properties and meta-data, 
 we also investigate how much of the tool's accuracy relies on Stack Overflow-specific data.
+\gm{But aren't you applying it only to StackOverflow artifacts?}
 We disable any features that use meta-data, and we compute evaluation metrics once more.
 We refer to this configuration in Table~\ref{tbl:techniques-results-stackoverflow} as \texttt{AnsBot\textsubscript{text}}.
 Results from this comparison indicate that, without meta-data, all \texttt{BERT} techniques
