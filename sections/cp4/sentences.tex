@@ -44,12 +44,15 @@ programming experience (stdv 1.63, ranging from 1 to 5 years).
 
 
 
-We divided tasks into batches of 10 tasks each as to avoid fatigue effects~\cite{Ponzanelli2017}. For each batch, annotators had task descriptions and links to artifacts pertinent to the respective task at their disposal. We asked annotators to write a short plan (250 words max~\cite{Rastkar2010}) with instructions that a developer could follow to complete the task successfully. 
+The annotation process started with two tasks, other than the ones in our dataset, so that annotators could familiarize themselves with annotation procedures.
+For each task, annotators had the task description and links to artifacts pertinent to the task at their disposal. We asked annotators to write a short (250 words max~\cite{Rastkar2010}) with instructions that a developer could follow to complete the task successfully. 
 The purpose of the plan was to ensure that annotators built enough context about the task.
-While perusing artifacts, annotators also had to manually highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the data in the \acs{DS-synthetic} corpus~\cite{marques2020}.
+While perusing artifacts, annotators also had to manually highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the data in Nadi and Treude's study~\cite{nadi2020}
+or in the \acs{DS-synthetic} corpus~\cite{marques2020}.
 
 
-The annotation process was facilitated by a tool we created for this purpose. Figure~\ref{fig:corpus-annotation-tool} shows a screenshot from the tool in 
+Annotation was facilitated by a tool we created for this purpose. 
+Figure~\ref{fig:corpus-annotation-tool} shows a screen shot from the tool in 
 action, which works as a browser plug-in. The top-right corner panel in the figure shows the browser extension. When an annotator clicked the \texttt{highlight} button, 
 the tool instrumented the HTML of a page identifying individual sentences. The tool then allowed annotators to hover over identified sentences and to select them as relevant by clicking on the hovered text. For example, in the first paragraph, an annotator selected  the sentence
 ``\textit{Call ActivityOptions.setLockTaskEnabled() ... when starting the activity}'' as relevant to the Android lock task (Figure~\ref{fig:lock-screen-task}).
@@ -66,6 +69,19 @@ the tool instrumented the HTML of a page identifying individual sentences. The t
     \caption{Annotation tool and relevant sentences marked by an annotator}
     \label{fig:corpus-annotation-tool}
 \end{figure}
+
+
+
+
+We discussed results from these two tasks with all annotators to ensure consistency over responses to any of the questions annotators had. No changes arose from the two introductory tasks.
+After this step, we presented the  tasks in the \acs{DS-android} corpus to the annotators, dividing them into batches of 10 tasks each. 
+Annotation procedures for these tasks were analogous to the introductory tasks.
+
+
+
+
+
+
 
 
 
