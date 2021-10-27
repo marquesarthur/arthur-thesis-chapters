@@ -1,2 +1,2 @@
 #!/bin/sh
-bibtex out/diss.aux
+bibtex out/main.aux
