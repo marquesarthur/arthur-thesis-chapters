@@ -4,43 +4,80 @@
 
 
 
+Performing a task on a software system, like fixing a bug
+or adding a feature, typically requires a developer to consult
+a number of different kinds of artifacts, such
+as API documentation, bug reports, community forums
+and web tutorials.  When consulting these artifacts,
+a developer must identify, from the large amount of text
+in these documents, just the fraction of text relevant
+to the task-at-hand.
 
 
-Researchers have long recognized the value of natural language
-text, utilizing various approaches to extract
-information from this text that can be embedded in
-tools for software developers \red{ref}.
-\gm{Not quite clear if previous sentence is about SE researchers or researchers and
-text in general.}
-These approaches exploit lexical and semantic properties available in the text to determine 
-whether it contains information of interest to a developer \red{ref}. 
+
+Unfortunately, developers tend to struggle with identifying
+the relevant text and when they are unable to locate all, or most, of it,
+they may produce incomplete or incorrect solutions~\cite{Murphy2005}.
+To aid developers in this situation,
+researchers have proposed various 
+techniques and tools to
+identify likely relevant text.
+For example, 
+\textit{Krec}~\cite{Robillard2015}
+identifies text that a developer cannot afford to ignore when reading an API document. 
+As another example,
+\textit{AnswerBot}~\cite{Xu2017} generates answers for a developer's
+task by identifying text pertinent to that particular task on Stack Overflow.
+Although effective, these techniques target specific
+types of artifacts, limiting their use across the 
+many different kinds of artifacts developers encounter
+daily in their work.
 
 
-In this work, information of interest represents text that a developer would consider as relevant to a software task assigned to them. Ideally, we would establish that text in natural language artifacts that matches  
-words (or terms) also present in a task description is likely relevant to the developer's task.
-\gm{Why would this method be ideal? Focus on the problem and finding exactly the
-right text rather than how.} However, direct matches are often scarce \red{ref} and several researchers have observed that:
+
+If one technique could identify relevant text across all kinds
+of artifacts a developer encounters, the technique 
+could apply in all situations and may be more adoptable in industry
+as a result. Guided by recent success  using
+techniques that interpret the meaning, or \textit{semantics}, of text
+for a variety of development activities, such as
+for finding who should fix a bug~\cite{yang2016}, searching for comprehensive code examples~\cite{silva2019}, 
+or assessing the quality of information available in bug reports~\cite{chaparro2019}, we ask:
 
 
 
 \medskip
 \begin{bluequote}
-    \textit{The text in a natural language artifact that contains information associated with the solution for a task often differs from the text in the software task itself.}
+    \textit{to which extent can semantic-based techniques identify task-relevant text across different kinds of software artifacts?}
 \end{bluequote}
-% \smallskip
 
 
 
-Due to these differences, automatically determining the text in a natural language artifact that is of interest to a software task is not trivial. 
-It requires techniques able to shorten the gap between the two sources, identifying or establishing relationships that would indicate the relevance of the text to the task-at-hand.
 
-
-As a first step towards addressing this problem, we consider a set of techniques
- that builds on approaches to interpret the meaning, or semantics, of text.
-We first provide theoretical background for the approaches that we explore and then we detail how we use these approaches in the design space of a technique that automatically identifies text relevant to a software task.
+To investigate this question, we introduce six possible techniques that incorporate the  
+semantics of words and sentences to identify textual information likely relevant to a developer's task.
 
 
 
 
 
 
+% Researchers have long recognized the value of natural language
+% text, utilizing various approaches to extract
+% information from this text that can be embedded in
+% tools for software developers \red{ref}.
+% \gm{Not quite clear if previous sentence is about SE researchers or researchers and
+% text in general.}
+% These approaches exploit lexical and semantic properties available in the text to determine 
+% whether it contains information of interest to a developer \red{ref}. 
+
+
+% In this work, information of interest represents text that a developer would consider as relevant to a software task assigned to them. Ideally, we would establish that text in natural language artifacts that matches  
+% words (or terms) also present in a task description is likely relevant to the developer's task.
+% \gm{Why would this method be ideal? Focus on the problem and finding exactly the
+% right text rather than how.} However, direct matches are often scarce \red{ref} and several researchers have observed that:
+
+
+
+
+% % \smallskip
