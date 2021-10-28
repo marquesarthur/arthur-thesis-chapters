@@ -5,41 +5,52 @@
 
 
 
-
-
-We consider the semantic approaches outlined in Section~\ref{cp5:background} and we explore 
-how can we use them, or their combination, in the design of techniques able to automatically identify text that likely contains information that is relevant to a developer task. 
-More specifically, we investigate determining the relevance of a sentence to a given task using 
-\textit{(1)} word2vec, or the Skip-gram model, \textit{(2)} BERT, and \textit{(3)} frame semantics.
-
-% \begin{itemize}
-%     \item using \textit{Skip-gram model}, or \textit{word2vec}, to identify sentences that are semantically similar to an input task and thus, likely to contain information relevant to that task;
-    
-%     \item fine-tuning \textit{BERT} to identify sentences that are potentially relevant to an input task; and
-
-%     \item using \textit{frame semantics} to filter relevant sentence's based on their meaning.
-% \end{itemize}
+We introduce six novel semantic techniques that might 
+aid developers in identifying
+task-relevant text in software artifacts. Three of the
+techniques use word2vec~\cite{Mikolov2013} as a base for determining a ranked list of similar sentences between an artifact
+and a task description and three use BERT~\cite{Devlin2018Bert}.
+Each of these technique takes as input
+a task description and an artifact. The technique then identifies
+sentences in the artifact pertinent to the task. The output
+from the technique is a ranked set of sentences from
+the artifact from most likely to be helpful for solving the
+task to the least helpful.
 
 
 
-Each technique takes a task and a pertinent artifact as inputs and outputs the sentences that are most likely to contain information that assists a developer in completing that task.
-We present details for each technique in the following sections.
+Table~\ref{tbl:approaches-summary} provides an overview of the six techniques.
+Two techniques simply returns the results of \textit{word2vec} or \textit{BERT}.
+The four others apply \textit{frame semantics}~\cite{fillmore1976frame} to filter
+ each of the sentences returned by the base techniques.
+A first filter---\textit{frame-elements}---retains only sentences
+that include certain frames. The second filter---\textit{frame-associations}---keeps
+sentences with certain co-occurrences of 
+frame semantics between the task description sentences
+and the artifact sentence. We describe word2vec, BERT and the filters in turn to
+explain the six techniques.
 
 
 
+\input{sections/cp5/tbl-approaches-summary}
 
-\subsection{Identifying Task-relevant Text through Semantic Similarity}
+
+\subsection{Identifying Task-relevant Text with word2vec}
 \label{cp5:approach-w2v}
 
 
-As a first technique, we explore if the sentences with the highest semantical similarity are most likely to contain information relevant to the input task. 
+
+To form the base of the first three techniques,  we use word semantics via word2vec in conjunction with information retrieval approaches.
+Information retrieval techniques are usually applied to look for documents relevant to a query prompted by a user~\cite{Bavota2016}, where the relevance of a document to a query is based on some function that indicates how similar the document's content is to that query~\cite{Manning2009IR}. Given the right \textit{similarity function}, information retrieval  techniques 
+can be also applied to identify sentences within a document, artifact in our problem formulation, that are relevant to a task.
 
 
-To compute the semantic similarity between the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task, 
-we use the Skip-gram model (Section~\ref{cp5:skip-gram}) with word embeddings trained for the software engineering domain~\cite{Efstathiou2018}. 
-First, we convert each of the sentences to their respective vector representations (i.e., $w_t$ and $w_a$) following the guidelines from Conneau et al.~\cite{conneau2018}, i.e., we average the sum of the embeddings for each word in a sentence.
-Then, we compute their semantic similarity as the cosine similarity \red{ref} between their corresponding sentence vectors:
+We use the \textit{Skip-gram} model~\cite{Mikolov2013}, also referred to as \textit{word2vec}, to define such a similarity function.
+The \textit{Skip-gram} model exploits Harris' distributional hypothesis~\cite{harris1954distributional}---which states that words that appear in a similar context tend to have similar meanings---and builds vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
+With a significantly large text corpus, the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}.
 
+
+Since \textit{word2vec} represents words through a vector space, the similarity of two words $i$ and $j$ can be obtained computing the cosine similarity~\cite{Manning2009IR} between the corresponding vectors of each word, i.e., $w_i$ and $w_j$:
 
 \begin{equation}
     sim(w_t,w_a) = \frac{w_t^Tw_a}{\|w_t\| \|w_a\|}
@@ -47,39 +58,61 @@ Then, we compute their semantic similarity as the cosine similarity \red{ref} be
 \end{equation}
  
 \smallskip
- As there are multiple sentences in both entities, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained for this sentence and each of the sentences in a task $T$.
+In turn, the similarity of two sentences can be obtained by first computing a vector representation for the entire sentence and then, by measuring the cosine angle between the obtained sentence vectors.
+To obtain sentence vectors, we follow Conneau et al.'s guidelines~\cite{conneau2018}
+and we average the sum of the embeddings for each word in a sentence.
 
- \begin{equation}
-    sim(a_i, T) = max(sim(w_{a_i}, w_{t_1}), sim(w_{a_i}, w_{t_2}) ~\dots~ sim(w_{a_i}, w_{t_m})) \\
-\end{equation}
 
-\smallskip
-Following these procedures, we compute the semantic similarity of all the sentences in an input artifact with regards to an input task and then, 
-we sort the obtained values from highest to lowest. We output the top-n sentences with highest similarity as the ones likely relevant to an input software task.
 
+
+Following these procedures, we use a Skip-gram model with word embeddings trained for the software engineering domain~\cite{Efstathiou2018} to compute the semantic similarity, or relevance, of the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact $A$ and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task  $T$. As both entities have multiple sentences, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained for this sentence and each of the sentences in a task.
+
+
+After we compute the semantic similarity of all the sentences in an input artifact with regards to an input task, we sort the obtained values from highest to lowest, outputting the top-n sentences with highest similarity as the ones likely relevant to an input software task.
+
+
+% \begin{equation}
+%    sim(a_i, T) = max(sim(w_{a_i}, w_{t_1}), sim(w_{a_i}, w_{t_2}) ~\dots~ sim(w_{a_i}, w_{t_m})) \\
+% \end{equation}
+    
 
 \subsection{Identifying Task-relevant Text with BERT}
 \label{cp5:approach-bert}
 
 
-
-We fine-tune BERT to identify the sentences in a natural language artifact that are potentially relevant to an input task.
-
-
-
-As we described in Section~\ref{cp5:bert}, we use a BERT model that has been already pre-trained in a massive corpora, namely BERT\textsubscript{uncased}~\cite{Devlin2018Bert}, and we tune it to classify if a sentence is relevant, or not, to a task.
-To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task and we feed them to the model as sentence-artifact input pairs 
-alongside binary labels representing whether human annotators deemed that sentence relevant. 
-Using training data, the model will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. 
-
-We fine-tune the model by training it for up to 10 epochs with a \textit{batch size} of 64 and a sequence length of 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
-We take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
+In the Skip-gram model, context refers to the sentences used to train the model. This approach to context  does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for a word such as `\textit{company}' even when it can have different meanings, i.e., a business organization or being with someone. In contrast, 
+the \acf{BERT}~\cite{Devlin2018Bert} provides different representations for the same word based on the sentence in which a word appears.
+This additional layer allows the model to perform more complex operations,
+leading to state-of-the-art results in several tasks~\cite{Devlin2018Bert}. 
 
 
+
+
+
+Typically, BERT is trained 
+on a massive amount of data. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token and the model is optimized to predict these replaced, or \textit{masked}, tokens. 
+The model relies on a mechanism, called \textit{attention}~\cite{Vaswani2017attention} that correlates and weights all non-replaced tokens in the input so that the model maximizes predictions.
+To fully train a BERT model, one first creates a base model using a large amount of text and the general token prediction task. 
+Then, this base model is fine-tuned to specific tasks, such as text classification, using a dataset specific to the fine-tuning steps. The procedures of \textit{training} and \textit{fine-tuning}
+allow using the model even when training data is scarce and the model transfers
+what it learned during training steps to the fine-tuning steps~\cite{Devlin2018Bert}.
+
+
+We posit that BERT's attention mechanism and fine-tuning procedures can be used to train the model to classify 
+sentences in a natural language artifact as likely relevant to software task. 
+
+The second group of three techniques we introduce uses a BERT model to classify if a sentence is relevant or not to a task.
+To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact $A$ and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task $T$ and we feed them to the model as task-artifact input pairs 
+alongside binary labels representing whether that sentence is relevant. 
+Using training data, the model's attention mechanism will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. We use up to 10 epochs to train BERT, setting both \textit{batch size} and a \textit{sequence length} to 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
+
+
+
+
+Following these procedures, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
 Similar to the word2vec approach, we predict the relevance of all the sentences in an input artifact with regards to an input task and we use prediction probabilities to select 
 the top-n sentences with highest probability as the relevant ones.
 
-% Since the sentences in a task and software artifact are fairly short, with an average length of 26 tokens, we also set the model's
 
 
 
@@ -91,35 +124,44 @@ the top-n sentences with highest probability as the relevant ones.
 
 
 
-\subsection{Identifying Task-relevant Text with Frame Semantics}
+\subsection{Filtering Task-relevant Text with Frame Semantics}
 \label{cp5:approach-filters}
 
 % \marginpar{{\small \gm{Isn't there multiple SEframes approaches?} \art{There should be two techniques now}}}
 
 
 
-We use frame semantics to identify sentences potentially relevant to a task based on the frame elements available in a sentence and task. 
+Although word2vec and BERT have provided significant improvements to a diverse set of natural language tasks, 
+they still capture semantics at the word level. 
+If we seek to infer a sentence's meaning, an alternative would be to consider  \textit{frame semantics} (\red{Chapter~\ref{cp2:background}}).
+
+
+We define two filters using frame semantics that can be
+applied with either the word2vec or BERT base techniques as
+ a post-processing step to identify sentences potentially relevant to a task based on the frame elements that the \textit{SEFrame} tool identifies~\cite{marques2020}.
 For that, we implement a set of filters that can be applied to the previous techniques as a post-processing step~\cite{Manning2009IR}.
-A filter takes the output of a technique $O$ and produces output $O^{\prime}$ where a sentence must match the filter's relevance criteria.
-
-
-A first filter considers that sentences that give instructions, describe required events, obligations, and others \gm{is there a full list to refer to?}
-are likely to contain information of interest. \gm{Why?}
-This filter takes a sentence $a_i \in A$ and checks whether any of the frame elements of this sentence match one meaningful frame $f \in F$. 
+A filter takes the output of a technique $O$ and produces output $O^{\prime}$ where a sentence must match the filter's relevance criteria. For both filters, we use SEFrame~\cite{marques2021} to assign frames relevant to
+software engineering text.
 
 
 
 
+% \subsubsection{test}
 
+\subsubsection{Frame-elements}
+
+This filter considers sentences identified with
+frames giving instructions, describing required events, explaining system procedures, and others as
+ likely to contain information of interest. The rationale for
+ the set of frames identified is based on findings from related work that have shown that 
+the meaning of the text is an indicator of its relevance to a software task~\cite{marques2020}.
+This filter takes a sentence $a_i \in A$ and checks whether any of the frame elements
+of this sentence match one meaningful frame $f \in F$ from a pre-established set\footnote{\label{full-list}See full list in our replication package~\cite{supplementary_material}}. 
+
+\begin{small}
 \begin{equation}
-\begin{split}
-F = \{ \text{required event}, \text{using}, \text{being obligated}, \text{causation}, \text{attempt}, \text{execution} \} 
-\end{split}
+F = \{ \text{being obligated}, \text{causation}, \dots \text{required event}, \text{using} \} 
 \end{equation}
-
-
-
-
 
 \begin{equation}
 \text{\textit{frame-elements}}(a_i) = \left \{
@@ -128,37 +170,38 @@ F = \{ \text{required event}, \text{using}, \text{being obligated}, \text{causat
     &0, && \text{otherwise}
 \end{aligned} \right.
 \end{equation} 
+\end{small}
 
 
-\medskip
-A second filter considers that the relevance of a sentence depends on the intentionality of a task. 
-For example, for a task that requires diagnosing an error, sentences in a bug report that describe success or failure are likely relevant. 
-This rationale is represented by a set of associated frame pairs, where each element represents a frame originating from a sentence and another frame originating from a task.
-This filter checks if sentence-task frame pairs obtained from an input artifact and input task contain any of the pairs from a pre-established set. \gm{Where do these pairs come from?}
+\subsubsection{Frame-associations}
+
+This filter considers that the relevance of a sentence depends on the intentionality of a task. 
+For example, for a task that requires diagnosing an error, sentences in a bug report that describe success or failure 
+of an action are likely relevant. 
+This rationale is represented by a set of associated frame pairs, where each element represents a frame originating from a task and another frame originating from a sentence.
+This filter checks if a task-artifact frame pair obtained from an input artifact and input task appear in a pre-established set of pairs\cref{full-list}.
 
 
-
+\begin{small}
+\begin{equation}
+P = \{ (\text{execution}, \text{being obligated}), \dots (\text{questioning}, \text{using}) \} 
+\end{equation}
 
 \begin{equation}
-\text{\textit{frame-association}}(a_i, T) = \left \{
+\text{\textit{frame-associations}}(a_i, T) = \left \{
 \begin{aligned}
-    &1, && \text{if}\ frame\_pairs(a_i, T) \cap ~P \ne \emptyset \\
+    &1, && \text{if}\ pair(a_i, T) \cap ~P \ne \emptyset \\
     &0, && \text{otherwise}
 \end{aligned} \right.
 \end{equation} 
-
-\gm{where is P defined?}
-
-\smallskip
-We derive the frame pairs that compose $P$ by splitting the tasks in our corpus.
-\gm{Just the tasks or the artifacts? Which tasks? Which corpus?}
-Part of the tasks and artifacts are used to automatically
-mine associated frame pairs using the apriori algorithm~\cite{agrawal1994apriori}. 
-\gm{More detail needed.} We test the obtained pairs in tasks and artifacts from which no pairs were derived from.  \gm{How do you test?}
-Section~\ref{cp5:evaluation} further details our data split.
+\end{small}
 
 
 
+We identify frame-pairs $p \in P$ using association rule mining~\cite{agrawal1994apriori}, which identifies 
+frame elements that co-occur in a task's title and in the text marked as relevant in the artifacts associated to each task.
+We mine pairs using the apriori algorithm~\cite{apriori-python} with a minimum support level---the minimum number of times the frame element
+pairs must appear across the data---of $0.10$. Section~\ref{cp5:evaluation} further details the data used to identify rules.
 
 
 
@@ -166,11 +209,9 @@ Section~\ref{cp5:evaluation} further details our data split.
 % ------------------------------------------------
 
 
-\subsection{Techniques Summary}
+% \subsection{Techniques Summary}
 
 
-Table~\ref{tbl:approaches-summary} summarizes the techniques that we explore.
-The table provides a short description and identifier for each technique. From now on, we refer to each technique according to its short identifier.
+% Table~\ref{tbl:approaches-summary} summarizes the techniques that we explore.
+% The table provides a short description and identifier for each technique. From now on, we refer to each technique according to its short identifier.
 
-
-\input{sections/cp5/tbl-approaches-summary}

@@ -1,10 +1,10 @@
-\begin{table}
-\caption{Comparison to AnswerBot}
-\label{tbl:techniques-results-answerbot}
+\begin{table}[H]
 \centering    
 \begin{small}
 \begin{threeparttable}
 \begin{tabular}{lcccccc}
+
+
 
 
 & \multicolumn{2}{c}{\textit{no filter}} 
@@ -15,46 +15,56 @@
 
 % \\ 
 
+
+
 \textbf{technique} & 
 \textbf{precision} & \textbf{recall} &
 \textbf{precision} & \textbf{recall} &
 \textbf{precision} & \textbf{recall} \\ 
 
 
-% \hline
-
-\cmidrule(l){1-7}
+\hline
 
 
-\texttt{AnsBot} &
-0.59 & 0.63 &
+\texttt{baseline} &
+0.30 & 0.33 &
 - & - &
 - & -
+
+% 0.49 & 0.42 &
+% \cellcolor{lightgray} 0.52 & \cellcolor{lightgray} 0.48 
 \\
-
-
 
 \texttt{word2vec} &
-0.43\tnote{*} & 0.48\tnote{*} &
-0.49\tnote{*} & 0.45\tnote{*} &
-0.45\tnote{*} &  0.50\tnote{*} 
+0.46 & 0.45 &
+0.50 & 0.47 &
+0.52 &  0.52 
+\\
+
+% \texttt{BERT\textsubscript{DS-synthetic}} &
+% 0.54 & 0.55 & 0.51 & 
+% 0.55 & 0.57 
+% \\
+
+\texttt{BERT\textsubscript{DS-android}} &
+0.54 & 0.60 &
+0.54 & 0.59 &
+0.55 & 0.61 
 \\
 
 
-\texttt{BERT} &
-0.58 & 0.63 &
-0.53* & 0.58* &
-0.58 & 0.62 
+\texttt{BERT\textsubscript{DS-synthetic}} &
+0.54 & 0.57 &
+0.53 & 0.58 &
+0.54 & 0.57 
 \\
-
 
 \hline
 
 \end{tabular}
-\begin{tablenotes}
-    \item[*] \texttt{AnsBot} performs better with a large effect size ($\alpha = 0.1$, \textit{Cohen's D} $\ge 0.8$);
-\end{tablenotes}
 \end{threeparttable}
 \end{small}
+\caption{Evaluation Metrics}
+\label{tbl:techniques-results-overall}
 \end{table}
 

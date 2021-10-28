@@ -1,6 +1,6 @@
 \begin{table}
-\caption{Comparison to AnswerBot}
-\label{tbl:techniques-results-answerbot}
+\caption{Comparison to AnswerBot\textsubscript{text}}
+\label{tbl:techniques-results-answerbot-text}
 \centering    
 \begin{small}
 \begin{threeparttable}
@@ -25,13 +25,11 @@
 
 \cmidrule(l){1-7}
 
-
-\texttt{AnsBot} &
-0.59 & 0.63 &
+\texttt{AnsBot\textsubscript{text}} &
+0.53 & 0.53 &
 - & - &
 - & -
 \\
-
 
 
 \texttt{word2vec} &
@@ -42,9 +40,9 @@
 
 
 \texttt{BERT} &
-0.58 & 0.63 &
-0.53* & 0.58* &
-0.58 & 0.62 
+0.58\tnote{\textdagger} & 0.63\tnote{\textdagger} &
+0.53 & 0.58\tnote{\textdagger} &
+0.58\tnote{\textdagger} & 0.62\tnote{\textdagger} 
 \\
 
 
@@ -52,7 +50,8 @@
 
 \end{tabular}
 \begin{tablenotes}
-    \item[*] \texttt{AnsBot} performs better with a large effect size ($\alpha = 0.1$, \textit{Cohen's D} $\ge 0.8$);
+    \item[\textdagger] \texttt{BERT} performs better with a large effect size ($\alpha = 0.1$, \textit{Cohen's D} $\ge 0.8$);
+    \item[*] \texttt{AnsBot\textsubscript{text}} performs better with a large effect size ($\alpha = 0.1$, \textit{Cohen's D} $\ge 0.8$);
 \end{tablenotes}
 \end{threeparttable}
 \end{small}

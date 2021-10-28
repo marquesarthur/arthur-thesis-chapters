@@ -1,0 +1,42 @@
+\vspace{4mm}        
+\begin{table}[H]
+\begin{scriptsize}
+\begin{tabular}{ccl}
+
+\hline
+
+\textit{-} & \textit{task:}  & \parbox[l][.5cm][c]{11cm}{ The gravity is not working on the TextView in some situation. } \\
+
+0.03 & \textit{s\textsubscript{1}} &  \parbox[l][1cm][c] {10cm}{ You set this text view a width of \texttt{wrap\_content} it means, what ever the text is, the view take the size of the text. }\\
+0.15 & \textit{s\textsubscript{2}} &  \parbox[l][.5cm][c]{10cm}{  and in the LinearLayout , the default gravity (used here) is `center' }\\
+0.16 & \textit{s\textsubscript{3}} &  \parbox[l][.5cm][c]{10cm}{ You are mistaking gravity and \texttt{layout\_gravity}.}\\
+0.42 & \textit{s\textsubscript{4}} &  \parbox[l][.5cm][c]{10cm}{ gravity is the way the text will align itself in the TextView. }\\
+0.22 & \textit{s\textsubscript{5}} &  \parbox[l][1cm][c]{10cm}{ The TextView being in \texttt{wrap\_content} does nothing, as the TextView is exactly the size of the text. }\\
+
+
+\hline
+
+\end{tabular}
+\end{scriptsize}
+\caption{Excerpt of sentences from a Stack Overflow answer for the Android gravity task}
+\label{tbl:gravity-task}
+\end{table}
+
+
+
+% PageRank would return the following probabilities for this matrix $[0.03, 0.15, 0.16, 0.42, 0.22]$.
+
+
+% \begin{scriptsize}
+% \begin{equation}
+% \begin{matrix}
+%             & s_1     & s_2   & s_3   & s_4   & s_5  \\
+%         s_1   & 0     & 0     & 1     & 0     & 1    \\
+%         s_2   & 0     & 0     & 0     & 1     & 1    \\
+%         s_3   & 0     & 0     & 0     & 1     & 0    \\
+%         s_4   & 0     & 1     & 1     & 0     & 1    \\
+%         s_5   & 0     & 0     & 0     & 1     & 0     
+% \end{matrix}
+% \label{eq:adj-matrix}
+% \end{equation}
+% \end{scriptsize}
