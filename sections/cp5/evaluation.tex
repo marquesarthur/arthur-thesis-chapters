@@ -186,7 +186,7 @@ that check if the results between each technique and \texttt{AnsBot} are statist
 Overall, we observe that \texttt{AnsBot} achieves 0.59 precision and 0.63 recall---values explainable by the fact that the tool is tailored specifically to Stack Overflow.
 When we compare \texttt{AnsBot} to our techniques, we observe that the base
  \texttt{BERT} approach and the one using \texttt{frame-associations} achieve result comparable to \texttt{AnsBot}. Interestingly, the \texttt{frame-elements} filter does not provide significant improvements to the base approach. 
-The lack of differences may be explained by the fact that, to determine relevance, the attention mechanism used by BERT already correlates the text in a task and in an artifact (Section~\ref{approach-bert}), 
+The lack of differences may be explained by the fact that, to determine relevance, the attention mechanism used by BERT already correlates the text in a task and in an artifact (Section~\ref{cp5:approach-bert}), 
 and that the vector representations in the model are able to infer contextual information, which may serve as an implicit way to identify a sentence's meaning.
 For \texttt{word2vec}, we observe that the technique's results are significantly lower than \texttt{AnsBot}, which suggests that it fails to identify relevant text identified by \texttt{AnsBot}. 
 
@@ -262,11 +262,6 @@ suggesting that the technique performs well across different types of artifacts.
 
 
 
-\clearpage
-\input{sections/cp5/tbl-results-overall}
-\clearpage
-
-
 
 When we compare techniques without any filters, differences between \texttt{word2vec} and \texttt{BERT} may be explained by how each of these two approaches compute relevance. 
 That is, all the words in a sentence  contribute equally to \texttt{word2vec}'s identification of task-relevant text via its semantic similarity function.
@@ -288,6 +283,63 @@ generalize across a variety of software artifacts.
 
 
 
+\clearpage
+\input{sections/cp5/tbl-results-overall}
+\clearpage
 
 
+
+
+
+\subsection{Threats to Validity}
+
+
+
+We rely on the golden data for \acs{DS-android}
+to evaluate techniques, which impacts the 
+conclusions we draw.
+This golden data in turn relies on the
+human annotations of text in artifacts that
+is related to a task-at-hand (Chapter~\ref{ch:android-corpus}).
+There is a possibility that this text marked by the annotators might not contain information 
+associated with the solution for the task, or that an annotator missed highlighting
+text that they deemed relevant.
+We minimize this threat by considering only the 
+sentences marked  by at least two annotators as the golden data used in the evaluation of techniques.
+We also asked annotators to write a short set of instructions for the tasks they annotated
+and provided them an in-house tool that streamlined annotation procedures.
+These procedures help mitigate  risks to the validity of our conclusions. We note that
+there are no objective means to quantify which text assists task-completion~\cite{Saracevic2007b, Saracevic2007c}. 
+
+
+
+
+
+
+The internal validity of the evaluation
+may be impacted by the differing number of
+types of artifacts in the data set.
+While most of the tasks in the data set have
+associated 
+ Stack Overflow artifacts, not as many have artifacts from GitHub.
+These differences may affect the training
+and testing of each technique. These
+risks are mitigated in that 
+ the content of Stack Overflow and GitHub artifacts is similar in length in the data set.
+
+
+
+%  When interpreting the results, it is worth noting that achieving high accuracy in \acs{DS-android} is challenging
+%  due to the small fraction of sentences deemed relevant, which comprises 20\% of the entire data.
+%  For example, API documents in the corpus have an average of 109.22 sentences per document, from which 9.62 sentences are relevant. 
+%  This means that, with a target number of 10 sentences identified per technique, a $1.0$ recall is only possible when a technique identifies the exact 10 sentences that are relevant for this kind of artifact. 
+
+
+
+The selection of tasks in the Android development domain could 
+affect the generalizability of our work. Most notably, 
+aspects such as programming languages, frameworks, associated technologies, and others~\cite{baltes2019}
+influence the information sought by a developer as well as what they find relevant.
+The three annotators that we recruited to construct the \acs{DS-android} dataset are also not representative 
+of the entire developer population. We leave the investigation of software tasks in other programming languages or domains---and their associated natural language software artifacts---to future work.
 
