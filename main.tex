@@ -36,7 +36,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{checkend}	% better error messages on left-open environments
 
-\usepackage[pdftex]{graphicx} % for incorporating external images
+% https://stackoverflow.com/questions/2739159/inserting-a-pdf-file-in-latex
+% https://tex.stackexchange.com/questions/401031/pdfpages-clashes-with-graphicx-latex-error-option-clash-for-package-graphicx
+\PassOptionsToPackage{pdftex}{graphicx}
+\usepackage{pdfpages} % include pdf pages from another file. good for appendix, ERB files
+
+% \usepackage[pdftex]{graphicx} % for incorporating external images
 % declare the path(s) where your graphic files are
 \graphicspath{ {./fig/} }
 % % and their extensions so you won't have to specify these with
@@ -127,6 +132,9 @@
 \usepackage{cleveref} 
 \crefformat{footnote}{#2\footnotemark[#1]#3}
 
+
+
+
 %% The following uses most defaults, which causes hyperlinks to be
 % \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 
@@ -200,8 +208,10 @@
 \acresetall	% reset all acronyms used so far
 
 
+% \input{sections/cp1-outline}
 % \input{sections/cp4-outline}
-\input{sections/cp5-outline}
+% \input{sections/cp5-outline}
+\input{sections/cp6-outline}
 
 
 \clearpage
