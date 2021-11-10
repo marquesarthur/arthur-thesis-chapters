@@ -1,0 +1,193 @@
+\clearpage
+
+\section{Evaluation}
+\label{cp6:evaluation}
+
+
+
+The goal of our evaluation is to investigate whether tools  
+ that automatically identify text relevant to a task, according to the text's semantics,
+ assist developers complete their tasks. This evaluation helps answer: 
+
+
+\medskip
+\begin{bluequote}
+    \textit{ Do semantic-based techniques help a 
+    developer complete a software development task more more effectively?} 
+\end{bluequote}
+
+
+
+
+To answer this question, we report on a controlled experiment were participants 
+had to complete three programming tasks when assisted (or not) by a
+ tool (\red{Section}~\ref{}) able to identify text relevant to each task 
+in a set of natural language artifacts deemed pertinent to that task. 
+
+
+
+
+For each task, we measure \red{effectiveness} using a test cases that 
+exercise a participant's submitted solution. 
+A \red{complete} solution must pass all test cases of a given task. 
+In turn, a \red{correct} solution must pass a subset of these test cases 
+which cover the core functionalities needed in a task's solution.).
+
+
+% We use \textit{\red{TODO}} and \textit{\red{TODO}} metrics~\cite{manning2010IR} to measure \red{TODO}~\cite{Murphy2005}.
+
+
+
+
+\subsection{Experimental Design}
+
+\red{TODO}
+
+\subsubsection{Participants}
+
+
+3rd and 4th year students in the CS major who are familiar with Python
+
+
+\subsubsection{Tasks}
+
+
+3 programming tasks using well-known python core modules:
+
+- pandas
+
+- strings and regular expressions
+
+- date time manipulation
+
+
+We design each task in such a way that its solution is not obvious. 
+That is, a participant cannot simply copy a code snippet from some API documentation, Stack Overflow post, or blog post to solve the task. Rather, we expect 
+that the solution for a task integrates distinct method calls in a logic way...
+
+
+\subsubsection{Procedures}
+
+
+Online. Using an online judge-like system
+
+
+\subsubsection{Design}
+
+
+Within subjcts OR between subjects
+
+
+
+% \subsubsection{Computing Task Correctness}
+
+
+
+% We compute values for \textit{precision} and \textit{recall} metrics based on the sentences 
+% deemed relevant to a task by \textit{at least two} human annotators.
+% To minimize risks from a scenario where one of the techniques and their underlying approaches has a peak or
+% bottom performance due to training procedures or due to factors beyond our control, 
+% we compute results for each technique over 10 distinct executions over the test data, 
+% reporting the average of each metric over all runs.
+
+
+
+% We compute values for \textit{precision} and \textit{recall} metrics based on the sentences 
+% deemed relevant to a task by \textit{at least two} human annotators.
+% To minimize risks from a scenario where one of the techniques and their underlying approaches has a peak or
+% bottom performance due to training procedures or due to factors beyond our control, 
+% we compute results for each technique over 10 distinct executions over the test data, 
+% reporting the average of each metric over all runs.
+
+
+% For a detailed definition of each metric, we refer to the evaluation outcomes in Table~\ref{tbl:type-I-II-errors}, where  columns represent  labels provided by the annotators and rows,
+% the text identified as relevant or not by a technique.
+
+% % 
+
+% \medskip
+% \input{sections/cp5/tbl-eval-outcomes}
+
+
+
+% \paragraph{\textbf{Precision}}
+
+% Precision measures the fraction of the sentences identified that are relevant over the total number of target sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
+
+
+
+% \begin{equation}
+% \label{eq:cp5:precision}    
+%     Precision = \frac{TP}{TP + FP}
+% \end{equation}
+
+
+% \subsubsection{Computing Task Completeness}
+
+
+% \medskip
+% Precision means identifying only text that is relevant, whereas recall means identifying all relevant text.
+% Ideally, we would aim for a technique with high precision and high recall. Unfortunately, this is often not possible and we must reach a compromise.
+% As described earlier, our goal is to support developers to locate text that might be relevant to their task, 
+% and not locating all the relevant text may lead to incomplete or incorrect solutions, thus the reason why we favour recall.
+
+
+
+
+
+
+% \subsection{Results}
+% \label{cp6:analytic}
+
+
+
+
+
+% \red{TODO}
+
+
+
+
+% Table~\ref{tbl:techniques-results-answerbot} shows values of precision and recall for  \texttt{AnsBot} and the semantic techniques that we explore. 
+% In the table, rows provide details about a specific technique while columns discriminate 
+% precision and recall values and which post-processing filters were applied. 
+% We also mark results from paired Wilcoxon-Mann-Whitney tests~\cite{mannWhitneyU} 
+% that check if the results between each technique and \texttt{AnsBot} are statistically different.
+
+
+
+
+% Results from our comparison to a state-of-the-art approach, namely AnswerBot, 
+% indicate that text-based semantic techniques achieve comparable accuracy  
+% when identifying relevant information in Stack Overflow artifacts.
+
+
+
+
+
+% \subsection{Qualitative Evaluation}
+% \label{cp6:qualitative}
+
+
+
+
+
+% \red{TODO}
+
+
+
+
+% Table~\ref{tbl:techniques-results-answerbot} shows values of precision and recall for  \texttt{AnsBot} and the semantic techniques that we explore. 
+% In the table, rows provide details about a specific technique while columns discriminate 
+% precision and recall values and which post-processing filters were applied. 
+% We also mark results from paired Wilcoxon-Mann-Whitney tests~\cite{mannWhitneyU} 
+% that check if the results between each technique and \texttt{AnsBot} are statistically different.
+
+
+
+
+% Results from our comparison to a state-of-the-art approach, namely AnswerBot, 
+% indicate that text-based semantic techniques achieve comparable accuracy  
+% when identifying relevant information in Stack Overflow artifacts.
+
+
