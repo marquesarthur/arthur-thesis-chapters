@@ -43,6 +43,8 @@ assisted them, and how complete were their solutions, as measured by test cases 
 
 
 
+\clearpage
+
 \subsection{Experimental Design}
 
 \red{TODO}
@@ -58,6 +60,128 @@ for a software task when provided with artifacts containing information for that
 
 Students were offered the opportunity to enter a raffle for one of two \red{\$50} online shopping gift cards.
 We obtained answers from a total of \red{\#} students. \red{Demographics}
+
+
+
+
+% We manually inspected each of the pull requests merged to the master branch in these repos and selected issues that had changes in a single file and that are related to different components core to the Android API.
+
+
+
+
+% tasks from the Practice Python and 
+% w3resource web 
+% sites\footnote{\url{https://www.practicepython.org/} and \url{https://www.w3resource.com/python-exercises/}}. 
+
+
+
+\subsubsection{Tasks}
+
+Due to our target population, we scope tasks in our experiment to three 
+feature requests obtained from popular Python GitHub repos,
+which encompass a social network crawler (\textit{Sherlock}),
+a web-archiving tool (\textit{ArchiveBox}), and a \red{last project}.
+
+
+
+
+
+
+
+
+We manually inspected each of the feature requests available in these repos identifying
+feature requests that
+\textit{(1)}  required understanding interactions between different and well-known Python modules, 
+\textit{(2)}  had pull requests merged to the repo's main branch, and that
+\textit{(3)}  had medium or small size changes (\red{$\le 100$ LOC}).
+
+
+These criteria are based on the fact that we need tasks that are easy to understand and that are enough self-contained so that a student can come up with a solution to them in the amount of time alloted in our experimental procedures (Section~\ref{cp6:evaluation-procedures}).
+According to these requirements, we selected the following feature requests:
+
+
+\begin{itemize}
+    \item \texttt{BeautifulSoup}: use BeautifulSoup4 to parse Google chrome bookmark dumps\footnote{https://github.com/ArchiveBox/ArchiveBox/pull/20}
+    \item  \texttt{Threads}: use multiprocessing and subprocess modules to find all the files that contain some value\footnote{https://github.com/sherlock-project/sherlock/pull/3}
+    \item \red{find a third example/task}
+\end{itemize}
+
+
+
+
+
+
+
+
+% ~\cite{Thiselton2019}
+
+
+
+These tasks expect that a participant understands and integrates modules and method calls 
+in a logic flow and thus, it is unlikely that a student will find a direct solution to the task in one of the artifacts perused for that task. 
+Hence, these tasks align with a scenario where a tool could assist a developer inspecting natural language artifacts and trying to find information relevant to the task-at-hand. 
+
+
+
+% We start corpus creation by identifying software tasks 
+% for which a developer will likely benefit from 
+% the use of  to complete.
+% We scope task selection to 
+% because the 
+% Android \acf{SDK} evolves constantly due to 
+% functionality, security and performance-related improvements~\cite{Li2018android, Mateus2020}.
+% These improvements impact its development community, requiring them to often  seek information regarding changes in the SDK~\cite{linares2014, bavota2014b, mcdonnell2013}.
+% For example, over 35,000 developers have used Q\&A forums to discuss tasks covering 87\% of the classes in the Android API~\cite{parnin2012}.
+
+
+% Two common places where Android task can be found are:
+
+% 3 programming tasks using well-known python core modules:
+
+% - pandas
+
+% - strings and regular expressions
+
+% - date time manipulation
+
+
+% We design each task in such a way that its solution is not obvious. 
+% That is, a participant cannot simply copy a code snippet from some API documentation, Stack Overflow post, or blog post to solve the task. Rather, we expect 
+% that the solution for a task integrates distinct method calls in a logic way...
+
+
+\subsubsection{Procedures}
+\label{cp6:evaluation-procedures}
+
+Online. Using an online judge-like system
+
+
+\subsubsection{Design}
+
+
+Within subjcts OR between subjects
+
+
+
+\subsubsection{Data Analysis}
+
+
+Within subjcts OR between subjects
+
+
+
+\clearpage
+
+
+
+\smallskip
+\paragraph{\textbf{Current problems:}}
+
+\begin{itemize}
+    \item Installing and running the Android SDK is not trivial
+    \item The Android emulators consume too much memory and it may be difficult to perform the tasks in certain environments
+    \item Most of the tasks are visual and they don't have easy tasks cases that I can use to provide feedback to the students
+\end{itemize}
 
 
 
@@ -102,59 +226,8 @@ That is, to perform each of the selected tasks, a developer still has to make ch
 a solution.
 
 
-\smallskip
-\paragraph{\textbf{Current problems:}}
-
-\begin{itemize}
-    \item Installing and running the Android SDK is not trivial
-    \item The Android emulators consume too much memory and it may be difficult to perform the tasks in certain environments
-    \item Most of the tasks are visual and they don't have easy tasks cases that I can use to provide feedback to the students
-\end{itemize}
-
-% We start corpus creation by identifying software tasks 
-% for which a developer will likely benefit from 
-% the use of  to complete.
-% We scope task selection to 
-% because the 
-% Android \acf{SDK} evolves constantly due to 
-% functionality, security and performance-related improvements~\cite{Li2018android, Mateus2020}.
-% These improvements impact its development community, requiring them to often  seek information regarding changes in the SDK~\cite{linares2014, bavota2014b, mcdonnell2013}.
-% For example, over 35,000 developers have used Q\&A forums to discuss tasks covering 87\% of the classes in the Android API~\cite{parnin2012}.
 
 
-% Two common places where Android task can be found are:
-
-% 3 programming tasks using well-known python core modules:
-
-% - pandas
-
-% - strings and regular expressions
-
-% - date time manipulation
-
-
-% We design each task in such a way that its solution is not obvious. 
-% That is, a participant cannot simply copy a code snippet from some API documentation, Stack Overflow post, or blog post to solve the task. Rather, we expect 
-% that the solution for a task integrates distinct method calls in a logic way...
-
-
-\subsubsection{Procedures}
-
-
-Online. Using an online judge-like system
-
-
-\subsubsection{Design}
-
-
-Within subjcts OR between subjects
-
-
-
-\subsubsection{Data Analysis}
-
-
-Within subjcts OR between subjects
 
 
 % \subsubsection{Computing Task Correctness}
