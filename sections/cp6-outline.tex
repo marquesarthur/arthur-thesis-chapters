@@ -2,8 +2,169 @@
 \setcounter{rq}{1}
 
 
-\chapter{Identifying Task-Relevant Text}
+\chapter{Evaluating Text Automatically Identified}
 \label{ch:assisting}
+
+
+
+% Evaluating text that automatic techniques identify as relevant to a software task means assessing 
+% whether this text assists software developers complete the task at hand. 
+% Text that automatic techniques identify as relevant to a software task is intended 
+% to assist software developers complete the said task.
+
+
+
+% While Chapter~\ref{ch:android-corpus} describes a corpus with text that human annotators considered 
+%  relevant to a number of software tasks and Chapter~\ref{ch:identifying} explores 
+% automatic techniques able to identify such text, 
+% they do not address whether text automatically identified 
+% assists software developers complete their software task.
+% To fill this gap, this chapter evaluates one of the semantic techniques introduced early in this thesis 
+% through a user study. 
+
+% \art{This is too much success or fail... not the message I want to carry forward}
+
+
+% In this study, \red{n} software developers attempt two programming tasks associated with 
+%  well-known Python APIs. Developers 
+
+
+
+% With this study, we intend to provide data strengthening or discounting 
+% the usefulness of text 
+
+
+% through the lens of software developers
+
+% how text identified by a semantic based technique assists 
+
+
+
+% on the strengths and short-comings 
+% on how a semantic based technique helps developers on identifying information useful to their task 
+% and how such text compare against text that humans deem relevant to the task at hand. 
+
+
+
+
+% At early chapters, we have described a corpus with text that human annotators considered 
+% relevant to a number of software tasks (Chapter~\ref{ch:android-corpus}). 
+% We have also shown that semantic based techniques are able to automatically identify such text (Chapter~\ref{ch:identifying}).
+% We now turn our attention towards the question of whether a semantic based technique assists developers complete their software task.
+
+
+
+% To answer this question, this chapter describes a user study where \red{n} software developers perform programming tasks associated with 
+%  well-known Python APIs. In a first task, we asked a developer to indicate text that contained information useful to complete her task. In a second task, a tool implementing one of our semantic based techniques 
+ 
+ 
+%   and the 
+%  developer's perception on the usefulness of text automatically identified by one of our semantic based techniques in a second task. We use this data to quantitatively and quantitatively evaluate the role of automatic techniques 
+%  in assisting software developers identify information useful to their software tasks. 
+
+
+
+
+
+
+
+
+
+% To provide evidence supporting or refuting this proposition, we now describe how 
+
+% To aid developers in identifying the fraction of the text relevant to a software task
+
+% explored the design space of a set of  techniques,
+
+
+
+\art{I'm trying to phrase it in a more exploratory and complimentary way to the previous study rather than an affirmative study that just says ``yes it does help'' or ``no it doens't''}
+
+
+
+In a previous chapter, we have shown that semantic-based techniques automatically identify part of the text relevant to a task in an artifact associated with that task.
+Such evaluation provides empirical data on the role of semantics in the identification of task-relevant information.
+Nonetheless, it does not address whether the text identified as relevant indeed assists software developers in completing a software task.
+
+
+
+In this chapter, we seek to provide further data supporting, or refuting, the role of semantics 
+in identifying text that humans deem relevant to a software task through a \textit{user study}. 
+We present three software tasks related to well-known Python modules and we show 
+results from \red{20} software developers who performed two tasks each. 
+This study provides quantitative data comparing the text that developers manually indicated as relevant 
+while they performed a first randomly assigned task to
+the text automatically identified by the best semantic-based technique for 
+that same task. It also details qualitative data by reporting the developers' perception on 
+the usefulness of text automatically identified in each of the artifacts associated with aq second randomly assigned task. 
+
+
+We start by describing the experimental procedures of our user study (Section~\ref{cp6:procedures}) and then by presenting the results of this study  (Section~\ref{cp6:results}). Section~\ref{cp6:summary} summarizes our key findings.
+
+
+% manually identified as relevant to one randomly assigned tasks while they performed the task in question. We also gather a developer's perception on the usefulness of text that the  identifies in a second randomly assigned task.
+
+
+
+
+
+
+
+
+% Text that automatic techniques identify as relevant to a software task is intended 
+% to assist software developers complete the said task
+
+
+%  in a human annotated corpus, it is possible that the text that annotators indicate as relevant and the text that developers performing the same task deem relevant does not match. 
+
+
+% because developers are unable to introspect reliably on their work practices.
+
+
+%  in a corpus where human annotators indicated the portion of the text that they deemed relevant to a number of software tasks
+
+
+% we scale...
+
+
+
+
+% it is possible that what people
+% say they do in response to survey questions bears no relationship to what they actually do,
+% because they are
+ 
+
+% when assisted or not by one
+
+% semantic techniques
+
+
+
+
+% we have shown how the text identified by six semantic techniques
+% compare against text that humans deem relevant to a software task (Chapter~\ref{ch:identifying})
+
+
+% In Chapter~\ref{ch:android-corpus} we present the creation of a corpus 
+% with software tasks and text, originating from different kinds of artifacts,
+% containing information potentially useful to humans performing the task.
+% We use this corpus in the design and quantitative assessment of possible techniques able to automatically identify such text.
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Assessing whether text identified by an automatic technique assists developers 
+% complete software tasks requires 
+
 
 
 % A developer can more effectively complete a software development task when automatically provided with text relevant to their task extracted from pertinent natural language artifacts and represented in a concise and thorough way.  
@@ -15,23 +176,6 @@
 % }
 
 
-\red{Notes and suggestions from the couple last meetings}
-
-\begin{itemize}
-    \item Find open-source tasks from Github projects. It will be easier to justify validity of the tasks
-    \item It can be Javascript, Python, or Android
-    \item Procedures: 
-    \begin{itemize}
-        \item one task without tool, two with 
-        \item try to be consistent over all tasks performed
-    \end{itemize}
-    \item Risks: How to minimize risks if tool support is not helpful?
-    \begin{itemize}
-        \item ask participants to highlight text that assisted them complete the task?
-        \item ask participants about qualitative feedback on the highlights shown?
-        \item \red{other options}
-    \end{itemize}
-\end{itemize}
 
 % Reviewing \textbf{thesis statement} to show chapter motivation.
 
