@@ -2,90 +2,33 @@
 \setcounter{rq}{1}
 
 
-\chapter{Identifying Task-Relevant Text}
+\chapter{Evaluating Text Automatically Identified}
 \label{ch:assisting}
 
 
-% A developer can more effectively complete a software development task when automatically provided with text relevant to their task extracted from pertinent natural language artifacts and represented in a concise and thorough way.  
-
-% \textbf{Thesis statement:} \textit{
-%     Information relevant to a software development task can be automatically extracted from natural 
-%     language software artifacts by interpreting the meaning, or semantics, of the text in these artifacts.
-%     This task-relevant text assists a developer in effectively completing their software development task.
-% }
 
 
-\red{Notes and suggestions from the couple last meetings}
-
-\begin{itemize}
-    \item Let students run tests locally (at least the sample test cases)
-    \item Have their submissions be final
-    \item Try to have entire experiment under 1h
-    \item Err on the side of simplicity, the web archive box and Sherlock tasks might be too complex
-    \item Try to find more visual/simpler tasks
-    % \item Find open-source tasks from Github projects. It will be easier to justify validity of the tasks
-    % \item It can be Javascript, Python, or Android
-    % \item Procedures: 
-    % \begin{itemize}
-    %     \item one task without tool, two with 
-    %     \item try to be consistent over all tasks performed
-    % \end{itemize}
-    % \item Risks: How to minimize risks if tool support is not helpful?
-    % \begin{itemize}
-    %     \item ask participants to highlight text that assisted them complete the task?
-    %     \item ask participants about qualitative feedback on the highlights shown?
-    %     \item \red{other options}
-    % \end{itemize}
-\end{itemize}
-
-% Reviewing \textbf{thesis statement} to show chapter motivation.
-
-% \medskip
-% % \textbf{Thesis statement:} 
-% \textit{
-%     ``A developer can more effectively complete a software development task when provided
-%     with text that automatic techniques determine as relevant to the developer's task 
-%     according to the meaning, or semantics, of the text.''    
-% }
-
-% \medskip
-
-
-% Chapter needs to show that a semantic-based technique from previous chapter assists a 
-% developer effectively complete their task. Must define \textit{effectively}: 
-
-% \begin{itemize}
-%     \item correct: the solution for the task meets some correctness criteria, e.g., it meets expectations from a unit test
-%     \item complete: the solution meets some completeness criteria, e.g., it passes `\textit{all}' expected unit tests
-% \end{itemize}
-
-
-% This leads to a `within subjects' or `between subjects' evaluation where we assess whether 
-% a developer's solution is more correct or complete
-%  when assisted by a tool that embeds one semantic-based technique.
-
-% \begin{itemize}
-% \item independent variable: task done with or without tool
-% \item dependent variable(s): completeness and correctness of the task
-% \end{itemize}
-
-
-\clearpage
-
-
-% \includepdf[pages=-]{fig/cp6/ideas.pdf}
-
-
-% \input{sections/cp6/tbl-brainstorm-a}
-
-% \input{sections/cp6/tbl-brainstorm-b}
-
-
-\input{sections/cp6/evaluation}
+\art{Rather than an affirmative study that just says ``yes it does help'' or ``no it doens't'', I'm trying to phrase it in as a complimentary study}
 
 
 
+In a previous chapter, we have shown that semantic-based techniques automatically identify part of the text 
+that human annotators deemed relevant to a number of artifacts associated with Android tasks.
+Although such evaluation provides empirical data on the role of semantics in the identification of task-relevant information, it does not address whether the text identified as relevant indeed assists software developers in completing a software task.
 
-% \input{sections/cp5/summary}
 
 
+In this chapter, we present a \textit{controlled experiment} where we seek to provide further data supporting, or refuting, the role of semantics in identifying task-relevant text. 
+We present three software tasks related to well-known Python modules and we show 
+results from \red{20} software developers who each performed two randomly assigned tasks. 
+Based on the developers' responses, we compare the text identified as relevant though manual (developers)
+and automatic (semantic-based technique) means. We also report the developers' perception on the usefulness of text automatically identified for each task. 
+
+
+We start by describing the experimental procedures (Section~\ref{cp6:procedures}) and then by presenting the results of this controlled experiment (Section~\ref{cp6:results}). Section~\ref{cp6:summary} summarizes our key findings.
+
+
+
+\input{sections/cp6/procedures}
+\input{sections/cp6/results}
+\input{sections/cp6/summary}
