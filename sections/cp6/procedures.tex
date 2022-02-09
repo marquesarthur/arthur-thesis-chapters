@@ -1,50 +1,110 @@
 \clearpage
 
-\section{Evaluation}
+\section{Experimental Setup}
 \label{cp6:procedures}
 
 
-The goal of our evaluation is to investigate whether text automatically identified
-as relevant to a task and shown to a developer assist them to complete their software task.
-This evaluation helps answer: 
+% TODO ---- problematic
+
+The goal of our evaluation is to investigate if, and how, developers benefit from
+text identified as relevant to a given task by a semantic-based techniques. 
+Our main hypothesis is that
 
 
 \medskip
 \begin{bluequote}
-    \textit{ Does text automatically identified by a semantic-based technique assist a 
-    developer complete her software development task?} 
+    \textit{text automatically identified by a semantic-based technique assists a 
+    developer complete her software development task.} 
 \end{bluequote}
 
 
-% To answer this question, we detail a controlled experiment where participants 
-% had to complete \red{two} programming tasks when assisted (or not) by a
-%  tool that embeds such a semantic-based technique (\red{Section~\ref{}}). 
+
+To test this hypothesis, we detail a controlled experiment where participants
+ had to complete two programming tasks when assisted (or not) by a
+ tool that embeds one of the best performing semantic-based techniques that we have explored previously ({Section~\ref{cp5:results-all}). 
 
 
-% We report metrics related to the text that participants in the experiment indicated as helpful to the task-at-hand, their agreement on the extent to which the text automatically identified by our tool 
-% assisted them, and how complete were their solutions, as measured by test cases that judged
-% their code.
+We first evaluate how the text that a participant manually identifies as relevant (while she performs a task) 
+compares to text that an automatic technique identifies. 
+We then consider if a participant found the text automatically identified helpful, i.e., the text identified provides useful information needed to correctly complete her task.
 
 
-\subsection{Experimental Design}
+In the following sections, we detail our experimental setup.
 
-Our experiment asks participants to perform two tasks, a control task and one where participant are assisted by our tool.
-These tasks are drawn from Python open-source projects and encompass a feature request take requires changes to the code base.
-We ask participants to code a solution for that task using a set of natural language artifacts related to that task.
-We gather data about the correctness of the task and what information participants used to assist them towards task completion.
-ch
-\clearpage
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1.\textwidth]{cp6/tool-experiment-pipeline}
-    \caption{Overview of the study design and outcomes}
-    \label{fig:cp6-experiment-overview}
-\end{figure}
+\art{Add a figure to help summarizing the experimental setup?}
 
-\clearpage
 
-\subsubsection{Participants}
+
+
+
+
+\subsection{Design}
+
+
+We follow a \textit{within-subjects} design. Each participant is exposed to a control task and a tool assisted task. For each of these tasks, we provided to the participants a set of natural language artifacts related to the task
+and we asked them to code a solution for the task. While tasks were randomly assigned to each participant, 
+we ensured that the tasks were evenly distributed among control and tool assisted groups. 
+
+
+
+
+
+\subsection{Tasks}
+
+
+Our experiment requires programming tasks for which a developer will likely benefit from the use of additional information to complete. We also need to ensure that the tasks are enough self-contained so that they can be finished in a single experimental session. These criteria lead us to 
+follow task selection procedures similar to Thiselton and Treude~\cite{thiselton2019}, 
+i.e., we select tasks from the Python w3resource website\footnote{\url{https://www.w3resource.com/python-exercises/}}
+that require using at least one module external to the Python core modules. 
+
+
+
+Table~\ref{tbl:python-tasks-modules} details the tasks and modules that we have selected. These tasks focus on modules that have been widely used.
+For example, Reddit---a social news aggregator with approximately 430 million monthly users---uses the \texttt{BS4} module
+to parse 
+urls and identify images shown on its posts' headlines~\cite{bs4-reddit} while SquareUp---a digital  payments company---uses \texttt{pandas} for data analysis. 
+
+
+% \footnote{\url{https://www.crummy.com/software/BeautifulSoup/}} 
+
+
+\art{Add table with tasks.}
+
+
+
+
+
+
+
+% Due to our target population, we scope tasks in our experiment to  
+% feature requests obtained from popular Python GitHub repos,
+% which encompass a social network crawler (\textit{Sherlock}),
+% a web-archiving tool (\textit{ArchiveBox}), and a \red{last project}.
+
+
+
+% We manually inspected each of the feature requests available in these repos, identifying
+% feature requests that
+% \textit{(1)}  required understanding interactions between different and well-known Python modules, 
+% \textit{(2)}  had pull requests merged to the repo's main branch and that
+% \textit{(3)}  had medium or small size changes in no more than two files (\red{$\le 300$ LOC}).
+
+
+% These criteria are based on the fact that we need tasks that are easy to understand and that are self-contained enough so that a student can come up with a solution to them in the amount of time allotted in our experimental procedures (Section~\ref{cp6:evaluation-procedures}).
+% According to these requirements, we selected the following feature requests:
+
+
+% \begin{itemize}
+%     \item \texttt{BeautifulSoup}: use BeautifulSoup4 to parse Google chrome bookmark dumps\footnote{https://github.com/ArchiveBox/ArchiveBox/pull/20}
+%     \item  \texttt{Threads}: use multiprocessing and subprocess modules to find all the files that contain some value\footnote{https://github.com/sherlock-project/sherlock/pull/3}
+%     \item \red{find a third example/task}
+% \end{itemize}
+
+
+
+
+\subsection{Participants}
 
 
 
@@ -56,32 +116,6 @@ for a software task when provided with artifacts containing information for that
 Students were offered the opportunity to enter a raffle for one of two \red{\$50} online shopping gift cards.
 We obtained answers from a total of \red{\#} students. \red{Demographics}
 
-
-\subsubsection{Tasks}
-
-Due to our target population, we scope tasks in our experiment to  
-feature requests obtained from popular Python GitHub repos,
-which encompass a social network crawler (\textit{Sherlock}),
-a web-archiving tool (\textit{ArchiveBox}), and a \red{last project}.
-
-
-
-We manually inspected each of the feature requests available in these repos, identifying
-feature requests that
-\textit{(1)}  required understanding interactions between different and well-known Python modules, 
-\textit{(2)}  had pull requests merged to the repo's main branch and that
-\textit{(3)}  had medium or small size changes in no more than two files (\red{$\le 300$ LOC}).
-
-
-These criteria are based on the fact that we need tasks that are easy to understand and that are self-contained enough so that a student can come up with a solution to them in the amount of time allotted in our experimental procedures (Section~\ref{cp6:evaluation-procedures}).
-According to these requirements, we selected the following feature requests:
-
-
-\begin{itemize}
-    \item \texttt{BeautifulSoup}: use BeautifulSoup4 to parse Google chrome bookmark dumps\footnote{https://github.com/ArchiveBox/ArchiveBox/pull/20}
-    \item  \texttt{Threads}: use multiprocessing and subprocess modules to find all the files that contain some value\footnote{https://github.com/sherlock-project/sherlock/pull/3}
-    \item \red{find a third example/task}
-\end{itemize}
 
 
 
@@ -243,3 +277,12 @@ We use each task as our unit of analysis. For each tasks, we report dependent va
 % a solution.
 
 
+
+
+
+% We report metrics related to the text that participants in the experiment indicated as helpful to the task-at-hand, their agreement on the extent to which the text automatically identified by our tool 
+% assisted them, and how complete were their solutions, as measured by test cases that judged
+% their code.
+
+
+%  TODO: easy part ???? more descriptive
