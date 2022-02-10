@@ -4,8 +4,6 @@
 \label{cp6:procedures}
 
 
-% TODO ---- problematic
-
 
 Our experiment's main hypothesis is that:
 
@@ -18,7 +16,7 @@ Our experiment's main hypothesis is that:
 
 
 
-To test this hypothesis, we detail a controlled experiment where participants
+To test this hypothesis, we have designed an experiment where participants
  had to complete two programming tasks when assisted (or not) by a
  tool that embeds one of the best performing semantic-based techniques that we have explored previously ({Section~\ref{cp5:results-all}). 
 
@@ -26,9 +24,7 @@ To test this hypothesis, we detail a controlled experiment where participants
 We first evaluate how the text that a participant manually identifies as relevant (while she performs a task) 
 compares to text that an automatic technique identifies. 
 We then consider if a participant found the text automatically identified helpful, i.e., the text identified provides useful information needed to correctly complete her task.
-
-
-In the following sections, we detail our experimental setup.
+Experimental setup is as follows.
 
 
 \art{Add a figure to help summarizing the experimental setup?}
@@ -54,172 +50,293 @@ we ensured that the tasks were evenly distributed among control and tool assiste
 
 
 
-We advertised our study to both professionals in our personal network and to Computer Science students at the University of British Columbia. 
-This provides for breadth of experience where novice and expert developers attempt our the tasks that we have selected. 
+We advertised our study to both developers in our professional network and to computer science students at the several universities. 
+This provides for breadth of experience where both novice and expert developers attempt the tasks in our experiment. 
 
 
-We advertised the study only to third and fourth-year students to ensure that they had the necessary background required to perform the study's taks.
+With regards to computer science students, we advertised the study only to third and fourth-year students to ensure that they had the necessary background required to perform the study's taks.
 At this point in the curriculum, they should be familiar with Python and they should be able to come up with a solution 
 for a software task when provided with artifacts containing information for that task.
 
 
-Participants were offered the opportunity to enter a raffle for one of two iPads 64 GB.
+To compensate participants for their time, we offered them the opportunity to enter a raffle for one of two iPads 64 GB.
 
 
 
 
 \subsection{Tasks}
+\label{sec:experiment-tasks}
+
+Our experiment requires programming tasks for which a developer will likely benefit from the use of additional information to complete. We also need to ensure that the tasks are self-contained enough so that they can be finished in a single experimental session lasting approximately 2 hours.
 
 
-Our experiment requires programming tasks for which a developer will likely benefit from the use of additional information to complete. We also need to ensure that the tasks are enough self-contained so that they can be finished in a single experimental session. These criteria lead us to 
+These criteria lead us to 
 follow Thiselton and Treude's task selection procedures~\cite{thiselton2019}, 
-i.e., we select tasks from the Python w3resource website\footnote{\url{https://www.w3resource.com/python-exercises/}}
-that require using at least one module external to the Python core modules. 
+where we selected tasks from the Python w3resource website\footnote{\url{https://www.w3resource.com/python-exercises/}}.
+We focused on tasks that required usage of at least one module external to the Python core modules.
+In turn, we required that these modules were widely used both by open source systems and by private companies.
+For example, one of our selected tasks involve using \texttt{BeautifulSoup},
+which Reddit---a social news aggregator with approximately 430 million monthly users---uses 
+to parse urls and identify images shown on its posts' headlines~\cite{bs4-reddit}. 
 
 
 
-Table~\ref{tbl:python-tasks-modules} details the tasks and modules that we have selected. These tasks focus on modules that have been widely used.
-For example, Reddit---a social news aggregator with approximately 430 million monthly users---uses the \texttt{BS4} module
-to parse 
-urls and identify images shown on its posts' headlines~\cite{bs4-reddit} while SquareUp---a digital  payments company---uses \texttt{pandas} for data analysis. 
+
+
+Table~\ref{tbl:python-tasks-modules} details the tasks and modules that we have selected. 
+
+\art{add short description for each task}
+
+
 
 
 % \footnote{\url{https://www.crummy.com/software/BeautifulSoup/}} 
 
 
-\art{Add table with tasks.}
+
+
+
+\input{sections/cp6/tbl-task-descriptions.tex}
+
+
+\clearpage
+
+
+
+
+\subsection{Artifacts}
+\label{sec:experiment-artifacts}
+
+
+Each task requires a set of artifacts that a participant could peruse to locate information that could assist them complete the task.
+We select artifacts for a task following procedures similar to the ones we used to create the \acs{DS-android} dataset (Chapter~\ref{ch:android-corpus}). 
+For each of the tasks in Table~\ref{tbl:python-tasks-modules}, we use the Google search engine to find a total of ten artifacts that likely contain relevant
+information for that task in top-ranked development websites. 
 
 
 
 
 
-\subsection{Coding Environment}
 
-
-To ensure that participants had the same conditions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
-By using Colab, we expect setup instructions to be minimal 
-so that we allow a participant to focus on the task-at-hand.
+\subsection{Procedures}
+\label{cp6:evaluation-procedures}
 
 
 
-Figure~\ref{fig:online-judge} shows the \texttt{NYTimes} task (left-hand side) and its Colab environment (right-hand side). 
-Participants had the task description and examples of input and output scenarios for the task as well as the resources associated with that task. 
-Colab provided a code editor with amenities commonly found in modern IDEs, such as code completion and syntax highlighting. 
+The experiment was completely online and it could be performed at a participant's personal computer
+without the presence of one of the researchers. Each participant had to complete a practice task and two tasks, i.e., a control and a tool assisted task, drawn from the tasks presented in Table~\ref{tbl:python-tasks-modules}. 
+
+
+Each experimental session lasted no more than two hours; this length of time was selected based on two pilot sessions. 
+Feedback from these pilots also helped to refine the experiment's instructions, where we included a short video showing how to install the web browser plugin and how to use Colab, the online environment where participants performed each task (Section~\ref{cp6:environment}).
+
+
+
+
+
+
+We began each session gathering consent and requesting participants to install a web browser plugin which we used to gather data.
+Setup was followed by a short tutorial explaining the experiment and describing how to use the plugin and Colab. 
+A practice task---separated from the experimental tasks---allowed participants to familiarize themselves with the content of a task, the web browser plugin and Colab. 
+
+
+
+For each task, including the practice tasks, we asked a participant to write a solution for the task
+when provided with a fixed set of artifacts, e.g., official API documentation, Stack Overflow posts, or web tutorials, 
+associated with that task.  
+
+
+In the control task, a participant was instructed to use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
+In the tool assisted task, the plugin automatically highlighted sentences that our semantic-based technique identified as relevant for the task. 
+For this second task, we had one extra step asking the participant to rate---using a Likert scale---how helpful were the highlights automatically identified per artifact available. 
+
+
+We concluded the study by asking participants if they would like to provide any additional information and 
+by giving them the opportunity to join the raffle, if so they wished. 
+
+
+
+% \subsubsection{Summary of procedures}
+
+% Based on our experimental procedures, we could gather:
+
+
+
+% \begin{enumerate}
+%     \item a participant's submitted solution (written Python code) for each task;
+%     \item a participant's highlights for the control task; 
+%     \item a participant's perception on the usefulness of the automatically identified highlights for the tool assisted task, and;
+%     \item any additional feedback (written text) that a participant wished to provide us.
+% \end{enumerate}
+
+
+Table~\ref{tbl:experiment-data} summarizes the data we collected based on experimental procedures.
+
+\input{sections/cp6/tbl-summary-of-procedures.tex}
+
+
+\subsection{Colab}
+\label{cp6:environment}
+
+
+To ensure that participants had the same conditions to perform each task, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
+By using Colab, we also expect setup instructions to be minimal 
+so that we allow a participant to focus on the task and experimental procedures.
+
+
+
+Figure~\ref{fig:nytimes-task-colab} shows an example of our online environment for the \texttt{NYTimes} task.
+At the left-hand side, participants had the task description and examples of input and output scenarios as well as a list of resources associated with that task. 
+By clicking on the coding environment link, participants were redirected to Colab (right-hand side),
+where they had a code editor with amenities commonly found in modern IDEs, such as code completion and syntax highlighting. 
+
+
 
 Through Colab, a participant could compile their solution and test it against the examples shown alongside the task description.
 Upon testing, the system would display full details about the test cases, e.g., the test's input, which assertion failed, and why. 
 
 
- 
+
+
 \clearpage
 
 \begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{cp6/colab.png}
-    \caption{Tasks and Colab environment.}
-    \label{fig:nytimes}
+    \includegraphics[width=1.5\textwidth]{cp6/task-colab.pdf}
+    \caption{NYTimes task and Colab environment.}
+    \label{fig:nytimes-task-colab}
 \end{figure}
 \end{landscape}
 
 \clearpage
 
 
-
-\subsubsection{Procedures}
-\label{cp6:evaluation-procedures}
-
-
-Each experimental session lasted no more than two hours; this length of time was selected based on two pilot sessions. 
-
-
-
-We began each session gathering consent and requesting participants to install a web browser plugin which we used to gather data.
-Setup was followed by a short tutorial explaining the experiment and describing how to use the plugin and Colab. 
-A practice task, separated from the experimental tasks,
- allowed participants to familiarize themselves with the content of a task, the web browser plugin, and Colab. 
+\subsection{Analysis}
 
 
 
 
-Participants were randomly assigned to a control task and to a tool assisted task, each.
-For these tasks, participants were asked to inspect a set of artifacts with documentation related to that task and then, to write a solution for the task. 
-In the control task, participants could use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
-In the tool assisted task, the plugin automatically highlighted sentences that it identified as relevant for the task. 
-For this second task, experimental procedures had one extra step asking a participant to rate---using a Likert scale---how helpful were the highlights automatically identified. 
+We use the gathered data to investigate our main hypotheses according to the following metrics.
+
+
+
+\subsubsection{Submitted Solution}
+
+ 
+The correctness of a submitted solution is measured by the number of passing test cases
+when running each participant's solution against a set of 10 test cases. 
+A solution with compile errors has a correctness score of zero.
+
+
+\smallskip
+\begin{small}
+
+
+\begin{equation}
+    Correctness = \frac{ \text{\textit{\# of passing test cases}}}{\text{\textit{\#  of test cases}}}
+\end{equation}
+\end{small}
+
+% \smallskip
+% According to this definition, 
+
+
+\subsubsection{Manual Highlights}
+
+
+We compare the participants' manual highlights  against the ones automatically identified by our semantic-based technique measuring the amount of overlap between the two. 
+For that, we use \textit{precision} and \textit{recall} metrics. 
 
 
 
 
-\subsubsection{Analysis}
+Precision measures the fraction of the automatically identified text that was  considered relevant
+by the participants.
+
+\smallskip
+\begin{small}
 
 
-We use each task as our unit of analysis. For each tasks, we report dependent variables within groups (i.e., control and tool-assisted) and between groups (i.e., control \textit{vs} tool-assisted)
+\begin{equation}
+    Precision = \frac{
+        \text{\textit{automatic highlights}~} \cap 
+        \text{~\textit{manual highlights}}
+    }{\text{\textit{automatic highlights}}}
+\end{equation}
+\end{small}
+
+
+Recall represents how many of all the manual highlights were identified by the semantic-based technique that we applied.
+
+\smallskip
+\begin{small}
+
+\begin{equation}
+    Recall = \frac{
+        \text{\textit{automatic highlights}~} \cap 
+        \text{~\textit{manual highlights}}
+    }{\text{\textit{manual highlights}}}
+\end{equation}
+\end{small}
+
+\medskip
+\art{Argue which metric matters the most here}
+
+
+\art{Discuss how to account for variability in what the participants highlighted}
+
+
+\subsubsection{Usefullness of the Automatic Highlights}
+
+
+We use a diverging stacked bar chart~\cite{Heiberger2014} to analyze the  Likert scale
+responses on the usefulness of the text automatically identified.
+
+
+Usefulness indicates the percentage of responses agreeing or disagreeing with whether sentences
+automatically highlighted assisted a participant in completing a task.
+
+
+\smallskip
+\begin{small}
+
+\begin{equation}
+Usefullness = \frac{
+    \text{\textit{\# of responses at i}}
+}{
+    \text{\textit{total \# of responses}}
+}
+\end{equation}
+        
+
+\begin{equation*}
+i \in \{ 
+    \text{\textit{
+        (strongly) agree, neither agree or disagree, (strongly) disagree
+    }}  
+\}
+\end{equation*}
+\end{small}
+
+% This analysis complements the quantitative comparison of manual and automatic highlights.
+% By asking participants to reflect on the usefulness of the text automatically identified, 
+% we seek to minimize risks related to how a participant might have missed highlighting
+% text that assisted them complete a task~\cite{easterbrook2008}.
+
+
+
+
+
+\subsubsection{Written Feedback}
+
+ 
+We use qualitative methods to analyze participants' responses to the open-ended questions. 
+
+\art{Think this through...}
+
 
 
 
 \clearpage
 
-
-
-\smallskip
-\paragraph{\textbf{Problems with Android/Java tasks:}}
-
-\begin{itemize}
-    \item Installing and running the Android SDK is not trivial
-    \item The Android emulators consume too much memory and it may be difficult to perform the tasks in certain environments
-    \item Most of the tasks are visual and they don't have easy test cases that I can use to provide feedback to the students
-\end{itemize}
-
-
-
-% \subsubsection{Tasks}
-
-% We use bugs or feature requests obtained from three popular \red{Android} GitHub repos (i.e., \textit{Omni-Notes}, \textit{K-9}, and \textit{AntennaPod}) as the tasks of our experiment. 
-% We manually inspected each of the pull requests merged to the master branch in these repos and selected issues that had changes in a single file and that are related to different components core to the Android API.
-% This manual inspection lead us to select the following tasks:
-% \footnote{
-% \textcolor{steelblue}{{\textit{AM:} one challenge with Android tasks is that, while more representative, they are harder to debug and test in a self-contained environment.
-% A potential alternative are Python tasks that require using well-known modules. https://www.practicepython.org/ has examples for \texttt{beautifulsoup}}}}.
-
-% % ---\textit{Omni-Notes}, \textit{K-9}, and \textit{AntennaPod}---
-
-
-
-% \begin{itemize}
-%     \item \texttt{Notifications}: notify users about new emails in their inbox;
-%     \item \texttt{Permissions}: request user permissions to and external storage; and
-%     \item \texttt{Storage}: show size of all the data used by the application.
-% \end{itemize}
-
-
-% While these tasks are small enough so that a student can come up with a solution in a single programming session,
-% they require understanding interactions between different API components 
-% and likely require the students to seek information in the Android API documentation or in community forums. 
-% Therefore, we deem the tasks as appropriate to a scenario where our tool could assist a student trying to find information relevant to these tasks in a set of natural language artifacts. 
-
-
-% \subsubsection{Android Application}
-
-
-% Ideally, all tasks could have been selected from the same open-source project. However, our requirements on the number of classes or methods in a task's solution as well as the need that the tasks relate to core Android API components made it difficult 
-% to identify a single project with such self-contained tasks. Since asking a student to familiarize themselves with running, debugging and modifying three different and complex Android applications 
-% poses challenge to experimental procedures, we decided to use the 2019 Google I/O Android demo application as the core project in which the selected tasks must be implemented. 
-% % \footnote{\url{https://github.com/marquesarthur/iosched}}
-
-
-% The I/O Android app displays a list of conference events---sessions, office hours, app reviews, codelabs, etc.---and it lets a user filter these events by event types and by topics.
-% This project has \red{[statistics about number of classes, lines, etc.]} and we believe that we can transpose the tasks that we have selected to this Android app without loss of context or complexity. 
-% That is, to perform each of the selected tasks, a developer still has to make changes to a single file and they still need to consult supporting material to identify information that guides them towards 
-% a solution.
-
-
-
-
-
-% We report metrics related to the text that participants in the experiment indicated as helpful to the task-at-hand, their agreement on the extent to which the text automatically identified by our tool 
-% assisted them, and how complete were their solutions, as measured by test cases that judged
-% their code.
-
-
-%  TODO: easy part ???? more descriptive
