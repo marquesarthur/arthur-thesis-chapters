@@ -18,6 +18,9 @@ Our experiment's main hypothesis is that:
 
 To test this hypothesis, we design an experiment where \red{12} participants
  had to complete two randomly assigned programming tasks related to well-known Python modules. 
+
+%  For each of these tasks, we provided to the participants a curated list of natural language artifacts related to the task
+% and we asked them to code a solution for the task.
  
  
 %  when assisted (or not) by a
@@ -25,7 +28,7 @@ To test this hypothesis, we design an experiment where \red{12} participants
 
 
 In a first task, a participant manually identifies text relevant to that task (while performing the task)
-in a set of curated artifacts containing information that could assist the participant to complete the task at hand.
+in a set of curated artifacts containing information that could assist the participant complete the task at hand.
 With this first task, we evaluate how the text that a participant manually identified as relevant
 compares to the text that an automatic technique would identify for that same task. 
 
@@ -33,7 +36,8 @@ compares to the text that an automatic technique would identify for that same ta
 
 In a second task, each artifact associated to the task has a set of highlighted sentences. These 
 sentences represent text that an automatic approach ({Section~\ref{cp5:results-all}) identified as potentially useful for that task. 
-With this second task, we evaluate if a participant found the text automatically identified helpful, i.e., the text identified provides useful information needed to correctly complete her task.
+We ask a participant to indicate whether the highlights shown helped her complete their task.
+Hence, with this second task, we evaluate what is the participants' perceived usefulness of the text automatically identified.
 
 
 Experimental setup is as follows.
@@ -43,17 +47,59 @@ Experimental setup is as follows.
 
 
 
-
+\art{say somewhere that the experiment was performed remotely and without the researcher's assistance. }
 
 
 \subsection{Design}
 
 
-We follow a \textit{within-subjects} design. Each participant is exposed to a control task and a tool assisted task. For each of these tasks, we provided to the participants a set of natural language artifacts related to the task
-and we asked them to code a solution for the task. While tasks were randomly assigned to each participant, 
-we ensured that the tasks were evenly distributed among control and tool assisted groups. 
+The experiment's independent variable represents the task configuration, i.e., if a participant had to manually indicated what text they deemed relevant to a task
+or if our tool automatically did this step. We refer to these two configurations as \textit{manual} or \textit{tool-assisted}. 
 
 
+Based on our independent variable, we follow a \textit{within-subjects} design. Each participant is exposed to exactly one manual task and one tool-assisted task.
+We assigned tasks to a participant randomly. Nonetheless,  
+we ensured that each task configuration (manual or tool-assisted) was seen by an equal number participants.
+
+
+
+
+
+
+
+
+\subsection{Tasks}
+\label{sec:experiment-tasks}
+
+
+
+We expect the experiment to be executed offline, i.e., the experiment has self-contained instructions that allow a participant to perform their assigned tasks without any supervision.
+This requires tasks that are easy to understand and perform in a single experimental session. At the same time, our main hypothesis requires tasks for which a developer will likely benefit from the use of additional information to complete.
+
+
+These criteria lead us to select Python w3resource tasks\footnote{\url{https://www.w3resource.com/python-exercises/}}
+that required usage of at least one module external to the Python core modules~\cite{thiselton2019}.
+By using an external module, we aim to reduce the likelihood that a participant 
+can provide a solution for a task without consulting any of the artifacts accompanying that task. 
+
+
+
+
+
+
+Table~\ref{tbl:python-tasks-modules} details the tasks that we have selected. 
+We chose these tasks due to how they focus on modules widely adopted both by open source systems and by private companies.
+For example, the \texttt{NYTimes} task involves using a HTML parser, namely \texttt{BeautifulSoup},
+which Reddit---a social news aggregator with approximately 430 million monthly users---uses 
+to parse urls and identify images shown on its posts' headlines~\cite{bs4-reddit}. 
+Similarly, the \texttt{Titanic} task encompasses using \texttt{Pandas}, a data analysis and manipulation module
+used in many open source data science projects~\cite{ma2017, shrestha2020}.
+
+
+
+
+
+\input{sections/cp6/tbl-task-descriptions.tex}
 
 
 
@@ -74,41 +120,6 @@ for a software task when provided with artifacts containing information for that
 To compensate participants for their time, we offered them the opportunity to enter a raffle for one of two iPads 64 GB.
 
 
-
-
-\subsection{Tasks}
-\label{sec:experiment-tasks}
-
-Our experiment requires programming tasks for which a developer will likely benefit from the use of additional information to complete. We also need to ensure that the tasks are self-contained enough so that they can be finished in a single experimental session lasting approximately 2 hours.
-
-
-These criteria lead us to 
-follow Thiselton and Treude's task selection procedures~\cite{thiselton2019}, 
-where we selected tasks from the Python w3resource website\footnote{\url{https://www.w3resource.com/python-exercises/}}.
-We focused on tasks that required usage of at least one module external to the Python core modules.
-In turn, we required that these modules were widely used both by open source systems and by private companies.
-For example, one of our selected tasks involve using \texttt{BeautifulSoup},
-which Reddit---a social news aggregator with approximately 430 million monthly users---uses 
-to parse urls and identify images shown on its posts' headlines~\cite{bs4-reddit}. 
-
-
-
-
-
-Table~\ref{tbl:python-tasks-modules} details the tasks and modules that we have selected. 
-
-\art{add short description for each task}
-
-
-
-
-% \footnote{\url{https://www.crummy.com/software/BeautifulSoup/}} 
-
-
-
-
-
-\input{sections/cp6/tbl-task-descriptions.tex}
 
 
 \clearpage
