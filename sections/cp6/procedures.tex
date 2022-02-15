@@ -104,6 +104,23 @@ used in many open source data science projects~\cite{ma2017, shrestha2020}.
 
 
 
+
+
+
+\subsection{Artifacts}
+\label{sec:experiment-artifacts}
+
+
+Each task requires a set of artifacts that a participant could peruse for information that could assist them complete the task.
+We select artifacts for a task following procedures similar to the ones we used to create the \acs{DS-android} dataset (Chapter~\ref{ch:android-corpus}). 
+For each of the tasks in Table~\ref{tbl:python-tasks-modules}, we use the Google search engine to find a total of ten artifacts that likely contain relevant
+information for that task. 
+
+
+
+
+
+
 \subsection{Participants}
 
 
@@ -112,29 +129,12 @@ We advertised our study to both developers in our professional network and to co
 This provides for breadth of experience where both novice and expert developers attempt the tasks in our experiment. 
 
 
-With regards to computer science students, we advertised the study only to third and fourth-year students to ensure that they had the necessary background required to perform the study's taks.
-At this point in the curriculum, they should be familiar with Python and they should be able to come up with a solution 
+With regards to computer science students, we sent the study only to third and fourth-year students to ensure that they had the necessary background required to perform the study's taks.
+At this point in the curriculum, students should be familiar with Python and they should be able to come up with a solution 
 for a software task when provided with artifacts containing information for that task.
 
 
 To compensate participants for their time, we offered them the opportunity to enter a raffle for one of two iPads 64 GB.
-
-
-
-
-\clearpage
-
-
-
-
-\subsection{Artifacts}
-\label{sec:experiment-artifacts}
-
-
-Each task requires a set of artifacts that a participant could peruse to locate information that could assist them complete the task.
-We select artifacts for a task following procedures similar to the ones we used to create the \acs{DS-android} dataset (Chapter~\ref{ch:android-corpus}). 
-For each of the tasks in Table~\ref{tbl:python-tasks-modules}, we use the Google search engine to find a total of ten artifacts that likely contain relevant
-information for that task in top-ranked development websites. 
 
 
 
@@ -146,8 +146,8 @@ information for that task in top-ranked development websites.
 
 
 
-The experiment was completely online and it could be performed at a participant's personal computer
-without the presence of one of the researchers. Each participant had to complete a practice task and two tasks, i.e., a control and a tool assisted task, drawn from the tasks presented in Table~\ref{tbl:python-tasks-modules}. 
+The experiment was completely offline, i.e., it could be performed at a participant's personal computer
+without the presence of one of the researchers. Each participant had to complete a practice task---separated from the experimental tasks---and two tasks (manual and tool-assisted) drawn from the tasks in Table~\ref{tbl:python-tasks-modules}. 
 
 
 Each experimental session lasted no more than two hours; this length of time was selected based on two pilot sessions. 
@@ -160,7 +160,7 @@ Feedback from these pilots also helped to refine the experiment's instructions, 
 
 We began each session gathering consent and requesting participants to install a web browser plugin which we used to gather data.
 Setup was followed by a short tutorial explaining the experiment and describing how to use the plugin and Colab. 
-A practice task---separated from the experimental tasks---allowed participants to familiarize themselves with the content of a task, the web browser plugin and Colab. 
+The practice task allowed participants to familiarize themselves with the content of a task, the web browser plugin and Colab. 
 
 
 
@@ -193,18 +193,16 @@ by giving them the opportunity to join the raffle, if so they wished.
 % \end{enumerate}
 
 
-Table~\ref{tbl:experiment-data} summarizes the data we collected based on experimental procedures.
-
-\input{sections/cp6/tbl-summary-of-procedures.tex}
 
 
 \subsection{Colab}
 \label{cp6:environment}
 
 
-To ensure that participants had the same conditions to perform each task, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
-By using Colab, we also expect setup instructions to be minimal 
-so that we allow a participant to focus on the task and experimental procedures.
+To ensure that participants had the same conditions to perform each task
+and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
+% By using Colab, we also expect setup instructions to be minimal 
+% so that we allow a participant to focus on the task and experimental procedures.
 
 
 
@@ -239,16 +237,19 @@ Upon testing, the system would display full details about the test cases, e.g., 
 
 
 
-
+Table~\ref{tbl:experiment-data} summarizes the data we collected based on experimental procedures.
 We use the gathered data to investigate our main hypotheses according to the following metrics.
 
+
+
+\input{sections/cp6/tbl-summary-of-procedures.tex}
 
 
 \subsubsection{Submitted Solution}
 
  
 The correctness of a submitted solution is measured by the number of passing test cases
-when running each participant's solution against a set of 10 test cases. 
+when running that solution against a set of 10 test cases. 
 A solution with compile errors has a correctness score of zero.
 
 
@@ -268,7 +269,7 @@ A solution with compile errors has a correctness score of zero.
 \subsubsection{Manual Highlights}
 
 
-We compare the participants' manual highlights  against the ones automatically identified by our semantic-based technique measuring the amount of overlap between the two. 
+We compare the participants' manual highlights  against the ones automatically identified by our semantic-based technique. 
 For that, we use \textit{precision} and \textit{recall} metrics. 
 
 
@@ -308,6 +309,7 @@ Recall represents how many of all the manual highlights were identified by the s
 
 
 \art{Discuss how to account for variability in what the participants highlighted}
+
 
 
 \subsubsection{Usefullness of the Automatic Highlights}
