@@ -10,34 +10,33 @@ design first. Hard to understand why
 the tasks are as they are. More "Design' up-front.}
 
 
-To determine how a tool embedding a semantic-based technique might impact task completion, we designed an experiment where participants attempted two programming
- using (or not) a tool that applies the \texttt{BERT} technique (Section~\ref{cp5:approach-bert})
- to  identify task-text relevant---highlighting  the text automatically identified  in the artifacts available in a task. 
-
-
-The research questions for this experiment consider whether:
+To determine how a tool embedding a semantic-based technique might assist developers complete a software task, we question whether:
 
 
 
 \begin{enumerate}
-    \item \textit{a developer produce a more correct solution when assisted by such a tool;}
-    \item \textit{the text automatically identified is similar to text that developers deem relevant to that task; and if}
-    \item \textit{a developer finds that the text automatically identified and highlighted assisted them complete a particular task.}
+    \item \textit{a developer would produce a more correct solution when assisted by such a tool;}
+    \item \textit{the text automatically identified by the tool as potentially relevant to a task in a software artifact pertinent to that task is similar to text that developers would deem relevant; and if}
+    \item \textit{a developer finds that the text automatically identified by the tool in an artifact under inspection assists her towards task completion.}
 \end{enumerate}
 
 
 
-To investigate these research questions, 
-we compare solutions where participants dit, or did not, have tool support by
-running a set of test cases that evaluate the correctness of their submitted solutions.
+To investigate these questions, we designed an experiment where participants attempted two programming
+ using (or not) a tool that applies the \texttt{BERT} technique (Section~\ref{cp5:approach-bert})
+ to  identify task-relevant text in the artifacts that were available to a participant in each task---highlighting the text automatically identified by the semantic-based technique in these artifacts. 
 
 
-In the tasks without tool support we asked participants to manually indicate the text that they deemed useful to their task.
-We use the manually provided text to investigate to which extent our tool identifies the same text.
+For each task, we compare solutions  submitted by participants who did, or did not, use the tool to assist them in that task. 
+For that, we run a set of test cases that evaluate the correctness of the submitted solutions, what helps us answer RQ1.
 
 
-We complement this analysis by asking participants to indicate how useful were the highlights shown in each of the artifacts available in the tool-assisted task
-and by requesting participants to provide any additional feedback that they wished to share about the tool or the experiment.
+In the tasks that participants performed without tool support, we asked them to manually indicate in the artifacts available for that task the text that they deemed useful for that task.
+We use the manually provided text to investigate RQ2, analyzing to which extent our tool identifies the same text for that task.
+
+
+We also asked participants to indicate how useful were the highlights shown in each of the artifacts available in the tool-assisted task
+and prompted them to provide any additional feedback that they wished to share about the tool or the experiment (RQ3).
 
 
 
