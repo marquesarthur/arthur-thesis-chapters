@@ -18,6 +18,12 @@ Our experiment's main hypothesis is that:
 
 To test this hypothesis, we design an experiment where \red{12} participants
  had to complete two randomly assigned programming tasks related to well-known Python modules. 
+ 
+ \gm{Setting this up as a test of
+ a hypothesis sets a high bar where
+ there will be expectations of
+ refuting a null hypothesis. Is that
+ where you want to go?}
 
 %  For each of these tasks, we provided to the participants a curated list of natural language artifacts related to the task
 % and we asked them to code a solution for the task.
@@ -26,6 +32,9 @@ To test this hypothesis, we design an experiment where \red{12} participants
 %  when assisted (or not) by a
 %  tool that embeds one of the semantic-based techniques that we have explored previously ({Section~\ref{cp5:results-all}). 
 
+\gm{You need to provide the overall
+design first. Hard to understand why
+the tasks are as they are. More "Design' up-front.}
 
 In a first task, a participant manually identifies text relevant to that task (while performing the task)
 in a set of curated artifacts containing information that could assist the participant complete the task at hand.
@@ -60,6 +69,9 @@ or if our tool automatically did this step. We refer to these two configurations
 Based on our independent variable, we follow a \textit{within-subjects} design. Each participant is exposed to exactly one manual task and one tool-assisted task.
 We assigned tasks to a participant randomly. Nonetheless,  
 we ensured that each task configuration (manual or tool-assisted) was seen by an equal number participants.
+\gm{how is this design within-subjects?
+Aren't you comparing across
+the tasks which means across subjects?}
 
 
 
@@ -74,6 +86,8 @@ we ensured that each task configuration (manual or tool-assisted) was seen by an
 
 
 We expect the experiment to be executed offline, i.e., the experiment has self-contained instructions that allow a participant to perform their assigned tasks without any supervision.
+\gm{Why not just say the participants
+completed the tasks on their own time?}
 This requires tasks that are easy to understand and perform in a single experimental session. At the same time, our main hypothesis requires tasks for which a developer will likely benefit from the use of additional information to complete.
 
 
@@ -170,8 +184,15 @@ associated with that task.
 
 
 In the control task, a participant was instructed to use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
+\gm{Do they highlight text as they
+work or after the task?}
 In the tool assisted task, the plugin automatically highlighted sentences that our semantic-based technique identified as relevant for the task. 
 For this second task, we had one extra step asking the participant to rate---using a Likert scale---how helpful were the highlights automatically identified per artifact available. 
+\gm{More detail about exactly
+what participants were asked to
+do and experimental materials
+should be published or in Appendix
+of thesis.}
 
 
 We concluded the study by asking participants if they would like to provide any additional information and 
