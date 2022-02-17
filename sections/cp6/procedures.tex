@@ -5,41 +5,46 @@
 
 
 
-To determine how a semantic-based tool might assist developers in completing a software task, we consider three quesions:
+\gm{You need to provide the overall
+design first. Hard to understand why
+the tasks are as they are. More "Design' up-front.}
+
+
+To determine how a tool embedding a semantic-based technique might impact task completion, we designed an experiment where participants attempted two programming
+ using (or not) a tool that applies the \texttt{BERT} technique (Section~\ref{cp5:approach-bert})
+ to  identify task-text relevant---highlighting  the text automatically identified  in the artifacts available in a task. 
+
+
+The research questions for this experiment consider whether:
 
 
 
 \begin{enumerate}
-\item \textit{Does a developer produce a more correct solution when assisted by a tool that uses a semantic-based technique to identify text potentially relevant to the developer's task?}
-\item \textit{Is the text automatically identified by such a tool similar to text identified by developers as being relevant to a task?}  
-\item \textit{Does a developer find that the text automatically identified by such a tool assisted her complete her task?}
+    \item \textit{a developer produce a more correct solution when assisted by such a tool;}
+    \item \textit{the text automatically identified is similar to text that developers deem relevant to that task; and if}
+    \item \textit{a developer finds that the text automatically identified and highlighted assisted them complete a particular task.}
 \end{enumerate}
-    
-
-
-To investigate these questions, we designed an experiment where participants had to complete two programming
-using a list of software artifacts associated with each task
-and assisted (or not) by a tool able to highlight text that one of our semantic-based approaches automatically identified as relevant to the developer's task. 
-
- 
 
 
 
+To investigate these research questions, 
+we compare solutions where participants dit, or did not, have tool support by
+running a set of test cases that evaluate the correctness of their submitted solutions.
 
-To answer \textit{RQ1}, we define a set of test cases that evaluate a participant's solutions. 
-We run these test cases against the solutions where participants dit or did not have tool support, comparing results 
-across the tasks in our experiment.
+
+In the tasks without tool support we asked participants to manually indicate the text that they deemed useful to their task.
+We use the manually provided text to investigate to which extent our tool identifies the same text.
 
 
-We asked participants to manually indicate the text that they deemed useful to the task
-that they performed without tool support.
-For each task, we compare the manually provided text with the text automatically identified by our tool to address \textit{RQ2}.
+We complement this analysis by asking participants to indicate how useful were the highlights shown in each of the artifacts available in the tool-assisted task
+and by requesting participants to provide any additional feedback that they wished to share about the tool or the experiment.
 
 
 
 
 
 
+We detail experimental procedures in the following subsections.
 
 
 
@@ -89,7 +94,7 @@ For each task, we compare the manually provided text with the text automatically
 % Hence, with this second task, we evaluate what is the participants' perceived usefulness of the text automatically identified.
 
 
-% Experimental setup is as follows.
+
 
 
 % % \art{Add a figure to help summarizing the experimental setup?}
