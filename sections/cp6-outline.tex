@@ -6,24 +6,119 @@
 \label{ch:assisting}
 
 
-
-In a previous chapter, we have shown that semantic-based techniques can identify automatically parts of  text 
-that human annotators deemed relevant in a number of artifacts associated with Android tasks. In this chapter,
-I  address whether  text automatically identified using these
-techniques can assist a software developer while working on a task.
-
-This chapter presents a \textit{controlled experiment}
-where I evaluate how a tool that embeds one of such semantic-based techniques impacts the completion of a software task.
-We use three software tasks related to well-known Python modules and
-we report qualitative and quantitative results from \red{15} participants with software development background who attempted these tasks. 
-\gm{A bit more description of
-the setup might be needed.}
-We publicly share experimental materials and results to help future research in the field~\cite{experiment_material}.
+% In early chapters of this thesis, we have presented a research method to create  a corpus with tasks and annotated data representing text---in multiple types of artifacts---that human annotators deemed relevant for solving Android development tasks. We 
+% used this corpus to design and evaluate techniques that use semantics to identify part of the text that human 
+% annotators deemed relevant for the tasks and artifacts in such corpa.
 
 
-We describe experimental procedures (Section~\ref{cp6:procedures}) before
-presenting the results of our experiment (Section~\ref{cp6:results}). Section~\ref{cp6:summary} summarizes our key findings.
+In this chapter, we present a \textit{controlled experiment} that addresses 
+whether  text automatically identified using a semantic-based
+technique can assist a software developer while working on a task.
 
+
+This experiment builds upon the research outlined in early chapters of this thesis. On the one hand, it shows how 15 participants with software development background identified text relevant for solving three Python programming tasks in multiple types of artifacts associated with these tasks. On the other hand, it reports whether a tool that embeds one of the most promising semantic-based techniques that we have previously explored assisted participants towards completing these tasks correctly.
+
+
+
+
+
+
+
+Figure~\ref{fig:tool-experiment-procedures} summarizes the experiment.
+% A participant first attempted one randomly assigned tasks where, while performing the task, they indicated what text---in a set of artifacts that we made available to the participant---they deemed relevant to the task at hand. Then, in another randomly assigned task, we investigate whether the text identified
+% automatically by our tool changes how a participant completed a task. 
+
+
+
+
+
+% attempted these tasks. 
+% \gm{A bit more description of
+% the setup might be needed.}
+% We publicly share experimental materials and results to help future research in the field~\cite{experiment_material}.
+
+
+% We describe experimental procedures (Section~\ref{cp6:procedures}) before
+% presenting the results of our experiment (Section~\ref{cp6:results}). Section~\ref{cp6:summary} summarizes our key findings.
+
+
+
+
+
+
+
+% Early in this thesis, we have shown research methods for 
+% bringing together tasks from an existing
+% well-known domain, Android development, with relevant text
+% for solving that task from multiple artifact types.
+
+
+
+
+
+
+% This chapter presents a \textit{controlled experiment}
+% that builds upon the research methods presented earlier in this thesis.
+% We detail three tasks related to well-known Python modules
+% and we describe 
+% how \red{15} developers with varying background 
+% identify relevant text for solving these task
+% in multiple artifact types.
+
+
+
+
+
+
+
+
+
+
+\clearpage
+
+
+\art{Overall notes Feb, Thu 17, 2020}
+
+To what extent the text automatically identified by such a tool assists developers complete a task
+
+
+we are mostly interested in seeing how a dev can use the text identified or whether it changes how they complete a task
+
+
+
+we design the experiment in such a way that it provides complementary data to the data we used for the quantitative evaluation 
+of the semantic based approaches presented in Chapter 5, i.e., participants first manually indicate what text they deem relevant to a task
+
+in a second task, the tool shows them highlights
+
+
+
+In the previous chapter, we identified the most promising technique that could identify task-relevant text 
+
+
+we are now interest in observing whether embedding this technique into a tool changes how developers work in a task...
+
+
+
+unindent sections
+
+
+add footnote about terminology
+
+
+this is a between subjects experiment, not within 
+
+
+
+analysis: report how many times devs selected code
+
+threat: report that the natura of the tasks that we have selected, i.e., programming tasks, may have lead participants to select more code snippets than text
+
+in more abstract or decision making tasks, we could have observed different results. Nonetheless, objectively measuring the correcteness of the tasks and designingg them in such a way that they could be done offline was challening
+
+even more if we consider that we had to do the experiment during a pandemic
+
+\clearpage
 
 
 
@@ -35,8 +130,35 @@ presenting the results of our experiment (Section~\ref{cp6:results}). Section~\r
 
 
 
+
 % complete software tasks when assisted, or not, by a tool that 
 % embeds one of our semantic-based techniques. 
 % \gm{'evaluate how' is a bit unspecified
 % as 'how' isn't usually evaluated -
 % maybe restate as 'investigate how tools that ... impact how ...'?}
+
+
+
+
+% assists a software developer while working on a task.
+% We built upon the research procedures used to create the \acs{DS-android} corpus and we report how d identify relevant text in artifacts pertinent to three tasks from to well-known Python modules. This experiment also allows us to 
+
+
+% Through 
+
+
+
+
+% To what extent the text automatically identified by a tool that embeds a semantic-based technique assists developers 
+% complete a task
+
+
+
+
+% \art{find how to connect this}
+% This experiment provides complementary data to our early evaluation 
+% on whether automatic approaches can identify text that humans deem useful to a software task. 
+% To this end, we use three software tasks related to w and
+% report results from \red{15} participants with software development background 
+
+
