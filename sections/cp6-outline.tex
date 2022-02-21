@@ -12,7 +12,7 @@
 
 
 In this chapter, we build upon the research outlined  early on in this thesis to
-present a \textit{controlled experiment} that focuses on how  a
+present a \textit{controlled experiment}~\cite{Lazar2017-cp2} that focuses on how  a
 software developer working on a task can benefit from a tool that automatically identifies text 
 relevant to that task.
 
@@ -50,21 +50,30 @@ In summary, this allow us to investigate whether:
 
 
 
-% the experiment uses evaluation procedures  to compare if 
-% the text manually identified by the participants
-% is similar to the text automatically identified.
+
+\art{review how to say that}
+
+
+To show how this experiment allows such a investigation, we begin by detailing
+experimental procedures (Section~\ref{cp6:design} to~\ref{cp6:procedures}).
+Results comprise assessing the correctness of the tasks performed \textit{with} or \textit{without} tool support, comparing  the text that participants deemed relevant to the text 
+shown in the tool-assisted task, and discussing the usefulness of the automatically identified text according to the feedback provided by the participants.
+We conclude this chapter presenting threats to the validity of our experiment (Section~\ref{cp6:threats}) and 
+ summarizing our key findings (Section~\ref{cp6:summary}).
 
 
 
 
-To show how this experiment allows such a investigation, we begin by detailing experimental procedures (Section~\ref{})
-and then, by comparing the correctness of the tasks performed \textit{with} or \textit{without} tool support (Section~\ref{}).
-In Section~\ref{}, we discuss how  the text that participants deemed relevant compares to the text 
-shown in the tool-assisted task. Section~\ref{} discusses the usefulness of the automatically identified text according to the feedback provided by the participants.
-We conclude presenting threats to the validity of our experiment (Section~\ref{}) and 
- summarizing our key findings (Section~\ref{}).
-
-
+ \input{sections/cp6/overview}
+ \input{sections/cp6/tasks}
+ \input{sections/cp6/participants}
+ \input{sections/cp6/procedures}
+ \input{sections/cp6/correctness}
+ \input{sections/cp6/comparison}
+ \input{sections/cp6/usefulness}
+ \input{sections/cp6/threats}
+ \input{sections/cp6/summary}
+ 
 
 
 
@@ -144,61 +153,6 @@ We conclude presenting threats to the validity of our experiment (Section~\ref{}
 
 
 
-
-
-
-\clearpage
-
-
-\art{Overall notes Feb, Thu 17, 2020}
-
-To what extent the text automatically identified by such a tool assists developers complete a task
-
-
-we are mostly interested in seeing how a dev can use the text identified or whether it changes how they complete a task
-
-
-
-we design the experiment in such a way that it provides complementary data to the data we used for the quantitative evaluation 
-of the semantic based approaches presented in Chapter 5, i.e., participants first manually indicate what text they deem relevant to a task
-
-in a second task, the tool shows them highlights
-
-
-
-In the previous chapter, we identified the most promising technique that could identify task-relevant text 
-
-
-we are now interest in observing whether embedding this technique into a tool changes how developers work in a task...
-
-
-
-unindent sections
-
-
-add footnote about terminology
-
-
-this is a between subjects experiment, not within 
-
-
-
-analysis: report how many times devs selected code
-
-threat: report that the natura of the tasks that we have selected, i.e., programming tasks, may have lead participants to select more code snippets than text
-
-in more abstract or decision making tasks, we could have observed different results. Nonetheless, objectively measuring the correcteness of the tasks and designingg them in such a way that they could be done offline was challening
-
-even more if we consider that we had to do the experiment during a pandemic
-
-\clearpage
-
-
-
-
-\input{sections/cp6/procedures}
-\input{sections/cp6/results}
-\input{sections/cp6/summary}
 
 
 
