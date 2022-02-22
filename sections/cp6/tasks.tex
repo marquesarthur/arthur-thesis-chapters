@@ -4,19 +4,17 @@
 
 
 
-\subsection{Tasks}
-\label{sec:experiment-tasks}
+We opted for an experimet with tasks that could be completed by participants on their own time and computer.
+This decision was motived by the COVID-19 pandemic and the need for social distance~\cite{}. 
+Therefore, we decided to use tasks that are easy to understand and perform in a single experimental session, but that still required a participant  
+to seek information in artifacts associated with a task
+so that they could come up with a solution for the task.
 
 
 
-We expect the experiment to be executed offline, i.e., the experiment has self-contained instructions that allow a participant to perform their assigned tasks without any supervision.
-\gm{Why not just say the participants
-completed the tasks on their own time?}
-This requires tasks that are easy to understand and perform in a single experimental session. At the same time, our main hypothesis requires tasks for which a developer will likely benefit from the use of additional information to complete.
 
-
-These criteria lead us to select Python w3resource tasks\footnote{\url{https://www.w3resource.com/python-exercises/}}
-that required usage of at least one module external to the Python core modules~\cite{thiselton2019}.
+Based on these criteria and guided by~\cite{thiselton2019}, we select Python w3resource\footnote{\url{https://www.w3resource.com/python-exercises/}} tasks
+that required usage of at least one module external to the Python core library as our experimental tasks.
 By using an external module, we aim to reduce the likelihood that a participant 
 can provide a solution for a task without consulting any of the artifacts accompanying that task. 
 
@@ -35,7 +33,22 @@ used in many open source data science projects~\cite{ma2017, shrestha2020}.
 
 
 
+While we leave details about the experimental procedures associated with manual and tool-assisted tasks to Section~\ref{cp6:procedures}, Figure~\ref{fig:nytimes-task-colab} provides details of the information shown in a task.
+For each task, participants had the task description and examples of input and output scenarios at their disposal. A task contained a list of resources (Section~\ref{cp6:experiment-artifacts}) that participants could consult
+as well as a link to an online coding environment
+where they could write and test their solution (Section~\ref{cp6:coding-environment}). 
+\art{Add note to the full replication package}
 
+\clearpage
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{cp6/task-github.pdf}
+    \caption{Details about the information shown in a task}
+    \label{fig:nytimes-task-colab}
+\end{figure}
+
+\clearpage
 
 \input{sections/cp6/tbl-task-descriptions.tex}
 
@@ -46,7 +59,7 @@ used in many open source data science projects~\cite{ma2017, shrestha2020}.
 
 
 \subsection{Artifacts}
-\label{sec:experiment-artifacts}
+\label{cp6:experiment-artifacts}
 
 
 Each task requires a set of artifacts that a participant could peruse for information that could assist them complete the task.
@@ -58,20 +71,25 @@ information for that task.
 
 
 
-\subsection{Colab}
-\label{cp6:environment}
+
+
+
+
+\subsection{Coding environment}
+\label{cp6:coding-environment}
+
+
+
+
 
 
 To ensure that participants had the same conditions to perform each task
 and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
-% By using Colab, we also expect setup instructions to be minimal 
-% so that we allow a participant to focus on the task and experimental procedures.
 
 
 
-Figure~\ref{fig:nytimes-task-colab} shows an example of our online environment for the \texttt{NYTimes} task.
-At the left-hand side, participants had the task description and examples of input and output scenarios as well as a list of resources associated with that task. 
-By clicking on the coding environment link, participants were redirected to Colab (right-hand side),
+Figure~\ref{fig:nytimes-task-colab} shows an example of our online environment.
+At the left-hand side, 
 where they had a code editor with amenities commonly found in modern IDEs, such as code completion and syntax highlighting. 
 
 
@@ -84,11 +102,13 @@ Upon testing, the system would display full details about the test cases, e.g., 
 
 \clearpage
 
-\begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[width=1.5\textwidth]{cp6/task-colab.pdf}
-    \caption{NYTimes task and Colab environment.}
+    \includegraphics[width=\textwidth]{cp6/task-colab.pdf}
+    \caption{Colab environment}
     \label{fig:nytimes-task-colab}
 \end{figure}
-\end{landscape}
+
+
+
+\clearpage
