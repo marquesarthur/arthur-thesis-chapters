@@ -5,12 +5,11 @@
 
 
 To assess how a tool that shows text automatically identified as relevant to a task
-might assist a developer complete a task, 
-we seek to investigate whether the text shown by the tool 
-is similar to text considered
-by humans as being relevant to a task at hand.
-If we can show that 
-the text identified by a tool is similar to the text that humans deemed relevant, we could argue that such a tool  
+might assist a developer complete a task, we are guided by three driving factors:
+
+
+First, we consider whether---in an artifact pertinent to a task---the  text automatically identified by such a tool is similar to the text that humans deemed relevant to a task at hand. 
+In case of overlap, one could argue that such a tool  
 would direct a developer's attention to information that others found useful for completing a task.
 
 
@@ -21,7 +20,7 @@ and automatically identified, but also to evaluate if developers performing a ta
 both reach an equally correct solution.
 
 
-In turn, this quantitative analysis could be complemented by qualitative feedback about the tool. 
+As a final factor, this quantitative analysis could be complemented by qualitative feedback about the tool. 
 This feedback could be used to identify other means through which we could locate 
 text helpful to a developer working on a task, or perhaps to explore
 situations in which the text automatically identified 
@@ -29,134 +28,58 @@ was more (or less) helpful.
 
 
 
-The experiment that we describe in Figure~\ref{fig:tool-experiment-procedures} addresses these needs. 
-On their own time and computer\footnote{Literature define this as an \textit{offline} experiment~\cite{wohlin2012, DeLucia2012} }, 
-each participant attempted a task where they indicated 
-what text they deemed relevant to the task at hand, i.e., \textit{manual task}.
-Participants also attempted a second task, i.e., \textit{tool-assisted task},
- where they were assisted by a tool that highlighted the text identified by 
-the semantic-based approach as potentially relevant to a participant's task,
-and where we collected feedback on the usefulness of the highlights shown. 
+The experiment that we describe in Figure~\ref{fig:tool-experiment-procedures} is designed around these driving factors.  
+Each participant attempted two randomly assigned Python programming tasks on their own time and computer\footnote{Literature define this as an \textit{offline} experiment~\cite{wohlin2012, DeLucia2012}}.
+In a first task, i.e., \textit{manual task}, a participant indicated 
+what text they deemed relevant to the task at hand while 
+they consulted a curated list of artifacts that could assist them come up with a solution for that task.
+In a second task, i.e., \textit{tool-assisted task},
+participants wrote their solution consulting a similar list of curated artifacts, but
+assisted by a tool that highlighted the text identified as potentially relevant to their task; and in addition to ther solution, we gathered feedback on the usefulness of the highlights shown.
 
+ 
 
-The next sections elaborate such experimental design. 
+The following sections further elaborate such experimental design.
 
+% As we further elaborate in the following sections, 
+% this design allows us to investigate the driving factors that we have just outlined.
 
-% We analyze the solutions submitted for the tasks across each configuration, i.e., 
-% \textit{manual} or \textit{tool-assisted}. This analysis is complemented 
-% by the comparison of the text that participants deemed relevant 
-% to the text that our tool automatically identified. Lastly, we report 
-% the qualitative feedback provided by the participants. 
 
-% our experiment follows a \textit{between-groups} design~\cite{Lazar2017-cp3, wohlin2012}.
-% That is,  we compare results for each task for the participants who performed that task with and without tool support.
 
 
 
 
+% To assess how a tool that shows text automatically identified as relevant to a task
+% might assist a developer complete a task, we consider whether---in an artifact pertinent to a task---the  text automatically identified by such a tool is similar to the text that humans deemed relevant to a task at hand. 
+% In case of overlap, one could argue that such a tool  
+% would direct a developer's attention to information that others found useful for completing a task.
 
 
+% If the text identified by such a tool is not similar, there is a chance that the tool directed a developer to the wrong information, or that 
+% the tool actually found complementary information that was still helpful to a developer working on a particular task. 
+% Therefore, it would be beneficial to not only compare the amount of overlap between the text manually
+% and automatically identified, but also to evaluate if developers performing a task with and without such a tool would 
+% both reach an equally correct solution.
 
-% \subsection{Procedures}
-% \label{cp6:evaluation-procedures}
 
+% In turn, this quantitative analysis could be complemented by qualitative feedback about the tool. 
+% This feedback could be used to identify other means through which we could locate 
+% text helpful to a developer working on a task, or perhaps to explore
+% situations in which the text automatically identified 
+% was more (or less) helpful.
 
 
-% The experiment was completely offline, i.e., it could be performed at a participant's personal computer
-% without the presence of one of the researchers. Each participant had to complete a practice task---separated from the experimental tasks---and two tasks (manual and tool-assisted) drawn from the tasks in Table~\ref{tbl:python-tasks-modules}. 
 
+% The experiment that we describe in Figure~\ref{fig:tool-experiment-procedures} addresses these needs. 
+% On their own time and computer\footnote{Literature define this as an \textit{offline} experiment~\cite{wohlin2012, DeLucia2012} }, 
+% each participant attempted two randomly assigned Python programming tasks.
+% In a first task, i.e., \textit{manual task}, a participant indicated 
+% what text they deemed relevant to the task at hand while they worked on that task.
+% In a second task, i.e., \textit{tool-assisted task},
+%  they were assisted by a tool that highlighted the text identified by 
+% the semantic-based approach as potentially relevant to their task,
+% and we collected feedback on the usefulness of the highlights shown. 
 
-% Each experimental session lasted no more than two hours; this length of time was selected based on two pilot sessions. 
-% Feedback from these pilots also helped to refine the experiment's instructions, where we included a short video showing how to install the web browser plugin and how to use Colab, the online environment where participants performed each task (Section~\ref{cp6:environment}).
 
-
-
-
-
-
-% We began each session gathering consent and requesting participants to install a web browser plugin which we used to gather data.
-% Setup was followed by a short tutorial explaining the experiment and describing how to use the plugin and Colab. 
-% The practice task allowed participants to familiarize themselves with the content of a task, the web browser plugin and Colab. 
-
-
-
-% For each task, including the practice tasks, we asked a participant to write a solution for the task
-% when provided with a fixed set of artifacts, e.g., official API documentation, Stack Overflow posts, or web tutorials, 
-% associated with that task.  
-
-
-% In the control task, a participant was instructed to use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
-% \gm{Do they highlight text as they
-% work or after the task?}
-% In the tool assisted task, the plugin automatically highlighted sentences that our semantic-based technique identified as relevant for the task. 
-% For this second task, we had one extra step asking the participant to rate---using a Likert scale---how helpful were the highlights automatically identified per artifact available. 
-% \gm{More detail about exactly
-% what participants were asked to
-% do and experimental materials
-% should be published or in Appendix
-% of thesis.}
-
-
-% We concluded the study by asking participants if they would like to provide any additional information and 
-% by giving them the opportunity to join the raffle, if so they wished. 
-
-
-
-% % \subsubsection{Summary of procedures}
-
-% % Based on our experimental procedures, we could gather:
-
-
-
-% % \begin{enumerate}
-% %     \item a participant's submitted solution (written Python code) for each task;
-% %     \item a participant's highlights for the control task; 
-% %     \item a participant's perception on the usefulness of the automatically identified highlights for the tool assisted task, and;
-% %     \item any additional feedback (written text) that a participant wished to provide us.
-% % \end{enumerate}
-
-
-
-
-% \clearpage
-
-
-% \subsection{Analysis}
-
-
-
-% Table~\ref{tbl:experiment-data} summarizes the data we collected based on experimental procedures.
-% We use the gathered data to investigate our main hypotheses according to the following metrics.
-
-
-
-% \input{sections/cp6/tbl-summary-of-procedures.tex}
-
-
-% \subsubsection{Submitted Solution}
-
-
-% % \smallskip
-% % According to this definition, 
-
-
-% \subsubsection{Manual Highlights}
-
-
-
-% \subsubsection{Usefulness of the Automatic Highlights}
-
-
-
-% % This analysis complements the quantitative comparison of manual and automatic highlights.
-% % By asking participants to reflect on the usefulness of the text automatically identified, 
-% % we seek to minimize risks related to how a participant might have missed highlighting
-% % text that assisted them complete a task~\cite{easterbrook2008}.
-
-
-
-
-
-
-% \clearpage
-
+% As we further elaborate in the following sections, 
+% this design allows us to investigate the driving factors that we have just outlined.
