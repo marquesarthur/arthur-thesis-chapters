@@ -14,36 +14,46 @@ instructions specific to the manual and tool-assisted tasks, respectively.
 
 
 We advertised the experiment via mailing lists. The email disclosed the purpose of the experiment, how long we estimated that it would take to complete it, as well as a link 
-to the web form containing the experiment's consent and tasks. 
+to a web survey containing the experiment's consent form and tasks. 
 
 
 
 
-Once a participant consented to participate, we provided them with further instructions 
-about how to perform each task and we requested them to install \acs{beskar}.
-Setup was followed by a short practice---separate from the experimental tasks---task allowed participants to familiarize themselves with the content of a task, the tool and coding environment that we used (Colab). 
+Once a participant consented to participate, we gathered demographics (Figure~\ref{fig:experiment-demographics}) to ensure that participants had the necessary background to perform our experiment. For example, we would discard data from a 2nd year student, someone with no experience in Object-Oriented programming languages, or that did not consult API documentation when performing a programming task. No participants were excluded based on demographics.
+
+
+\input{sections/cp6/tbl-demographics.tex}
+
+
+Next, the online survey gave participants further instructions 
+about how to perform each task and it requested them to install \acs{beskar}.
+Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and coding environment that we used (Colab). 
 
 
 
-All participants had to complete the practice and then, attempt two randomly assigned tasks, i.e., a \textit{manual} and a \textit{tool-assisted} tasks. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
-For each task, including the practice tasks, we provided to the participants a task description, examples of inputs and outputs and we asked them to write a solution, in the form of written Python code, for the task. 
-Participants were allowed to consult a fixed set of artifacts, e.g., official API documentation, Stack Overflow posts, or web tutorials, 
-associated with each of their assigned task. 
-Figure~\ref{fig:nytimes-task-github}
-shows an example of the information available in a task.
+Once a participant completed the practice task, the survey randomly assigned to them a \textit{manual} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the manual task. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
+For each task, including the practice tasks, the survey provided to the participants a link 
+to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution in the form of written Python code for the task. Sections~\ref{cp6:procedures-manual} and~\ref{cp6:procedures-tool-assisted}
+detail procedures specific to the manual and tool-assisted task, respectively.
 
 
-Once participants submitted their solutions, we gathered demographics and offered them the opportunity to enter a raffle for one of two iPads 64 GB 
-to compensate participants for their time.
-The web form concluded thanking participants for their participation.
+Once a participant submitted their solutions, the survey
+asked them about any additional feeback that they wished to share and 
+offered them the opportunity to enter a raffle for one of two iPads 64 GB 
+to compensate them for their time.
+% The survey concluded thanking participants for their participation.
 
 
 
 \subsection{Manual Task}
+\label{cp6:procedures-manual}
 
 
 
-In the \textit{manual} task, we instrumented \acs{beskar}
+In the \textit{manual} task, we instrumented \acs{beskar} to allow participants to highlight text that they deemed useful for the task at hand. 
+
+
+
 
 
 a participant was instructed to use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
@@ -51,6 +61,8 @@ a participant was instructed to use the web browser plugin to highlight any text
 work or after the task?}
 
 \subsection{Manual Task}
+\label{cp6:procedures-tool-assisted}
+
 
 In the tool assisted task, the plugin automatically highlighted sentences that our semantic-based technique identified as relevant for the task. 
 For this second task, we had one extra step asking the participant to rate---using a Likert scale---how helpful were the highlights automatically identified per artifact available. 
