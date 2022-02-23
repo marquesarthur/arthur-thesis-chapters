@@ -3,36 +3,50 @@
 \label{cp6:procedures}
 
 
-% We randomly assign two tasks to each participant in the experiment
-% while 
-% ensuring that each task is evenly performed with or without tool support.
 
 
 
-Each experimental session lasted no more than two hours; this length of time was selected based on two pilot sessions. 
-Feedback from these pilots also helped to refine the experiment's instructions, where we included a short video showing how to install the web browser plugin and how to use Colab, the online environment where participants performed each task (Section~\ref{cp6:environment}).
+In this section, we detail the instructions provided to the participants so that 
+they could perform our experiment. 
+First, we present an overview of the whole experiment and then, we detail
+instructions specific to the manual and tool-assisted tasks, respectively.
+
+
+
+We advertised the experiment via mailing lists. The email disclosed the purpose of the experiment, how long we estimated that it would take to complete it, as well as a link 
+to the web form containing the experiment's consent and tasks. 
 
 
 
 
-
-
-We began each session gathering consent and requesting participants to install a web browser plugin which we used to gather data.
-Setup was followed by a short tutorial explaining the experiment and describing how to use the plugin and Colab. 
-The practice task allowed participants to familiarize themselves with the content of a task, the web browser plugin and Colab. 
+Once a participant consented to participate, we provided them with further instructions 
+about how to perform each task and we requested them to install \acs{beskar}.
+Setup was followed by a short practice---separate from the experimental tasks---task allowed participants to familiarize themselves with the content of a task, the tool and coding environment that we used (Colab). 
 
 
 
-For each task, including the practice tasks, we asked a participant to write a solution for the task
-when provided with a fixed set of artifacts, e.g., official API documentation, Stack Overflow posts, or web tutorials, 
-associated with that task.  
+All participants had to complete the practice and then, attempt two randomly assigned tasks, i.e., a \textit{manual} and a \textit{tool-assisted} tasks. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
+For each task, including the practice tasks, we provided to the participants a task description, examples of inputs and outputs and we asked them to write a solution, in the form of written Python code, for the task. 
+Participants were allowed to consult a fixed set of artifacts, e.g., official API documentation, Stack Overflow posts, or web tutorials, 
+associated with each of their assigned task. 
+Figure~\ref{fig:nytimes-task-github}
+shows an example of the information available in a task.
+
+
+Once participants submitted their solutions, we gathered demographics and offered them the opportunity to enter a raffle for one of two iPads 64 GB 
+to compensate participants for their time.
+The web form concluded thanking participants for their participation.
+
 
 
 \subsection{Manual Task}
 
 
 
-In the control task, a participant was instructed to use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
+In the \textit{manual} task, we instrumented \acs{beskar}
+
+
+a participant was instructed to use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
 \gm{Do they highlight text as they
 work or after the task?}
 
@@ -52,13 +66,11 @@ by giving them the opportunity to join the raffle, if so they wished.
 
 
 
-\subsection{Summary of procedures}
+\subsection{Summary}
 
 
 
 Table~\ref{tbl:experiment-data} summarizes the data we collected based on experimental procedures.
-We use the gathered data to investigate our main hypotheses according to the following metrics.
-
 
 
 \input{sections/cp6/tbl-summary-of-procedures.tex}
