@@ -16,11 +16,10 @@ Based on these criteria and guided by~\cite{thiselton2019},
 Table~\ref{tbl:python-tasks-modules} details the tasks that we have selected. 
 These tasks are based on 
 Python w3resource\footnote{\url{https://www.w3resource.com/python-exercises/}} tasks
-that required usage of at least one module external to the Python core library.
+that require usage of at least one module external to the Python core library.
 By using external modules, we aim to reduce the likelihood that a participant 
-can provide a solution for a task without consulting any of the artifacts,
-e.g., API documentation, tutorials or Q\&A forums,
-that detail how to use such modules. 
+can provide a solution for a task without consulting any of the artifacts
+that detail how to use such modules (Section~\ref{cp6:experiment-artifacts}). 
 
 
 
@@ -87,18 +86,19 @@ and also to minimize setup instructions, we used Google Colab\footnote{\url{http
 
 
 
-Colab provided participants with a code editor with amenities commonly found in modern IDEs, such as code completion and syntax highlighting. It also ensured that all the participants 
+Colab provided participants with a code editor with amenities commonly found in modern IDEs, e.g., code completion and syntax highlighting. It also ensured that all the participants 
 performed the tasks in the same Python version and it lifted 
 burdens that could arise from installing dependencies associated with the external modules used in each of our tasks. 
 
 
 
 Figure~\ref{fig:nytimes-task-colab} shows an example of the Colab coding environment. 
-We divided the coding blocks into four main parts, starting with dependencies management and then, 
-a class containing a single method with a \texttt{TODO} block where 
+First it handled dependencies management and then, 
+it presented a class containing a single method with a \texttt{TODO} block where 
 participants should write their solution. 
 The environment also provided a main function where participants could see the output
-of their code. Alternatively, a participant could use the test cases---the examples shown alongside the task description---to test their solution.
+of their code. Alternatively, a participant could use test cases to test their solution
+against the examples shown alongside the task description.
 % Upon testing, the system would display full details about the test cases, e.g., the test's input, which assertion failed, and why. 
 
 
