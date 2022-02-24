@@ -4,22 +4,17 @@
 
 
 
-
-
 In this section, we detail the instructions provided to the participants so that 
 they could perform our experiment. 
 First, we present an overview of the whole experiment and then, we detail
 instructions specific to the manual and tool-assisted tasks, respectively.
 
 
-
 We advertised the experiment via mailing lists. The email disclosed the purpose of the experiment, eligibility criteria, an estimation of the time that one would take to complete the experiment as well as a link 
 to the web survey containing the experiment's consent form and tasks. 
 
 
-
-
-Once a participant consented to participate, the survey gathered demographics (Figure~\ref{fig:experiment-demographics}), which we use to filter participants did not meet our eligibility criteria. That is, we planned to filter data from a 1st or 2nd year student or from a participant with no experience in Object-Oriented programming languages or that did not consult API documentation when performing a programming task. No participants were excluded based on demographics.
+Once a participant consented to participate, the survey gathered demographics (Figure~\ref{fig:experiment-demographics}), which we use to filter participants who did not meet our eligibility criteria. That is, we planned to filter data from a 1st or 2nd year student or from a participant with no experience in Object-Oriented programming languages or that did not consult API documentation when performing a programming task. However, no participants were excluded based on demographics.
 
 
 \input{sections/cp6/tbl-demographics.tex}
@@ -28,7 +23,6 @@ Once a participant consented to participate, the survey gathered demographics (F
 Next, the online survey gave participants further instructions 
 about how to perform each task and it requested them to install \acs{beskar}.
 Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
-
 
 
 Once a participant completed the practice task, the survey randomly assigned to them a \textit{manual} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the manual task. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
@@ -84,31 +78,30 @@ its underlying semantic-based approach identified as relevant to the participant
 This is similar to the highlights shown in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
 
-
-
 For this task, when a participant submitted their solution, the survey asked them to 
 rate---in a 5 points Likert scale~\cite{likert1932technique}---how helpful were the highlights shown by the tool.
-As shown in Figure~\ref{fig:experiment-rating}, participants rated highlights on a per artifact basis. Although we evaluate the usefulness of all the highlights shown for a task
+As Figure~\ref{fig:experiment-rating} shows, participants rated highlights on a per artifact basis. When rating an artifact, the survey allowed participants to revisit the artifact if so they wished. This would open the artifact web page in a new tab of the participant's browser so that they
+could review the the highlights identified by \acs{beskar}.
+
+Although we evaluate the usefulness of all the highlights for a task
 aggregating individual responses, we use the ratings per artifact to explore if the highlights shown in a certain type or artifact are more or less useful.
 
 
 \input{sections/cp6/tbl-rating.tex}
 
 
-
 \subsection{Summary of procedures}
 
 
-
-Throughout the past sections, we have described a controlled experiment 
-where participants attempted a \textit{manual} and a \textit{tool-assisted}
-task which allowed us to gather:
+Throughout the past sections, we have described experimental procedures 
+where participants attempted a \textit{manual} and a \textit{tool-assisted}.
+These procedures allowed us to gather:
 
 
 \begin{enumerate}
 \item a participant's submitted solution (written Python code) for each task;
-\item text that participants deemed relevant for completing the manual task;
-\item the usefulness of the highlights shown for the tool-assisted task; and
+\item text that participants deemed relevant for completing a manual task;
+\item the usefulness of the highlights shown in a tool-assisted task; and
 \item any additional feedback (written text) that a participant wished to provide.
 \end{enumerate}
 

@@ -1,55 +1,71 @@
+\clearpage
+
 
 % \section{Does \acs{beskar} identify the right text?}
-\section{Result: Task-relevant Text Identified}
+\section{Comparison of the Task-relevant Text Identified}
 \label{cp6:comparison}
+
+
+To assist a developer correctly complete a task, a tool that
+automatically identifies task-relevant text must be able to 
+locate text that humans have considered as relevant to that task
+while they performed the said task. 
+Hence, we compare the participants' manual highlights against the ones 
+automatically shown by \acs{beskar}, as 
+  identified by its underlying semantic-based technique.
+ 
+
 
 
 
 
 \subsection{Method}
 
+Analogous to the evaluation procedures of Chapter~\ref{ch:identifying}, we use 
+\textit{precision} and \textit{recall} metrics
+to compare human and tool identified task-relevant text.
+
+
+
+
+Precision measures the fraction of the automatically identified text of an artifact that was  considered relevant
+by the participants.
+
+\smallskip
+\begin{small}
+
+
+\begin{equation}
+    Precision = \frac{
+        \text{\textit{automatic highlights}~} \cap 
+        \text{~\textit{manual highlights}}
+    }{\text{\textit{automatic highlights}}}
+\end{equation}
+\end{small}
+
+
+Recall represents how many of all the manual highlights of an artifact were identified by the semantic-based technique that we applied.
+
+\smallskip
+\begin{small}
+
+\begin{equation}
+    Recall = \frac{
+        \text{\textit{automatic highlights}~} \cap 
+        \text{~\textit{manual highlights}}
+    }{\text{\textit{manual highlights}}}
+\end{equation}
+\end{small}
+
+\medskip
+\art{Argue which metric matters the most here}
+
+
 
 
 \subsection{Results}
 
 
-% We compare the participants' manual highlights  against the ones automatically identified by our semantic-based technique. 
-% For that, we use \textit{precision} and \textit{recall} metrics. 
-
-
-
-
-% Precision measures the fraction of the automatically identified text that was  considered relevant
-% by the participants.
-
-% \smallskip
-% \begin{small}
-
-
-% \begin{equation}
-%     Precision = \frac{
-%         \text{\textit{automatic highlights}~} \cap 
-%         \text{~\textit{manual highlights}}
-%     }{\text{\textit{automatic highlights}}}
-% \end{equation}
-% \end{small}
-
-
-% Recall represents how many of all the manual highlights were identified by the semantic-based technique that we applied.
-
-% \smallskip
-% \begin{small}
-
-% \begin{equation}
-%     Recall = \frac{
-%         \text{\textit{automatic highlights}~} \cap 
-%         \text{~\textit{manual highlights}}
-%     }{\text{\textit{manual highlights}}}
-% \end{equation}
-% \end{small}
-
-% \medskip
-% \art{Argue which metric matters the most here}
 
 
 % \art{Discuss how to account for variability in what the participants highlighted}

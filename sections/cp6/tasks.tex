@@ -3,13 +3,11 @@
 \label{cp6:tasks}
 
 
-
 We opted for an experiment with tasks that could be completed by participants on their own time and computer.
 This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment safely\red{~\cite{}}. 
 Since participants would only have written instructions to guide them, we decided to use tasks that are easy to understand and perform in a single experimental session, but that still required a participant  
 to seek information in artifacts associated with that task.
 
-% 
 
 
 Based on these criteria and guided by~\cite{thiselton2019},
@@ -23,18 +21,6 @@ that detail how to use such modules.
 
 
 
-
-
-
-
-% We chose these tasks due to how they focus on modules widely adopted both by open source systems and by private companies.
-% As an example, the \texttt{NYTimes} task involves using a HTML parser, namely \texttt{BeautifulSoup},
-% which Reddit---a social news aggregator with approximately 430 million monthly users---uses 
-% to parse urls and identify images shown on its posts' headlines~\cite{bs4-reddit}. 
-
-
-
-
 While we leave details about the procedures associated with manual and tool-assisted tasks to another section, Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\red{\cite{}}.}.
 For each task, participants had the task description and examples of input and output scenarios at their disposal. A task contained a list of resources that participants could consult 
 so that they could come up with a solution for the task.
@@ -42,14 +28,7 @@ Each task also contained a link to an online coding environment (Section~\ref{cp
 where they could write and test their solution. 
 
 
-
-
 \input{sections/cp6/tbl-task-descriptions.tex}
-
-
-
-
-
 
 
 \subsection{Artifacts}
@@ -62,10 +41,8 @@ That is, for each of the tasks in Table~\ref{tbl:python-tasks-modules}, we use t
 information that could help a participant correctly complete that task. 
 
 
-
 Note that our decision to control the artifacts shown per task relates to our need to study if there is overlap between the text that participants manually identify as relevant and the text that \acs{beskar} identifies for these same artifacts. 
 Three pilot runs ensured that the information available in the curated list of artifact of each task was sufficient to complete the task. 
-
 
 
 \subsection{Coding environment}
@@ -73,24 +50,13 @@ Three pilot runs ensured that the information available in the curated list of a
 
 
 
-
-
-
 To ensure that participants had the same conditions to perform each task
 and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
-
-
-
-% Figure~\ref{fig:nytimes-task-colab} shows an example of our online environment.
-% At the left-hand side, 
-% where they had a code editor with amenities commonly found in modern IDEs, such as code completion and syntax highlighting. 
-
 
 
 Colab provided participants with a code editor with amenities commonly found in modern IDEs, e.g., code completion and syntax highlighting. It also ensured that all the participants 
 performed the tasks in the same Python version and it lifted 
 burdens that could arise from installing dependencies associated with the external modules used in each of our tasks. 
-
 
 
 Figure~\ref{fig:nytimes-task-colab} shows an example of the Colab coding environment. 
@@ -100,9 +66,6 @@ participants should write their solution.
 The environment also provided a main function where participants could see the output
 of their code. Alternatively, a participant could use test cases to test their solution
 against the examples shown alongside the a description.
-% Upon testing, the system would display full details about the test cases, e.g., the test's input, which assertion failed, and why. 
-
-
 
 
 
@@ -132,5 +95,10 @@ against the examples shown alongside the a description.
 
 
 
+
+% We chose these tasks due to how they focus on modules widely adopted both by open source systems and by private companies.
+% As an example, the \texttt{NYTimes} task involves using a HTML parser, namely \texttt{BeautifulSoup},
+% which Reddit---a social news aggregator with approximately 430 million monthly users---uses 
+% to parse urls and identify images shown on its posts' headlines~\cite{bs4-reddit}. 
 % Similarly, the \texttt{Titanic} task encompasses using \texttt{Pandas}, a data analysis and manipulation module
 % used in many open source data science projects~\cite{ma2017, shrestha2020}.
