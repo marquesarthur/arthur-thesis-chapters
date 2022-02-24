@@ -13,13 +13,13 @@ instructions specific to the manual and tool-assisted tasks, respectively.
 
 
 
-We advertised the experiment via mailing lists. The email disclosed the purpose of the experiment, how long we estimated that it would take to complete it, as well as a link 
-to a web survey containing the experiment's consent form and tasks. 
+We advertised the experiment via mailing lists. The email disclosed the purpose of the experiment, eligibility criteria, an estimation of the time that one would take to complete the experiment as well as a link 
+to the web survey containing the experiment's consent form and tasks. 
 
 
 
 
-Once a participant consented to participate, we gathered demographics (Figure~\ref{fig:experiment-demographics}) to ensure that participants had the necessary background to perform our experiment. For example, we would discard data from a 2nd year student, someone with no experience in Object-Oriented programming languages, or that did not consult API documentation when performing a programming task. No participants were excluded based on demographics.
+Once a participant consented to participate, the survey gathered demographics (Figure~\ref{fig:experiment-demographics}), which we use to filter participants did not meet our eligibility criteria. That is, we planned to filter data from a 1st or 2nd year student or from a participant with no experience in Object-Oriented programming languages or that did not consult API documentation when performing a programming task. No participants were excluded based on demographics.
 
 
 \input{sections/cp6/tbl-demographics.tex}
@@ -27,20 +27,21 @@ Once a participant consented to participate, we gathered demographics (Figure~\r
 
 Next, the online survey gave participants further instructions 
 about how to perform each task and it requested them to install \acs{beskar}.
-Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and coding environment that we used (Colab). 
+Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
 
 
 
 Once a participant completed the practice task, the survey randomly assigned to them a \textit{manual} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the manual task. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
 For each task, including the practice tasks, the survey provided to the participants a link 
-to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution in the form of written Python code for the task. Sections~\ref{cp6:procedures-manual} and~\ref{cp6:procedures-tool-assisted}
-detail procedures specific to the manual and tool-assisted task, respectively.
+to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. 
+% Sections~\ref{cp6:procedures-manual} and~\ref{cp6:procedures-tool-assisted}
+% detail procedures specific to the manual and tool-assisted task, respectively.
 
 
 Once a participant submitted their solutions, the survey
 asked them about any additional feeback that they wished to share and 
 offered them the opportunity to enter a raffle for one of two iPads 64 GB 
-to compensate them for their time.
+to compensate them for their time, what concluded the experiment.
 % The survey concluded thanking participants for their participation.
 
 
@@ -50,42 +51,94 @@ to compensate them for their time.
 
 
 
-In the \textit{manual} task, we instrumented \acs{beskar} to allow participants to highlight text that they deemed useful for the task at hand. 
+In the \textit{manual} task, we instrumented \acs{beskar} to allow participants to highlight text that they deemed useful for the task at hand. In this task, 
+the survey asked participants to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Section~\ref{cp4:corpus-relevant-text}).
+
+
+
+Figure~\ref{fig:artifact-pre-highlight}
+gives insight into how participants highlighted sentences that they deemed relevant. 
+Whenever a participant inspected one of the artifacts available for their task, 
+the survey instructed them to click on the \texttt{highlight} button in the web browser plug-in context menu.  
+\acs{beskar} would then instrumented the HTML of the page identifying individual sentences. 
+A participant could hover over identified sentences and select them as relevant by clicking on the hovered text.
+As an example, Figure~\ref{fig:artifact-pre-highlight} shows a sentence discussing the \texttt{find\_all} method, which 
+one of the participants in our experiment deemed 
+relevant to the \texttt{NYTimes} task.
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{cp6/manual-task.pdf}
+    \caption{\texttt{BeautifulSoup} web tutorial showing the \acs{beskar} context menu (top-right corner) and a hovered over sentence}
+    \label{fig:artifact-pre-highlight}
+\end{figure}
 
 
 
 
-
-a participant was instructed to use the web browser plugin to highlight any text that they deemed relevant to the task-at-hand. 
-\gm{Do they highlight text as they
-work or after the task?}
-
-\subsection{Manual Task}
+\subsection{Tool-assisted Task}
 \label{cp6:procedures-tool-assisted}
 
 
-In the tool assisted task, the plugin automatically highlighted sentences that our semantic-based technique identified as relevant for the task. 
-For this second task, we had one extra step asking the participant to rate---using a Likert scale---how helpful were the highlights automatically identified per artifact available. 
-\gm{More detail about exactly
-what participants were asked to
-do and experimental materials
-should be published or in Appendix
-of thesis.}
-
-
-We concluded the study by asking participants if they would like to provide any additional information and 
-by giving them the opportunity to join the raffle, if so they wished. 
+In the tool-assisted task, \acs{beskar} would automatically highlight text that 
+its underlying semantic-based approach identified as relevant to the participant's task.
+This is similar to the highlights shown in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
 
 
-\subsection{Summary}
+
+For this task, when a participant submitted their solution, the survey asked them to 
+rate---in a 5 points Likert scale~\cite{likert1932technique}---how helpful were the highlights shown by the tool.
+As shown in Figure~\ref{fig:experiment-rating}, participants rated highlights on a per artifact basis. Although we evaluate the usefulness of all the highlights shown for a task
+aggregating individual responses, we use the ratings per artifact to explore if the highlights shown in a certain type or artifact are more or less useful.
+
+
+\input{sections/cp6/tbl-rating.tex}
 
 
 
-Table~\ref{tbl:experiment-data} summarizes the data we collected based on experimental procedures.
+\subsection{Summary of procedures}
 
 
-\input{sections/cp6/tbl-summary-of-procedures.tex}
+
+Throughout the past sections, we have described a controlled experiment 
+where participants attempted a \textit{manual} and a \textit{tool-assisted}
+task which allowed us to gather:
+
+
+\begin{enumerate}
+\item a participant's submitted solution (written Python code) for each task;
+\item text that participants deemed relevant for completing the manual task;
+\item the usefulness of the highlights shown for the tool-assisted task; and
+\item any additional feedback (written text) that a participant wished to provide.
+\end{enumerate}
+
+
+We use this data to investigate whether 
+a tool embedding a semantic-based technique helps developers complete a software task. 
+
+
+\clearpage
+
+
+
+
+
+
+% \clearpage
+
+
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.78\textwidth]{cp6/tool-highlights.png}
+%     \caption{\texttt{BeautifulSoup} web tutorial with a sentence automatically highlighted by \acs{beskar}}
+%     \label{fig:artifact-beskar-highlight}
+% \end{figure}
+
+% \clearpage
 
 
 
