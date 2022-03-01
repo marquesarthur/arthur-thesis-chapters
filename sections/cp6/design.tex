@@ -3,28 +3,64 @@
 \label{cp6:design}
 
 
-
-To assess how a tool (Section~\ref{cp6:tool}) that shows text automatically identified as relevant to a task
-might assist a developer complete a task, we are guided by three driving factors:
-
-
-First, we consider whether---in an artifact pertinent to a task---the  text automatically identified by such a tool is similar to the text that humans deemed relevant to a task at hand. 
-If the manually and automatically identified text are similar, one could argue that such a tool  
-would direct a developer's attention to information that others found useful for completing a task.
+% To understand how a tool embedding a semantic-based technique might impact a developer's work,
+% we are guided by three main factors.
 
 
-If the text identified is not similar, there is a chance that the tool directed a developer to the wrong information, or that 
-the tool actually found complementary information (not identified by humans) that it is still helpful to a developer working on a particular task. 
-Therefore, it would be beneficial to not only compare the amount of overlap between the text manually
-and automatically identified, but also to evaluate if developers performing a task with and without such a tool  
-both reached equally correct solutions.
+To design our experiment, we consider three main aspects that assist us examine how a tool that embeds a semantic-based technique might impact a developer's work, namely \textit{prominence}, \textit{correctness}, and \textit{usefulness}.
 
 
-As a final factor, this quantitative analysis could be complemented by qualitative feedback about the tool. 
-This feedback could be used to identify other means through which we could locate 
-text helpful to a developer working on a task, or perhaps to explore
-situations in which the text automatically identified 
-was more (or less) helpful.
+
+
+\begin{description}[leftmargin=\parindent, font=\normalfont\itshape]
+    
+    \item[Prominence.] To be helpful, a tool must direct a developer's attention to text that assist them complete a task~\cite{Robillard2015}.
+    Hence, our experiment must have a means to assess whether the text automatically identified by the tool is similar to text considered by humans as relevant to the task at hand. 
+
+
+    \item[Correctness.] If the text identified by the tool is not similar to the text identified by humans,
+    there is a chance that the tool directed a participant to the wrong information, or that 
+    the tool actually found complementary information that humans missed, which might impact the correctness of a task. 
+    Therefore, evaluation should also compare the correctness of solutions submitted by participants who perform a task using such a tool against a control group.
+
+    \item[Usefulness.] Regardless of how correct participants' solutions are, there is a chance that the text shown by the tool is not useful, either because it is not relevant for the task at hand or because it is unsurprising, i.e., the information is ``common-knowledge'' to most developers~\cite{cwalina2008, Robillard2015}. Hence, a successful evaluation must
+    examine the usefulness of the text identified by the tool. 
+    
+\end{description}
+
+
+
+
+
+
+
+
+
+% To show how this experiment allows such a investigation, we begin by detailing
+% experimental procedures (Sections~\ref{cp6:design} to~\ref{cp6:procedures}).
+% Then, we discuss how we analyze the data obtained from the experiment by:
+
+
+% \begin{itemize}
+%     \item assessing the correctness of the tasks performed \textit{with} or \textit{without} tool support (Section~\ref{cp6:correctness});
+%     \item comparing  the text that participants deemed relevant to the text automatically identified
+%     and shown in the tool-assisted task (Section~\ref{cp6:comparison}), and;
+%     \item discussing the usefulness of the automatically identified text according to the feedback provided by the participants (Section~\ref{cp6:usefulness}).
+% \end{itemize}
+ 
+
+
+
+
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=1.05\textwidth]{cp6/tool-experiment-pipeline.pdf}
+% \caption{Summary of experimental procedures}
+% \label{fig:tool-experiment-procedures}
+% \end{figure}
+
+
 
 
 
