@@ -1,5 +1,5 @@
 
-\section{Design}
+\section{Methodology}
 \label{cp6:design}
 
 
@@ -7,7 +7,7 @@
 % we are guided by three main factors.
 
 
-To design our experiment, we consider three main aspects that assist us examine how a tool that embeds a semantic-based technique might impact a developer's work.
+To design our experiment, we consider  aspects that will assist us examine how a tool that embeds a semantic-based technique might impact a developer's work.
 
 
 
@@ -15,29 +15,32 @@ To design our experiment, we consider three main aspects that assist us examine 
 
 
 
-To be helpful, a tool must direct a developer's attention to \textit{prominent} text that assist them complete a task~\cite{Robillard2015}. If we can gather data about the text in an artifact considered by humans as relevant to the task at hand, we should be able to assess whether the text automatically identified by the tool is similar to the text manually identified. 
+To be helpful, the text automatically identified by a tool must contain information that assist a developer complete their task~\cite{Robillard2015}. If we can gather data about the text that humans deem relevant to a certain task, we should be able to assess whether the text automatically identified by the tool is similar to the text manually identified. 
 
 
 In case the text is not similar,
 there is a chance that the tool directed a developer to the wrong information, or that 
-the tool actually found complementary information that humans missed, which might impact the \textit{correctness} of a task. Therefore, our design must be able to compare the correctness of solutions submitted by participants who perform a task using our envisioned tool against that of developers who attempted the same tasks without tool support, i.e., a control group.
+the tool actually found complementary information that humans missed, which might impact the \textit{correctness} of a task. Therefore, our design must be able to compare the correctness of solutions submitted by participants who perform a task using our semantic-based tool against that of developers who attempted the same tasks without tool support, i.e., a control group.
 
 
 Regardless of how correct participants' solutions are, there is a chance that the text shown by the tool is not \textit{useful}---either because it is not relevant for the task at hand or because it is unsurprising, i.e., the information is ``common-knowledge'' to most developers~\cite{cwalina2008, Robillard2015}. Hence, a successful evaluation would 
 ideally
-gather qualitative data on the usefulness of the text identified by the tool. 
+gather data about how useful is the text identified by the tool. 
 
 
 
-\subsubsection{Experiment}
+\subsubsection{Design}
 
 
 
 
-Figure~\ref{fig:tool-experiment-procedures} presents an experiment that allows us to address the aforementioned requirements. In this experiment, 24 participants with software development background each attempted a
+Figure~\ref{fig:tool-experiment-procedures} presents an overview of the experiment that we have designed to address the aforementioned requirements. In this experiment, 24 participants with software development background each attempted a
 \textit{manual task} and \textit{tool-assisted task} randomly drawn from a list of well-known Python programming tasks.
 Alongside the solution submitted for each task, we use the manual task to collect what text participants deemed relevant to the task performed.
-In turn, in the tool-assisted task, we also gathered input on the usefulness of the highlights show. 
+In turn, in the tool-assisted task, we also gathered input on the usefulness of the highlights show by the semantic-based tool
+used in this task. 
+
+
 This design allow us to:
 
 
