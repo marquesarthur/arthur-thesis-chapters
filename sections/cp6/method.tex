@@ -1,12 +1,12 @@
 
 
 
-\section{Methodology}
+\section{Method}
 \label{cp6:method}
 
 
 To design an experiment
-that examines how a tool that embeds a semantic-based technique might impact a developer's work,
+that examines how a tool that embeds a semantic-based technique can affect a developer's work,
 we consider three main factors that might impact experimental design.
 
 
@@ -16,7 +16,7 @@ we consider three main factors that might impact experimental design.
 
 
 
-To be helpful, a tool must direct a developer's attention to text that assist them complete a task~\cite{Robillard2015}. If we can gather data about the text in an artifact considered by humans as relevant to the task at hand, we should be able to assess whether the text automatically identified by the tool is \textit{similar} to the text manually identified. 
+To be helpful, a tool must direct a developer's attention to text that assist them complete a task~\cite{Robillard2015}. If we can gather data about the text in an artifact considered by humans as relevant to the task at hand, we could assess whether the text automatically identified by the tool is \textit{similar} to the text manually identified. 
 
 
 In case the text is not similar,
@@ -24,8 +24,8 @@ there is a chance that the tool directed a developer to the wrong information, o
 the tool actually found complementary information that humans missed, which might impact the \textit{correctness} of a task. Therefore, our design must be able to compare the correctness of solutions submitted by participants who perform a task using our envisioned tool against that of developers who attempted the same tasks without tool support, i.e., a control group.
 
 
-Regardless of how correct participants' solutions are, there is a chance that the text shown by the tool is not \textit{useful}---either because it is not relevant for the task at hand or because it is unsurprising, i.e., the information is ``common-knowledge'' to most developers~\cite{cwalina2008, Robillard2015}. Hence, a successful evaluation would 
-also gather data that would allow us to discuss the usefulness of the text identified by the tool. 
+Regardless of how correct participants' solutions are, there is a chance that the text shown by the tool is not \textit{useful}---either because it is not relevant for the task at hand or because it is unsurprising, i.e., the information is ``common-knowledge'' to most developers~\cite{cwalina2008, Robillard2015}. Hence, a successful evaluation would allow us to discuss qualitative factors 
+related to the tool under evaluation. For example, the usefulness of the text identified by the tool. 
 
 
 
@@ -36,9 +36,9 @@ also gather data that would allow us to discuss the usefulness of the text ident
 
 
 Figure~\ref{fig:tool-experiment-procedures} presents an experiment that allows us to address the aforementioned factors. In this experiment, 24 participants with software development background each attempted a
-\textit{manual task} and \textit{tool-assisted task} randomly drawn from a list of well-known Python programming tasks.
+\textit{manual} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
 Alongside the solution submitted for each task, we use the manual task to collect what text participants deemed relevant to the task performed.
-In turn, in the tool-assisted task, we also gathered input on the usefulness of the text automatically identified and shown by our tool. 
+In turn, in the tool-assisted task, we also gather input on the usefulness of the text automatically identified and shown by our tool. 
 This design allow us to:
 
 
@@ -67,12 +67,12 @@ This design allow us to:
 
 
 
-\subsection{Tasks}
+\subsection{Programming Tasks}
 \label{cp6:tasks}
 
 
 We opted for an experiment with tasks that could be completed by participants on their own time and computer.
-This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment safely\red{~\cite{}}. 
+This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment \red{~\cite{}}. 
 Since participants would follow instructions on their own, we decided to use tasks that are easy to understand and perform in a single experimental session, but that still required a participant  
 to seek information in artifacts associated with that task.
 
@@ -80,20 +80,20 @@ to seek information in artifacts associated with that task.
 
 Based on these criteria and guided by~\cite{thiselton2019},
 Table~\ref{tbl:python-tasks-modules} details the tasks that we have selected. 
-These tasks are based on 
+These tasks are similar to 
 Python w3resource\footnote{\url{https://www.w3resource.com/python-exercises/}} tasks
 that require usage of at least one module external to the Python core library.
 By using external modules, we aim to reduce the likelihood that a participant 
 can provide a solution for a task without consulting any of the artifacts (Section~\ref{cp6:coding-environment})
-that detail how to use the modules associated with each task. 
+that detail each of the modules associated with each task. 
 
 
 
-While we leave details about the procedures associated with manual and tool-assisted tasks to another section, Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\red{\cite{}}.}.
+While we leave details about the procedures specific to the manual and tool-assisted tasks to another section, Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\red{\cite{}}.}.
 For each task, participants had the task description and examples of input and output scenarios at their disposal. A task contained a list of resources that participants could consult 
 so that they could write their solution.
 Each task also contained a link to an online coding environment (Section~\ref{cp6:coding-environment})
-where they could write and test their solution. 
+where a participant could write and test their solution. 
 
 
 \input{sections/cp6/tbl-task-descriptions.tex}
@@ -107,11 +107,12 @@ Each task requires a set of artifacts that a participant could peruse for inform
 We select artifacts for a task following procedures similar to the ones we used to create the \acs{DS-android} dataset (Chapter~\ref{ch:android-corpus}). 
 That is, for each of the tasks in Table~\ref{tbl:python-tasks-modules}, we use the Google search engine to obtain up to ten artifacts that likely contain 
 information that could help a participant correctly complete that task. 
-
+Three pilot runs ensured that the artifacts collected using such procedures had sufficient information to complete a task without 
+the need of additional resources. 
 
 Note that our decision to control the artifacts shown per task relates to our need to study if there is overlap between the text that participants manually identify as relevant and the text that our semantic-based tool identifies for these same artifacts. 
-Three pilot runs ensured that the artifacts available in each task had sufficient information to complete a task without 
-the need of additional resources. 
+
+
 
 
 \subsection{Coding environment}
@@ -170,20 +171,25 @@ against the examples shown in each task description.
 
 We advertised our study to professionals in our network and to computer science students at the several universities. 
 Our target population comprised professionals and third, fourth-year or graduate students.
-We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task. These questions were part of our demographics and we planned to exclude any participant
-who did not meet these requirements. No participants were excluded
+We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task. We background information as part of our demographics (Figure~\ref{fig:experiment-demographics}). No participants were excluded
 based on answers to these questions.
 
 
 
 
-We obtained twenty four responses (3 identified female and 21 male) to our study advertisement. 
+
+
+
+We obtained twenty four responses (3 identified as female and 21 as male) to our study advertisement. 
 At the time of the experiment, 10 participants were working as software
 developers and 14 were students (11 graduate and 3 undergrad).
-We note that the majority of the students (71\%) also have previous professional experience.
+The majority of the students (71\%) also have previous professional experience.
 
 
 On average, participants self-reported 8 years of programming experience ({\small $\pm$} 3.8, ranging from 3 to 17 years).
 The majority of the participants (54\%) had between 5 to 10 years of experience in Object-Oriented programming languages,
-closely followed by participants (29\%) with  3 to 4 years of experience.
+closely followed by participants  with  3 to 4 years of experience (29\%). 
+Most of the participants also indicated that they did check API documents almost every time they performed a programming task. 
 
+
+\input{sections/cp6/tbl-demographics.tex}

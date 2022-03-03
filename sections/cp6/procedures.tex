@@ -10,18 +10,15 @@ First, we present an overview of the whole experiment and then, we detail
 instructions specific to the manual and tool-assisted tasks, respectively.
 
 
-We advertised the experiment via mailing lists. The email disclosed the purpose of the experiment, eligibility criteria, an estimation of the time that one would take to complete the experiment as well as a link 
-to the web survey containing the experiment's consent form and tasks. 
+
+The entry point to our experiment was the advertisement email.
+The email disclosed the purpose of the experiment, eligibility criteria, an estimate of the time that one would take to complete the study as well as a link 
+to a web survey containing the experiment's consent form and tasks. 
 
 
-Once a participant consented to participate, the survey gathered demographics (Figure~\ref{fig:experiment-demographics}), which we use to filter participants who did not meet our eligibility criteria. That is, we planned to filter data from a 1st or 2nd year student or from a participant with no experience in Object-Oriented programming languages or that did not consult API documentation when performing a programming task. However, no participants were excluded based on demographics.
-
-
-\input{sections/cp6/tbl-demographics.tex}
-
-
-Next, the online survey gave participants further instructions 
-about how to perform each task and it requested them to install \acs{beskar}.
+Once a participant consented to participate, the survey gathered demographics and then, 
+it gave participants further instructions 
+about how to perform each task, requesting them to install the study tool, a web browser plug-in.
 Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
 
 
@@ -42,20 +39,26 @@ to compensate them for their time, what concluded the experiment.
 
 
 
-In the \textit{manual} task, we instrumented \acs{beskar} to allow participants to highlight text that they deemed useful for the task at hand. In this task, 
-the survey asked participants to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Section~\ref{cp4:corpus-relevant-text}).
+In the \textit{manual} task, we use the study tool to gather text that a participant deems useful for the task at hand. In this task, 
+the survey asked participants to use the study tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Section~\ref{cp4:corpus-relevant-text}).
 
 
 
 Figure~\ref{fig:artifact-pre-highlight}
-gives insight into how participants highlighted sentences that they deemed relevant. 
+gives insight into how participants highlighted sentences using the study tool. 
 Whenever a participant inspected one of the artifacts available for their task, 
-the survey instructed them to click on the \texttt{highlight} button in the web browser plug-in context menu.  
-\acs{beskar} would then instrumented the HTML of the page identifying individual sentences. 
+they could click on the \texttt{highlight} button in the tool's context menu.  
+This would then instrumented the HTML of the page identifying individual sentences. 
 A participant could hover over identified sentences and select them as relevant by clicking on the hovered text.
-As an example, Figure~\ref{fig:artifact-pre-highlight} shows a sentence discussing the \texttt{find\_all} method, which 
-one of the participants in our experiment deemed 
-relevant to the \texttt{NYTimes} task.
+% As an example, Figure~\ref{fig:artifact-pre-highlight} shows a sentence discussing the \texttt{find\_all} method, which 
+% one of the participants in our experiment deemed 
+% relevant to the \texttt{NYTimes} task.
+Once a participant had finished selecting sentences, they could submit 
+their data also through the tool's context menu.
+
+
+% Based on the pilots, we observed that the most natural flow adopted by participants was to highlight text on-the-fly. That is, they indicated what text 
+% was relevant for the task at hand while they consulted each artifact and wrote their solution. 
 
 
 
@@ -73,18 +76,32 @@ relevant to the \texttt{NYTimes} task.
 \label{cp6:procedures-tool-assisted}
 
 
-In the tool-assisted task, \acs{beskar} would automatically highlight text that 
+In the tool-assisted task, the study tool automatically highlighted text that 
 its underlying semantic-based approach identified as relevant to the participant's task.
-This is similar to the highlights shown in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
+Highlights were shown in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
+
+
+
 
 
 For this task, when a participant submitted their solution, the survey asked them to 
-rate---in a 5 points Likert scale~\cite{likert1932technique}---how helpful were the highlights shown by the tool.
-As Figure~\ref{fig:experiment-rating} shows, participants rated highlights on a per artifact basis. When rating an artifact, the survey allowed participants to revisit the artifact if so they wished. This would open the artifact web page in a new tab so that a participant
-could review the the highlights in that artifact.
+rate---in a 5 points Likert scale~\cite{likert1932technique}---how helpful were the highlights shown by the tool as  Figure~\ref{fig:experiment-rating} shows.
+Participants rated highlights on a per artifact basis
+and they could revisit an artifact and its highlights before giving their answer.
 
-Although we evaluate the usefulness of all the highlights for a task
-aggregating individual responses, we use the ratings per artifact to explore if the highlights shown in a certain type or artifact, e.g., API documents or tutorials, are more or less useful.
+
+
+% Our tool did not more than determine what tool-assisted task was being performed 
+% and highlight the text in an artifact under inspection.
+% To determine what text was relevant to a task in a certain artifact, we applied one of the most promising semantic-based techniques that we have explored in Chapter~\ref{ch:identifying}, i.e., \texttt{BERT} with no filters,
+% taking the techniques output and using our web browser tool to highlighting the text identified.
+% As a proof of concept, we decided to pre-cache the output 
+% for the text automatically identified in each of the tasks and artifacts in our experiment. 
+
+
+
+% Although we evaluate the usefulness of all the highlights for a task
+% aggregating individual responses, we use the ratings per artifact to explore if the highlights shown in a certain type or artifact, e.g., API documents or tutorials, were considered more or less useful.
 
 
 \input{sections/cp6/tbl-rating.tex}
