@@ -78,16 +78,21 @@ their data also through the tool's context menu.
 
 In the tool-assisted task, the study tool automatically highlighted text that 
 its underlying semantic-based approach identified as relevant to the participant's task.
-Highlights were shown in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
+For that, the tool applies the \texttt{BERT} technique with no filters (Chapter~\ref{ch:identifying}),
+automatically identifying a target number of sentences equal to 10\% of the entire content of an input artifact up to a maximum of 10 sentences per artifact.
+These sentences are then highlighted in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
 
 
 
 
-For this task, when a participant submitted their solution, the survey asked them to 
-rate---in a 5 points Likert scale~\cite{likert1932technique}---how helpful were the highlights shown by the tool as  Figure~\ref{fig:experiment-rating} shows.
-Participants rated highlights on a per artifact basis
-and they could revisit an artifact and its highlights before giving their answer.
+For this task, when a participant submitted their solution, we asked them to 
+rate in a 5 points Likert scale~\cite{likert1932technique} how helpful were the highlights shown by the tool.
+Figure~\ref{fig:experiment-rating} shows an example of how we gathered data about the usefulness of the text automatically identified.
+Participants rated highlights on a per artifact basis. A hyperlink also let a participant 
+revisit an artifact and its highlights before giving their answer.
+We decided to gather input at the artifact level because it would be too exhausting for a participant 
+to provide individual feedback on each highlight shown.
 
 
 

@@ -26,14 +26,60 @@ A solution with compile errors has a correctness score of $0$.
 \end{equation}
 \end{small}
 
-% \subsubsection{Results}
+
+
+\smallskip
+
+
+From all submitted solutions (24 manual and 24 tool-assisted ones), two 
+solutions from tool-assisted tasks had compile errors or failed all test cases. 
+One of the solutions that failed all test cases
+was from a participant who indicated that they decided to not finish their tool-assisted task due to time constraints; the other, from an Exception thrown in a solution that misused the \texttt{geopy} module. We do not ignore these two solutions when reporting results.
+
+
+Figure~\ref{fig:correctness-overall} and 
+show results for the correctness scores of solutions submitted by participants
+who performed a task with and without tool support. 
+On average both manual and tool-assisted solutions have a correctness score of $7$.
+The notable difference between manual and tool-assisted solutions appear in the 1st quartile of the data which suggests that, 
+when assisted by our tool, participants had slightly more correct solutions. 
+However, comparison of the correctness scores of manual and tool-assisted solutions via a 
+Wilcoxon signed-rank test suggests we cannot draw statistically significant conclusions
+based on our data.
+
+
+
+% (Table~\ref{tbl:correctness-overall})
+
+
+
+% \input{sections/cp6/tbl-correctness}
+
+
+
+
+
+
+\label{fig:correctness-overall}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{cp6/correctness_aggregated.pdf}
+    \caption{Comparison of correctness of solutions for manual and tool-assisted tasks}
+    \label{fig:correctness-overall}
+\end{figure}
+
+
+
+% Figure~\ref{fig:correctness-by-task} details results per task.
 
 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{cp6/correctness_overall.pdf}
-    \caption{Boxplot comparing how correct are the solutions of each task done with and without tool support}
+    \caption{Detailed comparison of correctness of solutions for manual and tool-assisted tasks}
     \label{fig:correctness-by-task}
 \end{figure}
 
