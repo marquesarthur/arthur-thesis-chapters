@@ -1,22 +1,19 @@
 
 \subsection{Tasks Correctness}
-% \section{Does \acs{beskar} lead to more correct solutions?}
 \label{cp6:correctness}
 
 
 
 When assisted by a tool able to automatically highlight text identified as relevant to a task, we expect that a developer can produce a solution 
 that is equally or more correct than the solution of a developer who attempted a task without tool support. 
-To explore the correctness of the solutions submitted by the participants in our experiment, we compile their code and run it against a set of test cases 
-that assess their correctness.
 
 
-\subsubsection{Method}
-
-
-The correctness of a submitted solution is measured by the number of passing test cases
-when running that solution against a set of 10 test cases, specific to each task. 
-A solution with compile errors has a correctness score of zero.
+To compute how correct a participant's solution is, 
+we compile their code and run it against a set of 10 test cases that check whether it produces the correct output for each given test input. 
+Hence, \textit{correctness} represents the number of passing test cases of a solution (Equation~\ref{eq:cp6-correctness}).
+For example, if the solution of a participant passes 7 out of 10 test cases, we would assign a 
+correctness score of $7$ to this solution. 
+A solution with compile errors has a correctness score of $0$.
 
 
 \smallskip
@@ -24,9 +21,19 @@ A solution with compile errors has a correctness score of zero.
 
 
 \begin{equation}
-    Correctness = \frac{ \text{\textit{\# of passing test cases}}}{\text{\textit{\#  of test cases}}}
+    Correctness = \text{\textit{\# of passing test cases}}
+    \label{eq:cp6-correctness}
 \end{equation}
 \end{small}
 
-\subsubsection{Results}
- 
+% \subsubsection{Results}
+
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{cp6/correctness_overall.pdf}
+    \caption{Boxplot comparing how correct are the solutions of each task done with and without tool support}
+    \label{fig:correctness-by-task}
+\end{figure}
+

@@ -1,25 +1,18 @@
 \clearpage
 
 
-% \section{Does \acs{beskar} identify the right text?}
 \subsection{Comparison of the Task-relevant Text Identified}
 \label{cp6:comparison}
 
 
 To assist a developer correctly complete a task, a tool that
-automatically identifies task-relevant text must be able to 
-locate text that humans have considered as relevant to that task
-while they performed the said task. 
-Hence, we compare the participants' manual highlights against the ones 
-automatically shown by \acs{beskar}, as 
-  identified by its underlying semantic-based technique.
+automatically identifies task-relevant text would ideally 
+identify text that humans have also considered as relevant to a particular task. 
+This lead us to compare the participants' manual highlights against the ones 
+identified by semantic-based technique applied by the tool in our study.
  
 
 
-
-
-
-\subsubsection{Method}
 
 Analogous to the evaluation procedures of Chapter~\ref{ch:identifying}, we use 
 \textit{precision} and \textit{recall} metrics
@@ -29,7 +22,8 @@ to compare human and tool identified task-relevant text.
 
 
 Precision measures the fraction of the automatically identified text of an artifact that was  considered relevant
-by the participants.
+by the participants. 
+In turn, recall represents how many of all the manual highlights of an artifact were identified by the semantic-based technique that we applied.
 
 \smallskip
 \begin{small}
@@ -44,11 +38,8 @@ by the participants.
 \end{small}
 
 
-Recall represents how many of all the manual highlights of an artifact were identified by the semantic-based technique that we applied.
-
-\smallskip
+% \smallskip
 \begin{small}
-
 \begin{equation}
     Recall = \frac{
         \text{\textit{automatic highlights}~} \cap 
@@ -58,12 +49,15 @@ Recall represents how many of all the manual highlights of an artifact were iden
 \end{small}
 
 \medskip
-\art{Argue which metric matters the most here}
 
 
 
 
-\subsubsection{Results}
+\input{sections/cp6/tbl-comparison-overall}
+
+
+\input{sections/cp6/tbl-comparison-per-artifact-type}
+
 
 
 
