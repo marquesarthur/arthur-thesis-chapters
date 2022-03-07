@@ -21,11 +21,12 @@ To be helpful, a tool must direct a developer's attention to text that assist th
 
 In case the text is not similar,
 there is a chance that the tool directed a developer to the wrong information, or that 
-the tool actually found complementary information that humans missed, which might impact the \textit{correctness} of a task. Therefore, our design must be able to compare the correctness of solutions submitted by participants who perform a task using our envisioned tool against that of developers who attempted the same tasks without tool support, i.e., a control group.
+the tool actually found complementary information that humans missed, which might impact the \textit{correctness} of a task. Therefore, it would be beneficial to compare the correctness of solutions submitted by participants who perform a task using our semantic-based tool against that of developers who attempted the same tasks without tool support, i.e., a control group.
 
 
-Regardless of how correct participants' solutions are, there is a chance that the text shown by the tool is not \textit{useful}---either because it is not relevant for the task at hand or because it is unsurprising, i.e., the information is ``common-knowledge'' to most developers~\cite{cwalina2008, Robillard2015}. Hence, a successful evaluation would allow us to discuss qualitative factors 
-related to the tool under evaluation. For example, the usefulness of the text identified by the tool. 
+Regardless of how correct participants' solutions are, there is a chance that the text shown by the tool is not \textit{useful}---either because it is not relevant for the task at hand or because it is unsurprising, i.e., 
+a developer finds the text identified by the tool as ``common-knowledge''~\cite{cwalina2008, Robillard2015}. Hence, experimental design must take into account qualitative factors 
+related to the tool that are not captured by the previous factors. For example, the \textit{usefulness} of the text identified by the tool. 
 
 
 
@@ -35,10 +36,10 @@ related to the tool under evaluation. For example, the usefulness of the text id
 
 
 
-Figure~\ref{fig:tool-experiment-procedures} presents an experiment that allows us to address the aforementioned factors. In this experiment, 24 participants with software development background each attempted a
+Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed considering these driving factors. In this experiment, 24 participants with software development background each attempted a
 \textit{manual} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
-Alongside the solution submitted for each task, we use the manual task to collect what text participants deemed relevant to the task performed.
-In turn, in the tool-assisted task, we also gather input on the usefulness of the text automatically identified and shown by our tool. 
+Alongside the solution submitted for each task, we use the manual task to collect what text a participant deems relevant to the task that they perfom.
+In turn, in the tool-assisted task, we gather input on the usefulness of the text automatically identified and shown by our tool. 
 This design allow us to:
 
 
@@ -64,6 +65,7 @@ This design allow us to:
 \end{figure}
 
 
+The next subsections futher detail our experimental design.
 
 
 
@@ -103,14 +105,24 @@ where a participant could write and test their solution.
 \label{cp6:experiment-artifacts}
 
 
+% Note that our decision to control the artifacts shown per task relates to our need to study if there is overlap between the text that participants manually identify as relevant and the text that our semantic-based tool identifies for these same artifacts. 
+
+
 Each task requires a set of artifacts that a participant could peruse for information that could assist them in writing their solution.
-We select artifacts for a task following procedures similar to the ones we used to create the \acs{DS-android} dataset (Chapter~\ref{ch:android-corpus}). 
-That is, for each of the tasks in Table~\ref{tbl:python-tasks-modules}, we use the Google search engine to obtain up to ten artifacts that likely contain 
+Ideally, participants could find these artifacts on their own. However, our need to compare solutions between participants who perform a task 
+assisted by our tool and without it as well as our need to compare the text in an artifact a participant deems relevant to the text
+automatically identified by our tool means that we must control the artifacts that  a
+participant can consult.
+
+
+Therefore,
+we follow procedures similar to the ones we used to create the \acs{DS-android} dataset to produce the list of artifacts for each of the tasks in Table~\ref{tbl:python-tasks-modules}. 
+That is, we use the Google search engine to obtain up to ten artifacts that likely contain 
 information that could help a participant correctly complete that task. 
 Three pilot runs ensured that the artifacts collected using such procedures had sufficient information to complete a task without 
 the need of additional resources. 
 
-Note that our decision to control the artifacts shown per task relates to our need to study if there is overlap between the text that participants manually identify as relevant and the text that our semantic-based tool identifies for these same artifacts. 
+
 
 
 
@@ -171,8 +183,9 @@ against the examples shown in each task description.
 
 We advertised our study to professionals in our network and to computer science students at the several universities. 
 Our target population comprised professionals and third, fourth-year or graduate students.
-We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task. We background information as part of our demographics (Figure~\ref{fig:experiment-demographics}). No participants were excluded
-based on answers to these questions.
+We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task.
+We gathered a participant's background background information as part of our demographics (Figure~\ref{fig:experiment-demographics}), but no participants were excluded
+based on their background.
 
 
 
@@ -183,7 +196,7 @@ based on answers to these questions.
 We obtained twenty four responses (3 identified as female and 21 as male) to our study advertisement. 
 At the time of the experiment, 10 participants were working as software
 developers and 14 were students (11 graduate and 3 undergrad).
-The majority of the students (71\%) also have previous professional experience.
+The majority of the students (71\%) also reported habing some previous professional experience.
 
 
 On average, participants self-reported 8 years of programming experience ({\small $\pm$} 3.8, ranging from 3 to 17 years).
