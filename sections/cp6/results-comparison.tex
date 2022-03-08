@@ -1,5 +1,3 @@
-\clearpage
-
 
 \subsection{Comparison of the Task-relevant Text Identified}
 \label{cp6:comparison}
@@ -17,10 +15,6 @@ identified by semantic-based technique applied by the tool in our study.
 Analogous to the evaluation procedures of Chapter~\ref{ch:identifying}, we use 
 \textit{precision} and \textit{recall} metrics
 to compare human and tool identified task-relevant text.
-
-
-
-
 Precision measures the fraction of the automatically identified text of an artifact that was  considered relevant
 by the participants. 
 In turn, recall represents how many of all the manual highlights of an artifact were identified by the semantic-based technique that we applied.
@@ -51,12 +45,52 @@ In turn, recall represents how many of all the manual highlights of an artifact 
 \medskip
 
 
+We also compute \textit{pyramid precision} to examine whether the text automatically identified represents text that multiple participants deemed relevant to a certain task.
+The more the tool identifies text that more than one participant indicated as relevant, the higher pyramid score is.
+As an example, consider an artifact with 3 sentences $\{s_1, s_2, s_3\}$ that have been selected by $\{2, 0, 1\}$ participants, respectively.
+Pyramid scores for a tool that identifies two of them as relevant depend on which sentences are identified:
 
 
-\input{sections/cp6/tbl-comparison-overall}
+
+\begin{small}
+\begin{equation}
+\begin{split}
+\triangle  Precision(s_2, s_3) = ( 0 + 1) \div 3 =  0.33 \\
+\triangle  Precision(s_1, s_2) = ( 2 + 0) \div 3 =  0.66 \\
+\triangle  Precision(s_1, s_3) =  ( 2 + 1) \div 3 =  1.00 \\
+\end{split}
+\end{equation}
+\end{small}
 
 
-\input{sections/cp6/tbl-comparison-per-artifact-type}
+
+
+
+% Pyramid precision represents the sum of the number of participants who selected the text automatically identified over the sum of a perfect 
+% scenario, i.e., one where for the same number of sentences, we would identify sentences selected by the most number of participants. 
+
+
+
+% \begin{small}
+% \begin{equation}
+%     \triangle  Precision = \frac{scores(\text{~\textit{automatic highlights}~})
+%     }{scores(\text{~\textit{ordered manual highlights}~})}
+%     \label{eq:pyramid-precision}
+% \end{equation}
+% \end{small}
+
+
+
+
+
+
+
+
+
+% \input{sections/cp6/tbl-comparison-overall}
+
+
+% \input{sections/cp6/tbl-comparison-per-artifact-type}
 
 
 
