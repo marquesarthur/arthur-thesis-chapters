@@ -5,7 +5,7 @@
 
 To assist a developer correctly complete a task, a tool that
 automatically identifies task-relevant text would ideally 
-identify text that humans have also considered as relevant to a particular task. 
+identify text that humans have also considered as relevant to that particular task. 
 This lead us to compare the participants' manual highlights against the ones 
 identified by semantic-based technique applied by the tool in our study.
  
@@ -48,12 +48,12 @@ In turn, recall represents how many of all the manual highlights of an artifact 
 
 
 We also compute \textit{pyramid precision} to examine whether the text automatically identified represents text that multiple participants deemed relevant to a certain task.
-It weights the automatically identified text based on the number of participants who selected a sentence and compares it to a scenario with an optimal output, i.e., one where we identify sentences selected by the most number of participants.   
+Pyramid precision weights the automatically identified text based on the number of participants who selected it as relevant and compares the result to a scenario with an optimal output, i.e., one where we identify sentences selected by the most number of participants.   
 The more the tool identifies text that more participants indicated as relevant, the higher pyramid precision is.
 
 As an example, consider an artifact with 3 sentences $\{s_1, s_2, s_3\}$ that have been selected by $\{2, 0, 1\}$ participants, respectively.
-For an output identifying two sentences from this artifact as relevant, an optimal solution would return sentences $\{s_1, s_3\}$. 
-Equation~\ref{eq:pyramid-precision} shows this and other precision scores for this example.
+For an output identifying two sentences from this artifact, an optimal solution would return sentences $\{s_1, s_3\}$. 
+Equation~\ref{eq:pyramid-precision} shows this and other pyramid precision scores for this example.
 
 
 
@@ -84,19 +84,39 @@ Some participants also selected code snippets as relevant to a task---a threat t
 Code snippets account for 30\% of the highlights produced, but we remove them from our analysis since our semantic-based approach 
 operates on text only. For the textual highlights,
 Krippendorf's alpha indicates good agreement of what participants deemed relevant (or not) to each task and artifact ($\alpha = 0.68$)~\cite{Krippendorff1980, passonneau2006}
-and we compare these to the text automatically identified by our tool.
+and we compare these manually produced highlights to the text automatically identified by our tool.
+
+
+
+Table~\ref{tbl:comparison-task-wise} summarizes the average of precision, pyramid precision, and recall metrics for each of the tasks in the experiment.
+Based on the overall results, we observe that precision scores range from 0.55 to 0.68 and that 
+the lower pyramid precision scores, ranging from 0.55 to 0.57, suggest that our tool failed to identify some of the text that participants deemed the most relevant.
+
+
+Results from table~\ref{tbl:comparison-task-wise} are not surprising since they corroborate 
+the correctness scores detailed in Figure~\ref{fig:correctness-by-task}. For example, 
+tool-assisted solutions for the \texttt{distances} task were less correct than manual ones and 
+we observe that this was the task with the lowest precision, recall and pyramid precision values. 
+In contrast, the task were participants assisted by our tool obtained the best correctness scores, namely \texttt{titanic}, is the one with the best precision, recall and pyramid precision values.
 
 
 
 
+\input{sections/cp6/tbl-comparison-overall}
 
 
 
 
-% \input{sections/cp6/tbl-comparison-overall}
+Table~\ref{tbl:comparison-artifact-type-wise} details evaluation metrics artifact-type wise. 
+Both Stack Overflow posts and API documentation have considerably higher precision scores than 
+miscellaneous web pages. For these types of artifacts, pyramid precision indicates that the 
+text automatically identified on Stack Overflow is the text that several participants deemed relevant. Miscellaneous web pages were the artifact type with the lowest scores and we 
+discuss this and other differences on our analysis of the usefulness of the text 
+automatically identified (Section~\ref{cp6:usefulness}).
 
 
-% \input{sections/cp6/tbl-comparison-per-artifact-type}
+
+\input{sections/cp6/tbl-comparison-per-artifact-type}
 
 
 
