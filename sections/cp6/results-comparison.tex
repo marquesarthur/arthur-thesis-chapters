@@ -16,8 +16,8 @@ Analogous to the evaluation procedures of Chapter~\ref{ch:identifying}, we use
 \textit{precision} and \textit{recall} metrics
 to compare human and tool identified task-relevant text.
 Precision measures the fraction of the automatically identified text of an artifact that was  considered relevant
-by the participants. 
-In turn, recall represents how many of all the manual highlights of an artifact were identified by the semantic-based technique that we applied.
+by the participants (Equation~\ref{eq:precision-cp6}). 
+In turn, recall represents how many of all the manual highlights of an artifact were identified by the semantic-based technique that we applied (Equation~\ref{eq:recall-cp6}). 
 
 \smallskip
 \begin{small}
@@ -28,6 +28,7 @@ In turn, recall represents how many of all the manual highlights of an artifact 
         \text{\textit{automatic highlights}~} \cap 
         \text{~\textit{manual highlights}}
     }{\text{\textit{automatic highlights}}}
+\label{eq:precision-cp6}    
 \end{equation}
 \end{small}
 
@@ -39,6 +40,7 @@ In turn, recall represents how many of all the manual highlights of an artifact 
         \text{\textit{automatic highlights}~} \cap 
         \text{~\textit{manual highlights}}
     }{\text{\textit{manual highlights}}}
+\label{eq:recall-cp6}    
 \end{equation}
 \end{small}
 
@@ -46,9 +48,12 @@ In turn, recall represents how many of all the manual highlights of an artifact 
 
 
 We also compute \textit{pyramid precision} to examine whether the text automatically identified represents text that multiple participants deemed relevant to a certain task.
-The more the tool identifies text that more than one participant indicated as relevant, the higher pyramid score is.
+It weights the automatically identified text based on the number of participants who selected a sentence and compares it to a scenario with an optimal output, i.e., one where we identify sentences selected by the most number of participants.   
+The more the tool identifies text that more participants indicated as relevant, the higher pyramid precision is.
+
 As an example, consider an artifact with 3 sentences $\{s_1, s_2, s_3\}$ that have been selected by $\{2, 0, 1\}$ participants, respectively.
-Pyramid scores for a tool that identifies two of them as relevant depend on which sentences are identified:
+For an output identifying two sentences from this artifact as relevant, an optimal solution would return sentences $\{s_1, s_3\}$. 
+Equation~\ref{eq:pyramid-precision} shows this and other precision scores for this example.
 
 
 
@@ -58,6 +63,7 @@ Pyramid scores for a tool that identifies two of them as relevant depend on whic
 \triangle  Precision(s_2, s_3) = ( 0 + 1) \div 3 =  0.33 \\
 \triangle  Precision(s_1, s_2) = ( 2 + 0) \div 3 =  0.66 \\
 \triangle  Precision(s_1, s_3) =  ( 2 + 1) \div 3 =  1.00 \\
+\label{eq:pyramid-precision}
 \end{split}
 \end{equation}
 \end{small}
@@ -66,19 +72,19 @@ Pyramid scores for a tool that identifies two of them as relevant depend on whic
 
 
 
-% Pyramid precision represents the sum of the number of participants who selected the text automatically identified over the sum of a perfect 
-% scenario, i.e., one where for the same number of sentences, we would identify sentences selected by the most number of participants. 
+\subsubsection{Results}
 
 
 
-% \begin{small}
-% \begin{equation}
-%     \triangle  Precision = \frac{scores(\text{~\textit{automatic highlights}~})
-%     }{scores(\text{~\textit{ordered manual highlights}~})}
-%     \label{eq:pyramid-precision}
-% \end{equation}
-% \end{small}
+In the manual tasks, participants produced a total of 415 highlights with an average of 7 highlights (std $\pm 3$) per artifact inspected.
+On average, this comprises 9\% of the content of each of the artifacts in our experiment. 
 
+
+Some participants also selected code snippets as relevant to a task---a threat that we discuss in Section~\ref{cp6:threats}. 
+Code snippets account for 30\% of the highlights produced, but we remove them from our analysis since our semantic-based approach 
+operates on text only. For the textual highlights,
+Krippendorf's alpha indicates good agreement of what participants deemed relevant (or not) to each task and artifact ($\alpha = 0.68$)~\cite{Krippendorff1980, passonneau2006}
+and we compare these to the text automatically identified by our tool.
 
 
 

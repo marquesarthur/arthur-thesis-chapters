@@ -33,10 +33,13 @@ the other, from an exception thrown in the code of a participant who misused the
 
 
 
+\subsubsection{Results}
+
+
 Figure~\ref{fig:correctness-overall} aggregates all correctness scores for tasks done with and without tool support.
 Although we observe that there is less variability in the solutions of participants assisted by our tool,
 we cannot draw statistically significant conclusions based on the data for correctness~\cite{Lazar2017-cp3}.
-Hence, we evaluate scores on a per task basis.
+Hence, we evaluate scores on a per task basis, as shown in Figure~\ref{fig:correctness-by-task}.
 
 
 
@@ -50,10 +53,9 @@ Hence, we evaluate scores on a per task basis.
 
 
 
-Figure~\ref{fig:correctness-by-task}  
-show results for the correctness scores of solutions submitted by participants
-who performed each task with and without tool support. 
-We observe that participants with tool support performed worse in the \texttt{distances} task. 
+
+Comparing the correctness scores of solutions submitted by participants
+who performed each task with and without tool support, we observe that participants with tool support performed worse in the \texttt{distances} task. 
 Among potential reasons for the lower score, we believe that the text automatically identified 
 might not have been relevant for this task, what can explain the higher percentage of participants
 who indicated that the text identified  by the tool was indeed not helpful (Section~\ref{cp6:usefulness}).
@@ -61,14 +63,13 @@ who indicated that the text identified  by the tool was indeed not helpful (Sect
 
 
 Manual and tool-assisted solutions have the exact same correctness distribution in \texttt{NYTimes} tasks.
-Participants had mixed considerations on the usefulness of the text automatically identified for this task 
-and we found that the most notable differences were from solutions who did (or not) consider corner-case scenarios.
+We found that the most notable differences in the solutions of this task arised from participants who did (or not) consider corner-case scenarios.
 To illustrate this, we quote one participant who stated that their solution could ``\textit{fetch all the articles, but it could also get some noise}'',
-e.g., geting all the headlines of the web page but also an unrelated ad, which is indeed one of the test cases for this task. 
+e.g., getting all the headlines of the web page but also an unrelated ad, which is indeed one of the test cases for this task. 
 
 
 
-The \texttt{titanic} task required using two python modules and it is the one with the most notable differences. 
+The \texttt{titanic} task required using two python modules and it is the one with the most differences. 
 Participants who did the task with tool support were able to produce more correct solutions, with an average 
 correctness score of $6$. In contrast, participants in the control group had an average correctness of $4$. 
 As we detail in the next sections, we found that the text automatically identified for this task 
