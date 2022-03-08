@@ -9,17 +9,14 @@ that is equally or more correct than the solution of a developer who attempted a
 
 
 To compute how correct a participant's solution is, 
-we compile their code and run it against a set of 10 test cases that check whether it produces the correct output for each given test input. 
+we compile their submitted code and run it against a set of 10 test cases that check whether it produces the correct output for each given test input. 
 Hence, \textit{correctness} represents the number of passing test cases of a solution (Equation~\ref{eq:cp6-correctness}).
 For example, if the solution of a participant passes 7 out of 10 test cases, we would assign a 
 correctness score of $7$ to this solution. 
 A solution with compile errors has a correctness score of $0$.
 
 
-\smallskip
 \begin{small}
-
-
 \begin{equation}
     Correctness = \text{\textit{\# of passing test cases}}
     \label{eq:cp6-correctness}
@@ -28,58 +25,66 @@ A solution with compile errors has a correctness score of $0$.
 
 
 
-\smallskip
-
-
 From all submitted solutions (24 manual and 24 tool-assisted ones), two 
 solutions from tool-assisted tasks had compile errors or failed all test cases. 
-One of the solutions that failed all test cases
-was from a participant who indicated that they decided to not finish their tool-assisted task due to time constraints; the other, from an Exception thrown in a solution that misused the \texttt{geopy} module. We do not ignore these two solutions when reporting results.
-
-
-Figure~\ref{fig:correctness-overall} and 
-show results for the correctness scores of solutions submitted by participants
-who performed a task with and without tool support. 
-On average both manual and tool-assisted solutions have a correctness score of $7$.
-The notable difference between manual and tool-assisted solutions appear in the 1st quartile of the data which suggests that, 
-when assisted by our tool, participants had slightly more correct solutions. 
-However, comparison of the correctness scores of manual and tool-assisted solutions via a 
-Wilcoxon signed-rank test suggests we cannot draw statistically significant conclusions
-based on our data.
+One of these
+was from a participant who indicated that they decided to not finish their tool-assisted task due to time constraints; 
+the other, from an exception thrown in the code of a participant who misused the \texttt{geopy} module. We do not ignore these two solutions when reporting results.
 
 
 
-% (Table~\ref{tbl:correctness-overall})
+Figure~\ref{fig:correctness-overall} aggregates all correctness scores for tasks done with and without tool support.
+Although we observe that there is less variability in the solutions of participants assisted by our tool,
+we cannot draw statistically significant conclusions based on the data for correctness~\cite{Lazar2017-cp3}.
+Hence, we evaluate scores on a per task basis.
 
 
 
-% \input{sections/cp6/tbl-correctness}
-
-
-
-
-
-
-\label{fig:correctness-overall}
-
-
+\medskip
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{cp6/correctness_aggregated.pdf}
-    \caption{Comparison of correctness of solutions for manual and tool-assisted tasks}
+    \includegraphics[width=0.8\textwidth]{cp6/correctness_aggregated.pdf}
+    \caption{Boxplots showing aggregated correctness scores for task performed with and without tool support}
     \label{fig:correctness-overall}
 \end{figure}
 
 
 
-% Figure~\ref{fig:correctness-by-task} details results per task.
+Figure~\ref{fig:correctness-by-task}  
+show results for the correctness scores of solutions submitted by participants
+who performed each task with and without tool support. 
+We observe that participants with tool support performed worse in the \texttt{distances} task. 
+Among potential reasons for the lower score, we believe that the text automatically identified 
+might not have been relevant for this task, what can explain the higher percentage of participants
+who indicated that the text identified  by the tool was indeed not helpful (Section~\ref{cp6:usefulness}).
 
 
 
-\begin{figure}[h!]
+Manual and tool-assisted solutions have the exact same correctness distribution in \texttt{NYTimes} tasks.
+Participants had mixed considerations on the usefulness of the text automatically identified for this task 
+and we found that the most notable differences were from solutions who did (or not) consider corner-case scenarios.
+To illustrate this, we quote one participant who stated that their solution could ``\textit{fetch all the articles, but it could also get some noise}'',
+e.g., geting all the headlines of the web page but also an unrelated ad, which is indeed one of the test cases for this task. 
+
+
+
+The \texttt{titanic} task required using two python modules and it is the one with the most notable differences. 
+Participants who did the task with tool support were able to produce more correct solutions, with an average 
+correctness score of $6$. In contrast, participants in the control group had an average correctness of $4$. 
+As we detail in the next sections, we found that the text automatically identified for this task 
+was considered the most useful and that the tool identified much of the text that humans deemed relevant. 
+
+
+
+
+
+\begin{figure}
     \centering
     \includegraphics[width=\textwidth]{cp6/correctness_overall.pdf}
-    \caption{Detailed comparison of correctness of solutions for manual and tool-assisted tasks}
+    \caption{Boxplots showing correctness scores for each task performed with and without tool support}
     \label{fig:correctness-by-task}
 \end{figure}
+
+
+
 
