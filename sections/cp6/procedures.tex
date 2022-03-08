@@ -4,7 +4,7 @@
 
 
 \section{Experiment}
-\label{cp6:procedures}
+\label{cp6:experiment}
 
 
 
@@ -55,7 +55,8 @@ To automatically identify text that is potentially relevant to a developer's tas
 a web browser plug-in that embeds one of our semantic based approaches, i.e., \texttt{BERT} with \textit{ no filters} (Chapter~\ref{ch:identifying}).
 
 
-The plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique the  to identify sentences that likely contain information useful to the input task,  highlighting the text found in the artifact under inspection. Based on our key findings on the portion of the text usually relevant to a task (Chapter~\ref{ch:characterizing}), we configure the study tool to identify no more than 10\% of the content of an artifact as relevant to the input task.
+The plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique the  to identify sentences that likely contain information useful to the input task.
+The tool then highlights the text identified as relevant so that a developer can quickly located it amidst the rest of the content of an artifact  under inspection. 
 
 
 
@@ -100,9 +101,8 @@ where a participant could write and test their solution.
 
 Each task requires a set of artifacts that a participant could peruse for information that could assist them in writing their solution.
 Ideally, participants could find these artifacts on their own. However, our need to compare solutions between participants who perform a task 
-assisted by our tool and without it as well as our need to compare the text in an artifact a participant deems relevant to the text
-automatically identified by our tool means that we must control the artifacts that  a
-participant can consult.
+assisted by our tool and without it as well as our need to compare the text that participants deem relevant to the text
+automatically identified by our tool means that all participants must have the exact same artifacts for a task.
 
 
 Therefore,
@@ -171,22 +171,23 @@ against the examples shown in each task description.
 \label{cp6:participants}
 
 
-We advertised our study to professionals in our network and to computer science students at the several universities. 
+We advertised our study to professionals developers and to computer science students at the several universities. 
 Our target population comprised professionals and third, fourth-year or graduate students.
 We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task.
-We gathered a participant's background background information as part of our demographics (Figure~\ref{fig:experiment-demographics}), but no participants were excluded
+We gathered this background information as part of our demographics (Figure~\ref{fig:experiment-demographics})
+and no participants were excluded
 based on their background.
 
 
 
 
+% (3 identified as female and 21 as male)
 
 
-
-We obtained twenty four responses (3 identified as female and 21 as male) to our study advertisement. 
+We obtained twenty four responses to our study advertisement. 
 At the time of the experiment, 10 participants were working as software
 developers and 14 were students (11 graduate and 3 undergrad).
-The majority of the students (71\%) also reported habing some previous professional experience.
+The majority of the students (71\%) also reported having some previous professional experience.
 
 
 On average, participants self-reported 8 years of programming experience ({\small $\pm$} 3.8, ranging from 3 to 17 years).
@@ -201,12 +202,8 @@ Most of the participants also indicated that they did check API documents almost
 
 
 \subsection{Procedures}
-% \label{cp6:procedures}
+\label{cp6:procedures}
 
-
-
-% In this section, we present an overview of the whole experiment and then, we provide 
-% details related to the manual and tool-assisted tasks, respectively.
 
 
 
@@ -264,7 +261,7 @@ their data also through the tool's context menu.
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{cp6/manual-task.pdf}
-    \caption{\texttt{BeautifulSoup} web tutorial showing the study's tool context menu (top-right corner) and a hovered over sentence}
+    \caption{Study's tool context menu (top-right corner) and a sentence highlighted by a participant}
     \label{fig:artifact-pre-highlight}
 \end{figure}
 
@@ -277,11 +274,9 @@ their data also through the tool's context menu.
 
 In the tool-assisted task, the study tool automatically highlighted text that 
 its underlying semantic-based approach identified as relevant to the participant's task.
-For that, the tool applies the \texttt{BERT} technique with no filters (Chapter~\ref{ch:identifying})
-to identify sentences relevant to the input task. 
+We configure the semantic-based technique used by the study tool to identify no more than 10\% of the sentences of an artifact as relevant to the input task.
 These sentences are then highlighted in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
-% a target number of sentences equal to 10\% of the entire content of an input artifact up to a maximum of 10 sentences per artifa
 
 
 
@@ -290,29 +285,17 @@ rate in a 5 points Likert scale~\cite{likert1932technique} how helpful were the 
 Figure~\ref{fig:experiment-rating} shows an example of how we gathered data about the usefulness of the text automatically identified.
 Participants rated highlights on a per artifact basis and,  before giving their answer, 
 they could revisit an artifact and its highlights if so they wished. 
-
-% We decided to gather input at the artifact level because it would be too exhausting for a participant 
-% to provide individual feedback on each highlight shown.
-
-
-
-% Our tool did not more than determine what tool-assisted task was being performed 
-% and highlight the text in an artifact under inspection.
-% To determine what text was relevant to a task in a certain artifact, we applied one of the most promising semantic-based techniques that we have explored in Chapter~\ref{ch:identifying}, i.e., \texttt{BERT} with no filters,
-% taking the techniques output and using our web browser tool to highlighting the text identified.
-% As a proof of concept, we decided to pre-cache the output 
-% for the text automatically identified in each of the tasks and artifacts in our experiment. 
+We gather input at the artifact level because it would be too exhausting for a participant 
+to provide individual feedback on each highlight shown
+in the time allotted for the experiment.
 
 
-
-% Although we evaluate the usefulness of all the highlights for a task
-% aggregating individual responses, we use the ratings per artifact to explore if the highlights shown in a certain type or artifact, e.g., API documents or tutorials, were considered more or less useful.
 
 
 \input{sections/cp6/tbl-rating.tex}
 
 
-\subsection{Summary of procedures}
+\subsection{Summary}
 
 
 We have described experimental procedures 
