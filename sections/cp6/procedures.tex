@@ -1,18 +1,217 @@
 
-\section{Procedures}
+
+
+
+
+\section{Experiment}
 \label{cp6:procedures}
 
 
 
-In this section, we detail the instructions provided to the participants so that 
-they could perform our experiment. 
-First, we present an overview of the whole experiment and then, we detail
-instructions specific to the manual and tool-assisted tasks, respectively.
+
+
+Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed to evaluate how a semantic-based tool might assists a software developer while working on a task.
+In this experiment, 24 participants with software development background each attempted a
+\textit{manual} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
+Alongside the solution submitted for each task, we use the manual task to collect what text a participant deems relevant to the task that they perfom.
+In turn, in the tool-assisted task, we gather input on the usefulness of the text automatically identified and shown by our tool. 
 
 
 
-The entry point to our experiment was the advertisement email.
-The email disclosed the purpose of the experiment, eligibility criteria, an estimate of the time that one would take to complete the study as well as a link 
+This design---detailed in the following subsections---allow us to:
+
+
+
+
+\begin{itemize}
+    \item assess the correctness of the tasks performed \textit{with} or \textit{without} tool support;
+    \item compare  the text that participants deemed relevant to the text automatically identified
+    and shown in the tool-assisted task, and;
+    \item discuss the usefulness of the automatically identified text according to the feedback provided by the participants.
+\end{itemize}
+ 
+
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=1.05\textwidth]{cp6/tool-experiment-pipeline.pdf}
+\caption{Summary of experimental procedures}
+\label{fig:tool-experiment-procedures}
+\end{figure}
+
+
+
+
+
+
+\subsection{Study tool}
+
+
+
+To automatically identify text that is potentially relevant to a developer's task, we have implemented 
+a web browser plug-in that embeds one of our semantic based approaches, i.e., \texttt{BERT} with \textit{ no filters} (Chapter~\ref{ch:identifying}).
+
+
+The plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique the  to identify sentences that likely contain information useful to the input task,  highlighting the text found in the artifact under inspection. Based on our key findings on the portion of the text usually relevant to a task (Chapter~\ref{ch:characterizing}), we configure the study tool to identify no more than 10\% of the content of an artifact as relevant to the input task.
+
+
+
+\subsection{Tasks}
+\label{cp6:tasks}
+
+
+We opted for an experiment with tasks that could be completed by participants on their own time and computer.
+This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment \red{~\cite{}}. 
+Since participants would follow instructions on their own, we decided to use tasks that are easy to understand and perform in a single experimental session, but that still required a participant  
+to seek information in artifacts associated with that task.
+
+
+
+Based on these criteria and guided by~\cite{thiselton2019},
+Table~\ref{tbl:python-tasks-modules} details the tasks that we have selected. 
+These tasks are similar to 
+Python w3resource\footnote{\url{https://www.w3resource.com/python-exercises/}} tasks
+that require usage of at least one module external to the Python core library.
+By using external modules, we aim to reduce the likelihood that a participant 
+can provide a solution for a task without consulting any of the artifacts (Section~\ref{cp6:experiment-artifacts})
+that detail each of the modules associated with each task. 
+
+
+
+While we leave details about the procedures specific to the manual and tool-assisted tasks to another section, Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\red{\cite{}}.}.
+For each task, participants had the task description and examples of input and output scenarios at their disposal. A task contained a list of resources that participants could consult 
+so that they could write their solution.
+Each task also contained a link to an online coding environment (Section~\ref{cp6:coding-environment})
+where a participant could write and test their solution. 
+
+
+\input{sections/cp6/tbl-task-descriptions.tex}
+
+
+\subsection{Artifacts}
+\label{cp6:experiment-artifacts}
+
+
+% Note that our decision to control the artifacts shown per task relates to our need to study if there is overlap between the text that participants manually identify as relevant and the text that our semantic-based tool identifies for these same artifacts. 
+
+
+Each task requires a set of artifacts that a participant could peruse for information that could assist them in writing their solution.
+Ideally, participants could find these artifacts on their own. However, our need to compare solutions between participants who perform a task 
+assisted by our tool and without it as well as our need to compare the text in an artifact a participant deems relevant to the text
+automatically identified by our tool means that we must control the artifacts that  a
+participant can consult.
+
+
+Therefore,
+we follow procedures similar to the ones we used to create the \acs{DS-android} dataset to produce the list of artifacts for each of the tasks in Table~\ref{tbl:python-tasks-modules}. 
+That is, we use the Google search engine to obtain up to ten artifacts that likely contain 
+information that could help a participant correctly complete that task. 
+Three pilot runs ensured that the artifacts collected using such procedures had sufficient information to complete a task without 
+the need of additional resources. 
+
+
+
+
+
+
+\subsection{Coding environment}
+\label{cp6:coding-environment}
+
+
+
+To ensure that participants had the same conditions to perform each task
+and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
+
+
+Colab provided participants with a code editor with amenities commonly found in modern IDEs, e.g., code completion and syntax highlighting. It also ensured that all the participants 
+performed the tasks in the same Python version and it lifted 
+burdens that could arise from installing dependencies associated with the external modules used in each of our tasks. 
+
+
+Figure~\ref{fig:nytimes-task-colab} shows an example of the Colab coding environment. 
+First it handled dependencies management and then, 
+it presented a class containing a single method with a \texttt{TODO} block where 
+participants should write their solution. 
+The environment also provided a main function where participants could see the output
+of their code. Alternatively, a participant could use test cases to test their solution
+against the examples shown in each task description.
+
+
+
+\clearpage
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{cp6/task-github.pdf}
+    \caption{Information shown in a task}
+    \label{fig:nytimes-task-github}
+\end{figure}
+
+
+
+\clearpage
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{cp6/task-colab.pdf}
+    \caption{Colab environment}
+    \label{fig:nytimes-task-colab}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\subsection{Participants}
+\label{cp6:participants}
+
+
+We advertised our study to professionals in our network and to computer science students at the several universities. 
+Our target population comprised professionals and third, fourth-year or graduate students.
+We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task.
+We gathered a participant's background background information as part of our demographics (Figure~\ref{fig:experiment-demographics}), but no participants were excluded
+based on their background.
+
+
+
+
+
+
+
+We obtained twenty four responses (3 identified as female and 21 as male) to our study advertisement. 
+At the time of the experiment, 10 participants were working as software
+developers and 14 were students (11 graduate and 3 undergrad).
+The majority of the students (71\%) also reported habing some previous professional experience.
+
+
+On average, participants self-reported 8 years of programming experience ({\small $\pm$} 3.8, ranging from 3 to 17 years).
+The majority of the participants (54\%) had between 5 to 10 years of experience in Object-Oriented programming languages,
+closely followed by participants  with  3 to 4 years of experience (29\%). 
+Most of the participants also indicated that they did check API documents almost every time they performed a programming task. 
+
+
+\input{sections/cp6/tbl-demographics.tex}
+
+
+
+
+\subsection{Procedures}
+% \label{cp6:procedures}
+
+
+
+% In this section, we present an overview of the whole experiment and then, we provide 
+% details related to the manual and tool-assisted tasks, respectively.
+
+
+
+The entry point to our experiment was our advertisement email.
+The email disclosed the purpose of the experiment, eligibility criteria, an estimate of the time it would take to complete it as well as a link 
 to a web survey containing the experiment's consent form and tasks. 
 
 
@@ -34,13 +233,13 @@ to compensate them for their time, what concluded the experiment.
 
 
 
-\subsection{Manual Task}
+\subsubsection{Manual Task}
 \label{cp6:procedures-manual}
 
 
 
 In the \textit{manual} task, we use the study tool to gather text that a participant deems useful for the task at hand. In this task, 
-the survey asked participants to use the study tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Section~\ref{cp4:corpus-relevant-text}).
+the survey asked participants to use the study tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}).
 
 
 
@@ -72,27 +271,28 @@ their data also through the tool's context menu.
 
 
 
-\subsection{Tool-assisted Task}
+\subsubsection{Tool-assisted Task}
 \label{cp6:procedures-tool-assisted}
 
 
 In the tool-assisted task, the study tool automatically highlighted text that 
 its underlying semantic-based approach identified as relevant to the participant's task.
-For that, the tool applies the \texttt{BERT} technique with no filters (Chapter~\ref{ch:identifying}),
-automatically identifying a target number of sentences equal to 10\% of the entire content of an input artifact up to a maximum of 10 sentences per artifact.
+For that, the tool applies the \texttt{BERT} technique with no filters (Chapter~\ref{ch:identifying})
+to identify sentences relevant to the input task. 
 These sentences are then highlighted in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
-
+% a target number of sentences equal to 10\% of the entire content of an input artifact up to a maximum of 10 sentences per artifa
 
 
 
 For this task, when a participant submitted their solution, we asked them to 
 rate in a 5 points Likert scale~\cite{likert1932technique} how helpful were the highlights shown by the tool.
 Figure~\ref{fig:experiment-rating} shows an example of how we gathered data about the usefulness of the text automatically identified.
-Participants rated highlights on a per artifact basis. A hyperlink also let a participant 
-revisit an artifact and its highlights before giving their answer.
-We decided to gather input at the artifact level because it would be too exhausting for a participant 
-to provide individual feedback on each highlight shown.
+Participants rated highlights on a per artifact basis and,  before giving their answer, 
+they could revisit an artifact and its highlights if so they wished. 
+
+% We decided to gather input at the artifact level because it would be too exhausting for a participant 
+% to provide individual feedback on each highlight shown.
 
 
 
@@ -115,8 +315,8 @@ to provide individual feedback on each highlight shown.
 \subsection{Summary of procedures}
 
 
-Throughout the past sections, we have described experimental procedures 
-where participants attempted a \textit{manual} and a \textit{tool-assisted}.
+We have described experimental procedures 
+where participants attempted two programming tasks each.
 These procedures allowed us to gather:
 
 
