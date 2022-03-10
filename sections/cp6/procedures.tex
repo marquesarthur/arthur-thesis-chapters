@@ -10,14 +10,12 @@
 
 
 
-Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed to evaluate how a semantic-based tool might assists a software developer while working on a task.
+Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed to evaluate how a semantic-based tool might assists a software developer perform a task.
 In this experiment, 24 participants with software development background each attempted a
-\textit{manual} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
-Alongside the solution submitted for each task, we use the manual task to collect what text a participant deems relevant to the task that they perfom.
-In turn, in the tool-assisted task, we gather input on the usefulness of the text automatically identified and shown by our tool. 
-
-
-
+\textit{control} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
+Participants are asked to write a solution for both of their assigned tasks
+and we use the control task to collect what text a participant deems relevant to the task at hand.
+In the tool-assisted task, we gather input on the usefulness of the text automatically identified and shown by our tool. 
 This design---detailed in the following subsections---allow us to:
 
 
@@ -25,9 +23,9 @@ This design---detailed in the following subsections---allow us to:
 
 \begin{itemize}
     \item assess the correctness of the tasks performed \textit{with} or \textit{without} tool support;
-    \item compare  the text that participants deemed relevant to the text automatically identified
-    and shown in the tool-assisted task, and;
-    \item discuss the usefulness of the automatically identified text according to the feedback provided by the participants.
+    \item compare  the text that participants manually indicated as relevant in a certain artifact to the text automatically identified
+    and shown by our tool for that same artifact, and;
+    \item discuss the usefulness of the text automatically identified  according to the feedback provided by the participants.
 \end{itemize}
  
 
@@ -37,7 +35,7 @@ This design---detailed in the following subsections---allow us to:
 
 \begin{figure}
 \centering
-\includegraphics[width=1.05\textwidth]{cp6/tool-experiment-pipeline.pdf}
+\includegraphics[width=1.0\textwidth]{cp6/tool-experiment-pipeline.pdf}
 \caption{Summary of experimental procedures}
 \label{fig:tool-experiment-procedures}
 \end{figure}
@@ -52,12 +50,15 @@ This design---detailed in the following subsections---allow us to:
 
 
 To automatically identify text that is potentially relevant to a developer's task, we have implemented 
-a web browser plug-in that embeds one of our semantic based approaches, i.e., \texttt{BERT} with \textit{ no filters} (Chapter~\ref{ch:identifying}).
+a web browser plug-in that embeds one of our semantic-based approaches that we have previously explored, i.e., \textit{BERT with no filters}.
 
 
-The plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique the  to identify sentences that likely contain information useful to the input task.
-The tool then highlights the text identified as relevant so that a developer can quickly located it amidst the rest of the content of an artifact  under inspection. 
+Our plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique  to identify sentences that likely contain information useful to the input task.
+The tool then highlights the text identified so that a developer can quickly located it amidst the rest of the content of an artifact  under inspection. 
 
+
+We configure \textit{BERT with no filters} to identify no more than 10\% of the sentences of an input artifact as relevant.
+This number was determined based on the average number of sentences indicated as relevant by human annotators in the artifacts of the \acs{DS-android} corpus.
 
 
 \subsection{Tasks}
@@ -67,13 +68,11 @@ The tool then highlights the text identified as relevant so that a developer can
 We opted for an experiment with tasks that could be completed by participants on their own time and computer.
 This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment \red{~\cite{}}. 
 Since participants would follow instructions on their own, we decided to use tasks that are easy to understand and perform in a single experimental session, but that still required a participant  
-to seek information in artifacts associated with that task.
+to seek information in artifacts associated with each task.
 
 
-
-Based on these criteria and guided by~\cite{thiselton2019},
-Table~\ref{tbl:python-tasks-modules} details the tasks that we have selected. 
-These tasks are similar to 
+Table~\ref{tbl:python-tasks-modules} details the tasks that we have selected based on task selection procedures from related work that meet these criteria~\cite{thiselton2019}. 
+These tasks were drawn from
 Python w3resource\footnote{\url{https://www.w3resource.com/python-exercises/}} tasks
 that require usage of at least one module external to the Python core library.
 By using external modules, we aim to reduce the likelihood that a participant 
@@ -81,8 +80,7 @@ can provide a solution for a task without consulting any of the artifacts (Secti
 that detail each of the modules associated with each task. 
 
 
-
-While we leave details about the procedures specific to the manual and tool-assisted tasks to another section, Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\red{\cite{}}.}.
+Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\red{\cite{}}.}.
 For each task, participants had the task description and examples of input and output scenarios at their disposal. A task contained a list of resources that participants could consult 
 so that they could write their solution.
 Each task also contained a link to an online coding environment (Section~\ref{cp6:coding-environment})
@@ -218,7 +216,7 @@ about how to perform each task, requesting them to install the study tool, a web
 Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
 
 
-Once a participant completed the practice task, the survey randomly assigned to them a \textit{manual} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the manual task. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
+Once a participant completed the practice task, the survey randomly assigned to them a \textit{control} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the control task. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
 For each task, including the practice tasks, the survey provided to the participants a link 
 to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. 
 
@@ -230,12 +228,12 @@ to compensate them for their time, what concluded the experiment.
 
 
 
-\subsubsection{Manual Task}
+\subsubsection{Control Task}
 \label{cp6:procedures-manual}
 
 
 
-In the \textit{manual} task, we use the study tool to gather text that a participant deems useful for the task at hand. In this task, 
+In the \textit{control} task, we use the study tool to gather text that a participant deems useful for the task at hand. In this task, 
 the survey asked participants to use the study tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}).
 
 
@@ -273,9 +271,8 @@ their data also through the tool's context menu.
 
 
 In the tool-assisted task, the study tool automatically highlighted text that 
-its underlying semantic-based approach identified as relevant to the participant's task.
-We configure the semantic-based technique used by the study tool to identify no more than 10\% of the sentences of an artifact as relevant to the input task.
-These sentences are then highlighted in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
+its underlying semantic-based technique identified as relevant to the participant's task.
+The highlights were shown in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
 
 
@@ -283,11 +280,11 @@ These sentences are then highlighted in a format similar to the one in Figure~\r
 For this task, when a participant submitted their solution, we asked them to 
 rate in a 5 points Likert scale~\cite{likert1932technique} how helpful were the highlights shown by the tool.
 Figure~\ref{fig:experiment-rating} shows an example of how we gathered data about the usefulness of the text automatically identified.
-Participants rated highlights on a per artifact basis and,  before giving their answer, 
-they could revisit an artifact and its highlights if so they wished. 
-We gather input at the artifact level because it would be too exhausting for a participant 
-to provide individual feedback on each highlight shown
-in the time allotted for the experiment.
+Participants rated highlights on a per artifact basis.
+We gather input at the artifact level because it would be too demanding for a participant 
+to provide individual feedback on each of the highlights shown
+in the time that we estimated and that we advertised for the study.
+Section~\ref{cp6:threats} discusses  threats that arise from this decision.
 
 
 
@@ -305,7 +302,7 @@ These procedures allowed us to gather:
 
 \begin{enumerate}
 \item a participant's submitted solution (written Python code) for each task;
-\item text that participants deemed relevant for completing a manual task;
+\item text that participants deemed relevant in the artifacts of the control task;
 \item the usefulness of the highlights shown in a tool-assisted task; and
 \item any additional feedback (written text) that a participant wished to provide.
 \end{enumerate}

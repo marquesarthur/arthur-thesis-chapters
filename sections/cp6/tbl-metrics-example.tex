@@ -1,0 +1,41 @@
+
+\begin{table}[h!]
+\caption{Example showing how we compute precision, recall and pyramid precision metrics}
+\label{tbl:metrics-example}
+\centering    
+\begin{small}
+\begin{threeparttable}
+\rowcolors{2}{}{lightgray}
+\begin{tabular}{lcc}
+
+\textit{metric} & \textit{formula} & \textit{result} \\ 
+\hline
+
+\textit{precision} & \parbox[c][.9cm][c]{4cm}{\centering $\frac{\{s_2, s_3\}~ \cap ~\{s_1, s_3\}}{\{s_2, s_3\}} = \frac{1}{2}$} & 0.5 
+\\
+
+
+\textit{recall}  & \parbox[c][.9cm][c]{4cm}{\centering $\frac{\{s_2, s_3\}~ \cap ~\{s_1, s_3\}}{\{s_1, s_3,  s_4\}} = \frac{1}{3}$}  & 0.33 
+\\
+
+$\triangle$ \textit{precision}  & \parbox[c][.9cm][c]{4cm}{\centering $\frac{weight(s_2) + weight(s_3)}{weight(optimal)} = \frac{0 + 1}{3} $}  & 0.33 
+\\
+
+\end{tabular}
+\end{threeparttable}
+\end{small}
+\end{table}
+
+
+
+% \smallskip
+% \begin{small}
+% \begin{equation}
+% \begin{split}
+% \triangle  Precision(s_2, s_3) = ( 0 + 1) \div 3 =  0.33 \\
+% \triangle  Precision(s_1, s_2) = ( 2 + 0) \div 3 =  0.66 \\
+% \triangle  Precision(s_1, s_3) =  ( 2 + 1) \div 3 =  1.00 \\
+% \label{eq:pyramid-precision-cp6} 
+% \end{split}   
+% \end{equation}
+% \end{small}

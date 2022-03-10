@@ -8,6 +8,8 @@ When assisted by a tool able to automatically highlight text identified as relev
 that is equally or more correct than the solution of a developer who attempted a task without tool support. 
 
 
+\paragraph{\textbf{Metrics.}}
+
 To compute how correct a participant's solution is, 
 we compile their submitted code and run it against a set of 10 test cases that check whether it produces the correct output for each given test input. 
 Hence, \textit{correctness} represents the number of passing test cases of a solution (Equation~\ref{eq:cp6-correctness}).
@@ -25,6 +27,9 @@ A solution with compile errors has a correctness score of $0$.
 
 
 
+\paragraph{\textbf{Data.}}
+
+
 From all submitted solutions (24 manual and 24 tool-assisted ones), two 
 solutions from tool-assisted tasks had compile errors or failed all test cases. 
 One of these
@@ -33,12 +38,15 @@ the other, from an exception thrown in the code of a participant who misused the
 
 
 
-\subsubsection{Results}
+% \subsubsection{Results}
+
+
+\paragraph{\textbf{Results.}}
 
 
 Figure~\ref{fig:correctness-overall} aggregates all correctness scores for tasks done with and without tool support.
 Although we observe that there is less variability in the solutions of participants assisted by our tool,
-we cannot draw statistically significant conclusions based on the data for correctness~\cite{Lazar2017-cp3}.
+we cannot draw statistically significant conclusions based on the correctness scores of each group~\cite{Lazar2017-cp3}.
 Hence, we evaluate scores on a per task basis, as shown in Figure~\ref{fig:correctness-by-task}.
 
 
@@ -54,11 +62,10 @@ Hence, we evaluate scores on a per task basis, as shown in Figure~\ref{fig:corre
 
 
 
-Comparing the correctness scores of solutions submitted by participants
-who performed each task with and without tool support, we observe that participants with tool support performed worse in the \texttt{distances} task. 
+Comparing the correctness scores for each individual task, we observe that participants with tool support performed worse in the \texttt{distances} task. 
 Among potential reasons for the lower score, we believe that the text automatically identified 
 might not have been relevant for this task, what can explain the higher percentage of participants
-who indicated that the text identified  by the tool was indeed not helpful (Section~\ref{cp6:usefulness}).
+who indicated that the text identified  by the tool was not helpful (Section~\ref{cp6:usefulness}).
 
 
 
@@ -72,8 +79,9 @@ e.g., getting all the headlines of the web page but also an unrelated ad, which 
 The \texttt{titanic} task required using two python modules and it is the one with the most differences. 
 Participants who did the task with tool support were able to produce more correct solutions, with an average 
 correctness score of $6$. In contrast, participants in the control group had an average correctness of $4$. 
-As we detail in the next sections, we found that the text automatically identified for this task 
-was considered the most useful and that the tool identified much of the text that humans deemed relevant. 
+As we detail in the next sections, we found that the tool identified much of the text that the participants deemed relevant
+and that participants also indicated that the text 
+the text automatically identified was indeed useful.
 
 
 
