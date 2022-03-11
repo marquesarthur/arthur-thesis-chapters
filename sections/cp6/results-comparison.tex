@@ -4,26 +4,31 @@
 
 
 To assist a developer correctly complete a task, a tool that
-automatically identifies task-relevant text in an artifact pertinent to that task would ideally 
-identify text that humans have also considered as relevant, which we gather as part of the procedures 
-of the control task in our experiment. 
+automatically identifies text pertinent to that task would ideally 
+identify text that humans have also considered as relevant.
+Procedures from our control task asked participants to 
+manually identify text that they deemed useful. We
+ compare this manually provided data against the text automatically identified.
 
 
 
-\paragraph{\textbf{Metrics.}}
+% \paragraph{\textbf{Metrics.}}
+
+\subsubsection{Metrics}
 
 To investigate the overlap between the participants' manual highlights and the 
 the automatic highlights identified by the study tool we use \textit{precision}, \textit{recall}~\cite{manning2010IR}, and \textit{pyramid precision}~\cite{Nenkova2004}.
 We compute these metrics for each artifact of each task and report their average.
 
 
-For this analysis, we consider any text marked by any participant as relevant
-and we examine whether 
-the text automatically identified represents text that multiple participants deemed relevant
- via \textit{pyramid precision}~\cite{Lotufo2012}.
+For this analysis, we follow Lotufo et al.'s procedures~\cite{Lotufo2012} and we consider any text marked by any participant as relevant.
+We investigate if our tool  automatically identifies text that multiple participants deemed relevant
+ via \textit{pyramid precision}. 
+Details for each metric are as follows. 
 
+\medskip
 
-Precision measures the fraction of the text automatically identified  that participants also deemed relevant (Equation~\ref{eq:precision-cp6}). 
+Precision measures the fraction of the text automatically identified  that participants deemed relevant (Equation~\ref{eq:precision-cp6}). 
 
 \smallskip
 \begin{small}
@@ -37,7 +42,7 @@ Precision measures the fraction of the text automatically identified  that parti
 \end{small}
 
 
-Recall represents how many of all the manual highlights were identified by the semantic-based technique that we applied (Equation~\ref{eq:recall-cp6}). 
+Recall represents how many of all the manual highlights were identified by the semantic-based technique applied by our tool (Equation~\ref{eq:recall-cp6}). 
 
 
 
@@ -80,23 +85,24 @@ Table~\ref{tbl:metrics-example} shows precision, pyramid precision, and recall m
 \input{sections/cp6/tbl-metrics-example}
 
 
-Note that pyramid precision is usually equal or lower than precision. For example, $Precision(s_1, s_3) = Precision(s_3, s_4) = 1.0$, but 
-results for pyramid precision differ, i.e., 
-$\triangle Precision(s_1, s_3) = 1.0$ and $\triangle Precision(s_3, s_4) = 0.66$. This allows us to check if our tool 
-identified the text deemed relevant by most of the participants who inspected an artifact.
+% Note that pyramid precision is equal or lower than precision. For example, $Precision(s_1, s_3) = Precision(s_3, s_4) = 1.0$, but 
+% results for pyramid precision differ, i.e., 
+% $\triangle Precision(s_1, s_3) = 1.0$ and $\triangle Precision(s_3, s_4) = 0.66$. This allows us to check if our tool 
+% identified the text deemed relevant by most of the participants who inspected an artifact.
 
 
 
-\paragraph{\textbf{Data.}}
+% \paragraph{\textbf{Data.}}
+\subsubsection{Data}
 
 Participants who indicated what text was relevant to their assigned control task produced a total of 415 highlights with an average of 7 highlights (std $\pm 3$) per artifact inspected.
-On average, this comprises 9\% of the content of each of the artifacts in our experiment. 
+On average, this comprises 9\% of the entire content the artifacts in our experiment. 
 
 
 Some participants also selected code snippets as relevant to a task---a threat that we discuss in Section~\ref{cp6:threats}. 
 Code snippets account for 30\% of the highlights produced, but we remove them from our analysis since our semantic-based approach 
 operates on text only. For the textual highlights,
-Krippendorf's alpha indicates good agreement of what text in an artifact participants deemed relevant (or not) ($\alpha = 0.68$)~\cite{Krippendorff1980, passonneau2006}.
+Krippendorf's alpha indicates good agreement of what text in an artifact participants deemed relevant ($\alpha = 0.68$)~\cite{Krippendorff1980, passonneau2006}.
 We compare these manually produced highlights to the text automatically identified by our tool.
 
 
@@ -104,21 +110,19 @@ We compare these manually produced highlights to the text automatically identifi
 % \subsubsection{Results}
 
 
-\paragraph{\textbf{Results.}}
-
+% \paragraph{\textbf{Results.}}
+\subsubsection{Results}
 
 
 
 Table~\ref{tbl:comparison-task-wise} summarizes the average of precision, pyramid precision, and recall metrics for each of the tasks in the experiment.
-For the tasks in our study, we observe that precision scores range from 0.55 to 0.68 and that 
-the lower pyramid precision scores, ranging from 0.55 to 0.57, suggest that our tool failed to identify some of the text that participants deemed the most relevant.
+Precision scores range from 0.55 to 0.68 while pyramid precision scores, range from 0.55 to 0.57, what suggests that our tool failed to identify some of the text that participants deemed the most relevant.
 
 
-\input{sections/cp6/tbl-comparison-overall}
 
-These metrics are not surprising and they corroborate 
+The results in Table~\ref{tbl:comparison-task-wise} corroborate 
 the correctness scores detailed in Figure~\ref{fig:correctness-by-task}. For example, 
-in the \texttt{distances} task, participants who had tool assistance  task had less correct solutions than participants in the control group.
+in the \texttt{distances} task, participants who performed the task with tool support had  solutions less correct than participants in the control group.
 This was the task with the lowest precision, recall and pyramid precision values. 
 In contrast, the task were participants assisted by our tool obtained the best correctness scores, namely \texttt{titanic}, is the one with the best precision, recall and pyramid precision values.
 
@@ -126,6 +130,7 @@ In contrast, the task were participants assisted by our tool obtained the best c
 
 
 
+\input{sections/cp6/tbl-comparison-overall}
 
 
 
@@ -134,8 +139,7 @@ Stack Overflow posts and API documentation have the highest precision scores. Fo
 text automatically identified on Stack Overflow was the text that several participants deemed relevant. 
 The same does not apply to API documentation, i.e., our tool failed to detect a portion of the text that many participants deemed relevant. 
 Miscellaneous web pages were the artifact type with the lowest scores. As we detail in Section~\ref{cp6:usefulness},
-participants indicated that the text identified for this type of artifact was not as useful as, for example, the text 
-automatically identified in Stack Overflow posts.
+participants indicated that the text identified for this type of artifact was the least useful.
 
 
 
