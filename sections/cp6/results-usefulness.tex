@@ -22,8 +22,7 @@ provided at the end of our experiment.
 \subsubsection{Metrics}
 
 To investigate the usefulness of the highlights shown by our tool, we asked participants to indicate in a 5 points Likert scale whether the highlights
-of each artifact were helpful to correctly accomplish their assigned task (Figure~\ref{fig:experiment-rating}). We aggregate individual responses to measure how useful was 
-the tool in assisting developers complete each task in our experiment, plotting responses using a diverging stacked bar chart~\cite{spence2001info-viz}.
+of each artifact were helpful to correctly accomplish their assigned task (Figure~\ref{fig:experiment-rating}). We aggregate individual responses to measure how useful the tool was in assisting developers complete each task in our experiment, plotting responses using a diverging stacked bar chart~\cite{spence2001info-viz}.
 
 
 
@@ -37,9 +36,9 @@ These values do not match the exact number of participants and artifacts in our 
 the survey for their own reasons.
 
 
-We also obtained written feedback from 19 out of the 24 participants. This was divided on feedback of the tasks (24 data points)
-or of the experiment itself (15 data points). We use this feedback to quote scenarios were highlights were useful (or not)
-as well to discuss potential threats or ways to improve our tool.
+We also obtained written feedback from 19 out of the 24 participants, divided on the feedback of the tasks (24 data points)
+or of the experiment itself (15 data points). We use this feedback to quote scenarios
+that support our observations.
 
 
 
@@ -49,18 +48,18 @@ as well to discuss potential threats or ways to improve our tool.
 
 From all the ratings collected on the  usefulness of the text automatically identified and shown by our tool, 40\% of them agreed that the highlights were useful, 
 25\% neither agreed nor disagreed on their usefulness, and 35\% indicated that they were \textit{not} useful.
-Similar to how we presented results on correctness, we analyze usefulness ratings on a per task basis.  
+Similar to how we presented results on correctness, we analyze usefulness ratings on a per-task basis.  
 
 
 
 
 Figure~\ref{fig:usefulness-by-task} shows participants' ratings aggregated for each task. 
 Participants indicated that the highlights shown for the \texttt{titanic} task were the most useful. 
-Ratings for this task support our observations on correctness as well as on our comparison of manual and tool identified text. 
+Ratings for this task support our observations on correctness as well as on our comparison of manual and tool-identified text. 
 Notably, one participant indicated that highlights for this task assisted them in identifying essential function arguments needed to use the \texttt{pandas} group by function.
-In contrast, participants indicated that the highlights for the \texttt{distances} task were on its majority not useful. 
+In contrast, participants indicated that the highlights for the \texttt{distances} task were in its majority not useful. 
 For example, one participant pointed out that, in the \texttt{geopy} API documentation, there were no highlights in 
-a section were they would have expected otherwise.
+a section where they would have expected otherwise.
 
 
 \begin{figure}
@@ -84,14 +83,13 @@ their experience with the \texttt{BeautifulSoup} module influenced their negativ
 
 Surprisingly, when we look at the ratings per type of artifact (Figure~\ref{fig:usefulness-by-artifact-type}), API documents had the most useful highlights.
 For this type of artifact, we observe that positive ratings originate from artifacts that follow a \textit{`how to'} format,
-what is not a conventional for API documents~\cite{robillard2011field, arya2020}. The highlights on Stack Overflow artifacts were also perceived as useful
+which is not conventional for API documents~\cite{robillard2011field, arya2020}. The highlights on Stack Overflow artifacts were also perceived as useful
 and participants expressed familiarity with this type of artifact, where the highlights helped them determine parts of the page to ignore.
 
 
 % On the other hand, 45\% of the responses of 
 Miscellaneous web pages were the artifact where participants disagreed the most on the usefulness of the text automatically identified.
-Due to their `\textit{tutorial}' format, these artifacts are lengthy and some participants expressed that they would like more direct explanations about how to use the modules of each task---``\textit{I have used these libraries before to some extent so I don't need a narrative around purpose or procedure}''. We also note that our tool had the lowest precision and recall scores 
-for this type of artifact and thus, it is likely that it did not detect the text that participants used when writing their solution to a task.
+Due to their `\textit{tutorial}' format, these artifacts are lengthy and some participants expressed that they would like more direct explanations about how to use the modules of each task---``\textit{I have used these libraries before to some extent so I don't need a narrative around purpose or procedure}''. We also note that our tool had the lowest precision and recall scores for this type of artifact, and thus, it is likely that it did not detect the text that participants used when writing their solution to a task.
 
 
 

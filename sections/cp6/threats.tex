@@ -25,7 +25,7 @@ who did the same task without tool support what affects correctness scores.
 As another example,  participants' skill and background 
 influences the text that they indicate as relevant in the control task as well 
 what text they perceive as useful in the tool-assisted task. 
-We minimized these threats recruiting participants of varied background and randomly
+We minimized these threats by recruiting participants of varied background and randomly
 assigning tasks to each participant.
 
 % , what minimizes the risk that only novice or experienced participants
@@ -37,43 +37,43 @@ Although we opted for simple tasks, we ensured they
 modules used in our tasks were representative. 
 For example, we found open-source systems\footnote{\url{https://github.com/ArchiveBox/ArchiveBox/issues/18}} using \texttt{BeautifulSoup} 
 with function calls similar to the ones needed to complete the \texttt{NYTimes} task.
-Nonetheless, there are clear differences in the the artifacts one can gather 
+Nonetheless, there are clear differences in the artifacts one can gather 
 based on the domain or programming language of a task~\cite{baltes2020}.
-Hence, we leave the investigation of other domains and a wider range of task 
-and artifacts to future work. 
+Hence, we investigate other domains and a wider range of task 
+and artifacts for future work. 
 
 
 
-The selection of tasks also affect our conclusions. We opted for Python programming tasks that 
+The selection of tasks also affects our conclusions. We opted for Python programming tasks that 
 required writing code, which we use to assess correctness. 
 As observed by other researchers~\cite{satterfield2020, meyer2020}, developers
-work on many different tasks some of witch focus on code~\cite{Meyer2017}
+work on many different tasks, some of which focus on code~\cite{Meyer2017}
 while others on information seeking~\cite{gonccalves2011}, e.g., finding duplicated bug reports or researching visualization libraries to identify the most suitable one~\cite{satterfield2020}.
-Had we decided to use information seeking tasks, participants could have produced a different set of highlights,
-perhaps selecting less code snippets. 
+Had we decided to use information-seeking tasks, participants could have produced a different set of highlights,
+perhaps selecting fewer code snippets. 
 Given that 
 our experiment was completely remote, instructing participants on how to perform information-seeking 
-tasks would have been more diffult. Furthermore, objectively judging their correctness 
-would also be more strenuous, what would lead to a different experiment with challenges and risks of its own.
+tasks would have been more difficult. Furthermore, objectively judging their correctness 
+would also be more strenuous, which would lead to a different experiment with challenges and risks of its own.
 
 
 
 
 The fact that we consider the text marked by any participant as relevant 
-also affect out conclusions. 
-We refrain from excluding text selected by few participants from our analysis 
+also affect our conclusions. 
+We refrain from excluding text selected by a few participants from our analysis 
 for reasons similar to the ones in our characterization of task-relevant information (Chapter~\ref{ch:characterizing}). That is, the text marked by these participants may still contain valuable information. 
-We minimize this threat reporting both precision and pyramid precision, where we observe that 
+We minimize this threat by reporting both precision and pyramid precision, where we observe that 
 our approach failed to detect the text that multiple participants deemed relevant
 for some tasks or types of artifacts. 
 
 
 
-With regard to the text automatically identified by our tool, we gather usefulness at the artifact level.
-If we had gathered usefulness at the sentence level, we could have used this information 
-to further refine our analysis, for example reporting precision and recall 
-at different usefulness levels or computing accuracy based on the participants' input, as done by Xu et al~\cite{Xu2017}. %Given the time we estimated that the experiment would take, 
-Asking participants to provide feedback at the sentence level would have considerably increased the time we estimated that the experiment would take,
-which would impact recruitment. We weighted the benefits and drawbacks of a fine-grained or more coarse-grained 
-analysis and we opted for the latter so that this would not be a barrier to people deciding on 
+Concerning the text automatically identified by our tool, we gather usefulness at the artifact level.
+Suppose we had gathered usefulness at the sentence level. In that case, we could have used this information 
+to further refine our analysis, for example, reporting precision and recall 
+at different usefulness levels or computing accuracy based on the participants' input, as done by Xu et al~\cite{Xu2017}. 
+However, asking participants to provide feedback at the sentence level would have considerably increased the time we estimated that the experiment would take,
+which would impact recruitment. We weighed the benefits and drawbacks of a fine-grained or more coarse-grained 
+analysis, and we opted for the latter so that this would not be a barrier to people deciding on 
 whether to participate in our experiment.
