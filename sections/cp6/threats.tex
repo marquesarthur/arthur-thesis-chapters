@@ -5,8 +5,71 @@
 \label{cp6:threats}
 
 
---- Nature of the tasks, if tasks were not necessarily programming tasks, the text selected by participants might have been different
+% --- Nature of the tasks, if tasks were not necessarily programming tasks, the text selected by participants might have been different
 
 
---- Our experiment follows a \textit{between groups} design~\cite{Lazar2017-cp3}, i.e., we compare data gathered from the participants who did a manual task 
- to data from participants who did the same task assisted by our tool. Discuss risks associated with this type of design
+% --- Our experiment follows a \textit{between groups} design~\cite{Lazar2017-cp3}, i.e., we compare data gathered from the participants who did a manual task 
+%  to data from participants who did the same task assisted by our tool. Discuss risks associated with this type of design
+
+
+
+Our experiment compares solutions submitted by participants who attempted each task with and without tool support. 
+This represents a between groups design~\cite{Lazar2017-cp3} and we discuss threats inherent to it. 
+
+
+
+Since we compare results from different participants, our analysis might be subject to substantial 
+impact from individual differences~\cite{Lazar2017-cp3}. 
+For example, participants who performed a task with tool support may have been more experienced than participants 
+who did the same task without tool support what affects correctness scores.
+As another example,  participants' skill and background 
+influences the text that they indicate as relevant in the control task as well 
+what text they perceive as useful in the tool-assisted task. 
+We minimized these threats recruiting participants of varied background and randomly
+assigning tasks to each participant.
+
+% , what minimizes the risk that only novice or experienced participants
+% performed some task under a specific configuration (i.e., control or tool-assisted).
+
+
+The tasks in our experiment impact the generalizability. 
+There are clear differences in the structure of an artifact 
+based on its domain or programming language~\cite{baltes2020}.
+We leave the investigation of other domains and a wider range of task 
+and artifacts to future work. 
+
+
+
+The selection of tasks also affect our conclusions. We opted for Python programming tasks that 
+required writing code, which we use to assess correctness. 
+As observed by other researchers~\cite{satterfield2020, meyer2020}, developers
+work on many different tasks some of witch focus on code~\cite{Meyer2017}
+while others on information seeking~\cite{gonccalves2011}, e.g., finding duplicated bug reports or researching visualization libraries to identify the most suitable one~\cite{satterfield2020}.
+Had we decided to use information seeking tasks, participants could have produced a different set of highlights,
+perhaps selecting less code snippets. 
+Given that 
+our experiment was completely remote, instructing participants on how to perform information-seeking 
+tasks would have been more diffult. Furthermore, objectively judging their correctness 
+would also be more strenuous, what would lead to a different experiment with challenges and risks of its own.
+
+
+
+
+The fact that we consider the text marked by any participant as relevant 
+also affect out conclusions. 
+We refrain from excluding text selected by few participants from our analysis 
+for reasons similar to the ones in our characterization of task-relevant information (Chapter~\ref{ch:characterizing}). That is, the text marked by these participants may still contain valuable information. 
+We minimize this threat reporting both precision and pyramid precision, where we observe that 
+our approach failed to detect the text that multiple participants deemed relevant
+for some tasks or types of artifacts. 
+
+
+
+With regard to the text automatically identified by our tool, we gather usefulness at the artifact level.
+If we had gathered usefulness at the sentence level, we could have used this information 
+to further refine our analysis, for example reporting precision and recall 
+at different usefulness levels or computing accuracy based on the participants' input, as done by Xu et al~\cite{Xu2017}. %Given the time we estimated that the experiment would take, 
+Asking participants to provide feedback at the sentence level would have considerably increased the time we estimated that the experiment would take,
+which would impact recruitment. We weighted the benefits and drawbacks of a fine-grained or more coarse-grained 
+analysis and we opted for the latter so that this would not be a barrier to people deciding on 
+whether to participate in our experiment.
