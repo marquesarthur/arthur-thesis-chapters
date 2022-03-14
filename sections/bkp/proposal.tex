@@ -1,0 +1,186 @@
+
+% \footnote{Throughout this work, whenever we refer to a software development task,
+% we refer to problem reports and feature request descriptions often recorded in an issue tracking system such as Bugzilla~\cite{Cubranic2005}.}
+
+
+As part of a software development task,
+a software developer often seeks information from
+many artifacts~\cite{Li2013} (\textit{e.g.,} API documentation~\cite{Singer1998, robillard2011field}, bug reports~\cite{Breu2010, Ko2006}, Q\&A Web pages~\cite{umarji2008archetypal, Huang2018}, etc).
+Many of these artifacts contain data in the form of unstructured text~\cite{Bavota2016} (\textit{e.g.,} Javadoc or comments in a bug report)
+and the sheer amount of information in these natural language artifacts may prevent a developer from comprehensively assessing what is needed to complete their task correctly and completely~\cite{Murphy2005}.
+Most notably, a developer has to filter large amounts of irrelevant text to locate the parts that are relevant to her task~\cite{Piorkowski2016}.
+
+
+
+
+
+As tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer often has to forage
+for more artifacts --
+locating and combining information to understand what is needed for the task-at-hand~\cite{Piorkowski2016}.
+Foraging information scattered across multiple artifacts is challenging~\cite{Piorkowski2016, Ponzanelli2015}
+and it poses additional burdens such as locating and grouping the information from pertinent artifacts
+such that developers can form conceptually coherent units of relevant knowledge~\cite{Starke2009, Ferreira2016}.
+If no tool support is provided, a developer has to read large amounts of irrelevant text to filter just those parts that are relevant to her
+and she also has to establish relationships between the relevant information pieces on her own.
+A developer that fails to locate all the necessary information and establish all the appropriate relationships will have an incomplete or incorrect basis from which to complete a task.
+
+
+
+
+
+
+As much of the process of locating relevant text within an artifact and establishing relationships
+between the many relevant text fragments falls on the developer's shoulders,
+we argue that developers could benefit from approaches and tools that assist them in
+locating fine-grained task-related information pieces allowing them to effectively discover all the necessary information for a particular task.
+To achieve such goal, there are many challenges that need to be overcome.
+Notably, we emphasize that task-relevant information is not only spread across multiple sources (\textit{e.g.} multiple bug reports) but also
+spread across multiple artifact types (\textit{e.g.,} system documentation, bug reports, Q\&A Web pages, etc).
+Hence, a technique that aims to provide a thorough view of the information needed for a task has to obtain and manipulate data from
+such heterogeneous sources.
+
+
+
+
+
+
+As there is an underlying structure to many software development tasks~\cite{Murphy2005},
+we hypothesize that one can use information about a task and its context to assist in mining, grouping, and synthesizing task-relevant information from
+pertinent natural language artifacts~\cite{Starke2009, Bavota2016}.
+If the developer's task is taken as an input, it would be possible to locate fine-grained information pieces and then,
+abstract them to allow a thorough and concise view of the information a developer needs for her task.
+A developer can use this abstraction to more effectively complete her task,
+which means that it is less likely that \textit{(a)} the task will require further changes due to an incomplete or incorrect solution~\cite{Murphy2005};
+or that \textit{(b)} the developer peruses more information to correctly complete her task~\cite{Rastkar2010}.
+We rephrase this hypothesis as our thesis statement:
+
+
+
+
+
+
+
+\noindent To investigate this thesis statement, we pose three research questions:
+
+\vspace{1mm}
+
+\begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=1.4cm]
+\setcounter{enumi}{\arabic{rq}}
+
+    \item \textit{What are commonalities, if any, of text deemed relevant to a software development task?} \stepcounter{rq}
+        With this question, we seek to determine if the rules governing how natural language information
+        is constructed can guide us to information relevant to a task~\cite{Kintsch1978a}.
+        An analysis of the data for this question helps us determine an appropriate unit of analysis
+        and generate hypotheses to guide our investigation.
+        For instance, does relevant text convey more prescriptive or descriptive information?
+        Do software developers more often perceive propositional phrases or large contiguous blocks of text as relevant?
+
+    \item \textit{What techniques can be used to automatically identify text relevant to a software developer's task?} \stepcounter{rq}
+        With this question, we seek to determine if techniques that exploit syntactic, semantic, or software development specific properties are able to automatically identify text relevant to a particular task within and across a given set of natural language artifacts.
+        The analysis of existing techniques seeks to build on existing work and understand if and how accurately such techniques identify
+        text relevant to a task. In the case that they do not, this question motivates us to explore new approaches for identifying text relevant to a task.
+
+    \item \textit{How can text identified as relevant to a task be presented to a developer to assist them in more effectively completing their tasks?} \stepcounter{rq}
+        With this question, we seek to investigate what benefits, if any, are there in abstracting and presenting relevant text obtained from multiple artifacts. For that, we intend to explore if we can divide the relevant text into conceptual units and how can we present relevant text in a concise and comprehensible way.
+
+\end{enumerate}
+
+\setcounter{rq}{0}
+
+
+
+The research for this thesis will focus on identifying and representing text within and across a given set of artifacts for a task.
+Given that we observe commonalities in text relevant to a task (\textit{RQ1}), we can use this knowledge to explore or design a set of techniques
+that \red{automatically identify task-relevant text} (\textit{RQ2}).
+For that, we plan to build on existing work and investigate techniques to automatically identify, across different types of artifacts, text that is relevant to a particular task.
+To facilitate comprehension (\textit{RQ3}), we must present the identified text in a concise and comprehensive way.
+We pose that there are common semantic meanings that naturally divide the identified text (\textit{e.g.,} options, obligations, system capabilities, etc.)
+and we intend to divide relevant text into groupings according to their semantic meanings.
+
+
+
+
+
+\subsection{State of the art}
+
+
+Many tools and approaches have been proposed to assist developers in detecting relevant information within a natural language artifact.
+Often these approaches use a combination of Natural Language Processing (NLP) and Machine Learning (ML) techniques to identify potentially useful textual fragments.
+For example, NLP techniques have been used to define discourse patterns
+which capture
+sentences explaining API constraints~\cite{Robillard2015} or
+sentences describing a bug's expected and observed behavior~\cite{Chaparro2017}.
+An example of supervised ML use is to
+summarize the content of a bug report
+thus obtaining its most relevant sentences~\cite{Rastkar2010}
+while an example of an unsupervised
+ML approach is to establish relationships between the several sentences in a coding tutorial
+to detect sentence pairs explaining a certain API~\cite{Jiang2017}.
+
+
+
+When NLP or ML techniques are applied to software engineering artifacts, researchers often consider only a single type of artifact (\textit{e.g.,} API documentation, bug reports, coding tutorial) and a pre-defined kind of task.
+Additionally, to leverage these techniques, studies assume the existence of certain structural cues or relevance cues
+which may not extend to other natural language artifacts.
+For example, summarization techniques
+often rely on the conversational features present in bug reports~\cite{Lotufo2012, Mani2012},
+but not available in API documentation.
+Relevant tutorial fragments are discovered assuming that a sentence that mentions an API contains a link to the API official documentation~\cite{Jiang2017},
+but there are no guarantees that whenever a user introduces an API
+in other natural language artifacts such as a
+bug report or StackOverflow discussion, she will take care
+to add a link to its official API documentation.
+Such assumptions preclude extending the approaches that these studies propose to
+the variety of natural language artifacts often available in a software project~\cite{Bavota2016}.
+The proposed research aims to investigate task-relevant text in a more artifact-agnostic way.
+
+
+
+
+
+
+As relevant information is often spread through multiple artifacts, it would be useful to gather relevant text from such multiple sources and represent it through an abstraction that facilitates comprehension.
+To address this need, many studies have investigated summarizing software artifacts~\cite{Goldsteinet1999, Ponzanelli2015, Rastkar2013, Xu2017}
+while others have proposed methods to navigate through an information space~\cite{Ponzanelli2017, Aghajani2018}.
+As examples of studies that have applied summarization techniques to facilitate comprehension,
+Rastkar and Murphy summarize multiple software issues to understand the motivations behind a code change~\cite{Rastkar2013} while
+Xu et al. summarize multiple StackOverflow posts to generate a concise yet diverse answer
+to a programming problem~\cite{Xu2017}.
+As an example of a technique that assists navigating through the information space,
+LIBRA~\cite{Ponzanelli2017} presents if the information in a web resource is similar or complements already visited resources based on their shared terms and code elements.
+The research for this thesis differs from such studies by investigating how to provide a representation that
+divides information (identified across multiple artifacts of different types) based on its semantic meanings.
+
+
+
+\subsection{Expected Contributions}
+
+
+Ultimately, we aim to improve how developers search and locate task-relevant information and thus, assist developers in making more informed decisions related to their task.
+To that end, we seek to characterize how task-relevant information appears across various kinds of natural language artifacts,
+propose techniques that automatically identify task-relevant text as well as techniques that abstract the identified text in meaningful ways.
+In summary, the major contributions of this dissertation work are:
+
+\begin{itemize}
+    \item a characterization of how task-relevant text appears across natural language artifacts for software development tasks and artifacts;
+
+    \item a set of novel techniques to automatically identify task-relevant text across different natural language artifacts as well as their empirical evaluation; and
+
+    \item a set of techniques describing how to present task-relevant text as well as their empirical evaluation.
+\end{itemize}
+
+
+The rest of this document further details how we structure the necessary research for our contributions.
+First, we outline  related work (Section~\ref{sec:related-work}),
+Then, we elaborate our research plan to address each one of our research questions.
+We present the work that we did to characterize task-relevant text in Section~\ref{sec:rq-initial-study}
+and present future studies on automatically identifying task-relevant text and presenting the identified
+text  in Sections~\ref{sec:extracting-task-relevant-text} and ~\ref{sec:group-synthesis}, respectively.
+We conclude this proposal discussing the scope of our work and topics left for future work (Section~\ref{sec:discussion}); and providing
+ a summary of our contributions and our intended timeline (Section~\ref{sec:summary}).
+
+
+
+
+
+

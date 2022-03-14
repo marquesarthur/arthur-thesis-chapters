@@ -1,0 +1,86 @@
+
+As part of a software development task, a software developer often
+seeks information from many artifacts~\cite{Li2013}, including
+API documentation~\cite{Singer1998, Robillard2011}, bug
+reports~\cite{Breu2010, Ko2006}, and Q\&A Web
+pages~\cite{umarji2008archetypal, Huang2018}.  These artifacts
+often contain substantial information in the form of unstructured
+text~\cite{Bavota2016} and a developer must read the text to find the
+information \textit{within} the artifact that is relevant for her
+task. However, finding relevant information can be a time-consuming
+and cognitively frustrating process~\cite{Begel2008,
+Robillard2011}.  Just within one kind of document, API
+documentation, studies have shown that it can take 15 minutes or more
+of a developer's highly constrained time to identify needed
+information~\cite{endrikat2014, Meyer2017}.
+
+
+To address the identification of which text is pertinent within an
+artifact, researchers have developed a number of
+\textit{artifact-centric} techniques.  However, this support is
+generally limited to identifying text within a specific kind of
+artifact, such as API documentation~\cite{Robillard2015, Xu2017} or
+code tutorials~\cite{Jiang2016b, Jiang2017}.  For example, AnswerBot
+generates answers to a developer's technical question by retrieving
+relevant text from Stack Overflow~\cite{Xu2017}.
+As another
+example, FRAPT identifies
+paragraphs explaining API elements in code tutorials~\cite{Jiang2017}.
+Although effective in specific contexts, it is reasonable to assume
+that the information needed by an individual may be spread across
+multiple artifact types~\cite{Liu2019,Brandt2009a} and
+that individuals assessing the same artifact may have different
+information needs than anticipated by these techniques~\cite{Bavota2016, Walters2014}.
+
+
+
+In this paper, we explore how to relax the limitations of existing
+artifact-specific approaches. Particularly, we seek to answer whether
+there is consistency in the text within natural language artifacts
+that software developers identify as relevant to a task and, if there
+is consistency, what are common relevance cues in the portions of
+artifacts identified as task-relevant?  Determining common cues that
+developers use regardless of an artifact's type
+\rev{(e.g., the presence of conditional clauses~\cite{Nadi2020} or code words~\cite{Robillard2015})}
+could provide valuable
+insights for the design of techniques that automatically determine
+relevance~\cite{Bavota2016, Walters2014},
+making it possible for a
+developer to quickly access information needed for task completion
+across multiple artifacts.
+
+
+To investigate relevance of text to tasks, we conducted an
+\textit{empirical study} in which we asked 20 participants with
+software development experience to identify relevant text within
+selected artifacts for six distinct software development tasks
+(Section~\ref{sec:method}).
+Across these tasks,
+participants produced 2,463 highlights over 1874 sentences.
+To this data, we applied
+frame semantic parsing~\cite{das2014frame}, a linguistic approach that extracts events, relationships or entities in the text~\cite{Baker1998}.
+We also interviewed participants to gain insights into their
+reasoning process for determining relevance and
+applied a card-sorting approach to identify themes about their approaches~\cite{spencer2009sorting} .
+
+
+
+Results from this study (Section~\ref{sec:results}) show that
+developers have different perceptions of relevance of information for
+a task, with only 18\% of the highlights being identified
+by eight or more participants. Results also show that
+there are common cues in the meaning of text perceived
+as relevant, e.g., relevant text often parses to represent
+\textit{intentional acts} performed by an entity in the software
+system. As participants often indicated they suffer from
+missing information in artifacts, being able to
+focus a developer's attention on sentences with particular
+parsed identified meanings, such as intentional acts,
+ may help a developer complete a task completely
+and correctly.  We discuss such implications later
+in the paper (Section~\ref{sec:discussion}).
+
+This paper makes three contributions:
+
+
+

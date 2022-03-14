@@ -1,0 +1,103 @@
+Performing a task on a software system, like fixing a bug
+or adding a feature, typically requires a developer to consult
+a number of different kinds of artifacts, such
+as API documentation, bug reports, community forums
+and web tutorials.  When consulting these artifacts,
+a developer must identify, from the large amount of text
+in these documents, just the fraction of text relevant
+to the task-at-hand.
+
+
+
+Unfortunately, developers tend to struggle with identifying
+the relevant text and when they are unable to locate all, or most, of it,
+they may produce incomplete or incorrect solutions~\cite{Murphy2005}.
+To aid developers in this situation,
+researchers have proposed various
+techniques and tools to
+identify likely relevant text.
+For example,
+\textit{Krec}~\cite{Robillard2015}
+identifies text that a developer cannot afford to ignore when reading an API document.
+% As another example,
+% \textit{AnswerBot}~\cite{Xu2017} generates answers for a developer's
+% task by identifying text pertinent to that particular task on Stack Overflow.
+Although effective, \rev{this and other techniques (e.g.,~\cite{silva2019} or~\cite{Xu2017})}
+target specific
+types of artifacts, limiting their use across the
+many different kinds of artifacts developers encounter
+daily in their work.
+
+
+
+If one technique could identify relevant text across all kinds
+of artifacts a developer encounters, the technique
+could apply in all situations and may be more adoptable in industry
+as a result. Guided by recent success  using
+techniques that interpret the meaning, or \textit{semantics}, of text
+for a variety of development activities, such as
+for finding who should fix a bug~\cite{yang2016}, searching for comprehensive code examples~\cite{silva2019},
+or assessing the quality of information available in bug reports~\cite{chaparro2019}, we consider
+ whether
+semantic-based techniques might also aid in identifying
+task-relevant text in software artifacts.
+
+
+To investigate this hypothesis, we introduce six possible techniques that incorporate the
+semantics of words and sentences.
+The first two use word embeddings~\cite{Mikolov2013} to identify likely relevant text via semantic similarity, \texttt{word2vec},
+and via a deep neural network, \texttt{BERT}.
+Sentence-level techniques are filters that we apply (or not) on top of the word embedding techniques generating four additional techniques.
+These techniques use frame semantics~\cite{fillmore1976frame} to obtain entities (frames) that summarize a sentence's meaning.
+One of our sentence-level techniques, \texttt{frame-elements}, finds task-relevant text based on a set of key frames.
+The other, \texttt{frame-associations}, matches frames found in a task and an artifact to determine the text's relevance.
+
+
+Evaluating these techniques requires
+a dataset that comprises software tasks with
+associated  artifacts and an identification
+of the text within those artifacts that
+is pertinent for completing the task.
+As no such dataset is available, we
+created one that comprises  50 software tasks about Android development for
+which human annotators identified pertinent text per task across a variety of kinds of software
+artifacts, including API documentation, Stack Overflow answers,
+GitHub issue discussions and other web pages for a total of 133 distinct artifacts.
+
+
+
+
+
+Using this dataset, we then sought to answer
+two questions: 1) how do these semantic-based
+techniques compare to a state-of-the-art
+technique that is artifact-specific and 2) which
+of these six techniques provides the best
+results? To answer the first question,
+we restrict our comparison to a subset
+of the dataset restricted to Stack Overflow
+artifacts, which is the target of the \textit{AnswerBot} technique to which we
+compare. To answer the second question,
+we consider a range of software artifacts
+in the dataset.
+From this assessment, we find that \texttt{BERT} with no filters and \texttt{BERT} with \texttt{frame-associations} have recall comparable to AnswerBot,
+identifying 63\% of the small fraction of the text in the artifacts that human annotators indicated as relevant to a task.
+We also find that, for the different types of artifacts in this dataset, semantic-based techniques can identify up to 58\%
+of the text identified as relevant to a task
+in a software artifact.
+
+
+In summary, this paper makes three contributions:
+
+
+
+\begin{itemize}
+    \item it provides a unique dataset~\cite{supplementary_material} with 50 Android tasks and associated textually-based artifacts
+    that includes annotations of which text in the artifacts is deemed pertinent to these tasks;
+    \item it reports on the precision and recall of the six semantic techniques we introduce
+    using the newly created dataset; and
+    \item it shows that semantic approaches have recall comparable to state-of-the-art approaches
+    tailored specifically to certain kinds of artifacts; recall is the preferred measure to ensure as much of the relevant text as possible is returned.
+\end{itemize}
+
+

@@ -1,0 +1,117 @@
+Much critical information about software is captured in natural
+language. For instance, software requirements are often expressed in
+natural language text, question-and-answer web sites that enable developers to help
+each other rely on natural language explanations, and comments written
+in natural language within
+source code help a developer understand what a piece of code
+is intended to do.
+
+
+Researchers have long recognized the value of this natural language
+text, utilizing various techniques to extract
+information from this text that can be embedded in
+tools for software developers.
+A number of the techniques commonly employed by researchers are based on the
+frequency of co-occurrence of words (or phrases) in documents. An
+early example is Maarek and Smadja's use of lexical relations to index
+software libraries~\cite{maarek1989}. Since this early use, software engineering
+researchers have continued to leverage advances in
+these approaches, such as when
+Maletic and Marcus applied Latent Semantic
+Analysis (LSA)~\cite{deerwester1990LSI} to help cluster software components to aid
+program comprehension of a software system~\cite{Marcus2003}, or when Nguyen and colleagues
+applied Word2Vec~\cite{mikolov2013word2vec} to support the retrieval of API
+examples~\cite{nguyen2017}.
+
+
+
+At times, software engineering researchers have argued
+that general lexicon analysis techniques from natural language
+processing are insufficient to address text appearing in
+software engineering artifacts.
+For example, Di Sorbo and colleagues
+argued that lexicon analysis, like LDA, was insufficient to
+classify emails based on developers'
+intentions~\cite{DiSorbo2015}.
+ Based on a manual
+analysis of existing text in developer emails, they defined rules to
+distinguish sentences discussing feature requests, asking for an
+opinion, or proposing solutions, amongst others.  As another example,
+Gu and Kim argued lexicon analysis was insufficient to
+assess the intent of user reviews and, like Di Sorbo, proceeded
+with a manual analysis~\cite{gu2015}.
+
+
+
+These arguments that lexicon-based natural
+language techniques are not applicable is often based
+on a need for access to the \textit{meaning} of
+sentences in the natural language text~\cite{DiSorbo2015, gu2015, Arya2019}. Whenever similarity arises in the reasons for
+why existing approaches are insufficient,
+it raises the question
+of whether there exists an approach that might fill
+the gap.
+
+
+
+In this paper, we consider whether frame
+semantics~\cite{fillmore1976frame, Baker1998}---a general
+linguistic approach---might be such a gap filler.  The frame semantics
+theory is based on how readers comprehend the roles that words take in
+a sentence with respect to events of interest~\cite{Baker1998,
+  jurafskyspeech}. We provide a detailed
+  explanation of frame semantics in the next
+  section (Section~\ref{sec:background}).
+
+
+
+To the best of our knowledge, there have been only a few uses of frame
+semantics in software engineering research~\cite{jha2017, kundi2017, alhoshan2019using, Marques2020} (Section~\ref{sec:related-work}). These approaches
+have largely focused on text associated
+with software requirements, leaving open the
+question of applicability of the approach to
+text in documents supporting program
+comprehension activities.
+One paper~\cite{Marques2020} applies semantic
+frames to such documents, but does so from the
+viewpoint of finding patterns in text rather than
+considering the applicability of the technique
+to the text.
+It is thus an open question whether semantic
+frames can help identify the meaning of
+software engineering text associated with helping
+developers build and comprehend programs, such as
+text in API documents and bug reports.
+
+
+
+As a means of addressing the question of whether semantic frames might fill the gap for at least some techniques,
+we discuss the application of semantic frames
+to two existing software engineering techniques that rely on manual classification
+(Section~\ref{sec:discussion}).
+While our work provides a
+foundation from which to use semantic frames for software engineering, future
+work should continue to extend the investigation of the applicability of less
+commonly occurring frames.
+
+This paper makes four contributions:
+\begin{itemize}
+\item It introduces a refined version of semantic frame parsing for program comprehension text called \api{}.
+\item It demonstrates that \api{} produce correct and robust frames for text from software engineering artifacts associated with program comprehension
+\item It presents labelled data of sentences extracted from a variety of software artifacts and their associated frames.
+\item It provides \api{} as a Python API.
+\end{itemize}
+
+We begin by providing an example of
+semantic frame parsing (Section~\ref{sec:background})
+and reviewing related work (Section~\ref{sec:related-work}).
+We then describe our  investigation of
+the applicability of frame semantic to the program
+comprehension related text (Section~\ref{sec:coding}), leading to the development of \api{} (Section~\ref{sec:api}). We describe our evaluation of \api{} (Sections~\ref{sec:study-I} and~\ref{sec:study-II}) and place those results in the context of threats
+to their validity (Section~\ref{sec:threats}).
+We discuss implications and final remarks in Sections~\ref{sec:discussion} and ~\ref{sec:conclusion}, respectively.
+
+
+
+
+
