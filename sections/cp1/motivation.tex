@@ -1,361 +1,80 @@
 
 
-When performing software tasks in large and complex software systems, software developers typically consult a number of different kinds of artifacts likely \textit{relevant} to their task. For example, 
-an Android developer might consult official Android API guides, which  
-spam more than 30 web pages
-covering topics such as images and graphics, data files, background tasks, and many others, or; seek question-and-answer forums for functionality, security and performance-related information 
-that might assist them complete their task~\cite{parnin2012}.
+When performing software tasks in large and complex software systems, software developers typically consult a number of different kinds of artifacts that might assist task completion~\red{\cite{}}. For example, 
+when developing an Android application, a developer might consult official Android API documents and guidelines~\red{\cite{}} or seek question-and-answer forums for functionality, security and performance-related information~\cite{parnin2012}.
 
 
 
 
-Much critical information in these and other types of artifacts that developers seek information on 
+Much critical information in this and other non-source code types of artifacts 
+% that developers seek information on 
 contain data in the form of unstructured text~\cite{Bavota2016} and 
-a developer must read the text to find the information that is relevant to their task.
-However, the sheer amount of information \textit{within} these natural language artifacts may prevent a developer from comprehensively assessing what is needed to complete their task correctly and completely~\cite{Murphy2005}.
-Finding relevant information can be a time-consuming
-and cognitively frustrating process~\cite{Begel2008,
-robillard2011field}.  Just within one kind of document, API
+a developer must read the text to find the information that is \textit{relevant} to their task.
+However, the sheer amount of information \textit{within} these natural language artifacts may prevent a developer from comprehensively assessing what is needed to complete their task correctly and completely~\cite{Murphy2005}.  Just within one kind of document, API
 documentation, studies have shown that it can take 15 minutes or more
 of a developer's highly constrained time to identify 
 information needed to perform a particular software task~\cite{endrikat2014, Meyer2017}.
+Therefore, finding task-relevant information can be a time-consuming
+and cognitively frustrating process~\cite{Begel2008,
+robillard2011field}.
 
 
 
 
-As tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer often has to forage
+As tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer might also need to forage
 for more artifacts---locating and combining information to understand what is needed for the task-at-hand~\cite{Piorkowski2016}. If no tool support is provided, much of the process of discovering 
-task-relevant information falls on the developer's shoulders and 
+task-relevant information falls on the developer's shoulders~\red{\cite{}} and 
 a developer that fails to locate all, or most, of the information needed
- will have an incomplete or incorrect basis from which to perform that task~\cite{}.
+ will have an incomplete or incorrect basis from which to perform that task~\red{\cite{}}.
 
 
 
 
 
+Recognizing the need to support a developer's discovery of information relevant to their task, 
+researchers have developed a number of
+\textit{artifact-centric} techniques
+to extract
+information that can be embedded in
+tools for software developers. 
+A number of the techniques commonly employed by researchers are based on the
+frequency of co-occurrence of words, or phrases, in these software artifacts.
+An early example is the use of lexical relations to index
+software libraries~\cite{maarek1989}. Since this early use, software engineering
+researchers have continued to leverage advances in
+these approaches, applying Latent Semantic
+Analysis (LSA)~\cite{deerwester1990LSI} to help cluster software components to aid
+program comprehension tasks~\cite{Marcus2003}, or using 
+word embeddings~\cite{Mikolov2013} to support the retrieval of API
+examples in question-and-answer web sites~\cite{nguyen2017}.
 
 
-% Provided that software developers often require knowledge beyond their own to perform software tasks~\cite{Ponzanelli-thesis}, it is reasonable to assume that they will consult 
 
 
 
 
+Although effective in specific contexts, this support is
+generally limited to identifying text within a specific kind of
+artifact, such as API documentation~\cite{Robillard2015, Xu2017} or
+code tutorials~\cite{Jiang2016b, Jiang2017}. 
+Nonetheless, it is reasonable to assume
+that the information extracted and presented by these and other 
+techniques might not apply to all the artifacts types that a developer might seek 
+information on~\cite{Liu2019, Brandt2009a}
+and that individuals assessing the same artifact may have different
+information needs that depends on the task that they perform~\cite{Bavota2016, Walters2014}.
 
 
-% For example, when fixing a bug, a developer might 
-% confirm the system's behavior referring to past bug reports or the system's requirements~\cite{Lotufo2012, Singer1998}. Likewise, a developer might consult API documents, development mailing lists, or Q\&A forums to better understand how to incorporate a new library into their 
-% software system~\cite{umarji2008archetypal,robillard2011field}. 
 
+\art{I need to connect the previous arguments to semantic techniques. Otherwise, it will appear in the thesis statement without the proper context?}
 
 
-% Typically, the artifacts sought by a developer and that likely contain information \textit{relevant}
-% to their task are available as web resources, where developers formulate queries 
-% to locate the artifacts pertinent to the task-at-hand.
-% Much of the crucial information in these pertinent artifacts 
-% is found in the form of natural language text. However, not all of the content of these artifacts
-% might be relevant to the developer's task
-% and they have to comprehensively assess what within an artifact is helpful to the 
-% task that they are currently performing.    
 
-
-
-
-
-
-
-
-
-
-% need to find 
-% additional information that assists them perform their tasks~\cite{}.
-% For example, when fixing a bug, a developer might 
-% confirm the system's behavior referring to past bug reports or the system's requirements~\cite{}.
-% Likewise, a developer might 
-% refer to 
-% API documentation or community forums 
-% to better understand how to incorporate a new library into their software system~\cite{}.
-
-
-
-% \art{need some statement about the scope and how often these documents are updated}
-
-
-% Much critical information in these artifacts is 
-% found in the form of natural language text~\cite{}
-% and a developer must comprehensively assess 
-% which text fragments contain information helpful to their current task~\cite{}.
-% Some artifacts are short enough that a developer determines whether they are helpful to the task-at-hand at a quick glance~\cite{}.
-% Some others are lengthy~\cite{Rastkar2013t} and 
-% a developer faces the 
-%  burden  of having to sit through large amounts of irrelevant text to locate the pieces relevant to their task~\cite{Robillard2015}. For example, \art{example about Android API documents}
- 
- 
-
-
-% As tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer often has to forage
-% for more artifacts --
-% locating and combining information to understand what is needed for the task-at-hand~\cite{Piorkowski2016}.
-
-
-
-
-
-
-
-% To produce a solution for a task, a software developer typically engages in 
-% a variety of information seeking-activities that extend beyond the system's source code. 
-% For example, 
-% a software developer might refer to 
-
-
- 
-
-
-
-
-
-
-% Software development is a knowledge-intensive
-% activity~\cite{}, software developers often 
-
-
-%  what is a time-consuming
-% and cognitively frustrating process~\cite{Begel2008,
-% robillard2011field}. For example, just within one kind of artifact, API
-% documentation, studies have shown that it can take 15 minutes or more
-% of a developer's highly constrained time to identify needed
-% information~\cite{endrikat2014, Meyer2017}
-
-
-% where a developer
-% that fails to locate locate all, or most, of the information that is relevant to their task
-% may produce incomplete or incorrect solutions~\cite{}.
-
-
-
-
-
-
-
-% As much of the process of locating relevant text within an artifact and establishing relationships
-% between the many relevant text fragments falls on the developer's shoulders,
-% we argue that developers could benefit from approaches and tools that assist them in
-% locating fine-grained task-related information pieces allowing them to effectively discover all the necessary information for a particular task.
-
-
-
-
-
-% Failing to locate task-relevant text in these quick search episodes can 
-% cause a developer to abandon an artifact that could otherwise contain information  helpful to her task~\cite{Brandt2009a, Starke2009}.
-% Hence, several studies have proposed automatic approaches to assist this activity. 
-% These approaches leverage textual cues as well as an artifact's meta-data and, ultimately, they have the goal of surfacing 
-% the most important information in a document so that a developer can quickly 
-% locate it.
-
-
-
-
-
-
-
-
-
-% As much of the process of locating relevant text within an artifact and establishing relationships
-% between the many relevant text fragments falls on the developer's shoulders,
-
-
-
-
-
-% As tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer often consults 
-% multiple artifacts---locating and combining information to understand what is needed for their task~\cite{Piorkowski2016}.
-
- 
-
-
-% If no tool support is provided, a developer has to read large amounts of irrelevant text to filter just those parts that are relevant to her
-% and she also has to establish relationships between the relevant information pieces on her own.
-% A developer that fails to locate all the necessary information and establish all the appropriate relationships will have an incomplete or incorrect basis from which to complete a task.
-
-
- 
- 
-%  needed to complete their task correctly and completely~\cite{Murphy2005}.
-% Most notably, a developer has to filter large amounts
-% of irrelevant text to locate the parts that are relevant to her task~\cite{Piorkowski2016}.
-
-
-% identify, from the large amount of text
-% in these documents, just the fraction of text relevant
-% to the task-at-hand. 
-
-
-
-
-
-
-
-
-
-
-% the vast amount of information available in a software project 
-% plays an important role in how software developers
-% For example, 
-
-
-% asking team mates or consulting web artifacts 
-
-
-
-
-
-
-
-% Software developers produce and consume information that assist them 
-% complete a software development task.
-% For example, 
-
-
-% % The scale and complexity of modern software systems 
-% % often require developers
-
-
-
-% For example, a developer might refer to 
-% API documentation or community forums 
-% to understand how to incorporate a library into their software system~\cite{} or 
-%  confirm a system's behavior referring to past bug reports or the system's requirements~\cite{}.
-
-
-
-
- 
-
-
-
-% Many of these artifacts contain data in the form of unstructured text~\cite{Bavota2016}.
-
-
-
-
-
-% and they are continuously evolving due to 
-
-
-% the sheer amount of information in 
-% these natural language artifacts may prevent a developer from 
-% comprehensively assessing what is relevant for their task~\cite{Murphy2005}.
-
-
-
-
-
-%  to complete their task correctly and completely
-
-
-
-
-
-% In their daily work, software developers typically engage in a series of information seeking activities 
-
-
-
-
-
-
-
-
-
-
-
-
-% Much critical information about software is captured in artifacts other than . 
-
-
-
-
-% Software developers typically rely in the information available in these artifacts 
-
-
-
-
-
-
-
-
-
-
-
-
-% Software development is an information intensive activity.
-
-% Far too often, developers ask how to use certain 
-
-
-% Much critical information about software is captured in artifacts other than source code.
-% Examples ...
-
-
-
-
-
-
-
-
-
-
-% a software developer performing a software task does not 
-
-
-% on the information available
-% in such artifacts 
-
-
-% The amount information available in such artifacts plays an important role in the way developers perform a task.
-% Ponzanelli-thesis
-
-
-
-% Introduce the context
-
-% What is the problem: findinf info for  a task
-
-
-% Why is it challenging
-
-
-
-
-% Should/do I need an example?
-
-
-
-
-
-
-
-% When provided with a set of artifacts that potentially contain information relevant to their task,
-% software developers must inspect the artifact's content and locate the portion of the text that might be relevant to the task-at-hand. 
-% Some of the artifacts inspected are short enough that a developer can find if they contain any helpful information at a quick glance.
-% Some others are lengthy~\cite{Rastkar2013t} and factors such
-% as high time pressure or
-% the need to meet deadlines~\cite{meyer2019}
-% may lead a developer to quickly skim the document
-% in an attempt to find any of the text that is relevant to their task~\cite{Starke2009},
-% which Robillard and Chhetri summarize as the information \textit{filtering problem}:
-
-% \smallskip
-% \begin{bluequote}
-%     \textit{
-% \end{bluequote}
-
-
-
-% Failing to locate task-relevant text in these quick search episodes can 
-% cause a developer to abandon an artifact that could otherwise contain information  helpful to her task~\cite{Brandt2009a, Starke2009}.
-% Hence, several studies have proposed automatic approaches to assist this activity. 
-% These approaches leverage textual cues as well as an artifact's meta-data and, ultimately, they have the goal of surfacing 
-% the most important information in a document so that a developer can quickly 
-% locate it.
-
+% These arguments that lexicon-based natural
+% language techniques are not applicable is often based
+% on a need for access to the \textit{meaning} of
+% sentences in the natural language text~\cite{DiSorbo2015, gu2015, Arya2019}. Whenever similarity arises in the reasons for
+% why existing approaches are insufficient,
+% it raises the question
+% of whether there exists an approach that might fill
+% the gap.
