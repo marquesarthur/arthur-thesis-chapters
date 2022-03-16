@@ -12,7 +12,7 @@ that is equally or more correct than the solution of a developer who attempted a
 \subsubsection{Metrics}
 
 To compute how correct a participant's solution is, 
-we compile their submitted code and run it against a set of 10 test cases that check whether it produces the correct output for each given test input. 
+we compile their submitted code and run it against a set of 10 test cases \gcm{(not provided to participants)}that check whether it produces the correct output for each given test input. 
 Hence, \textit{correctness} represents the number of passing test cases of a solution (Equation~\ref{eq:cp6-correctness}).
 For example, if the solution of a participant passes 7 out of 10 test cases, we would assign a 
 correctness score of $7$ to this solution. 
@@ -49,8 +49,10 @@ the other, from an exception thrown in the code of a participant who misused the
 
 Figure~\ref{fig:correctness-overall} aggregates all correctness scores for tasks done with and without tool support.
 Although we observe that there is less variability in the solutions of participants assisted by our tool,
-we cannot draw statistically significant conclusions based on the correctness scores of each group~\cite{Lazar2017-cp3}.
-Hence, we evaluate scores on a per-task basis, as shown in Figure~\ref{fig:correctness-by-task}.
+we cannot draw statistically significant conclusions based on the correctness scores of each group~\cite{Lazar2017-cp3}. \gcm{You should provide
+the statistical test and why its not valid.}
+Hence, we evaluate scores on a per-task basis, as shown in Figure~\ref{fig:correctness-by-task}. \gcm{Probably need to say something
+as well about why there isn't enough power to do statistical tests.}
 
 
 
