@@ -8,7 +8,9 @@
 
 
 
+\gcm{The figure would be better as a summary rather than introducing the chapter.}
 
+\gcm{Are there research questions?}
 
 Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed to evaluate how a semantic-based tool might assists a software developer perform a task.
 In this experiment, 24 participants with software development background each attempted a
@@ -28,7 +30,7 @@ This design---detailed in the following subsections---allow us to:
     \item discuss the usefulness of the text automatically identified  according to the feedback provided by the participants.
 \end{itemize}
  
-
+\gcm{I suggest de-emphasizing the comparison of the text identification.}
 
 
 
@@ -52,6 +54,8 @@ This design---detailed in the following subsections---allow us to:
 To automatically identify text that is potentially relevant to a developer's task, we have implemented 
 a web browser plug-in that embeds one of our semantic-based approaches that we have previously explored, i.e., \textit{BERT with no filters}.
 
+\gcm{Why not just name the approach in the chapter?}
+
 
 Our plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique  to identify sentences that likely contain information useful to the input task.
 The tool then highlights the text identified so that a developer can quickly located it amidst the rest of the content of an artifact  under inspection. 
@@ -64,6 +68,8 @@ This number was determined based on the average number of sentences indicated as
 \subsection{Tasks}
 \label{cp6:tasks}
 
+\gcm{Was one of the three tasks used for a training task? I'm confused
+how many responses there were for each task.}
 
 We opted for an experiment with tasks that could be completed by participants on their own time and computer.
 This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment \red{~\cite{}}. 
@@ -121,7 +127,8 @@ the need of additional resources.
 
 
 To ensure that participants had the same conditions to perform each task
-and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
+and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. \gcm{Say something here that Colab is an online coding
+notebook or something.}
 
 
 Colab provided participants with a code editor with amenities commonly found in modern IDEs, e.g., code completion and syntax highlighting. It also ensured that all the participants 
@@ -169,14 +176,16 @@ against the examples shown in each task description.
 \label{cp6:participants}
 
 
-We advertised our study to professionals developers and to computer science students at the several universities. 
+We advertised our study to professionals developers and to computer science students at  several universities. 
 Our target population comprised professionals and third, fourth-year or graduate students.
 We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task.
 We gathered this background information as part of our demographics (Figure~\ref{fig:experiment-demographics})
 and no participants were excluded
 based on their background.
 
+\gcm{gender info?}
 
+\gcm{earlier in the chapter you should probably cite the ethics certificate number the work was conducted under}
 
 
 % (3 identified as female and 21 as male)
@@ -231,7 +240,10 @@ to compensate them for their time, what concluded the experiment.
 \subsubsection{Control Task}
 \label{cp6:procedures-manual}
 
-
+\gcm{Did they do this highlighting before the task or after? Confusing
+to say 'study tool' - just say you asked them to highlight sentences.
+'study tool' makes it sound like the tool being studied, i.e., the
+one automaticalyl identifying text.}
 
 In the \textit{control} task, we use the study tool to gather text that a participant deems useful for the task at hand. In this task, 
 the survey asked participants to use the study tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}).
@@ -278,7 +290,7 @@ The highlights were shown in a format similar to the one in Figure~\ref{fig:arti
 
 
 For this task, when a participant submitted their solution, we asked them to 
-rate in a 5 points Likert scale~\cite{likert1932technique} how helpful were the highlights shown by the tool.
+rate on a 5 points Likert scale~\cite{likert1932technique} how helpful were the highlights shown by the tool.
 Figure~\ref{fig:experiment-rating} shows an example of how we gathered data about the usefulness of the text automatically identified.
 Participants rated highlights on a per artifact basis.
 We gather input at the artifact level because it would be too demanding for a participant 
