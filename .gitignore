@@ -42,9 +42,11 @@ diss.synctex.gz
 *.dblite
 *~
 main.pdf
+.~lock.docexams_external_examiner_form.doc#
 
 main.fdb_latexmk
 main.fls
 main.synctex.gz
 !sections/**/*.log
+
 
