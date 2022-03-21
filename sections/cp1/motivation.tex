@@ -19,7 +19,7 @@ information needed to perform a particular software task~\cite{endrikat2014, Mey
 Therefore, finding information that assists a developer complete a task can be a time-consuming
 and cognitively frustrating process~\cite{Begel2008,
 robillard2011field}.
-If no tool support is provided, much of this information foraging process~\red{\cite{}} falls on the developer's shoulders~\red{\cite{}}. A developer that fails to locate all, or most, of the information needed
+If no tool support is provided, much of this information foraging process~\red{\cite{}} falls on the developer's shoulders~\red{\cite{}} and a developer that fails to locate all, or most, of the information needed
  will have an incomplete or incorrect basis from which to perform that task~\red{\cite{}}.
 
 %  Therefore, researchers have long recognized the need to 
@@ -44,20 +44,23 @@ A number of the techniques commonly employed by researchers utilize pattern matc
 to check for specific sequences of tokens often present in text relevant to certain tasks. For example, \textit{Krec}~\cite{Robillard2015} utilizes pattern matching to identify text that a developer cannot afford to ignore when reading an API document.
 Other techniques that researchers have explored rely on extractive text summarization~\cite{Rastkar2010, Lotufo2012, Murray2008}. 
 A summary can be interpreted as the most relevant information in a software artifact 
-and tools such as \textit{DeepSum}~\cite{Li2018} summarize the content of bug reports to determine 
-the most relevant information regarding the reported problem, solutions discussed, and the bug's resolution. 
+and tools, such as \textit{DeepSum}~\cite{Li2018}, summarize the content of an artifact 
+to assist developers in determining what is most relevant for their task.
+
+% bug reports to determine 
+% the most relevant information regarding the reported problem, solutions discussed, and the bug's resolution. 
 
 
 
 
 
 Although effective, this and other techniques~\red{\cite{}} typically
-target specific kinds of task and a single type of artifact, limiting their use across the
+target specific kinds of task as well as particular types of artifact, limiting their use across the
 many different kinds of artifacts developers encounter
 daily in their work~\red{\cite{}}.
 If one technique could use the developer's task
 to identify relevant text across the various kinds
-of artifacts a developer encounters
+of artifacts a developer encounters,
 it would be possible for a
 developer to quickly access information needed 
 to complete their task correctly and completely.
