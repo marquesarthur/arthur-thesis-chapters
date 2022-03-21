@@ -4,50 +4,104 @@
 \label{cp1:thesis}
 
 
-My thesis is that 
-a developer can more effectively complete a software development task when  provided
-with text  determined as relevant 
-by an automatic technique that applies to 
-different natural language artifacts pertinent to the developer's task.
-  
+My thesis is that:
 
 
 
 
+\medskip
+\begin{bluequote}
+    \textit{A developer can more effectively complete a software development task when  provided
+    with text  determined as relevant 
+    by an automatic technique that applies to 
+    different types of natural language artifacts pertinent to the developer's task.}
+\end{bluequote}
 
 
 
-% according to the meaning, or \textit{semantics}, of the text. \art{review needs to put related work in place}
 
-
-
-An important aspect to consider
-is whether there is consistency in 
-information considered \emph{key} to completing a task.
+To validate this thesis statement, 
+we must consider whether there is consistency to 
+the text considered key to completing a task (Part I).
 If there is consistency, we can use properties inherent 
 to the portions of the text that contain this key information 
-to design automatic techniques able to identify such text.
-Thereupon, evaluating the impact of tools that use such techniques to assist developers in completing software tasks.
+to design our automatic techniques that apply to 
+different artifact types (Part II).
+Thereupon, evaluating the impact of tools that use such techniques to assist developers in completing software tasks (Part III). 
 
 
 
 
-To investigate relevance of text to tasks,
-this thesis presents 
-a controlled experiment in which we asked 20 software developers to examine 20 natural language artifacts
-and indicate  the text they considered relevant to six software tasks.
-Results from this experiment indicate consistency in 
-the information considered key to completing a tasks, as captured by the meaning, or \textit{semantics}, of the
-relevant text.
+
+
+\paragraph{\textbf{Part I.}} 
+
+
+In the first part of this thesis, we investigate the relevance of text in natural language software artifacts
+to six distinct software tasks.
+We report a controlled experiment in which we asked 20 software developers to examine 20 artifacts
+and indicate  the text they considered relevant to each of the tasks we explored.
+Results from this experiment indicate that 
+finding task-relevant information in bug
+reports, API documents and \acf{qa} web sites require filtering
+to less than a 20\% of an artifact's text.
+We also observe consistency in 
+the portions of the text 
+considered key to completing a tasks, as captured by the meaning, or \textit{semantics}, of the
+ text.
+
+
 This experiment contributes to the body of work that examine possible properties for identifying text relevant to a developer's task (e.g.,~\cite{Forward2002, Jiang2016b, Robillard2015, Bavota2016}).
-The novelty of our work arises from 
+The novelty of our work lies in 
 applying a general
-linguistic approach, namely frame semantics~\cite{fillmore1976frame, Baker1998}, to study the meaning of relevant text found in 
-API documents, Q\&A web sites and bug reports,
-and from 
-informing common strategies that developers adopt to locate relevant text 
-and factors that make assessing the relevancy of text difficult.
+linguistic approach, namely frame semantics~\cite{fillmore1976frame, Baker1998}, to study the meaning of task-relevant text found in 
+API documents, Q\&A web sites and bug reports.
+A second contribution arises from a qualitative analysis of
+the common strategies that developers adopt to locate relevant text 
+and factors that make assessing the relevancy of text difficult,
+what further motivates the need for tools that assist such process.
 
+
+
+
+
+
+\paragraph{\textbf{Part II.}} 
+
+
+In the second part of this thesis, we investigate
+techniques building on approaches to interpreting the meaning of the text 
+for automatically identifying task-relevant text.
+We introduce six semantic-based techniques that incorporate the semantics of words~\cite{Mikolov2013} and sentences to automatically identify text likely relevant to a developer's task.
+We compare our proposed techniques to a artifact-specific state-of-the-art technique, AnswerBot~\cite{Xu2017},
+and we evaluate them over different types of artifacts
+associated with 50 software tasks about Android development
+for which human annotators identified pertinent text.
+
+
+Evaluation results show that semantic-based techniques
+achieve recall comparable to AnswerBot, but without the need for artifact-specific data,
+and that some of our proposed techniques perform equivalently well across
+multiple artifact types, identifying up to 58\%
+of the text 
+in API documentation, Stack Overflow answers,
+GitHub issue discussions and other web pages
+deemed relevant to these Android development tasks.
+
+
+% This thesis complements existing work
+% by investigating six semantic-based techniques 
+% to identify task-relevant text across different artifact types.
+Semantic-based approaches have been successfully used for a variety of development activities, such as
+for finding who should fix a bug~\cite{yang2016}, searching for comprehensive code examples~\cite{silva2019},
+or assessing the quality of information available in bug reports~\cite{chaparro2019}.
+We compliment these and other studies in the identification of task-relevant information
+by investigating how such semantic approaches apply across different artifact types.
+
+
+
+
+\paragraph{\textbf{Part III.}} 
 
 
 
@@ -109,11 +163,6 @@ and factors that make assessing the relevancy of text difficult.
 
 
 
-% Semantic approaches have  been successfully used 
-% to assist developers in a variety of development activities, 
-% such as finding who should fix a bug~\cite{yang2016},
-% searching for comprehensive code examples~\cite{silva2019},
-% or assessing the quality of information available in bug reports~\cite{chaparro2019} 
 % and thus, I posit that 
 
 
