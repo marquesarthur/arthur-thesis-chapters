@@ -1,2 +1,42 @@
 \section{Structure of the Thesis}
 \label{cp1:organization}
+
+In Chapter~\ref{ch:related-work}, we present an overview of state of the art. The chapter details 
+how developers forage information and existing approaches and tools 
+that assist in different phases of the foraging process.
+
+
+Chapter~\ref{ch:characterizing} presents our empirical study to characterize task-relevant text.
+We provide details on the tasks and artifacts that we have selected for this study (Section~\ref{})
+and then, we present our findings on the text considered relevant (Section~\ref{}) and 
+on the common themes that arose from our post-experiment interview analysis (Section~\ref{}).
+
+
+Chapter~\ref{ch:android-corpus} describes the groundwork 
+for producing the corpus (\acs{DS-android}) that we use to evaluate the semantic-based techniques 
+detailed in the chapter that follows.
+Chapter~\ref{ch:identifying} presents the semantic-based techniques that we explore 
+for the automatic identification of task-relevant text (Section~\ref{cp5:approaches}).
+The first two techniques that the chapter presents 
+use word embeddings to identify likely relevant text via semantic similarity
+and via a deep neural network.
+A third sentence-level technique filters (or not) 
+the output of the word-level techniques based on a sentence's meaning.
+We combine these techniques for a total of six possible techniques, comparing them by showing
+the text that they automatically identify for the tasks and artifact types
+available in the \acs{DS-android} corpus  (Section~\ref{cp5:evaluation}).
+
+
+
+
+In chapter~\ref{ch:assisting}, we take the best performing technique identified in this evaluation and study 
+whether these approaches can assist a software developer in locating information
+that helps them complete Python programming tasks. We begin by detailing experimental procedures (Section~\ref{cp6:experiment})
+and then, we report results from the experiment (Section~\ref{cp6:results}).
+
+
+In Chapter~\ref{ch:discussion}, we discuss challenges and decisions 
+made throughout our work 
+as well as implications from our findings and potential future work. 
+Chapter~\ref{ch:summary} concludes this work by reflecting on the contributions in the thesis. 
+\art{Will review where I will have future work}
