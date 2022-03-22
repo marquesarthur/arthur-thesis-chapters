@@ -5,8 +5,9 @@
 
 
 
-This thesis 
-aims to support a developer in locating information of potential relevance to their task. I posit that:
+We seek to support a developer's discovery of information potentially relevant to their task, thus assisting
+them in correctly and completely completing a task. 
+We posit that:
 
 \medskip
 \begin{bluequote}
@@ -27,10 +28,9 @@ considered key to completing a task
 in the different types of natural language artifacts pertinent to that task.
 If there is consistency, we can use properties inherent 
 to the portions of the text that contain this key information 
-to design techniques that automatically identify text relevant to a task 
-regardless of an artifact's type.
-Thereupon, evaluating the impact of tools that use such techniques to assist developers in completing software tasks. 
-The approach this work of dissertation takes for each of these steps is detailed as follows.
+to design techniques that automatically identify the relevant text
+regardless of an artifact's type, evaluating the impact of tools that use such techniques to assist developers in completing software tasks. 
+The approach this work of dissertation takes to validate each of these steps is detailed as follows.
 
 
 
@@ -39,9 +39,9 @@ The approach this work of dissertation takes for each of these steps is detailed
 
 We start by investigating the relevance of text in natural language software artifacts
 pertinent to six distinct software tasks.
-We report a controlled experiment in which we asked software developers to 
-indicate the text they considered relevant to each of the tasks we explored and their associated artifacts.
-We find that 
+Based on a controlled experiment in which we asked software developers to 
+indicate the text they considered relevant to each of the tasks in this experiment,
+we find that 
 locating task-relevant information in bug
 reports, API documents and \acf{qa} web sites require filtering
 to less than a 20\% of an artifact's text.
@@ -49,7 +49,7 @@ In
 the portions of the text 
 considered key to completing a task. We also 
 observe consistency in the meaning, or \textit{semantics}, of the
-task-relevant text.
+ text considered relevant.
 
 
 This experiment contributes to the body of work that examines possible properties for identifying text relevant to a developer's task (e.g.,~\cite{Forward2002, Jiang2016b, Robillard2015, Bavota2016}).
@@ -74,14 +74,15 @@ what further motivates this work of dissertation.
 Since we identify consistency in the meaning of the text deemed relevant to a task, 
 in the second part of this thesis, we investigate
 techniques that build upon semantic approaches 
-for automatically identifying task-relevant text.
+for automatically identifying text relevant to a particular task in artifacts pertinent to that task.
 
 
 We introduce six semantic-based techniques that incorporate the semantics of words~\cite{Mikolov2013, Devlin2018Bert}
 and sentences~\cite{fillmore1976frame, marques2021}
 to automatically identify text likely relevant to a developer's task.
-We compare the techniques we explore to a  state-of-the-art artifact-specific technique, AnswerBot~\cite{Xu2017},
- evaluating them over different types of artifacts
+We compare these techniques to an state-of-the-art artifact-specific technique, AnswerBot~\cite{Xu2017},
+where we evaluate the text that each of them identify
+ over different types of artifacts
 associated with 50 Android development tasks 
 for which human annotators identified task-relevant text.
 Evaluation results show that semantic-based techniques
@@ -116,13 +117,12 @@ completing a task.
 I present a controlled experiment where 24 participants had to 
 perform two Python programming tasks each, where one of these tasks 
 was assisted by a tool that automatically identifies task-relevant text 
-in the set of artifacts available to each task. 
+in the set of artifacts available for that task. 
 With this experiment, I compare the correctness of the solutions of each task 
-performed by participants with and without tool assistance 
-when they consulted the exact same set of artifacts, which included 
-API documents, Stack Overflow posts, and web tutorials. 
+performed by participants with and without tool assistance
+as well as the perceived usefulness of the text automatically identified and shown by the tool. 
 Results indicate that participants found the text automatically identified
-and shown by the tool were useful in two out of the three tasks of the experiment.
+useful in two out of the three tasks of the experiment.
 In addition, tool support also led to more correct solutions 
 in one of the task in the study.
 
@@ -130,10 +130,10 @@ in one of the task in the study.
 
 
 
-This experiment strengthen other findings on the 
+This experiment strengthen software engineering research on the 
 role of semantic-based tools for supporting
-automatic text identification~\cite{nadi2020, Xu2017,Lotufo2012}.
-We conclude this thesis by discussing implications of our findings and 
+automatic text identification~\cite{nadi2020, Xu2017,Lotufo2012}
+and we conclude this thesis by discussing implications of our findings and 
 directions for future work.
 
 
