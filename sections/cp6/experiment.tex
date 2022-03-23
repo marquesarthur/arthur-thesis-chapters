@@ -68,11 +68,11 @@ This number was determined based on the average number of sentences indicated as
 \subsection{Tasks}
 \label{cp6:tasks}
 
-\gcm{Was one of the three tasks used for a training task? I'm confused
-how many responses there were for each task.}
+% \gcm{Was one of the three tasks used for a training task? I'm confused
+% how many responses there were for each task.}
 
 We opted for an experiment with tasks that could be completed by participants on their own time and computer.
-This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment \red{~\cite{a}}. 
+This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment~\cite{russo2021a, russo2021b}. 
 Since participants would follow instructions on their own, we decided to use tasks that are easy to understand and perform in a single experimental session, but that still required a participant  
 to seek information in artifacts associated with each task.
 
@@ -93,7 +93,11 @@ Each task also contained a link to an online coding environment (Section~\ref{cp
 where a participant could write and test their solution. 
 
 
+
+
 \input{sections/cp6/tbl-task-descriptions.tex}
+
+
 
 
 \subsection{Artifacts}
@@ -114,10 +118,11 @@ we follow procedures similar to the ones we used to create the \acs{DS-android} 
 That is, we use the Google search engine to obtain up to ten artifacts that likely contain 
 information that could help a participant correctly complete that task. 
 Three pilot runs ensured that the artifacts collected using such procedures had sufficient information to complete a task without 
-the need of additional resources. 
+the need of additional resources. Based on these pilots, we simplified the description of the \texttt{distances} tasks removing the need to sort the list suggested addresses, what also led to the removal of two artifacts associated with sorting. Table~\ref{tbl:python-task-distribution} details the kinds of artifacts per task.
 
 
 
+\input{sections/cp6/tbl-artifacts-per-task.tex}
 
 
 
@@ -183,15 +188,14 @@ We gathered this background information as part of our demographics (Figure~\ref
 and no participants were excluded
 based on their background.
 
-\gcm{gender info?}
+% \gcm{gender info?}
 
-\gcm{earlier in the chapter you should probably cite the ethics certificate number the work was conducted under}
 
 
 % (3 identified as female and 21 as male)
 
 
-We obtained twenty four responses to our study advertisement. 
+We obtained twenty four responses to our study advertisement (3 self-identified as female and 21 as male). 
 At the time of the experiment, 10 participants were working as software
 developers and 14 were students (11 graduate and 3 undergrad).
 The majority of the students (71\%) also reported having some previous professional experience.
@@ -206,6 +210,8 @@ Most of the participants also indicated that they did check API documents almost
 \input{sections/cp6/tbl-demographics.tex}
 
 
+\gcm{earlier in the chapter you should probably cite the ethics certificate number the work was conducted under}
+\art{should this go under the preface?}
 
 
 \subsection{Procedures}
@@ -225,9 +231,9 @@ about how to perform each task, requesting them to install the study tool, a web
 Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
 
 
-Once a participant completed the practice task, the survey randomly assigned to them a \textit{control} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the control task. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
+Once a participant completed the practice task, the survey randomly assigned to them a \textit{control} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the control task.
 For each task, including the practice tasks, the survey provided to the participants a link 
-to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. 
+to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. Table~\ref{tbl:python-task-distribution} shows the participants who performed each task in the control and tool-assisted groups. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
 
 
 Once a participant submitted their solutions, the survey
@@ -235,6 +241,9 @@ asked them about any additional feeback that they wished to share and
 offered them the opportunity to enter a raffle for one of two iPads 64 GB 
 to compensate them for their time, what concluded the experiment.
 
+
+
+\input{sections/cp6/tbl-participants-per-task.tex}
 
 
 \subsubsection{Control Task}
