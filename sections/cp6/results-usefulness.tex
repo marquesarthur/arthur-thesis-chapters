@@ -5,9 +5,8 @@
 
 
 
-Having compared the correctness of manual and tool-assisted tasks as well 
-as the amount of overlap between text identified as relevant by the participants and 
-text automatically identified by our tool, we turn to the question of 
+Having compared the correctness of manual and tool-assisted tasks,
+we turn to the question of 
 whether the highlights shown by the tool were considered helpful. 
 For that, we analyze participants' ratings and the feedback that they 
 provided at the end of our experiment.
@@ -56,7 +55,7 @@ Similar to how we presented results on correctness, we analyze usefulness rating
 
 Figure~\ref{fig:usefulness-by-task} shows participants' ratings aggregated for each task. 
 Participants indicated that the highlights shown for the \texttt{titanic} task were the most useful. 
-Ratings for this task support our observations on correctness as well as on our comparison of manual and tool-identified text. 
+Ratings for this task support our observations on the correctness of the solutions produced. 
 Notably, one participant indicated that highlights for this task assisted them in identifying essential function arguments needed to use the \texttt{pandas} group by function.
 In contrast, participants indicated that the highlights for the \texttt{distances} task were in its majority not useful. 
 For example, one participant pointed out that, in the \texttt{geopy} API documentation, there were no highlights in 
@@ -73,7 +72,7 @@ a section where they would have expected otherwise.
 
 The mixed results for the \texttt{NYTimes} task might explain the lack of differences in the correctness scores observed for this task. 
 Although anecdotal, one interesting feedback for this task was from a participant who described that 
-their experience with the \texttt{BeautifulSoup} module influenced their negative ratings---``\textit{I have experience with BeautifulSoup and webscraping, and so my ratings of the usefulness of the highlights may have been influenced by that}''.
+their experience with the \texttt{BeautifulSoup} module influenced their negative ratings---``\textit{I have experience with BeautifulSoup and webscraping, and so my [negative] ratings of the usefulness of the highlights may have been influenced by that}''.
 
 
 
@@ -85,14 +84,11 @@ their experience with the \texttt{BeautifulSoup} module influenced their negativ
 Surprisingly, when we look at the ratings per type of artifact (Figure~\ref{fig:usefulness-by-artifact-type}), API documents had the most useful highlights.
 For this type of artifact, we observe that positive ratings originate from artifacts that follow a \textit{`how to'} format,
 which is not conventional for API documents~\cite{robillard2011field, arya2020}. The highlights on Stack Overflow artifacts were also perceived as useful
-and participants expressed familiarity with this type of artifact, where the highlights helped them determine parts of the page to ignore.
+and participants expressed familiarity with this type of artifact, where the highlights helped them determine parts of the page to ignore---``\textit{the highlight [on Stack Overflow] helped me quickly determine which parts of the page to ignore}''.
 
 
-% On the other hand, 45\% of the responses of 
 Miscellaneous web pages were the artifact where participants disagreed the most on the usefulness of the text automatically identified.
-Due to their `\textit{tutorial}' format, these artifacts are lengthy and some participants expressed that they would like more direct explanations about how to use the modules of each task---``\textit{I have used these libraries before to some extent so I don't need a narrative around purpose or procedure}''. We also note that our tool had the lowest precision and recall scores for this type of artifact, and thus, it is likely that it did not detect the text that participants used when writing their solution to a task.
-
-
+Due to their `\textit{tutorial}' format, these artifacts are lengthy and some participants expressed that they would like more direct explanations about how to use the modules of each task---``\textit{I have used these libraries before to some extent, so I don't need a narrative around purpose or procedure}''. 
 
 
 
@@ -124,8 +120,7 @@ Due to their `\textit{tutorial}' format, these artifacts are lengthy and some pa
 
 
 
-% ``\textit{I noticed that the highlights were particularly helpful on pages where I am familiar with the page structure, like Stack Overflow.
-% There, the highlight helped me quickly determine which parts of the page to ignore.}''
+% 
 
 
 
