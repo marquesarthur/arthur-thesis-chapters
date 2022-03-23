@@ -8,6 +8,9 @@
 
 
 
+\gcm{earlier in the chapter you should probably cite the ethics certificate number the work was conducted under}
+\art{should this go under the preface?}
+
 \gcm{The figure would be better as a summary rather than introducing the chapter.}
 
 \gcm{Are there research questions?}
@@ -214,8 +217,7 @@ Most of the participants also indicated that they did check API documents almost
 \input{sections/cp6/tbl-demographics.tex}
 
 
-\gcm{earlier in the chapter you should probably cite the ethics certificate number the work was conducted under}
-\art{should this go under the preface?}
+
 
 
 \subsection{Procedures}
@@ -231,7 +233,7 @@ to a web survey containing the experiment's consent form and tasks.
 
 Once a participant consented to participate, the survey gathered demographics and then, 
 it gave participants further instructions 
-about how to perform each task, requesting them to install the study tool, a web browser plug-in.
+about how to perform each task, requesting them to install the our tool, a web browser plug-in.
 Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
 
 
@@ -249,22 +251,27 @@ to compensate them for their time, what concluded the experiment.
 
 \input{sections/cp6/tbl-participants-per-task.tex}
 
+\clearpage
+
 
 \subsubsection{Control Task}
 \label{cp6:procedures-manual}
 
-\gcm{Did they do this highlighting before the task or after? Confusing
-to say 'study tool' - just say you asked them to highlight sentences.
-'study tool' makes it sound like the tool being studied, i.e., the
-one automaticalyl identifying text.}
+% \gcm{Did they do this highlighting before the task or after? Confusing
+% to say 'study tool' - just say you asked them to highlight sentences.
+% 'study tool' makes it sound like the tool being studied, i.e., the
+% one automaticalyl identifying text.}
 
-In the \textit{control} task, we use the study tool to gather text that a participant deems useful for the task at hand. In this task, 
-the survey asked participants to use the study tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}).
+In the \textit{control} task, we use the tool to gather text that a participant deems useful for the task at hand. In this task, 
+the survey asked participants to use our tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}). Participants could highlight text any time before submitting their solution. 
+Based on observations from the pilots, the most common strategy we noticed was that of highlighting 
+text on-the-fly, i.e., as a participant performed the task and consulted its artifacts, they would highlight text 
+when reading each document.
 
 
 
 Figure~\ref{fig:artifact-pre-highlight}
-gives insight into how participants highlighted sentences using the study tool. 
+gives insight into how participants highlighted sentences. 
 Whenever a participant inspected one of the artifacts available for their task, 
 they could click on the \texttt{highlight} button in the tool's context menu.  
 This would then instrumented the HTML of the page identifying individual sentences. 
@@ -295,7 +302,7 @@ their data also through the tool's context menu.
 \label{cp6:procedures-tool-assisted}
 
 
-In the tool-assisted task, the study tool automatically highlighted text that 
+In the tool-assisted task, our tool automatically highlighted text that 
 its underlying semantic-based technique identified as relevant to the participant's task.
 The highlights were shown in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
@@ -337,6 +344,6 @@ We use this data to investigate whether
 a tool embedding a semantic-based technique helps developers complete a software task. 
 
 
-\clearpage
+% \clearpage
 
 
