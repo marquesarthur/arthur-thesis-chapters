@@ -8,36 +8,55 @@
 
 
 
-\gcm{earlier in the chapter you should probably cite the ethics certificate number the work was conducted under}
-\art{should this go under the preface?}
+% \gcm{earlier in the chapter you should probably cite the ethics certificate number the work was conducted under}
+% \art{should this go under the preface?}
 
-\gcm{The figure would be better as a summary rather than introducing the chapter.}
+% \gcm{The figure would be better as a summary rather than introducing the chapter.}
 
-\gcm{Are there research questions?}
+% \gcm{Are there research questions?}
 
-Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed to evaluate how a semantic-based tool might assists a software developer perform a task.
-In this experiment, 24 participants with software development background each attempted a
+% Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed to evaluate how a semantic-based tool might assists a software developer perform a task.
+
+
+We seek to evaluate how a semantic-based tool might assists a software developer perform a task.
+We consider three questions:
+
+
+\begin{enumerate}[label=RQ\arabic*]
+    \item Does usage of a semantic-based tool help developers produce more correct solutions? 
+    \item How useful is the text identified by a semantic-based tool, i.e., does the text automatically identified contains information that assist task completion? 
+    \item How does the text automatically identified by our semantic-based tool compare to text 
+    that humans perceive as relevant to a task?
+\end{enumerate}
+
+% solution more often than if they had not used the tool?
+
+% 
+
+
+To answer these questions, we designed an experiment where 24 participants with software development background each attempted a
 \textit{control} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
 Participants are asked to write a solution for both of their assigned tasks
 and we use the control task to collect what text a participant deems relevant to the task at hand.
 In the tool-assisted task, we gather input on the usefulness of the text automatically identified and shown by our tool. 
-This design---detailed in the following subsections---allow us to:
+This design, summarized in Figure~\ref{fig:tool-experiment-procedures} and detailed in the following subsections,  allow us to:
+
+
 
 
 
 
 \begin{itemize}
-    \item assess the correctness of the tasks performed \textit{with} or \textit{without} tool support;
-    \item compare manual and tool identified task-relevant text, and;
-    \item discuss the usefulness of the text automatically identified  according to the feedback provided by the participants.
+    \item assess the correctness of the solutions for each tasks performed \textit{with} or \textit{without} tool support, thus addressing \textit{RQ1};
+     
+    \item discuss the usefulness of the text automatically identified  according to the feedback provided by the participants, which helps us answer \textit{RQ2}, and;
+
+    \item compare manual and tool identified task-relevant text, which addresses \textit{RQ3} and helps us cross-examine~\cite{easterbrook2008} results from Chapter~\ref{ch:identifying}. 
 \end{itemize}
  
-\gcm{I suggest de-emphasizing the comparison of the text identification.}
 
 
-
-
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{cp6/tool-experiment-pipeline.pdf}
 \caption{Summary of experimental procedures}
@@ -46,32 +65,14 @@ This design---detailed in the following subsections---allow us to:
 
 
 
+The \acs{UBC} \acs{ERB} approved this experiment under the certificate \textit{H19-04054}.
+The experiment's supplementary material is also publicly available~\cite{cp6_supplementary_material}.
 
-
-
-\subsection{Study tool}
-
-
-
-To automatically identify text that is potentially relevant to a developer's task, we have implemented 
-a web browser plug-in that embeds one of our semantic-based approaches that we have previously explored, i.e., \textit{BERT with no filters}.
-
-\gcm{Why not just name the approach in the chapter?} \art{TODO}
-
-
-Our plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique  to identify sentences that likely contain information useful to the input task.
-The tool then highlights the text identified so that a developer can quickly located it amidst the rest of the content of an artifact  under inspection. 
-
-
-We configure \textit{BERT with no filters} to identify no more than 10\% of the sentences of an input artifact as relevant.
-This number was determined based on the average number of sentences indicated as relevant by human annotators in the artifacts of the \acs{DS-android} corpus.
 
 
 \subsection{Tasks}
 \label{cp6:tasks}
 
-% \gcm{Was one of the three tasks used for a training task? I'm confused
-% how many responses there were for each task.}
 
 We opted for an experiment with tasks that could be completed by participants on their own time and computer.
 This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment~\cite{russo2021a, russo2021b}. 
@@ -88,7 +89,7 @@ can provide a solution for a task without consulting any of the artifacts (Secti
 that detail each of the modules associated with each task. 
 
 
-Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\red{\cite{a}}.}.
+Figure~\ref{fig:nytimes-task-github} provides an excerpt of the information shown in a task\footnote{Full descriptions are available in the experiment's supplementary material~\cite{cp6_supplementary_material}.}.
 For each task, participants had the task description and examples of input and output scenarios at their disposal. A task contained a list of resources that participants could consult 
 so that they could write their solution.
 Each task also contained a link to an online coding environment (Section~\ref{cp6:coding-environment})
@@ -124,14 +125,21 @@ the need of additional resources. Based on these pilots, we simplified the descr
 
 
 
+\input{sections/cp6/tbl-task-descriptions.tex}
+
+
+
 \subsection{Coding environment}
 \label{cp6:coding-environment}
 
 
 
 To ensure that participants had the same conditions to perform each task
-and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. \gcm{Say something here that Colab is an online coding
-notebook or something.}
+and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
+% \gcm{Say something here that Colab is an online coding notebook or something.}
+Colab is a product from Goole Research that allows people to write and execute Python code through their browser~\cite{google-colab}. 
+% The platform is well suited for 
+
 
 
 Colab provided participants with a code editor with amenities commonly found in modern IDEs, e.g., code completion and syntax highlighting. It also ensured that all the participants 
@@ -149,8 +157,6 @@ against the examples shown in each task description.
 
 
 
-
-\input{sections/cp6/tbl-task-descriptions.tex}
 
 
 \input{sections/cp6/tbl-artifacts-per-task.tex}
@@ -302,7 +308,10 @@ their data also through the tool's context menu.
 
 
 In the tool-assisted task, our tool automatically highlighted text that 
-its underlying semantic-based technique identified as relevant to the participant's task.
+its underlying semantic-based technique identified as relevant to the participant's task\footnote{
+    We configure the tool to identify no more than 10\% of the sentences of an input artifact as relevant.
+    This number was determined based on the average number of sentences indicated as relevant by human annotators in the artifacts of the \acs{DS-android} corpus.
+}.
 The highlights were shown in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.
 
 

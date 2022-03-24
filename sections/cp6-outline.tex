@@ -11,17 +11,18 @@ In the last chapter, we showed that semantic-based approaches can help identify 
 In this chapter, we consider whether these approaches can assist a software developer while they \textit{work} on a task.
 
 
+
+
 We introduce a tool, in the form of a web browser plug-in, that automatically highlights 
 text that it determines as relevant to a particular software task.
-This tool embeds one of our semantic-based approaches---\textit{BERT with no filters}---and we investigate
+Our plug-in takes a developer's task and a software artifact as inputs and then applies its underlying semantic-based technique---\textit{BERT with no filters}---to identify sentences that likely contain information useful to the input task.
+Through a controlled experiment,  
+we report
 how 24 participants complete three Python
-programming tasks when assisted (or not) by such a tool through a controlled experiment\footnote{
-    The \acs{UBC} \acs{ERB} approved the research conducted in this chapter under the certificate \textit{H19-04054}.
-    A replication package is also publicly available~\cite{cp6_supplementary_material}.
-}. 
+programming tasks using (or not) this tool. 
 With this experiment, we show that participants considered the majority of the text automatically identified in artifacts 
-of each task useful and that 
-our tool assisted them producing a more correct solution for one of the experimental tasks.
+they persude useful and that 
+our tool assisted them in producing a more correct solution for one of the experimental tasks.
 
 
 We start by outlining the evaluation approach  (Section~\ref{cp6:method}). We then
@@ -36,7 +37,9 @@ Section~\ref{cp6:summary} concludes the chapter.
 
 
 
-
+% \footnote{
+%     
+% }
 
 
 
