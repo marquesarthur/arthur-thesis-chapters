@@ -3,10 +3,11 @@
 \label{cp6:comparison}
 
 
+
 To assist a developer to complete a task correctly, a tool that
-automatically identifies text pertinent to that task would ideally 
+automatically identifies text pertinent to that task might 
 identify text that humans have also considered as relevant.
-\gcm{Why ideally? Maybe humans are terrible at identifying relevant text?}
+% \gcm{Why ideally? Maybe humans are terrible at identifying relevant text?}
 Procedures from our control task asked participants to identify text they deemed useful. We
  compare this manually provided data against the text automatically identified.
 
@@ -17,7 +18,7 @@ Procedures from our control task asked participants to identify text they deemed
 \subsubsection{Metrics}
 
 To investigate the overlap between the participants' manual highlights and the 
-the automatic highlights identified by the study tool we use \textit{precision}, 
+the automatic highlights identified by our semantic-based tool we use \textit{precision}, 
 \textit{recall}~\cite{manning2010IR}, and \textit{pyramid precision}~\cite{Nenkova2004}.
 We compute these metrics for each artifact of each task and report their average.
 
@@ -96,6 +97,11 @@ Table~\ref{tbl:metrics-example} shows precision, pyramid precision, and recall m
 % \paragraph{\textbf{Data.}}
 \subsubsection{Data}
 
+
+
+
+
+
 Participants who indicated what text was relevant to their assigned control task produced a total of 415 highlights with an average of 7 highlights (std $\pm 3$) per artifact inspected.
 On average, this comprises 9\% of the entire content of the artifacts in our experiment. 
 
@@ -108,7 +114,8 @@ We compare these manually produced highlights to the text automatically identifi
 
 
 
-% \subsubsection{Results}
+To help future research in the field, we bundle the three Python programming tasks in our experiment, its associated natural language artifacts, and the text that participants indicated as useful in a corpus named \acs{DS-python}~\cite{cp6_supplementary_material}.
+
 
 
 % \paragraph{\textbf{Results.}}
@@ -131,7 +138,6 @@ In contrast, the task where participants assisted by our tool obtained the best 
 
 
 
-\input{sections/cp6/tbl-comparison-overall}
 
 
 
@@ -139,18 +145,35 @@ Table~\ref{tbl:comparison-artifact-type-wise} details evaluation metrics artifac
 Stack Overflow posts and API documentation have the highest precision scores. For these types of artifacts, pyramid precision indicates that the 
 text automatically identified on Stack Overflow was the text that several participants deemed relevant. 
 The same does not apply to API documentation, i.e., our tool failed to detect a portion of the text that many participants deemed relevant. 
-Miscellaneous web pages were the artifact type with the lowest scores. As we detail in Section~\ref{cp6:usefulness},
-participants indicated that the text identified for this type of artifact was the least useful.
+Miscellaneous web pages were the artifact type with the lowest scores. This results support our findings 
+on the usefulness of text per type of artifact.
 
 
+
+
+
+
+We also compare precision and recall values reported here to the results in the semantic-based technique's assessment for the \acs{DS-android} corpus. 
+This comparison is interesting because it let us cross-examine our findings with new data~\cite{easterbrook2008},
+which Seaman emphasizes as an important method for empirical studies in software engineering~\cite{Seaman1999}.
+Figure~\ref{fig:eval-comparison} compares the precision and recall of the BERT technique with no filters 
+for the artifacts of each corpus through a boxplot. We observe that precision 
+and recall values for the technique applied 
+across the artifacts of each evaluation are equivalent. 
+
+
+\input{sections/cp6/tbl-comparison-overall}
 
 \input{sections/cp6/tbl-comparison-per-artifact-type}
 
 
-\gcm{And how does this compare to Chapter 5 results?}
+\medskip
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{cp6/eval-comparison.pdf}
+    \caption{Boxplots comparing precision and recall values when applying our semantic-based technique to the \acs{DS-python} and the \acs{DS-android} corpora}
+    \label{fig:eval-comparison}
+\end{figure}
 
-\art{add comparison. }
 
-
-
-
+\clearpage
