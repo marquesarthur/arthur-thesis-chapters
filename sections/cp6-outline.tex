@@ -1,26 +1,27 @@
 \setcounter{chapter}{5}
 
 
-\chapter{Evaluating Text Automatically Identified}
+\chapter{Evaluating an Automated Approach to Task-Relevant Text Identification}
 \label{ch:assisting}
 
-\gcm{It would be better if the title was more aligned
-with the earlier chapters. Maybe something like "Evaluating an Automated Approach to Task-Relevant Text Identification"}
+% \gcm{It would be better if the title was more aligned
+% with the earlier chapters. Maybe something like "Evaluating an Automated Approach to Task-Relevant Text Identification"}
 
-\gcm{It would be helpful if you can link more directly to the earlier chapters as in ... In the last chapter, we showed that semantic-based approaches can help identify text in artifacts relevant to a task. In this chapter, we consider whether these approaches can assist a software developer...}
-
-Previously, we have compared different semantic-based techniques for automatically identifying text in an artifact that is of potential relevance to a software task.
-Although, such a comparison answered whether semantic-based approaches can identify text that humans deem relevant,
-it did not address whether 
-the text automatically identified  
-can assist a software developer while they \textit{work} on a task.
+In the last chapter, we showed that semantic-based approaches can help identify text in artifacts relevant to a task. 
+In this chapter, we consider whether these approaches can assist a software developer while they \textit{work} on a task.
 
 
-
-This chapter describes the results of a controlled experiment that 
-investigated how a  semantic-based technique from Chapter~\ref{ch:identifying} can impact a developer's work. 
-With this experiment, we report qualitative and quantitative  data obtained from 24 participants who attempted Python
-programming tasks when assisted (or not) by a tool that automatically highlights text that it determines as relevant to the participant's task. 
+We introduce a tool, in the form of a web browser plug-in, that automatically highlights 
+text that it determines as relevant to a particular software task.
+This tool embeds one of our semantic-based approaches---\textit{BERT with no filters}---and we investigate
+how 24 participants complete three Python
+programming tasks when assisted (or not) by such a tool through a controlled experiment\footnote{
+    The \acs{UBC} \acs{ERB} approved the research conducted in this chapter under the certificate \textit{H19-04054}.
+    A replication package is also publicly available~\cite{cp6_supplementary_material}.
+}. 
+With this experiment, we show that participants considered the majority of the text automatically identified in artifacts 
+of each task useful and that 
+our tool assisted them producing a more correct solution for one of the experimental tasks.
 
 
 We start by outlining the evaluation approach  (Section~\ref{cp6:method}). We then
@@ -31,7 +32,9 @@ Section~\ref{cp6:summary} concludes the chapter.
 
 % ---\textit{BERT with no filters}---
 
-\clearpage
+% \clearpage
+
+
 
 
 
@@ -55,8 +58,9 @@ Section~\ref{cp6:summary} concludes the chapter.
 
 
 
-% \art{I'm trying to set results in a manner similar to how we did in the ICPC paper---present an overview of what we evaluate in the section, describe the method of evaluation and then, the results.}
+% \art{I'm trying to set results in a manner similar to how we did in the  (``Task-Relevant Knowledge Identification'')ICPC paper---present an overview of what we evaluate in the section, describe the method of evaluation and then, the results.}
 
 
 % \input{sections/cp6/summary}
 
+%  (``Task-Relevant Knowledge Identification'')
