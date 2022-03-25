@@ -18,11 +18,11 @@
 % Figure~\ref{fig:tool-experiment-procedures} presents an experiment designed to evaluate how a semantic-based tool might assists a software developer perform a task.
 
 
-We seek to evaluate how a semantic-based tool might assists a software developer perform a task.
+We seek to evaluate how a semantic-based tool, i.e., our web browser plug-in, might assists a software developer perform a task.
 We consider three questions:
 
 
-\begin{enumerate}[label=RQ\arabic*]
+\begin{enumerate}[label=\textit{RQ}\arabic*]
     \item Does usage of a semantic-based tool help developers produce more correct solutions? 
     \item How useful is the text identified by a semantic-based tool, i.e., does the text automatically identified contains information that assists task completion? 
     \item How does the text automatically identified by our semantic-based tool compare to text 
@@ -51,7 +51,7 @@ This design, summarized in Figure~\ref{fig:tool-experiment-procedures} and detai
      
     \item discuss the usefulness of the text automatically identified  according to the feedback provided by the participants, which helps us answer \textit{RQ2}, and;
 
-    \item compare manual and tool identified task-relevant text, which addresses \textit{RQ3} and helps us cross-examine~\cite{easterbrook2008} results from Chapter~\ref{ch:identifying}. 
+    \item compare manual and tool identified task-relevant text, what addresses \textit{RQ3}. 
 \end{itemize}
  
 
@@ -121,7 +121,8 @@ we follow procedures similar to the ones we used to create the \acs{DS-android} 
 That is, we use the Google search engine to obtain up to ten artifacts that likely contain 
 information that could help a participant correctly complete that task. 
 Three pilot runs ensured that the artifacts collected using such procedures had sufficient information to complete a task without 
-the need of additional resources. Based on these pilots, we simplified the description of the \texttt{distances} tasks removing the need to sort the list suggested addresses, what also led to the removal of two artifacts associated with sorting. Table~\ref{tbl:python-task-distribution} details the kinds of artifacts per task.
+the need of additional resources. Based on these pilots, we simplified the description of the \texttt{distances} tasks removing the need to sort the list of suggested addresses, what also led to the removal of two artifacts associated with sorting. Table~\ref{tbl:python-task-distribution} details the final list 
+of artifact types per task.
 
 
 
@@ -238,13 +239,13 @@ to a web survey containing the experiment's consent form and tasks.
 
 Once a participant consented to participate, the survey gathered demographics and then, 
 it gave participants further instructions 
-about how to perform each task, requesting them to install the our tool, a web browser plug-in.
+about how to perform each task, requesting them to install our tool, a web browser plug-in.
 Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
 
 
 Once a participant completed the practice task, the survey randomly assigned to them a \textit{control} task, which was followed by a randomly assigned \textit{tool-assisted} tasks---different from the control task.
 For each task, including the practice tasks, the survey provided to the participants a link 
-to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. Table~\ref{tbl:python-task-distribution} shows the participants who performed each task in the control and tool-assisted groups. While tasks were randomly assigned, we made sure that an even number of participants attempted a task with and without tool support.
+to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. While tasks were randomly assigned, we made sure that a similar number of participants attempted a task with and without tool support, as Table~\ref{tbl:python-task-distribution} shows.
 
 
 Once a participant submitted their solutions, the survey
@@ -267,11 +268,9 @@ to compensate them for their time, what concluded the experiment.
 % 'study tool' makes it sound like the tool being studied, i.e., the
 % one automaticalyl identifying text.}
 
-In the \textit{control} task, we use the tool to gather text that a participant deems useful for the task at hand. In this task, 
-the survey asked participants to use our tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}). Participants could highlight text any time before submitting their solution. 
-Based on observations from the pilots, the most common strategy we noticed was that of highlighting 
-text on-the-fly, i.e., as a participant performed the task and consulted its artifacts, they would highlight text 
-when reading each document.
+In the \textit{control} task, we use the web browser plug-in to gather text that a participant deems useful for the task at hand. In this task, 
+the survey asked participants to use our tool to highlight sentences that they deemed useful and that provided information that assisted task completion---instructions similar to the ones used for the creation of the \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}). 
+
 
 
 
@@ -283,6 +282,12 @@ This would then instrumented the HTML of the page identifying individual sentenc
 A participant could hover over identified sentences and select them as relevant by clicking on the hovered text.
 Once a participant had finished selecting sentences, they could submit 
 their data also through the tool's context menu.
+
+Participants could highlight text any time before submitting their solution. 
+Based on observations from the pilots, the most common strategy we noticed was that of highlighting 
+text on-the-fly, i.e., as a participant performed the task and consulted its artifacts, they would highlight text 
+while reading each document. Nonetheless, some participants 
+shared that they performed their highlights just before finishing a task.
 
 
 % As an example, Figure~\ref{fig:artifact-pre-highlight} shows a sentence discussing the \texttt{find\_all} method, which 
