@@ -3,114 +3,118 @@
 
 
 
-
-
-
-
-
-
-
-
-
-\subsection{Information Foraging and Relevance Theory}
-
-To understand how software developers find  resources
-pertinent to their software tasks,
-software engineering researchers (e.g.,~\cite{Piorkowski2015, Piorkowski2016, chi2007, Xia2017}) have extensively borrowed from \textit{information foraging} theory~\cite{Pirolli1999}.
-
-
-Information foraging explains how 
-an individual navigates through some search space looking for \textit{information patches} based on 
-a set of cues about the effort and gains that a patch provides to them~\cite{Pirolli1999}.
-As a forager must constantly judge
-the relevance of a patch, \textit{relevance theory}~\cite{clark2013relevance, saracevic1975} further elaborates the relationships between an information object (i.e., text in an artifact),
-some context (i.e., a task), and what properties guide the relevance assessment (i.e., utility, completeness, etc.)~\cite{Saracevic2007c}.
-
-
-% Information foraging theory describes how individuals search and locate information by maximizing gains of valuable information 
-% per unit cost~\cite{Pirolli1999}.
-% A forager (\textit{i.e.,} a developer) has an information need  and they navigate through information sources (\textit{e.g.,} API documentation or community forums)
-% locating patches of information that address their need.
-
-
-% % (\textit{e.g.,} how to read a file's content in Python?)
-% % \footnote{\url{https://docs.python.org/2/tutorial/inputoutput.html}})
-% % \textit{e.g.,} a section in the API documentation\footnote{\url{https://docs.python.org/2/tutorial/inputoutput.html\#reading-and-writing-files}})
-
-
-
-
-% Often, a developer starts 
-
-% ~\cite{Barry1994, Barry1998, Freund2015}
-
-
-
-% Often, a forager (\textit{i.e.,} a developer) starts her search 
-
-
-Many studies have investigated the criteria used to assess relevance~\cite{Barry1994, Freund2015, Forward2002}. 
-As one example,
-Barry suggests criteria about the content of documents, the user's
-previous experience, among others~\cite{Barry1994} while 
-Forward and Lethbridge describe criteria regarding the 
-content of an artifact, the presence of examples, and the document's structure as
- common attributes that developers use to assess the relevance of software engineering documentation~\cite{Forward2002}.
-Other studies have also found that intrinsic factors such as an individual's knowledge 
-also affect relevance assessment~\cite{Freund2015, Ingwersen1996}.
-
-
-
-While existing studies shed light upon many aspects regarding relevance,
-one premise
-in many software engineering approaches is the existence of corpora containing information
-annotated as relevant~\cite{Jiang2016b, Robillard2015}.  
-To create a
-corpus, annotators often follow a coding guideline and reconcile disagreements.  However, there are many criteria in how individuals
-assess relevance~\cite{Barry1994, Barry1998, Freund2015} and they may
-or may not reach consensus~\cite{Saracevic2007c}.
-By investigating how several software developers assess textual cues in the content of a patch to determine its relevance (Section~\ref{sec:rq-initial-study}),
-we aim to add to the existing theory of assessing relevance within a patch.
-
-
-
-\subsection{Artifacts}
-
-
-
-Software development often requires knowledge beyond what developers already posses~\cite{Li2013}
-and thus, software developers use different information sources to fill such gaps. 
-More than often, a developer will ask if any of their peers has the information that they need~\cite{singer2011}. 
+Software development often requires knowledge beyond what developers already posses~\cite{Li2013} and thus, 
+software developers use different information sources to fill such gaps. 
+More than often, a developer will ask if any of their 
+peers have the information that they need~\cite{singer2011}. 
 However, the fragmented and distributed nature of software development work 
-might prevent a developer from acquiring information from their peers~\cite{ko2007}.
+might prevent a developer from approaching their peers~\cite{ko2007}.
 Due to this and other reasons, a developer might seek
 online web resources for information 
-that may assist them to complete the task-at-hand.
+that may assist them in completing the task-at-hand~\cite{Xia2017, rao2020}.
 
 
 
 
-As a first step in the forage process, a developer must
-find artifacts of interest for a task. 
-Typically, a developer starts with an information need,
-which they then translate into a query---manual or tool-assisted---that will 
-produce a list of artifacts that might address their information need. 
+To help a developer find artifacts of interest for a task,
+several approaches
+using 
+standard \acf{IR} techniques or more advanced \acf{ML} techniques have been developed.
+Other approaches leverage crowd knowledge, i.e.,
+the use of data produced by other developers for finding artifacts pertinent to a developer's task.
 
 
-To help this activity,
-several approaches have been developed (e.g.,
-Hipikat~\cite{Cubranic2005}, Libra~\cite{Ponzanelli2017},
-BIKER~\cite{Jiang2017}).  
-Hipikat relies on the concept of a
-group memory to recommend artifacts to a developer based on the current task.
-The group memory is formed by mining and relating artifacts
-associated with the software development~\cite{Cubranic2005}.
-Libra 
-keeps track of which artifacts are visited and recommends
-new artifacts to consider according to their prominence or complementarity to the
-visited ones~\cite{Ponzanelli2017}.  Finally, BIKER assists developers
-in selecting appropriate APIs for their tasks by using StackOverflow
-to capture how an API is often used~\cite{Jiang2017}.
+
+This thesis assumes the usage of one or more of such techniques to locate pertinent
+artifacts
+from which task-relevant text will be extracted. As such, the following 
+subsections provide a breadth of approaches in the literature. 
+
+
+
+
+\subsection{Information Retrieval Approaches} 
+
+
+
+Standard information retrieval approaches locate pertinent artifacts
+using metrics to compute the relevance of an artifact to a query posed manually by a developer.
+\acs{IR} uses the terms shared between a search query and an artifact
+to compute the relevance of an artifact (or document).
+Search algorithms weight and compute relevance based on 
+criteria such as how many documents contain a given term or  
+how unique a term is~\cite{Manning2009IR}.
+
+
+
+A number of the techniques commonly employed by software engineering researchers are based on the
+frequency of co-occurrence of words (or phrases) in documents.
+An early example is Maarek and Smadja's use of lexical relations to index
+software libraries~\cite{maarek1989}.
+Since this early use, software engineering
+researchers have continued to leverage advances in
+these approaches, such as when
+Antoniol et al. applied \acf{VSM}~\cite{Salton1975vsm} 
+to construct vector representations 
+for recovering traceability links 
+between code and documentation~\cite{antoniol1999, antoniol2000}.
+Other examples include Maletic and Marcus usage of \acf{LSI}~\cite{deerwester1990LSI}
+to help cluster software components to aid
+program comprehension of a software system~\cite{Marcus2003}.
+
+
+
+While IR systems are widely used, researchers 
+observed that developers often find it difficult to identify good search terms~\cite{Kevic2014, Huang2018}
+and thus, the identification of good search terms is as 
+important as the search algorithm itself~\cite{Kevic2014, mills2017}.
+Hence, software engineering researchers have proposed approaches~\cite{Kevic2014, Haiduc2013}
+that mitigate the necessity of a developer coming up with good search terms
+by automatically generating query terms.
+As an example, Kevic and Fritz propose a set of features to identify good search terms in 
+a software development change task based on information available in the task~\cite{Kevic2014}.
+
+
+
+Regardless of automatic or manual generation, if search terms 
+differ significantly from the text of a document,
+standard \acs{IR} algorithms will have 
+little success in locating artifacts pertinent to a task~\cite{Huang2018}.
+These so-called \textit{lexical mismatches}~\cite{Ye2016, silva2019} have led researchers to investigate 
+ approaches able to establish semantic relationships between terms in software artifacts,
+ which  Section~\ref{cp2:artifact-semantics} further details.
+
+
+
+
+
+
+
+\subsection{Crowd Knowledge Approaches} 
+
+A significant body or work has investigated 
+methods---other than IR or ML---to
+recommend artifacts that might assist a developer complete a software task
+based on knowledge from other developers.
+
+
+
+
+
+
+% (e.g.,
+% Hipikat~\cite{Cubranic2005}, Libra~\cite{Ponzanelli2017},
+% BIKER~\cite{Jiang2017}).  
+% Hipikat relies on the concept of a
+% group memory to recommend artifacts to a developer based on the current task.
+% The group memory is formed by mining and relating artifacts
+% associated with the software development~\cite{Cubranic2005}.
+% Libra 
+% keeps track of which artifacts are visited and recommends
+% new artifacts to consider according to their prominence or complementarity to the
+% visited ones~\cite{Ponzanelli2017}.  Finally, BIKER assists developers
+% in selecting appropriate APIs for their tasks by using StackOverflow
+% to capture how an API is often used~\cite{Jiang2017}.
 
 
 
