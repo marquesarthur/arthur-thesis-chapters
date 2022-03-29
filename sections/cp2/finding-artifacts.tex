@@ -1,7 +1,7 @@
 \section{Finding Pertinent Artifacts}
 \label{cp2:foraging-tools}
 
-\art{I tried  summarize this section, but it still looks lengthy}
+% \art{I tried  summarize this section, but it still looks lengthy}
 
 
 Software development often requires knowledge beyond what developers already posses~\cite{Li2013} and thus, 
@@ -10,30 +10,22 @@ More than often, a developer will ask if any of their
 peers have the information that they need~\cite{singer2011}. 
 However, the fragmented and distributed nature of software development  
 might prevent a developer from approaching their peers~\cite{ko2007}.
-Due to this and other reasons, a developer might seek
+Due to this and other reasons~\cite{Xia2017, rao2020}, a developer might seek
 online web resources for information 
-that may assist them in completing the task-at-hand~\cite{Xia2017, rao2020}.
-
-
-
-
-To help a developer find artifacts of interest for a task,
-several approaches
-using 
-standard \acf{IR} techniques or more advanced \acf{ML} techniques have been developed.
-This thesis assumes the usage of one or more of such techniques to locate pertinent
-artifacts
-from which task-relevant text will be extracted. As such, the following 
-subsections provide a breadth of approaches in the literature. 
+that may assist them in completing the task-at-hand.
+This section provides a breadth of approaches that help a developer find such resources.
 
 
 
 
 \subsection{Information Retrieval Approaches} 
+\label{cp2:ir-approaches}
 
 
 
-Standard information retrieval approaches locate pertinent artifacts
+
+
+Standard \acf{IR} approaches locate pertinent artifacts
 using metrics to compute the relevance of an artifact to a query posed manually by a developer.
 \acs{IR} uses the terms shared between a search query and an artifact
 to compute the relevance of an artifact (or document).
@@ -54,7 +46,7 @@ Antoniol et al. applied \acf{VSM}~\cite{Salton1975vsm}
 to construct vector representations 
 for recovering traceability links 
 between code and documentation~\cite{antoniol1999, antoniol2000}
-or when Marcus and Maletic used of \acf{LSI}~\cite{deerwester1990LSI}
+or when Marcus and Maletic used \acf{LSI}~\cite{deerwester1990LSI}
 to help cluster software components to aid
 program comprehension of a software system~\cite{Marcus2003}.
 
@@ -64,10 +56,11 @@ While IR systems are widely used, researchers
 observed that developers often find it difficult to identify good search terms~\cite{Kevic2014, Huang2018},
 what significantly impacts the retrieval of relevant documents~\cite{Kevic2014, mills2017}.
 To mitigate  the necessity of a developer coming up with good search terms,
-researchers use information available in a task to automatically generate search terms~\cite{Kevic2014, Haiduc2013}, but regardless of automatic or manual generation, if search terms 
-differ significantly from the text of a document,
+researchers have used information available in a task to automatically generate search terms~\cite{Kevic2014, Haiduc2013}. 
+Although automatically generating search terms assist the retrieval of pertinent artifacts,
 standard \acs{IR} algorithms will have 
-little success in locating artifacts pertinent to a task~\cite{Huang2018}.
+little success if search terms 
+differ significantly from the text in a software artifact~\cite{Huang2018}.
 These so-called \textit{lexical mismatches}~\cite{Ye2016, silva2019} have led researchers to investigate 
  semantic-based \acs{IR} approaches, which we discuss in 
 Section~\ref{cp2:artifact-semantics}.
@@ -86,14 +79,14 @@ about a developer's task so that
 they recommend artifacts pertinent to that task drawing data from some knowledge base.
 % , for example, a tool might need to know what part of the system is a developer currently inspecting. 
 Fishtail~\cite{Sawadsky2011}
-is an example of a tool that uses contextual information, i.e., the source code currently being inspected by a developer, to find web resources relevant to the developer's task.
+is an example of a tool that uses contextual information. It uses the source code currently being inspected by a developer to find web resources relevant to the developer's task.
 
 
 
 While the web is the most accessible knowledge base, certain contextual approaches consider that 
 collection of artifacts produced and consumed in past software tasks 
  implicitly
-form a knowledge base that might assist developers performing new tasks~\cite{Cubranic2005}. 
+form knowledge bases that might assist developers performing new tasks~\cite{Cubranic2005}. 
 Hipikat~\cite{Cubranic2005} is a seminal tool that exemplifies this concept in action.
 It automatically tracks the artifacts 
 used by a developer as part of a development tasks
@@ -116,9 +109,14 @@ In the past decade, question-and-answer (\acs{qa}) web sites such as Stack Overf
 become a common knowledge source used by contextual approaches~\cite{Ponzanelli2013b, Ponzanelli2014b, Treude2016, delfim2016}.
 For example, {\small PROMPTER} uses contextual information 
 available in a developer's IDE to retrieve Stack Overflow discussions that might be pertinent 
-to the developer's current task. Other tools such as {\small BIKER}~\cite{Huang2018} mine Stack Overflow posts to assist developers in locating appropriate API components for their current programming tasks. 
+to the developer's current task. Other tools such as {\small BIKER}~\cite{Huang2018} mine Stack Overflow posts to assist developers in locating API components needed in a programming tasks. 
 
 
+
+
+
+This thesis assumes the usage of one or more techniques presented here to locate pertinent
+artifacts from which task-relevant text will be extracted.
 
 
 

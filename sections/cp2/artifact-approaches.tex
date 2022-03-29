@@ -2,14 +2,13 @@
 \label{cp2:artifact-approaches}
 
 
-In this section, we detail tools and approaches that
-detect relevant text within an artifact.
-The techniques that we present
-are specific to one kind of
-artifact and use properties of the kind of
-artifact. In contrast, the techniques we
-investigate in this dissertation seek to identify 
-task-relevant text across different artifact types.
+
+Information useful to a software task can be buried in irrelevant text or attached to 
+non-intuitive blocks of text, making it difficult to discover~\cite{Robillard2015}.
+Researchers have long recognized the value of assisting developers in 
+identifying information of relevance in this natural language
+text.
+In this section, we detail tools and approaches from related work.
 
 
 
@@ -115,7 +114,7 @@ the content of the text, how similar that content is with regards to a task and 
 \subsection{Machine Learning Approaches}
 
 
-Machine learning approaches take the text of a natural language software artifact and identify 
+\acf{ML} approaches take the text of a natural language software artifact and identify 
 the sentences likely relevant to a particular software task using \textit{unsupervised} or 
 \textit{supervised learning} methods~\cite{zhang2005machine}.
 
@@ -137,3 +136,9 @@ Unsupervised learning approaches do not require labelled data and determine rele
 
 
 
+
+The techniques that we have presented
+are specific to one kind of artifact and use properties of the kind of
+artifact. In contrast, the techniques we
+investigate in this dissertation (Chapter~\ref{ch:identifying}) seek to identify 
+task-relevant text across different artifact types.
