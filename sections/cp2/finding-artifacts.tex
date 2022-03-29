@@ -1,13 +1,14 @@
 \section{Finding Pertinent Artifacts}
 \label{cp2:foraging-tools}
 
+\art{I tried  summarize this section, but it still looks lengthy}
 
 
 Software development often requires knowledge beyond what developers already posses~\cite{Li2013} and thus, 
 software developers use different information sources to fill such gaps. 
 More than often, a developer will ask if any of their 
 peers have the information that they need~\cite{singer2011}. 
-However, the fragmented and distributed nature of software development work 
+However, the fragmented and distributed nature of software development  
 might prevent a developer from approaching their peers~\cite{ko2007}.
 Due to this and other reasons, a developer might seek
 online web resources for information 
@@ -20,11 +21,6 @@ To help a developer find artifacts of interest for a task,
 several approaches
 using 
 standard \acf{IR} techniques or more advanced \acf{ML} techniques have been developed.
-Other approaches leverage crowd knowledge, i.e.,
-the use of data produced by other developers for finding artifacts pertinent to a developer's task.
-
-
-
 This thesis assumes the usage of one or more of such techniques to locate pertinent
 artifacts
 from which task-relevant text will be extracted. As such, the following 
@@ -57,32 +53,55 @@ these approaches, such as when
 Antoniol et al. applied \acf{VSM}~\cite{Salton1975vsm} 
 to construct vector representations 
 for recovering traceability links 
-between code and documentation~\cite{antoniol1999, antoniol2000}.
-Other examples include Maletic and Marcus usage of \acf{LSI}~\cite{deerwester1990LSI}
+between code and documentation~\cite{antoniol1999, antoniol2000}
+or when Marcus and Maletic used of \acf{LSI}~\cite{deerwester1990LSI}
 to help cluster software components to aid
 program comprehension of a software system~\cite{Marcus2003}.
 
 
 
 While IR systems are widely used, researchers 
-observed that developers often find it difficult to identify good search terms~\cite{Kevic2014, Huang2018}
-and thus, the identification of good search terms is as 
-important as the search algorithm itself~\cite{Kevic2014, mills2017}.
-Hence, software engineering researchers have proposed approaches~\cite{Kevic2014, Haiduc2013}
-that mitigate the necessity of a developer coming up with good search terms
-by automatically generating query terms.
-As an example, Kevic and Fritz propose a set of features to identify good search terms in 
-a software development change task based on information available in the task~\cite{Kevic2014}.
-
-
-
-Regardless of automatic or manual generation, if search terms 
+observed that developers often find it difficult to identify good search terms~\cite{Kevic2014, Huang2018},
+what significantly impacts the retrieval of relevant documents~\cite{Kevic2014, mills2017}.
+To mitigate  the necessity of a developer coming up with good search terms,
+researchers use information available in a task to automatically generate search terms~\cite{Kevic2014, Haiduc2013}, but regardless of automatic or manual generation, if search terms 
 differ significantly from the text of a document,
 standard \acs{IR} algorithms will have 
 little success in locating artifacts pertinent to a task~\cite{Huang2018}.
 These so-called \textit{lexical mismatches}~\cite{Ye2016, silva2019} have led researchers to investigate 
- approaches able to establish semantic relationships between terms in software artifacts,
- which  Section~\ref{cp2:artifact-semantics} further details.
+ semantic-based \acs{IR} approaches, which we discuss in 
+Section~\ref{cp2:artifact-semantics}.
+
+
+
+
+% 
+
+
+\subsection{Contextual Approaches} 
+
+
+Contextual approaches use information 
+about a developer's task so that 
+they recommend artifacts pertinent to that task drawing data from some knowledge base.
+% , for example, a tool might need to know what part of the system is a developer currently inspecting. 
+Fishtail~\cite{Sawadsky2011}
+is an example of a tool that uses contextual information, i.e., the source code currently being inspected by a developer, to find web resources relevant to the developer's task.
+
+
+
+While the web is the most accessible knowledge base, certain contextual approaches consider that 
+collection of artifacts produced and consumed in past software tasks 
+ implicitly
+form a knowledge base that might assist developers performing new tasks~\cite{Cubranic2005}. 
+Hipikat~\cite{Cubranic2005} is a seminal tool that exemplifies this concept in action.
+It automatically tracks the artifacts 
+used by a developer as part of a development tasks
+so that it can recommend these artifacts to 
+any future developers who work on similar tasks~\cite{Cubranic2005}.
+As another example, Deep Intellisense
+finds code changes, filed bugs, and forum discussions 
+mining these artifacts from an organization's shared database~\cite{Holmes2008}.
 
 
 
@@ -90,36 +109,16 @@ These so-called \textit{lexical mismatches}~\cite{Ye2016, silva2019} have led re
 
 
 
-\subsection{Crowd Knowledge Approaches} 
-
-A significant body or work has investigated 
-methods---other than IR or ML---to
-recommend artifacts that might assist a developer complete a software task
-based on knowledge from other developers.
 
 
 
+In the past decade, question-and-answer (\acs{qa}) web sites such as Stack Overflow\footnote{\url{https://stackoverflow.com/}}, have also
+become a common knowledge source used by contextual approaches~\cite{Ponzanelli2013b, Ponzanelli2014b, Treude2016, delfim2016}.
+For example, {\small PROMPTER} uses contextual information 
+available in a developer's IDE to retrieve Stack Overflow discussions that might be pertinent 
+to the developer's current task. Other tools such as {\small BIKER}~\cite{Huang2018} mine Stack Overflow posts to assist developers in locating appropriate API components for their current programming tasks. 
 
 
 
-% (e.g.,
-% Hipikat~\cite{Cubranic2005}, Libra~\cite{Ponzanelli2017},
-% BIKER~\cite{Jiang2017}).  
-% Hipikat relies on the concept of a
-% group memory to recommend artifacts to a developer based on the current task.
-% The group memory is formed by mining and relating artifacts
-% associated with the software development~\cite{Cubranic2005}.
-% Libra 
-% keeps track of which artifacts are visited and recommends
-% new artifacts to consider according to their prominence or complementarity to the
-% visited ones~\cite{Ponzanelli2017}.  Finally, BIKER assists developers
-% in selecting appropriate APIs for their tasks by using StackOverflow
-% to capture how an API is often used~\cite{Jiang2017}.
-
-
-
-% looking for artifacts that she judges pertinent to her task.
-% To help developers address the initial problem of finding pertinent artifacts, 
-% developed approaches use standard Information Retrieval (IR) techniques or more advanced ML techniques. 
 
 
