@@ -1,6 +1,6 @@
 
 
-\section{Semantics in Software Engineering}
+\section{Interpreting the Semantics of Text}
 \label{cp2:artifact-semantics}
 
 
@@ -10,7 +10,7 @@
 
 
 At times, software engineering researchers have argued
-that general lexicon analysis techniques 
+that general lexicon techniques 
 are insufficient to address text appearing in
 software engineering artifacts. 
 Arguments on why lexicon-based natural 
@@ -18,12 +18,30 @@ language techniques are not applicable are often based
 on a need for access to the \textit{meaning}, or semantics, 
 of words, phrases or sentences appearing in text~\cite{jurafsky2014speech}.
 In this section, 
-we present research on semantics focusing on
+we present background information on semantics focusing on
 its usage in software engineering research.
 
 
 
 \subsection{Word Semantics}
+
+Word semantic techniques are mostly rooted on the hypothesis
+that similar words appear in similar context~\cite{harris1954distributional}.
+Hence, word semantic techniques use statistical models to infer the meaning of words. 
+
+
+Early word semantic techniques, such as \acf{LSI}~\cite{deerwester1990LSI}, 
+have been used by software engineering researchers 
+to improve the 
+the retrieval of artifacts pertinent to a certain task. 
+For example, Marcus and Maletic apply \acf{LSI} to 
+recover traceability links between source code and
+software documentation~\cite{marcus2003}.
+Other techniques, such as \acf{LDA}~\cite{blei2003latent},
+assist to group and cluster textual information 
+what allowed researchers to identify common topics in developers' blog posts~\cite{Pagano2011}
+or facilitated the design of tools that identify duplicated bug reports~\cite{nguyen2012}.
+
 
 
 
@@ -37,6 +55,16 @@ its usage in software engineering research.
 
 
 
+
+
+Surprisingly 
+most of the deep learning approaches applied to software engineering tasks 
+focus on source code and 
+
+natural language text has been very shy....
+
+
+
 % Semantic-based approaches  build a meaning by establishing relationships between terms,
 % for instance words, based on the context in which these terms appear.
 % For example
@@ -44,7 +72,7 @@ its usage in software engineering research.
 % semantic approaches indicate that these terms are likely similar in meaning~\cite{Bavota2016}.
 
 % As an example of the usage of semantics in software engineering researcher, Marcus and Maletic applied Latent Semantic Indexing (LSI) to help cluster software components to aid
-% program comprehension of a software systems~\cite{Marcus2003}. 
+% program comprehension of a software systems~\cite{marcus2003}. 
 % Ye et al.'s study on the usage of word embeddings~\cite{Ye2016} was among the first to use the language models in the software engineering domain~\cite{Mikolov2013}. 
 
 % Researchers have also developed approaches
@@ -94,3 +122,25 @@ its usage in software engineering research.
 % While ML approaches are effective in locating pertinent artifacts, a developer still needs to
 % manually find the parts within that artifact
 % that are relevant to her task~\cite{Cubranic2005}. 
+
+
+
+
+
+
+
+% they have been used 
+% for several purposes by software engineering researchers.
+
+
+
+% While it is obvious to the human reader that `car' and `automobile' are synonyms and can be used interchangeable,  
+% standard \acs{IR}  fail to capture this and other differences\footnote{
+%     \textbf{Oxford English dictionary definitions}~\cite{dictionary1989oxford} 
+%     \begin{itemize}
+%         \item \textbf{synonymy:} the fact of two or more words having the same meaning;
+%         \item \textbf{polysemy:} the fact of having more than one meaning.
+%     \end{itemize}
+% }
+% that significantly affected the performance of \acs{IR} systems~\cite{DeLucia2012}.
+% To address these issues, researchers have proposed a set of word semantic techniques the use statistical models to infer the meaning of words. 
