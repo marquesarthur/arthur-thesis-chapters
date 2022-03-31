@@ -7,6 +7,8 @@
 % In Section~\ref{cp2:ir-approaches}
 
 
+\art{Think how can I describe without diving into details}
+
 
 
 At times, software engineering researchers have argued
@@ -16,7 +18,7 @@ software engineering artifacts.
 Arguments on why lexicon-based natural 
 language techniques are not applicable are often based
 on a need for access to the \textit{meaning}, or semantics, 
-of words, phrases or sentences appearing in text~\cite{jurafsky2014speech}.
+of words, phrases or sentences appearing in the text~\cite{jurafsky2014speech}.
 In this section, 
 we present background information on semantics focusing on
 its usage in software engineering research.
@@ -27,20 +29,52 @@ its usage in software engineering research.
 
 Word semantic techniques are mostly rooted on the hypothesis
 that similar words appear in similar context~\cite{harris1954distributional}.
-Hence, word semantic techniques use statistical models to infer the meaning of words. 
+This hypothesis gave origin to a series of
+\textit{distributional semantic models}~\cite{Ye2016} that aim to infer the meaning of words.
+% In this section, we present prominent models used by software engineering researchers.
 
 
-Early word semantic techniques, such as \acf{LSI}~\cite{deerwester1990LSI}, 
-have been used by software engineering researchers 
+
+Distributional semantic models have been used by software engineering researchers 
 to improve the 
 the retrieval of artifacts pertinent to a certain task. 
-For example, Marcus and Maletic apply \acf{LSI} to 
-recover traceability links between source code and
-software documentation~\cite{marcus2003}.
-Other techniques, such as \acf{LDA}~\cite{blei2003latent},
-assist to group and cluster textual information 
-what allowed researchers to identify common topics in developers' blog posts~\cite{Pagano2011}
-or facilitated the design of tools that identify duplicated bug reports~\cite{nguyen2012}.
+Early models, such as \acf{LSI}~\cite{deerwester1990LSI}, 
+have been used to, for example, recover traceability links between source code and
+software documentation~\cite{marcus2003}.  
+\acs{LSI} takes a initial word representation (i.e., a term by document matrix) and applies \acf{SVD}~\cite{klema1980SVD}
+to reduce the dimensionality of this matrix, what causes 
+words with similar meaning have the same final representation.
+
+
+Other word semantic models have assisted software engineering researchers in clustering semantically similar artifacts~\cite{zhang2014, layman2016}. For that, researchers have mostly used
+\acf{LDA}~\cite{blei2003latent}---a model that assumes that words used in a similar context often pertain to the same subject to produce topics clustering sentences or documents containing semantically related words---to
+identify common themes in developers' blog posts~\cite{Pagano2011} or to design tools that identify duplicated bug reports~\cite{nguyen2012, Thung2014}.
+
+
+% ---among its many applications~\cite{zhang2014, layman2016}---
+
+
+% Marcus and Maletic apply \acs{LSI} to 
+
+% In software engineering, \acs{LSI} has been widely used to assist requirements traceability~\cite{lucia2007, hayes2006, gethers2011}.
+
+Despite their significant contributions, early models created word vector representations
+by counting the frequency or co-occurrence of words, what is substantially inefficient for large corpora~\cite{Ye2016}.
+This and other challenges have been lifted by advancements in the fields of \acf{ML} and \acf{DL}~\cite{ferreira2021, li2018deep}, which walked hand-to-hand with improvements in computational power and the amount of memory available in modern computer architectures~\cite{sharafi2015}.
+
+
+\acs{DL} models built with \textit{neural, or word, embeddings}~\cite{Mikolov2013} 
+are of particular interest to this thesis. 
+Neural embeddings produce vector representations in a continuous space 
+and researchers have shown that they 
+
+% in a cost-effective manner~\cite{mikolov2013efficient}.
+
+
+% , Ye2016, Efstathiou2018
+
+
+
 
 
 
