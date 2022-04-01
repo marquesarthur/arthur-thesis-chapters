@@ -68,14 +68,12 @@ It is also worth noting that not all of the content of these artifacts is releva
 For instance, Figure~\ref{fig:android-notifications-api-page} shows a snapshot 
 of the Android notifications documentation, where among  
 the many topics presented on the page (right-hand side), only the `\textit{notification actions}' portion (under focus) might be relevant to this developer's task. 
-When reading this document, or any of the other documents of potential relevance to a task, a developer 
+
+
+When reading this or any of the other documents of potential relevance to a task, a developer 
 faces the burden of having to sift through large amounts of
 irrelevant text (e.g., because of legacy information, boilerplate text, or because it is intended for another audience) to filter just those parts that are relevant to them~\cite{Robillard2015}. 
-
-
-% \newpage
-
-As tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer often has to combine multiple pieces of text (from the same artifact or different ones) to understand what is needed for the task-at-hand~\cite{Piorkowski2016}. For example, Figure~\ref{fig:android-notifications-api-page} shows that details about adding
+Furthermore, as tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer often has to combine multiple pieces of text (from the same artifact or different ones) to understand what is needed for the task-at-hand~\cite{Piorkowski2016}. For example, Figure~\ref{fig:android-notifications-api-page} shows that details about adding
 action buttons is explained further in a different web page.
 If no tool support is provided, much of the process of locating relevant text in the 
 artifacts relevant to a task fall on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995}.
@@ -87,8 +85,8 @@ artifacts relevant to a task fall on the developer's shoulders~\cite{gonccalves2
 
 Researchers have long recognized the value of assisting developers in 
 identifying information of relevance within the natural language
-text of a software artifact. 
-Often these approaches use a combination of \acf{NLP} and \acf{ML} techniques to identify potentially useful textual fragments. 
+text of a software artifact
+proposing approaches using a combination of \acf{NLP} and \acf{ML} techniques to identify potentially useful textual fragments. 
 For example, some \acs{NLP} techniques rely on regular expressions describing a sequence of tokens
 representing words or linguistic elements for the automatic identification 
 of relevant text~\cite{Bavota2016, Chaparro2017}. 
@@ -100,23 +98,22 @@ that may help them complete their task~\cite{Bavota2016}.
 
 
 When \acs{NLP} or \acs{ML} techniques are applied to software engineering artifacts, researchers often 
-consider pre-defined kinds of tasks.
-For example, the discourse patterns used by {\small DeMIBuD}~\cite{Chaparro2017} 
-assist bug triage tasks. However, the text detailing a bug's observed or expected
-behaviour automatically identified by this tool 
+consider pre-defined kinds of tasks or types of artifacts.
+For example, {\small DeMIBuD}~\cite{Chaparro2017} is a technique that applies to bug reports and 
+assists in bug triaging. Although valuable, the text  automatically identified by this tool detailing a bug's observed or expected
+behaviour 
  is of little help to a developer who accessed that bug 
-with the hope that the bug's solution also applies to their current task
-and, while it is impractical to anticipate all the information needs a developer might have~\cite{sillito2006, josyula2018, ko2007}, there is an increasing interest in using the information 
+with the hope that the bug's solution also applies to their current task~\cite{Viviani2019}.
+
+
+While it is impractical to anticipate all the information needs a developer might have~\cite{sillito2006, josyula2018, ko2007}, there is an increasing interest in using the information 
 available in a software task for the purposes of automatically identifying text 
 which might assist in completing that task~\cite{Bavota2016}. 
-
-
-In such context, most of the approaches proposed by software engineering researchers which 
-use information about a task only applies to certain kinds of artifacts, such as Stack Overflow posts~\cite{Xu2017, silva2019}, what limits their use across the
-many different kinds of artifacts developers encounter
+In such context, most of the approaches proposed by software engineering researchers 
+ only apply to certain kinds of artifacts, such as Stack Overflow posts~\cite{Xu2017, silva2019}, what limits their use across the
+many different kinds of artifacts a developer may encounter
 daily in their work~\cite{Li2013}.
-This scenario illustrates the need for more generalizable techniques that help a 
-developer's discovery of task-relevant information.
+This scenario illustrates challenges in locating task-relevant textual information and motivates the need for more generalizable techniques.
 
 
 
