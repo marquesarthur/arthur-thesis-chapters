@@ -7,9 +7,7 @@
 
 
 
-\art{Use contributions to drive related work}
 
-\art{I might even talk about Google search somewhere here}
 
 
 
@@ -20,39 +18,60 @@ as API documentation, bug reports, community forums
 and web tutorials. 
 Developers produce such natural language artifacts on a 
 continuous basis~\cite{Rastkar2013t} 
-and locating the documents of interest for a task
-is not trivial~\cite{Starke2009}. 
-To better understand this activity, 
-many software engineering researchers 
-have studied  a developer's information foraging process~\cite{Pirolli1999}
-providing theories on how a developer searches for pertinent information
-and proposing tools to help this activity.
-In Section~\ref{cp2:foraging},
-we provide a general overview of background information on 
-information foraging theory and 
-then, in Section~\ref{cp2:foraging-tools}, we detail tools and approaches that assist developers in finding artifacts pertinent to their task.
+and in Section~\ref{cp2:text-properties} we  provide background information 
+on the many studies that investigate 
+properties of the natural language text 
+appearing in these software artifacts.
 
 
 
-Once a developer locates pertinent artifacts, 
-they must still identify \textit{within} these documents 
-the fraction of text that might help them in completing a task.
-To assist this activity, software engineering researchers have made use of the natural language text appearing in different kinds of artifacts in many different ways.
-Many of the approaches that
-use this text rely on lexical and syntactic properties of the text. 
-In Section~\ref{cp2:artifact-approaches}, we review various studies that have been taken using these approaches,
-honing in on studies that help identify text relevant to a task-at-hand.
-More recently, researchers have also started to use semantic approaches; 
-in Section~\ref{cp2:artifact-semantics} we 
-provide an overview of these approaches to provide a background of
-how semantics can be useful to support software development activities.
 
 
-\art{the work presented here fits in a bigger context in how developer's work}
+Properties or aspects of the natural language 
+text 
+have been used 
+by software engineering researchers
+to extract
+information that can be embedded in
+tools that assist software developers perform several activities.
+In Section~\ref{cp2:text-approaches}, we review 
+prior work that uses
+syntactic properties of the text, and an artifact's meta-data, 
+to automatically identify relevant text for particular kinds of artifacts.
+In Section~\ref{cp2:text-semantics},
+we provide background information on semantic approaches,
+honing in on studies that apply these approaches to 
+software engineering artifacts.
 
 
 
-\input{sections/cp2/theory}
-\input{sections/cp2/finding-artifacts}
-\input{sections/cp2/artifact-approaches}
+Most of the techniques that extract information from natural 
+language artifacts, including the work presented in this thesis, are examples of applications that improve developers' productivity. 
+We discuss examples of other applications 
+and research that seek to facilitate or improve how developers 
+work in Section~\ref{cp2:dev-productivity}.
+
+
+
+% More recently, researchers have also started to use semantic approaches; 
+% in Section~\ref{cp2:artifact-semantics} we 
+% provide an overview of these approaches to provide a background of
+% how semantics can be useful to support software development activities.
+
+
+% \art{the work presented here fits in a bigger context in how developer's work}
+
+
+
+% \input{sections/cp2/text-soft-eng}
+\input{sections/cp2/text-properties}
+\input{sections/cp2/text-automatic-approaches}
+
 \input{sections/cp2/semantics}
+
+\input{sections/cp2/developers-productivity}
+
+
+% \input{sections/cp2/finding-artifacts}
+% \input{sections/cp2/artifact-approaches}
+% \input{sections/cp2/semantics}
