@@ -4,7 +4,108 @@
 \label{cp1:thesis}
 
 
+% Developers produce such natural language artifacts on a 
+% continuous basis~\cite{Rastkar2013t} 
+% and locating the documents of interest for a task
+% is not trivial~\cite{Starke2009}. 
+% To better understand this activity, 
+% many software engineering researchers 
+% have studied  a developer's information foraging process~\cite{Pirolli1999}
+% providing theories on how a developer searches for pertinent information
+% and proposing tools to help this activity.
 
+
+
+As there is an underlying structure to many software development tasks~\cite{Murphy2005},
+we hypothesize that one can use information about a task and its context to assist in 
+the design of artifact-agnostic techniques able to  
+automatically identify text in natural language artifacts relevant to the developer's task~\cite{Starke2009, Bavota2016}. We posit that:
+
+
+\medskip
+\begin{bluequote}
+    % \textit{A developer can more effectively complete a software development task when automatically provided with text relevant to their task extracted from pertinent natural language artifacts by an artifact-agnostic technique.}
+    \textit{A technique that applies to different kinds of natural language artifacts associated with software development assists a developer in correctly completing a software task by 
+    automatically providing them with text relevant to their task.  }
+\end{bluequote}
+\medskip
+
+
+
+To provide a foundation to investigate this statement, we ask what are common properties, if any, in the text deemed relevant to a software task? This question has been the focus of many software engineering studies that aim 
+to facilitate a developer's work~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a}.
+Researchers have explained qualitative properties that 
+guide a developer's decision on the relevance of natural language text 
+or software documents~\cite{Forward2002, BenCharrada2016, Starke2009, DeGraaf2014}. 
+Many other studies have proposed tools that automatically identify text 
+relevant to certain types of artifacts and kinds of tasks~\cite{Chaparro2017, Robillard2015, Xu2017}. 
+These studies provide valuable corpora (e.g.,~\cite{nadi2019Rep} or~\cite{Rastkar2010})
+containing text annotated as relevant to the tasks and artifacts studied. 
+A natural question that arises is whether the properties 
+of relevant text in certain artifacts apply to different kinds of artifacts~\cite{hutchinson2021, bird2009}. 
+
+
+% A significant challenge to answer this question is the necessity of corpora with multiple types of artifacts 
+% associated with software development tasks. Hence, 
+
+In the first part of this thesis, we describe 
+a formative study that addresses this question. 
+With this study, we \textit{characterize} task-relevant text in bug
+reports, API documents and question-and-answer web sites associated with six software tasks. 
+Analysis of the text that twenty developers considered relevant to the tasks and artifacts 
+in this study show consistency in the meaning, or \textit{semantics}, of the
+text relevant to a particular task, suggesting that a 
+semantic-based techniques might aid in identifying
+task-relevant text across different types of software artifacts.
+
+
+
+
+% determining if the rules governing how natural language information is constructed can guide us to text relevant to a task~\cite{Kintsch1978a}
+
+
+
+% To understand how software developers find text useful to a software tasks,
+% many 
+
+
+% The tools designed by researchers to automatically identify text relevant to a particular 
+% kind of task are often \textit{artifact-centric} and rely 
+% on annotated corpora created using annotation procedures 
+% that most often do no anticipate that different information needs for the same artifact~\cite{Bavota2016, Walters2014}. Many 
+
+
+% Conducting empirical
+%  experiments in a more realistic environment is challenging~\cite{Kevic2015}.
+% This effort is worthwhile as
+% the richness of collected data can provide valuable insights
+% to provide a foundation for tool development.
+% Recent studies with eye-trackers~\cite{Cutrell2007, Petrusel2013, sharafi2015, Walters2014b}
+% have shown that the technology provides new
+% methods for
+% data collection without disrupting a developer's workflow,
+% which could lead to more realistic data on which text developers perceive as task-relevant.
+% For instance, one could
+% extend the work done by Kevic and colleagues on
+% tracing developers' eye for change tasks to
+% also consider tracing data outside a developer's IDE~\cite{Kevic2015}.
+% Other eye-tracking studies have already observed
+% behaviour differences on how
+% experts and novices read code~\cite{Crosby1990, Busjahn2015}
+% and investigating such differences in the scope of
+% natural language artifacts
+% could lead to benchmarks for evaluating techniques
+% focused on certain population.
+% Researchers might use eye-trackers not only for data collection,
+% but also for the
+% design of online approaches that leverage a developer's previously viewed information
+% to continuously assist in the identification of task-relevant text~\cite{Ponzanelli2017}.
+
+
+
+
+% --------------------------------
+% --------------------------------
 
 
 We seek to support a developer's discovery of information potentially relevant to their task. 
@@ -12,23 +113,60 @@ We posit that:
 
 \medskip
 \begin{bluequote}
-    \textit{A developer can more effectively complete a software development task when automatically provided with text relevant to their task extracted from pertinent natural language artifacts.}
+    % \textit{A developer can more effectively complete a software development task when automatically provided with text relevant to their task extracted from pertinent natural language artifacts by an artifact-agnostic technique.}
+    \textit{A technique that applies to different kinds of natural language artifacts associated with software development assists a developer in correctly completing a software task by 
+    automatically providing them with text relevant to their task.  }
 \end{bluequote}
 \medskip
 
 
 
+% \textit{A technique that applies to the different kinds of natural language artifacts associated with software developmentand that is able to automatically identify text within these natural language artifacts relevant to a 
+% developer's task assists them correctly completing a software task.}
 
-To validate this thesis statement, 
-we must consider whether there is consistency to 
-the text 
-considered key to completing a task
-in the different types of pertinent natural language artifacts.
-If there is consistency, we can use properties inherent 
-to the portions of the text that contain this key information 
-to design techniques that automatically identify the relevant text
-regardless of an artifact's type, evaluating the impact of tools that use such techniques to assist developers in their work. 
-The approach this work of dissertation takes to validate each of these steps is as follows.
+
+This thesis statement is centered on three research questions that consider the:
+
+
+% \paragraph{\textit{What are commonalities, if any, of text deemed relevant to a software development task?}
+
+
+% \paragraph{\textit{What techniques can be used to automatically identify text relevant to a software developer's task?}}
+
+
+% \paragraph{\textit{How can text identified as relevant to a task be presented to a developer to assist them in more effectively completing their tasks?}}
+
+
+% \begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=1.4cm]
+% \setcounter{enumi}{\arabic{rq}}
+
+%     \item  \stepcounter{rq} 
+%         With this question, we seek to determine if the rules governing how natural language information
+%         is constructed can guide us to text relevant to a task~\cite{Kintsch1978a}.
+        
+
+%     \item  \stepcounter{rq}
+%         With this question, we seek to determine if techniques that exploit syntactic, semantic, or software development specific properties are able to automatically identify text relevant to a particular task within and across a given set of natural language artifacts.
+%         The analysis of existing techniques seeks to build on existing work and understand if and how accurately such techniques identify
+%         text relevant to a task. In the case that they do not, this question motivates us to explore new approaches for identifying text relevant to a task.
+    
+%     \item  \stepcounter{rq}
+%         With this question, we seek to investigate what benefits, if any, are there in abstracting and presenting relevant text obtained from multiple artifacts. For that, we intend to explore if we can divide the relevant text into conceptual units and how can we present relevant text in a concise and comprehensible way.
+
+% \end{enumerate}
+
+
+
+% To validate this thesis statement, 
+% we must consider whether there is consistency to 
+% the text 
+% considered key to completing a task
+% in the different types of pertinent natural language artifacts.
+% If there is consistency, we can use properties inherent 
+% to the portions of the text that contain this key information 
+% to design techniques that automatically identify the relevant text
+% regardless of an artifact's type, evaluating the impact of tools that use such techniques to assist developers in their work. 
+% The approach this work of dissertation takes to validate each of these steps is as follows.
 
 
 \art{avoid using validate too much}
@@ -36,7 +174,7 @@ The approach this work of dissertation takes to validate each of these steps is 
 \art{I need to expose what is novel}
 
 
-\paragraph{\textbf{Characterizing Task-relevant Text.}} 
+\paragraph{\textbf{Characterization Task-relevant Text.}} 
 
 
 We start by investigating the relevance of text in natural language software artifacts
@@ -77,7 +215,7 @@ what further motivates this work of dissertation.
 
 
 
-\paragraph{\textbf{Identifying Task-relevant Text.}} 
+\paragraph{\textbf{Investigation of Techniques for Automatically Identifying Task-relevant Text.}} 
 
 
 Since we identify consistency in the meaning of the text deemed relevant to a task, 
@@ -112,7 +250,7 @@ commonly sought by developers in their daily work.
 
 
 
-\paragraph{\textbf{Evaluating an Automated Approach to Task-relevant Text Identification.}} 
+\paragraph{\textbf{Evaluation of Automated Approaches to Task-relevant Text Identification.}} 
 
 
 
