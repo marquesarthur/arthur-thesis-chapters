@@ -17,7 +17,7 @@
 
 
 As there is an underlying structure to many software development tasks~\cite{Murphy2005},
-we hypothesize that one can use information about a task and its context to assist in 
+we hypothesize that one can use information about a task and its content to assist in 
 the design of artifact-agnostic techniques able to  
 automatically identify text relevant to the developer's task~\cite{Starke2009, Bavota2016}. We posit that:
 
@@ -32,7 +32,7 @@ automatically identify text relevant to the developer's task~\cite{Starke2009, B
 
 
 
-To provide a foundation to investigate this statement, we ask what are common properties, if any, in the text deemed relevant to a software task? This question has been the focus of many software engineering studies~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a} that have explained qualitative properties that 
+To provide a foundation to investigate this statement, we ask what are common properties, if any, in the text deemed relevant to a software task? This question has been the focus of many software engineering studies~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a} that have explained qualitative aspects that 
 guide a developer's decision on the relevance of natural language text 
 to a software task~\cite{Forward2002, BenCharrada2016, Starke2009, DeGraaf2014}.
 % Many other studies have proposed tools that automatically identify text 
@@ -49,15 +49,16 @@ is beyond their scope~\cite{hutchinson2021, bird2009}.
 To address gaps left by these studies on the relevance of natural language text,
 we present a formative study that \textit{characterizes} task-relevant text 
 across different kinds of artifacts. 
-We examine the text that twenty developers deemed relevant in the  artifacts  associated with six software tasks to investigate whether 
-rules governing how natural language information
-is constructed can guide us to text relevant to a task~\cite{Kintsch1978a}.
+We examine the text that twenty developers deemed relevant in the  artifacts  associated with six software tasks to investigate 
+rules that can guide us to the text relevant to a task~\cite{Kintsch1978a}.
 Analysis of the  text  in bug
 reports, API documents and question-and-answer websites 
+inspect as part of this study 
  show consistency in the meaning, or \textit{semantics}, of the
-task-relevant text, suggesting that 
-semantic-based approaches might automatically identify
-task-relevant text across different types of software artifacts.
+ text relevant to a task, suggesting that 
+semantics might assist in the automatic identification of
+task-relevant text for the different types of artifacts a developer 
+might use.
 
 
 
@@ -66,47 +67,52 @@ task-relevant text across different types of software artifacts.
 
 
 
-Semantic-based approaches have been successfully used for a variety of development activities,
+Approaches that interpret the meaning of the text have been successfully used for a variety of development activities,
 such as for finding who should fix a bug~\cite{yang2016}, searching for comprehensive code examples~\cite{silva2019}, or assessing the quality of information available in bug reports~\cite{chaparro2019}.
 Nonetheless, few studies have investigated if and how accurately such approaches identify
 text likely 
 useful to a developer's task across the different types of natural language artifacts available online.
 
 
-In the second part of this thesis, we investigate
+To determine whether
 techniques that build upon semantic approaches 
-for automatically identifying text relevant to a particular software task.
-We introduce six possible techniques that incorporate the semantics of words~\cite{Mikolov2013, Devlin2018Bert}
+apply to our domain problem,
+the second part of this thesis describes 
+the investigation of a design space
+of six possible techniques that incorporate the semantics of words~\cite{Mikolov2013, Devlin2018Bert}
 and sentences~\cite{fillmore1976frame, marques2021}
 to automatically identify text likely relevant to a developer's task.
-Assessment of these techniques considers the text that each of them identifies
- over different types of artifacts
-associated with fifty Android development tasks 
-for which human annotators identified task-relevant text.
-We find that semantic-based techniques
-achieve recall comparable to a state-of-the-art technique~\cite{Xu2017}, but without the need for artifact-specific data. Some of our techniques also perform equivalently well across
-multiple artifact types, identifying up to 58\%
-of the relevant text in the artifacts of these Android tasks.
+Assessment of these techniques reveals that semantic-based techniques
+achieve recall comparable to a state-of-the-art technique~\cite{Xu2017}, but without the need for artifact-specific data
+and that some of our techniques also perform equivalently well across
+multiple artifact types.
+
+
+% Assessment of these techniques considers the text that each of them identifies
+%  over different types of artifacts
+% associated with fifty Android development tasks 
+% for which human annotators identified task-relevant text.
 
 
 
 
-
-Provided that we have found consistency in the text considered relevant within the natural language text of artifacts pertinent to a task and those semantic-based techniques can automatically identify such text; in the last part of this thesis, we examine the impact of tools that use semantic-based techniques to assist developers in 
+Provided that we have found consistency in the text considered relevant within the natural language text of artifacts pertinent to a task and that semantic-based techniques can automatically identify such text; in the last part of this thesis, we examine the impact of tools that use semantic-based techniques to assist developers in 
 completing a task. 
 
 
 
 We present a controlled experiment where participants had to 
 perform two Python programming tasks when assisted (or not) by a tool that automatically identifies task-relevant text 
-in the set of artifacts available for each task. 
+in a curated set of artifacts. 
 With this experiment, we compare the correctness of the solutions of each task 
 performed by participants with and without tool assistance
 as well as the perceived usefulness of the text automatically identified and shown by the tool. 
 Results indicate that participants found the text automatically identified
 useful in two out of the three tasks of the experiment
 and that tool support also led to more correct solutions 
-in one of the tasks in the experiment.
+in one of the tasks in the experiment thus providing 
+initial evidence on the role of semantic-based tools 
+for supporting a developer's discovery of task-relevant information.
 
 
 % \art{should I have a concluding phrase here?}
