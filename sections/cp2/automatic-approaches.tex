@@ -1,0 +1,301 @@
+\section{Automatic Approaches for Identifying Text in Natural Language Software Artifacts}
+\label{cp2:text-approaches}
+
+
+
+Information useful to a software task can be buried in irrelevant text or attached to 
+non-intuitive blocks of text, making it difficult to discover~\cite{Robillard2015}.
+Researchers have long recognized the value of assisting developers in 
+identifying information of relevance in this natural language
+text.
+In this section, we detail tools and approaches from related work.
+
+
+
+
+\subsection{Pattern Matching Approaches}
+\label{cp2:pattern-matching}
+
+
+Pattern matching approaches rely on regular expressions describing a sequence of tokens that represent
+ a relevant text fragment~\cite{Bavota2016}. Tokens can either represent words or linguistic elements 
+extracted using \acf{NLP}.
+    
+    
+As examples  of pattern matching approaches,  {\small DeMIBuD}~\cite{Chaparro2017}
+ and Knowledge Recommender (Krec)~\cite{Maalej2013, Robillard2015} are tools that detect relevant sentences in bug reports and API documentation, respectively. 
+These tools derive a set of patterns from annotated data and use them as part of heuristics 
+that identify relevant text. Krec assumes that any relevant sentence mentions a 
+code element (e.g., a class or method name) and it uses  361 unique patterns
+to 
+detect relevant sentences in API documentation~\cite{Robillard2015}.
+In a similar manner, {\small DeMIBuD} uses a set of 154 discourse patterns to detect sentences 
+relevant to understanding a bugs observed or expected behaviour and steps to reproduce it,
+which are essential to bug triaging tasks.
+
+
+
+
+In Stack Overflow posts,
+Nadi and Treude~\cite{nadi2020} have both applied the original set of patterns from Krec~\cite{Robillard2015} 
+and proposed heuristics that rely on the conditionality of the text
+to identify sentences that help a developer 
+decide whether they want to carefully inspect a Stack Overflow posts or skip over it. 
+
+
+
+Although the heuristics and regular expressions used in the aforementioned studies 
+are often light-weight and effective~\cite{Bavota2016, Maalej2013}, 
+pattern matching approaches are often specific to one kind of domain and 
+type of artifact~\cite{fucci2019}. 
+
+
+
+
+
+\subsection{Summarization Approaches}
+\label{cp2:summarization}
+
+
+
+Extractive text summarization techniques are used in natural language artifacts in software engineering to
+produce a summary of the artifact's content. These summaries aim to represent key information that may help a developer complete their task~\cite{Bavota2016}.
+There are summarization techniques based on both supervised and unsupervised learning~\cite{moreno2017}
+and one can summarize the entire content of an artifact
+or content specific input query, as in query-based summarization~\cite{Huang2018, Goldsteinet1999}.
+
+
+
+
+A number of summarization approaches target bug reports and GitHub issues, largely
+focusing on key information within these artifacts. 
+Rastkar and colleagues~\cite{Rastkar2010} use a supervised learning approach to summarize the content 
+of bug reports showing that conversational features used to summarize emails~\cite{Murray2008}
+can also be applied to bug reports while
+Lotufo et al.~\cite{Lotufo2012} proposed an unsupervised summarization approach 
+that automates the identification of sentences that a developer would first read when
+a inspecting bug report.
+
+
+
+While many of the approaches described above
+largely rely on  lexical aspects in text, researchers have also made use
+of structured textual information in the artifacts~\cite{Ponzanelli2015, Treude2016, chen2016}. 
+For example, Ponzanelli et al. 
+proposed a summarization technique that mixes natural language text and structured data 
+available on Stack Overflow
+to produce more accurate summaries for Stack Overflow answers~\cite{Ponzanelli2015}. 
+As another example, DeepSum~\cite{Li2018} pre-processes a bug report dividing sentences 
+containing software elements, the reporter of the bug, and any other sentences 
+in the bug report to produce summaries containing more diverse information.
+
+
+
+
+A smaller number of summarization approaches have focused
+producing task specific summaries.
+These approaches pose the problem of finding task-relevant text 
+as a query-based extractive summarization problem and
+tools such as AnswerBot~\cite{Xu2017}
+identify relevant text in Stack Overflow posts 
+based on 
+the content of the text, how similar that content is with regards to a input query (i.e., task)
+and the structured data available on each of the answers in a Stack Overflow post 
+(i.e., number of votes or whether an answer is the accepted answer).
+Chapter~\ref{ch:identifying}
+compares AnswerBot to the techniques that we explore in this thesis.
+
+
+
+\subsection{Machine Learning Approaches}
+\label{cp2:machine-learning}
+
+
+\acf{ML} approaches take the text of a natural language software artifact and identify 
+the sentences likely relevant to a particular software task using \textit{unsupervised} or 
+\textit{supervised learning} methods~\cite{zhang2005machine}.
+
+
+
+Supervised learning approaches use a set of features and labeled data
+ to train classifiers with the goal of identifying sentences relevant to 
+ certain software activity.
+We have already presented supervised approaches that use text summarization (\textit{i.e.,}~\cite{Rastkar2010})
+and there are also approaches that identify relevant 
+parts of software tutorials~\cite{Jiang2016b}
+or API documents~\cite{fucci2019, Maalej2013}
+and despite their value, 
+the cost and effort of hiring skilled workers to produce 
+labeled data in software engineering artifacts 
+has been a major limitation 
+to the usage of supervised learning 
+methods in software engineering~\cite{aa}.
+
+
+
+
+
+Unsupervised learning approaches do not require labelled data and determine 
+relevant sentences according to properties inferred from the data. 
+DeepSum~\cite{Li2018} and Lotufo et al.'s~\cite{Lotufo2012} techniques are examples of 
+unsupervised approaches in the scope of text summarization. Other unsupervised approaches 
+(\textit{i.e.,} {\small FRAPT}~\cite{Jiang2017} or HoliRank~\cite{Ponzanelli2015, Ponzanelli2017})
+are mostly based around variations of the PageRank~\cite{Page1999} or LexRank~\cite{Erkan2004} algorithms. 
+These algorithms represent all the text in an artifact as a graph.
+Then, they establish relationships (\textit{i.e.,} weighted edges in the graph) 
+between different sentences (\textit{i.e.,} nodes in the graph) 
+and select the nodes with highest weights as the most relevant ones.
+A crucial step in building the graph is in the definition of 
+how to establish  relationships between nodes.
+Early approaches~\cite{Lotufo2012, Jiang2017} 
+use \ac{VSM}~\cite{Salton1975vsm} 
+for this purpose while more modern ones~\cite{Huang2018, silva2019}
+use different word embeddings~\cite{Mikolov2013, bojanowski2017FastText},
+which we detail in Section~\ref{cp2:deep-learning}.
+\red{TODO}
+
+
+
+
+
+
+
+
+
+
+\subsection{Deep Learning Approaches}
+\label{cp2:deep-learning}
+
+
+
+One substantial challenge of standard \acf{ML}
+approaches is that researchers must engineer which 
+features or properties of the text to use~\cite{ferreira2021}.
+For example, Rastkar et al. uses conversational features in 
+the text of a bug report to assist in determining which sentences 
+to include in the bug summary~\cite{Rastkar2010}
+while Petrosyan and colleagues use 
+linguistic and structural properties 
+in the text of API documents to determine text 
+explaining API elements~\cite{Petrosyan2015}
+and given the specificity of such features, 
+researchers often question the generalizability
+of standard \acs{ML} approaches~\cite{Xiao2018, fucci2019}.
+
+
+
+In contrast to the human engineered features,
+\acf{DL} approaches allow the automatic extraction of features 
+from textual data through a series of mathematical transformations~\cite{Deng2018, zhang2021deep}.
+Deep learning has lead to groundbreaking advancements in many 
+research areas (e.g., machine translation~\cite{lopez2008translation}) 
+and, given its wide range of applications, this section
+focuses on its usage in natural language text appearing in software engineering artifacts~\cite{ferreira2021, li2018deep, sharafi2015}.
+
+
+
+% and an in-depth explanation of the field is beyond 
+% our scope. Therefore, we present \acf{DL} 
+% concepts honing in on its applications research.
+
+
+
+% At some cost~\cite{strubell2020}, a \acs{DL} neural-network 
+% can derive which properties of the text 
+% most accurately assist in determining the outcome of some classification 
+% task 
+
+
+
+% \acf{DL}, which walked hand-to-hand with improvements in computational power and the amount of memory available in modern computer architectures~\cite{}.
+
+
+
+
+
+
+\acs{DL} approaches are of particular interest 
+software engineering researchers 
+since they assist in identifying hidden patterns 
+in the natural language text available,
+what has ushered in advancements in software engineering areas 
+including
+
+
+~\cite{sharafi2015}
+
+
+
+
+~\cite{sharafi2015} 
+
+
+
+can gather diverse corpora, neural networks 
+
+
+
+
+
+
+
+
+At times, software engineering researchers have argued
+that general lexicon techniques 
+are insufficient to address text appearing in
+software engineering artifacts. 
+% Arguments on why lexicon-based natural 
+% language techniques are not applicable are often based
+% on a need for access to the \textit{meaning}, or semantics, 
+% of words, phrases or sentences appearing in the text~\cite{jurafsky2014speech}.
+% In this section, 
+% we present background information on semantics focusing on
+% its usage in software engineering research.
+
+
+
+% \subsection{Word Semantics}
+
+Word semantic techniques are mostly rooted on the hypothesis
+that similar words appear in similar context~\cite{harris1954distributional}.
+This hypothesis gave origin to a series of
+\textit{distributional semantic models}~\cite{Ye2016} that aim to infer the meaning of words.
+% In this section, we present prominent models used by software engineering researchers.
+
+
+
+Distributional semantic models have been used by software engineering researchers 
+to improve the 
+the retrieval of artifacts pertinent to a certain task. 
+Early models, such as \acf{LSI}~\cite{deerwester1990LSI}, 
+have been used to, for example, recover traceability links between source code and
+software documentation~\cite{marcus2003}.  
+\acs{LSI} takes a initial word representation (i.e., a term by document matrix) and applies \acf{SVD}~\cite{klema1980SVD}
+to reduce the dimensionality of this matrix, what causes 
+words with similar meaning have the same final representation.
+
+
+Other word semantic models have assisted software engineering researchers in clustering semantically similar artifacts~\cite{zhang2014, layman2016}. For that, researchers have mostly used
+\acf{LDA}~\cite{blei2003latent}---a model that assumes that words used in a similar context often pertain to the same subject to produce topics clustering sentences or documents containing semantically related words---to
+identify common themes in developers' blog posts~\cite{Pagano2011} or to design tools that identify duplicated bug reports~\cite{nguyen2012, Thung2014}.
+
+
+% ---among its many applications~\cite{zhang2014, layman2016}---
+
+
+% Marcus and Maletic apply \acs{LSI} to 
+
+% In software engineering, \acs{LSI} has been widely used to assist requirements traceability~\cite{lucia2007, hayes2006, gethers2011}.
+
+Despite their significant contributions, early models created word vector representations
+by counting the frequency or co-occurrence of words, what is substantially inefficient for large corpora~\cite{Ye2016}.
+This and other challenges have been lifted by advancements in the fields of \acf{ML} and \acf{DL}~\cite{ferreira2021, li2018deep}, which walked hand-to-hand with improvements in computational power and the amount of memory available in modern computer architectures~\cite{sharafi2015}.
+
+
+\acs{DL} models built with \textit{neural, or word, embeddings}~\cite{Mikolov2013} 
+are of particular interest to this thesis. 
+Neural embeddings produce vector representations in a continuous space 
+and researchers have shown that they 
+
+
+

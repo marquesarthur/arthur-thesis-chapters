@@ -45,6 +45,12 @@ Information retrieval techniques are usually applied to look for documents relev
 can be also applied to identify sentences within a document, artifact in our problem formulation, that are relevant to a task.
 
 
+
+% This and other challenges have been lifted by advancements in the fields of \acf{ML} and \acf{DL}~\cite{ferreira2021, li2018deep}, which walked hand-to-hand with improvements in computational power and the amount of memory available in modern computer architectures~\cite{sharafi2015}.
+
+
+
+
 We use the \textit{Skip-gram} model~\cite{Mikolov2013}, also referred to as \textit{word2vec}, to define such a similarity function.
 The \textit{Skip-gram} model exploits Harris' distributional hypothesis~\cite{harris1954distributional}---which states that words that appear in a similar context tend to have similar meanings---and builds vector representations, namely \textit{word embeddings}, for each of the words in a text corpus.
 With a significantly large text corpus, the model associates similar vector embeddings to words that are similar in meaning~\cite{Ye2016}.
