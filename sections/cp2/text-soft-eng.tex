@@ -1,25 +1,104 @@
-\section{Useful Text in Natural Language Software Artifacts}
+\section{Natural Language Text in Software Artifacts}
 \label{cp2:text-in-se}
 
-% \art{I tried  summarize this section, but it still looks lengthy}
-
-
-Software development often requires knowledge beyond what developers already posses~\cite{Li2013} and thus, 
-software developers use different information sources to fill such gaps. 
-More than often, a developer will ask if any of their 
-peers have the information that they need~\cite{singer2011}. 
-However, the fragmented and distributed nature of software development  
-might prevent a developer from approaching their peers~\cite{ko2007}.
-Due to this and other reasons~\cite{Xia2017, rao2020}, a developer might seek
-online web resources for information 
-that may assist them in completing the task-at-hand.
-This section provides a breadth of approaches that help a developer find such resources.
 
 
 
+% Natural language  software artifacts are produced and consumed on a continuous basis~\cite{Rastkar2013t}
+% and 
 
-% \subsection{Information Retrieval Approaches} 
-% \label{cp2:ir-approaches}
+Software engineering researchers
+have investigated several questions on the nature of the text in software artifacts.
+These studies 
+characterize and deepen
+ researchers' knowledge on the richness of information in natural language artifacts
+ and often serve as a first step towards the design of automatic tools 
+for identifying and extracting text from these artifacts~\cite{Arya2019, Maalej2013}.
+
+
+
+
+A significant body of work has 
+ proposed taxonomies for the text available 
+ in development mailing lists~\cite{Sorbo2015, huang2018automating},
+API documents~\cite{Maalej2013}, bug reports~\cite{Arya2019}, and others.
+In written development emails, Di Sorbo et al. have found that 
+text can be classified according to its purpose (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015},
+suggesting that text under certain categories might be useful for developers performing specific tasks. 
+They have sampled 100 emails and identified that text for feature requests 
+often contain linguistic patterns related to suggestions or recommendations 
+(e.g., `\textit{we should add a new button}') while solution proposals 
+are often expressed in the form of attempts (e.g., `\textit{let's try a new method to compute cost}').
+
+
+
+Maalej and Robillard have inspected Java SDK 6 and .NET 4.0. API documentation~\cite{Maalej2013}
+and proposed a set of categories (e.g., directives, purpose and rationale, functionality, etc.) that define how 
+knowledge is structured in API documentation. 
+This taxonomy led Robillard and Chhetri 
+to find that directives---or pieces of information that the programmers
+cannot afford to ignore, such as instructions on how to efficiently
+perform some I/O operation---often 
+follow certain linguistic patterns~\cite{Robillard2015}
+and they have produced a catalog of patterns that capture directives found in the 
+Java SDK 6 documentation.
+
+
+
+Rastkar et al. that found much of the text in a bug report resembles a 
+conversation between different subjects~\cite{Rastkar2013} 
+and by analyzing 15 complex GitHub issues, Arya et al. argue that, due to this conversational nature, 
+a single bug report contains several threads each 
+pertaining to some topic, e.g., 
+reproducing a bug, discussing potential solutions, 
+testing, task progress~\cite{Arya2019}. 
+Although the topicality of the content in bug reports 
+might encourage the design of tools that automatically identify such
+text, researchers have also found high variance in the text of different 
+issues within a software project~\cite{Chaparro2016}.
+
+
+
+Although the studies described above shed light on many 
+aspects of natural language text in software artifacts, 
+they do not discuss common properties of the text, 
+found in different kinds of artifacts, 
+relevant to some software task as we do in Chapter~\ref{ch:characterizing}.
+
+
+% A number of studies~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a} has focused on general aspects on the organization and structure of 
+% software engineering artifacts and how these aspects affect how developers find text that assist them complete a software task~\cite{BenCharrada2016, Forward2002, Starke2009, DeGraaf2014}.
+
+
+
+
+% Among the many information foraging studies in software engineering,
+%  Forward and Lethbridge describe criteria that developers use to assess the relevance of software engineering documentation. They observe that the content of an artifact, the presence of examples, and the document's structure are common attributes that impact an artifact's relevance~\cite{Forward2002}.
+% In another study, Charrada and Mussato investigated how 
+% practitioners manage and search for software engineering documents, 
+% identifying that data scattered across different sources is 
+% often a significant challenge to the information foraging process.
+
+
+
+% When attempting to find artifacts pertinent to a task, 
+% Starke et al. explain that a software developer often makes a set of hypotheses about a software task,
+% translating these hypotheses into multiple search queries that will lead to  likely pertinent artifacts~\cite{Starke2009}. 
+% They observe that, instead of systematically inspecting search results,
+% developers often skim through them to decide which documents are of relevance. 
+% In other studies, Brandt et al. found that developers interleave web foraging, learning and writing code~\cite{Brandt2009a} while de Graaf and colleagues 
+% identified that prior knowledge about the structure of a software artifact helps professionals
+% to search software documents efficiently and effectively~\cite{DeGraaf2014}.
+
+
+% This thesis adds to the existing theory by discussing 
+% common properties in the text of an artifact which several software developers deemed relevant 
+% to certain software tasks.  
+
+
+
+
+
 
 
 
