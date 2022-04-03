@@ -5,10 +5,11 @@
 
 Information useful to a software task can be buried in irrelevant text or attached to 
 non-intuitive blocks of text, making it difficult to discover~\cite{Robillard2015}.
-Researchers have long recognized the value of assisting developers in 
-identifying information of relevance in this natural language
-text.
-In this section, we detail tools and approaches from related work.
+In this section, we detail tools and approaches from related work
+that seek to assist developers in 
+identifying information within the natural language
+text of software artifacts.
+
 
 
 
@@ -152,7 +153,6 @@ use \ac{VSM}~\cite{Salton1975vsm}
 for this purpose while more modern ones~\cite{Huang2018, silva2019}
 use different word embeddings~\cite{Mikolov2013, bojanowski2017FastText},
 which we detail in Section~\ref{cp2:deep-learning}.
-\red{TODO}
 
 
 
@@ -177,9 +177,9 @@ to include in the bug summary~\cite{Rastkar2010}
 while Petrosyan and colleagues use 
 linguistic and structural properties 
 in the text of API documents to determine text 
-explaining API elements~\cite{Petrosyan2015}
-and given the specificity of such features, 
-researchers often question the generalizability
+explaining API elements~\cite{Petrosyan2015}.
+Given the specificity of such features, 
+researchers have questioned the generalizability
 of standard \acs{ML} approaches~\cite{Xiao2018, fucci2019}.
 
 
@@ -190,7 +190,66 @@ from textual data through a series of mathematical transformations~\cite{Deng201
 Deep learning has lead to groundbreaking advancements in many 
 research areas (e.g., machine translation~\cite{lopez2008translation}) 
 and, given its wide range of applications, this section
-focuses on its usage in natural language text appearing in software engineering artifacts~\cite{ferreira2021, li2018deep, sharafi2015}.
+focuses on its usage in natural language text appearing in software engineering artifacts~\cite{ferreira2021, li2018deep, watson2022}.
+
+
+
+
+
+
+
+
+
+Software engineering researchers have identified that more than often, the text 
+in software task 
+significantly differ from the text in the artifacts that are related to that tasks~\cite{Huang2018}. 
+These so-called \textit{lexical mismatches}~\cite{Ye2016} 
+often make it difficult to identify information of interest 
+to a task and a number of studies have used \acs{DL}
+neural, or word,
+embeddings~\cite{Mikolov2013} to bridge this gap. 
+Neural embeddings produce vector representations in a continuous space,
+where words with similar meaning are typically close in the vector space model~\cite{harris1954distributional, mikolov2013efficient}. 
+Their usage has allowed researchers to improve 
+the identification API elements pertinent to a programming task~\cite{Ye2016} 
+or to assess the quality of the content in bug reports~\cite{chaparro2019}.
+Word embeddings have become a common way 
+to compare the semantic similarity of the text~\cite{mihalcea2006}
+being applied in query-based summarization techniques such as 
+AnswerBot~\cite{Xu2017}
+or PageRank-based approaches such as HoliRank~\cite{Ponzanelli2017}.
+
+
+
+Many other \acs{DL} studies in software engineering~\cite{watson2022}
+use different neural network architectures (e.g., CNN~\cite{} or RNN~\cite{})
+in a variety of software engineering tasks, including
+code comprehension~\cite{}, developer forum analysis, or requirements traceability.
+DeepSum~\cite{Li2018}, which we described earlier, is an example of a 
+summarization approach that uses an AutoEncoder neural network to identify 
+sentences of interest in bug reports. As another application of neural networks
+to software artifacts, Xi et al.~\cite{Xia2017} use a CNN 
+to categorize sentence in GitHub issues discussing topics such as 
+problem discovery, solution proposal, or feature requests.
+
+
+
+
+
+
+%  semantic-based \acs{IR} approaches, which we discuss in 
+% Section~\ref{cp2:artifact-semantics}.
+
+
+
+% \footnote{
+%     \textbf{Oxford English dictionary definitions}~\cite{dictionary1989oxford} 
+%     \begin{itemize}
+%         \item \textbf{synonymy:} the fact of two or more words having the same meaning;
+%         \item \textbf{polysemy:} the fact of having more than one meaning.
+%     \end{itemize}
+% }
+
 
 
 
@@ -214,36 +273,36 @@ focuses on its usage in natural language text appearing in software engineering 
 
 
 
-\acs{DL} approaches are of particular interest 
-software engineering researchers 
-since they assist in identifying hidden patterns 
-in the natural language text available,
-what has ushered in advancements in software engineering areas 
-including
+% \acs{DL} approaches are of particular interest 
+% software engineering researchers 
+% since they assist in identifying hidden patterns 
+% in the natural language text available,
+% what has ushered in advancements in software engineering areas 
+% including
 
 
-~\cite{sharafi2015}
-
-
-
-
-~\cite{sharafi2015} 
+% ~\cite{watson2022}
 
 
 
-can gather diverse corpora, neural networks 
+
+% ~\cite{watson2022} 
 
 
 
+% can gather diverse corpora, neural networks 
 
 
 
 
 
-At times, software engineering researchers have argued
-that general lexicon techniques 
-are insufficient to address text appearing in
-software engineering artifacts. 
+
+
+
+% At times, software engineering researchers have argued
+% that general lexicon techniques 
+% are insufficient to address text appearing in
+% software engineering artifacts. 
 % Arguments on why lexicon-based natural 
 % language techniques are not applicable are often based
 % on a need for access to the \textit{meaning}, or semantics, 
@@ -254,30 +313,30 @@ software engineering artifacts.
 
 
 
-% \subsection{Word Semantics}
+% % \subsection{Word Semantics}
 
-Word semantic techniques are mostly rooted on the hypothesis
-that similar words appear in similar context~\cite{harris1954distributional}.
-This hypothesis gave origin to a series of
-\textit{distributional semantic models}~\cite{Ye2016} that aim to infer the meaning of words.
-% In this section, we present prominent models used by software engineering researchers.
-
-
-
-Distributional semantic models have been used by software engineering researchers 
-to improve the 
-the retrieval of artifacts pertinent to a certain task. 
-Early models, such as \acf{LSI}~\cite{deerwester1990LSI}, 
-have been used to, for example, recover traceability links between source code and
-software documentation~\cite{marcus2003}.  
-\acs{LSI} takes a initial word representation (i.e., a term by document matrix) and applies \acf{SVD}~\cite{klema1980SVD}
-to reduce the dimensionality of this matrix, what causes 
-words with similar meaning have the same final representation.
+% Word semantic techniques are mostly rooted on the hypothesis
+% that similar words appear in similar context~\cite{harris1954distributional}.
+% This hypothesis gave origin to a series of
+% \textit{distributional semantic models}~\cite{Ye2016} that aim to infer the meaning of words.
+% % In this section, we present prominent models used by software engineering researchers.
 
 
-Other word semantic models have assisted software engineering researchers in clustering semantically similar artifacts~\cite{zhang2014, layman2016}. For that, researchers have mostly used
-\acf{LDA}~\cite{blei2003latent}---a model that assumes that words used in a similar context often pertain to the same subject to produce topics clustering sentences or documents containing semantically related words---to
-identify common themes in developers' blog posts~\cite{Pagano2011} or to design tools that identify duplicated bug reports~\cite{nguyen2012, Thung2014}.
+
+% Distributional semantic models have been used by software engineering researchers 
+% to improve the 
+% the retrieval of artifacts pertinent to a certain task. 
+% Early models, such as \acf{LSI}~\cite{deerwester1990LSI}, 
+% have been used to, for example, recover traceability links between source code and
+% software documentation~\cite{marcus2003}.  
+% \acs{LSI} takes a initial word representation (i.e., a term by document matrix) and applies \acf{SVD}~\cite{klema1980SVD}
+% to reduce the dimensionality of this matrix, what causes 
+% words with similar meaning have the same final representation.
+
+
+% Other word semantic models have assisted software engineering researchers in clustering semantically similar artifacts~\cite{zhang2014, layman2016}. For that, researchers have mostly used
+% \acf{LDA}~\cite{blei2003latent}---a model that assumes that words used in a similar context often pertain to the same subject to produce topics clustering sentences or documents containing semantically related words---to
+% identify common themes in developers' blog posts~\cite{Pagano2011} or to design tools that identify duplicated bug reports~\cite{nguyen2012, Thung2014}.
 
 
 % ---among its many applications~\cite{zhang2014, layman2016}---
@@ -287,15 +346,15 @@ identify common themes in developers' blog posts~\cite{Pagano2011} or to design 
 
 % In software engineering, \acs{LSI} has been widely used to assist requirements traceability~\cite{lucia2007, hayes2006, gethers2011}.
 
-Despite their significant contributions, early models created word vector representations
-by counting the frequency or co-occurrence of words, what is substantially inefficient for large corpora~\cite{Ye2016}.
-This and other challenges have been lifted by advancements in the fields of \acf{ML} and \acf{DL}~\cite{ferreira2021, li2018deep}, which walked hand-to-hand with improvements in computational power and the amount of memory available in modern computer architectures~\cite{sharafi2015}.
+% Despite their significant contributions, early models created word vector representations
+% by counting the frequency or co-occurrence of words, what is substantially inefficient for large corpora~\cite{Ye2016}.
+% This and other challenges have been lifted by advancements in the fields of \acf{ML} and \acf{DL}~\cite{ferreira2021, li2018deep}, which walked hand-to-hand with improvements in computational power and the amount of memory available in modern computer architectures~\cite{watson2022}.
 
 
-\acs{DL} models built with \textit{neural, or word, embeddings}~\cite{Mikolov2013} 
-are of particular interest to this thesis. 
-Neural embeddings produce vector representations in a continuous space 
-and researchers have shown that they 
+% \acs{DL} models built with \textit{neural, or word, embeddings}~\cite{Mikolov2013} 
+% are of particular interest to this thesis. 
+% Neural embeddings produce vector representations in a continuous space 
+% and researchers have shown that they 
 
 
 
