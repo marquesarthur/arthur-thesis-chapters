@@ -10,9 +10,9 @@
 Software engineering researchers
 have investigated several questions on the nature of the text in software artifacts.
 These studies 
-characterize and deepen
- researchers' knowledge on the richness of information in natural language artifacts
- and often serve as a first step towards the design of automatic tools 
+have focused on different kinds of artifacts and have deepen
+ researchers' knowledge on the richness of information in natural language artifacts,
+ serving as a first step towards the design of automatic tools 
 for identifying and extracting text from these artifacts~\cite{Arya2019, Maalej2013}.
 
 
@@ -26,28 +26,28 @@ In written development emails, Di Sorbo et al. have found that
 text can be classified according to its purpose (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015},
 suggesting that text under certain categories might be useful for developers performing specific tasks. 
 They have sampled 100 emails and identified that text for feature requests 
-often contain linguistic patterns related to suggestions or recommendations 
+often contain expressions in the form suggestions
 (e.g., `\textit{we should add a new button}') while solution proposals 
 are often expressed in the form of attempts (e.g., `\textit{let's try a new method to compute cost}').
 
 
 
-Maalej and Robillard have inspected Java SDK 6 and .NET 4.0. API documentation~\cite{Maalej2013}
-and proposed a set of categories (e.g., directives, purpose and rationale, functionality, etc.) that define how 
+Maalej and Robillard have inspected the Java SDK 6 and .NET 4.0. API documentation~\cite{Maalej2013}
+and proposed a set of categories (e.g., directives, purpose, rationale, functionality, etc.) that define how 
 knowledge is structured in API documentation. 
 This taxonomy led Robillard and Chhetri 
 to find that directives---or pieces of information that the programmers
 cannot afford to ignore, such as instructions on how to efficiently
 perform some I/O operation---often 
-follow certain linguistic patterns~\cite{Robillard2015}
-and they have produced a catalog of patterns that capture directives found in the 
+follow certain linguistic patterns~\cite{Robillard2015},
+what made they produce a catalog of patterns that capture directives found in the 
 Java SDK 6 documentation.
 
 
 
-Rastkar et al. that found much of the text in a bug report resembles a 
+Rastkar et al. observe that much of the text in a bug report resembles a 
 conversation between different subjects~\cite{Rastkar2013} 
-and by analyzing 15 complex GitHub issues, Arya et al. argue that, due to this conversational nature, 
+while Arya et al. argue that due to this conversational nature, 
 a single bug report contains several threads each 
 pertaining to some topic, e.g., 
 reproducing a bug, discussing potential solutions, 
@@ -61,9 +61,13 @@ issues within a software project~\cite{Chaparro2016}.
 
 Although the studies described above shed light on many 
 aspects of natural language text in software artifacts, 
-they do not discuss common properties of the text, 
-found in different kinds of artifacts, 
-relevant to some software task as we do in Chapter~\ref{ch:characterizing}.
+they do not discuss common properties of the text 
+found in different kinds of artifacts
+that is relevant to some software task.
+In Chapter~\ref{ch:characterizing}
+we study text that is considered relevant to 
+a distinct set of artifacts associated with the 
+same software task.
 
 
 % A number of studies~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a} has focused on general aspects on the organization and structure of 
