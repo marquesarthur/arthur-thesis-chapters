@@ -1,5 +1,5 @@
 \section{Automatic Text Identification Approaches}
-\label{cp2:text-approaches}
+\label{cp2:automatic-approaches}
 
 
 
@@ -25,13 +25,12 @@ extracted using \acf{NLP}.
     
 As examples  of pattern matching approaches,  {\small DeMIBuD}~\cite{Chaparro2017}
  and Knowledge Recommender (Krec)~\cite{Maalej2013, Robillard2015} are tools that detect relevant sentences in bug reports and API documentation, respectively. 
-These tools derive a set of patterns from annotated data and use them as part of heuristics 
-that identify relevant text. Krec  uses  361 unique patterns
+These tools use a set of patterns derived from annotated data to identify relevant text. Krec  uses  361 unique patterns
 to 
 detect relevant sentences mentioning a 
-code element (e.g., a class or method name) in API documentation~\cite{Robillard2015}.
-In a similar manner, {\small DeMIBuD} uses a set of 154 discourse patterns to detect sentences 
-relevant to understanding a bugs observed or expected behaviour and steps to reproduce it,
+code element (e.g., a class name or method signature) in API documentation~\cite{Robillard2015}.
+Likewise, {\small DeMIBuD} uses a set of 154 discourse patterns to detect sentences 
+relevant to understanding a bugs expected behaviour and steps to reproduce it,
 which are essential to bug triaging tasks.
 
 
@@ -39,7 +38,7 @@ which are essential to bug triaging tasks.
 
 In Stack Overflow posts,
 Nadi and Treude~\cite{nadi2020} have both applied the original set of patterns from Krec~\cite{Robillard2015} 
-and proposed heuristics that rely on the conditional clauses (i.e., sentences with the word `\textit{if}')
+and proposed heuristics that use conditional clauses (i.e., sentences with the word `\textit{if}')
 to identify text that help a developer 
 decide whether they want to carefully inspect a Stack Overflow posts or skip it. 
 
@@ -49,7 +48,7 @@ Although the heuristics and regular expressions used in the aforementioned studi
 are often light-weight and effective~\cite{Bavota2016, Maalej2013}, 
 pattern matching approaches are specific to certain kinds of domain and 
 types of artifact~\cite{fucci2019}, what limits
-using them in a general approach.
+using them in a general manner.
 
 
 
@@ -65,7 +64,7 @@ produce a summary of the artifact's content.
 A summary represents key information that may help a developer complete their task~\cite{Bavota2016}.
 There are summarization techniques based on both supervised and unsupervised learning~\cite{moreno2017}
 and one can summarize the entire content of an artifact
-or content specific input query, as in \textit{query-based} summarization~\cite{Huang2018, Goldsteinet1999}.
+or content specific to a input query, as in \textit{query-based} summarization~\cite{Huang2018, Goldsteinet1999}.
 
 
 
@@ -81,13 +80,14 @@ a inspecting bug report.
 
 
 
-While many of the approaches described above
+While many summarization approaches
 largely rely on  lexical aspects in text, researchers have also made use
-of structured textual information in the artifacts~\cite{Ponzanelli2015, Treude2016, chen2016}. 
+of structured data available in software artifacts~\cite{Ponzanelli2015, Treude2016, chen2016}. 
 For example, Ponzanelli et al. 
-proposed a summarization technique that mixes natural language text and structured data 
-available on Stack Overflow
-to produce more accurate summaries for Stack Overflow answers~\cite{Ponzanelli2015}. 
+proposed a summarization approach
+that uses the number of votes an answer has on 
+Stack Overflow as a filter to the text in 
+the summary for a Stack Overflow post~\cite{Ponzanelli2015}. 
 As another example, DeepSum~\cite{Li2018} pre-processes a bug report dividing sentences 
 containing software elements, the reporter of the bug, and any other sentences 
 in the bug report to produce summaries containing more diverse information.
@@ -105,8 +105,18 @@ based on
 the content of the text, how similar that content is with regards to a input query (i.e., task)
 and the structured data available on each of the answers in a Stack Overflow post 
 (i.e., number of votes or whether an answer is the accepted answer).
-As the state-of-the-art, Chapter~\ref{ch:identifying}
-compares AnswerBot to the techniques that we explore in this thesis.
+
+
+
+Although we refrain from using structural data 
+or assumptions on the content of an artifact 
+because this might hinder the design of 
+an automatic approach that identifies text relevant to some 
+task in a more general manner, in 
+Chapter~\ref{ch:identifying} 
+we compare
+ the techniques that we explore in this thesis
+ to  the state-of-the-art.
 
 
 
@@ -122,7 +132,7 @@ the sentences likely relevant to a particular software task using \textit{superv
 
 Supervised learning approaches use a set of features and labeled data
  to train classifiers with the goal of identifying sentences relevant to 
- certain software activity.
+ certain software task.
 We have already presented supervised approaches that use text summarization (\textit{i.e.,}~\cite{Rastkar2010})
 and there are also approaches that identify relevant 
 parts of software tutorials~\cite{Jiang2016b}
@@ -146,23 +156,23 @@ unsupervised approaches in the scope of text summarization.
 
 
 Other unsupervised approaches 
-(\textit{i.e.,} {\small FRAPT}~\cite{Jiang2017} or HoliRank~\cite{Ponzanelli2015, Ponzanelli2017})
+(\textit{e.g.,}~\cite{Jiang2017, Ponzanelli2015,  Ponzanelli2017})
 are mostly based around variations of the PageRank~\cite{Page1999} or LexRank~\cite{Erkan2004} algorithms. 
 These algorithms represent all the text in an artifact as a graph.
 Then, they establish relationships (\textit{i.e.,} weighted edges in the graph) 
 between different sentences (\textit{i.e.,} nodes in the graph) 
 and select the nodes with highest weights as the most relevant ones.
-A crucial step in building the graph is in the definition of 
-how to establish  relationships between nodes.
+A crucial step in building the graph is in  
+establishing  relationships between nodes.
 Early approaches~\cite{Lotufo2012, Jiang2017} 
 use \ac{VSM}~\cite{Salton1975vsm} 
 for this purpose while more modern ones~\cite{Huang2018, silva2019}
 use different word embeddings~\cite{Mikolov2013, bojanowski2017FastText},
 which we detail in Section~\ref{cp2:deep-learning}.
-To identify key sentences using these techniques, one must 
-assume that certain elements will be cross-referenced 
-or mentioned multiple types in a document, 
-what is only common in certain types of software artifacts, e.g., mailing lists~\cite{Bacchelli2012}.
+% To identify key sentences using these techniques, one must 
+% assume that certain elements will be cross-referenced 
+% or mentioned multiple types in a document, 
+% what is only common in certain types of software artifacts, e.g., mailing lists~\cite{Bacchelli2012}.
 
 
 
@@ -239,13 +249,12 @@ DeepSum~\cite{Li2018}, which we described earlier, is an example of a
 summarization approach that uses an encoder-decoder architecture~\cite{cho2014-encoder-decoder}  to identify 
 sentences of interest in bug reports. As another example,
 Xi et al.~\cite{Xia2017} use a \ac{CNN}~\cite{krizhevsky2012CNN} 
-to identify sentences in GitHub issues discussing topics such as 
-problem discovery, solution proposal, or feature requests.
+to identify sentences pertaining to Di Sorbo et al.'s topics~\cite{Sorbo2015}.
 
 
 
 Few studies in software engineering have considered more modern neural networks~\cite{watson2022}
-able to establish relationships not only between words but also sentence pairs (e.g., \acs{BERT}~\cite{Devlin2018Bert}). 
+able to leverage hidden features not only between words but also between sentence pairs (e.g., \acs{BERT}~\cite{Devlin2018Bert}). 
 These models might assist in determining 
 implicit relationships between the text in a task and the text in a relevant sentence within a software artifact.
 As such, Chapter~\ref{ch:identifying} describes how we use \acs{BERT} for automatically 

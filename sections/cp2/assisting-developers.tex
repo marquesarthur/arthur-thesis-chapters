@@ -7,72 +7,54 @@
 
 
 
-
-% Software developers are knowledge workers that not only 
-% are overloaded with information~\cite{},
-% but that also switch between several tasks in 
-% the course of a work day.
-Researchers have and practitioners  have had a long interest 
-in providing tools that improve the quality of a developer's work~\cite{Kersten2006, Meyer2017, satterfield2020}. 
-
-
-\art{TODO}
-
-% The work presented in this dissertation fit in the umbrella of studies 
-
-
-% , in this section, we discuss 
-% other research in the field, honing in on studies that 
-% honing in on studies that help developers working on a particular task. 
+The tools and approaches presented in Section~\ref{cp2:automatic-approaches}
+are examples of studies that help developers in locating 
+information that assists them to complete a software task.
+These studies fit in the bigger context 
+of software engineering research 
+that facilitates or improves the quality of a developer's work~\cite{Kersten2006, Meyer2017, satterfield2020}. 
 
 
 
-% As a result, researchers
-% and practitioners have both had a long interest in better understanding how developers work and how their work
-% understanding how developers work and how their work could be quantified to optimize productivity and efficiency.
-% could be quantified to optimize productivity and efficiency. Researchers have investigated work practices and work
-
-
-% \art{Use contributions to drive related work}
-
-% \art{I might even talk about Google search somewhere here}
-
-
-% To understand how software developers find  information useful to their software tasks,
-% software engineering researchers have mostly used theories from the information foraging
-% field~\cite{Pirolli1999}. 
-
-
-% \textit{\acf{IFT}}~\cite{Pirolli1999} explains how 
-% an individual navigates through some search space looking for \textit{information patches} based on 
-% a set of cues about the effort and gains that a patch provides to them~\cite{Pirolli1999}.
-% Foraging occurs between or within patches, i.e., 
-% searching which documents are relevant and what within a document is of relevance.
-% In turn, \textit{relevance theory}~\cite{clark2013relevance, saracevic1975} further elaborates the relationships between an information object (i.e., text in an artifact),
-% some context (i.e., a task), and what properties (i.e., clarity, utility, completeness, etc.) guide a forager decision 
-% on the relevance of a patch~\cite{Saracevic2007b, Saracevic2007c}. 
+Researchers have had a long interest in 
+making knowledge bases
+that developers working on a task can benefit from. 
+Hipikat~\cite{Cubranic2005} is a seminal tool that exemplifies this concept in action.
+It automatically tracks the artifacts 
+used by a developer as part of a development tasks
+so that it can recommend these artifacts to 
+any future developers who work on similar tasks~\cite{Cubranic2005}.
+Other tools like Strata summarize knowledge produced by developers 
+while they navigate on the web so that other developers have a 
+a head start when performing similar tasks~\cite{liu2021}.
 
 
 
-% Among the many information foraging studies in software engineering~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a},
-%  Forward and Lethbridge describe criteria that developers use to assess the relevance of software engineering documentation. They observe that the content of an artifact, the presence of examples, and the document's structure are common attributes that impact an artifact's relevance~\cite{Forward2002}.
-% In another study, Charrada and Mussato investigated how 
-% practitioners manage and search for software engineering documents, 
-% identifying that data scattered across different sources is 
-% often a significant challenge to the information foraging process~\cite{BenCharrada2016}.
+As part of their work, developers engage in many sensemaking and decision making activities~\cite{sillito2006} and several studies have investigated how to 
+provide means to better  
+assist developers in performing such activities~\cite{Liu2018Unakite, liu2021, barnett2015}.
+For example, tools such as Deep Intellisense 
+display code changes, filed bugs, and forum discussions 
+mined from an organization's database to better assist a developer
+understand 
+the rationale behind the code they currently work on,
+and researchers have extended this idea to  
+publicly available data, e.g., GitHub issues~\cite{Viviani2019}
+or pull requests~\cite{freire2021}. 
 
 
 
-% When attempting to find artifacts pertinent to a task, 
-% Starke et al. explain that a software developer often makes a set of hypotheses about a software task,
-% translating these hypotheses into multiple search queries that will lead to  likely pertinent artifacts~\cite{Starke2009}. 
-% They observe that, instead of systematically inspecting search results,
-% developers often skim through them to decide which documents are of relevance. 
-% In other studies, Brandt et al. found that developers interleave web foraging, learning and writing code~\cite{Brandt2009a} while de Graaf and colleagues 
-% identified that prior knowledge about the structure of a software artifact helps professionals
-% to search software documents efficiently and effectively~\cite{DeGraaf2014}.
+Although the studies mentioned above do not directly relate 
+to this work of dissertation, 
+we build upon many of the research procedures outlined 
+in these and many other studies in the field. 
+For example, in the evaluation of Strata 
+ Liu et al. describe procedures 
+considering how a control and tool-assisted group 
+complete information-seeking tasks~\cite{liu2021},
+what assisted in the design of our experiment for 
+evaluating an automated approach to
+task-relevant text identification (Chapter~\ref{ch:assisting}).
 
 
-% This thesis adds to the existing theory by discussing 
-% common properties in the text of an artifact which several software developers deemed relevant 
-% to certain software tasks.  
+
