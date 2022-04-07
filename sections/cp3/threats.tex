@@ -1,3 +1,71 @@
 
 \subsection{Threats to Validity}
 \label{cp3:threats}
+
+
+In this section, we discuss threats from our 
+examination of the relevant text (HUs) produced by participants who 
+inspected natural language artifacts from six information seeking tasks. 
+
+
+
+The design of the six tasks in our experiment represent a threat to
+\textit{construct validity}.  To mitigate this threat, we used, as
+input to the task design, results from studies discussing the search
+behaviour of developers~\cite{umarji2008archetypal, Li2013, Xia2017}.
+For each task, our goal was to provide a set of artifacts so that a
+participant could gather enough knowledge to complete the task, which
+we confirmed through pilot studies.  The provision of artifacts was
+necessary to enable a systematic analysis of relevance through a
+controlled experiment. We mitigated threats on artifact
+selection by asking external researchers to provide their own list of
+candidate artifacts, which was similar to our own list.
+
+
+
+The \textit{external validity} of the experimental results is affected
+by the participants, the tasks and the artifacts.  Considering the
+subjective nature of relevance, the knowledge and particularities of
+our participants may not generalize to other software developers.
+Furthermore, the structure and linguistic characteristics of the
+artifacts considered may not extend to other kinds of artifacts or the
+same kind of artifacts in of other domains.  We tried to mitigate this
+threat by selecting different kinds of artifacts such as API
+documentation, bug reports, and Q\&A pages while 
+ensuring that each kind was present in at least
+50\% of the tasks. 
+However, our results
+are bound to the domains and artifacts we evaluated and may not generalize.
+Future work should confirm our findings on a wider range of artifacts and tasks.
+
+
+There are also threats to the validity of our
+\textit{conclusions}.
+Experimental procedures encouraged participants to work on the tasks using their normal workflow.
+However, at least one participant (\textit{P15}) indicated that they would normally
+revisit a document as different information needs arise as part of a task.
+As a result, our study may miss relevant information.
+In addition, the text participants highlighted may not have always aligned with the text that contained information useful for completing the task.
+To investigate this alignment further, we would have had to create an oracle containing the relevant text.
+Unfortunately, creating the oracle is challenging because it would need to encompass different perceptions of relevance~\cite{Pirolli1999,saracevic1975,Nenkova2004} and usefulness~\cite{Freund2013, Freund2015}.
+Thus, to avoid the subjective and imprecise process of judging alignment, we simply consider any text highlighted by participants as containing information useful to completing the tasks.
+
+
+
+While the size of our corpus might also affect our conclusions,
+we emphasize that the HUs from mid and top-tiers in our data comprise 250 sentences, 
+which is similar to the amount of data studied previously. For instance, the McGill~\cite{Petrosyan2015}
+and Android~\cite{Jiang2016b} datasets contain 238 and 141 relevant text fragments, respectively.
+
+
+To extract the meaning of text through parsed frames, 
+we used a general frame semantics database rather than one
+specific to software engineering.  This led to frames that were
+\textit{out-of-context}, causing us to adapt either the frame's
+name or its description.  
+Frames adapted to software engineering (e.g., \textit{being returned}
+and \textit{fields}) represent a small fraction of all the extracted
+frames. As a result, we argue that all the sentences containing them still have
+similar semantic meanings and our conclusions are not
+affected by these out-of-context frames. However, having specific
+software engineering frames could improve our results.
