@@ -4,26 +4,128 @@
 
 
 
+To investigate which text within a natural language artifact software developers deem as relevant to a task,
+ we decide for a controlled experiment
+ as it allows us to investigate the behavior of multiple developers
+over a consistent set of artifacts.
+
+
+
+In the experiment, detailed in the following subsections,
+we asked 20 participants to highlight portions of a curated
+set of artifacts relevant to completing six different development tasks;
+ highlighting was followed by post-experiment 
+interviews to understand the
+strategies that participants employed to identify relevant text,
+providing us both 
+quantitive data (in the form of the highlights produced) 
+and qualitative data (in the form of the interview transcripts) 
+which we use to answer the research questions 
+presented earlier in this chapter.
 
 
 
 
 
 
-\begin{landscape}
-    \begin{figure}
-        \centering
-        \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp3/heatmap}
-    \caption{An example of a task description and a depiction of collected data, shown as a heatmap of text that participants highlighted as relevant to the task; the warmer the color, the more participants highlighted the text}
-    \label{fig:task-highlights-heatmap}
-    \end{figure}
-\end{landscape}
+\acs{UBC} \acs{ERB} approved this experiment under the certificate \textit{H18-02104}.
+The experiment's supplementary material is also publicly available~\cite{cp3_supplementary_material}.
+
+
+
+
+\subsection{Tasks}
+\label{cp3:method-tasks}
+
+
+The six tasks in our experiment provide for a variety of information-seeking activities observed from earlier
+studies, which include when a developer
+refers to API documentation or Q\&A websites for API usage purposes~\cite{umarji2008archetypal, Singer1998,robillard2011field};
+evaluates a possible reusable library to be incorporated into their implementation~\cite{umarji2008archetypal}; or
+confirms a system's behaviour referring to past discussions in community forums or in the system's documentation~\cite{umarji2008archetypal, Lotufo2012, Singer1998}.
+
+
+To design tasks for these activities, we applied criteria described by Petrosyan and colleagues~\cite{Petrosyan2015}, namely that
+tasks must encompass common application domains and that the tasks' artifacts must be publicly available.
+
+
+Table~\ref{tbl:tasks-overview-cp3} outlines the tasks designed.
+For each task, the table provides a brief description and the task name, which refers to an identifier pertaining the topic or the system related to the task.
+From this point forward, we will refer to the tasks according to these identifiers.
+\texttt{Bugzilla} and \texttt{Yargs} are API usage tasks; \texttt{Networking} and \texttt{Databases} ask participants to evaluate and decide upon the adoption of a certain technology or framework; and finally, \texttt{GPMDPU} and \texttt{Lucene} describe scenarios where a participant 
+has to understand the system's behaviour. 
+Our decision to use a number of different systems employing
+a variety of technologies aims to minimize the effects that might result from a participant being
+well-acquainted with a particular system or technology~\cite{Wildemuth2012, DeGraaf2014}. 
 
 
 
 \input{sections/cp3/tables/task-descriptions}
 
 
+
+\subsection{Artifacts}
+\label{cp3:method-artifacts}
+
+
+
+For each task, we also needed to choose a set of artifacts for a
+participant to peruse for relevant information to the task.  Based on
+observations about the most common information sources sought in
+development tasks,
+we focused on API documentation, Q\&A websites, and
+bug reports~\cite{Li2013, Ponzanelli2017}.
+For each task, a participant should consider on average three artifacts extracted
+from one or more information sources.
+We describe selection criteria for the artifacts and information sources as follows.
+
+
+
+To select the artifacts, for each task, we performed
+searches\footnote{
+e.g.: https://www.google.com/search?q=bugzilla+REST+API
+} and inspected the top 10 results retrieved by Google search engine, Stack Overflow, and in a
+system's bug tracking system to select a set of candidate artifacts that could
+assist in task completion.
+For some tasks, the list of candidate
+artifacts contained a single kind of artifact (e.g., bug
+reports). For others, multiple kinds of candidate artifacts applied
+(e.g., API documentation and Q\&A websites). 
+Due to the varied availability of artifact types per task, 
+we ensured that across
+the six tasks, each kind of artifact appeared in at least half of the
+tasks.
+
+
+
+To produce the curated set of artifacts for each task, we then carefully read each candidate artifact.
+Selection criteria considered an artifact's content and possible effects that 
+could arise from interacting with a piece of text:
+(1) strengthening an assumption, (2) contradicting or eliminating an assumption, or 
+(3) combining multiple pieces of text to yield a conclusion~\cite{clark2013relevance}.
+As examples of these criteria in action, the \texttt{Lucene}
+artifacts chosen contain
+complementary sources where sentences in different artifacts
+pertain to the same topic.  
+The artifacts chosen for
+the \texttt{GPMDPU} task contain contradictory information; two bug reports
+argue that a feature is not supported while a third states otherwise.
+
+We also asked two other software engineering researchers to provide a
+list of candidate artifacts for each task based on the task's
+description.  The Fleiss's Kappa coefficient score indicates a
+moderate agreement level ($\kappa = 0.45$)~\cite{fleisskappa1977,
+fleiss1981} on the list of provisioned resources suggesting that a
+developer searching for pertinent artifacts for such tasks would
+likely obtain a similar list of artifacts for inspection.
+
+
+
+Table~\ref{tbl:corpus-stats} reports on the 20 artifacts used for the
+experiment: 10 are documents describing APIs, 5 are bug reports, and 5
+are Q\&A forum entries. These documents comprise nearly 1874
+sentences and the average reading time~\cite{Just1980} of all artifacts of each task
+is equivalent to 18.3 minutes ($\pm 5.5$ minutes). 
 
 
 
@@ -32,4 +134,129 @@
 
 
 
+\subsection{Participants}
+\label{cp3:method-participants}
+
+
+Twenty participants (2 self-identified as female and 18 as male) were recruited through
+mailing lists for computer science graduate students 
+and through personal contacts. To ensure participants were
+familiar with concepts integral to the experiment, a demographic
+survey included questions about the use of software documentation and
+bug tracking systems by a participant.  No participants were excluded
+based on answers to these questions.
+Participants were compensated (\$20) for their participation.
+At the time of the experiment, 5 participants were working as software
+developers and 15 were graduate
+students, of which 73\% have
+previous professional experience. 
+On average, participants self-reported 8.9 years of
+programming experience ({\small $\pm$} 4, ranging from 3 to 20 years)
+and 16 out of the 20 participants reported professional experience with an average of 4.7 years ({\small $\pm$}
+3.7, ranging from 1 to 15 years).
+
+
+
+\subsection{Procedures}
+\label{cp3:procedures}
+
+
+
+Each experimental session lasted no more than two hours; this length
+of time was selected based on three pilot sessions.
+We describe the final experimental set-up, referring to
+changes made based on the pilot sessions.
+
+
+
+Each session began with a short tutorial explaining the
+experiment's purpose and describing how to use a provided tool (in
+the form of a browser extension) to
+highlight text relevant to a given task.
+The concept of relevance was left to a participant's judgment as any
+definition or explanation could introduce bias.
+Each participant was able to practice use of the
+tool on an example that was separate from the experimental tasks and
+artifacts. We added this description of the tool and ability to 
+practice with the tool after the first two pilot sessions. 
+
+
+Participants worked on the assigned tasks in a given order and were
+not required to complete all tasks.
+We randomized the order of presentation of each task across
+participants while also balancing the order of tasks~\cite{wohlin2012},
+such that every task was first seen by an equal number of participants. 
+Participants took as much time as they needed to complete a task.
+
+
+For each task, a participant was presented with a description of the task in a PDF
+viewer. The description included links to the artifacts a participant
+was asked to consider as part of the task: when a link was followed,
+the artifact would appear in a browser window.
+A participant could choose to
+consider the artifacts in any order and was asked to highlight any
+text the participant considered relevant to complete the task.
+
+
+
+
+When the participant
+indicated completion of the task, a short questionnaire was
+provided, specific for the task, that gathered background
+information about a participant's knowledge related to the task
+and whether they had likely gained appropriate knowledge
+of how to complete the task. 
+As an example, Figure~\ref{fig:networking-questions} provides an 
+excerpt of the questionnaire presented for the \texttt{Networking} task.
+The questionnaire contains a five-level Likert scale~\cite{likert1932technique}
+for the familiarity and difficulty questions as well as likely solutions for the task. 
+
+
 \input{sections/cp3/questionnaire}
+
+
+Each session concluded with a debrief session where we discussed the
+correctness of every task,
+and also conducted a semi-structured
+interview that discussed how a participant reasoned about relevance
+and what features of the text, in their opinion, helped in deciding
+whether information in the text was relevant or not.
+To ensure that the session would finish in the allotted time,
+we shortened the debriefing and interview components 
+for participants who took longer in task completion
+(e.g., as when a participant finished 4 tasks near the allotted time)
+such that the study would not take longer than the stipulated 2 hours time period.
+Overall, 11 out of the 20 participants completed all the tasks.
+Table~\ref{tbl:corpus-stats} discriminates the number of participants who completed a task.
+
+
+
+
+\subsection{Summary of Procedures}
+
+
+We have described experimental procedures that allow us to inspect the 
+text that 20 participants deemed relevant to different kinds of artifacts 
+associated with six information-seeking tasks. 
+Figure~\ref{fig:task-highlights-heatmap} illustrates data gathered with this experiment. 
+It shows a portion of a task description used in the experiment (left-side) and
+provides an overview of highlights (right-side) selected by
+participants using the highlighting tool that we provided to them.
+
+
+
+% \medskip
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{cp3/heatmap}
+\caption{An example of a task description and a depiction of collected data, shown as a heatmap of text that participants highlighted as relevant to the task}
+\label{fig:task-highlights-heatmap}
+\end{figure}
+% \end{landscape}
+
+
+
+
+
+
+

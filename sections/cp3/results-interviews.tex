@@ -1,11 +1,151 @@
 
+\subsection{Interview Analysis}
+
+To understand how participants identified relevant text, we analyzed the participants'
+interview responses using a card-sorting approach~\cite{spencer2009sorting}.
+We created index cards containing the interview questions and the participants' responses.
+The cards were sorted into meaningful themes and then grouped into abstract categories.
+We refined themes over three iterations of the data.
+At each  iteration, we grouped cards containing responses on similar topics, analyzed the emerging theme, and evaluated
+whether there was a broader theme that incorporated two or more of the existing themes.
+To reduce individual bias, the first and second authors independently annotated a subset of the cards at every iteration.
+Disagreements occurred when more than one theme could apply to a sentence.
+The annotators discussed and resolved disagreements refining the set of themes in a subsequent iteration, where annotators had substantial agreement ($\kappa=0.82$).
 
 
-\subsection{Interviews}
-\label{cp3:interviews}
 
-To understand how participants identified relevant text, we asked them questions\footnote{Interview questions available in our replication package} about the strategies they used and the challenges they faced during the experimental tasks and analyzed their responses using a card-sorting approach~\cite{spencer2009sorting}.
+
+
+From participants' comments, we identified nine themes that we group under two major categories.
+Table~\ref{tbl:themes-categories} details observed categories, themes, and the number of participants who made a comment pertaining to that theme.
+We discuss results per category illustrating comments that best exemplify a theme (grey highlight).
+
+
+
+% This analysis led us to a final set of nine themes (Table~\ref{tbl:themes-categories}). We discuss these themes (grey highlights) grouping them under two major categories: \textit{Search strategies} and \textit{Search challenges}.
+
+
+
+
+
+
+
+\subsubsection{How do developers locate relevant information?}
+\label{cp3:search-strategies}
+
+Developers often use a mix of \hl{\textit{keyword-matching}} and \hl{\textit{skimming}}~\cite{Starke2009, Ko2006a} to find relevant information within an artifact. 
+Some participants said they use these search strategies for all types of artifacts, while others said they use knowledge of a document's structure to assist their searches (\hl{\textit{document-guided}}).
+
+
+% \pquote{}{P12} \medbreak
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{Definitively [my strategy] wasn't always the same. Going through a StackOverflow question, I would obviously read the first response. For API docs, keywords were the go to. Bug reports are hard. Comments are ordered chronologically and the first ones are sometimes not the most relevant ones}''---P12
+\end{quote}
+\end{footnotesize}
+
+
+Participants were also aware of the shortcomings of some artifact types and were less willingly to use faster but less accurate strategies like skimming or keyword-matching for these artifacts when the tasks were difficult. 
+In these cases, participants mentioned that they used a \hl{\textit{scrutnizing}} strategy:
+
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{I usually read every comment [in Stackoverflow]. Obviously, they are ranked, but, in general, every single comment could have something important}''---P11
+\end{quote}
+\end{footnotesize}
+    
+
+
+Regardless of strategy, participants mentioned using 
+implicit criteria to decide when to (not) read some text.
+Such implicit criteria often relate to information foraging theory and how an individual follows some \hl{\textit{information scent}} for judging the value, or cost of investigating some text according to available cues~\cite{Pirolli1999}, such as the presence of bullet-points, bold text, or the conciseness and readablilty of the text.
+
+
+
+\subsubsection{What challenges do developers face while searching for relevant information?}
+\label{cp3:search-challenges}
+
+
+Participants also commented on factors that made assessing the relevancy of text difficult.
+The most common challenge was \hl{\textit{missing information}} that other participants deemed relevant.
+
+
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{This [highlight] is a valid alternative if you don't want to use the conflicts [method]. I basically didn't see this because of how I was searching}''---P2
+\end{quote}
+\end{footnotesize}
+
+
+
+
+We consider missing relevant information as a major threat to task completion because it can lead to an incomplete or incorrect solution~\cite{Murphy2005};
+usually, participants missed information due to their workflows, as \textit{P15} explains:
+
+
+
+
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{It's hard to say that I would have picked [those highlights] without being directed to that. I believe that I knew that there were specific questions coming, but even if I was doing it for myself, I would probably skim first and then, when I start to code, it would be a natural thing to get back and dive into the details}''---P15
+\end{quote}
+\end{footnotesize}
+
+
+
+Participants also missed information due to text \hl{\textit{verbosity}}. 
+Bloated text makes it harder for developers to locate task-relevant information~\cite{Robillard2011} and is more cognitively demanding to read:
+
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{When I looked at the API documentation, there was too much text. I was mentally exhausted just looking at it}''---P6
+\end{quote}
+\end{footnotesize}
+
+
+Participants noted that their \hl{\textit{familiarity}} with the task domain also affected how they located relevant information in the text.
+
+
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{The easiest one was the one about ORM/JDBC [databases] because I was so familiar with these technologies}''---P02
+\end{quote}
+\end{footnotesize}
+
+
+
+
+Finally, when presented with \hl{\textit{ambiguous or contradictory}} information, participants had to spend time seeking out additional information to resolve the ambiguity.
+
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{I think it was in this one [highlight]. They said that \texttt{cmd} works in the same way as \texttt{Ctrl}, but I went with the one that says otherwise. [...] it was actually helpful to have two other highlights so I had a bit more reliance on the thing that was mentioned by more users.}''---P19
+\end{quote}
+\end{footnotesize}
+
+
+
+Our analysis on the participants' comments on their search strategies provide further insights into how developers forage for information in software development natural language artifacts. One of our key observations is that  developers use mixed strategies to locate task-relevant information. In doing so, developers often miss some information that might be relevant for task completion.
+
+
+\medskip
+\begin{bluequote}
+    \textit{Developers use mixed strategies to locate task-relevant information, often missing some information that might be relevant to complete a task completely and correctly.}
+\end{bluequote}
 
 
 \input{sections/cp3/tables/card-sorting-themes.tex}
-
