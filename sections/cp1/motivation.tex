@@ -26,7 +26,7 @@ and a developer that fails to locate all, or most, of the information needed
  
  To illustrate challenges in locating information useful for a task, let us consider an  Android mail client application\footnote{\url{https://github.com/k9mail/k-9}}.
  Figure~\ref{fig:android-notifications-task} shows a task---in the form of a GitHub issue\footnote{\url{https://github.com/k9mail/k-9/issues/1741}}---that indicates that the app notifications 
- are not working as expected in the Android 7.0 version. 
+ are not working as expected in Android 7.0. 
  
  \medskip
  \begin{figure}[h!]
@@ -41,8 +41,8 @@ and a developer that fails to locate all, or most, of the information needed
  A developer assigned to this issue might not be familiar with how Android notifications work and thus, they will need additional knowledge to understand and resolve the bug~\cite{ko2007, Li2013, sillito2006}. 
  More than often, this knowledge can be acquired from a developer's peers~\cite{singer2011}. 
  However, the fragmented and distributed nature of software development  
- may prevent the developer from accessing their peers~\cite{ko2007},
- what often makes  them seek online web resources for information 
+ may prevent the developer from accessing their peers~\cite{ko2007}.
+ Instead, they seek online web resources for information 
  that may assist them in completing the task-at-hand~\cite{Xia2017, rao2020}.
  
  
@@ -58,35 +58,164 @@ and a developer that fails to locate all, or most, of the information needed
  
  
  
- A common way to find software artifacts
- pertinent to the developer's task
- is through the usage of a web search engine~\cite{Brandt2009a, Li2013},
- what will eventually provide to the developer 
- a set of artifacts, such as the ones shown in 
- Figure~\ref{fig:android-search-results}, which the 
- developer will inspect in search for information 
- that will eventually explain how the Android notifications 
- work and why they are not being displayed properly. 
+A common way to find software artifacts
+pertinent to the developer's task
+is through the usage of a web search engine~\cite{Brandt2009a, Li2013}.
+Figure~\ref{fig:android-search-results}
+shows the artifacts resulting from a developer's search 
+about android notifications for the task in Figure~\ref{fig:android-notifications-task}.
+We explain the information found in these artifacts as follows.
+
+
+
+
+A web tutorial is a document intended primarily to teach users how to use 
+a technology~\cite{arya2020}. 
+% A technology provider might 
+% provide a tutorial alongside standard API documentation or 
+% the developers who use that technology can write independent tutorials on their own~\cite{Jiang2016b,Jiang2017}. 
+As a learning resource, tutorials often contain a series of structure topics 
+that progressively explain concepts about a certain technology, 
+building up on early concepts and also providing code examples alongside text~\cite{Jiang2016b,Jiang2017}. 
+Figure~\ref{fig:android-create-notification} provides an example 
+of an official tutorial for the Android notifications. 
+This tutorial contains  approximately 200 sentences
+and on the page's right-hand side, we find that this tutorial
+has nine sections, each with sub-sections of their own. 
+Reading all sections of this document could potentially 
+take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} o a developer's time 
+and it is reasonable to assume that a 
+developer will skim the document and focus on 
+certain sections of the document~\cite{Li2013}, such as the `\textit{Notification actions}'
+section (under focus in the figure). 
+However, as an artifact produced for a large audience, 
+even within a section, not all the text might be relevant to 
+a developer. For example, the section shown in the figure explains 
+notifications for both Android version 7.0 and 12.0.
+Given that the developer's task is related to the former version,
+only the text highlighted (in orange)
+might be of relevance.
+
+
+\art{I'll have the figure here while I improve the text. Will worry about formatting later :)}
+
+
+% https://tex.stackexchange.com/questions/468393/including-large-images-in-landscape-formatting
+\begin{landscape}
+\begin{figure}
+    \centering
+    \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
+    \caption{Snapshot of the official Android notifications API overview}
+    \label{fig:android-create-notification}
+\end{figure}
+\end{landscape}
+
+
+\acf{API} define how  distinct pieces of software communicate~\cite{robillard2011field}, for example how the k-9 mail client software communicates 
+with the Android software. This communication happens via features and functionality exposed by the API~\cite{Robillard2015} 
+and instructions about its usage are often found in the API's references documentation.
+Figure~\ref{fig:android-notification-action} shows a snapshot for one of the classes of the Android API notification, namely `\textit{Notification.Action}'. 
+In the right-hand side of the figure, we find common parts of an
+API document, including a brief summary of the API,
+constants and fields available, the API's constructor, and 
+each of the functions, or methods, that the API provides,  
+for a total of 35 distinct elements available in the class.
+A developer unfamiliar with the notification actions would have to 
+inspect many of these elements before finding the ones relevant to
+their task. Additionally, complex APIs 
+such as the Android API require combining several classes
+and method calls~\cite{robillard2011field} so that they find how to properly display the quick actions menu, 
+what would require the developer to inspect at least three different and 
+equally lengthy classes.
+
+
+% \footnote{\url{https://github.com/k9mail/k-9/pull/1755}}
+
+% PendingIntent
+% NotificationContent
+% NotificationContent
+
+
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/notification-action.png}
+    \caption{Snapshot of the official Android notifications API overview}
+    \label{fig:android-notification-action}
+\end{figure}
+
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/action-builder.png}
+%     \caption{Snapshot of the official Android notifications API overview}
+%     % \label{fig:android-notification-action}
+% \end{figure}
+
+
+% a tutorial covers several topics, out of which only some
+%  might be of relevance to a developer's task. 
+% However, even within a  
+
+
+
+%  Reading all of its content would take approximately 
+
+
+
+ 
+%  However, finding information useful to the developer's task 
+%   in these and other 
+%  pertinent artifacts can be a time-consuming
+%  and cognitively frustrating process~\cite{Begel2008,
+%  robillard2011field}.
+%  First, an artifact such as the web tutorial retrieved in the developer's search 
+%  and detailed in Figure~\ref{fig:android-create-notification}
+%  might contain legacy information, boilerplate text, or sections 
+%  intended for a target audience other than the developer reading it (e.g., novice programmers)~\cite{Robillard2015}.
+%  This artifact contains nine distinct sections and a total of approximately 200 sentences.
+%  Reading all of its content would take approximately 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time~\cite{endrikat2014, Meyer2017} when only a portion of the text 
+%  might be relevant to the quick actions issue. For example, 
+%  Figure~\ref{fig:android-create-notification} shows
+%  that the Android notifications tutorial 
+%  has information about both the
+
+
+
+
+    
+    
+
+
+
+% what will eventually provide to the developer 
+% a set of artifacts, such as the ones shown in 
+% Figure~\ref{fig:android-search-results}, which the 
+% developer will inspect in search for information 
+% that will eventually explain how the Android notifications 
+% work and why they are not being displayed properly. 
  
  
  
  
- However, finding information useful to the developer's task 
-  in these and other 
- pertinent artifacts can be a time-consuming
- and cognitively frustrating process~\cite{Begel2008,
- robillard2011field}.
- First, an artifact such as the web tutorial retrieved in the developer's search 
- and detailed in Figure~\ref{fig:android-create-notification}
- might contain legacy information, boilerplate text, or sections 
- intended for a target audience other than the developer reading it (e.g., novice programmers)~\cite{Robillard2015}.
- This artifact contains nine distinct sections and a total of approximately 200 sentences.
- Reading all of its content would take approximately 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time~\cite{endrikat2014, Meyer2017} when only a portion of the text 
- might be relevant to the quick actions issue. For example, 
- Figure~\ref{fig:android-create-notification} shows
- that the Android notifications tutorial 
- has information about both the Android versions 7.0 and 12.0 and, given that the developer's task is related to the former version, only the text highlighted (in orange)
- might be of relevance.
+%  However, finding information useful to the developer's task 
+%   in these and other 
+%  pertinent artifacts can be a time-consuming
+%  and cognitively frustrating process~\cite{Begel2008,
+%  robillard2011field}.
+%  First, an artifact such as the web tutorial retrieved in the developer's search 
+%  and detailed in Figure~\ref{fig:android-create-notification}
+%  might contain legacy information, boilerplate text, or sections 
+%  intended for a target audience other than the developer reading it (e.g., novice programmers)~\cite{Robillard2015}.
+%  This artifact contains nine distinct sections and a total of approximately 200 sentences.
+%  Reading all of its content would take approximately 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time~\cite{endrikat2014, Meyer2017} when only a portion of the text 
+%  might be relevant to the quick actions issue. For example, 
+%  Figure~\ref{fig:android-create-notification} shows
+%  that the Android notifications tutorial 
+%  has information about both the Android versions 7.0 and 12.0 and, given that the developer's task is related to the former version, only the text highlighted (in orange)
+%  might be of relevance.
  
  
  
@@ -123,31 +252,31 @@ and a developer that fails to locate all, or most, of the information needed
  to automatically identify text that might be relevant to a given task in these answers. 
  
  
- 
- % https://tex.stackexchange.com/questions/468393/including-large-images-in-landscape-formatting
- \begin{landscape}
- \begin{figure}
-     \centering
-     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
-     \caption{Snapshot of the official Android notifications API overview}
-     \label{fig:android-create-notification}
- \end{figure}
- \end{landscape}
-     
- 
- 
- 
+
+% https://tex.stackexchange.com/questions/468393/including-large-images-in-landscape-formatting
+\begin{landscape}
+\begin{figure}
+    \centering
+    \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
+    \caption{Snapshot of the official Android notifications API overview}
+    \label{fig:android-create-notification}
+\end{figure}
+\end{landscape}
+    
+
  
  
- \begin{landscape}
- \begin{figure}
-     \centering
-     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/notifications-relevance-2.pdf}
-     \caption{Relevant text for the Android notifications task found across different kinds of artifacts, i.e., an API document (on the left) and a question-and-answer web page (on the right)}
-     \label{fig:anatomy-of-relevant-text}
- \end{figure}
- \end{landscape}
  
+
+\begin{landscape}
+\begin{figure}
+    \centering
+    \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/notifications-relevance-2.pdf}
+    \caption{Relevant text for the Android notifications task found across different kinds of artifacts, i.e., an API document (on the left) and a question-and-answer web page (on the right)}
+    \label{fig:anatomy-of-relevant-text}
+\end{figure}
+\end{landscape}
+
  
  
  
