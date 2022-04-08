@@ -1,15 +1,16 @@
 
 
 When performing software tasks in large and complex software systems, software developers typically consult several different kinds of artifacts that assist them in their work~\cite{Starke2009, Meyer2017}. For example, 
-when incorporating a new API library needed for a new feature, a developer might consult official API documents and guidelines~\cite{robillard2011field, umarji2008archetypal} or 
- question-and-answer forums for functionality, security and performance-related topics~\cite{parnin2012, silva2019}.
+when incorporating a new software library needed for a new feature, a developer might consult official API documents and guidelines for the library~\cite{robillard2011field, umarji2008archetypal} or 
+ question-and-answer developer forums for functionality, security and performance-related topics~\cite{parnin2012, silva2019}.
 
 
 
-Much critical information in this and other non-source code types of artifacts 
-contain data in the form of unstructured text~\cite{Bavota2016} and 
-a developer must read the text to find the information that is \textit{relevant} to the task being performed.
-However, the sheer amount of information \textit{within} these natural language artifacts may prevent a developer from comprehensively assessing what is useful to their task~\cite{Murphy2005}. Just within one kind of document, API
+The artifacts consulted
+contain unstructured text~\cite{Bavota2016}---we refer to artifacts with unstructured text as natural language artifacts---and 
+a developer must read the text to find the information that is \textit{relevant} to the task being performed. 
+The sheer amount of information \textit{within} these natural language artifacts may prevent a developer from comprehensively assessing what is useful to their task~\cite{Murphy2005}.
+ Just within one kind of document, API
 documentation, studies have shown that it can take 15 minutes or more
 of a developer's highly constrained time to identify 
 information needed to perform a particular software task~\cite{endrikat2014, Meyer2017}
@@ -51,7 +52,7 @@ and a developer that fails to locate all, or most, of the information needed
  
  \begin{figure}
      \centering
-     \includegraphics[width=.75\textwidth]{cp1/search-results.pdf}
+     \includegraphics[width=.80\textwidth]{cp1/search-results.pdf}
      \caption{Search results showing artifacts of potential interest to the Android quick actions issue}
      \label{fig:android-search-results}
  \end{figure}
@@ -64,12 +65,26 @@ is through the usage of a web search engine~\cite{Brandt2009a, Li2013}.
 Figure~\ref{fig:android-search-results}
 shows the artifacts resulting from a developer's search 
 about android notifications for the task in Figure~\ref{fig:android-notifications-task}.
-We explain the information found in these artifacts as follows.
+We explain the information found in these artifacts
+and challenges associated with locating 
+task-relevant text within them as follows.
 
 
 
 % https://tex.stackexchange.com/questions/339026/how-to-make-the-text-float-around-figures-in-landscape-mode
 % https://tex.stackexchange.com/questions/468393/including-large-images-in-landscape-formatting
+
+
+\afterpage{
+\begin{landscape}
+\begin{figure}
+    \centering
+    \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
+    \caption{Snapshot of the official Android notifications tutorial}
+    \label{fig:android-create-notification}
+\end{figure}
+\end{landscape}
+}
 
 A web tutorial is a document intended primarily to teach users how to use 
 a technology~\cite{arya2020}. 
@@ -82,61 +97,51 @@ Figure~\ref{fig:android-create-notification} provides an example
 of an official tutorial for the Android notifications. 
 This tutorial contains  approximately 200 sentences
 and on the page's right-hand side, we find that this tutorial
-has nine sections, each with sub-sections of their own. \afterpage{%
-\begin{landscape}
-\begin{figure}
-    \centering
-    \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
-    \caption{Snapshot of the official Android notifications tutorial}
-    \label{fig:android-create-notification}
-\end{figure}
-\end{landscape}
-} Reading all sections of this document could potentially 
-take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} o a developer's time 
-and it is reasonable to assume that a 
-developer will try to find the sections of the document
-most close to their task~\cite{Li2013}, 
-but even if a refined search is used to assist the developer 
-in finding more specific content, the developer still faces challenges.
-For example, using a keyword search provided by a browser, 
-the there are eight different matches for the `\textit{actions}' keyword,
-which are spread across at least four different sections 
-and even with a section that matches a keyword, 
+has nine sections, each with sub-sections of their own. 
+Reading all sections of this document could potentially 
+take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time 
+and, to save time, a developer would likely try to find the sections of the document
+most closely related to their task~\cite{Li2013}, but not without challenges.
+For example, using a keyword search mechanism to find content within this web tutorial 
+that mentions the `\textit{actions}' keyword, 
+a developer would find eight different matches spread across four different sections
+and even with a matching section, 
 such as the `\textit{Notification actions}'
-section (under focus in the figure), 
+ (under focus in the figure), 
 not all the text might be relevant to 
 a developer.
-For example, 
-the section shown in the figure explains 
+That is, 
+the section explains 
 notifications for both Android version 7.0 and 12.0, what is expected from an artifact produced for a large audience
-that may have different information needs.
-Given that the developer's task is related to the former version,
+that may have different information needs, but given that the developer's task is related to the former version,
 only the text highlighted (in orange)
-might be of relevance.
+might be of relevance to the task in Figure~\ref{fig:android-notifications-task}.
 
 
 
 
 
-An \acf{API} defines how  distinct pieces of software communicate~\cite{robillard2011field}.
-For example, how the k-9 mail client software communicates 
+
+An \acf{API} defines how  two software libraries communicate~\cite{robillard2011field}.
+For example, how the mail client software communicates 
 with the native Android software. This communication happens via features and functionality exposed by the API~\cite{Robillard2015} 
 and instructions about its usage are often found in the API's references documentation.
-Figure~\ref{fig:android-notification-action} shows a snapshot for one of the classes of the Android API notification, namely `\textit{Notification.Action}'. 
-In the right-hand side of the figure, we find common parts of an
-API document, including a brief summary of the API,
+Figure~\ref{fig:android-notification-action} shows part of the reference documentation for one of the classes of the Android API, namely `\textit{Notification.Action}'. 
+In the right-hand side of the figure, we find common 
+information in this type of document, including a brief summary,
 constants and fields available, the class' constructor, and 
 each of the functions, or methods, that this particular class provides,  
-for a total of 35 distinct elements available in the class.
-A developer unfamiliar with the notification actions would have to 
-inspect many of these elements before finding the ones relevant to
-their task. In this type of artifact, in addition to the same problems described in the web tutorial,
+for a total of 35 distinct elements.
+To find the portions of the text relevant to
+their task,
+a developer unfamiliar with this document would 
+face challenges similar to the ones  described in the web tutorial. Additionally, 
 we note that complex APIs, 
 such as Android, require combining several classes
-and method calls~\cite{robillard2011field} to properly perform some instruction.
-To understand all the API elements in the code associated with the quick actions menu,
-the developer would have to inspect at least three other classes 
-with complex documentation.
+and method calls~\cite{robillard2011field} to properly perform some instruction,
+what would mean inspecting at least three other classes 
+with equally complex documentation
+to understand all the Android API elements used in the quick actions menu.
 
 
 
@@ -154,30 +159,29 @@ with complex documentation.
 
 The third artifact resulting from the developer's search 
 about android notifications (Figure~\ref{fig:android-search-results})
-is a post in a \acf{qa} web portal, Stack Overflow\footnote{\url{https://stackoverflow.com/}}.
+is a post in a \acf{qa} web portal, namely Stack Overflow\footnote{\url{https://stackoverflow.com/}}.
 Figure~\ref{fig:qa-notification-icon} shows an example of the information found in this type of artifact.
-A question typically contains both text and code sniptes
-as well as a set og tags  about the
+A question usually contains both text and code sniptes
+and it includes a set of tags  about the
 problem's programming language and technology~\cite{Treude2011a}. 
-Each answer follows a similar format with textual explanation and code snippets; 
+Each answer contains similar content; 
 the counter that appears on left of a question and of each answer
-represents whether other uses found them useful (or not).
+represents whether other users found them helpful (or not).
 The user who asked the question can also accept an answer (green check mark)
-if it correctly solved their problem.
-Finally, the platform also provides a set of similar or related questions on the lists 
+if it correctly solved their problem
+and we find a list of similar or related questions 
 at the right portion of the page. 
-For this type of artifact, a developer can read the problem and 
-find the accepted answer to quickly find information that might be helpful 
-to their task and, although this post has a single answer,
-information available on the platform is often not as clean. 
+For this type of artifact, a developer would ideally read the problem and 
+then a accepted answer to quickly find information that might be helpful 
+to their task, but a series of factors make finding useful information challenging. 
 For example, only half of the Android questions on Stack Overflow
 have an accepted answer~\cite{parnin2012} 
-and millions of questions on the platform have more than one answer~\cite{nadi2020}.
-Furthermore, technologies evolve and answers become obsolote~\cite{Allamanis2013}, 
-and while the platform's 
-meta-data (i.e., votes and accepted answers) might still assist a developer
-in their search, they would have to inspect the artifact's content to find 
-the text that is relevant to the task at hand. 
+and millions of questions have more than one answer~\cite{nadi2020}.
+Technologies also evolve and answers become obsolote~\cite{Allamanis2013}.
+Hence, despite the fact that structured data (i.e., votes and accepted answers) might 
+assist a developer
+in their search, finding task-relevant text in this type of artifact is also not 
+trivial.
 
 
 
@@ -191,14 +195,12 @@ the text that is relevant to the task at hand.
 
 
 
-        
- 
+At this point, it is clear that if no tool support is provided, much of the process of navigating through a natural language artifact and  locating text 
+relevant to a task falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995} and, given how quickly developers progress to use new kinds of technology to
+record pertinent information, the challenges we outlined are not exclusive 
+to the three types of artifact in Figure~\ref{fig:android-search-results}, rather 
+they are common to many kinds of natural language software artifacts.
 
-Given how quickly developers progress to use new kinds of technology to
-record pertinent information (e.g., slack~\cite{Storey2017, Lin2016})
-and how artifacts are produced and updated on a daily basis~\cite{watson2022, Rastkar2013t}, 
-this scenario illustrates thus some of the challenges in locating task-relevant textual
- information across different types of artifacts.
 
 
 
