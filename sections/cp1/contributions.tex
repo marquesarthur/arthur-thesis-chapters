@@ -10,24 +10,21 @@ This thesis makes the following contributions to the field of software engineeri
 
 \begin{itemize}
 
-    \item It details a formative study that characterizes how task-relevant text appears across a variety of natural language artifacts, including  API documentation, Q\&A websites, and
+    \item It details a formative study that characterizes task-relevant text across a variety of natural language artifacts, including  API documentation, Q\&A websites, and
     bug reports that are pertinent to six software tasks; 
 
     \item It introduces six possible techniques that buil upon approaches that interpret the meaning, or semantics, of text
     to automatically identify task-relevant text across different kinds of software artifacts, where:
 
-    \begin{itemize}
-        
-        \item we report how accurately these techniques identify text that human annotators considered relevant to natural language artifacts associated with Android development tasks; and
+    % \begin{itemize}
+    %     \item we report how accurately these techniques identify text that human annotators considered relevant to natural language artifacts associated with Android development tasks; and
 
-        \item we show that semantic approaches have accuracy comparable to a state-of-the-art approach
-        tailored to one kind of artifact~\cite{Xu2017}, i.e., Stack Overflow.
-    \end{itemize}
-
-
+    \item It shows how the most promising semantic-based approaches that we have explored have accuracy comparable to a state-of-the-art approach
+    tailored to one kind of artifact~\cite{Xu2017}, i.e., Stack Overflow.
+    % \end{itemize}
 
     \item It presents an empirical experiment that provides initial evidence on how  
-    an automated approach to task-relevant text identification assists a software developer while they work on a task.
+    \acs{tool} assists a software developer while they work on a task. 
 \end{itemize}
 
 
@@ -60,16 +57,15 @@ This thesis makes the following contributions to the field of software engineeri
 
 % ---------------------------------------------------------------------------------------
 
-This work of dissertation also contributes with three different datasets ({\small \textit{DS}}) that can be used for replication purposes and future research in the field:
+This dissertation also contributes with three different datasets ({\small \textit{DS}}) that can be used for replication purposes and future research in the field:
     
 \begin{itemize}
-    \item \acs{DS-synthetic} provides a unique corpus of 20 natural language artifacts associated
-    with natural language artifacts that include annotations from 20 participants of text deemed relevant to 
-    the tasks in our study on characterizing task-relevant text;
+    \item \acs{DS-synthetic} provides a unique corpus of 20 natural language artifacts that include annotations from 20 participants of text deemed relevant to 
+    the six tasks in our study on characterizing task-relevant text;
     
-    \item \acs{DS-android} is a dataset with 50 Android tasks and associated text artifacts 
-    that we produced to evaluate the semantic-based techniques that we assess for the automatic identification of task-relevant text;
+    \item \acs{DS-android} is a dataset with 50 Android tasks     
+    and associated natural language artifacts 
+    with annotations from three developers of the text relevant to these tasks;
 
-    \item \acs{DS-python} is a by-product of our empirical evaluation on the impact of tools that automatically identify task-relevant text;
-    it contains three Python tasks and it includes annotations from 24 participants that indicated what text assisted them in writing each task's solution.
+    \item \acs{DS-python} contains three Python tasks and it includes annotations from 24 participants that indicated what text assisted them in writing each task's solution.
 \end{itemize}
