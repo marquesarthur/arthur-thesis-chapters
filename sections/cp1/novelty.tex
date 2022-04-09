@@ -1,2 +1,76 @@
 \section{State of the art}
 \label{cp1:novelty}
+
+
+Researchers have long recognized the value of 
+assisting developers in locating information in the natural language artifacts sought as part of a software task.
+They have proposed many tools and approaches 
+that combine \acf{IR}, \acf{NLP} and \acf{ML} techniques 
+to aid developers in locating the portion of the text that
+might be useful in these artifacts.
+The vast majority of which focus on specific activities
+(e.g., bug triaging~\cite{Chaparro2017} or learning about an API~\cite{Jiang2017}) and apply 
+only to certain kinds of artifact 
+(e.g., bug reports~\cite{Rastkar2010, Lotufo2012}, \acs{qa} web pages~\cite{Xu2017, silva2019}, or API documentation~\cite{fucci2019})
+often using 
+syntactic properties of the text, and an artifact's meta-data, to automatically identify what is relevant.
+
+
+
+As examples of techniques available in the literature, Nadi and Treude consider 
+that relevant information in \acs{qa} 
+web pages is often found in text with
+conditional clauses (i.e., sentences with the word `\textit{if}')~\cite{nadi2020}
+while Robillard and Chhetri assume that relevant 
+text in API documents mention a code element such as a class name or method signature~\cite{Robillard2015},
+where they use such assumptions 
+in techniques that identify this text automatically.
+These and many other techniques (e.g.,~\cite{chaparro2019, fucci2019}) would fail to automatically identify the relevant text for our running example
+(Figure~\ref{fig:android-notifications-task})
+the the rules used by these techniques pre-define relevance.
+This means that they always output the same set of sentences, 
+which might be helpful, 
+but do not take a developer's task into account, and that 
+relevance rules derived from one kind of artifact
+might not extend to a different type of artifact.
+
+
+
+
+Recognizing that relevance is often context-specific~\cite{Bavota2016}---information needs are associated with details of the task 
+or characteristics of the developer performing it~\cite{Robillard2015}---many other software engineering researchers 
+have proposed approaches (e.g.,~\cite{Ye2016, silva2019, Xu2017}) that 
+use the text within a software task 
+to automatically identify what is useful.
+For example, Xu et al. identify relevant text in Stack Overflow posts 
+based on how similar the text within an answer is with regards to a input query (i.e., task).
+Although this assists in the automatic identification of context-specific information, 
+the fact that this and other techniques~\cite{silva2019, Li2018}
+also use structural data limits their adoption. 
+For instance, within the same type of artifact, bug reports,
+vendors might store structured data differently (e.g., Jira vs GitHub),
+meaning that applying a technique 
+ out-of-the-box across different vendors is often not possible~\cite{Bavota2016}.
+Evidently, applying a technique that relies on 
+meta-data in a different kind of artifact that lacks such meta-data
+is also not possible~\cite{arnaoudova2015}.
+
+
+
+
+Our overview of the state of the art, further detailed in Chapter~\ref{ch:related-work},
+evidences limitations of existing techniques for
+assisting developers in locating useful text across different kinds of artifacts.
+In summary:
+
+\begin{enumerate}
+    \item it shows the need to investigate rules for the relevance of text 
+    considering how such text is found across different types of artifacts;
+    \item it shows the need for context-specific approaches; and 
+    \item it asks how to relax limitations of existing
+    artifact-specific approaches so that we can design 
+    more generalizable approaches for the automatic identification
+    of text relevant to a developer's task.
+\end{enumerate}
+
+

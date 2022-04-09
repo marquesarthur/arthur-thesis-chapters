@@ -67,7 +67,7 @@ shows the artifacts resulting from a developer's search
 about android notifications for the task in Figure~\ref{fig:android-notifications-task}.
 We explain the information found in these artifacts
 and challenges associated with locating 
-task-relevant text within them as follows.
+task-relevant text  as follows.
 
 
 
@@ -80,8 +80,8 @@ task-relevant text within them as follows.
 \begin{figure}
     \centering
     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
-    \caption{Snapshot of the official Android notifications tutorial}
-    \label{fig:android-create-notification}
+    \caption{Snapshot of the official Android notifications tutorial  with text highlights relevant to the GitHub issue \#1741}
+    \label{fig:tutorial-create-notification}
 \end{figure}
 \end{landscape}
 }
@@ -91,12 +91,12 @@ a technology~\cite{arya2020}.
 % A technology provider might 
 % provide a tutorial alongside standard API documentation or 
 % the developers who use that technology can write independent tutorials on their own~\cite{Jiang2016b,Jiang2017}. 
-As a learning resource, tutorials often contain a series of structure topics 
+As a learning resource written for a large audience, tutorials often contain a series of structure topics 
 that progressively explain concepts about a certain technology~\cite{Jiang2016b, Jiang2017}. 
-Figure~\ref{fig:android-create-notification} provides an example 
+Figure~\ref{fig:tutorial-create-notification} provides an example 
 of an official tutorial for the Android notifications. 
 This tutorial contains  approximately 200 sentences
-and on the page's right-hand side, we find that this tutorial
+and, on the page's right-hand side, we find that this tutorial
 has nine sections, each with sub-sections of their own. 
 Reading all sections of this document could potentially 
 take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time 
@@ -105,19 +105,19 @@ most closely related to their task~\cite{Li2013}, but not without challenges.
 For example, using a keyword search mechanism to find content within this web tutorial 
 that mentions the `\textit{actions}' keyword, 
 a developer would find eight different matches spread across four different sections
-and even with a matching section, 
+and even within a matching section, 
 such as the `\textit{Notification actions}'
  (under focus in the figure), 
 not all the text might be relevant to 
-a developer.
-That is, 
+a developer, e.g.,
 the section explains 
-notifications for both Android version 7.0 and 12.0, what is expected from an artifact produced for a large audience
-that may have different information needs, but given that the developer's task is related to the former version,
+notifications for both Android version 7.0 and 12.0, 
+ but given that the developer's task is related to the former version,
 only the text highlighted (in orange)
 might be of relevance to the task in Figure~\ref{fig:android-notifications-task}.
 
-
+% what is expected from an artifact produced for a large audience
+% that may have different information needs,
 
 
 
@@ -126,22 +126,22 @@ An \acf{API} defines how  two software libraries communicate~\cite{robillard2011
 For example, how the mail client software communicates 
 with the native Android software. This communication happens via features and functionality exposed by the API~\cite{Robillard2015} 
 and instructions about its usage are often found in the API's references documentation.
-Figure~\ref{fig:android-notification-action} shows part of the reference documentation for one of the classes of the Android API, namely `\textit{Notification.Action}'. 
+Figure~\ref{fig:api-notification-action} shows part of the reference documentation for one of the classes of the Android API, namely `\textit{Notification.Action}'. 
 In the right-hand side of the figure, we find common 
-information in this type of document, including a brief summary,
-constants and fields available, the class' constructor, and 
+information in this type of artifact, including a brief summary,
+constants and fields available, the class's constructor, and 
 each of the functions, or methods, that this particular class provides,  
 for a total of 35 distinct elements.
 To find the portions of the text relevant to
 their task,
 a developer unfamiliar with this document would 
-face challenges similar to the ones  described in the web tutorial. Additionally, 
+face challenges similar to the ones  described in the web tutorial artifact. Additionally, 
 we note that complex APIs, 
 such as Android, require combining several classes
 and method calls~\cite{robillard2011field} to properly perform some instruction,
 what would mean inspecting at least three other classes 
 with equally complex documentation
-to understand all the Android API elements used in the quick actions menu.
+to understand all the Android API elements used in the quick actions menu\footnote{\url{https://github.com/k9mail/k-9/pull/1755/files}}.
 
 
 
@@ -150,26 +150,26 @@ to understand all the Android API elements used in the quick actions menu.
 \begin{figure}
     \centering
     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/notification-action.png}
-    \caption{Snapshot of the Android Notification.Action API reference documentation}
-    \label{fig:android-notification-action}
+    \caption{Snapshot of the Android Notification.Action API reference documentation with text highlights relevant to the GitHub issue \#1741}
+    \label{fig:api-notification-action}
 \end{figure}
 
 
 
 
 The third artifact resulting from the developer's search 
-about android notifications (Figure~\ref{fig:android-search-results})
-is a post in a \acf{qa} web portal, namely Stack Overflow\footnote{\url{https://stackoverflow.com/}}.
+about android notifications in Figure~\ref{fig:android-search-results}
+is a post in a \acf{qa} web page from Stack Overflow\footnote{\url{https://stackoverflow.com/}}.
 Figure~\ref{fig:qa-notification-icon} shows an example of the information found in this type of artifact.
 A question usually contains both text and code sniptes
 and it includes a set of tags  about the
 problem's programming language and technology~\cite{Treude2011a}. 
-Each answer contains similar content; 
+Each answer contains similar content and 
 the counter that appears on left of a question and of each answer
-represents whether other users found them helpful (or not).
+represents how many other users found them helpful (or not).
 The user who asked the question can also accept an answer (green check mark)
-if it correctly solved their problem
-and we find a list of similar or related questions 
+if it correctly solved their problem.
+We also find a list of similar or related questions 
 at the right portion of the page. 
 For this type of artifact, a developer would ideally read the problem and 
 then a accepted answer to quickly find information that might be helpful 
@@ -189,14 +189,14 @@ trivial.
 \begin{figure}
     \centering
     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/stackoverflow-notifications.png}
-    \caption{Snapshot of a Stack Overflow question about Android notifications}
+    \caption{Snapshot of a Stack Overflow question about Android notifications  with text highlights relevant to the GitHub issue \#1741}
     \label{fig:qa-notification-icon}
 \end{figure}
 
 
 
-At this point, it is clear that if no tool support is provided, much of the process of navigating through a natural language artifact and  locating text 
-relevant to a task falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995} and, given how quickly developers progress to use new kinds of technology to
+According to the discussion above, it is clear that if no tool support is provided, much of the process of locating text 
+relevant to a task in a natural language artifact falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995} and given how quickly developers progress to use new kinds of technology to
 record pertinent information, the challenges we outlined are not exclusive 
 to the three types of artifact in Figure~\ref{fig:android-search-results}, rather 
 they are common to many kinds of natural language software artifacts.
@@ -204,7 +204,6 @@ they are common to many kinds of natural language software artifacts.
 
 
 
- \clearpage
  
  
  
@@ -221,23 +220,7 @@ they are common to many kinds of natural language software artifacts.
  
  
  
-%  Researchers have long recognized the value of 
-%   assisting developers in locating information in the natural language artifacts sought as part of a software task,
-%  proposing many tools and approaches 
-%  that combine \acf{IR}, \acf{NLP} and \acf{ML} techniques to identify potentially useful text in certain kinds of artifacts. 
-%  For example, Nadi and Treude consider 
-%  that relevant information in \acs{qa} 
-%  web pages are often found in text with
-%  conditional clauses (i.e., sentences with the word `\textit{if}')~\cite{nadi2020}
-%  while Robillard and Chhetri assume that relevant 
-%  text in API documents mention a code element such as a class name or method signature~\cite{Robillard2015}; they use such assumptions 
-%  in techniques that identify this text automatically.
-%  As other examples, both Xu et al.~\cite{Xu2017} 
-%  and Silva et al.~\cite{silva2019} use 
-%  meta-data available on each of the answers in a Stack Overflow post 
-%  as a proxy for relevant information.
-%  That is, they use the number of votes an answer has or the checkmark indicating if an answer is the correct one, both shown in Figure~\ref{fig:anatomy-of-relevant-text}, 
-%  to automatically identify text that might be relevant to a given task in these answers. 
+
  
  
 
@@ -247,7 +230,7 @@ they are common to many kinds of natural language software artifacts.
 %     \centering
 %     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
 %     \caption{Snapshot of the official Android notifications API overview}
-%     \label{fig:android-create-notification}
+%     \label{fig:tutorial-create-notification}
 % \end{figure}
 % \end{landscape}
     
