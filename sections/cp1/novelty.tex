@@ -5,15 +5,16 @@
 Researchers have long recognized the value of 
 assisting developers in locating information in the natural language artifacts sought as part of a software task.
 They have proposed many tools and approaches 
-that combine \acf{IR}, \acf{NLP} and \acf{ML} techniques 
+that combine \acf{IR}, \acf{NLP} and \acf{ML} techniques,
+often using  syntactic properties of the text, and an artifact's meta-data,
 to aid developers in locating the portion of the text that
 might be useful within these artifacts.
-The vast majority of which focus on specific activities
-(e.g., bug triaging~\cite{Chaparro2017} or learning about an API~\cite{Jiang2017}) and apply 
-only to certain kinds of artifact 
-(e.g., bug reports~\cite{Rastkar2010, Lotufo2012}, \acs{qa} web pages~\cite{Xu2017, silva2019}, or API documentation~\cite{fucci2019})
-often using 
-syntactic properties of the text, and an artifact's meta-data, to automatically identify what is relevant.
+
+
+
+% The majority of these approaches focus on specific activities (e.g., bug triaging~\cite{Chaparro2017} or learning about an API~\cite{Jiang2017}) and apply 
+% only to certain kinds of artifact, such as bug reports~\cite{Rastkar2010, Lotufo2012}, \acs{qa} web pages~\cite{Xu2017, silva2019}, or API documentation~\cite{fucci2019}.
+% In the paragraphs that follow, we detail how these approaches  to automatically identify what is relevant.
 
 
 
@@ -25,43 +26,43 @@ while Robillard and Chhetri assume that relevant
 text in API documents mention a code element such as a class name or method signature~\cite{Robillard2015},
 where they use such assumptions 
 in techniques that identify this text automatically.
-These and many other techniques (e.g.,~\cite{chaparro2019, fucci2019}) would fail to automatically identify the relevant text for our running example
-(Figure~\ref{fig:android-notifications-task})
-because these techniques have pre-define rules of determining relevance.
-This means that 
-relevance rules for identifying text in one kind of artifact
-might not extend to a different types of artifact
-and that these techniques always output the same set of sentences, 
-which might be helpful, 
-but do not take a developer's task into account.
+These pre-define rules would fail to identify the relevant text for our running example
+(Figure~\ref{fig:android-notifications-task}).
+Meaning that these techniques would always output the same set of sentences, 
+which might be helpful, but do not take a developer's task into account
+and that the syntactic properties used for identifying text in one kind of artifact
+might not extend to a different type of artifact.
+
+% for determining relevant text in these 
+% and other techniques~\cite{chaparro2019, fucci2019}
 
 
 
 
-Recognizing that relevance is often context-specific~\cite{Bavota2016} (information needs are associated with details of the task 
-or characteristics of the developer performing it~\cite{Robillard2015}) many other software engineering researchers 
-have proposed approaches (e.g.,~\cite{Ye2016, silva2019, Xu2017}) that 
-use the text within a software task 
-to automatically identify what is useful.
+Recognizing that relevance is often context-specific~\cite{Bavota2016}, i.e., information needs are associated with details of the task 
+or characteristics of the developer performing it~\cite{Robillard2015}, many other software engineering researchers 
+have proposed approaches that 
+automatically identify what is useful to some input query~\cite{Ye2016, silva2019, Xu2017}.
 For example, Xu et al. identify relevant text in Stack Overflow posts 
-based on how similar the text within an answer is with regards to a input query (i.e., task).
+based on how similar the text within an answer is with regards to a input task (i.e., query).
 Although this assists in the automatic identification of context-specific information, 
-the fact that this and other techniques~\cite{silva2019, Li2018}
-also use structural data limits their adoption. 
-For instance, within the same type of artifact, bug reports,
-vendors might store structured data differently (e.g., Jira vs GitHub),
-meaning that applying a technique 
- out-of-the-box across different vendors is not without challenges~\cite{Bavota2016}.
-Evidently, applying a technique that relies on 
-meta-data in a different kind of artifact that lacks such meta-data
-is also not possible~\cite{arnaoudova2015}.
+the use of structural data by this and other techniques~\cite{silva2019, Li2018}
+limits their adoption since it is evidently
+not possible to apply such techniques
+across different artifact types that lack such meta-data~\cite{Bavota2016, arnaoudova2015}.
+% . 
+% For instance, within the same type of artifact, bug reports,
+% vendors might store data differently (e.g., Jira vs GitHub)
+% and this might hinder  out-of-the-box 
+% usage of these techniques~\cite{Bavota2016};
+  
 
 
 
 
 % Our overview of the state of the art, further detailed in Chapter~\ref{ch:related-work},
-The discussion above  evidences limitations of existing techniques for
-assisting developers in locating useful text across different kinds of artifacts.
+The discussion above  evidences limitations of existing techniques 
+in assisting developers in locating useful text across different kinds of artifacts.
 In summary:
 
 \begin{enumerate}

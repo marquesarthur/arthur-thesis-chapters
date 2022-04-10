@@ -80,19 +80,19 @@ task-relevant text  as follows.
 \begin{figure}
     \centering
     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
-    \caption{Snapshot of the official Android notifications tutorial  with text highlights relevant to the GitHub issue \#1741}
+    \caption{Snapshot of the official Android notifications tutorial  with highlights relevant to the GitHub issue \#1741}
     \label{fig:tutorial-create-notification}
 \end{figure}
 \end{landscape}
 }
 
 A web tutorial is a document intended primarily to teach users how to use 
-a technology~\cite{arya2020}. 
+a technology~\cite{arya2020}, where  
 % A technology provider might 
 % provide a tutorial alongside standard API documentation or 
 % the developers who use that technology can write independent tutorials on their own~\cite{Jiang2016b,Jiang2017}. 
-As a learning resource written for a large audience, tutorials often contain a series of structure topics 
-that progressively explain concepts about a certain technology~\cite{Jiang2016b, Jiang2017}. 
+a tutorial typically contains a series of structure topics 
+that progressively explain concepts about a technology~\cite{Jiang2016b, Jiang2017}. 
 Figure~\ref{fig:tutorial-create-notification} provides an example 
 of an official tutorial for the Android notifications. 
 This tutorial contains  approximately 200 sentences
@@ -102,14 +102,13 @@ Reading all sections of this document could potentially
 take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time 
 and, to save time, a developer would likely try to find the sections of the document
 most closely related to their task~\cite{Li2013}, but not without challenges.
-For example, using a keyword search mechanism to find content within this web tutorial 
-that mentions the `\textit{actions}' keyword, 
+For example, using a web browser's search to find content that mentions the `\textit{actions}' keyword, 
 a developer would find eight different matches spread across four different sections
 and even within a matching section, 
 such as the `\textit{Notification actions}'
  (under focus in the figure), 
 not all the text might be relevant to 
-a developer, e.g.,
+the developer, e.g.,
 the section explains 
 notifications for both Android version 7.0 and 12.0, 
  but given that the developer's task is related to the former version,
@@ -125,12 +124,12 @@ might be of relevance to the task in Figure~\ref{fig:android-notifications-task}
 An \acf{API} defines how  two software libraries communicate~\cite{robillard2011field}.
 For example, how the mail client software communicates 
 with the native Android software. This communication happens via features and functionality exposed by the API~\cite{Robillard2015} 
-and instructions about its usage are often found in the API's references documentation.
+and instructions about its usage are often found in the API's reference documentation.
 Figure~\ref{fig:api-notification-action} shows part of the reference documentation for one of the classes of the Android API, namely `\textit{Notification.Action}'. 
 In the right-hand side of the figure, we find common 
 information in this type of artifact, including a brief summary,
 constants and fields available, the class's constructor, and 
-each of the functions, or methods, that this particular class provides,  
+each of the functions or methods that this particular class provides,  
 for a total of 35 distinct elements.
 To find the portions of the text relevant to
 their task,
@@ -150,7 +149,7 @@ to understand all the Android API elements used in the quick actions menu\footno
 \begin{figure}
     \centering
     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/notification-action.png}
-    \caption{Snapshot of the Android Notification.Action API reference documentation with text highlights relevant to the GitHub issue \#1741}
+    \caption{Snapshot of the Android Notification.Action API reference documentation with highlights relevant to the GitHub issue \#1741}
     \label{fig:api-notification-action}
 \end{figure}
 
@@ -158,12 +157,12 @@ to understand all the Android API elements used in the quick actions menu\footno
 
 
 The third artifact resulting from the developer's search 
-about android notifications in Figure~\ref{fig:android-search-results}
-is a post in a \acf{qa} web page from Stack Overflow\footnote{\url{https://stackoverflow.com/}}.
+about android notifications 
+is a post in a \acf{qa} web page, Stack Overflow\footnote{\url{https://stackoverflow.com/}}.
 Figure~\ref{fig:qa-notification-icon} shows an example of the information found in this type of artifact.
 A question usually contains both text and code sniptes
 and it includes a set of tags  about the
-problem's programming language and technology~\cite{Treude2011a}. 
+problem's programming language or technology~\cite{Treude2011a}. 
 Each answer contains similar content and 
 the counter that appears on left of a question and of each answer
 represents how many other users found them helpful (or not).
@@ -171,16 +170,16 @@ The user who asked the question can also accept an answer (green check mark)
 if it correctly solved their problem.
 We also find a list of similar or related questions 
 at the right portion of the page. 
-For this type of artifact, a developer would ideally read the problem and 
-then a accepted answer to quickly find information that might be helpful 
-to their task, but a series of factors make finding useful information challenging. 
-For example, only half of the Android questions on Stack Overflow
+This more structured format often assist a developer 
+in navigating through the content of type of artifact~\cite{nadi2020}, for example, a developer could read the problem and 
+then the accepted answer to quickly find information that might be helpful 
+to their task. Nonetheless, a series of factors make finding useful information challenging. 
+For instance, only half of the Android questions on Stack Overflow
 have an accepted answer~\cite{parnin2012} 
 and millions of questions have more than one answer~\cite{nadi2020}.
 Technologies also evolve and answers become obsolote~\cite{Allamanis2013}.
 Hence, despite the fact that structured data (i.e., votes and accepted answers) might 
-assist a developer
-in their search, finding task-relevant text in this type of artifact is also not 
+assist a developer, finding task-relevant text in this type of artifact is also not 
 trivial.
 
 
@@ -189,7 +188,7 @@ trivial.
 \begin{figure}
     \centering
     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/stackoverflow-notifications.png}
-    \caption{Snapshot of a Stack Overflow question about Android notifications  with text highlights relevant to the GitHub issue \#1741}
+    \caption{Snapshot of a Stack Overflow question about Android notifications  with highlights relevant to the GitHub issue \#1741}
     \label{fig:qa-notification-icon}
 \end{figure}
 
@@ -199,7 +198,7 @@ According to the discussion above, it is clear that if no tool support is provid
 relevant to a task in a natural language artifact falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995} and given how quickly developers progress to use new kinds of technology to
 record pertinent information, the challenges we outlined are not exclusive 
 to the three types of artifact in Figure~\ref{fig:android-search-results}, rather 
-they are common to many kinds of natural language software artifacts.
+they are common to many kinds of natural language software artifacts~\cite{Li2013, Starke2009}.
 
 
 
