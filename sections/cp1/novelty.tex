@@ -6,7 +6,7 @@ Researchers have long recognized the value of
 assisting developers in locating information in the natural language artifacts sought as part of a software task.
 They have proposed many tools and approaches 
 that combine \acf{IR}, \acf{NLP} and \acf{ML} techniques,
-often using  syntactic properties of the text, and an artifact's meta-data,
+often using  syntactic properties of the text and an artifact's meta-data
 to aid developers in locating the portion of the text that
 might be useful within these artifacts.
 
@@ -18,50 +18,64 @@ might be useful within these artifacts.
 
 
 
-As examples of techniques available in the literature, Nadi and Treude consider 
+As examples of techniques available in the literature, Nadi and Treude hypothesize 
 that relevant information in \acs{qa} 
 web pages is often found in text with
 conditional clauses (i.e., sentences with the word `\textit{if}')~\cite{nadi2020}
-while Robillard and Chhetri assume that relevant 
-text in API documents mention a code element such as a class name or method signature~\cite{Robillard2015},
-where they use such assumptions 
-in techniques that identify this text automatically.
-These pre-define rules would fail to identify the relevant text in the artifacts of our running example
+while Robillard and Chhetri, that relevant 
+text in API documents includes a code element such as a class name or method signature~\cite{Robillard2015}.
+Both of these hypotheses are 
+represented through 
+sets of syntactic rules 
+used to automatically
+identify relevant text in certain types of artifacts,
+but these pre-define rules would fail to identify much of the relevant text in the artifacts of our running example
 (Figure~\ref{fig:android-notifications-task})
-both because these syntactic rules 
-do not take a developer's task into account 
-and because these rules were derived from one type of artifact,
-implying that there are no guarantees that 
-they extend to the different types of artifact
-that a developer might use.
+since part of the relevant text in these artifacts 
+neither mentions code elements 
+nor contains conditional clauses.
+While certainly valuable, 
+it is difficult to use 
+syntactic rules 
+derived from one type of artifact
+to automatically identify relevant text 
+in the different types of artifact
+sought by a developer~\cite{Bavota2016}.
 
-% for determining relevant text in these 
-% and other techniques~\cite{chaparro2019, fucci2019}
+
+% 
+% and because these rules
 
 
+A second challenge of techniques that 
+determine relevant text using syntactic rules is that 
+these techniques do not take  a developer's task into account~\cite{Robillard2015}, which means that applying such 
+techniques to an artifact would always identify 
+the same set of sentences as relevant 
+regardless of the fact that relevance is often context-specific~\cite{Bavota2016}, i.e., information needs are associated with details of the task 
+or characteristics of the developer performing it~\cite{Robillard2015}.
 
 
-Recognizing that relevance is often context-specific~\cite{Bavota2016}, i.e., information needs are associated with details of the task 
-or characteristics of the developer performing it~\cite{Robillard2015}, many other software engineering researchers 
+To identify context-specific information, 
+many other software engineering researchers 
 have proposed approaches that 
-automatically identify information based on a specific context~\cite{Ye2016, silva2019, Xu2017}.
+automatically identify text based on an input task~\cite{Ye2016, silva2019, Xu2017}.
 For example, Xu et al. identify relevant text in Stack Overflow posts 
-based on how similar the text within an answer is with regards to a input query, which represents the developer's programming task.
+based on how similar the text within an answer is with regards to a input query representing the developer's programming task.
 Although this assists in the automatic identification of context-specific information, 
 the use of structural data by this and other techniques~\cite{silva2019, Li2018}
-limits their adoption since it is evidently
-not possible to apply such techniques
-across different types of artifact  that lack such meta-data~\cite{Bavota2016, arnaoudova2015}.
+limits their applicability to other kinds of artifact  that lack such meta-data~\cite{Bavota2016, arnaoudova2015}.
+For example, Xu et al.'s approach
+applies only to one out of the three artifacts 
+from the developer's search 
+about android notifications (Figure~\ref{fig:android-search-results}).
+
 % The usage of structural data might also exclude identifying relevant information found 
 % in other parts of an artifact. 
-For example, Xu et al.'s approach
-only applies to one out of the three artifacts 
-from the developer's search 
-about android notifications (Figure~\ref{fig:android-search-results})
-and for the artifact that it applies to, i.e., the Stack Overflow post in Figure~\ref{fig:qa-notification-icon}, 
-the approach would not identify relevant text in answers other than the accepted answer,
-what further illustrates some of the drawbacks on the usage of meta-data 
-to guide the automatic identification of task-relevant text.
+% and for the artifact that it applies to, i.e., the Stack Overflow post in Figure~\ref{fig:qa-notification-icon}, 
+% the approach would not identify relevant text in answers other than the accepted answer,
+% what further illustrates some of the drawbacks on the usage of meta-data 
+% to guide the automatic identification of task-relevant text.
 
 
 % . 
@@ -75,13 +89,13 @@ to guide the automatic identification of task-relevant text.
 
 
 % Our overview of the state of the art, further detailed in Chapter~\ref{ch:related-work},
-The discussion above  evidences limitations of existing techniques 
+This overview of the state of the art, further discussed in Chapter~\ref{ch:related-work}, evidences limitations of existing techniques 
 in assisting developers in locating useful text across different kinds of artifacts.
 In summary:
 
 \begin{enumerate}
     \item it shows the need to investigate rules for the relevance of text 
-    considering how such text is found across different types of artifacts;
+    considering how such text appears across different types of artifacts;
     \item it shows the need for context-specific approaches; and 
     \item it asks how to relax limitations of existing
     artifact-specific approaches so that we can design 
