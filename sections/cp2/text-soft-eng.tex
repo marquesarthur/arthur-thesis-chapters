@@ -11,11 +11,160 @@ Software engineering researchers
 have investigated several questions on the nature of the text in software artifacts.
 These studies 
 have focused on different kinds of artifacts and have deepen
- researchers' knowledge on the richness of information in natural language artifacts,
- serving as a first step towards the design of automatic tools 
+ researchers' knowledge on the type of information available in them,
+ which is often a first step towards the design of automatic tools 
 for identifying and extracting text from these artifacts~\cite{Arya2019, Maalej2013}.
+In this section, we outline a categorization of research in this field, presenting 
+seminal studies for each category.
 
 
+
+\paragraph{\textbf{Syntactic rules.}} A significant body of work has 
+focused on the syntactic analysis of the natural language text 
+in software artifacts. An early example
+is Ko and colleagues analysis of bug report titles~\cite{Ko2006}
+where they identify regularities in the text of nearly 200,000 bug report titles,
+discussing how such regularities can 
+assist in the automatic identification 
+of information in bug reports. 
+Since this early study, many other researchers have 
+observed other regularities in 
+the body of bug reports~\cite{Rastkar2010, Chaparro2016}
+and also in other types of artifacts, such as 
+when Robillard  and Chhetri inspected 1,000 API elements in the Java SDK 6 
+reference documentation~\cite{Maalej2013} or when 
+Nadi and Treude examined 20 \acs{qa} posts 
+for text that might assist developers in 
+locating useful information.
+
+
+These studies have focused on the analysis of 
+text in a single type of artifact  
+while this thesis investigates 
+text across different artifact types.
+
+
+
+
+
+
+\paragraph{\textbf{Structured data.}} Several other studies have 
+investigated structured data, or meta-data, available in
+natural language software artifacts~\cite{Ponzanelli2015}. In Section~\ref{cp1:example},
+we have presented an example of structured data in a Stack Overflow post, 
+i.e., the number of votes an answer has and whether it is the accepted answer.
+Among other examples, we mention 
+code blocks in API documentation or web tutorials 
+and also stack traces or bug statuses fields in bug tracking systems~\cite{Breu2010}. 
+
+
+Meta-data in these and other natural language artifacts has been 
+the focus of many studies. For example, 
+Bettenburg et al. have shown that meta-data linking duplicated bug reports 
+can be used to find complementary 
+information that assists a developer in understanding a bug~\cite{bettenburg2008}
+while Treude and Robillard have shown that using the information of accepted 
+answers from Stack Overflow post 
+can augment API documentation~\cite{Treude2016}.
+While certainly helpful, 
+meta-data can also lead to erroneous information 
+(e.g., an accepted answer on Stack Overflow 
+might not be the correct answer~\cite{wang2018}) 
+or incomplete information 
+(e.g., valuable information exists in elements not associated with any meta-data~\cite{zhang2019so}).
+
+
+In this thesis, we explore the impact of meta-data for the identification 
+of text relevant to Android tasks in Stack Overflow posts (Chapter~\ref{ch:identifying}).
+
+
+
+
+
+% can be used to filter irrelevant information~\cite{Xu2017, delfim2016}.
+% Although meta-data is certainly useful, 
+% other researchers have also discussed 
+% that useful information might appear in parts 
+% of an artifact which are not associated with 
+
+
+% as when Zhang and colleagues 
+% found that comments in Stack Overflow 
+% often 
+
+% ~\cite{zhang2019so}
+
+
+
+
+
+% and researchers have explored how to identify these entities 
+% and untangle them from the natural language text in a software artifact~\cite{moonen2001, bacchelli2011}.
+
+
+% and several researchers have applied such technique
+% to identify portions of an artifact with unstructured text~\cite{bacchelli2011, Ponzanelli2015, rigby2013}.
+
+
+
+
+
+% At times, software engineering researchers have argued that 
+% the analysis of software artifacts cannot treat 
+% them as pure textual entities, rather they 
+% contain heterogeneous data such as natural language 
+% text, code blocks, stack traces, and other fields 
+% that assist developers in understanding 
+% the information within a natural language artifact.
+
+
+
+
+
+
+
+
+% Maalej and Robillard have inspected the Java SDK 6 and .NET 4.0. API documentation~\cite{Maalej2013}
+% and proposed a set of categories (e.g., directives, purpose, rationale, functionality, etc.) that define how 
+% knowledge is structured in API documentation. 
+% This taxonomy led Robillard and Chhetri 
+% to find that directives---or pieces of information that the programmers
+% cannot afford to ignore, such as instructions on how to efficiently
+% perform some I/O operation---often 
+% follow certain linguistic patterns~\cite{Robillard2015},
+% what made they produce a catalog of patterns that capture directives found in the 
+% Java SDK 6 documentation.
+
+
+
+% Rastkar et al. observe that much of the text in a bug report resembles a 
+% conversation between different subjects~\cite{Rastkar2013} 
+% while Arya et al. argue that due to this conversational nature, 
+% a single bug report contains several threads each 
+% pertaining to some topic, e.g., 
+% reproducing a bug, discussing potential solutions, 
+% testing, or reporting progress~\cite{Arya2019}. 
+% Although the topicality of the content in bug reports 
+% might encourage the design of tools that automatically identify such
+% text, researchers have also found high variance in the text of different 
+% issues within a software project~\cite{Chaparro2016},
+% what poses significant challenges to approaches that 
+% gather information from multiple bug reports.
+
+
+
+% Although the studies described above shed light on many 
+% aspects of natural language text in software artifacts, 
+% they do not discuss common properties of the text 
+% that is relevant to some software task
+% found in different kinds of artifacts.
+% In Chapter~\ref{ch:characterizing}
+% we study text in API documentation, bug reports, and community forums that is considered relevant to a software task.
+
+
+
+
+\paragraph{\textbf{Semantic meaning.}}
 
 
 A significant body of work has 
@@ -30,44 +179,6 @@ often contain expressions in the form suggestions
 (e.g., `\textit{we should add a new button}') while solution proposals 
 are often expressed in the form of attempts (e.g., `\textit{let's try a new method to compute cost}').
 
-
-
-Maalej and Robillard have inspected the Java SDK 6 and .NET 4.0. API documentation~\cite{Maalej2013}
-and proposed a set of categories (e.g., directives, purpose, rationale, functionality, etc.) that define how 
-knowledge is structured in API documentation. 
-This taxonomy led Robillard and Chhetri 
-to find that directives---or pieces of information that the programmers
-cannot afford to ignore, such as instructions on how to efficiently
-perform some I/O operation---often 
-follow certain linguistic patterns~\cite{Robillard2015},
-what made they produce a catalog of patterns that capture directives found in the 
-Java SDK 6 documentation.
-
-
-
-Rastkar et al. observe that much of the text in a bug report resembles a 
-conversation between different subjects~\cite{Rastkar2013} 
-while Arya et al. argue that due to this conversational nature, 
-a single bug report contains several threads each 
-pertaining to some topic, e.g., 
-reproducing a bug, discussing potential solutions, 
-testing, or reporting progress~\cite{Arya2019}. 
-Although the topicality of the content in bug reports 
-might encourage the design of tools that automatically identify such
-text, researchers have also found high variance in the text of different 
-issues within a software project~\cite{Chaparro2016},
-what poses significant challenges to approaches that 
-gather information from multiple bug reports.
-
-
-
-Although the studies described above shed light on many 
-aspects of natural language text in software artifacts, 
-they do not discuss common properties of the text 
-that is relevant to some software task
-found in different kinds of artifacts.
-In Chapter~\ref{ch:characterizing}
-we study text in API documentation, bug reports, and community forums that is considered relevant to a software task.
 
 
 % A number of studies~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a} has focused on general aspects on the organization and structure of 
