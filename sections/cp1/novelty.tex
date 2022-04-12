@@ -28,19 +28,18 @@ Both of these hypotheses are
 represented through 
 sets of syntactic rules 
 used to automatically
-identify relevant text in certain types of artifacts,
-but these pre-define rules would fail to identify much of the relevant text in the artifacts of our running example
-(Figure~\ref{fig:android-notifications-task})
-since part of the relevant text in these artifacts 
+identify relevant text in \acs{qa} web pages and API documentation, respectively.
+However, these pre-define rules would fail to identify much of the relevant text in the artifacts of our running example
+% (Figure~\ref{fig:android-notifications-task})
+because part of the relevant text in these artifacts 
 neither mentions code elements 
-nor contains conditional clauses.
+nor contains conditional clauses (e.g., as in a sentence in Figure~\ref{fig:tutorial-create-notification} detailing updates in Android 7.0).
 While certainly valuable, 
 it is difficult to use 
 syntactic rules 
 derived from one type of artifact
 to automatically identify relevant text 
-in the different types of artifact
-sought by a developer~\cite{Bavota2016}.
+in other types of artifact~\cite{Bavota2016}.
 
 
 % 
@@ -52,7 +51,7 @@ determine relevant text using syntactic rules is that
 these techniques do not take  a developer's task into account~\cite{Robillard2015}, which means that applying such 
 techniques to an artifact would always identify 
 the same set of sentences as relevant 
-regardless of the fact that relevance is often context-specific~\cite{Bavota2016}, i.e., information needs are associated with details of the task 
+regardless of the fact that relevance is context-specific~\cite{Bavota2016}, i.e., information needs are associated with details of the task 
 or characteristics of the developer performing it~\cite{Robillard2015}.
 
 
@@ -61,14 +60,18 @@ many other software engineering researchers
 have proposed approaches that 
 automatically identify text based on an input task~\cite{Ye2016, silva2019, Xu2017}.
 For example, Xu et al. identify relevant text in Stack Overflow posts 
-based on how similar the text within an answer is with regards to a input query representing the developer's programming task.
+based on its similarity with regards to a input query representing the developer's programming task.
 Although this assists in the automatic identification of context-specific information, 
-the use of structural data by this and other techniques~\cite{silva2019, Li2018}
-limits their applicability to other kinds of artifact  that lack such meta-data~\cite{Bavota2016, arnaoudova2015}.
-For example, Xu et al.'s approach
-applies only to one out of the three artifacts 
-from the developer's search 
-about android notifications (Figure~\ref{fig:android-search-results}).
+this and other techniques~\cite{silva2019, Li2018}
+use of structural data to limit the portions of the artifact from which to identify 
+relevant text.
+For instance, they may only identify the text from an accepted answer or from 
+the answer with the most votes,  
+limiting their applicability to other kinds of artifact  that lack such meta-data~\cite{Bavota2016, arnaoudova2015}.
+% For example, Xu et al.'s approach
+% applies only to one out of the three artifacts 
+% from the developer's search 
+% about android notifications (Figure~\ref{fig:android-search-results}).
 
 % The usage of structural data might also exclude identifying relevant information found 
 % in other parts of an artifact. 
@@ -99,8 +102,9 @@ In summary:
     \item it shows the need for context-specific approaches; and 
     \item it asks how to relax limitations of existing
     artifact-specific approaches so that we can design 
-    more generalizable approaches for the automatic identification
-    of text relevant to a developer's task.
+    more generalizable approaches. 
+    % for the automatic identification
+    % of text relevant to a developer's task.
 \end{enumerate}
 
 

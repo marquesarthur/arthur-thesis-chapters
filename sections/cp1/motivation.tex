@@ -14,15 +14,15 @@ the sheer amount of information in these artifacts may prevent a developer from 
 Just within one kind of artifact, API
 documentation, studies have shown that it can take 15 minutes or more
 of a developer's highly constrained time to identify 
-information needed to perform a particular software task~\cite{endrikat2014, Meyer2017}. 
+information needed to perform certain task~\cite{endrikat2014, Meyer2017}. 
 A developer that fails to locate all, or most, of the information needed
 will have an incomplete or incorrect basis from which to perform a software task~\cite{Murphy2005}.
 
 
 
-Therefore, finding information that assists a developer to complete a task can be a time-consuming
+Finding information that assists a developer to complete a task can be a time-consuming
  and cognitively frustrating process~\cite{Begel2008,
- robillard2011field} and thus, we argue for the need for approaches that assist developers in locating information in the natural language artifacts sought  as part of a software task.
+ robillard2011field}. Therefore, we posit the need for approaches that assist developers in locating information in the different natural language artifacts sought  as part of a software task.
 
  
  
@@ -78,9 +78,10 @@ is through the usage of a web search engine~\cite{Brandt2009a, Li2013}.
 Figure~\ref{fig:android-search-results}
 shows the artifacts resulting from a developer's search 
 about android notifications for the task in Figure~\ref{fig:android-notifications-task}.
-We explain the information found in these artifacts
-and challenges associated with locating 
-task-relevant text  as follows.
+We explain the information found in the artifacts types 
+shown in the figure  (i.e., a web tutorial, and API document, and a 
+question-and-answer post) and challenges associated with locating 
+information useful to a task within them.
 
 
 
@@ -102,7 +103,7 @@ task-relevant text  as follows.
 The first artifact in Figure~\ref{fig:android-search-results}
 is a 
  web tutorial, a document intended primarily to teach users how to use 
-a technology~\cite{arya2020}, through a series of structure topics 
+a technology~\cite{arya2020} through a series of structure topics 
 that progressively explain concepts about the technology~\cite{Jiang2016b, Jiang2017}. 
 Figure~\ref{fig:tutorial-create-notification} 
 shows a portion of this artifact's content. 
@@ -111,16 +112,15 @@ and, on the page's right-hand side, we find that
 it
 has nine sections, each with sub-sections of their own. 
 Reading all sections of this document could potentially 
-take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time 
-and, to save time, a developer would likely try to find the sections of the document
+take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time.
+To save time, a developer would likely try to find the sections of the document
 most closely related to their task~\cite{Li2013}, but not without challenges.
 For example, using a web browser's search to find content that mentions the `\textit{actions}' keyword, 
 a developer would find eight different matches spread across four different sections
 and even within a matching section, 
 such as the `\textit{Notification actions}'
  (under focus in the figure), 
-not all the text might be relevant to 
-the developer.
+not all the text might of relevance.
 For instance,
 the section explains 
 notifications for both Android version 7.0 and 12.0, 
@@ -134,10 +134,10 @@ might be of relevance to the task in Figure~\ref{fig:android-notifications-task}
 
 
 
-An \acf{API} defines how  two software libraries communicate~\cite{robillard2011field}.,
+An \acf{API} defines how  two software libraries communicate~\cite{robillard2011field},
 such as how the mail client software communicates 
 with the native Android software. This communication happens via features and functionality exposed by the API~\cite{Robillard2015} 
-and instructions about its usage are often found in the API's reference documentation.
+and instructions about its usage are typically available in the API's reference documentation.
 Figure~\ref{fig:api-notification-action} shows part of the reference documentation for one of the classes of the Android API, namely `\textit{Notification.Action}'. 
 In the right-hand side of the figure, we find common 
 information in this type of artifact, including a brief summary,
@@ -147,13 +147,13 @@ for a total of 35 distinct elements.
 To find the portions of the text relevant to
 their task,
 a developer unfamiliar with this document would 
-face challenges similar to the ones  described in the web tutorial. Additionally, 
+face challenges similar to the ones already  described in the web tutorial. Additionally, 
 we note that complex APIs, 
 such as Android, require combining several classes
 and method calls~\cite{robillard2011field} to properly perform some instruction,
 what would mean inspecting at least three other classes 
 with equally complex documentation
-to understand all the Android API elements used in the quick actions menu\footnote{\url{https://github.com/k9mail/k-9/pull/1755/files}}.
+to find all the text explaining the API elements used in the quick actions menu\footnote{\url{https://github.com/k9mail/k-9/pull/1755/files}}.
 
 
 
@@ -173,7 +173,7 @@ The third artifact resulting from the developer's search
 about android notifications 
 is a post in a \acf{qa} web platform, Stack Overflow\footnote{\url{https://stackoverflow.com/}}.
 Figure~\ref{fig:qa-notification-icon} shows an example of the information found in this type of artifact.
-A question usually contains both text and code sniptes
+A question usually contains both text and code snippets
 and it includes a set of tags  about the
 problem's programming language or technology~\cite{Treude2011a}. 
 Each answer contains similar content and 
@@ -191,10 +191,11 @@ For instance, only half of the Android questions on Stack Overflow
 have an accepted answer~\cite{parnin2012} 
 and millions of questions have more than one answer~\cite{nadi2020}.
 Technologies also evolve and answers become obsolote~\cite{Allamanis2013}.
-Hence, despite the fact that structured data (i.e., votes and accepted answers) might 
+Hence, despite the fact that structured data  might 
 assist a developer, finding task-relevant text in this type of artifact is also not 
 trivial.
 
+% (i.e., votes and accepted answers)
 
 
 
@@ -208,7 +209,7 @@ trivial.
 
 
 At this point, it is clear that if no tool support is provided, much of the process of locating text 
-relevant to a task in a natural language artifact falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995} and given how quickly developers progress to use new kinds of technology to
+relevant to a task in a natural language artifact falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995} and, given how quickly developers progress to use new kinds of technology to
 record pertinent information, the aforementioned challenges are not exclusive 
 to the three types of artifact that we have discussed, rather 
 they are common to many kinds of natural language software artifacts~\cite{Li2013, Starke2009}.
