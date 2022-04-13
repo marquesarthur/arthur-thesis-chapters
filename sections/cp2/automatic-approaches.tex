@@ -3,7 +3,7 @@
 
 
 
-Information useful to a software task can be buried in irrelevant text or attached to 
+Information useful to a software task can be buried in  
 non-intuitive blocks of text, making it difficult to discover~\cite{Robillard2015}.
 In this section, we detail tools and approaches from related work
 that seek to assist developers in 
@@ -11,6 +11,7 @@ identifying information within the natural language
 text of software artifacts.
 
 
+\art{Question to Gail: how do I convince that this is a comprehensive survey?}
 
 
 
@@ -22,9 +23,11 @@ Pattern matching approaches rely on regular expressions describing a sequence of
  a relevant text fragment~\cite{Bavota2016}. Tokens can either represent words or linguistic elements 
 extracted using \acf{NLP}.
     
-    
-As examples  of pattern matching approaches,  {\small DeMIBuD}~\cite{Chaparro2017}
- and Knowledge Recommender (Krec)~\cite{Maalej2013, Robillard2015} are tools that detect relevant sentences in bug reports and API documentation, respectively. 
+
+Knowledge Recommender (Krec)~\cite{Robillard2015} 
+and {\small DeMIBuD}~\cite{Chaparro2017} are examples 
+of tools that use words and linguistic patterns to 
+detect relevant sentences in bug reports and API documentation, respectively. 
 These tools use a set of patterns derived from annotated data to identify relevant text. Krec  uses  361 unique patterns
 to 
 detect relevant sentences mentioning a 
@@ -36,19 +39,22 @@ which are essential to bug triaging tasks.
 
 
 
-In Stack Overflow posts,
-Nadi and Treude~\cite{nadi2020} have both applied the original set of patterns from Krec~\cite{Robillard2015} 
-and proposed heuristics that use conditional clauses (i.e., sentences with the word `\textit{if}')
-to identify text that help a developer 
-decide whether they want to carefully inspect a Stack Overflow posts or skip it. 
+% In Stack Overflow posts,
+% Nadi and Treude have both applied the original set of patterns from Krec~\cite{Robillard2015} 
+% and proposed heuristics that use conditional clauses (i.e., sentences with the word `\textit{if}')
+% to identify text that help a developer 
+% decide whether they want to carefully inspect a Stack Overflow posts or skip it. 
 
 
 
-Although the heuristics and regular expressions used in the aforementioned studies 
+Although the heuristics and regular expressions used in these and other studies (e.g.,~\cite{nadi2020})
 are often light-weight and effective~\cite{Bavota2016, Maalej2013}, 
 pattern matching approaches are specific to certain kinds of domain and 
 types of artifact~\cite{fucci2019}, what limits
-using them in a general manner.
+using them in a general manner. 
+Our approach to automatically identify task-relevant text 
+is different from these studies because it does not use syntactic properties of the text, 
+instead we use semantic-based approaches to determine text of relevance to a task (Chapter~\ref{ch:identifying}).
 
 
 
@@ -61,45 +67,19 @@ using them in a general manner.
 
 Extractive text summarization techniques are used in natural language artifacts in software engineering to
 produce a summary of the artifact's content. 
-A summary represents key information that may help a developer complete their task~\cite{Bavota2016}.
-There are summarization techniques based on both supervised and unsupervised learning~\cite{moreno2017}
-and one can summarize the entire content of an artifact
-or content specific to a input query, as in \textit{query-based} summarization~\cite{Huang2018, Goldsteinet1999}.
+Although general summarization approaches summarize the entire content of an artifact, 
+query-based summarization~\cite{Goldsteinet1999} allows 
+producing a summary specific to a input query, which is a potential way to identify 
+text relevant to a developer's task. 
 
 
-
-
-A number of summarization approaches target bug reports and GitHub issues, largely
-focusing on identifying key information within these artifacts. 
-Rastkar and colleagues~\cite{Rastkar2010} use a supervised learning approach to summarize the content 
-of bug reports showing that conversational features used to summarize emails~\cite{Murray2008}
-can also be applied to bug reports while
-Lotufo et al.~\cite{Lotufo2012} proposed an unsupervised summarization approach 
-that automates the identification of sentences that a developer would first read when
-a inspecting bug report.
-
-
-
-While many summarization approaches
-largely rely on  lexical aspects in text, researchers have also made use
-of structured data available in software artifacts~\cite{Ponzanelli2015, Treude2016, chen2016}. 
-For example, Ponzanelli et al. 
-proposed a summarization approach
-that uses the number of votes an answer has on 
-Stack Overflow as a filter to the text in 
-the summary for a Stack Overflow post~\cite{Ponzanelli2015}. 
-As another example, DeepSum~\cite{Li2018} pre-processes a bug report dividing sentences 
-containing software elements, the reporter of the bug, and any other sentences 
-in the bug report to produce summaries containing more diverse information.
-
-
-
-
-A smaller number of summarization approaches have focused on
+Even though most of the summarization approaches that apply to natural language artifacts 
+summarize an artifact on its whole~\cite{Rastkar2010, Murray2008, Lotufo2012, Ponzanelli2015},
+a small number of approaches have focused on
 producing task specific summaries~\cite{Xu2017, silva2019}.
 These approaches pose the problem of finding task-relevant text 
-as a query-based extractive summarization problem and
-tools such as AnswerBot~\cite{Xu2017}
+as a query-based summarization problem and
+state-of-the-art tools such as AnswerBot~\cite{Xu2017}
 identify relevant text in Stack Overflow posts 
 based on 
 the content of the text, how similar that content is with regards to a input query (i.e., task)
@@ -109,14 +89,13 @@ and the structured data available on each of the answers in a Stack Overflow pos
 
 
 Although we refrain from using structural data 
-or assumptions on the content of an artifact 
-because this might hinder the design of 
-an automatic approach that identifies text relevant to some 
-task in a more general manner, in 
+or assumptions on the content of an artifact (as done by AnswerBot)
+because this might hinder the design of a
+generalizable technique, in 
 Chapter~\ref{ch:identifying} 
-we compare
- the techniques that we explore in this thesis
- to  the state-of-the-art.
+we compare the techniques that we explore in this thesis
+ to  the state-of-the-art
+ in query-based extractive summarization. 
 
 
 
