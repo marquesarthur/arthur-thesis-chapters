@@ -20,15 +20,43 @@ In this chapter,
 we expand the discussion introduced in Section~\ref{cp1:example}
 on the natural language 
 artifacts sought by a developer  
-and the challenges that they might face. 
+and the challenges associated with finding information relevant to the developer's task
+within these natural language artifacts. 
 First, we provide 
 a categorization of studies that investigate 
-several aspects about natural language software artifacts 
+several aspects of natural language software artifacts 
 and how software developers make use of them (Section~\ref{cp2:text-in-se})
-and then, we outline automatic techniques that
+and then we outline automatic techniques that
 assist developers in finding information within these artifacts by 
 identifying text of interest 
 to a particular task (Section~\ref{cp2:automatic-approaches}).
+
+
+
+
+
+
+
+Most of the techniques that extract information from natural language software artifacts, including the work presented in this thesis, 
+are examples of applications that help developers in performing 
+software development activities~\cite{Meyer2017}. 
+Given how 
+natural language artifacts have become intrinsically
+tied to software development~\cite{liu2021, watson2022, umarji2008archetypal},
+in Section~\ref{cp2:dev-productivity}, 
+we discuss
+other applications that make use of textual data
+to guide developers
+across many of the tasks in their daily work~\cite{Treude2016,  robillard2017, silva2019}.
+
+
+
+
+
+\input{sections/cp2/text-soft-eng}
+\input{sections/cp2/automatic-approaches}
+\input{sections/cp2/assisting-developers}
+
 
 
 
@@ -60,26 +88,3 @@ to a particular task (Section~\ref{cp2:automatic-approaches}).
 % and design approaches that 
 % can be embedded in
 % tools that mine the textual data available to assist software developer performing some task~\cite{Holmes2008, Cubranic2005, Bavota2016}.
-
-
-
-
-Given how 
-natural language artifacts have become intrinsically
-tied to software development~\cite{liu2021, watson2022, umarji2008archetypal},
-most of the techniques that extract information from these artifacts, including the work presented in this thesis, 
-are examples of applications that help developers in performing 
-software development activities~\cite{Meyer2017}. 
-Other applications have exploited textual data
-to provide guidance to developers reading software documents~\cite{Treude2016,  robillard2017} 
-or  to  explain solutions for programming tasks~\cite{silva2019}.
-We discuss these and other applications in Section~\ref{cp2:dev-productivity}.
-
-
-% mcburney2014
-
-
-\input{sections/cp2/text-soft-eng}
-\input{sections/cp2/automatic-approaches}
-\input{sections/cp2/assisting-developers}
-

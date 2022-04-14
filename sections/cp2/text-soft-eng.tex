@@ -4,31 +4,28 @@
 
 
 
-% Natural language  software artifacts are produced and consumed on a continuous basis~\cite{Rastkar2013t}
-% and 
-
 Software engineering researchers
 have investigated several questions on the nature of the text in software artifacts.
-These studies 
-have focused on different kinds of artifacts and have deepen
- researchers' knowledge on the type of information available in them,
+These studies have focused on different kinds of artifacts and have deepened researchers' knowledge of the type of information available in them,
  which is often a first step towards the design of automated tools 
 for identifying and extracting text from these artifacts~\cite{Arya2019, Maalej2013}.
 In this section, we outline a categorization of research in this field, presenting 
 seminal studies for each category.
 
 
+\art{unsure if I need to have subsections here}
+
 \subsubsection{Textual Analysis} 
 
 A significant body of work has 
-focused on the syntactic analysis of the natural language text 
+focused on the \textit{syntactic analysis} of the natural language text 
 in software artifacts. An early example
-is Ko and colleagues analysis of bug report titles~\cite{Ko2006},
+is Ko and colleagues' analysis of bug report titles~\cite{Ko2006},
 where they identify regularities in the text of nearly 200,000 bug report titles,
 discussing how such regularities can 
 assist in the automatic identification 
 of information in bug reports. 
-Since this early study, many other researchers have 
+Following research procedures from this study, many other researchers have 
 observed other regularities both in bug reports~\cite{Rastkar2010, Chaparro2016}
 and also in other types of artifacts, such as 
 when Robillard  and Chhetri inspected 1,000 API elements in the Java SDK 6 
@@ -40,7 +37,7 @@ The syntactic analysis in these and other studies (e.g.,~\cite{chaparro2019} or~
 suggest that relevant information in the text  
 of the artifact types studied 
 might be identified through regular expressions or 
-linguistic patterns, as Section~\ref{cp2:pattern-matching} further details.
+linguistic patterns (see Section~\ref{cp2:pattern-matching}).
 Although certainly valuable, these studies have focused on the analysis of 
 text in a single type of artifact. In contrast, this thesis investigates 
 text relevant to a task across different artifact types.
@@ -49,31 +46,27 @@ text relevant to a task across different artifact types.
 
 
 
-
 \subsubsection{Structural Analysis}
 
 Several other studies have 
-investigated structured data, or meta-data, available in
+investigated structured data, or \textit{meta-data}, available in
 natural language software artifacts~\cite{Ponzanelli2015}. In Section~\ref{cp1:example},
 we have presented an example of structured data in a Stack Overflow post, 
 i.e., the number of votes an answer has and whether it is the accepted answer.
 Among other examples, we mention 
 code blocks in API documentation or web tutorials 
-and also stack traces or other fields included in a bug report~\cite{Davies2014, Breu2010}. 
+and also stack traces or other fields included in a bug report~\cite{Davies2014, Breu2010},
+which software engineering researchers have investigated to, for example, 
+extract complementary 
+information that assists a developer in understanding a bug report~\cite{bettenburg2008}.
 
 
-Software engineering researchers have shown that meta-data in natural language artifacts 
-is useful for different purposes. For example, 
-Bettenburg et al. have shown that meta-data linking duplicated bug reports 
-can be used to find complementary 
-information that assists a developer in understanding a bug~\cite{bettenburg2008}.
-Likewise,  Treude and Robillard have shown that meta-data from Stack Overflow post 
-helps finding information that assists in understanding API documentation~\cite{Treude2016}.
-Given its wide use, several other researchers have 
+Considering how several techniques and tools make use of meta-data, 
+researchers have also
 investigated the frequency with which
 meta-data is available~\cite{Davies2014, bettenburg2008makes, uddin2015} 
 as well as how often developers update it~\cite{ahmad2018, dig2006, shi2011}.
-This also led 
+Findings from these studies led 
 software engineering researchers to discuss the promises and perils of 
 using an artifact's meta-data~\cite{kalliamvakou2014, ahmad2018}.
 For example, an accepted answer on Stack Overflow 
@@ -81,13 +74,15 @@ might not be the correct answer~\cite{wang2018}
 and 
 valuable information exists in elements not
 associated with any meta-data~\cite{zhang2019so},
-as we have illustrated in 
-portions of the text highlighted in Figure~\ref{fig:qa-notification-icon}.
+which we discussed as part of our 
+scenario about finding information about Android notifications (Section~\ref{cp1:example}).
 
 
-In this thesis, we explore the impact of meta-data in the automatic identification 
-of task-relevant text in Stack Overflow posts 
-associated with Android tasks (Chapter~\ref{ch:identifying}).
+To better understand the impact of meta-data in finding information 
+relevant to a task, Chapter~\ref{ch:identifying} 
+examines how using (or not) meta-data available on 
+Stack Overflow affects the automatic identification 
+of task-relevant text.
 
 
 
@@ -97,9 +92,8 @@ associated with Android tasks (Chapter~\ref{ch:identifying}).
 
 Information within natural language artifacts 
 serve different purposes and several other studies have
- proposed taxonomies classifying the text in 
- development mailing lists~\cite{Sorbo2015, huang2018automating},
-API documents~\cite{Maalej2013}, bug reports~\cite{Arya2019}, and others.
+ proposed \textit{taxonomies} classifying the text 
+ different kinds of natural language software artifacts.
 For example, Di Sorbo et al. have found that 
 text in development mailing lists can be classified according to the developers' intentions (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015}.
 They have sampled 100 emails and identified that text for feature requests 
@@ -112,7 +106,7 @@ or Arya et al. analysis of information types in Open Source issues~\cite{Arya201
 
 
 
-The taxonomies or categorizations presented in these studies is often based
+The taxonomies or categorizations presented in these studies are often based
 on a need for access to the meaning of
 sentences in the natural language text~\cite{berners2001, calero2006, witte2007}.
 However, they originate from strenuous manual analysis 
@@ -120,240 +114,6 @@ of hundreds of artifacts and the information types identified
 might not extend to different kinds of artifacts.
 In Chapter~\ref{ch:characterizing}, 
 we use a general linguistic approach~\cite{fillmore1976frame} to
-examine the meaning of task-relevant text in 
+examine the meaning of the task-relevant text in 
 API documents, GitHub issues and Stack Overflow posts.
-
-
-
-% Nonetheless, 
-
-
-
-% and proposed a set of categories (e.g., directives, purpose, rationale, functionality, etc.) that define how 
-% knowledge is structured in API documentation. 
-
-
-
-
-% the \textit{meaning} of
-% sentences in the natural language text~\cite{DiSorbo2015, gu2015, Arya2019}.
-
-
-% A number of studies~\cite{Piorkowski2015, Piorkowski2016, chi2007, Ko2006a} has focused on general aspects on the organization and structure of 
-% software engineering artifacts and how these aspects affect how developers find text that assist them complete a software task~\cite{BenCharrada2016, Forward2002, Starke2009, DeGraaf2014}.
-
-
-
-
-% Among the many information foraging studies in software engineering,
-%  Forward and Lethbridge describe criteria that developers use to assess the relevance of software engineering documentation. They observe that the content of an artifact, the presence of examples, and the document's structure are common attributes that impact an artifact's relevance~\cite{Forward2002}.
-% In another study, Charrada and Mussato investigated how 
-% practitioners manage and search for software engineering documents, 
-% identifying that data scattered across different sources is 
-% often a significant challenge to the information foraging process.
-
-
-
-% When attempting to find artifacts pertinent to a task, 
-% Starke et al. explain that a software developer often makes a set of hypotheses about a software task,
-% translating these hypotheses into multiple search queries that will lead to  likely pertinent artifacts~\cite{Starke2009}. 
-% They observe that, instead of systematically inspecting search results,
-% developers often skim through them to decide which documents are of relevance. 
-% In other studies, Brandt et al. found that developers interleave web foraging, learning and writing code~\cite{Brandt2009a} while de Graaf and colleagues 
-% identified that prior knowledge about the structure of a software artifact helps professionals
-% to search software documents efficiently and effectively~\cite{DeGraaf2014}.
-
-
-% This thesis adds to the existing theory by discussing 
-% common properties in the text of an artifact which several software developers deemed relevant 
-% to certain software tasks.  
-
-
-
-
-
-
-
-
-
-
-% Standard \acf{IR} approaches locate pertinent artifacts
-% using metrics to compute the relevance of an artifact to a query posed manually by a developer.
-% \acs{IR} uses the terms shared between a search query and an artifact
-% to compute the relevance of an artifact (or document).
-% Search algorithms weight and compute relevance based on 
-% criteria such as how many documents contain a given term or  
-% how unique a term is~\cite{Manning2009IR}.
-
-
-
-% A number of the techniques commonly employed by software engineering researchers are based on the
-% frequency of co-occurrence of words (or phrases) in documents.
-% An early example is Maarek and Smadja's use of lexical relations to index
-% software libraries~\cite{maarek1989}.
-% Since this early use, software engineering
-% researchers have continued to leverage advances in
-% these approaches, such as when
-% Antoniol et al. applied \acf{VSM}~\cite{Salton1975vsm} 
-% to construct vector representations 
-% for recovering traceability links 
-% between code and documentation~\cite{antoniol1999, antoniol2000}
-% or when Marcus and Maletic used \acf{LSI}~\cite{deerwester1990LSI}
-% to help cluster software components to aid
-% program comprehension of a software system~\cite{marcus2003}.
-
-
-
-% While IR systems are widely used, researchers 
-% observed that developers often find it difficult to identify good search terms~\cite{Kevic2014, Huang2018},
-% what significantly impacts the retrieval of relevant documents~\cite{Kevic2014, mills2017}.
-% To mitigate  the necessity of a developer coming up with good search terms,
-% researchers have used information available in a task to automatically generate search terms~\cite{Kevic2014, Haiduc2013}. 
-% Although automatically generating search terms assist the retrieval of pertinent artifacts,
-% standard \acs{IR} algorithms will have 
-% little success if search terms 
-% differ significantly from the text in a software artifact~\cite{Huang2018}.
-% These so-called \textit{lexical mismatches}~\cite{Ye2016, silva2019} have led researchers to investigate 
-%  semantic-based \acs{IR} approaches, which we discuss in 
-% Section~\ref{cp2:artifact-semantics}.
-
-
-
-
-% % 
-
-
-% \subsection{Contextual Approaches} 
-
-
-% Contextual approaches use information 
-% about a developer's task so that 
-% they recommend artifacts pertinent to that task drawing data from some knowledge base.
-% % , for example, a tool might need to know what part of the system is a developer currently inspecting. 
-% Fishtail~\cite{Sawadsky2011}
-% is an example of a tool that uses contextual information. It uses the source code currently being inspected by a developer to find web resources relevant to the developer's task.
-
-
-
-% While the web is the most accessible knowledge base, certain contextual approaches consider that 
-% collection of artifacts produced and consumed in past software tasks 
-%  implicitly
-% form knowledge bases that might assist developers performing new tasks~\cite{Cubranic2005}. 
-% Hipikat~\cite{Cubranic2005} is a seminal tool that exemplifies this concept in action.
-% It automatically tracks the artifacts 
-% used by a developer as part of a development tasks
-% so that it can recommend these artifacts to 
-% any future developers who work on similar tasks~\cite{Cubranic2005}.
-% As another example, Deep Intellisense
-% finds code changes, filed bugs, and forum discussions 
-% mining these artifacts from an organization's shared database~\cite{Holmes2008}.
-
-
-
-
-
-
-
-
-
-
-% In the past decade, question-and-answer (\acs{qa}) web sites such as Stack Overflow\footnote{\url{https://stackoverflow.com/}}, have also
-% become a common knowledge source used by contextual approaches~\cite{Ponzanelli2013b, Ponzanelli2014b, Treude2016, delfim2016}.
-% For example, {\small PROMPTER} uses contextual information 
-% available in a developer's IDE to retrieve Stack Overflow discussions that might be pertinent 
-% to the developer's current task. Other tools such as {\small BIKER}~\cite{Huang2018} mine Stack Overflow posts to assist developers in locating API components needed in a programming tasks. 
-
-
-
-
-
-% This thesis assumes the usage of one or more techniques presented here to locate pertinent
-% artifacts from which task-relevant text will be extracted.
-
-
-
-
-
-
-
-
-% can be used to filter irrelevant information~\cite{Xu2017, delfim2016}.
-% Although meta-data is certainly useful, 
-% other researchers have also discussed 
-% that useful information might appear in parts 
-% of an artifact which are not associated with 
-
-
-% as when Zhang and colleagues 
-% found that comments in Stack Overflow 
-% often 
-
-% ~\cite{zhang2019so}
-
-
-
-
-
-% and researchers have explored how to identify these entities 
-% and untangle them from the natural language text in a software artifact~\cite{moonen2001, bacchelli2011}.
-
-
-% and several researchers have applied such technique
-% to identify portions of an artifact with unstructured text~\cite{bacchelli2011, Ponzanelli2015, rigby2013}.
-
-
-
-
-
-% At times, software engineering researchers have argued that 
-% the analysis of software artifacts cannot treat 
-% them as pure textual entities, rather they 
-% contain heterogeneous data such as natural language 
-% text, code blocks, stack traces, and other fields 
-% that assist developers in understanding 
-% the information within a natural language artifact.
-
-
-
-
-
-
-
-
-% Maalej and Robillard have inspected the Java SDK 6 and .NET 4.0. API documentation~\cite{Maalej2013}
-% and proposed a set of categories (e.g., directives, purpose, rationale, functionality, etc.) that define how 
-% knowledge is structured in API documentation. 
-% This taxonomy led Robillard and Chhetri 
-% to find that directives---or pieces of information that the programmers
-% cannot afford to ignore, such as instructions on how to efficiently
-% perform some I/O operation---often 
-% follow certain linguistic patterns~\cite{Robillard2015},
-% what made they produce a catalog of patterns that capture directives found in the 
-% Java SDK 6 documentation.
-
-
-
-% Rastkar et al. observe that much of the text in a bug report resembles a 
-% conversation between different subjects~\cite{Rastkar2013} 
-% while Arya et al. argue that due to this conversational nature, 
-% a single bug report contains several threads each 
-% pertaining to some topic, e.g., 
-% reproducing a bug, discussing potential solutions, 
-% testing, or reporting progress~\cite{Arya2019}. 
-% Although the topicality of the content in bug reports 
-% might encourage the design of tools that automatically identify such
-% text, researchers have also found high variance in the text of different 
-% issues within a software project~\cite{Chaparro2016},
-% what poses significant challenges to approaches that 
-% gather information from multiple bug reports.
-
-
-
-% Although the studies described above shed light on many 
-% aspects of natural language text in software artifacts, 
-% they do not discuss common properties of the text 
-% that is relevant to some software task
-% found in different kinds of artifacts.
-% In Chapter~\ref{ch:characterizing}
-% we study text in API documentation, bug reports, and community forums that is considered relevant to a software task.
 
