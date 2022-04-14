@@ -12,17 +12,18 @@ have investigated several questions on the nature of the text in software artifa
 These studies 
 have focused on different kinds of artifacts and have deepen
  researchers' knowledge on the type of information available in them,
- which is often a first step towards the design of automatic tools 
+ which is often a first step towards the design of automated tools 
 for identifying and extracting text from these artifacts~\cite{Arya2019, Maalej2013}.
 In this section, we outline a categorization of research in this field, presenting 
 seminal studies for each category.
 
 
+\subsubsection{Textual Analysis} 
 
-\paragraph{\textbf{Textual analysis.}} A significant body of work has 
+A significant body of work has 
 focused on the syntactic analysis of the natural language text 
 in software artifacts. An early example
-is Ko and colleagues analysis of bug report titles~\cite{Ko2006}
+is Ko and colleagues analysis of bug report titles~\cite{Ko2006},
 where they identify regularities in the text of nearly 200,000 bug report titles,
 discussing how such regularities can 
 assist in the automatic identification 
@@ -37,10 +38,10 @@ Nadi and Treude examined 20 Stack Overflow posts.
 
 The syntactic analysis in these and other studies (e.g.,~\cite{chaparro2019} or~\cite{lin2019})
 suggest that relevant information in the text  
-in the kinds of artifacts considered 
+of the artifact types studied 
 might be identified through regular expressions or 
 linguistic patterns, as Section~\ref{cp2:pattern-matching} further details.
-Despite their contributions, these studies have focused on the analysis of 
+Although certainly valuable, these studies have focused on the analysis of 
 text in a single type of artifact. In contrast, this thesis investigates 
 text relevant to a task across different artifact types.
 
@@ -49,7 +50,9 @@ text relevant to a task across different artifact types.
 
 
 
-\paragraph{\textbf{Structural analysis.}} Several other studies have 
+\subsubsection{Structural Analysis}
+
+Several other studies have 
 investigated structured data, or meta-data, available in
 natural language software artifacts~\cite{Ponzanelli2015}. In Section~\ref{cp1:example},
 we have presented an example of structured data in a Stack Overflow post, 
@@ -63,24 +66,26 @@ Software engineering researchers have shown that meta-data in natural language a
 is useful for different purposes. For example, 
 Bettenburg et al. have shown that meta-data linking duplicated bug reports 
 can be used to find complementary 
-information that assists a developer in understanding a bug~\cite{bettenburg2008}
-while Treude and Robillard have shown that using meta-data from Stack Overflow post 
-can help in finding information that helps in understanding API documentation~\cite{Treude2016}.
+information that assists a developer in understanding a bug~\cite{bettenburg2008}.
+Likewise,  Treude and Robillard have shown that meta-data from Stack Overflow post 
+helps finding information that assists in understanding API documentation~\cite{Treude2016}.
 Given its wide use, several other researchers have 
 investigated the frequency with which
 meta-data is available~\cite{Davies2014, bettenburg2008makes, uddin2015} 
-as well as how often developers update it~\cite{ahmad2018, dig2006, shi2011}
-what led 
+as well as how often developers update it~\cite{ahmad2018, dig2006, shi2011}.
+This also led 
 software engineering researchers to discuss the promises and perils of 
 using an artifact's meta-data~\cite{kalliamvakou2014, ahmad2018}.
 For example, an accepted answer on Stack Overflow 
 might not be the correct answer~\cite{wang2018}
 and 
 valuable information exists in elements not
-associated with any meta-data~\cite{zhang2019so}.
+associated with any meta-data~\cite{zhang2019so},
+as we have illustrated in 
+portions of the text highlighted in Figure~\ref{fig:qa-notification-icon}.
 
 
-In this thesis, we explore the impact of meta-data for the automatic identification 
+In this thesis, we explore the impact of meta-data in the automatic identification 
 of task-relevant text in Stack Overflow posts 
 associated with Android tasks (Chapter~\ref{ch:identifying}).
 
@@ -88,8 +93,10 @@ associated with Android tasks (Chapter~\ref{ch:identifying}).
 
 
 
-\paragraph{\textbf{Semantic analysis.}} Information within natural language artifacts 
-serve different purposes and a significant body of work has 
+\subsubsection{Semantic analysis} 
+
+Information within natural language artifacts 
+serve different purposes and several other studies have
  proposed taxonomies classifying the text in 
  development mailing lists~\cite{Sorbo2015, huang2018automating},
 API documents~\cite{Maalej2013}, bug reports~\cite{Arya2019}, and others.
@@ -99,8 +106,7 @@ They have sampled 100 emails and identified that text for feature requests
 often contain expressions in the form of suggestions
 (e.g., `\textit{we should add a new button}'), whereas solution proposals 
 are often expressed in the form of attempts (e.g., `\textit{let's try a new method to compute cost}'),
-suggesting that one can use this classification to assist them in finding useful information
-in this type of artifact.
+suggesting that one can automate this classification to assist developers in finding useful information.
 Other examples include Maalej and Robillard's taxonomy of patterns of knowledge in API documentation~\cite{Maalej2013}
 or Arya et al. analysis of information types in Open Source issues~\cite{Arya2019}.
 
@@ -112,10 +118,10 @@ sentences in the natural language text~\cite{berners2001, calero2006, witte2007}
 However, they originate from strenuous manual analysis 
 of hundreds of artifacts and the information types identified 
 might not extend to different kinds of artifacts.
-In this thesis, 
-we us, frame semantics~\cite{fillmore1976frame}---a general linguistic approach---to
+In Chapter~\ref{ch:characterizing}, 
+we use a general linguistic approach~\cite{fillmore1976frame} to
 examine the meaning of task-relevant text in 
-API documents, GitHub issues and Stack Overflow posts (Chapter~\ref{ch:characterizing}).
+API documents, GitHub issues and Stack Overflow posts.
 
 
 

@@ -11,7 +11,8 @@ identifying information within the natural language
 text of software artifacts.
 
 
-\art{Question to Gail: how do I convince that this is a comprehensive survey?}
+\gm{Need to convince this is a comprehensive survey.}
+\art{Clarify this in the next meeting.}
 
 
 
@@ -26,15 +27,14 @@ extracted using \acf{NLP}.
 
 Knowledge Recommender (Krec)~\cite{Robillard2015} 
 and {\small DeMIBuD}~\cite{Chaparro2017} are examples 
-of tools that use words and linguistic patterns to 
-detect relevant sentences in bug reports and API documentation, respectively. 
+of tools that use word patterns and linguistic patterns to 
+detect relevant sentences in   API documentation and bug reports, respectively. 
 These tools use a set of patterns derived from annotated data to identify relevant text. Krec  uses  361 unique patterns
 to 
-detect relevant sentences mentioning a 
-code element (e.g., a class name or method signature) in API documentation~\cite{Robillard2015}.
-Likewise, {\small DeMIBuD} uses a set of 154 discourse patterns to detect sentences 
+detect relevant sentences mentioning key aspects about API usage~\cite{Robillard2015}.
+In turn, {\small DeMIBuD} uses a set of 154 discourse patterns to detect sentences 
 relevant to understanding a bugs expected behaviour and steps to reproduce it,
-which are essential to bug triaging tasks.
+which are essential to bug triaging tasks~\cite{Chaparro2017}.
 
 
 
@@ -47,9 +47,9 @@ which are essential to bug triaging tasks.
 
 
 
-Although the heuristics and regular expressions used in these and other studies (e.g.,~\cite{nadi2020})
-are often light-weight and effective~\cite{Bavota2016, Maalej2013}, 
-pattern matching approaches are specific to certain kinds of domain and 
+Although the heuristics and regular expressions used in these and other studies~\cite{nadi2020, Maalej2013}
+are often light-weight and effective~\cite{Bavota2016}, 
+pattern matching approaches are often specific to certain kinds of domain and 
 types of artifact~\cite{fucci2019}, what limits
 using them in a general manner. 
 Our approach to automatically identify task-relevant text 
@@ -67,13 +67,13 @@ instead we use semantic-based approaches to determine text of relevance to a tas
 
 Extractive text summarization techniques are used in natural language artifacts in software engineering to
 produce a summary of the artifact's content. 
-Although general summarization approaches summarize the entire content of an artifact, 
-query-based summarization~\cite{Goldsteinet1999} allows 
-producing a summary specific to a input query, which is a potential way to identify 
+Although general summarization approaches produce a summary of the entire content of an artifact, 
+query-based summarization allows 
+producing a summary tailored to address some topic (i.e., the query)~\cite{Goldsteinet1999}, which is a potential way to identify 
 text relevant to a developer's task. 
 
 
-Even though most of the summarization approaches that apply to natural language artifacts 
+Even though most of the summarization approaches that apply to natural language software artifacts 
 summarize an artifact on its whole~\cite{Rastkar2010, Murray2008, Lotufo2012, Ponzanelli2015},
 a small number of approaches have focused on
 producing task specific summaries~\cite{Xu2017, silva2019}.
@@ -83,8 +83,7 @@ state-of-the-art tools such as AnswerBot~\cite{Xu2017}
 identify relevant text in Stack Overflow posts 
 based on 
 the content of the text, how similar that content is with regards to a input query (i.e., task)
-and the structured data available on each of the answers in a Stack Overflow post 
-(i.e., number of votes or whether an answer is the accepted answer).
+and the structured data available on each of the answers in a post.
 
 
 
@@ -112,41 +111,44 @@ the sentences likely relevant to a particular software task using \textit{superv
 Supervised learning approaches use a set of features and labeled data
  to train classifiers with the goal of identifying sentences relevant to 
  certain software task.
-We have already presented supervised approaches that use text summarization (\textit{i.e.,}~\cite{Rastkar2010})
-and there are also approaches that identify relevant 
-parts of software tutorials~\cite{Jiang2016b}
-or API documents~\cite{fucci2019, Maalej2013}.
-Despite their value, 
-the cost and effort of hiring skilled workers to produce 
-labeled data in software engineering artifacts 
+Most of the supervised approaches of interest to us  
+consider the automatic classification of text according to the taxonomies 
+detailed in Section~\ref{cp2:text-in-se}.
+For the types of artifacts that these techniques apply to, 
+the automatic classification of the 
+ content of the text 
+might assist a developer 
+in finding information that is pertinent to their task~\cite{fucci2019, Arya2019}.
+% Other approaches identify relevant 
+% parts of software tutorials~\cite{Jiang2016b}
+% or API documents~\cite{fucci2019, Maalej2013},
+% but despite their value, 
+Although valuable, the cost and effort of hiring skilled workers to produce 
+the labeled data for these and other supervised learning approaches
 has been a major limitation 
 to the usage of supervised learning 
-methods~\cite{Arpteg2018}.
+methods in the software engineering field~\cite{Arpteg2018}.
 
 
-
-
+% DeepSum~\cite{Li2018} and
 
 Unsupervised learning approaches do not require labelled data and determine 
 relevant sentences according to properties inferred from the data. 
-DeepSum~\cite{Li2018} and Lotufo et al.'s~\cite{Lotufo2012} techniques are examples of 
-unsupervised approaches in the scope of text summarization. 
-
-
-
-Other unsupervised approaches 
-(\textit{e.g.,}~\cite{Jiang2017, Ponzanelli2015,  Ponzanelli2017})
-are mostly based around variations of the PageRank~\cite{Page1999} or LexRank~\cite{Erkan2004} algorithms. 
-These algorithms represent all the text in an artifact as a graph.
+Lotufo et al.'s~\cite{Lotufo2012} adaptation of the LexRank algorithm~\cite{Erkan2004} is an example of 
+an unsupervised approach that identify key information in bug reports
+and many other studies (\textit{e.g.,}~\cite{Jiang2017, Ponzanelli2015,  Ponzanelli2017}) have used 
+variations of LexRank~\cite{Erkan2004} to identify key information in a natural
+language software artifact.
+LexRank and its base algorithm, PageRank~\cite{Page1999}, represent all the text in an artifact as a graph.
 Then, they establish relationships (\textit{i.e.,} weighted edges in the graph) 
 between different sentences (\textit{i.e.,} nodes in the graph) 
 and select the nodes with highest weights as the most relevant ones.
 A crucial step in building the graph is in  
-establishing  relationships between nodes.
-Early approaches~\cite{Lotufo2012, Jiang2017} 
-use \ac{VSM}~\cite{Salton1975vsm} 
+establishing  relationships between nodes
+and early approaches~\cite{Lotufo2012, Jiang2017} 
+have used \ac{VSM}~\cite{Salton1975vsm} 
 for this purpose while more modern ones~\cite{Huang2018, silva2019}
-use different word embeddings~\cite{Mikolov2013, bojanowski2017FastText},
+have used word embeddings~\cite{Mikolov2013, bojanowski2017FastText},
 which we detail in Section~\ref{cp2:deep-learning}.
 % To identify key sentences using these techniques, one must 
 % assume that certain elements will be cross-referenced 
@@ -156,16 +158,7 @@ which we detail in Section~\ref{cp2:deep-learning}.
 
 
 
-
-
-
-
-\subsection{Deep Learning Approaches}
-\label{cp2:deep-learning}
-
-
-
-One substantial challenge of standard \acf{ML}
+One substantial challenge of standard machine learning
 approaches is that researchers must engineer which 
 features or properties of the text to use~\cite{ferreira2021}.
 For example, Rastkar et al. uses conversational features in 
@@ -177,13 +170,26 @@ in the text of API documents to identify key text
 explaining API elements~\cite{Petrosyan2015}.
 Given the specificity of such features, 
 researchers have questioned the generalizability
-of standard \acs{ML} approaches~\cite{Xiao2018, fucci2019}.
+of standard \acs{ML} approaches~\cite{Xiao2018, fucci2019}
+and they have sought aprroches that address these 
+limitations, as detailed in the next section.
 
 
+
+
+
+
+\subsection{Deep Learning Approaches}
+\label{cp2:deep-learning}
+
+
+
+
+%  through a series of mathematical transformations
 
 In contrast to the human-engineered features,
 \acf{DL} approaches allow the automatic extraction of features 
-from training data through a series of mathematical transformations~\cite{Deng2018, zhang2021deep}.
+from training data~\cite{Deng2018, zhang2021deep}.
 Deep learning has led to groundbreaking advancements in many 
 research areas (e.g., machine translation~\cite{lopez2008translation}) 
 and, given its wide range of applications, 
@@ -195,16 +201,16 @@ on its usage in natural language text appearing in software engineering artifact
 
 
 
-
-
-
+A common application of \acs{DL} in software engineering is the usage of neural, or word, embeddings~\cite{Mikolov2013}
+for information retrieval purposes. 
 Software engineering researchers have identified that the text 
 in software task 
-often differs from the text in the artifacts that are related to that tasks~\cite{Huang2018}. 
-These so-called \textit{lexical mismatches}~\cite{Ye2016} 
+often differs from the text in the artifacts that are related to that tasks. 
+These so-called \textit{lexical mismatches}~\cite{Ye2016, Huang2018} 
  make it difficult to identify information of interest 
-to a task and a number of studies have used \acs{DL}
-neural embeddings~\cite{Mikolov2013} to bridge lexical gaps between the text of different software artifacts. 
+to a task and researchers have found that word
+embeddings mitigate lexical gaps between the text of different software artifacts,
+what improves retrieval of information useful to a developer's task~\cite{Ye2016}. 
 
 
 Neural, or word, embeddings produce vector representations in a continuous space,
@@ -223,18 +229,18 @@ or PageRank-based approaches such as HoliRank~\cite{Ponzanelli2017}.
 Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep, watson2022}
 use neural network architectures 
 in a variety of software engineering tasks, including
-code comprehension~\cite{allamanis2015, mi2018}, community forum analysis~\cite{Lin2018, wang2019}, or requirements traceability~\cite{chen2019, guo2017}.
-DeepSum~\cite{Li2018}, which we described earlier, is an example of a 
-summarization approach that uses an encoder-decoder architecture~\cite{cho2014-encoder-decoder}  to identify 
-sentences of interest in bug reports. As another example,
-Xi et al.~\cite{Xia2017} use a \ac{CNN}~\cite{krizhevsky2012CNN} 
-to identify sentences pertaining to Di Sorbo et al.'s topics~\cite{Sorbo2015}.
+code comprehension~\cite{allamanis2015, mi2018}, 
+community forum analysis~\cite{Lin2018, wang2019}, 
+or requirements traceability~\cite{chen2019, guo2017}.
+Although effective, these applications of deep learning
+target specific
+types of artifacts and the ones 
+that target more than one type 
+often comprise a natural language artifact 
+paired with source code~\cite{watson2022}. 
+In contrast, 
+we consider how we can use a \acs{DL}
+model to automatically 
+identify text relevant to a software task
+in different kinds of natural language artifacts (Chapter~\ref{ch:identifying}).
 
-
-
-Few studies in software engineering have considered more modern neural networks~\cite{watson2022}
-able to leverage hidden features not only between words but also between sentence pairs (e.g., \acs{BERT}~\cite{Devlin2018Bert}). 
-These models might assist in determining 
-implicit relationships between the text in a task and the text in a relevant sentence within a software artifact.
-As such, Chapter~\ref{ch:identifying} describes how we use \acs{BERT} for automatically 
-identifying text relevant to a software task.
