@@ -8,9 +8,9 @@ when incorporating a new software library needed for a new feature, a developer 
 
 
 
-Many of the artifacts consulted
-contain unstructured text\footnote{We refer to artifacts with unstructured text as natural language artifacts} and 
-a developer must read the text to find the information that is relevant to the task being performed~\cite{Bavota2016}.
+Many of the artifacts that developers consult
+contain unstructured text; for the purposes of this thesis, \wee refer to artifacts with unstructured text as natural language artifacts.  
+To utilize the information in  natural language artifacts, a developer must read the text to find the information that is relevant to the task being performed~\cite{Bavota2016}.
 However, 
 the sheer amount of information in these artifacts may prevent a developer from comprehensively assessing what is useful to their task~\cite{Murphy2005}.
 Just within one kind of artifact, API
@@ -19,6 +19,7 @@ of a developer's highly constrained time to identify
 information needed to perform certain task~\cite{endrikat2014, Meyer2017}. 
 A developer that fails to locate all, or most, of the information needed
 will have an incomplete or incorrect basis from which to perform a software task~\cite{Murphy2005}.
+\gcm{how does this reference support the statement?}
 
 
 
@@ -54,8 +55,8 @@ Finding information that assists a developer to complete a task can be a time-co
  
  
  \medskip
- A developer assigned to this issue might not be familiar with how Android notifications work and thus, they will need additional knowledge to understand and resolve the bug~\cite{ko2007, Li2013, sillito2006}. 
- More than often, this knowledge can be acquired from a developer's peers~\cite{singer2011}. 
+ A developer assigned to this issue might not be familiar with how Android notifications work and thus, they will need additional knowledge to understand and resolve this task~\cite{ko2007, Li2013, sillito2006}. 
+ Often, this knowledge can be acquired from a developer's peers~\cite{singer2011}. 
  However, the fragmented and distributed nature of software development  
  may prevent the developer from accessing their peers~\cite{ko2007},
  instead they seek online web resources for information 
@@ -80,9 +81,10 @@ is through the usage of a web search engine~\cite{Brandt2009a, Li2013}.
 Figure~\ref{fig:android-search-results}
 shows the artifacts resulting from a developer's search 
 about android notifications for the task in Figure~\ref{fig:android-notifications-task}.
-We explain the information found in the artifacts types 
-shown in the figure  (i.e., a web tutorial, and API document, and a 
-question-and-answer post) and challenges associated with locating 
+The artifacts returned can each be considered to have a type. For instance,
+the artifacts returned represent web tutorials, API documents and question-and-answer
+artifacts, each of which can be considered a different type.
+Each type of artifact has different associated challenges for locating 
 information useful to a task within them.
 
 
@@ -114,17 +116,16 @@ and, on the page's right-hand side, we find that
 it
 has nine sections, each with sub-sections of their own. 
 Reading all sections of this document could potentially 
-take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}} of a developer's time.
+take 10 minutes or more\footnote{Using a standard reading metric of 200 words per minute~\cite{Just1980}.} of a developer's time.
 To save time, a developer would likely try to find the sections of the document
-most closely related to their task~\cite{Li2013}, but not without challenges.
+most closely related to their task~\cite{Li2013}.
 For example, using a web browser's search to find content that mentions the `\textit{actions}' keyword, 
-a developer would find eight different matches spread across four different sections
-and even within a matching section, 
-such as the `\textit{Notification actions}'
+a developer would find eight different matches spread across four different sections.
+Not all of these matches will be relevant, requiring the developer to peruse each
+match and assess relevance. 
+For instance, the `\textit{Notification actions}'
  (under focus in the figure), 
-not all the text might of relevance.
-For instance,
-the section explains 
+explains 
 notifications for both Android version 7.0 and 12.0, 
  but given that the developer's task is related to the former version,
 only the text highlighted (in orange)
@@ -136,7 +137,10 @@ might be of relevance to the task in Figure~\ref{fig:android-notifications-task}
 
 
 
-An \acf{API} defines how  two software libraries communicate~\cite{robillard2011field},
+An API %\acf{API} 
+defines how  two software libraries communicate~\cite{robillard2011field},
+\gcm{This is a bit of an odd desription of an API - suggest using something more
+standard.}
 such as how the mail client software communicates 
 with the native Android software. This communication happens via features and functionality exposed by the API~\cite{Robillard2015} 
 and instructions about its usage are typically available in the API's reference documentation.
@@ -211,7 +215,7 @@ trivial.
 
 
 At this point, it is clear that if no tool support is provided, much of the process of locating text 
-relevant to a task in a natural language artifact falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995} and, given how quickly developers progress to use new kinds of technology to
+relevant to a task in a natural language artifact falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995}. Given how quickly developers progress to use new kinds of technology to
 record pertinent information, the aforementioned challenges are not exclusive 
 to the three types of artifact that we have discussed, rather 
 they are common to many kinds of natural language software artifacts~\cite{Li2013, Starke2009}.
