@@ -6,11 +6,12 @@
 
 Software engineering researchers
 have investigated several questions on the nature of the text in software artifacts.
-These studies have focused on different kinds of artifacts and have deepened researchers' knowledge of the type of information available in them,
+These studies have focused on the analysis of different kinds of artifacts and have deepened researchers' knowledge of the type of information available in them,
  which is often a first step towards the design of automated tools 
 for identifying and extracting text from these artifacts~\cite{Arya2019, Maalej2013}.
-In this section, we outline a categorization of research in this field, presenting 
-seminal studies for each category.
+In this section, we outline 
+different types of investigations considered,
+presenting seminal studies for each category.
 
 
 \art{unsure if I need to have subsections here}
@@ -25,19 +26,20 @@ where they identify regularities in the text of nearly 200,000 bug report titles
 discussing how such regularities can 
 assist in the automatic identification 
 of information in bug reports. 
-Following research procedures from this study, many other researchers have 
+This study was followed by many others where 
+software engineering researchers have 
 observed other regularities both in bug reports~\cite{Rastkar2010, Chaparro2016}
 and also in other types of artifacts, such as 
 when Robillard  and Chhetri inspected 1,000 API elements in the Java SDK 6 
 reference documentation~\cite{Maalej2013} or when 
-Nadi and Treude examined 20 Stack Overflow posts.
-
-
+Nadi and Treude examined 20 Stack Overflow posts~\cite{nadi2020}.
 The syntactic analysis in these and other studies (e.g.,~\cite{chaparro2019} or~\cite{lin2019})
-suggest that relevant information in the text  
-of the artifact types studied 
-might be identified through regular expressions or 
-linguistic patterns (see Section~\ref{cp2:pattern-matching}).
+shows that regular expressions or 
+linguistic patterns 
+might be used to automatically extract 
+relevant information from the text  
+in the artifacts studied, as we explain in Section~\ref{cp2:pattern-matching}.
+
 Although certainly valuable, these studies have focused on the analysis of 
 text in a single type of artifact. In contrast, this thesis investigates 
 text relevant to a task across different artifact types.
@@ -56,12 +58,12 @@ i.e., the number of votes an answer has and whether it is the accepted answer.
 Among other examples, we mention 
 code blocks in API documentation or web tutorials 
 and also stack traces or other fields included in a bug report~\cite{Davies2014, Breu2010},
-which software engineering researchers have investigated to, for example, 
+which, for example, have been used to 
 extract complementary 
 information that assists a developer in understanding a bug report~\cite{bettenburg2008}.
 
 
-Considering how several techniques and tools make use of meta-data, 
+Considering how several techniques and tools make use of an artifact's meta-data, 
 researchers have also
 investigated the frequency with which
 meta-data is available~\cite{Davies2014, bettenburg2008makes, uddin2015} 
@@ -88,11 +90,12 @@ of task-relevant text.
 
 
 
-\subsubsection{Semantic analysis} 
+\subsubsection{Semantic Analysis} 
 
 Information within natural language artifacts 
 serve different purposes and several other studies have
- proposed \textit{taxonomies} classifying the text 
+ proposed \textit{taxonomies} classifying the type of information
+ available in the text of
  different kinds of natural language software artifacts.
 For example, Di Sorbo et al. have found that 
 text in development mailing lists can be classified according to the developers' intentions (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015}.
@@ -100,7 +103,8 @@ They have sampled 100 emails and identified that text for feature requests
 often contain expressions in the form of suggestions
 (e.g., `\textit{we should add a new button}'), whereas solution proposals 
 are often expressed in the form of attempts (e.g., `\textit{let's try a new method to compute cost}'),
-suggesting that one can automate this classification to assist developers in finding useful information.
+suggesting that one can automate this classification to assist developers in finding 
+certain type of information.
 Other examples include Maalej and Robillard's taxonomy of patterns of knowledge in API documentation~\cite{Maalej2013}
 or Arya et al. analysis of information types in Open Source issues~\cite{Arya2019}.
 

@@ -3,12 +3,10 @@
 
 
 
-Information useful to a software task can be buried in  
+Information useful to a software task in a natural language artifact can be buried in  
 non-intuitive blocks of text, making it difficult to discover~\cite{Robillard2015}.
 In this section, we detail tools and approaches from related work
-that seek to assist developers in 
-identifying information within the natural language
-text of software artifacts.
+that seek to automatically identify such information.
 
 
 \gm{Need to convince this is a comprehensive survey.}
@@ -30,12 +28,12 @@ is an example of a
  tool that uses word patterns to 
  automatically detect relevant sentences in  API documentation. 
 It contains 361 unique patterns derived from annotated the Java reference documentation
-such as the pattern {\small \textit{$\{$may}, \textit{efficient}, \textit{code element$\}$}}, 
-which could be used to identify sentences giving instructions about an efficient way to 
+where patterns such as {\small \textit{$\{$may}, \textit{efficient}, \textit{code element$\}$}} could be used to identify sentences giving instructions about efficient ways to 
 use some API element. 
 
 As an example of an approach based on linguistic patterns,
 {\small DeMIBuD}~\cite{Chaparro2017} uses a set of 154 discourse patterns
+derived from nearly 3,000 bug reports 
 to
 automatically detect sentences discussing steps to reproduce 
 a bug or the bug's expected behaviour.
@@ -49,12 +47,13 @@ captures common ways with which developers describe a system's expected behaviou
 
 Although the heuristics and regular expressions used in these and other studies~\cite{nadi2020, Maalej2013}
 are often light-weight and effective~\cite{Bavota2016}, 
-pattern-matching approaches are often specific to certain kinds of domains and types of artifact~\cite{fucci2019}, which limits
+pattern-matching approaches 
+are often specific to certain kinds of domains and types of artifact~\cite{fucci2019}, which limits
 using them in a general manner. 
 Our approach to identifying task-relevant text 
-is different from these studies because it does not use syntactic properties of the text
-to determine the text of relevance to a task, 
-instead we use semantics (Chapter~\ref{ch:identifying}).
+is different from the approaches in these studies because we do not use syntactic properties of the text, 
+instead we rely on the semantics 
+of words and sentences to determine the text likely relevant to a task (Chapter~\ref{ch:identifying}).
 
 
 
@@ -69,7 +68,7 @@ Extractive text summarization techniques
 produce a summary of an artifact's content
 and while general summarization approaches produce a summary of the entire content of an artifact, 
 query-based summarization allows 
-producing a summary tailored to address some topic (i.e., query)~\cite{Goldsteinet1999}, which is a potential way to identify 
+producing a summary tailored to address some specific topic (i.e., query)~\cite{Goldsteinet1999}, which is a potential way to identify 
 text relevant to a developer's task. 
 
 
@@ -88,9 +87,9 @@ and the structured data available on each of the answers in a post.
 
 
 
-Summarization approaches often favour the diversity of information to be included in a summary
+Summarization approaches often favour the diversity of information to be included in a summary~\cite{Carbonell1998,li2018deep}
 and thus, a summary might not contain all of the information needed 
-to for a software task.
+to correctly complete a software task.
 For example, if several relevant sentences discuss different yet similar content about 
 a particular technology, it is less likely that a summary will contain all of these sentences. 
 In contrast, the approaches that we explore in Chapter~\ref{ch:identifying}
@@ -127,7 +126,7 @@ Although valuable, the cost and effort of hiring skilled workers to produce
 the labelled data for these and other supervised learning approaches
 has been a major limitation 
 to the usage of supervised learning 
-methods in the software engineering field~\cite{Arpteg2018}.
+methods in the software engineering field~\cite{Arpteg2018, ferreira2021}.
 
 
 
@@ -136,8 +135,8 @@ relevant sentences according to properties inferred from the data/features avail
 Lotufo et al.'s~\cite{Lotufo2012} adaptation of the LexRank algorithm~\cite{Erkan2004} is an example of 
 an unsupervised approach that identifies key information in bug reports
 and many other studies (\textit{e.g.,}~\cite{Jiang2017, Ponzanelli2015,  Ponzanelli2017}) have used 
-variations of LexRank~\cite{Erkan2004} to identify key information in a natural
-language software artifact.
+variations of LexRank~\cite{Erkan2004} to identify key information in natural
+language software artifacts.
 LexRank and its base algorithm, PageRank~\cite{Page1999}, represent all the text in an artifact as a graph.
 Then, they establish relationships (\textit{i.e.,} weighted edges in the graph) 
 between different sentences (\textit{i.e.,} nodes in the graph) 
@@ -163,11 +162,9 @@ while Petrosyan and colleagues use
 linguistic and structural properties 
 in the text of API documents to identify key text 
 explaining API elements~\cite{Petrosyan2015}.
-Given the specificity of such features, 
-researchers have questioned the generalizability
-of standard \acs{ML} approaches~\cite{Xiao2018, fucci2019}
-and they have sought approaches that address these 
-limitations. We detail one of such approaches, deep learning, in the next section.
+Given the specificity and cost of engineering such features, 
+researchers have sought approaches, such as deep learning, to address these 
+limitations. 
 
 
 
@@ -198,13 +195,14 @@ on its usage in natural language text appearing in software engineering artifact
 A common application of \acs{DL} in software engineering is the usage of neural, or word, embeddings~\cite{Mikolov2013}
 for information retrieval purposes. 
 Software engineering researchers have identified that the text 
-in software task 
-often differs from the text in the artifacts related to that tasks. 
+in a software task 
+often differs from the text in the artifacts related to that task. 
 These so-called \textit{lexical mismatches}~\cite{Ye2016, Huang2018} 
  make it difficult to identify information of interest 
 to a task and researchers have found that word
-embeddings mitigate lexical gaps between the text of different software artifacts,
-what improves retrieval of information useful to a developer's task~\cite{Ye2016}. 
+embeddings mitigate such lexical gaps,
+what improves retrieval of information useful to a developer's task
+across different software artifacts~\cite{Ye2016}. 
 
 
 Neural, or word, embeddings produce vector representations in a continuous space,
@@ -217,6 +215,8 @@ to compare the semantic similarity of the text~\cite{mihalcea2006},
 being applied in query-based summarization techniques such as 
 AnswerBot~\cite{Xu2017}
 or PageRank-based approaches such as HoliRank~\cite{Ponzanelli2017}.
+In Chapter~\ref{ch:identifying}, we describe how we use 
+word embeddings to automatically identify task-relevant text.
 
 
 
@@ -232,8 +232,7 @@ types of artifacts and the ones
 that target more than one type 
 often comprise a natural language artifact 
 paired with source code~\cite{watson2022}. 
-In contrast, 
-we consider how we can use a \acs{DL}
+We consider how we can use a \acs{DL}
 model to automatically 
 identify text relevant to a software task
 in different kinds of natural language artifacts (Chapter~\ref{ch:identifying}).
