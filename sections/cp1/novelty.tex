@@ -3,109 +3,67 @@
 
 
 Researchers have long recognized the value of 
-assisting developers in locating information in the natural language artifacts sought as part of a software task.
-They have proposed many tools and approaches 
-that combine \acf{IR}, \acf{NLP} and \acf{ML} techniques,
-often using  syntactic properties of the text and an artifact's meta-data
-to aid developers in locating the portion of the text that
-might be useful within these artifacts.
+assisting developers in locating information in the natural language artifacts sought as part of a software task
+and, to understand the state of the art, this section discusses 
+some of the artifacts studied and approaches 
+that extract text from these artifacts
+to assist developers in performing certain 
+software activities.
+Although we do not claim that the list of artifacts and techniques presented hereafter is complete,
+they comprise common artifact types sought by developers~\cite{umarji2008archetypal, Li2013}
+and many of the techniques used to parse the natural language text in them~\cite{arnaoudova2015}.
 
 
 
-% The majority of these approaches focus on specific activities (e.g., bug triaging~\cite{Chaparro2017} or learning about an API~\cite{Jiang2017}) and apply 
-% only to certain kinds of artifact, such as bug reports~\cite{Rastkar2010, Lotufo2012}, \acs{qa} web pages~\cite{Xu2017, silva2019}, or API documentation~\cite{fucci2019}.
-% In the paragraphs that follow, we detail how these approaches  to automatically identify what is relevant.
+In API documentation, Robillard and Chhetri investigated how to automatically identify 
+sentences key to using an API element~\cite{Robillard2015}.
+Their approach uses regular expressions to match the text in this kind of artifact 
+to a set of patterns derived from the Java SDK 6 documentation.
+More complex approaches, i.e.,  \acf{ML} and \acf{DL},
+were also used by Fucci et al.
+with the purpose of automatically identifying sentences with 
+directives, concepts, examples, and other types of information included in API documents~\cite{fucci2019}.
 
 
 
-As examples of techniques available in the literature, 
-\gcm{You need an argument that outlines the different techniques.} Nadi and Treude hypothesize 
-that relevant information in \acs{qa} 
-web pages is often found in text with
-conditional clauses (i.e., sentences with the word `\textit{if}')~\cite{nadi2020}
-while Robillard and Chhetri, that relevant 
-text in API documents includes a code element such as a class name or method signature~\cite{Robillard2015}.
-Both of these hypotheses are 
-represented through 
-sets of syntactic rules 
-used to automatically
-identify relevant text in \acs{qa} web pages and API documentation, respectively.
-However, these pre-define rules would fail to identify much of the relevant text in the artifacts of our running example
-% (Figure~\ref{fig:android-notifications-task})
-because part of the relevant text in these artifacts 
-neither mentions code elements 
-nor contains conditional clauses (e.g., as in a sentence in Figure~\ref{fig:tutorial-create-notification} detailing updates in Android 7.0).
-While certainly valuable, 
-it is difficult to use 
-syntactic rules 
-derived from one type of artifact
-to automatically identify relevant text 
-in other types of artifact~\cite{Bavota2016}.
-
-
-% 
-% and because these rules
-
-
-A second challenge of techniques that 
-determine relevant text using syntactic rules is that 
-these techniques do not take  a developer's task into account~\cite{Robillard2015}, which means that applying such 
-techniques to an artifact would always identify 
-the same set of sentences as relevant 
-regardless of the fact that relevance is context-specific~\cite{Bavota2016}, i.e., information needs are associated with details of the task 
-or characteristics of the developer performing it~\cite{Robillard2015}.
-
-
-To identify context-specific information, 
-many other software engineering researchers 
-have proposed approaches that 
-automatically identify text based on an input task~\cite{Ye2016, silva2019, Xu2017}.
-For example, Xu et al. identify relevant text in Stack Overflow posts 
-based on its similarity with regards to a input query representing the developer's programming task.
-Although this assists in the automatic identification of context-specific information, 
-this and other techniques~\cite{silva2019, Li2018}
-use of structural data to limit the portions of the artifact from which to identify 
-relevant text.
-For instance, they may only identify the text from an accepted answer or from 
-the answer with the most votes,  
-limiting their applicability to other kinds of artifact  that lack such meta-data~\cite{Bavota2016, arnaoudova2015}.
-% For example, Xu et al.'s approach
-% applies only to one out of the three artifacts 
-% from the developer's search 
-% about android notifications (Figure~\ref{fig:android-search-results}).
-
-% The usage of structural data might also exclude identifying relevant information found 
-% in other parts of an artifact. 
-% and for the artifact that it applies to, i.e., the Stack Overflow post in Figure~\ref{fig:qa-notification-icon}, 
-% the approach would not identify relevant text in answers other than the accepted answer,
-% what further illustrates some of the drawbacks on the usage of meta-data 
-% to guide the automatic identification of task-relevant text.
-
-
-% . 
-% For instance, within the same type of artifact, bug reports,
-% vendors might store data differently (e.g., Jira vs GitHub)
-% and this might hinder  out-of-the-box 
-% usage of these techniques~\cite{Bavota2016};
-  
+In development mailing lists, Panichella et al. 
+proposed an automatic approach leveraging \acf{IR} to extract 
+text with useful information that assist in understanding code elements inspected by a developer~\cite{panichella2012}
+while Di Sorbo et al. use linguistic patterns---extracted via \acf{NLP}---to
+automatically categorize the content of development emails, what might 
+assist developers finding text specific to some category, e.g., 
+finding text about the solution for a bug or text discussing potential 
+new features for a system~\cite{Sorbo2015}.
 
 
 
+In bug reports, researchers have mostly applied text summarization
+as a means of identifying text that a developer would first read when inspecting a bug report, 
+which might assist developers in finding useful information for their task;
+and both \acs{ML} and 
+\acs{DL} techniques have been investigated for this purpose, 
+e.g.,~\cite{Lotufo2012} or~\cite{li2018deep}.
 
-% Our overview of the state of the art, further detailed in Chapter~\ref{ch:related-work},
-This overview of the state of the art, further discussed in Chapter~\ref{ch:related-work}, evidences limitations of existing techniques 
-in assisting developers in locating useful text across different kinds of artifacts.
-In summary:
 
-\begin{enumerate}
-    \item it shows the need to investigate rules for the relevance of text 
-    considering how such text appears across different types of artifacts;
-    \item it shows the need for context-specific approaches; and 
-    \item it asks how to relax limitations of existing
-    artifact-specific approaches so that we can design 
-    more generalizable approaches. 
-    % for the automatic identification
-    % of text relevant to a developer's task.
-\end{enumerate}
+
+In community forums and \acs{qa} pages, researchers have explored both lexical 
+and syntactic approaches for the automatic identification of sentences that would 
+help a developer in quickly deciding if the content in these artifacts is relevant to 
+a developer's task~\cite{nadi2020}. Other approaches have also considered 
+extracting information relevant to a developer's 
+programming task combining query-based summarization 
+and meta-data available on Stack Overflow~\cite{Xu2017, silva2019}.
+
+
+
+Although effective, these and other techniques target specific
+types of artifacts and, given 
+how quickly developers progress to using new kinds of technology to
+record pertinent information,
+it may be difficult to apply such artifact-centric approaches to cover the range of
+artifacts sought by a developer as part of a software task
+and, for the techniques that do consider multiple types of artifacts (e.g.,~\cite{Ponzanelli2017}),
+automatically identifying text likely relevant to a developer's task 
+falls outside of their scope.
 
 

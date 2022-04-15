@@ -1,31 +1,19 @@
 
 
-\section{Thesis}
+\section{Thesis Statement}
 \label{cp1:thesis}
 
 
-% Developers produce such natural language artifacts on a 
-% continuous basis~\cite{Rastkar2013t} 
-% and locating the documents of interest for a task
-% is not trivial~\cite{Starke2009}. 
-% To better understand this activity, 
-% many software engineering researchers 
-% have studied  a developer's information foraging process~\cite{Pirolli1999}
-% providing theories on how a developer searches for pertinent information
-% and proposing tools to help this activity.
-
-\gcm{It would be helpful to build to the thesis statement some. Something like ... The scenario we presented indicated that many kinds of artifacts that can be consulted
-to help with a task and the challenges that a developer can face. In surveying the
-state of the art, we demonstrated that existing techniques are tied to particular
-artifacts. This thesis aims to overcome these limitations.}
-
-Our thesis statement is that:
 
 
-% As there is an underlying structure to many software development tasks~\cite{Murphy2005},
-% we hypothesize that one can use information about a task to assist in 
-% the design of \textit{artifact-agnostic} techniques able to  
-% automatically identify text relevant to a developer's task~\cite{Starke2009, Bavota2016}. We posit that:
+
+The scenario we presented indicates that many kinds of 
+artifacts can be consulted to help 
+with a task and that a developer faces challenges in finding the text within these 
+artifacts is relevant to the task at hand. 
+In surveying the state of the art, we demonstrated that existing techniques are tied to particular
+artifacts. This thesis aims to overcome these limitations. We posit that:
+
 
 
 \bigskip
@@ -37,19 +25,16 @@ Our thesis statement is that:
 
 
 
-Designing a generalizable technique means 
-\gcm{Does it really mean this or is this one way to develop a generalizable technique?}
+On potential method for designing a generalizable technique 
+might arise from 
 determining if there are similar rules governing how text relevant to a task is 
 constructed across different types of artifacts~\cite{Kintsch1978a}.
-Hence, in the first part of this thesis, 
-\gcm{first part?}
-we ask what are common properties, if any, in the text deemed relevant 
+Hence, we ask what are common properties, if any, in the text deemed relevant 
 to a software task and found across different types of artifacts?
 To answer this question, we present a formative study that 
 examines the text that twenty developers deemed relevant in artifacts 
 of different types associated with six software tasks.
 
-% 
 
 By \textit{characterizing} task-relevant text found in different kinds of artifacts,
 this study complements and adds to previous research that has
@@ -61,7 +46,6 @@ inspected as part of this study
  text deemed relevant to a task by a developer, suggesting that 
 semantics might assist in the automatic identification of
 task-relevant text and in the design of a more generalizable technique.
-% ~\cite{Meyer2019, Li2013}
 
 
 
@@ -70,9 +54,7 @@ Approaches that interpret the meaning of the text have been successfully used fo
 such as for finding who should fix a bug~\cite{yang2016}, searching for comprehensive code examples~\cite{silva2019}, or assessing the quality of information available in bug reports~\cite{chaparro2019}.
 Nonetheless, we are not aware of their usage in techniques 
 that assists developers in discovering task-relevant text over different types of natural language artifacts.
-Hence, the second part of this thesis describes 
-\gcm{second part?}
-the investigation of a design space
+To this end, this thesis describes the investigation of a design space
 of six possible techniques that incorporate the semantics of words~\cite{Mikolov2013, Devlin2018Bert}
 and sentences~\cite{fillmore1976frame, marques2021}
 to automatically identify text likely relevant to a developer's task.
@@ -88,25 +70,17 @@ multiple artifact types.
 
 
 
-Provided that we find consistency in the text  that is relevant to a task within different kinds of artifacts and that semantic-based techniques can automatically identify such text, in the last part of this thesis, 
+Provided that we find consistency in the text  that is relevant to a task within different kinds of artifacts and that semantic-based techniques can automatically identify such text, 
 we consider whether these approaches can \textit{assist} a software developer while they work on a task.
 We introduce \acs{tool}\footnote{
     Automatic \underline{Ta}sk-\underline{R}elevant \underline{T}ext \underline{I}dentifier
-    \art{Tentative name :)}
+    % \art{Tentative name :)}
 }, a web browser plug-in that 
 automatically identifies and highlights text relevant to a developer's task 
 and then, we present a controlled experiment that investigates benefits brought by using this tool, if any.
 We report how  participants 
 performed two Python programming tasks when 
-% provided with a
-%  curated set of artifacts associated with the tasks considered
-%  and 
  assisted (or not) by \acs{tool},
-% to automatically identify task-relevant text  
-% With this experiment, we compare the correctness of the solutions of each task 
-% performed by participants with and without tool assistance
-% and we also detail
-% the perceived usefulness of the text automatically identified and shown by the tool. 
 where experimental results indicate that participants found the text automatically identified
 by the tool 
 useful in two out of the three tasks of the experiment.
