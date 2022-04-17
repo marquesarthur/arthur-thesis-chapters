@@ -1,6 +1,189 @@
 
 
 
-~\cite{Ko2006} % A linguistic analysis of how people describe software problems
 
-b
+\section{Empirical Studies on the Natural Language Text in Software Artifacts}
+\label{cp2:text-in-se}
+
+
+Researchers have long recognized that natural language artifacts are rich in semantic information and that a better understanding of these artifacts could improve the quality of a developer's work~\cite{dekhtyar2004}.
+Hence, in this section, we detail empirical studies investigating
+lexical, syntactic, and semantic aspects of the text 
+in 
+natural language artifacts.
+
+
+
+
+
+
+Lexical analysis focuses on the characters or tokens in the text~\cite{jurafsky2014speech}
+and Bacchelli et al. applied lexical analysis to study how developers describe class elements
+in nearly 80,000 emails of an Open Source System~\cite{bacchelli2009}.
+Their analysis suggested that terms in the emails exchanged could be 
+used as a mean of automatically linking information in development emails to 
+the project's source code.
+
+
+
+
+
+
+Syntactic analysis concerns the grammatical elements in the text 
+and relationships between them~\cite{jurafsky2014speech}.
+As an example of its usage in natural language software artifacts, 
+Ko and colleagues identified regularities in the syntactic structure (i.e., noun and verb phrases) of the text 
+of nearly 200,000 bug report titles~\cite{Ko2006}, suggesting that these 
+regularities could be used for the automatic identification 
+of information in bug reports. 
+
+
+
+
+Semantic analysis focuses on the meaning of the text, i.e., what type of information 
+certain text conveys nad most of the software engineering research in this field 
+has focused on the proposal of \textit{taxonomies} to explain the typo of information 
+available in natural language software artifacts~\cite{Maalej2013, Arya2019}. 
+For example, Di Sorbo et al. have found that 
+text in development mailing lists can be classified according to the developers' intentions (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015},
+suggesting that one can automate this classification to assist developers in finding 
+certain types of information.
+Other examples include Maalej and Robillard's taxonomy of patterns of knowledge in API documentation
+or Arya et al. analysis of information types in Open Source issues~\cite{Arya2019}.
+
+
+
+
+
+This thesis extends these investigations
+by considering text from different types of artifacts 
+and by investigating common semantic cues across the text 
+deemed relevant to a software task (Chapter~\ref{ch:characterizing}).
+
+
+
+
+
+
+
+% This section details empirical studies analyzing different aspects associated with 
+%  natural language software artifacts.
+
+
+
+
+
+
+% Early studies on textual analysis in software engineering often focused on program comprehension 
+% and the text in the source code~\cite{Woodfield1981, maletic2002},
+% but 
+% Researchers have long recognized 
+% that natural language artifacts 
+% are rich in semantic information
+% and that 
+% better understanding these artifacts
+% would lead to improved software~\cite{dekhtyar2004}.
+
+
+
+
+
+
+% These studies have helped
+% software engineering researchers make more informed decisions 
+% on the design of automated tools 
+% that identify and extract text from these artifacts---detailed further in this chapter. 
+
+
+
+
+% The empirical analysis provided by these studies 
+% has 
+% deepened software engineering researchers' knowledge of the type of information available 
+% in natural language artifacts 
+
+
+
+
+
+
+% Bird at al. used it to investigate social aspects in development mailing lists~\cite{bird2006}. 
+% They inspected nearly 102,000 messages on the Apache HTTP Server development lists
+%  to find that character editing algorithms~\cite{levenshtein1966}, 
+%  helped in unmasking developers' aliases, which helped investigating email 
+%  exchange patterns of the key contributors of the project.
+
+
+% .
+% They have sampled 100 emails and identified that text for feature requests 
+% often contain expressions in the form of suggestions
+% (e.g., `\textit{we should add a new button}'), whereas solution proposals 
+% are often expressed in the form of attempts (e.g., `\textit{let's try a new method to compute cost}')
+
+
+
+
+
+% With regards to meta-data 
+
+
+
+
+% \clearpage
+
+
+% Several other studies have 
+% investigated the meta-data available in
+% natural language software artifacts. 
+% % In Section~\ref{cp1:example},
+% % we have presented an example of meta-data in a Stack Overflow post,
+% %  other examples include fields in a bug report~\cite{Davies2014, Breu2010},
+% % or tags and labels in GitHub projects~\cite{prana2019}.
+% These studies often focus on 
+% the frequency with which
+% meta-data is available~\cite{Davies2014, bettenburg2008makes, uddin2015},
+%  how up-to-date it is~\cite{ahmad2018, dig2006, shi2011}, 
+%  and the perils of relying on meta-data for information extraction purposes.
+% For example, Zhang et al. has shown that 
+% certain comments on Stack Overflow are equally or more informative 
+% that the information found in an accepted answer~\cite{zhang2019so}.
+
+
+% has led software engineering researchers to 
+% make more informed decisions on when to use meta-data 
+% and how it can assist in the extraction of useful information from natural language 
+% artifacts.
+% For example, Wang et al. 
+
+
+% found that 
+
+% the number of votes 
+% an answer has on Stack Overflow is 
+% equally or more important than 
+
+
+% ~\cite{wang2018}
+
+
+
+% ~\cite{wang2018}
+
+
+
+
+
+
+
+
+
+% Findings from these studies led 
+% software engineering researchers to discuss the promises and perils of 
+% using an artifact's meta-data~\cite{kalliamvakou2014, ahmad2018}.
+% For example, an accepted answer on Stack Overflow 
+% might not be the correct answer~\cite{wang2018}
+% and 
+% valuable information exists in elements not
+% associated with any meta-data~\cite{zhang2019so},
+% which we discussed as part of our 
+% scenario about finding information about Android notifications (Section~\ref{cp1:example}).
