@@ -2,25 +2,27 @@
 
 
 
-\section{Empirical Studies on the Natural Language Text in Software Artifacts}
+\section{Textual Analysis in Natural Language Software Artifacts}
 \label{cp2:text-in-se}
 
 
-Researchers have long recognized that natural language artifacts are rich in semantic information and that a better understanding of these artifacts could improve the quality of a developer's work~\cite{dekhtyar2004}.
-Hence, in this section, we detail empirical studies investigating
-lexical, syntactic, and semantic aspects of the text 
-in 
-natural language artifacts.
+
+In this section, we detail empirical studies investigating 
+textual data in natural language software artifacts. 
+Such textual data is  rich in semantic information~\cite{dekhtyar2004} 
+and we provide and overview of seminal work 
+investigating lexical, syntactic, and semantic aspects of the text 
+in natural language software artifacts.
 
 
 
 
-
-
-Lexical analysis focuses on the characters or tokens in the text~\cite{jurafsky2014speech}
-and Bacchelli et al. applied lexical analysis to study how developers describe class elements
+Initial insights about the text of a natural language artifact might be learned focusing on 
+the characters or tokens in the text.
+This lexical analysis~\cite{jurafsky2014speech} might be used to identify common or unique words 
+used in an artifact as well as common words that often appear together  in the text. In software engineering research, Bacchelli et al. used lexical analysis to study how developers describe class elements
 in nearly 80,000 emails of an Open Source System~\cite{bacchelli2009}.
-Their analysis suggested that terms in the emails exchanged could be 
+Their analysis suggested that lexical terms could be 
 used as a mean of automatically linking information in development emails to 
 the project's source code.
 
@@ -29,35 +31,57 @@ the project's source code.
 
 
 
-Syntactic analysis concerns the grammatical elements in the text 
-and relationships between them~\cite{jurafsky2014speech}.
-As an example of its usage in natural language software artifacts, 
-Ko and colleagues identified regularities in the syntactic structure (i.e., noun and verb phrases) of the text 
+
+Syntactic analysis concerns the  elements in the text 
+and the grammatical relationships between them~\cite{jurafsky2014speech}. 
+Part-of-speech tagging and dependency parsing are common applications of syntactic analysis,
+where they identify the nouns, verbs, pronouns, and other elements in the text 
+and how these elements relate, respectively. 
+As an example of a syntactic analysis study in natural language software artifacts, 
+Ko and colleagues identified regularities in the syntactic structure of the text 
 of nearly 200,000 bug report titles~\cite{Ko2006}, suggesting that these 
 regularities could be used for the automatic identification 
 of information in bug reports. 
 
+%  For example, Figure~\ref{fig:syntactic-analysis} shows the
+%  Stanford CoreNLP~\cite{CoreNLP} syntactic analysis for a sentence 
+%  about the file system:  `\textit{you can use io.StringIO}'.
 
 
 
-Semantic analysis focuses on the meaning of the text, i.e., what type of information 
-certain text conveys nad most of the software engineering research in this field 
-has focused on the proposal of \textit{taxonomies} to explain the typo of information 
-available in natural language software artifacts~\cite{Maalej2013, Arya2019}. 
+% \medskip
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.40\textwidth]{cp2/textual-analysis.png}
+%     \caption{Example of syntactic analysis}
+%     \label{fig:syntactic-analysis}
+% \end{figure}
+
+
+
+
+
+
+
+Even sentences with similar terms or similar syntactic structure might convey different information
+and software engineering researchers have also investigated the meaning of the text in natural language software artifacts. 
+These studies consider the semantic analysis of the text and most of the existing 
+work has focused on proposing \textit{taxonomies} to explain the type of information 
+available in certain kinds of natural language artifacts~\cite{Maalej2013, Arya2019}. 
 For example, Di Sorbo et al. have found that 
 text in development mailing lists can be classified according to the developers' intentions (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015},
 suggesting that one can automate this classification to assist developers in finding 
 certain types of information.
-Other examples include Maalej and Robillard's taxonomy of patterns of knowledge in API documentation
-or Arya et al. analysis of information types in Open Source issues~\cite{Arya2019}.
+% Other examples include Maalej and Robillard's taxonomy of patterns of knowledge in API documentation
+% or Arya et al. analysis of information types in Open Source issues~\cite{Arya2019}.
 
 
 
 
 
-This thesis extends these investigations
-by considering text from different types of artifacts 
-and by investigating common semantic cues across the text 
+Our thesis contributes to the body of empirical studies that investigate natural language 
+text by characterizing common semantic cues across the text 
+of different kinds of artifact that developers 
 deemed relevant to a software task (Chapter~\ref{ch:characterizing}).
 
 

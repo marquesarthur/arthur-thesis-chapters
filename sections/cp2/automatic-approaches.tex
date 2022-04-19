@@ -14,48 +14,6 @@ that seek to automatically identify such information.
 
 
 
-\subsection{Pattern Matching Approaches}
-\label{cp2:pattern-matching}
-
-
-Pattern matching approaches rely on regular expressions describing a sequence of tokens that represent
- a relevant text fragment~\cite{Bavota2016}. Tokens can either represent words or linguistic elements 
-extracted using \acf{NLP}.
-    
-
-Knowledge Recommender (Krec)~\cite{Robillard2015} 
-is an example of a
- tool that uses word patterns to 
- automatically detect relevant sentences in  API documentation. 
-It contains 361 unique patterns derived from annotated the Java reference documentation
-where patterns such as {\small \textit{$\{$may}, \textit{efficient}, \textit{code element$\}$}} could be used to identify sentences giving instructions about efficient ways to 
-use some API element. 
-
-As an example of an approach based on linguistic patterns,
-{\small DeMIBuD}~\cite{Chaparro2017} uses a set of 154 discourse patterns
-derived from nearly 3,000 bug reports 
-to
-automatically detect sentences discussing steps to reproduce 
-a bug or the bug's expected behaviour.
-For example, the pattern 
-{\small \textit{$\{$subject}, \textit{should/shall (not)}, \textit{complement$\}$}}
-captures common ways with which developers describe a system's expected behaviour~\cite{Chaparro2017}.
-
-
-
-
-
-Although the heuristics and regular expressions used in these and other studies~\cite{nadi2020, Maalej2013}
-are often light-weight and effective~\cite{Bavota2016}, 
-pattern-matching approaches 
-are often specific to certain kinds of domains and types of artifact~\cite{fucci2019}, which limits
-using them in a general manner. 
-Our approach to identifying task-relevant text 
-is different from the approaches in these studies because we do not use syntactic properties of the text, 
-instead we rely on the semantics 
-of words and sentences to determine the text likely relevant to a task (Chapter~\ref{ch:identifying}).
-
-
 
 
 

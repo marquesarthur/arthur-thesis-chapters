@@ -2,28 +2,102 @@
 
 
 
+\section{Automated Approaches to Task-Relevant Text Identification}
+\label{cp2:task-approaches}
 
-% As part of their work, developers engage in many sensemaking and decision making activities~\cite{sillito2006} and several studies have investigated how to 
-% provide means to better  
-% assist developers in performing such activities~\cite{Liu2018Unakite, liu2021, barnett2015}.
-% For example, tools such as Deep Intellisense 
-% display code changes, filed bugs, and forum discussions 
-% mined from an organization's database to better assist a developer
-% understand 
-% the rationale behind the code they currently work on~\cite{Holmes2008},
+
+
+In this section, we detail textual approaches that automate the identification 
+of text likely relevant to a developer's task. These approaches 
+use many of the techniques discussed in Section~\ref{cp2:general-approaches}
+in conjunction with the text in a developer's task
+ or the code in a developer's workspace
+as potential ways to 
+to identify task specific information.
+A seminal tool that exemplifies 
+how these sources assist in locating task specific information is
+Hipikat~\cite{Cubranic2005}.
+It takes a query explicitly prompted by a developer 
+or implicitly based on the code that the developer 
+has inspect and  
+it recommends artifacts from a project's archive 
+that are pertinent to the query.
+
+
+While Hipikat makes recommendations at the artifact level, 
+the tool's authors acknowledged that 
+this approach could be fine-tuned to identify 
+parts of an artifact that are relevant~\cite{Cubranic2005}
+and other studies have since built upon this core idea. 
+For example, Deep Intellisense~\cite{Holmes2008} 
+uses pattern matching to 
+identify 
+artifacts containing text that 
+would assist a developer
+better understand the code that they inspect
+while 
+CueMeIn~\cite{sun2021} takes the code 
+a developer is currently editing and it
+uses a \acs{DL} neural network to find 
+excerpts from web tutorials 
+that might contain explanations 
+for the classes and methods 
+present in the method being edited. 
+
+
+
+
+
+With regards to the content in a developer's task, as captured through a feature 
+request or a bug report in an issue tracking system (e.g., the notification task in Figure~\ref{fig:fig:android-notifications-task}),
+a second potential way to find text relevant to the task at hand is through query-based summarization~\cite{Goldsteinet1999}.
+Query-based summarization allows 
+producing a summary tailored to a particular query
+and a small number of approaches have focused on
+producing task-specific summaries~\cite{Xu2017, silva2019, liu2019qapi}.
+For example, AnswerBot~\cite{Xu2017}, a state-of-the-art summarization tool, 
+uses word embeddings to find which sentences in a Stack Overflow answer 
+are most similar to a question  representing a developer's task.
+The tool uses semantic similarity in conjunction with 
+Stack Overflow's meta-data to decide which text should it include
+in the summary that answers the developer's question. 
+
+
+
+
+
+
+
+The possible techniques that we explore in Chapter~\ref{ch:identifying} 
+build upon these concepts. We assume that 
+a set of artifacts pertinent to a task 
+is available and we use the content of a developer's task 
+to identify text relevant to that task
+in these pertinent artifacts.
+
+
+
+
+
 % and researchers have extended this idea to  
 % publicly available data, e.g., GitHub issues~\cite{Viviani2019}
 % or pull requests~\cite{freire2021}. 
 
 
 
-% Researchers have also had a long interest in 
-% making knowledge bases
-% that developers working on a task can benefit from. 
-% Hipikat~\cite{Cubranic2005} is a seminal tool that exemplifies this concept in action.
-% Based on the current code being inspected by a developer, 
-% it recommends artifacts from a project's archive 
-% that are pertinent to the code being inspected~\cite{Cubranic2005}.
-% Other tools like Strata summarize knowledge produced by developers 
-% while they navigate on the web so that other developers have a 
-%  head start when performing similar tasks~\cite{liu2021}.
+
+
+
+% Even though most of the summarization approaches that apply to natural language software artifacts 
+% summarize an artifact on its whole~\cite{Rastkar2010, Murray2008, Lotufo2012, Ponzanelli2015},
+
+
+% Summarization approaches often favour the diversity of information to be included in a summary~\cite{Carbonell1998,li2018deep}
+% and thus, a summary might not contain all of the information needed 
+% to correctly complete a software task.
+% For example, if several relevant sentences discuss different yet similar content about 
+% a particular technology, it is less likely that a summary will contain all of these sentences. 
+% In contrast, the approaches that we explore in Chapter~\ref{ch:identifying}
+% seek to identify the text that is most relevant to a task regardless 
+% of its diversity.
+
