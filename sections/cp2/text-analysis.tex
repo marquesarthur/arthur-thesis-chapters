@@ -11,8 +11,7 @@ In this section, we detail empirical studies investigating
 textual data in natural language software artifacts. 
 Such textual data is  rich in semantic information~\cite{dekhtyar2004} 
 and we provide and overview of seminal work 
-investigating lexical, syntactic, and semantic aspects of the text 
-in natural language software artifacts.
+investigating lexical, syntactic, and semantic aspects of the text.
 
 
 
@@ -20,7 +19,8 @@ in natural language software artifacts.
 Initial insights about the text of a natural language artifact might be learned focusing on 
 the characters or tokens in the text.
 This lexical analysis~\cite{jurafsky2014speech} might be used to identify common or unique words 
-used in an artifact as well as common words that often appear together  in the text. In software engineering research, Bacchelli et al. used lexical analysis to study how developers describe class elements
+used in an artifact as well as words that often appear together in the text.
+In software engineering research, Bacchelli et al. used lexical analysis to study how developers describe class elements
 in nearly 80,000 emails of an Open Source System~\cite{bacchelli2009}.
 Their analysis suggested that lexical terms could be 
 used as a mean of automatically linking information in development emails to 
@@ -43,6 +43,36 @@ of nearly 200,000 bug report titles~\cite{Ko2006}, suggesting that these
 regularities could be used for the automatic identification 
 of information in bug reports. 
 
+
+
+
+
+
+Sentences with similar terms or similar syntactic structure might convey different information
+and researchers have also investigated the meaning of the text in natural language software artifacts. 
+These studies consider the semantic analysis of the text and 
+software engineering researchers have proposed \textit{taxonomies} to explain the type of information 
+available in certain kinds of natural language artifacts~\cite{Maalej2013, Arya2019}. 
+For example, Di Sorbo et al. have found that 
+text in development mailing lists can be classified according to the developers' intentions (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015},
+suggesting that one can automate this classification to assist developers in finding 
+certain types of information.
+% Other examples include Maalej and Robillard's taxonomy of patterns of knowledge in API documentation
+% or Arya et al. analysis of information types in Open Source issues~\cite{Arya2019}.
+
+
+
+
+Most of the textual analysis in related literature focus on the text of a specific 
+type of artifact. In contrast, our work 
+characterizes common semantic cues in the text 
+of different kinds of artifact that developers 
+deemed relevant to a software task (Chapter~\ref{ch:characterizing}).
+
+
+
+
+
 %  For example, Figure~\ref{fig:syntactic-analysis} shows the
 %  Stanford CoreNLP~\cite{CoreNLP} syntactic analysis for a sentence 
 %  about the file system:  `\textit{you can use io.StringIO}'.
@@ -56,34 +86,6 @@ of information in bug reports.
 %     \caption{Example of syntactic analysis}
 %     \label{fig:syntactic-analysis}
 % \end{figure}
-
-
-
-
-
-
-
-Even sentences with similar terms or similar syntactic structure might convey different information
-and software engineering researchers have also investigated the meaning of the text in natural language software artifacts. 
-These studies consider the semantic analysis of the text and most of the existing 
-work has focused on proposing \textit{taxonomies} to explain the type of information 
-available in certain kinds of natural language artifacts~\cite{Maalej2013, Arya2019}. 
-For example, Di Sorbo et al. have found that 
-text in development mailing lists can be classified according to the developers' intentions (e.g., feature request, solution proposal, etc.)~\cite{Sorbo2015},
-suggesting that one can automate this classification to assist developers in finding 
-certain types of information.
-% Other examples include Maalej and Robillard's taxonomy of patterns of knowledge in API documentation
-% or Arya et al. analysis of information types in Open Source issues~\cite{Arya2019}.
-
-
-
-
-
-Our thesis contributes to the body of empirical studies that investigate natural language 
-text by characterizing common semantic cues across the text 
-of different kinds of artifact that developers 
-deemed relevant to a software task (Chapter~\ref{ch:characterizing}).
-
 
 
 

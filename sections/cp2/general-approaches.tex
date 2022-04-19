@@ -15,15 +15,15 @@ applied to natural language software artifacts.
 \label{cp2:pattern-matching}
 
 
-Regularities in the terms and syntactic structure of the text of certain natural language artifacts
-means that such text might be automatically identified via pattern matching.
+Regularities in the terms and in the syntactic structure of the 
+might be automatically identified via pattern matching.
 Pattern matching approaches use regular expressions describing a sequence of tokens that represent
- the text to be identified~\cite{Bavota2016}. 
- We describe two tools---Krec~\cite{Robillard2015}  and DeMIBuD~\cite{Chaparro2017}---that
- illustrate how software engineering 
- researchers use pattern matching in conjunction with the lexical or linguistic elements 
- in the text to automatically identify 
- text useful to certain activities.
+the text to be identified~\cite{Bavota2016}. 
+We describe two tools, Krec~\cite{Robillard2015}  and DeMIBuD~\cite{Chaparro2017}, that
+illustrate how software engineering 
+researchers use pattern matching in conjunction with the lexical or linguistic elements 
+in the text to automatically identify 
+text useful to certain software development activities.
     
 
 
@@ -33,7 +33,7 @@ is an example of a
  automatically detect relevant text in  API documentation. 
 Krec's premise is that relevant sentences contain a code element, such as a method or class signature.
 These code elements are identifiable via regular expressions 
-and Krec contains a catalog of 361 unique patterns centred around code elements
+and Krec contains a catalog of 361 unique patterns 
 that identify threats and directives on how to use some API element.
 For example, Krec uses the pattern {\small \textit{$\{$may}, \textit{efficient}, \textit{code element regex$\}$}} 
 to identify sentences giving instructions about an efficient way to 
@@ -62,7 +62,7 @@ Although the heuristics and regular expressions used in these and other studies~
 are lightweight and effective~\cite{Bavota2016}, 
 pattern-matching approaches 
 are often specific to certain kinds of domains and types of artifact~\cite{fucci2019}, 
-limiting their use in the design of a generalizable technique, which the main goal of this thesis.
+limiting their use in the design of a generalizable technique, which is the main goal of this thesis.
 
 
 
@@ -77,15 +77,21 @@ limiting their use in the design of a generalizable technique, which the main go
 Regularities in the text, or in an artifact's meta-data, can also be 
 engineered into features that \acf{ML} 
 approaches can leverage to automatically identify and classify
-text of interest in natural language artifacts. 
+text useful to certain software development activities. 
 
 
+% where
+% one can train a classifier
+% to predict whether a sentence belongs (or not)
+% to a certain class. 
 
-For that, researchers often pose the problem of identifying text of interest 
-as a binary classification problem, where
-one can train a classifier
-to predict whether a sentence belongs (or not)
-to a certain class. 
+
+Researchers pose the problem of identifying text 
+in a natural language artifact 
+as a binary classification problem. 
+That is, the use of a number of features 
+to predict whether the text is (or not)
+relevant to some context~\cite{}.
 In software engineering, 
 binary classifiers have been used for,
 for example, classify text that describes steps to reproduce a bug~\cite{Chaparro2016} or 
@@ -102,13 +108,12 @@ identifies explanations about an API element  in a web tutorial~\cite{Petrosyan2
 Other classification problems predict which class, out of many, some input text belongs to. 
 This type of classification, often referred to as multinomial or multi-class classification, 
 is of particular interest if 
-we consider the taxonomies proposed by software engineering researchers 
-and described in Section~\ref{cp2:text-in-se}.
+we consider the taxonomies described in Section~\ref{cp2:text-in-se}.
 For example, Arya et al. identified 16 categories of  information available
 in open source GitHub issues (e.g., workarounds, solution discussion, task progress, etc.)~\cite{Arya2019}
 and they proposed a multinomial classifier 
-to automatically identify these categories
-so that a developer could quickly find information pertaining a certain category. 
+to automatically identify such categories.
+% so that a developer could quickly find information pertaining a certain category. 
 
 
 
@@ -134,8 +139,8 @@ key information in natural language artifacts~\cite{}.
 A common application of unsupervised learning in software engineering
 considers the automatic generation of text summaries.
 Most often, automatic summaries are produced 
-using extractive techniques~\cite{a} that select a subset of 
-the sentences of an artifact that will compose the summary~\cite{a}.
+using extractive techniques that select a subset of 
+the sentences of an artifact which will compose the summary~\cite{a}.
 Among other natural language artifacts,
 extractive summarization techniques
 have been applied to Stack Overflow posts~\cite{a}, coding tutorials~\cite{a},
@@ -154,26 +159,36 @@ to identify these sentences.
 
 A second set of unsupervised methods focus on clustering data.
 These techniques identify 
-subsets in the data that have similar properties or features. 
-These approaches have been use both to 
+subsets in the data that have similar properties or features 
+and techniques such as \acf{LDA}~\cite{blei2003latent}  have been use both to 
 bootstrap the categorization of information in 
-natural language artifacts, 
-as when Allamanis and Sutton
-applied \acf{LDA}~\cite{blei2003latent}
+natural language artifacts and as part of tools that identify 
+portions of the text in an artifact pertinent to some software activity. 
+As an example of the former, 
+ Allamanis and Sutton
+applied \acs{LDA}
 to gain insight into the types of questions 
-asked on Stack Overflow~\cite{Allamanis2013}
-or in tools such as FRAPT,
-which 
-automatically identifies sentences explaining API elements 
-according to the topics
-identified in a web tutorial~\cite{Jiang2017}.
+asked on Stack Overflow~\cite{Allamanis2013}.
+For the latter, tools such as FRAPT
+use \acs{LDA} to identity topics in a web tutorial
+and then extract sentences explaining API elements from each of the topics identified~\cite{Jiang2017}.
 
 
 
-Despite the significant 
-contributions brought by using machine learning methods, one substantial challenge inherent to these
-approaches is that researchers must engineer which 
-features or properties of the text to use~\cite{ferreira2021}.
+% Despite the significant 
+% contributions brought by using machine learning methods, 
+One substantial challenge inherent the supervised and 
+unsupervised \acs{ML} approaches that we discussed
+is that researchers must engineer which 
+features their \acs{ML} technique will use~\cite{ferreira2021}.
+Given the specificity and cost of engineering such features, 
+\acs{ML} approaches have limitations similar to pattern 
+matching approaches when we consider their use across 
+different kinds of artifacts.
+
+
+
+
 % For example, Rastkar et al. uses conversational features in 
 % the text of a bug report to assist in determining which sentences 
 % to include in the bug report's summary~\cite{Rastkar2010}
@@ -181,10 +196,6 @@ features or properties of the text to use~\cite{ferreira2021}.
 % linguistic and structural properties 
 % in the text of API documents to identify key text 
 % explaining API elements~\cite{Petrosyan2015}.
-Given the specificity and cost of engineering such features, 
-researchers have sought approaches to address these 
-limitations, which we discuss next. 
-
 
 
 
@@ -198,21 +209,27 @@ limitations, which we discuss next.
 
 In contrast to the human-engineered features,
 \acf{DL} approaches allow the automatic extraction of features 
-from training data~\cite{Deng2018, zhang2021deep}.
-Therefore, 
-deep learning might be an interesting 
+from training data~\cite{Deng2018, zhang2021deep},
+which makes 
+deep learning an interesting 
 approach to
-uncover regularities 
+uncover regularities in the text of a natural language software artifact
 that might not obvious or easily identified
 by software engineering researchers.
-Deep learning has led to groundbreaking advancements in many 
-research areas (e.g., machine translation~\cite{lopez2008translation}) 
-and, given its wide range of applications, 
+
+
+
+% Deep learning has led to groundbreaking advancements in many 
+% research areas (e.g., machine translation~\cite{lopez2008translation}) 
+% and, 
+
+Given the wide range of applications that both propose \acs{DL} models~\cite{} and that use 
+these models for a certain purpose (e.g., machine translation~\cite{lopez2008translation}), 
 we focus
-on its usage in natural language text appearing in
-software engineering artifacts~\cite{ferreira2021, li2018deep, watson2022}.
+on \acs{DL} applications in the 
+software engineering domain~\cite{ferreira2021, li2018deep, watson2022}.
 First we discuss neural embeddings and then, we present 
-neural network architectures 
+neural network models 
 for the same range of problems 
 that machine learning approaches apply to.
 
@@ -230,18 +247,20 @@ embeddings mitigate lexical mismatches in the text found across different
 natural language software artifacts,
 using them as a way to compare the semantic similarity of the text~\cite{mihalcea2006}.
 Their use has improved many information retrieval task,
-as shown by Ye et al. evaluation of word embeddings
+as shown by Ye et al.'s evaluation of word embeddings
 for bug localization tasks~\cite{Ye2016}
 or Huang and colleagues' study on 
 the usage of word embeddings for API recommendation tasks~\cite{Huang2018}. 
-Due to how word embeddings assist the in identification 
-of similar text, they have also been widely used in unsupervised text 
-summarization approaches~\cite{Ponzanelli2017, Xu2017, Jiang2017}.
-\red{For example, AnswerBot's relevant and salient text selection algorithm~\cite{Xu2017}
-uses word embeddings to find which sentences in a Stack Overflow answer 
-are most similar to a question posed by a developer 
-and that should be included in the summary that the tool produces 
-to answer the developer's question. }
+
+
+% Due to how word embeddings assist the in identification 
+% of similar text, they have also been widely used in unsupervised text 
+% summarization approaches~\cite{Ponzanelli2017, Xu2017, Jiang2017}.
+% \red{For example, AnswerBot's relevant and salient text selection algorithm~\cite{Xu2017}
+% uses word embeddings to find which sentences in a Stack Overflow answer 
+% are most similar to a question posed by a developer 
+% and that should be included in the summary that the tool produces 
+% to answer the developer's question. }
 
 
 
@@ -251,21 +270,26 @@ Provided that \acs{DL} address challenges originating from feature engineering,
 many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep, watson2022}
 use neural network architectures 
 in binary or multinomial classifiers as well as in extractive text summarization.
-Such architectures have been applied to 
-code comprehension~\cite{allamanis2015, mi2018}, 
-community forum analysis~\cite{Lin2018, wang2019}, 
-or requirements traceability~\cite{chen2019, guo2017}
-and neural networks have also produced more accurate and diverse summaries 
+For example, Fucci et al. used a 
+recurrent neural network (\acs{RNN}) with 
+\acf{LSTM}~\cite{aa}
+to identify the types of information available in 
+API documentation~\cite{fucci2019} or when Li et al. used a stepped auto-encoder~\cite{aa}
+to produced more accurate and diverse summaries 
 for bug reports~\cite{li2018deep}.
+State-of-the-art architectures such as \acf{BERT}
+have been used for requirements traceability~\cite{Araujo2021}.
+Nonetheless, these and other applications of deep learning 
+to natural language software artifacts target specific
+types or artifact and evaluating their 
+usage across different types of artifacts 
+is outside the scope of the studies we surveyed.
 
 
 
-These applications of deep learning target specific
-types in related work target a specific kind of natural
-language artifact or source code. 
 In Chapter~\ref{ch:identifying}, we consider 
 how we can use 
-word embeddings and state-of-the-art \acs{DL}
+word embeddings and \acs{BERT}-based \acs{DL}
 model 
 to automatically identify task-relevant text
 in different kinds of natural language artifacts.
