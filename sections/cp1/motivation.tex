@@ -1,18 +1,16 @@
 
 
-When performing software tasks in large and complex software system, software developers typically consult several different kinds of documents, or artifacts, that assist them in their work~\cite{Starke2009, Meyer2017}. For example, 
+When performing software tasks in large and complex software systems, software developers typically consult several different kinds of documents, or artifacts, that assist them in their work~\cite{Starke2009, Meyer2017}. For example, 
 when incorporating a new software library needed for a new feature, a developer might consult official application programming interface (API) documents for the library~\cite{robillard2011field, umarji2008archetypal} or 
- question-and-answer developer forums 
- %for functionality, security and performance-related topics
- ~\cite{parnin2012, silva2019}.
+ question-and-answer developer forums~\cite{parnin2012, silva2019}.
 
 
 
 Many of the artifacts that developers consult
 contain unstructured text; for the purposes of this thesis, we refer to artifacts with unstructured text as natural language artifacts.  
-To utilize the information in  natural language artifacts, a developer must read the text to find the information that is relevant to the task being performed~\cite{Bavota2016}.
+To utilize information in  natural language artifacts, a developer must read the text to find the information that is relevant to the task being performed~\cite{Bavota2016}.
 However, 
-the sheer amount of information in these artifacts may prevent a developer from comprehensively assessing what is useful to their task~\cite{Murphy2005}.
+the sheer amount of information in these natural language artifacts may prevent a developer from comprehensively assessing what is useful to their task~\cite{Murphy2005}.
 Just within one kind of artifact, API
 documentation, studies have shown that it can take 15 minutes or more
 of a developer's highly constrained time to identify 
@@ -29,10 +27,6 @@ Finding information that assists a developer to complete a task can be a time-co
 
  
  
-%  with a scenario that help us define the state of the art and introduce our work of dissertation.
-
-
-
 
 
 
@@ -42,7 +36,8 @@ Finding information that assists a developer to complete a task can be a time-co
  
  
  To illustrate challenges in locating information useful for a task, let us consider an  Android mail client application\footnote{\url{https://github.com/k9mail/k-9}}.
- Figure~\ref{fig:android-notifications-task} shows a task---in the form of a GitHub issue\footnote{\url{https://github.com/k9mail/k-9/issues/1741}}---that indicates that the app notifications 
+ Figure~\ref{fig:android-notifications-task} shows a task---in the form of a GitHub issue\footnote{\url{https://github.com/k9mail/k-9/issues/1741}}---that indicates that 
+ app notifications 
  are not working as expected in Android 7.0. 
  
  \medskip
@@ -55,7 +50,7 @@ Finding information that assists a developer to complete a task can be a time-co
  
  
  \medskip
- A developer assigned to this issue might not be familiar with how Android notifications work and thus, they will need additional knowledge to understand and resolve this task~\cite{ko2007, Li2013, sillito2006}. 
+ A developer assigned to this issue might not be familiar with how Android notifications work and thus, they will likely need additional knowledge to understand and resolve this task~\cite{ko2007, Li2013, sillito2006}. 
  Often, this knowledge can be acquired from a developer's peers~\cite{singer2011}. 
  However, the fragmented and distributed nature of software development  
  may prevent the developer from accessing their peers~\cite{ko2007},
@@ -77,11 +72,11 @@ Finding information that assists a developer to complete a task can be a time-co
  
 A common way to find software artifacts
 pertinent to the developer's task
-is through the usage of a web search engine~\cite{Brandt2009a, Li2013}.
+is through a web search engine~\cite{Brandt2009a, Li2013}.
 Figure~\ref{fig:android-search-results}
 shows the artifacts resulting from a developer's search 
 about android notifications for the task in Figure~\ref{fig:android-notifications-task}.
-The artifacts returned can each be considered to have a type. For instance,
+Each artifact can be assigned a type. For instance,
 the artifacts returned represent web tutorials, API documents and question-and-answer
 artifacts, each of which can be considered a different type.
 Each type of artifact has different associated challenges for locating 
@@ -107,7 +102,7 @@ information useful to a task within them.
 The first artifact in Figure~\ref{fig:android-search-results}
 is a 
  web tutorial, a document intended primarily to teach users how to use 
-a technology~\cite{arya2020} through a series of structure topics 
+a technology~\cite{arya2020} through a series of structured topics 
 that progressively explain concepts about the technology~\cite{Jiang2016b, Jiang2017}. 
 Figure~\ref{fig:tutorial-create-notification} 
 shows a portion of this artifact's content. 
@@ -131,20 +126,15 @@ notifications for both Android version 7.0 and 12.0,
 only the text highlighted (in orange)
 might be of relevance to the task in Figure~\ref{fig:android-notifications-task}.
 
-% what is expected from an artifact produced for a large audience
-% that may have different information needs,
 
 
 
 
 
-An API %\acf{API} 
+An \acs{API} 
 contains software elements (e.g., classes and methods) that other developers 
 are allowed and expected to use for a certain purpose~\cite{monperrus2012},
 where instructions about an API usage are typically available in the API's reference documentation.
-such as how the mail client software communicates 
-with the native Android software. This communication happens via features and functionality exposed by the API~\cite{Robillard2015} 
-and instructions about its usage are typically available in the API's reference documentation.
 Figure~\ref{fig:api-notification-action} shows part of the reference documentation for one of the classes of the Android API, namely `\textit{Notification.Action}'. 
 In the right-hand side of the figure, we find common 
 information in this type of artifact, including a brief summary,
@@ -156,9 +146,9 @@ their task,
 a developer unfamiliar with this document would 
 face challenges similar to the ones already  described in the web tutorial. Additionally, 
 we note that complex APIs, 
-such as Android, require combining several classes
+such as the ones exposed by the Android operating system, require combining several classes
 and method calls~\cite{robillard2011field} to properly perform some instruction,
-what would mean inspecting at least three other classes 
+which would mean inspecting at least three other classes 
 with equally complex documentation
 to find all the text explaining the API elements used in the quick actions menu\footnote{\url{https://github.com/k9mail/k-9/pull/1755/files}}.
 
@@ -206,12 +196,10 @@ to their task. Nonetheless, a series of factors make finding useful information 
 For instance, only half of the Android questions on Stack Overflow
 have an accepted answer~\cite{parnin2012} 
 and millions of questions have more than one answer~\cite{nadi2020}.
-Technologies also evolve and answers become obsolote~\cite{Allamanis2013}.
+Technologies also evolve and answers become obsolete~\cite{Allamanis2013}.
 Hence, despite the fact that structured data  might 
 assist a developer, finding task-relevant text in this type of artifact is also not 
 trivial.
-
-% (i.e., votes and accepted answers)
 
 
 
@@ -228,174 +216,3 @@ they are common to many kinds of natural language software artifacts~\cite{Li201
 
  
  
- 
-%  As tasks become more complex~\cite{Pirolli2007, Bystrom1995}, a developer also has to combine multiple textual fragments---from the same artifact or from different ones---to understand what is needed for the task-at-hand~\cite{Piorkowski2016}. 
-%  For example, the information within the web tutorial 
-%  might have only partially assisted the developer in understanding how 
-%  Android notifications work and thus, they would consult other artifacts from their search for more information, namely the API document and \acs{qa} web page. 
-%  Figure~\ref{fig:anatomy-of-relevant-text} gives further insight into 
-%  how task-relevant text 
-%  is scattered across these other artifacts. 
-%  From the figure, we find that some of the text potentially relevant to this task (in orange) is attached to elements that a reader would not intuitively access~\cite{Robillard2015}, i.e., 
-%  a sentence at the end of a paragraph or a comment under the original question,
-%  and if no tool support is provided, much of the process of finding this relevant text falls on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995}.
- 
- 
- 
-
- 
- 
-
-% % https://tex.stackexchange.com/questions/468393/including-large-images-in-landscape-formatting
-% \begin{landscape}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/create-notification.png}
-%     \caption{Snapshot of the official Android notifications API overview}
-%     \label{fig:tutorial-create-notification}
-% \end{figure}
-% \end{landscape}
-    
-
- 
- 
- 
-
-% \begin{landscape}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=\dimexpr\linewidth-4\fboxsep-2\fboxrule]{cp1/notifications-relevance-2.pdf}
-%     \caption{Relevant text for the Android notifications task found across different kinds of artifacts, i.e., an API document (on the left) and a question-and-answer web page (on the right)}
-%     \label{fig:anatomy-of-relevant-text}
-% \end{figure}
-% \end{landscape}
-
- 
- 
- 
-%  Although effective in specific contexts,
-%  it is reasonable to assume that these techniques might not apply 
-%  to the different kinds of artifacts. This is either because these techniques have  assumptions on the nature of relevant text that do
-%  not extend to the text found in other types of artifacts, or 
-%  because these techniques rely on 
-%  meta-data, which is only available in specific kids of artifacts
-%  and given how quickly developers progress to using new kinds of technology to
-%  record pertinent information (e.g., slack~\cite{Storey2017, Lin2016}),
-%  it may be difficult to scale such artifact-centric approaches to cover the range of
-%  artifacts that 
-%  a developer may encounter
-%  daily in their work~\cite{Li2013}.
- 
- 
- 
- 
- 
-
-
-
-
-% \clearpage
-
-
-% a snapshot 
-% of the Android notifications documentation, where among  
-% the many topics presented on the page (right-hand side), only the `\textit{notification actions}' portion (under focus) might be rof relevance.
-% This illustrates the burden of sifting through large amounts of
-% irrelevant text (e.g., because of legacy information, boilerplate text, or because it is intended for another audience) to filter just those parts that are relevant to a developer~\cite{Robillard2015}. 
-
-
-
-
-
-
-
-
-
-
-
-% about adding
-% action to a notification is found across multiple artifacts.
-% If no tool support is provided, much of the process of navigating through artifacts of interest and locating text 
-% relevant to a task fall on the developer's shoulders~\cite{gonccalves2011, Ko2006a, Bystrom1995}.
-
-
-
-
-
-
-% Researchers have long recognized the value of assisting developers in 
-% identifying information of relevance within the natural language
-% text of a software artifact
-
-
-
-
-
-
-% but such a technique would fail to locate the relevant text 
-% shown in Figure~\ref{fig:anatomy-of-relevant-text}.
-
-
-% consider pre-defined kinds of tasks or types of artifacts.
-% For example, {\small DeMIBuD}~\cite{Chaparro2017} is a technique that applies to bug reports and 
-% assists in bug triaging. Although valuable, the text   detailing a bug's observed or expected
-% behaviour and automatically identified by this tool
-%  is of little help to a developer who accessed that bug 
-% with the hope that the bug's solution also applies to their current task~\cite{Viviani2019}.
-
-
-
-
-
-% \input{fig/cp1/search-results.tex}
-
-
-
-
-
-% While it is impractical to anticipate all the information needs a developer might have~\cite{sillito2006, josyula2018, ko2007}, there is an increasing interest in using the information 
-% available in a software task for the purposes of automatically identifying text 
-% which might assist in completing that task~\cite{Bavota2016}. 
-% In such context, most of the approaches proposed by software engineering researchers 
-%  only apply to certain kinds of artifacts, such as Stack Overflow posts~\cite{Xu2017, silva2019}, 
-%  and use structural data available in these artifacts (e.g., extracting text only from top ranked answers)  to assist in the identification of relevant text
- 
-% These assumptions limit using such techniques across the
-% many different kinds of artifacts a developer may encounter
-% daily in their work~\cite{Li2013}, 
-% illustrating thus some of the challenges in locating task-relevant textual
-% information and motivating the need for more generalizable techniques.
-
-
-
-
-
-% \begin{landscape}
-% \begin{figure}
-%   \centering
-%   \begin{minipage}{.5\textwidth}
-%       \centering
-%       \includegraphics[width=0.5\linewidth, height=0.2\textheight]{cp1/notification-anatomy}
-%     %   \caption{The Skip-gram model architecture~\cite{Mikolov2013}}
-%     %   \label{fig:skip-gram}
-%   \end{minipage}%
-%   \begin{minipage}{0.5\textwidth}
-%       \centering
-%       \includegraphics[width=\linewidth, height=0.2\textheight]{cp1/expand-notifications}
-%     %   \caption{Positive and negative training examples~\cite{Ye2016}}
-%     %   \label{fig:skip-gram-example}
-%   \end{minipage}
-% \end{figure}
-% \end{landscape}
-
-
-
-
-
-% Some \acs{NLP} techniques rely on regular expressions describing a sequence of tokens
-% representing words or linguistic elements 
-% often found in relevant text~\cite{Bavota2016, Chaparro2017}.
-% Other \acs{ML}-based techniques use extractive text summarization 
-% to produce a summary of an artifact's content~\cite{Lotufo2012, Ponzanelli2015}
-% and a developer might use this summary to find key information
-% that may help them complete their task~\cite{Bavota2016}.
