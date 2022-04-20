@@ -1,6 +1,6 @@
 
 
-\section{Textual Approaches in Natural Language Software Artifacts}
+\section{Automated Textual Approaches}
 \label{cp2:general-approaches}
 
 
@@ -122,15 +122,14 @@ to automatically identify such categories.
 
 
 
-Although valuable, the cost and effort of hiring skilled workers to produce 
+Although valuable, these classifiers are instances of supervised learning methods.
+They require training data so that a classifier predicts the correct outcome 
+and the cost and effort of hiring skilled workers to produce 
 the labeled data for these and other supervised learning approaches
-has been a major limitation 
-to the usage of supervised learning 
-methods in software engineering research~\cite{Arpteg2018, ferreira2021}. As an alternative,
+has been a major limitation to their usage in software engineering research~\cite{Arpteg2018, ferreira2021}. As an alternative,
 researchers have also explored 
  unsupervised learning methods---\acs{ML} techniques that do not required training data---for the automatic 
-identification of 
-key information in natural language artifacts~\cite{}.
+identification or classification of the text in natural language artifacts~\cite{}.
 
 
 
@@ -163,7 +162,7 @@ subsets in the data that have similar properties or features
 and techniques such as \acf{LDA}~\cite{blei2003latent}  have been use both to 
 bootstrap the categorization of information in 
 natural language artifacts and as part of tools that identify 
-portions of the text in an artifact pertinent to some software activity. 
+portions of the text in an artifact that are helpful to some context. 
 As an example of the former, 
  Allamanis and Sutton
 applied \acs{LDA}
@@ -177,14 +176,16 @@ and then extract sentences explaining API elements from each of the topics ident
 
 % Despite the significant 
 % contributions brought by using machine learning methods, 
-One substantial challenge inherent the supervised and 
-unsupervised \acs{ML} approaches that we discussed
+
+Despite the significant contributions of these and other studies,
+one substantial challenge inherent the supervised and 
+unsupervised \acs{ML} approaches 
 is that researchers must engineer which 
 features their \acs{ML} technique will use~\cite{ferreira2021}.
-Given the specificity and cost of engineering such features, 
-\acs{ML} approaches have limitations similar to pattern 
-matching approaches when we consider their use across 
-different kinds of artifacts.
+Hence, \acs{ML} approaches have limitations similar to pattern 
+matching approaches when we consider 
+the specificity and cost of engineering such features
+for a variety of kinds of artifacts.
 
 
 
@@ -209,13 +210,17 @@ different kinds of artifacts.
 
 In contrast to the human-engineered features,
 \acf{DL} approaches allow the automatic extraction of features 
-from training data~\cite{Deng2018, zhang2021deep},
-which makes 
+from training data through a set of mathematical transformations~\cite{Deng2018, zhang2021deep}.
+This makes 
 deep learning an interesting 
 approach to
-uncover regularities in the text of a natural language software artifact
+uncover regularities 
 that might not obvious or easily identified
-by software engineering researchers.
+by software engineering researchers,
+thus allowing \acs{DL}
+to automate the identification of text in natural language software artifacts
+with these `hidden' properties. 
+
 
 
 
@@ -223,7 +228,7 @@ by software engineering researchers.
 % research areas (e.g., machine translation~\cite{lopez2008translation}) 
 % and, 
 
-Given the wide range of applications that both propose \acs{DL} models~\cite{} and that use 
+Given the wide range of studies that both propose \acs{DL} models~\cite{} and that use 
 these models for a certain purpose (e.g., machine translation~\cite{lopez2008translation}), 
 we focus
 on \acs{DL} applications in the 
@@ -246,11 +251,15 @@ Researchers have found that word
 embeddings mitigate lexical mismatches in the text found across different 
 natural language software artifacts,
 using them as a way to compare the semantic similarity of the text~\cite{mihalcea2006}.
-Their use has improved many information retrieval task,
-as shown by Ye et al.'s evaluation of word embeddings
-for bug localization tasks~\cite{Ye2016}
+Guided by the recent success of word embeddings 
+for a variety of software development 
+activities, as shown by Ye et al.'s evaluation of word embeddings
+for bug localization~\cite{Ye2016}
 or Huang and colleagues' study on 
-the usage of word embeddings for API recommendation tasks~\cite{Huang2018}. 
+the usage of word embeddings for API recommendation~\cite{Huang2018},
+Chapter~\ref{ch:identifying} 
+describes how we incorporate word embeddings in the 
+design of techniques that automate the identification of task-relevant text. 
 
 
 % Due to how word embeddings assist the in identification 
@@ -266,32 +275,36 @@ the usage of word embeddings for API recommendation tasks~\cite{Huang2018}.
 
 
 
-Provided that \acs{DL} address challenges originating from feature engineering, 
-many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep, watson2022}
+% Provided that \acs{DL} address challenges originating from feature engineering, 
+Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep, watson2022}
 use neural network architectures 
 in binary or multinomial classifiers as well as in extractive text summarization.
-For example, Fucci et al. used a 
+For example, Li et al. used a stepped auto-encoder~\cite{aa}
+to produced more accurate and diverse summaries 
+for bug reports~\cite{li2018deep} while 
+Fucci et al. used a 
 recurrent neural network (\acs{RNN}) with 
 \acf{LSTM}~\cite{aa}
 to identify the types of information available in 
-API documentation~\cite{fucci2019} or when Li et al. used a stepped auto-encoder~\cite{aa}
-to produced more accurate and diverse summaries 
-for bug reports~\cite{li2018deep}.
-State-of-the-art architectures such as \acf{BERT}
-have been used for requirements traceability~\cite{Araujo2021}.
-Nonetheless, these and other applications of deep learning 
-to natural language software artifacts target specific
-types or artifact and evaluating their 
-usage across different types of artifacts 
-is outside the scope of the studies we surveyed.
+API documentation~\cite{fucci2019}.
 
 
-
-In Chapter~\ref{ch:identifying}, we consider 
-how we can use 
-word embeddings and \acs{BERT}-based \acs{DL}
-model 
-to automatically identify task-relevant text
-in different kinds of natural language artifacts.
+While \acs{LSTM}s and other \acs{DL} architectures 
+handle dependencies between the words of a sentence, 
+state-of-the-art architectures such as \acf{BERT}~\cite{Devlin2018Bert}
+can also handle dependencies between sentences
+and Ara{\'u}jo et al. used \acs{BERT} in sentence pairs 
+representing system requirements and user reviews 
+to automatically extract requirements from 
+mobile application reviews~\cite{Araujo2021}.
+We consider that 
+establishing relationships 
+between sentence pairs is 
+a potential way to determine 
+sentences from an natural language artifact 
+that are relevant to some input task 
+and Chapter~\ref{ch:identifying}
+further describes how 
+we use \acs{BERT} for this goal.
 
 %  (BERT~\cite{Devlin2018Bert})

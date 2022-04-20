@@ -2,17 +2,21 @@
 
 
 
-\section{Automated Approaches to Task-Relevant Text Identification}
+\section{Task-specific Automated Textual Approaches}
 \label{cp2:task-approaches}
 
 
 
 In this section, we detail textual approaches that automate the identification 
-of text likely relevant to a developer's task. These approaches 
+of text likely relevant to a developer's task. 
+
+
+
+Task-specific automated approaches 
 use many of the techniques discussed in Section~\ref{cp2:general-approaches}
 in conjunction with the text in a developer's task
  or the code in a developer's workspace
-as potential ways to 
+as potential ways  
 to identify task specific information.
 A seminal tool that exemplifies 
 how these sources assist in locating task specific information is
@@ -22,34 +26,32 @@ or implicitly based on the code that the developer
 has inspect and  
 it recommends artifacts from a project's archive 
 that are pertinent to the query.
-
-
-While Hipikat makes recommendations at the artifact level, 
-the tool's authors acknowledged that 
+While Hipikat makes recommendations at the artifact level,  
 this approach could be fine-tuned to identify 
 parts of an artifact that are relevant~\cite{Cubranic2005}
 and other studies have since built upon this core idea. 
-For example, Deep Intellisense~\cite{Holmes2008} 
+For example, Deep Intellisense 
 uses pattern matching to 
 identify 
 artifacts containing text that 
 would assist a developer
-better understand the code that they inspect
+better understand the code that they inspect~\cite{Holmes2008}
 while 
-CueMeIn~\cite{sun2021} takes the code 
+CueMeIn takes the code 
 a developer is currently editing and it
-uses a \acs{DL} neural network to find 
+automatically finds 
 excerpts from web tutorials 
 that might contain explanations 
 for the classes and methods 
-present in the method being edited. 
+of the method being edited~\cite{sun2021}. 
 
 
 
 
 
-With regards to the content in a developer's task, as captured through a feature 
-request or a bug report in an issue tracking system (e.g., the notification task in Figure~\ref{fig:fig:android-notifications-task}),
+
+With regards to the content in a developer's task (as captured through a feature 
+request or a bug report in an issue tracking system),
 a second potential way to find text relevant to the task at hand is through query-based summarization~\cite{Goldsteinet1999}.
 Query-based summarization allows 
 producing a summary tailored to a particular query
@@ -66,14 +68,29 @@ in the summary that answers the developer's question.
 
 
 
+Task-specific techniques in related-work either consider a single type of artifact
+or have assumptions that prevent using them across different kinds of artifacts 
+in a generalizable manner. For example, 
+Deep Intellisense was evaluated in the artifacts of a single organization, 
+Microsoft, and the regular expressions that it uses might be unique to 
+how this organization stores its data. As another example, 
+query-based summarization approaches such as AnswerBot also use 
+an artifact's meta-data and it may not be possible to apply it 
+to artifacts that lack such meta-data. 
+We differ from these studies 
+by not using assumptions 
+specific to certain kinds of artifacts
+and by considering how to identify task-relevant text 
+across different types of artifacts.
 
 
-The possible techniques that we explore in Chapter~\ref{ch:identifying} 
-build upon these concepts. We assume that 
-a set of artifacts pertinent to a task 
-is available and we use the content of a developer's task 
-to identify text relevant to that task
-in these pertinent artifacts.
+
+% The possible techniques that we explore in Chapter~\ref{ch:identifying} 
+% build upon these concepts. We assume that 
+% a set of artifacts pertinent to a task 
+% is available and we use the content of a developer's task 
+% to identify text relevant to that task
+% in these pertinent artifacts.
 
 
 
