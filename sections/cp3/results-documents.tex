@@ -1,4 +1,4 @@
-\subsection{Characterizing Relevant Text in the Documents}
+\subsection{Relevant Text in Natural Language Artifacts}
 
 
 
@@ -8,7 +8,7 @@ software artifacts (\textit{RQ1}),
 we analyze the participants' produced highlights.
 We focus
 our analysis on highlights participants made of natural language
-text present in the artifacts---in this case English. We do not
+text. We do not
 consider highlights participants made of source code snippets or in
 tables, leaving the consideration of this information to future work.
 
@@ -28,17 +28,18 @@ participant highlighted more than one portion of a sentence we still
 consider the full sentence as one HU. 
 
 
-\subsubsection{How much text in an artifact is deemed as relevant to a task?}
+\subsubsection{How much text in an artifact is deemed relevant to a task?}
 \label{cp3:ratio}
 
 
 
-We first ask how much text within an artifact participants found as relevant to a task.
-If almost all of the text is relevant then there would not be a need for
+
+We first ask how much text within an artifact participants found relevant to a task
+since if almost all of the text  is relevant then there would not be a need for
 identifying text within an artifact.
 Figure~\ref{fig:task-artifact-ratio} presents the ratio of relevant and non-relevant text in each type of document.
 We compute the average ratio of HUs and text for each  artifact from each type of document.
-We report mean of the ratio artifact-wise to prevent misinterpretations due to outliers,
+We report the mean of the ratio artifact-wise to prevent misinterpretations due to outliers,
 i.e., a lengthy document with few HUs or a document concentrating almost all the HUs
 
 
@@ -52,12 +53,12 @@ relevant information (mean of 3\%) and for this kind of artifact,
 at most 6\% of all sentences were considered relevant.
 This result is not surprising as API documents may describe many API features or
 methods of which only a few are likely to apply to
-a particular task.
-Such quantitative analysis provides further
-evidence supporting qualitative research on API
-documentation obstacles.
-Most notably, that the structure of APIs
-and boilerplate text can bloat the documentation~\cite{robillard2011field, Aghajani2019}.
+a particular task~\cite{robillard2011field}.
+% Such quantitative analysis provides further
+% evidence supporting qualitative research on API
+% documentation obstacles.
+% Most notably, that the structure of APIs
+% and boilerplate text can bloat the documentation~\cite{robillard2011field, Aghajani2019}.
 Similarly, only a small portion (4\% on average) of
 bug reports are considered relevant.
 This result is also not
@@ -95,10 +96,12 @@ specific task.
 \label{cp3:agreement}
 
 
-
-To investigate the degree to which participants agree upon
-the text relevant to a task, we use Nenkova and Passonneau's
-pyramid method~\cite{Nenkova2004}. This method was originally used
+With this question, we seek to identify if there is a set of key sentences that
+participants unanimously consider relevant to a task. 
+We use Nenkova and Passonneau's
+pyramid method~\cite{Nenkova2004}
+to investigate the degree to which participants agree upon
+the text relevant to a task. This method was originally used
 to quantify the content of summaries produced by different annotators.
 The more annotators who include the same content in their summaries,
 the more consistent the view of information relevant to a summary and
@@ -110,34 +113,35 @@ a participant completes a task.
 
 
 
-To construct the pyramid, we assign a weight to each HU
-corresponding to the number of participants who highlighted that HU during
-a task.
-Figure~\ref{fig:highlights-distribution} shows the distribution of these weights.
-From the 602 HUs, we observe that 18\% of them are considered relevant by eight or more participants while 58\% are relevant to only one or two participants.
+% To construct the pyramid, we assign a weight to each HU
+% corresponding to the number of participants who highlighted that HU during
+% a task.
+% From the 602 HUs, we observe that 18\% of them are considered relevant by eight or more participants while 58\% are relevant to only one or two participants.
+Figure~\ref{fig:highlights-distribution} shows the distribution of HUs over the pyramid we produce.
 To facilitate interpreting the results,
 we take into consideration how other studies provide categories for the relevance of
-text (i.e.,~\cite{Petrosyan2015} and~\cite{Jiang2017}) and thus,
-we aggregate levels into tiers based on the Zipfian distribution of HUs per weight~\cite{Nenkova2004}.
-While aggregating levels, we preserve the observed distribution, creating a pyramid with three tiers.
+text (i.e.,~\cite{Petrosyan2015} and~\cite{Jiang2017}) and 
+we aggregate HUs selected by a range of participants into three tiers.
 Table~\ref{tbl:task-hu} presents HUs per tier.
 Starting from the bottom tier, the pyramid represents the perceived relevance of information from less to more relevant.
+With this information, we test if the number of HUs identified at each tier affects how correct were the solutions provided by the participants (as measured by the questionnaires applied for each task). 
 
 
-
-
-We expect the task correctness scores of participants
-to depend on how much relevant text they highlighted during the experiment.
-To explore this hypothesis, we consider each HU at each tier for each task
-and all scores of the participants who indicated that HU.
-We then test if the number of HUs identified at each tier affects a participant's score.
-As we have three independent variables (i.e., tiers) and one outcome variable (i.e., scores), we performed a multivariate analysis of variance~\cite{wohlin2012} and found significant differences ($p\text{-value} < 0.01$) between participants' score and their HUs.
+Since have three independent variables (i.e., tiers) and one outcome variable (i.e., scores),
+we use a multivariate analysis of variance to test this hypothesis~\cite{wohlin2012} 
+Results indicate a significant differences ($p\text{-value} < 0.01$) between participants' score and their HUs.
 We then conducted univariate tests on each tier,
 finding that 
 the number of HUs identified at the mid and top-tiers 
 positively affect participants scores, 
 what suggests that HUs from these two tiers contain key
 information for completing a task.
+As expected, HUs at the bottom tier vary more per participant.
+Due to such variability, there is no clear indication
+that bottom tier HUs are from participants from a certain group, such as all those
+unfamiliar with a particular technology or  who successfully
+completed a task and those who did not.
+
 
 
 
@@ -150,17 +154,6 @@ information for completing a task.
     \label{fig:highlights-distribution}
 \end{figure}
 
-
-
-
-As expected, HUs at the bottom tier vary more per participant.
-We observe that there is an equal number of HUs identified by participants who successfully
-completed a task and those who did not and those who report familiarity with
-the technology or domain of a task and those who did not.
-Due to such variability, there is no clear indication
-that bottom tier HUs are from participants from a certain group, such as all those
-unfamiliar with a particular technology; this is a possible explanation for the lack
-of statistical significance.
 
 
 

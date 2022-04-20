@@ -43,8 +43,6 @@ studies, which include when a developer
 refers to API documentation or Q\&A websites for API usage purposes~\cite{umarji2008archetypal, Singer1998,robillard2011field};
 evaluates a possible reusable library to be incorporated into their implementation~\cite{umarji2008archetypal}; or
 confirms a system's behaviour referring to past discussions in community forums or in the system's documentation~\cite{umarji2008archetypal, Lotufo2012, Singer1998}.
-
-
 To design tasks for these activities, we applied criteria described by Petrosyan and colleagues~\cite{Petrosyan2015}, namely that
 tasks must encompass common application domains and that the tasks' artifacts must be publicly available.
 
@@ -54,6 +52,8 @@ For each task, the table provides a brief description and the task name, which r
 From this point forward, we will refer to the tasks according to these identifiers.
 \texttt{Bugzilla} and \texttt{Yargs} are API usage tasks; \texttt{Networking} and \texttt{Databases} ask participants to evaluate and decide upon the adoption of a certain technology or framework; and finally, \texttt{GPMDPU} and \texttt{Lucene} describe scenarios where a participant 
 has to understand the system's behaviour. 
+
+
 Our decision to use a number of different systems employing
 a variety of technologies aims to minimize the effects that might result from a participant being
 well-acquainted with a particular system or technology~\cite{Wildemuth2012, DeGraaf2014}. 
@@ -72,19 +72,20 @@ well-acquainted with a particular system or technology~\cite{Wildemuth2012, DeGr
 For each task, we also needed to choose a set of artifacts for a
 participant to peruse for relevant information to the task.  Based on
 observations about the most common information sources sought in
-development tasks,
+development tasks~\cite{Li2013, Ponzanelli2017},
 we focused on API documentation, Q\&A websites, and
-bug reports~\cite{Li2013, Ponzanelli2017}.
+bug reports.
 For each task, a participant should consider on average three artifacts extracted
 from one or more information sources.
 We describe selection criteria for the artifacts and information sources as follows.
 
 
+% \footnote{
+% e.g.: https://www.google.com/search?q=bugzilla+REST+API
+% }
 
 To select the artifacts, for each task, we performed
-searches\footnote{
-e.g.: https://www.google.com/search?q=bugzilla+REST+API
-} and inspected the top 10 results retrieved by Google search engine, Stack Overflow, and in a
+searches and inspected the top 10 results retrieved by Google search engine, Stack Overflow, and in a
 system's bug tracking system to select a set of candidate artifacts that could
 assist in task completion.
 For some tasks, the list of candidate
@@ -106,8 +107,8 @@ could arise from interacting with a piece of text:
 As examples of these criteria in action, the \texttt{Lucene}
 artifacts chosen contain
 complementary sources where sentences in different artifacts
-pertain to the same topic.  
-The artifacts chosen for
+pertain to the same topic
+while the artifacts chosen for
 the \texttt{GPMDPU} task contain contradictory information; two bug reports
 argue that a feature is not supported while a third states otherwise.
 
@@ -208,8 +209,8 @@ and whether they had likely gained appropriate knowledge
 of how to complete the task. 
 As an example, Figure~\ref{fig:networking-questions} provides an 
 excerpt of the questionnaire presented for the \texttt{Networking} task.
-The questionnaire contains a five-level Likert scale~\cite{likert1932technique}
-for the familiarity and difficulty questions as well as likely solutions for the task. 
+% The questionnaire contains a five-level Likert scale~\cite{likert1932technique}
+% for the familiarity and difficulty questions as well as likely solutions for the task. 
 
 
 \input{sections/cp3/questionnaire}
@@ -223,7 +224,7 @@ and what features of the text, in their opinion, helped in deciding
 whether information in the text was relevant or not.
 To ensure that the session would finish in the allotted time,
 we shortened the debriefing and interview components 
-for participants who took longer in task completion
+for certain participants
 (e.g., as when a participant finished 4 tasks near the allotted time)
 such that the study would not take longer than the stipulated 2 hours time period.
 Overall, 11 out of the 20 participants completed all the tasks.
@@ -238,10 +239,10 @@ Table~\ref{tbl:corpus-stats} discriminates the number of participants who comple
 We have described experimental procedures that allow us to inspect the 
 text that 20 participants deemed relevant to different kinds of artifacts 
 associated with six information-seeking tasks. 
-Figure~\ref{fig:task-highlights-heatmap} illustrates data gathered with this experiment. 
-It shows a portion of a task description used in the experiment (left-side) and
+Figure~\ref{fig:task-highlights-heatmap} illustrates the data gathered with this experiment. 
+It shows a portion of a task description used in the experiment (left-side) and it
 provides an overview of highlights (right-side) selected by
-participants using the highlighting tool that we provided to them.
+participants using our highlighting tool.
 
 
 

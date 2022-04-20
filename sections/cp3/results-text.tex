@@ -1,5 +1,5 @@
 
-\subsection{Textual Evaluation}
+\subsection{Textual Analysis}
 
 
 We examine syntactic and semantic properties 
@@ -15,57 +15,12 @@ available for all the tasks.
 
 
 
-For our syntactic analysis,
-we start by inspecting the elements that compose a sentence (i.e., nouns and verbs)
-using the Python NLTK API\footnote{https://www.nltk.org/} with the CoNLL-2000 corpus~\cite{Conll2000} to automatically extract such data.
-We then analyze possible patterns that may arise from the syntactic structure of the text~\cite{Robillard2015}
-as well as the syntatic dependencies between verbs and  other elements related to them~\cite{Chaparro2017}, investigating if the extracted entities co-occur in multiple HUs. 
-For instance, consider the sentence:
-``\textit{you can use include\_fields if you want specific field names}''.
-We can extract the elements dependent upon the the verb `\textit{use}' (i.e., {\small \texttt{[nsubject, use, code\_word]}})
-and, if we observe that these elements co-occur in multiple HUs, we flag the pattern as a cue to the relevancy of the text.
+ 
+% For instance, consider the sentence:
+% ``\textit{you can use include\_fields if you want specific field names}''.
+% We can extract the elements dependent upon the the verb `\textit{use}' (i.e., {\small \texttt{[nsubject, use, code\_word]}})
+% and, if we observe that these elements co-occur in multiple HUs, we flag the pattern as a cue to the relevancy of the text.
 
-
-
-
-
-As for semantics, we
-analyze HUs for \textit{semantic
-frames}~\cite{fillmore1976frame}
-using frame semantic parsing~\cite{Baker1998, jurafsky2014speech}.
-Semantic frames are centered around events, capturing both the event
-as well as relationships, entities or participants related to that
-event~\cite{fillmore1976frame, Baker1998frame}. 
-We explain semantic frames by considering the application
-of semantic parsing to two distinct sentences extracted 
-from the \texttt{Databases} and the \texttt{Lucence} tasks, respectively.
-For each sentence, Figure~\ref{fig:frame-examples} shows an
-excerpt of the frame analysis for the sentences. 
-The frames of each sentence (in grey) represent a triggering event and the frame elements \textit{(fe)} (in red) are arguments needed to understand the event. The enclosing square brackets mark all lexical units, or words, associated with either a frame or a frame element.
-
-\medskip
-\input{sections/cp3/semantic-frames-example}
-
-
-Observing the frame elements captured by the verbs \textit{see} and
-\textit{understand}, both sentences have the common meaning of
-describing a `\textit{phenomenon}'.
-However, the frame elements
-that capture the meaning of each verb differ: the former represents a
-`\textit{perception of experience}' while the latter represents a
-cognizer `\textit{grasp}'ing her knowledge over the 
-phenomenon. 
-
-
-As multiple sentences might have similar meanings,
-we analyze whether there are common frame elements 
-that provide cues to the relevancy of text.
-For this analysis, all frame elements were extracted automatically.
-We decompose HUs to obtain the semantic frames for the sentence 
-using the \textit{SEMAFOR} toolkit~\cite{das2014frame}.
-For a detailed definition of each frame, refer to
-the FrameNet
-database\footnote{https://framenet.icsi.berkeley.edu/fndrupal}.
 
 
 
@@ -74,10 +29,16 @@ database\footnote{https://framenet.icsi.berkeley.edu/fndrupal}.
 \label{cp3:syntactic-analysis}
 
 
+For our syntactic analysis, we follow procedures from related work (Section~\ref{cp2:text-in-se}).
+We start by inspecting the elements that compose a sentence (i.e., nouns and verbs)
+and then, we analyze possible patterns that may arise from the syntactic structure of the text~\cite{Robillard2015},
+investigating if the extracted entities co-occur in multiple HUs.
 
-We start our syntactic analysis by describing noun phrases and verb phrases
-in the relevant text. 
-We then describe our analysis of syntactic patterns.  
+
+
+% We start our syntactic analysis by describing noun phrases and verb phrases
+% in the relevant text. 
+% We then describe our analysis of syntactic patterns.  
 
 
 
@@ -86,7 +47,7 @@ Existing approaches that rely on these elements to identify relevant text (e.g.,
 This value may seem acceptable at first; however there are no guarantees that
 the identified 65\% HUs hold all the crucial information for task completion.
 As an example, some of the HUs from the mid and topmost tiers 
-do not contain obvious code words that could signal their relevancy,
+do not contain obvious code elements that could signal their relevancy,
 such as one of the sentences in the \texttt{Bugzilla} task indicates the need for ``\textit{authentication to allow retrieving non-public data}''.
 % The lack of authentication implies missing non-public data, which leads to an incomplete solution, 
 % and so this sentence was considered relevant by most of the participants in our study
@@ -111,7 +72,7 @@ steps~\cite{Bavota2016}.
 
 
 As for syntactic patterns, we did not observe a large set of patterns for the variety of tasks and artifacts in our experiment,
-where the prominent patterns identified (e.g., \texttt{[nsubject, do, negation]})
+where the prominent patterns identified (e.g., $\{$\textit{nsubject, do, negation}$\}$)
 reflect common constructs of the English language rather than cues that we might explore for the relevancy of text.
 There may be multiple explanations for these results, such as
 the fact our corpus contains a small number of natural language artifacts.
@@ -127,7 +88,7 @@ their generalizability.
     \textit{We did not find prominent syntactic cues to identify
     task-relevant information. Our analysis of highlights demonstrates:
     1) limitations of existing techniques that rely on code
-    words and acronyms, 2) missed
+    elements and acronyms, 2) missed
     information that may occur due to the prevalence of verbs that
     appear in English stop word lists,
     and 3) the absence of patterns derived from the syntactic structure of
@@ -142,11 +103,42 @@ their generalizability.
 \label{cp3:semantic-analysis}
 
 
-We extract the frames of every HU, resulting in 3,719 frames across
+For our semantic analysis, we
+analyze the meaning of the text in the 
+ HUs
+using frame semantic parsing~\cite{fillmore1976frame, jurafsky2014speech}.
+Semantic frames are centered around events, labelled frames, 
+which abstract both the event
+as well as relationships, entities or participants related to that
+event~\cite{fillmore1976frame, Baker1998frame}. 
+
+
+We explain semantic frames by considering
+ two distinct sentences extracted 
+from the \texttt{Databases} and the \texttt{Lucence} tasks, respectively.
+For each sentence, Figure~\ref{fig:frame-examples} shows an
+excerpt of the frame analysis for the sentences. 
+The frames of each sentence (in grey) represent a triggering event and the frame elements \textit{(fe)} (in red) are arguments needed to understand the event. The enclosing square brackets mark all lexical units, or words, associated with either a frame or a frame element.
+Observing the frame elements captured by the verbs \textit{see} and
+\textit{understand}, both sentences have the common meaning of
+describing a `\textit{phenomenon}'.
+However, the frame elements
+that capture the meaning of each verb differ: the former represents a
+`\textit{perception of experience}' while the latter represents a
+cognizer `\textit{grasp}'ing her knowledge over the 
+phenomenon. 
+
+\input{sections/cp3/semantic-frames-example}
+
+As multiple sentences might have similar meanings,
+we analyze whether there are common frame elements 
+that provide cues to the relevancy of text.
+For this analysis, all frame elements were extracted automatically
+using the \textit{SEMAFOR} toolkit~\cite{das2014frame},
+where we extract the frames of every HU, resulting in 3,719 frames across
 the 602 HUs. Only 346 distinct frames appear across these 3,719 frames
 parsed. The proportionally small number of distinct semantic frames
-occurring
-suggests that different HUs share frame elements. 
+occurring suggests that different HUs share frame elements. 
 
 
 
@@ -166,12 +158,12 @@ as when a sentence describes the minimum elements needed to perform an operation
 In the middle tier, we observe frames for actions performed by some entity (\textit{intentionally act}) or facts regarding a topic (\textit{statement}).
 Other common frames relate to methods or attributes and the result of some operation such as a method call, which may be useful for identifying code related entities.
 For instance, this sentence from the \texttt{Bugzilla} tasks contains both the \textit{being returned} and the \textit{fields} frame, 
-\textit{``You can specify to only return custom fields by specifying \texttt{\_custom} or the field name in \texttt{include\_fields}''}.
+\textit{``You can specify to only return custom fields by specifying \_custom or the field name in include\_fields''}.
 
 
-
+\afterpage{
 \input{sections/cp3/tables/common-frames}
-
+}
 
 The bottom tier contains frames that are common to all HUs.
 The most frequent frame in the bottom tier has a semantic meaning of \textit{using}.
@@ -185,48 +177,15 @@ WebSocket and Server-Sent Events in the \texttt{Networking} task:
 
 
 
-
-To further characterize  frame elements, 
-we pairwise compare their frequency in relevant text (i.e., HUs) and non-relevant text.
-Figure~\ref{fig:frame-distribution} provides insight in the distribution of frames across relevant and non-relevant sentences.
+To provide further evidence supporting these findings,
+we also  compared the frequency of the frame elements identified in relevant text (i.e., HUs) and non-relevant text.
 We perform a Wilcoxon signed-rank test~\cite{wohlin2012} over the distribution of frames in our data and we observe with statistical significance ($p\text{-value} \le 0.05$) 
 that certain frames are more prominent in relevant or non-relevant sentences.
-For example, frames that represent a \textit{required} event
-are more prominent in the relevant text
-as found in a sentence in the \texttt{Bugzilla} REST API that describes
-how to circumvent errors due to invalid tokens:
-``\textit{An error is thrown if you pass an invalid token; you will need to log in again to get a new token}''.
-On the other hand, frames that relate to user discussions and that do not draw conclusions or provide 
-facts about an API or technology, such as \textit{point of dispute} or \textit{reasoning} are often found in non-relevant text,
-as when users discuss community's procedures in the \texttt{GPMDPU} task: ``\textit{Open a new issue following the template so we can have more details on your device}''. 
+Therefore, our analysis on the semantics of relevant text indicates that there exists some common aspect to the different sentences deemed as relevant.
 
 
 
 
-\begin{figure}
-\centering
-\includegraphics[width=.95\textwidth]{cp3/frames-dist-all}
-\caption{Distribuion of semantic frames over the text; the figure depicts the top five frames most commonly observed in relevant and non-relevant sentences, respectively}
-\label{fig:frame-distribution}
-\end{figure}
-
-
-While certain frames are not indicative of relevance when found on their own, we also observe that the co-ocurrance of certain frames in a sentence increase the likelihood of the sentence's relevancy.
-For instance, \textit{purpose} and \textit{using} occur almost evenly across relevant and non-relevant text
-while their co-occurrance is more frequent in relevant text. 
-Figure~\ref{fig:frame-co-occurrence} shows the most frequent frames that co-occur and their ratio on relevant and non-relevant text.
-
-
-
-\begin{figure}
-\centering
-\includegraphics[width=.95\textwidth]{cp3/frames-dist-2-grams}
-\caption{Distribution of co-occurring frames over the text}
-\label{fig:frame-co-occurrence}
-\end{figure}
-
-
-Our analysis on the semantics of relevant text indicates that there exists some common aspect to the different sentences deemed as relevant.
 
 
 \medskip
@@ -235,3 +194,48 @@ Our analysis on the semantics of relevant text indicates that there exists some 
     suggesting commonalities in their conveyed information
     and indicating that text might be identified through its semantics.}
 \end{bluequote}
+
+
+
+
+
+
+
+% Figure~\ref{fig:frame-distribution} provides insight in the distribution of frames across relevant and non-relevant sentences.
+% For example, frames that represent a \textit{required} event
+% are more prominent in the relevant text
+% as found in a sentence in the \texttt{Bugzilla} REST API that describes
+% how to circumvent errors due to invalid tokens:
+% ``\textit{An error is thrown if you pass an invalid token; you will need to log in again to get a new token}''.
+% On the other hand, frames that relate to user discussions and that do not draw conclusions or provide 
+% facts about an API or technology, such as \textit{point of dispute} or \textit{reasoning} are often found in non-relevant text,
+% as when users discuss community's procedures in the \texttt{GPMDPU} task: ``\textit{Open a new issue following the template so we can have more details on your device}''. 
+
+
+
+
+
+% While certain frames are not indicative of relevance when found on their own, we also observe that the co-ocurrance of certain frames in a sentence increase the likelihood of the sentence's relevancy.
+% For instance, \textit{purpose} and \textit{using} occur almost evenly across relevant and non-relevant text
+% while their co-occurrance is more frequent in relevant text. 
+% Figure~\ref{fig:frame-co-occurrence} shows the most frequent frames that co-occur and their ratio on relevant and non-relevant text.
+
+
+
+
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=.95\textwidth]{cp3/frames-dist-all}
+% \caption{Distribuion of semantic frames over the text; the figure depicts the top five frames most commonly observed in relevant and non-relevant sentences, respectively}
+% \label{fig:frame-distribution}
+% \end{figure}
+    
+
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=.95\textwidth]{cp3/frames-dist-2-grams}
+% \caption{Distribution of co-occurring frames over the text}
+% \label{fig:frame-co-occurrence}
+% \end{figure}
