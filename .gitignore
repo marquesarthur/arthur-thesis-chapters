@@ -49,4 +49,6 @@ main.fls
 main.synctex.gz
 !sections/**/*.log
 
+.vscode/
+
 
