@@ -7,15 +7,21 @@
 
 
 
-The scenario we presented in Section~\ref{cp1:example}
- indicates that many kinds of 
-artifacts can be consulted to help 
-with a task and that a developer faces challenges in finding the text within these 
-artifacts is relevant to the task at hand. 
-In surveying the state of the art, we demonstrated that existing techniques are tied to particular
-artifacts. This thesis aims to overcome these limitations. We posit that:
-
-
+\gcm{The scenario presented earlier in this chapter demonstrates
+the
+ many kinds of 
+artifacts a developer may consult to help complete
+ a task and the challenges a developer faces in identifying text relevant to the task at hand  within these 
+artifacts.
+Existing techniques that support a developer
+in the automatic identification of relevant
+text are constrained to working on one or only a 
+few types of artifacts. This thesis aims to
+overcome this constraint.} We posit that:
+\gcm{This is getting closer. I wonder if it needs to
+be clearer that a technique is needed that
+can evolve with artifact types and that one
+technique is easier to deploy/install than many.}
 
 \bigskip
 \begin{bluequote}
@@ -26,17 +32,15 @@ artifacts. This thesis aims to overcome these limitations. We posit that:
 
 
 
-One potential method for designing a generalizable technique 
-might arise from 
-determining if there are similar rules governing how text relevant to a task is 
-constructed across different types of artifacts~\cite{Kintsch1978a}.
+\gcm{The design of a generalizable technique might be
+more possible if the text relevant to
+a task follows similar patterns}
+ across different types of artifacts~\cite{Kintsch1978a}.
 Hence, we ask what are common properties, if any, in the text deemed relevant 
-to a software task and found across different types of artifacts?
-To answer this question, we present a formative study that 
-examines the text that twenty developers deemed relevant in artifacts 
+to a software task  found across different types of artifacts?
+To investigate this question, we performed a formative study that 
+examines  text that twenty developers deemed relevant in artifacts 
 of different types associated with six software tasks.
-
-
 By \textit{characterizing} task-relevant text found in different kinds of artifacts,
 this study complements and adds to previous research that has
 examined text relevant to particular tasks and one kind of artifact~\cite{Ko2006, Rastkar2010, Chaparro2017, Robillard2015}.
@@ -53,15 +57,17 @@ task-relevant text and in the design of a more generalizable technique.
 
 Approaches that interpret the meaning of the text have been successfully used for a variety of development activities,
 such as for finding who should fix a bug~\cite{yang2016}, searching for comprehensive code examples~\cite{silva2019}, or assessing the quality of information available in bug reports~\cite{chaparro2019}.
-Nonetheless, we are not aware of their usage in techniques 
-that assists developers in discovering task-relevant text over different types of natural language artifacts.
+Nonetheless, we are not aware of the usage of the meaning of text in techniques 
+that assist developers in discovering task-relevant text over different types of natural language artifacts.
 To this end, this thesis describes the investigation of a design space
 of six possible techniques that incorporate the semantics of words~\cite{Mikolov2013, Devlin2018Bert}
 and sentences~\cite{fillmore1976frame, marques2021}
 to automatically identify text likely relevant to a developer's task.
-Assessment of these techniques reveals that semantic-based techniques
-achieve recall comparable to a state-of-the-art technique aimed at one type of artifact~\cite{Xu2017}, but 
-that they do so across
+An empirical assessment of these techniques 
+on a corpus of tasks
+and artifacts reveals that semantic-based techniques
+achieve recall comparable to a state-of-the-art technique aimed at one type of artifact~\cite{Xu2017}
+while supporting
 multiple artifact types.
 
 
@@ -69,13 +75,14 @@ multiple artifact types.
 
 
 
-With our formative study, we find consistency in the text  that is relevant to a task within different kinds of artifacts.
-With our empirical assessment, we also find that that semantic-based techniques can automatically identify such text.
+With our formative study, we found consistency in the text  that is relevant to a task across different kinds of artifacts.
+With our empirical assessment, we found that a semantic-based techniques can automatically identify such text
+automatically across many artifact types.
 However, these studies do not address whether a semantic-based approach can \textit{assist} a software developer while they work on a task.
 Hence, we introduce \acs{tool}\footnote{
     Automatic \underline{Ta}sk-\underline{R}elevant \underline{T}ext \underline{I}dentifier
 }, a web browser plug-in that 
-automatically identifies and highlights text relevant to a developer's task.
+automatically identifies and highlights text relevant to a developer's task. \gcm{Need to link to the semantic-based techniques you refer to above.}
 We evaluate \acs{tool} with a controlled experiment that investigates the presence (or absence) of benefits that are brought by using \acs{tool}.
 We report how  participants 
 performed two Python programming tasks when 
