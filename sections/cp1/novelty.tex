@@ -4,71 +4,160 @@
 \gcm{We need to talk about these section.
 It still isn't sufficiently convincing to
 show the novelty of this thesis.}
+\art{v4.0}
 
 
-To understand the state of the art
-in assisting developers in locating relevant information in the natural language artifacts, 
-we survey some of the artifacts studied and 
-the approaches proposed to
-automate the extraction of text from these artifacts.
-Although we do not claim that the list of artifacts and techniques presented hereafter is complete,
-they comprise common artifact types sought by developers~\cite{umarji2008archetypal, Li2013}
-and many of the techniques used to parse the natural language text in them~\cite{arnaoudova2015}.
+We identify two major challenges 
+when surveying the state of the art for techniques that could assist 
+a developer in locating relevant information.
 
 
+\begin{enumerate}[label=\textit{\arabic*.},leftmargin=*]
+
+    \item Approaches that automate the identification of task-relevant
+    text often target specific
+    types of artifacts, limiting their use across the
+    many different kinds of artifacts developers encounter
+    daily in their work.
+
+    \item Integrating existing artifact-specific approaches to allow users to seamlessly search
+    for information is costly, if not impractical.
+\end{enumerate}
 
 
+% Many of the approaches that identify relevant text in a natural language artifact consider a single type of artifact. 
 
 
-
-In API documentation, Robillard and Chhetri investigated how to automatically identify 
-sentences key to using an API element~\cite{Robillard2015}.
-Their approach uses regular expressions to match the text in this kind of artifact 
-to a set of patterns derived from the Java SDK 6 documentation.
-More complex approaches, i.e.,  \acf{ML} and \acf{DL},
-were also used by Fucci et al.
-with the purpose of automatically identifying sentences with 
-directives, concepts, examples, and other types of information included in API documents~\cite{fucci2019}.
-
-
-
-In development mailing lists, Panichella et al. 
-proposed an automatic approach leveraging \acf{IR} to extract 
-text with useful information that assists in understanding code elements inspected by a developer~\cite{panichella2012}
-while Di Sorbo et al. use linguistic patterns---extracted via \acf{NLP}---to
-automatically categorize the content of development emails, what might 
-assist developers in finding text specific to some category, e.g., 
-finding text about the solution for a bug or text discussing potential 
-new features for a system~\cite{Sorbo2015}.
+Artifact-specific approaches often use assumptions on the type of content 
+and the meta-data available in an artifact to automate the identification of relevant text.
+For example, approaches that identify text in development emails often use 
+data about the conversational aspects in an email thread~\cite{Murray2008}.  
+Gaining insight into how developers produce and consume 
+such data is not trivial and several empirical studies have investigated 
+mailing lists~\cite{Sorbo2015, panichella2012} and other kinds of artifacts~\cite{Ko2006, Arya2019, Maalej2013} 
+to design approaches and tools that automatically identify
+text within these natural language 
+artifacts.
 
 
-
-In bug reports, researchers have mostly applied text summarization
-as a means of identifying text that a developer would first read when inspecting a bug report, 
-which might assist developers in finding useful information for their task;
-and both \acs{ML} and 
-\acs{DL} techniques have been investigated for this purpose, 
-e.g.,~\cite{Lotufo2012} or~\cite{li2018deep}.
-
-
-
-In community forums and \acs{qa} pages, researchers have explored both lexical 
-and syntactic approaches for the automatic identification of sentences that would 
-help a developer quickly decide if the content in these artifacts is relevant to 
-a developer's task~\cite{nadi2020}. Other approaches have also considered extracting information relevant to a developer's 
-programming task combining query-based summarization 
-and meta-data available on Stack Overflow~\cite{Xu2017, silva2019}.
+However, designing and evaluating such artifact-specific tools
+does not follow the same pace with which developers have adopted 
+some kind of artifact to record pertinent information~\cite{garousi2019}.
+By the time an artifact-specific tool might be available~\cite{gibbs1994},
+it is possible 
+that developers have progressed to using new kinds of technology
+to store data, as noted by the recent shift from 
+development mailing lists to instant communication platforms such as Slack~\cite{Lin2016, Chatterjee2020}. 
 
 
 
-Although effective, these and other techniques target specific
-types of artifacts and, given 
-how quickly developers progress to using new kinds of technology to
-record pertinent information,
-it may be difficult to apply such artifact-centric approaches to cover the range of
-artifacts sought by a developer as part of a software task
-and, for the techniques that do consider multiple types of artifacts (e.g.,~\cite{Ponzanelli2017}),
-automatically identifying text likely relevant to a developer's task 
-falls outside of their scope.
+Even if we consider long-lasting kinds of artifacts, such as API documentation or bug reports,
+it might be difficult for a developer to familiarize themselves 
+with all of the existing tools that identify relevant information in such artifacts. 
+For instance, in a single type of artifact, bug reports, there are several tools that 
+summarize a bug report~\cite{Rastkar2010, Lotufo2012,li2018deep}
+or that identify text containing certain types of information (e.g., sentences about feature requests or that discuss the bug's status~\cite{huang2018automating, Arya2019}),
+and a developer would have to understand the different kinds of information 
+extracted by theses tools to decide which tool to use in a given situation. 
 
 
+
+These barriers might be lifted by a tool that could serve as a single point of entry to the automatic identification of relevant text regardless of the kind of artifact a developer is consulting.
+Such a tool could integrate the many existing tools (or their underlying approaches) available and decide which approach 
+to use in which situation. Nonetheless, 
+integrating such tools 
+would be equally difficult.
+For example, developers use
+different products 
+such as 
+GitHub\footnote{\url{https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues}} 
+or Jira\footnote{\url{https://www.atlassian.com/software/jira}}
+to record bug reports
+and, for 
+an approach that uses a bug report's meta-data~\cite{Lotufo2012,li2018deep},
+one would have to consider if and how to use this approach across these different products.
+As another example, different programming languages
+might have very different documentation styles~\cite{endrikat2014} 
+one would have to either integrate approaches tailored to each programming language available 
+or ensure that an approach applies to the myriad of styles used in each of them~\cite{robillard2011field}.
+
+
+
+These limitations suggest the need for a more generalizable technique
+that can evolve to 
+identify relevant text in potential new kinds of artifacts 
+and that is easier to deploy/install than many.
+If one technique could identify relevant text across all kinds
+of artifacts a developer encounters, the technique
+could apply in all situations and may be more adoptable in industry
+as a result. 
+
+
+
+
+% it may be difficult to apply such artifact-centric approaches to cover the range of artifacts sought by a developer
+
+
+
+% For example there have been approaches that automatically identify text 
+% in API documentation~\cite{Robillard2015, fucci2019}, development mailing lists~\cite{panichella2012, Sorbo2015}, bug reports~\cite{Lotufo2012, li2018deep}, 
+% question-and-answer developer forums~\cite{nadi2020, Xu2017, silva2019}, and others. 
+
+
+
+
+% ,
+% and 
+
+
+
+% In API documentation, Robillard and Chhetri investigated how to automatically identify 
+% sentences key to using an API element~\cite{Robillard2015}.
+% Their approach uses regular expressions to match the text in this kind of artifact 
+% to a set of patterns derived from the Java SDK 6 documentation.
+% More complex approaches, i.e.,  \acf{ML} and \acf{DL},
+% were also used by Fucci et al.
+% with the purpose of automatically identifying sentences with 
+% directives, concepts, examples, and other types of information included in API documents~\cite{fucci2019}.
+
+
+
+% In development mailing lists, Panichella et al. 
+% proposed an automatic approach leveraging \acf{IR} to extract 
+% text with useful information that assists in understanding code elements inspected by a developer~\cite{panichella2012}
+% while Di Sorbo et al. use linguistic patterns---extracted via \acf{NLP}---to
+% automatically categorize the content of development emails, what might 
+% assist developers in finding text specific to some category, e.g., 
+% finding text about the solution for a bug or text discussing potential 
+% new features for a system~\cite{Sorbo2015}.
+
+
+
+% In bug reports, researchers have mostly applied text summarization
+% as a means of identifying text that a developer would first read when inspecting a bug report, 
+% which might assist developers in finding useful information for their task;
+% and both \acs{ML} and 
+% \acs{DL} techniques have been investigated for this purpose, 
+% e.g.,~\cite{Lotufo2012} or~\cite{li2018deep}.
+
+
+
+% In community forums and \acs{qa} pages, researchers have explored both lexical 
+% and syntactic approaches for the automatic identification of sentences that would 
+% help a developer quickly decide if the content in these artifacts is relevant to 
+% a developer's task~\cite{nadi2020}. Other approaches have also considered extracting information relevant to a developer's 
+% programming task combining query-based summarization 
+% and meta-data available on Stack Overflow~\cite{nadi2020, Xu2017, silva2019}.
+
+
+
+
+
+% To understand the state of the art
+% in assisting developers in locating relevant information in the natural language artifacts, 
+% we survey some of the artifacts studied and 
+% the approaches proposed to
+% automate the extraction of text from these artifacts.
+% Although we do not claim that the list of artifacts and techniques presented hereafter is complete,
+% they comprise common artifact types sought by developers~\cite{umarji2008archetypal, Li2013}
+% and many of the techniques used to parse the natural language text in them~\cite{arnaoudova2015}.
