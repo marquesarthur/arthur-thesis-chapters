@@ -1,0 +1,68 @@
+
+
+\section{Semantics in Software Development Artifacts}
+\label{cp7:semantics}
+
+
+
+In Chapter~\ref{ch:characterizing}, we used frame semantics---a general
+linguistic approach---to infer the meaning of the sentences
+that developers deemed relevant to complete a software task.
+As one potential alternative to this approach, 
+we could have considered the taxonomies available 
+in other studies such as the knowledge types in API documents~\cite{Maalej2013}
+or the information types in Open Source GitHub issues~\cite{Arya2019} or 
+in development mailing lists~\cite{Sorbo2015}.
+
+
+We decided to not use such taxonomies because the categories available in these and other studies 
+are often based
+on a need for access to the meaning of
+sentences in the natural language text
+and we were interested in assessing the
+applicability of generic semantic frame
+parsing for this purpose.
+To the best of our knowledge, there have been only a few uses of frame
+semantics in software engineering research~\cite{jha2017, kundi2017, alhoshan2019using}
+and these approaches
+have largely focused on text associated
+with software requirements, leaving open the
+question of applicability of the approach to
+text in different kinds of natural language artifacts.
+
+
+
+
+
+Motivated by our findings on the semantic analysis of the relevant text 
+found in API documents, GitHub issues, and \acs{qa} pages, 
+we addressed the question of whether semantic
+frames can help identify the meaning of
+software engineering text
+in a study 
+orthogonal to this dissertation~\cite{marques2021}. 
+In this study, we assessed the applicability of generic semantic frame
+parsing to software engineering text
+aimed at supporting program
+comprehension activities.
+First, we assessed how the tool we used in our semantic analysis, i.e., SEMAFOR~\cite{das2014frame},
+ applies to text sampled from 1,802 documents drawn from existing datasets~\cite{Arya2019, Xu2017, Maalej2013, Chaparro2017}. 
+Based on the results from this analysis, 
+we proposed \textit{SEFrame}, a tool that tailors 
+frame parsing to natural language text in software engineering artifacts.
+We assessed the correctness and robustness of \textit{SEFrame} in a second evaluation where we found that the approach was 
+ correct in between 73\% and 74\% of
+the cases and that it can parse text from a variety of software artifacts used to support program
+comprehension. These results motivated our decision to apply \textit{SEFrame} 
+in the design of the techniques we explored in Chapter~\ref{ch:identifying}.
+Nonetheless,  
+future research could consider more complex and modern 
+frame semantic parsing tools (e.g.,~\cite{swayamdipta17, chen2021joint}) to more
+accurately classify the semantic information in software engineering
+text and other potential applications 
+of frame semantics to software engineering problems.
+ 
+
+
+
+

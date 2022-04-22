@@ -1,0 +1,71 @@
+
+
+
+I need to really phrase it 
+
+nothing looks over multiple artifacts ... 
+it doens't come across that way
+
+
+have separate techniques for each artifact type
+but they require configuration
+learning a project artifact 
+
+different kinds of information 
+which might be hard for a dev to use
+
+
+two properties
+
+1 - across artifact types
+2 - the reason we want that is 
+
+--- artifacts evolve
+--- harder to deploy these techniques 
+
+
+
+
+I want for related work
+
+1 - how do people find information?
+2 - but baiscally expand a set of artifacts 
+---- this section sets the stage for people look into multiple places
+
+what are the techniques out there that help with that ?
+
+soft devs use a bunch of techniques 
+
+here are the ones for SE
+
+
+make the argument ending up 
+there's actually more structure in related work 
+ 
+ finding relevant passages in law documents 
+ why web pages in a search result are different
+
+
+
+ intro and related work --- may 3rd
+
+
+
+---------------
+
+
+Think about the work as a whole 
+then what parts of it would you imagine pepole asking about 
+
+challenges with deploying the technique 
+limitations that came about looking at particular datasets  
+looking at it in the long term 
+what about other tasks 
+
+
+
+
+
+
+
+ 

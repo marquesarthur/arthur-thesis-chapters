@@ -119,8 +119,8 @@ from the \texttt{Databases} and the \texttt{Lucence} tasks, respectively.
 For each sentence, Figure~\ref{fig:frame-examples} shows an
 excerpt of the frame analysis for the sentences. 
 The frames of each sentence (in grey) represent a triggering event and the frame elements \textit{(fe)} (in red) are arguments needed to understand the event. The enclosing square brackets mark all lexical units, or words, associated with either a frame or a frame element.
-Observing the frame elements captured by the verbs \textit{see} and
-\textit{understand}, both sentences have the common meaning of
+Observing the frame elements captured by the verbs `\textit{see}' and
+`\textit{understand}', both sentences have the common meaning of
 describing a `\textit{phenomenon}'.
 However, the frame elements
 that capture the meaning of each verb differ: the former represents a
@@ -145,7 +145,7 @@ occurring suggests that different HUs share frame elements.
 Table~\ref{tbl:common-frames} details the most frequent frames identified per tier, filtering to show the 
 most frequent frames in a tier that have not appeared in lower tiers.
 In the top-most tier, the most frequently identifying distinguishing
-frames denote the \textit{cause} or \textit{likelihood} of a phenomenon.
+frames denote the `\textit{cause}' or `\textit{likelihood}' of a phenomenon.
 These frames are found in sentences that explain a system's behavior, which are often crucial for task completion,
 as in a sentence that provides a cause for the loss in performance when using Hibernate:
  \textit{``if you need to process lots of objects for some reason, though it can seriously affect performance}''.
@@ -153,22 +153,22 @@ Other common frames \textit{quantify relationships},
 as when a sentence describes the minimum elements needed to perform an operation, e.g., \textit{``to create a flag, at least the status and the type\_id or name must be provided}''.
 
 
-
-
-In the middle tier, we observe frames for actions performed by some entity (\textit{intentionally act}) or facts regarding a topic (\textit{statement}).
-Other common frames relate to methods or attributes and the result of some operation such as a method call, which may be useful for identifying code related entities.
-For instance, this sentence from the \texttt{Bugzilla} tasks contains both the \textit{being returned} and the \textit{fields} frame, 
-\textit{``You can specify to only return custom fields by specifying \_custom or the field name in include\_fields''}.
-
-
 \afterpage{
 \input{sections/cp3/tables/common-frames}
 }
 
+
+In the middle tier, we observe frames for actions performed by some entity (\textit{intentionally act}) or facts regarding a topic (\textit{statement}).
+Other common frames relate to methods or attributes and the result of some operation such as a method call, which may be useful for identifying code related entities.
+For instance, this sentence from the \texttt{Bugzilla} tasks contains both the `\textit{being returned}' and the `\textit{fields}' frame, 
+\textit{``You can specify to only return custom fields by specifying \_custom or the field name in include\_fields''}.
+
+
+
 The bottom tier contains frames that are common to all HUs.
-The most frequent frame in the bottom tier has a semantic meaning of \textit{using}.
+The most frequent frame in the bottom tier has a semantic meaning of `\textit{using}'.
 HUs with this frame are often sentences detailing how to use a method or a
-framework to achieve some goal, what might also explain the second most frequently occurring frame, i.e., \textit{purpose}, which denotes an achievable goal. 
+framework to achieve some goal, what might also explain the second most frequently occurring frame, i.e., `\textit{purpose}', which denotes an achievable goal. 
 These two frames could be used to filter sentences that contain the means
 to use a technology or API with certain intention, as this sentence explaining usage scenarios for
 WebSocket and Server-Sent Events in the \texttt{Networking} task:
@@ -179,9 +179,49 @@ WebSocket and Server-Sent Events in the \texttt{Networking} task:
 
 To provide further evidence supporting these findings,
 we also  compared the frequency of the frame elements identified in relevant text (i.e., HUs) and non-relevant text.
-We perform a Wilcoxon signed-rank test~\cite{wohlin2012} over the distribution of frames in our data and we observe with statistical significance ($p\text{-value} \le 0.05$) 
-that certain frames are more prominent in relevant or non-relevant sentences.
-Therefore, our analysis on the semantics of relevant text indicates that there exists some common aspect to the different sentences deemed as relevant.
+Figure~\ref{fig:frame-distribution} provides insight in the distribution of frames across relevant and non-relevant sentences.
+For example, frames that represent a `\textit{required}' event
+are more prominent in the relevant text
+as found in a sentence that describes
+how to circumvent errors in the \texttt{Bugzilla} REST API  due to invalid tokens:
+``\textit{An error is thrown if you pass an invalid token; you will need to log in again to get a new token}''.
+On the other hand, frames that relate to user discussions and that do not draw conclusions or provide 
+facts about an API or technology, such as `\textit{point of dispute}' or `\textit{reasoning}' are often found in non-relevant text,
+as when users discuss community's procedures in the \texttt{GPMDPU} task: ``\textit{Open a new issue following the template so we can have more details on your device}''. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=.95\textwidth]{cp3/frames-dist-all}
+\caption{Distribuion of semantic frames over the text; the figure depicts the top five frames most commonly observed in relevant and non-relevant sentences, respectively}
+\label{fig:frame-distribution}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=.95\textwidth]{cp3/frames-dist-2-grams}
+\caption{Distribution of co-occurring frames over the text}
+\label{fig:frame-co-occurrence}
+\end{figure}
+
+
+While certain frames are not indicative of relevance when found on their own, we also observe that the co-occurrence of certain frames in a sentence increase the likelihood of the sentence's relevancy.
+For instance, `\textit{purpose}' and `\textit{using}' occur almost evenly across relevant and non-relevant text
+while their co-occurrence is more frequent in relevant text. 
+Figure~\ref{fig:frame-co-occurrence} shows the most frequent frames that co-occur and their ratio on relevant and non-relevant text.
+
+
+A Wilcoxon signed-rank test~\cite{wohlin2012} over the distribution of frames in our data both in individual frames and pairs of frames shows statistical significance ($p\text{-value} \le 0.05$) 
+on the prominence of certain frames in relevant or non-relevant sentences.
+
+
+
+
+
+
+
+Our analysis on the semantics of relevant text indicates that there exists some common aspect to the different sentences deemed as relevant.
 
 
 
@@ -201,41 +241,17 @@ Therefore, our analysis on the semantics of relevant text indicates that there e
 
 
 
-% Figure~\ref{fig:frame-distribution} provides insight in the distribution of frames across relevant and non-relevant sentences.
-% For example, frames that represent a \textit{required} event
-% are more prominent in the relevant text
-% as found in a sentence in the \texttt{Bugzilla} REST API that describes
-% how to circumvent errors due to invalid tokens:
-% ``\textit{An error is thrown if you pass an invalid token; you will need to log in again to get a new token}''.
-% On the other hand, frames that relate to user discussions and that do not draw conclusions or provide 
-% facts about an API or technology, such as \textit{point of dispute} or \textit{reasoning} are often found in non-relevant text,
-% as when users discuss community's procedures in the \texttt{GPMDPU} task: ``\textit{Open a new issue following the template so we can have more details on your device}''. 
 
 
 
 
 
-% While certain frames are not indicative of relevance when found on their own, we also observe that the co-ocurrance of certain frames in a sentence increase the likelihood of the sentence's relevancy.
-% For instance, \textit{purpose} and \textit{using} occur almost evenly across relevant and non-relevant text
-% while their co-occurrance is more frequent in relevant text. 
-% Figure~\ref{fig:frame-co-occurrence} shows the most frequent frames that co-occur and their ratio on relevant and non-relevant text.
 
 
 
 
 
-% \begin{figure}
-% \centering
-% \includegraphics[width=.95\textwidth]{cp3/frames-dist-all}
-% \caption{Distribuion of semantic frames over the text; the figure depicts the top five frames most commonly observed in relevant and non-relevant sentences, respectively}
-% \label{fig:frame-distribution}
-% \end{figure}
+
+
     
 
-
-% \begin{figure}
-% \centering
-% \includegraphics[width=.95\textwidth]{cp3/frames-dist-2-grams}
-% \caption{Distribution of co-occurring frames over the text}
-% \label{fig:frame-co-occurrence}
-% \end{figure}

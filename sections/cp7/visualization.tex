@@ -1,0 +1,62 @@
+
+
+
+
+
+\section{Visually Presenting Task-Relevant Text}
+\label{cp7:info-viz}
+
+
+
+
+In Chapter~\ref{ch:assisting}, we described how \acs{tool}
+highlgihts the text in a natural language artifact that it identifies 
+as relevant to an input task. Our idea to highlight text 
+draws from related work suggesting that textual highlgihts 
+are a simple approach to surface the most important information in 
+an artifact~\cite{Robillard2015,nadi2020}. 
+Although simple, this approach has limitations that could have been 
+addressed if we had considered other methods for presenting the text identified,
+as noted by one of the participants in the study:
+
+
+
+
+\smallskip
+\begin{footnotesize}
+\begin{quote}
+``\textit{It was much easier to follow [the task] with previously highlighted text.  
+    However it would have been nicer to have some sort of side bar/index of highlighted snippets
+    where I could know and scroll directly through the highlighted parts of a page.}''
+\end{quote}
+\end{footnotesize}
+
+
+\smallskip
+To discuss potential ways to visually represent the 
+relevant text identified by \acs{tool}, we take inspiration from Strata~\cite{liu2021} and Libra~\cite{Ponzanelli2017}.
+Libra's interface provides a bubble chart with bubbles representing 
+web pages obtained from a search result list and axis representing 
+how the content of a web page complements or adds to the content 
+already seen by a developer~\cite{Ponzanelli2017}.
+Following Libra's design, 
+we could have used a bubble chart to present the text identified. 
+A bubble could represent the semantic meaning of a sentence, as extract through frame semantic parsing.
+Its radius could indicate the text's similarity with regards to the developers task
+while the bubble position could represent its semantic
+distance to the other relevant text identified and, by clicking on a bubble, 
+\acs{tool} could direct a developer to the part of the artifact containing 
+the text. This chart could assist both in navigating through the artifact's content 
+and in comprehending the content of the text automatically identified.
+
+
+A second approach 
+
+
+
+% \begin{figure}[h!]
+%   \centering	
+%   \includegraphics[width=.7\textwidth]{figs/bubble-representation.pdf}	
+%   \caption{Visual representation of task-relevant text. As a user selects a bubble (representing a group of semantically similar task-relevant text), the tool provides the synthesized text for that group. Figure adapted from the representation in ~\cite{Ponzanelli2017}}	
+%   \label{fig:bubble-representation}	
+% \end{figure}
