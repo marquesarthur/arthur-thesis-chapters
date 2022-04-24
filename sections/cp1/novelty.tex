@@ -7,79 +7,95 @@ show the novelty of this thesis.}
 \art{v4.0}
 
 
-We identify two major challenges 
-when surveying the state of the art for techniques that could assist 
-a developer in locating relevant information.
+% researchers have developed a number of
+% techniques
+% to address the identification of which text is pertinent within an
+% artifact.  However, this support is
+% generally targets specific kinds of
+% artifacts limiting the use across the
+% many different kinds of artifacts developers encounter
+% daily in their work. 
+% ; 
+% and integrating such artifact-specific approaches to allow users to seamlessly search
+% for information is costly, if not impractical.
 
 
-\begin{enumerate}[label=\textit{\arabic*.},leftmargin=*]
 
-    \item Approaches that automate the identification of task-relevant
-    text often target specific
-    types of artifacts, limiting their use across the
-    many different kinds of artifacts developers encounter
-    daily in their work.
+To assist developers in discovering task-relevant information,
+software engineering researchers have proposed 
+a number of techniques or tools 
+to automate the the identification of which text is pertinent within an
+artifact.
+Although effective in specific contexts, this support is generally constrained 
+to certain
+types of artifacts and integrating such artifact-specific
+approaches to allow users to seamlessly search
+for information is costly, if not impractical. This section
+elaborates these and other limitations in the state of the art.
 
-    \item Integrating existing artifact-specific approaches to allow users to seamlessly search
-    for information is costly, if not impractical.
-\end{enumerate}
+% limiting the scope with which we can apply such techniques.
+    
 
+% use across the
+% many different kinds of artifacts developers encounter
+% daily in their work
 
 % Many of the approaches that identify relevant text in a natural language artifact consider a single type of artifact. 
 
 
 Artifact-specific approaches often use assumptions on the type of content 
-and the meta-data available in an artifact to automate the identification of relevant text.
-For example, approaches that identify text in development emails often use 
-data about the conversational aspects in an email thread~\cite{Murray2008}.  
+and the meta-data available in an artifact
+to automate the identification of relevant text.
+For example, approaches that identify text in development emails~\cite{Sorbo2015} often use 
+data about the conversational aspects~\cite{Murray2008} in an email thread for this purpose.  
 Gaining insight into how developers produce and consume 
 such data is not trivial and several empirical studies have investigated 
-mailing lists~\cite{Sorbo2015, panichella2012} and other kinds of artifacts~\cite{Ko2006, Arya2019, Maalej2013} 
-to design approaches and tools that automatically identify
+this and other kinds of artifacts~\cite{panichella2012, Ko2006, Arya2019, Maalej2013} 
+to design techniques that use \acf{IR}, \acf{NLP}, or \acf{ML} 
+to automatically identify
 text within these natural language 
 artifacts.
 
 
 However, designing and evaluating such artifact-specific tools
-does not follow the same pace with which developers have adopted 
-some kind of artifact to record pertinent information~\cite{garousi2019}.
-By the time an artifact-specific tool might be available~\cite{gibbs1994},
+does not follow the same pace with which developers have started to use  
+some kind of artifact to record pertinent information~\cite{garousi2019}
+and by the time an artifact-specific tool might be available~\cite{gibbs1994},
 it is possible 
 that developers have progressed to using new kinds of technology
-to store data, as noted by the recent shift from 
+for the same goal, as observed in the recent shift from 
 development mailing lists to instant communication platforms such as Slack~\cite{Lin2016, Chatterjee2020}. 
 
 
-
-Even if we consider long-lasting kinds of artifacts, such as API documentation or bug reports,
-it might be difficult for a developer to familiarize themselves 
-with all of the existing tools that identify relevant information in such artifacts. 
-For instance, in a single type of artifact, bug reports, there are several tools that 
-summarize a bug report~\cite{Rastkar2010, Lotufo2012,li2018deep}
-or that identify text containing certain types of information (e.g., sentences about feature requests or that discuss the bug's status~\cite{huang2018automating, Arya2019}),
-and a developer would have to understand the different kinds of information 
-extracted by theses tools to decide which tool to use in a given situation. 
+It might also be difficult for a developer to familiarize themselves 
+with all of the existing tools that identify relevant text in 
+long-lasting kinds of artifacts such as API documents or bug reports.
+For instance, a developer would have to understand the different kinds of information 
+extracted by 
+bug report summarization tools (e.g.,~\cite{Rastkar2010, Lotufo2012,li2018deep})
+or bug report text identification tools (e.g.,~\cite{huang2018automating, Arya2019, Chaparro2017})
+% (e.g., sentences about feature requests or that discuss the bug's status~\cite{huang2018automating, Arya2019}),
+ to decide which tool to use in a given situation. 
 
 
 
 These barriers might be lifted by a tool that could serve as a single point of entry to the automatic identification of relevant text regardless of the kind of artifact a developer is consulting.
-Such a tool could integrate the many existing tools (or their underlying approaches) available and decide which approach 
-to use in which situation. Nonetheless, 
-integrating such tools 
-would be equally difficult.
-For example, developers use
-different products 
+Such a tool could integrate the many existing tools (or their underlying techniques) and decide which one 
+to use in which context. Nonetheless, 
+due to an ever-growing the number of technologies used to record information,
+integrating such tools would be equally difficult.
+For example, in a technique that uses a bug report's meta-data~\cite{Lotufo2012,li2018deep}, a 
+unified tool would have to 
+consider how to extract such data from different products 
 such as 
-GitHub\footnote{\url{https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues}} 
-or Jira\footnote{\url{https://www.atlassian.com/software/jira}}
-to record bug reports
-and, for 
-an approach that uses a bug report's meta-data~\cite{Lotufo2012,li2018deep},
-one would have to consider if and how to use this approach across these different products.
+GitHub Issues\footnote{\url{https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues}} 
+or Jira\footnote{\url{https://www.atlassian.com/software/jira}}.
 As another example, different programming languages
 might have very different documentation styles~\cite{endrikat2014} 
-one would have to either integrate approaches tailored to each programming language available 
-or ensure that an approach applies to the myriad of styles used in each of them~\cite{robillard2011field}.
+and a 
+unified tool would have to either integrate approaches tailored to each programming language available 
+or ensure that the approach for this kind of artifact
+applies to the myriad of styles under use~\cite{robillard2011field}.
 
 
 
