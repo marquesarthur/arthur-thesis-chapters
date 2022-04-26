@@ -215,6 +215,64 @@ has been a major limitation to their usage in software engineering research~\cit
 \subsubsection{Unsupervised Learning Approaches}
 
 
+
+Common applications of unsupervised learning 
+to natural language software artifacts 
+comprise text summarization and data clustering.
+
+
+Summarization approaches seek to
+extract a set of sentences 
+from a natural language artifact that will compose a summary~\cite{Goldsteinet1999}.
+This summary might help an individual both in understanding the key information in an 
+artifact and also in deciding whether an artifact is worth of their time~\cite{Lotufo2012}.
+Unsupervised summarization approaches are often based on 
+variations of the PageRank algorithm~\cite{Page1999}, identifying
+the most central sentences in an artifact based on a set relationships
+established between all the sentences in that artifact.
+Among other natural language artifacts,
+extractive summarization techniques
+have been applied to Stack Overflow posts~\cite{Ponzanelli2015},
+coding tutorials~\cite{Li2018},
+or bug reports, as
+when Li et al. summarized 
+key elements required to understand a bug and its resolution~\cite{li2018deep}.
+
+
+
+
+A second family of unsupervised techniques focus on clustering data.
+These techniques use properties or features in the data to 
+identify 
+subsets of the data with similar characteristics. 
+Techniques that cluster data, such as \acf{LDA}~\cite{blei2003latent},
+have been used by software engineering researchers to both 
+bootstrap the categorization of information in 
+natural language artifacts and as part of tools that identify topics in the text. 
+For instance, Allamanis and Sutton
+applied \acs{LDA}
+to gain insight into the types of questions 
+asked on Stack Overflow~\cite{Allamanis2013}
+while FRAPT
+uses \acs{LDA} to identity topics in a web tutorial,
+which help the tool in determining 
+key sentences for each of the topics identified~\cite{Jiang2017}.
+
+
+
+Although unsupervised techniques lift the need of labeled training data,
+they still use human engineered features, 
+which are often often specific to certain 
+types of artifact. Therefore, 
+both supervised and unsupervised \acs{ML}
+have limitations that might prevent their usage 
+in the design of a generalizable technique.
+
+
+
+
+
+
 % Researchers pose the problem of identifying text 
 % in a natural language artifact 
 % as a binary classification problem. 
