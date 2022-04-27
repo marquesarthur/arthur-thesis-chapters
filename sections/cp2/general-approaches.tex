@@ -1,72 +1,138 @@
 
 
-\section{Automated Textual Approaches}
+
+\section{Automating the Identification of Relevant Text}
 \label{cp2:general-approaches}
 
 
-This section provides a general overview of 
-background information on automated textual approaches
-applied to natural language software artifacts. 
+
+
+In this section, we provide background information on general 
+approaches used
+by software engineering researchers 
+to identify text in natural language software artifacts~\cite{Bavota2016}
+where the main goal of such automated approaches is in assisting a person in discovering
+text that address an information need.
 
 
 
-
-\subsection{Pattern Matching Approaches}
-\label{cp2:pattern-matching}
-
-
-Regularities in the terms and in the syntactic structure of the 
-might be automatically identified via pattern matching.
-Pattern matching approaches use regular expressions describing a sequence of tokens that represent
-the text to be identified~\cite{Bavota2016}. 
-We describe two tools, Krec~\cite{Robillard2015}  and DeMIBuD~\cite{Chaparro2017}, that
-illustrate how software engineering 
-researchers use pattern matching in conjunction with the lexical or linguistic elements 
-in the text to automatically identify 
-text useful to certain software development activities.
-    
-
-
-Knowledge Recommender (Krec)~\cite{Robillard2015} 
-is an example of a
- tool that uses lexical patterns to 
- automatically detect relevant text in  API documentation. 
-Krec's premise is that relevant sentences contain a code element, such as a method or class signature.
-These code elements are identifiable via regular expressions 
-and Krec contains a catalog of 361 unique patterns 
-that identify threats and directives on how to use some API element.
-For example, Krec uses the pattern {\small \textit{$\{$may}, \textit{efficient}, \textit{code element regex$\}$}} 
-to identify sentences giving instructions about an efficient way to 
-perform some operation. 
+% For each approach, we detail 
+% present seminal work that has applied 
+% these approaches to problems related 
+% to software engineering.
+% These studies focus on specific tasks such as finding relevant passages in API documentation~\cite{Maalej2013,
+% Petrosyan2015, Robillard2015}, learning about API types in code tutorials~\cite{Jiang2016b, Jiang2017},
+% or detecting sentences that discuss a bug's expected behaviour~\cite{Chaparro2017}.
+% These approaches respectively use the presence of code words, HTML anchor links, or whether a sentence contains
+% a modal verb as properties to automatically identify relevant text.
 
 
 
-{\small DeMIBuD} is a linguistic-based approach that 
-automatically detect sentences discussing steps to reproduce 
-a bug or the bug's expected behaviour~\cite{Chaparro2017}.
-It uses a set of 154 discourse patterns
-derived from nearly 3,000 bug reports 
-to identify such sentences. 
-For example, the pattern 
-{\small \textit{$\{$subject}, \textit{should/shall (not)}, \textit{complement$\}$}}
-captures common ways with which developers describe a system's expected behaviour
-and empirical assessment of the patterns used by the tool has shown that it 
-detects sentences of interest in bug reports with high accuracy.
+\subsection{Information Retrieval Approaches}
+\label{cp2:information-retrieval}
+
+
+\acf{IR} comprises techniques
+or approaches for finding entities (documents, paragraphs, sentences, etc.)
+that satisfy an information need~\cite{manning2010IR}.
+At its most basic level, 
+\acs{IR}
+uses the 
+frequency or co-occurrence of words (or phrases) to determine the relevance
+of an artifact with regards to an information need, often expressed as a query.
+We have shown how \acs{IR} identified
+books whose subject contained
+the keyword `\textit{android}' (Figure~\ref{fig:library-catalogue})
+and the same principle could assist 
+in finding parts of an artifact that contain some keyword, 
+as many web browsers allow via a `\textit{find in page}' feature (Figure~\ref{fig:find-in-page}).
 
 
 
 
 
 
-Although the heuristics and regular expressions used in these and other studies~\cite{nadi2020, Maalej2013}
-are lightweight and effective~\cite{Bavota2016}, 
-pattern-matching approaches 
-are often specific to certain kinds of domains and types of artifact~\cite{fucci2019}, 
-limiting their use in the design of a generalizable technique.
+
+% As an example, Figure~\ref{fig:find-in-page}
+% shows that there are 220 matches in a web page 
+
+\medskip
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{cp2/find.png}
+    \caption{Find in page feature with results for the `\textit{notification}' term}
+    \label{fig:find-in-page}
+\end{figure}
 
 
 
 
+
+\acs{IR} identifies and structure all the words, or terms, 
+in an artifact so this information can be used for quick access. 
+By counting how frequent is a word in 
+an artifact and across the entire collection of artifacts, 
+one can query which artifacts contain a term and where in the artifact a term appears. 
+Using this principle multiple schemes have been proposed 
+to identify text based on 
+how not all the words in some vocabulary have the same relevance (\textit{TF-IDF})~\cite{luhn1957tf, jones2004idf}, 
+how to  represent sentences (\textit{VSM})~\cite{salton1975vector}, 
+or how to account for different words that appear in a similar context (\textit{LSI})~\cite{dumais1994latent}.
+
+
+
+% Information retrieval applications span several disciplines and it has been used 
+% to, for example, assist health workers in searching for medical records~\cite{hanauer2015}
+% or to help law practitioners in understanding government regulations~\cite{lau2005legal}.
+
+
+Information retrieval applications have been used in natural language software artifacts 
+as part of approaches that
+automatically identify sentences in a bug report that a developer would first read when pressed with time~\cite{Lotufo2012},
+or that help cluster software components to aid program comprehension of a software system~\cite{Marcus2003}.
+In this dissertation, we combine information retrieval and neural embeddings 
+to identify relevant text across different kinds of artifacts (Chapter~\ref{ch:identifying}).
+
+
+
+\subsection{Natural Language Processing Approaches}
+\label{cp2:nlp}
+
+
+\acf{NLP} relies on the lexical or syntactical analysis of the text~\cite{jurafsky2014speech}
+what might assist in the automatic identification of text that satisfies some information need. 
+To illustrate some of the elements obtainable using \acs{NLP}, we consider a short sentence 
+instructing how to perform a file system operation using some API: ``\textit{you can use io.StringIO}''.
+Figure~\ref{fig:nlp-analysis} shows elements extracted using two \acs{NLP} techniques,
+namely \acf{POS} tagging and dependency parsing.
+The formed assigns tags  ({\small \textit{PRP}, \textit{VP}, \textit{NNP},} etc.) to each word 
+in a sentence~\cite{taylor2003penn}. The latter, identifies
+relationships between them, such as how 
+`\textit{io.StringIO}' is the direct object (\textit{obj})
+associated with the verb `\textit{use}', 
+being a potential approach to identify relevant elements in the text.
+
+
+
+\medskip
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.40\textwidth]{cp2/textual-analysis.png}
+    \caption{Syntactic elements for a sentence giving instructions about how to perform some file system operation}
+    \label{fig:nlp-analysis}
+\end{figure}
+
+
+As an example of the application of \ac{NLP} to software engineering text,
+Robillard  and Chhetri proposed a tool (Krec)
+that uses \acs{POS} tagging to automatically 
+identify text with threats and directives on how to use some API element~\cite{Robillard2015}.
+As another example, {\small DeMIBuD}
+is an automatic approach that uses dependency parsing
+to automatically detect sentences discussing a bug's expected behaviour~\cite{Chaparro2017}.
+We refrain from exploring \acs{NLP} approaches to our domain problem because 
+our syntactic analysis of the text deemed relevant to a set of software tasks (Chapter~\ref{ch:characterizing})
+did not uncover patterns that we could use for such a purpose.
 
 
 
@@ -74,116 +140,133 @@ limiting their use in the design of a generalizable technique.
 \label{cp2:machine-learning}
 
 
-Regularities in the text or in an artifact's meta-data can also be 
-engineered into features that \acf{ML} 
-approaches can leverage to automatically identify and classify
-text useful to certain software development activities. 
+
+Several other studies have investigated regularities in the text 
+of natural language artifacts and 
+in the meta-data available on them~\cite{Ko2006, Maalej2013, Arya2019}
+and a potential way to leverage regularities arising from these empirical studies
+is to engineer them into 
+features that a  \acf{ML} technique can use to automatically identify or classify
+text that is helpful for certain information need~\cite{Bavota2016}. 
 
 
 
-Researchers pose the problem of identifying text 
-in a natural language artifact 
-as a binary classification problem. 
-That is, the use of a number of features 
-to predict whether the text is (or not)
-relevant to some context~\cite{aa}.
-In software engineering, 
-binary classifiers have been used for,
-for example, classify text that describes steps to reproduce a bug~\cite{Chaparro2016} or 
-classify text that explains a certain API element, as when 
-Petrosyan et al. used 
- sentence-level features
-and meta-data features in a classifier 
-that 
-identifies explanations about an API element  in a web tutorial~\cite{Petrosyan2015}.
+Machine learning techniques can be categorized 
+in \textit{supervised} or \textit{unsupervised} learning methods 
+according to how they make use of available data. 
+Supervised learning approaches use a set of features and labeled data
+to train classifiers for detecting entities of interest (e.g., text, images, etc.)
+while unsupervised learning approaches do not require labeled data and 
+identify entities according to properties inferred from the data.
+
+
+
+\subsubsection{Supervised Learning Approaches}
+
+
+With regards to supervised learning approaches, 
+we consider the many families of classifiers that 
+determine
+\textit{(1)} if some entity belongs or not to a given class, as in binary classification
+\textit{(2)} which class, out of many, some input entity belongs to, as in multinomial classification, or
+\textit{(3)} which classes can be assigned to a given input, as in multi-label classification~\cite{alpaydin2020ml}
+and we investigate their application to software engineering problems.
 
 
 
 
-Other classification problems predict which class, out of many, some input text belongs to. 
-This type of classification, referred to as multinomial or multi-class classification, 
-is of particular interest if 
-we consider the taxonomies described in Section~\ref{cp2:text-in-se}.
-For example, Arya et al. identified 16 categories of  information available
-in open source GitHub issues (e.g., workarounds, solution discussion, task progress, etc.)~\cite{Arya2019}
+
+For example, binary classifiers have been used 
+to classify text in bug reports that describes (or not) steps to reproduce a bug~\cite{Chaparro2016}
+or  to classify paragraphs which contain explanations 
+about an API element  in web tutorials~\cite{Petrosyan2015}.
+In turn, multinomial classifiers have been mostly used 
+to identify a category, out of many, that represents the type of information 
+associated with some text. For instance, Arya et al. identified 16 categories of  information available
+in open source GitHub issues (e.g., workarounds, solution discussion, task progress, etc.)
 and they proposed a multinomial classifier 
-to automatically identify such categories.
+to automatically identify such categories~\cite{Arya2019}.
+In a similar manner, Fu an colleagues consider 
+five types of decisions that might arise during 
+email exchanges (e.g., design, testing, management decisions, etc.)
+and they proposed a multinomial classifier 
+to automatically identify all the decisions present in 
+the Hibernate development mailing list~\cite{fu2021}.
 
 
 
 
 
-
-
-
-Although valuable, these classifiers are instances of supervised learning methods.
-They require training data so that a classifier predicts the correct outcome 
-and the cost and effort of hiring skilled workers to produce 
+Regardless of the type of classifier, these approaches are typically built 
+with training data containing human engineered features.
+Hence, the cost and effort of hiring skilled workers to produce 
 the labeled data for these and other supervised learning approaches
-has been a major limitation to their usage in software engineering research~\cite{Arpteg2018, ferreira2021}. As an alternative,
-researchers have also explored 
- unsupervised learning methods---\acs{ML} techniques that do not required training data---for the automatic 
-identification or classification of the text in natural language artifacts~\cite{aa}.
+has been a major limitation to their usage in software engineering research~\cite{Arpteg2018, ferreira2021}.
 
 
 
 
+\subsubsection{Unsupervised Learning Approaches}
 
-A common application of unsupervised learning in software engineering
-considers the automatic generation of text summaries.
-Most often, automatic summaries are produced 
-using extractive techniques that select a subset of 
-the sentences of an artifact that will compose the summary~\cite{a}.
+
+
+Common applications of unsupervised learning 
+to natural language software artifacts 
+comprise text summarization and data clustering.
+
+
+Summarization approaches seek to
+extract a set of sentences 
+from a natural language artifact that will compose a summary~\cite{Goldsteinet1999}.
+This summary might help an individual both in understanding the key information in an 
+artifact and also in deciding whether an artifact is worth of their time~\cite{Lotufo2012}.
+Unsupervised summarization approaches are often based on 
+variations of the PageRank algorithm~\cite{Page1999}, identifying
+the most central sentences in an artifact based on a set relationships
+established between all the sentences in that artifact.
 Among other natural language artifacts,
 extractive summarization techniques
-have been applied to Stack Overflow posts~\cite{a}, coding tutorials~\cite{a},
+have been applied to Stack Overflow posts~\cite{Ponzanelli2015},
+coding tutorials~\cite{Li2018},
 or bug reports, as
-when Lotufo et al. 
-considered the kinds of sentences a developer would find relevant 
-to understand a bug report when pressed with time~\cite{Lotufo2012},
-and proposed an unsupervised summarization approach 
-based on the PageRank algorithm~\cite{Page1999}
-to identify these sentences. 
+when Li et al. summarized 
+key elements required to understand a bug and its resolution~\cite{li2018deep}.
 
 
 
 
-A second set of unsupervised methods focus on clustering data.
-These techniques identify 
-subsets in the data that have similar properties or features 
-and techniques such as \acf{LDA}~\cite{blei2003latent}  have been used both to 
+A second family of unsupervised techniques focus on clustering data.
+These techniques use properties or features in the data to 
+identify 
+subsets of the data with similar characteristics. 
+Techniques that cluster data, such as \acf{LDA}~\cite{blei2003latent},
+have been used by software engineering researchers to both 
 bootstrap the categorization of information in 
-natural language artifacts and as part of tools that identify 
-portions of the text in an artifact that are helpful to some context. 
-As an example of the former, 
- Allamanis and Sutton
+natural language artifacts and as part of tools that identify topics in the text. 
+For instance, Allamanis and Sutton
 applied \acs{LDA}
 to gain insight into the types of questions 
-asked on Stack Overflow~\cite{Allamanis2013}.
-For the latter, tools such as FRAPT
-use \acs{LDA} to identity topics in a web tutorial
-and then extract sentences explaining API elements from each of the topics identified~\cite{Jiang2017}.
+asked on Stack Overflow~\cite{Allamanis2013}
+while FRAPT
+uses \acs{LDA} to identity topics in a web tutorial,
+which help the tool in determining 
+key sentences for each of the topics identified~\cite{Jiang2017}.
 
 
-Despite the significant contributions of these and other studies,
-one substantial challenge inherent to the supervised and 
-unsupervised \acs{ML} approaches 
-is that researchers must engineer which 
-features their \acs{ML} technique will use~\cite{ferreira2021}.
-Hence, \acs{ML} approaches have limitations similar to the pattern 
-matching approaches when we consider 
-the specificity and cost of engineering such features
-for a variety of kinds of artifacts.
 
-
+Although unsupervised techniques lift the need of labeled training data,
+they still use human engineered features, 
+which are often often specific to certain 
+types of artifact. Therefore, 
+both supervised and unsupervised \acs{ML}
+have limitations that might prevent their usage 
+in the design of a generalizable technique.
 
 
 
 
 \subsection{Deep Learning Approaches}
 \label{cp2:deep-learning}
-
-
 
 
 
@@ -194,56 +277,42 @@ This makes
 deep learning an interesting 
 approach to
 uncover regularities 
-that might not obvious or easily identified
-by software engineering researchers,
-thus allowing \acs{DL}
-to automate the identification of text in natural language software artifacts
-with these `hidden' properties. 
-
-
-
-
-Given the wide range of studies that both propose \acs{DL} models~\cite{aa} and that use 
-these models for a certain purpose (e.g., machine translation~\cite{lopez2008translation}), 
-we focus
-on \acs{DL} applications in the 
-software engineering domain~\cite{ferreira2021, li2018deep, watson2022}.
-First, we discuss neural embeddings and then we present 
-neural network models 
-for the same range of problems discussed in the machine learning approaches (Section~\ref{cp2:machine-learning}).
-
-
-
+that are not obvious or easily identified
+by software engineering researchers.
 
 
 
 A common application of \acs{DL} in software engineering is the usage of neural, or word, embeddings~\cite{Mikolov2013}
 for information retrieval purposes. 
 Neural, or word, embeddings produce vector representations in a continuous space,
-where words with similar meanings are typically close in the vector space model~\cite{harris1954distributional, mikolov2013efficient}. 
+where words with similar meanings are typically close in the vector space~\cite{harris1954distributional, mikolov2013efficient}. 
 Researchers have found that word
 embeddings mitigate lexical mismatches in the text found across different 
 natural language software artifacts,
-using them as a way to compare the semantic similarity of the text~\cite{mihalcea2006}.
-Guided by the recent success of word embeddings 
-for a variety of software development 
-activities, as shown by Ye et al.'s evaluation of word embeddings
+as shown by Ye et al.'s evaluation of word embeddings
 for bug localization~\cite{Ye2016}
 or Huang and colleagues' study on 
-the usage of word embeddings for API recommendation~\cite{Huang2018},
-Chapter~\ref{ch:identifying} 
-describes how we incorporate word embeddings in the 
-design of techniques that automate the identification of task-relevant text. 
+the usage of word embeddings for API recommendation~\cite{Huang2018}.
 
 
 
-
-
-
-Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep, watson2022}
+Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep}
 use neural network architectures 
-in binary or multinomial classifiers as well as in extractive text summarization.
-For example, Li et al. used an auto-encoder~\cite{liou2014autoencoder}
+for the same range of problems discussed in the machine learning approaches.
+As explained by Watson et al.~\cite{watson2022}
+\acs{DL} architectures are composed by several layers 
+that perform mathematical transformations on data passing through them. 
+These transformations are controlled by a set of parameters that 
+adjust the model being trained so that it can predict 
+the right outcome for any given input
+and researchers have proposed 
+several architectures (e.g., \acs{RNN}s~\cite{rumelhart1986rnn, sutskever2014seq2seq}, encoder-decoders~\cite{bahdanau2014neural}, Transformers~\cite{Vaswani2017attention}, etc.) 
+suitable for different problems. 
+
+
+
+As examples of neural networks applied to software engineering natural language artifacts,
+Li et al. used an auto-encoder~\cite{liou2014autoencoder}
 to produced more accurate and diverse summaries 
 for bug reports~\cite{li2018deep} while 
 Fucci et al. used a 
@@ -253,21 +322,213 @@ to identify the types of information available in
 API documentation~\cite{fucci2019}.
 
 
-While \acs{LSTM}s and other \acs{DL} architectures 
-handle dependencies between the words of a sentence, 
-state-of-the-art architectures such as \acf{BERT}~\cite{Devlin2018Bert}
-can also handle dependencies between sentences
-and Ara{\'u}jo et al. used \acs{BERT} in sentence pairs 
-representing system requirements and user reviews 
-to automatically extract requirements from 
-mobile application reviews~\cite{Araujo2021}.
-We consider that 
-establishing relationships 
-between sentence pairs is 
-a potential way to determine 
-sentences from a natural language artifact 
-that are relevant to some input task 
-and Chapter~\ref{ch:identifying}
-further describes how 
-we use \acs{BERT} for this goal.
 
+Similar to supervised \acs{ML} approaches, deep learning approaches 
+typically require large amounts of data for training purposes.
+Nonetheless, recent advancements on the usage of
+pre-trained models~\cite{erhan2010pre-train} 
+have lifted some of these limitations and,
+in Chapter~\ref{ch:identifying},
+we investigate how we can use a state-of-the-art architecture 
+to identify relevant text across different types of artifacts.
+
+
+
+
+
+
+
+
+
+
+% Researchers pose the problem of identifying text 
+% in a natural language artifact 
+% as a binary classification problem. 
+% That is, the use of a number of features 
+% to predict whether the text is (or not)
+% relevant to some context~\cite{aa}.
+% In software engineering, 
+% binary classifiers have been used for,
+% for example, classify text that describes steps to reproduce a bug~\cite{Chaparro2016} or 
+% classify text that explains a certain API element, as when 
+% Petrosyan et al. used 
+%  sentence-level features
+% and meta-data features in a classifier 
+% that 
+% identifies explanations about an API element  in a web tutorial~\cite{Petrosyan2015}.
+
+
+
+
+% Other classification problems predict which class, out of many, some input text belongs to. 
+% This type of classification, referred to as multinomial or multi-class classification, 
+% is of particular interest if 
+% we consider the taxonomies described in Section~\ref{cp2:text-in-se}.
+% For example, Arya et al. identified 16 categories of  information available
+% in open source GitHub issues (e.g., workarounds, solution discussion, task progress, etc.)~\cite{Arya2019}
+% and they proposed a multinomial classifier 
+% to automatically identify such categories.
+
+
+
+
+
+
+
+
+% Although valuable, these classifiers are instances of supervised learning methods.
+% They require training data so that a classifier predicts the correct outcome 
+% and the cost and effort of hiring skilled workers to produce 
+% the labeled data for these and other supervised learning approaches
+% has been a major limitation to their usage in software engineering research~\cite{Arpteg2018, ferreira2021}. As an alternative,
+% researchers have also explored 
+%  unsupervised learning methods---\acs{ML} techniques that do not required training data---for the automatic 
+% identification or classification of the text in natural language artifacts~\cite{aa}.
+
+
+
+
+
+% A common application of unsupervised learning in software engineering
+% considers the automatic generation of text summaries.
+% Most often, automatic summaries are produced 
+% using extractive techniques that select a subset of 
+% the sentences of an artifact that will compose the summary~\cite{a}.
+% Among other natural language artifacts,
+% extractive summarization techniques
+% have been applied to Stack Overflow posts~\cite{a}, coding tutorials~\cite{a},
+% or bug reports, as
+% when Lotufo et al. 
+% considered the kinds of sentences a developer would find relevant 
+% to understand a bug report when pressed with time~\cite{Lotufo2012},
+% and proposed an unsupervised summarization approach 
+% based on the PageRank algorithm~\cite{Page1999}
+% to identify these sentences. 
+
+
+
+
+% A second set of unsupervised methods focus on clustering data.
+% These techniques identify 
+% subsets in the data that have similar properties or features 
+% and techniques such as \acf{LDA}~\cite{blei2003latent}  have been used both to 
+% bootstrap the categorization of information in 
+% natural language artifacts and as part of tools that identify 
+% portions of the text in an artifact that are helpful to some context. 
+% As an example of the former, 
+%  Allamanis and Sutton
+% applied \acs{LDA}
+% to gain insight into the types of questions 
+% asked on Stack Overflow~\cite{Allamanis2013}.
+% For the latter, tools such as FRAPT
+% use \acs{LDA} to identity topics in a web tutorial
+% and then extract sentences explaining API elements from each of the topics identified~\cite{Jiang2017}.
+
+
+% Despite the significant contributions of these and other studies,
+% one substantial challenge inherent to the supervised and 
+% unsupervised \acs{ML} approaches 
+% is that researchers must engineer which 
+% features their \acs{ML} technique will use~\cite{ferreira2021}.
+% Hence, \acs{ML} approaches have limitations similar to the pattern 
+% matching approaches when we consider 
+% the specificity and cost of engineering such features
+% for a variety of kinds of artifacts.
+
+
+
+
+
+
+
+
+% pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
+
+
+
+
+% using them as a way to compare the semantic similarity of the text~\cite{mihalcea2006}.
+% Guided by the recent success of word embeddings 
+% for a variety of software development 
+% activities,,
+% Chapter~\ref{ch:identifying} 
+% describes how we incorporate word embeddings in the 
+% design of techniques that automate the identification of task-relevant text. 
+
+
+
+
+
+
+% ,
+% thus allowing \acs{DL}
+% to automate the identification of text in natural language software artifacts
+% with these `hidden' properties. 
+
+
+
+
+
+
+
+
+
+% These studies focus on specific tasks such as finding relevant passages in API documentation~\cite{Maalej2013,
+% Petrosyan2015, Robillard2015}, learning about API types in code tutorials~\cite{Jiang2016b, Jiang2017},
+% or detecting sentences that discuss a bug's expected behaviour~\cite{Chaparro2017}.
+% These approaches respectively use the presence of code words, HTML anchor links, or whether a sentence contains
+% a modal verb as properties to automatically identify relevant text.
+% Given how quickly developers progress to using new kinds of technology to
+% record pertinent information (e.g., slack~\cite{Storey2017, Lin2016}),
+% it may be difficult to scale such artifact-centric approaches to cover the range of
+% artifacts that could be returned from a search.
+% A second issue arises from the fact that coding procedures used to determine relevancy
+% in these studies do not consider disagreements~\cite{Stol2015}.
+% That is, there are many criteria in how individuals
+% assess relevance~\cite{Barry1994, Barry1998, Freund2015}
+% and there are no guarantees that
+% developers will use the same properties to determine text relevant to their tasks~\cite{Freund2013, Freund2015}.
+% In contrast, our study does not pre-assume any relevance cues, and instead,
+% we leave the decision of what text is perceived as relevant to a particular task to
+% the participants in our experiment.
+
+
+
+
+
+
+
+
+
+% Knowledge Recommender ()
+% is an example of a
+%  tool that uses lexical patterns to 
+%  automatically detect relevant text in  API documentation. 
+% Krec's premise is that relevant sentences contain a code element, such as a method or class signature.
+% These code elements are identifiable via regular expressions 
+% and Krec contains a catalog of 361 unique patterns 
+% that identify threats and directives on how to use some API element.
+% For example, Krec uses the pattern {\small \textit{$\{$may}, \textit{efficient}, \textit{code element regex$\}$}} 
+% to identify sentences giving instructions about an efficient way to 
+% perform some operation. 
+
+
+
+%  is a linguistic-based approach that 
+
+% It uses a set of 154 discourse patterns
+% derived from nearly 3,000 bug reports 
+% to identify such sentences. 
+% For example, the pattern 
+% {\small \textit{$\{$subject}, \textit{should/shall (not)}, \textit{complement$\}$}}
+% captures common ways with which developers describe a system's expected behaviour
+% and empirical assessment of the patterns used by the tool has shown that it 
+% detects sentences of interest in bug reports with high accuracy.
+
+
+
+% ~\cite{krallinger2017}
+
+
+
+% ~\cite{mcdonough2019}
