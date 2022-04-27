@@ -13,7 +13,7 @@ by software engineering researchers
 to identify text in natural language software artifacts~\cite{Bavota2016}.
 We focus on 
 automated approaches that might assist a person in discovering
-text that address an information need,
+text that addresses an information need,
 presenting both core concepts needed to understand an approach 
 and seminal work that has used an approach in 
 the context of natural language software artifacts.
@@ -69,7 +69,7 @@ More automated approaches have also been built using pattern matching,
 as when Panichella et al. 
 matched class elements mentioned in development mailing 
  lists to source code files
-to assists developers in finding information useful to 
+to assist developers in finding information useful to 
  understanding the source code~\cite{panichella2012}.
 Although the heuristics and regular expressions used in this and other studies~\cite{nadi2020, Maalej2013}
 are lightweight and effective~\cite{Bavota2016}, 
@@ -132,7 +132,7 @@ to identify relevant text across different kinds of artifacts, as Chapter~\ref{c
 
 
 \acf{NLP} relies on the lexical or syntactical analysis of the text~\cite{jurafsky2014speech}
-and such analyses might assist in the automatic identification of text that satisfies some information need. 
+and such analyses might assist in the automatic identification of text that satisfies some information needs. 
 To illustrate some of the elements obtainable using \acs{NLP}, we consider a short sentence 
 instructing how to perform a file system operation: ``\textit{you can use io.StringIO}''.
 Figure~\ref{fig:nlp-analysis} shows elements extracted for this sentence using two \acs{NLP} techniques,
@@ -214,14 +214,14 @@ determine
 Among other applications, binary classifiers have been used 
 to classify text in bug reports that describes (or not) steps to reproduce a bug~\cite{Chaparro2016}
 or  to classify paragraphs which contain explanations 
-about an API element  in web tutorials~\cite{Petrosyan2015}.
+about an API element in web tutorials~\cite{Petrosyan2015}.
 In turn, multinomial classifiers have been mostly used 
 to identify a category, out of many, that represents the type of information 
 associated with some text. For instance, Arya et al. identified 16 categories of  information available
 in open source GitHub issues (e.g., workarounds, solution discussion, task progress, etc.)
 and they proposed a multinomial classifier 
 to automatically identify such categories~\cite{Arya2019}.
-In a similar manner, Fu an colleagues consider 
+In a similar manner, Fu and colleagues consider 
 five types of decisions that might arise during 
 email exchanges (e.g., design, testing, management decisions, etc.)
 and they proposed a multinomial classifier 
@@ -233,7 +233,7 @@ a development mailing list~\cite{fu2021}.
 
 
 Regardless of the type of classifier, these approaches are typically built 
-with training data containing human engineered features and the cost and effort of hiring skilled workers to produce 
+with training data containing human-engineered features and the cost and effort of hiring skilled workers to produce 
 the labeled data for these and other supervised learning approaches
 has been a major limitation to their usage in software engineering research~\cite{Arpteg2018, ferreira2021}.
 
@@ -254,7 +254,7 @@ artifact and also in deciding which information patches are
 
 Unsupervised summarization approaches are often based on 
 variations of the PageRank algorithm~\cite{Page1999}, and these approaches identify
-the most central sentences in an artifact based on a set relationships
+the most central sentences in an artifact based on a set of relationships
 established between all the sentences in that artifact.
 Among other natural language artifacts,
 extractive summarization techniques
@@ -267,7 +267,7 @@ key elements required to understand a bug and its resolution~\cite{li2018deep}.
 
 
 
-A second family of unsupervised techniques focus on clustering data.
+A second family of unsupervised techniques focuses on clustering data.
 These techniques use properties or features in the data to 
 identify 
 subsets with similar characteristics. 
@@ -286,8 +286,8 @@ key sentences in each of the topics identified~\cite{Jiang2017}.
 
 
 
-Although unsupervised techniques lift the need of labeled training data,
-they still use human engineered features, 
+Although unsupervised techniques lift the need for labeled training data,
+they still use human-engineered features, 
 which are often specific to certain 
 types of artifact. Therefore, 
 both supervised and unsupervised \acs{ML}
@@ -335,9 +335,9 @@ Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018dee
 use neural network architectures 
 for the same range of problems discussed in Section~\ref{cp2:machine-learning}.
 As explained by Watson et al.~\cite{watson2022},
-neural network architectures are composed by several layers 
+neural network architectures are composed of several layers 
 that perform mathematical transformations on data passing through them. 
-These transformations are controlled by a set of parameters that 
+A set of parameters controls these transformations and 
 adjust the model being trained so that it can predict 
 the right outcome for any given input
 and researchers have proposed 
@@ -348,7 +348,7 @@ suitable for different problems.
 
 As examples of architectures applied to software engineering  artifacts,
 Li et al. used an auto-encoder~\cite{liou2014autoencoder}
-to produced more accurate and diverse summaries 
+to produce more accurate and diverse summaries 
 for bug reports~\cite{li2018deep} while 
 Fucci et al. used a 
 recurrent neural network (\acs{RNN}) 
