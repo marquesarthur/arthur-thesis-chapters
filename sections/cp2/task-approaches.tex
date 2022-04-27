@@ -7,52 +7,46 @@
 
 
 
-Although certainly valuable, the techniques mentioned in the previous sections
-do not consider extracting text tailored to 
-a specific software task. That is, they will always identify 
+Although certainly valuable, the techniques mentioned thus far
+do not extract text tailored to 
+a specific software task. In other words, they identify 
 a set of sentences in an input artifact regardless of the developer's task. 
-In contrast, this section focus on task-specific techniques
-where core component to identifying information specific to a task 
-is a query which representing the task being performed. 
+In contrast, this section focus on task-specific techniques.
+% where core component to identifying information specific to a task 
+% is a query which represents the task being performed~\cite{Bavota2016}. 
 % This query can be explicitly formulated by a developer 
 % or implicitly derived from the code or the context 
 % in which a developer is working.
 
-
-Guided by this concept, 
-a small number~\cite{Xu2017, silva2019, liu2019qapi} of studies consider specific types of artifacts and
+%  (as described in Section~\ref{cp2:unsupervised})
+A small number~\cite{Xu2017, silva2019, liu2019qapi} of studies consider specific types of artifacts and
 they formulate the problem of identifying task-specific text as 
-a special case of query-based summarization~\cite{Goldsteinet1999}.
-That is, instead of producing a summary for the entire content of 
-an artifact (as described in Section~\ref{cp2:unsupervised}),
-such approaches first use \acs{IR} to identify a subset 
+a special case of query-based summarization~\cite{Goldsteinet1999}. That is, 
+instead of producing a summary for the entire content of 
+an artifact,
+these studies first use information retrieval techniques
+to identify a subset 
 of sentences relevant to a task and then, 
 a summary of these key sentences is produced.
-For example, AnswerBot~\cite{Xu2017}, a state-of-the-art summarization tool, 
-uses word embeddings to find which sentences in a Stack Overflow answer 
-are most similar to a question  representing a developer's task.
+For instance, 
+AnswerBot~\cite{Xu2017} uses word embeddings to find which sentences in a Stack Overflow answer 
+are most similar to a query representing a developer's task.
 The tool uses semantic similarity in conjunction with 
-Stack Overflow's meta-data to decide which text should it include
-in the summary that answers the developer's question. 
-As another example, Liu et al. parse the content 
-of API documents to build a knowledge graph 
-of the information within this type of artifact. 
+Stack Overflow's meta-data to decide which text  it should include
+in the summary produced. 
+A second query-based summarization tool by Liu et al. parses the content 
+of API documents to build a knowledge graph of the information within this type of artifact. 
 Their tool, KG-APISumm, uses this graph 
-to produce summaries that address information needs 
-of a particular input task~\cite{liu2019qapi}. 
+to find nodes similar to an input task, 
+producing a task-specific summary for this type of artifact~\cite{liu2019qapi}. 
 
 
-
-These tools (i.e., AnswerBot and KG-APISumm)
-target one type of artifact and also use meta-data specific to these artifacts to 
+It is worth noting that existing task-specific techniques
+target one type of artifact and they also use an artifact's meta-data to 
 assist in the automatic identification of task-relevant text. 
-For example, among other properties AnswerBot uses the number of votes an answer has and if it is the accepted answer to decide which answers it will use to produce a summary~\cite{Xu2017}. 
-In a similar manner, KG-APISumm uses 
-code blocks and HTML anchor links and other properties which are exclusive to API documents to build the knowledge graph used as part of its summarization approach~\cite{liu2019qapi}.
-As a result, these approaches are constrained to specific artifacts and do not 
-generalize to the different kinds of artifacts a developer might consult. 
-
-
+For example, AnswerBot uses the number of votes an answer has and if it is the accepted answer to decide which answers it will use to produce a summary~\cite{Xu2017}
+while KG-APISumm uses 
+code blocks, HTML anchor links and other properties which are exclusive to API documents to build the knowledge graph used as part of its summarization approach~\cite{liu2019qapi}.
 We differ from these studies 
 by not using assumptions 
 specific to certain kinds of artifacts
@@ -61,6 +55,10 @@ in a more generalizable manner.
 
 
 
+
+
+% As a result, these approaches are constrained to specific artifacts and do not 
+% generalize to the different kinds of artifacts a developer might consult. 
 
 
 

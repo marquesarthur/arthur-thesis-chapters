@@ -6,60 +6,63 @@
 \label{cp2:dev-productivity}
 
 
-\art{stopped reviewing related-work here}
 
-
-% The tools and approaches presented in Sections~\ref{cp2:general-approaches}
-% and~\ref{cp2:task-approaches}
-% are examples of studies that help developers in locating 
-% information that assists them in completing a software task.
-% These studies fit in the bigger context 
-% of software engineering research 
-% facilitating or improving the quality of a developer's work~\cite{Kersten2006, Meyer2017, satterfield2020}. 
-
+The tools and approaches presented in Sections~\ref{cp2:general-approaches}
+and~\ref{cp2:task-approaches}
+are examples of studies that help developers in locating 
+text that might address an information need.
+These studies fit in the bigger context 
+of software engineering research 
+facilitating or improving the quality of a developer's work~\cite{Kersten2006, Meyer2017, satterfield2020}. 
 
 
 
-
-% As part of their work, developers engage in many sensemaking and decision-making activities~\cite{sillito2006} and several studies have investigated how to 
-% provide means to better  
-% assist developers in performing such activities~\cite{Liu2018Unakite, liu2021, barnett2015}.
-% For example, 
-% Ponzanelli et al. proposed a tool, Libra, that monitors the web pages a developer 
-% has navigated and uses that to show 
-% how similar or not the results of a new web search are in comparison to the already navigated 
-% pages, which offers contextual information-seeking support~\cite{Ponzanelli2017}.
+Software developers engage in many sensemaking and decision-making activities~\cite{sillito2006} and several studies have investigated how to 
+provide means to better  
+assist developers in performing such activities~\cite{Liu2018Unakite, liu2021, barnett2015}.
+For instance, to assist developer in deciding which web pages to inspect next,
+researchers have proposed tools that monitor a developer's search history
+and show how similar or not the results of a new web search are in comparison to already visited 
+pages~\cite{Ponzanelli2017}.
 
 
 
-% Researchers have also been interested in 
-% making knowledge bases
-% that developers working on a task can benefit from. 
-% In Section~\ref{cp2:task-approaches} 
-% we cited Hipikat~\cite{Cubranic2005}, a seminal tool that exemplifies this concept in action.
-% Based on the current code being inspected by a developer or based on a query prompted by a developer, 
-% it recommends artifacts from a project's archive 
-% that are pertinent to the code being inspected.
-% This archive, or project memory, is produced 
-% based either on relationships between the artifacts in a software project 
-% or based on the source code changed in a bug fix or feature request~\cite{Cubranic2005}.
-% Other tools like Strata summarize knowledge produced by developers 
-% while they navigate on the web so that other developers
-% can use this knowledge to have a 
-%  head start when performing similar tasks~\cite{liu2021}.
+Other tools, focus on assisting a developer make sense of the
+code that they might have to change as part of a task. For example, 
+Deep Intellisense~\cite{Holmes2008} display code changes, filed bugs, and forum discussions
+mined from an organization's database so that a developer can understand the rationale
+behind the code.
+Other tools such as CueMeIn~\cite{sun2021} use online resources for this same purpose, 
+finding excerpts from web tutorials 
+that might contain explanations 
+for the classes and methods that a developer inspects. 
 
 
 
+Researchers have also been interested in 
+making knowledge bases
+that developers working on a task can benefit from. 
+Hipikat~\cite{Cubranic2005} is a seminal tool that exemplifies this concept in action.
+It takes a query explicitly prompted by a developer 
+or implicitly based on the code that the developer 
+has inspect and  
+it recommends artifacts from a project's archive 
+that are pertinent to the query.
+This archive, or project memory, is produced 
+based either on relationships between the artifacts in a software project 
+or based on the files changed or accessed as part of a bug fix or feature request~\cite{Cubranic2005}.
+Other tools like Strata summarize knowledge produced by developers 
+while they navigate on the web so that other developers
+can use this knowledge to have a 
+ head start when performing similar tasks~\cite{liu2021}.
 
-% We build upon many of the research procedures outlined 
-% in these and many other studies in the field. 
-% For example, in the evaluation of Strata, 
-%  Liu et al. describe procedures 
-% considering how a control and tool-assisted group 
-% complete information-seeking tasks~\cite{liu2021},
-% which assisted in the design of our experiment for 
-% evaluating an automated approach to
-% task-relevant text identification (Chapter~\ref{ch:assisting}).
 
-
-
+This dissertation builds upon many of the research procedures outlined 
+in these and many other studies in the field. 
+For example, in the evaluation of Strata, 
+ Liu et al. describe procedures 
+considering how a control and tool-assisted group 
+complete information-seeking tasks~\cite{liu2021},
+which assisted in the design of our experiment for 
+evaluating an automated approach to
+task-relevant text identification (Chapter~\ref{ch:assisting}).

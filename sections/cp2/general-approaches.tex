@@ -10,9 +10,13 @@
 In this section, we provide background information on general 
 approaches used
 by software engineering researchers 
-to identify text in natural language software artifacts~\cite{Bavota2016}
-where the main goal of such automated approaches is in assisting a person in discovering
-text that address an information need.
+to identify text in natural language software artifacts~\cite{Bavota2016}.
+We focus on 
+automated approaches that might assist a person in discovering
+text that address an information need,
+presenting both core concepts needed to understand an approach 
+and seminal work that has used an approach in 
+the context of natural language software artifacts.
 
 
 
@@ -43,6 +47,9 @@ the keyword `\textit{android}' (Figure~\ref{fig:library-catalogue})
 and the same principle could assist 
 in finding parts of an artifact that contain some keyword, 
 as many web browsers allow via a `\textit{find in page}' feature (Figure~\ref{fig:find-in-page}).
+Nonetheless, this support is very limited and users would have to manually
+inspect each match to 
+determine if they are relevant or not.
 
 
 
@@ -58,12 +65,17 @@ as many web browsers allow via a `\textit{find in page}' feature (Figure~\ref{fi
 \end{figure}
 
 
-With the goal 
- assists developers in finding information useful to 
- understanding the source code,
-pattern matching has been applied to software engineering artifacts
-to, for example, match class elements mentioned in development mailing 
- lists to source code files~\cite{panichella2012}.
+More automated approaches have also been built using pattern matching, 
+as when Panichella et al. 
+matched class elements mentioned in development mailing 
+ lists to source code files
+to assists developers in finding information useful to 
+ understanding the source code~\cite{panichella2012}.
+Although the heuristics and regular expressions used in this and other studies~\cite{nadi2020, Maalej2013}
+are lightweight and effective~\cite{Bavota2016}, 
+pattern-matching approaches 
+are often specific to certain kinds of domains and types of artifact~\cite{fucci2019}, 
+limiting their use in the design of a generalizable technique.
 
 
 % In development mailing lists, Panichella et al. 
@@ -91,8 +103,8 @@ of an artifact with regards to an information need, often expressed as a query.
 % in an artifact so this information can be used for quick access. 
 By counting how frequent is a word in 
 an artifact and across the entire collection of artifacts, 
-one can query which artifacts contain a term and where in the artifact a term appears. 
-Using this principle multiple schemes have been proposed 
+\acs{IR} can be used to query which artifacts contain that word, or where in an artifact it appears. 
+Using this principle, multiple schemes have been proposed 
 to identify text based on 
 how not all the words in some vocabulary have the same relevance (\textit{TF-IDF})~\cite{luhn1957tf, jones2004idf}, 
 how to  represent sentences (\textit{VSM})~\cite{salton1975vector}, 
@@ -104,13 +116,14 @@ or how to account for different words that appear in a similar context (\textit{
 % to, for example, assist health workers in searching for medical records~\cite{hanauer2015}
 % or to help law practitioners in understanding government regulations~\cite{lau2005legal}.
 
-
-Information retrieval applications have been used in natural language software artifacts 
+In natural language software artifacts, 
+information retrieval has been used 
 as part of approaches that
-automatically identify sentences in a bug report that a developer would first read when pressed with time~\cite{Lotufo2012},
-or that help cluster software components to aid program comprehension of a software system~\cite{Marcus2003}.
-In this dissertation, we combine information retrieval and neural embeddings 
-to identify relevant text across different kinds of artifacts (Chapter~\ref{ch:identifying}).
+automatically identify sentences  that a developer would first read in a bug report 
+when pressed with time~\cite{Lotufo2012},
+or in approaches that help cluster software components to aid program comprehension of a software system~\cite{Marcus2003}.
+In this dissertation, we combine information retrieval and word embeddings 
+to identify relevant text across different kinds of artifacts, as Chapter~\ref{ch:identifying} further details.
 
 
 
@@ -119,17 +132,16 @@ to identify relevant text across different kinds of artifacts (Chapter~\ref{ch:i
 
 
 \acf{NLP} relies on the lexical or syntactical analysis of the text~\cite{jurafsky2014speech}
-what might assist in the automatic identification of text that satisfies some information need. 
+and such analyses might assist in the automatic identification of text that satisfies some information need. 
 To illustrate some of the elements obtainable using \acs{NLP}, we consider a short sentence 
-instructing how to perform a file system operation using some API: ``\textit{you can use io.StringIO}''.
-Figure~\ref{fig:nlp-analysis} shows elements extracted using two \acs{NLP} techniques,
+instructing how to perform a file system operation: ``\textit{you can use io.StringIO}''.
+Figure~\ref{fig:nlp-analysis} shows elements extracted for this sentence using two \acs{NLP} techniques,
 namely \acf{POS} tagging and dependency parsing.
 The formed assigns tags  ({\small \textit{PRP}, \textit{VP}, \textit{NNP},} etc.) to each word 
-in a sentence~\cite{taylor2003penn}. The latter, identifies
+in a sentence~\cite{taylor2003penn} while the latter identifies
 relationships between them, such as how 
 `\textit{io.StringIO}' is the direct object (\textit{obj})
-associated with the verb `\textit{use}', 
-being a potential approach to identify relevant elements in the text.
+associated with the verb `\textit{use}'.
 
 
 
@@ -149,9 +161,8 @@ identify text with threats and directives on how to use some API element~\cite{R
 As another example, {\small DeMIBuD}
 is an automatic approach that uses dependency parsing
 to automatically detect sentences discussing a bug's expected behaviour~\cite{Chaparro2017}.
-We refrain from exploring \acs{NLP} approaches to our domain problem because 
-our syntactic analysis of the text deemed relevant to a set of software tasks (Chapter~\ref{ch:characterizing})
-did not uncover patterns that we could use for such a purpose.
+In this work, we use \acs{NLP} as part of our 
+analysis of the text deemed relevant to a set of software tasks (Chapter~\ref{ch:characterizing}).
 
 
 
@@ -160,18 +171,18 @@ did not uncover patterns that we could use for such a purpose.
 
 
 
-Several other studies have investigated regularities in the text 
-of natural language artifacts and 
-in the meta-data available on them~\cite{Ko2006, Maalej2013, Arya2019}
-and a potential way to leverage regularities arising from these empirical studies
-is to engineer them into 
-features that a  \acf{ML} technique can use to automatically identify or classify
-text that is helpful for certain information need~\cite{Bavota2016}. 
+Several other studies have investigated the text 
+of various kinds of natural language artifacts and 
+the meta-data available on them~\cite{Ko2006, Maalej2013, Arya2019}
+where findings arising from these empirical studies
+indicated regularities in the text and meta-data of 
+an artifact which could be engineered into 
+features that a  \acf{ML} technique could use to automatically identify or classify
+text that addresses certain information need~\cite{Bavota2016}. 
 
 
 
 Machine learning techniques can be categorized 
-in \textit{supervised} or \textit{unsupervised} learning methods 
 according to how they make use of available data. 
 Supervised learning approaches use a set of features and labeled data
 to train classifiers for detecting entities of interest (e.g., text, images, etc.)
@@ -189,14 +200,18 @@ we consider the many families of classifiers that
 determine
 \textit{(1)} if some entity belongs or not to a given class, as in binary classification
 \textit{(2)} which class, out of many, some input entity belongs to, as in multinomial classification, or
-\textit{(3)} which classes can be assigned to a given input, as in multi-label classification~\cite{alpaydin2020ml}
-and we investigate their application to software engineering problems.
+\textit{(3)} which classes can be assigned to a given input, as in multi-label classification~\cite{alpaydin2020ml},
+ investigating their application to software engineering problems.
 
 
 
+% Binary classifiers can be expressed as functions in the form of 
+% $f(x) \arrowkeyright y$, where $x$ is a vector of features and $y \in {1, 0}$.
+% Hence, it indicates whether $x$ belongs or not a given class.
 
 
-For example, binary classifiers have been used 
+
+Among other applications, binary classifiers have been used 
 to classify text in bug reports that describes (or not) steps to reproduce a bug~\cite{Chaparro2016}
 or  to classify paragraphs which contain explanations 
 about an API element  in web tutorials~\cite{Petrosyan2015}.
@@ -211,15 +226,14 @@ five types of decisions that might arise during
 email exchanges (e.g., design, testing, management decisions, etc.)
 and they proposed a multinomial classifier 
 to automatically identify all the decisions present in 
-the Hibernate development mailing list~\cite{fu2021}.
+a development mailing list~\cite{fu2021}.
 
 
 
 
 
 Regardless of the type of classifier, these approaches are typically built 
-with training data containing human engineered features.
-Hence, the cost and effort of hiring skilled workers to produce 
+with training data containing human engineered features and the cost and effort of hiring skilled workers to produce 
 the labeled data for these and other supervised learning approaches
 has been a major limitation to their usage in software engineering research~\cite{Arpteg2018, ferreira2021}.
 
@@ -233,16 +247,13 @@ has been a major limitation to their usage in software engineering research~\cit
 
 Common applications of unsupervised learning 
 to natural language software artifacts 
-comprise text summarization and data clustering.
+comprise text summarization~\cite{Goldsteinet1999} and data clustering, which might help an individual both in understanding the key information in an 
+artifact and also in deciding which information patches are 
+ worth of their time~\cite{Lotufo2012}.
 
 
-Summarization approaches seek to
-extract a set of sentences 
-from a natural language artifact that will compose a summary~\cite{Goldsteinet1999}.
-This summary might help an individual both in understanding the key information in an 
-artifact and also in deciding whether an artifact is worth of their time~\cite{Lotufo2012}.
 Unsupervised summarization approaches are often based on 
-variations of the PageRank algorithm~\cite{Page1999}, identifying
+variations of the PageRank algorithm~\cite{Page1999}, and these approaches identify
 the most central sentences in an artifact based on a set relationships
 established between all the sentences in that artifact.
 Among other natural language artifacts,
@@ -259,7 +270,7 @@ key elements required to understand a bug and its resolution~\cite{li2018deep}.
 A second family of unsupervised techniques focus on clustering data.
 These techniques use properties or features in the data to 
 identify 
-subsets of the data with similar characteristics. 
+subsets with similar characteristics. 
 Techniques that cluster data, such as \acf{LDA}~\cite{blei2003latent},
 have been used by software engineering researchers to both 
 bootstrap the categorization of information in 
@@ -268,16 +279,16 @@ For instance, Allamanis and Sutton
 applied \acs{LDA}
 to gain insight into the types of questions 
 asked on Stack Overflow~\cite{Allamanis2013}
-while FRAPT
+while FRAPT is a tool that 
 uses \acs{LDA} to identity topics in a web tutorial,
-which help the tool in determining 
-key sentences for each of the topics identified~\cite{Jiang2017}.
+which are then used to identify
+key sentences in each of the topics identified~\cite{Jiang2017}.
 
 
 
 Although unsupervised techniques lift the need of labeled training data,
 they still use human engineered features, 
-which are often often specific to certain 
+which are often specific to certain 
 types of artifact. Therefore, 
 both supervised and unsupervised \acs{ML}
 have limitations that might prevent their usage 
@@ -314,14 +325,17 @@ as shown by Ye et al.'s evaluation of word embeddings
 for bug localization~\cite{Ye2016}
 or Huang and colleagues' study on 
 the usage of word embeddings for API recommendation~\cite{Huang2018}.
+Guided by these findings, Chapter~\ref{ch:identifying} describes 
+how we use word embeddings in the identification 
+of task-relevant text.
 
 
 
 Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep}
 use neural network architectures 
-for the same range of problems discussed in the machine learning approaches.
-As explained by Watson et al.~\cite{watson2022}
-\acs{DL} architectures are composed by several layers 
+for the same range of problems discussed in Section~\ref{cp2:machine-learning}.
+As explained by Watson et al.~\cite{watson2022},
+neural network architectures are composed by several layers 
 that perform mathematical transformations on data passing through them. 
 These transformations are controlled by a set of parameters that 
 adjust the model being trained so that it can predict 
@@ -332,28 +346,31 @@ suitable for different problems.
 
 
 
-As examples of neural networks applied to software engineering natural language artifacts,
+As examples of architectures applied to software engineering  artifacts,
 Li et al. used an auto-encoder~\cite{liou2014autoencoder}
 to produced more accurate and diverse summaries 
 for bug reports~\cite{li2018deep} while 
 Fucci et al. used a 
-recurrent neural network (\acs{RNN}) with 
-\acf{LSTM}~\cite{hochreiter1997lstm}
+recurrent neural network (\acs{RNN}) 
 to identify the types of information available in 
 API documentation~\cite{fucci2019}.
 
+% with \acf{LSTM}~\cite{hochreiter1997lstm}
 
 
 Similar to supervised \acs{ML} approaches, deep learning approaches 
 typically require large amounts of data for training purposes.
 Nonetheless, recent advancements on the usage of
-pre-trained models~\cite{erhan2010pre-train} 
-have lifted some of these limitations and,
-in Chapter~\ref{ch:identifying},
-we investigate how we can use a state-of-the-art architecture 
+pre-trained models 
+have lifted some of these limitations~\cite{erhan2010pre-train}.
+In Chapter~\ref{ch:identifying},
+we investigate how we can use a state-of-the-art architecture (BERT~\cite{Devlin2018Bert}) 
 to identify relevant text across different types of artifacts.
 
 
+
+
+\subsection{Summary of Techniques}
 
 
 \art{Should I have a summary section and a table bundling examples of studies for each technique and the artifacts that they apply to? }
