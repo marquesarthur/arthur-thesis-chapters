@@ -18,17 +18,13 @@
 In this section, we provide background information on general 
 approaches used
 by software engineering researchers 
-to identify text in natural language software artifacts~\cite{Bavota2016},
-where the main goal of such automated approaches is to help
- a person in navigating through the
-information patches within an artifact,
-thus assisting them in discovering
+to identify text in natural language software artifacts~\cite{Bavota2016}
+where the main goal of such automated approaches is in assisting a person in discovering
 text that address an information need.
-First, we detail concepts 
-core to each approach. Then, we 
-present seminal work that has applied 
-these approaches to problems related 
-to software engineering.
+% For each approach, we detail 
+% present seminal work that has applied 
+% these approaches to problems related 
+% to software engineering.
 
 
 
@@ -101,6 +97,8 @@ Information retrieval applications have been used in natural language software a
 as part of approaches that
 automatically identify sentences in a bug report that a developer would first read when pressed with time~\cite{Lotufo2012},
 or that help cluster software components to aid program comprehension of a software system~\cite{Marcus2003}.
+In this dissertation, we combine information retrieval and neural embeddings 
+to identify relevant text across different kinds of artifacts (Chapter~\ref{ch:identifying}).
 
 
 
@@ -137,6 +135,10 @@ identify text with threats and directives on how to use some API element~\cite{R
 As another example, {\small DeMIBuD}
 is an automatic approach that uses dependency parsing
 to automatically detect sentences discussing a bug's expected behaviour~\cite{Chaparro2017}.
+We refrain from exploring \acs{NLP} approaches to our domain problem because 
+our syntactic analysis of the text deemed relevant to a set of software tasks (Chapter~\ref{ch:characterizing})
+did not uncover patterns that we could use for such a purpose.
+
 
 
 
@@ -375,6 +377,122 @@ in the design of a generalizable technique.
 
 
 \subsection{Deep Learning Approaches}
+
+
+
+
+
+
+In contrast to the human-engineered features,
+\acf{DL} approaches allow the automatic extraction of features 
+from training data through a set of mathematical transformations~\cite{Deng2018, zhang2021deep}.
+This makes 
+deep learning an interesting 
+approach to
+uncover regularities 
+that are not obvious or easily identified
+by software engineering researchers.
+
+
+
+
+A common application of \acs{DL} in software engineering is the usage of neural, or word, embeddings~\cite{Mikolov2013}
+for information retrieval purposes. 
+Neural, or word, embeddings produce vector representations in a continuous space,
+where words with similar meanings are typically close in the vector space~\cite{harris1954distributional, mikolov2013efficient}. 
+Researchers have found that word
+embeddings mitigate lexical mismatches in the text found across different 
+natural language software artifacts,
+as shown by Ye et al.'s evaluation of word embeddings
+for bug localization~\cite{Ye2016}
+or Huang and colleagues' study on 
+the usage of word embeddings for API recommendation~\cite{Huang2018}.
+
+
+
+
+Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep}
+use neural network architectures 
+for the same range of problems discussed in the machine learning approaches.
+As explained by Watson et al.~\cite{watson2022}
+\acs{DL} architectures are composed by several layers 
+that perform mathematical transformations on data passing through them. 
+These transformations are controlled by a set of parameters that 
+adjust the model being trained so that it can predict 
+the right outcome for any given input
+and researchers have proposed 
+several architectures (e.g., \acs{RNN}s~\cite{rumelhart1986rnn, sutskever2014seq2seq}, encoder-decoders~\cite{bahdanau2014neural}, Transformers~\cite{Vaswani2017attention}, etc.) 
+suitable for different problems. 
+
+
+As examples of neural networks applied to software engineering natural language artifacts,
+Li et al. used an auto-encoder~\cite{liou2014autoencoder}
+to produced more accurate and diverse summaries 
+for bug reports~\cite{li2018deep} while 
+Fucci et al. used a 
+recurrent neural network (\acs{RNN}) with 
+\acf{LSTM}~\cite{hochreiter1997lstm}
+to identify the types of information available in 
+API documentation~\cite{fucci2019}.
+
+
+Similar to supervised \acs{ML} approaches, deep learning approaches 
+typically require large amounts of data for training purposes.
+Nonetheless, recent advancements on the usage of
+pre-trained models~\cite{erhan2010pre-train} 
+have lifted some of these limitations and,
+in Chapter~\ref{ch:identifying},
+we investigate how we can use a state-of-the-art architecture 
+to identify relevant text across different types of artifacts.
+
+
+
+
+
+
+% pre-trained models that do not require large amounts of training data to our domain problem~\cite{devlin2018bert, Ye2016}. With this approach, we revisit findings on the trade-offs of using machine learning techniques to mine textual data~\cite{Chaparro2017, Bavota2016}.
+
+
+
+
+% using them as a way to compare the semantic similarity of the text~\cite{mihalcea2006}.
+% Guided by the recent success of word embeddings 
+% for a variety of software development 
+% activities,,
+% Chapter~\ref{ch:identifying} 
+% describes how we incorporate word embeddings in the 
+% design of techniques that automate the identification of task-relevant text. 
+
+
+
+
+
+
+% ,
+% thus allowing \acs{DL}
+% to automate the identification of text in natural language software artifacts
+% with these `hidden' properties. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
