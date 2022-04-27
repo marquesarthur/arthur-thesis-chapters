@@ -2,95 +2,143 @@
 
 
 
-\section{Task-specific Automated Textual Approaches}
+\section{Task-specific Techniques}
 \label{cp2:task-approaches}
 
 
 
-In this section, we detail textual approaches that automate the identification 
-of text likely relevant to a developer's task. 
+Although certainly valuable, the techniques mentioned in the previous sections
+do not consider extracting text tailored to 
+a specific software task. That is, they will always identify 
+a set of sentences in an input artifact regardless of the developer's task. 
+In contrast, this section focus on task-specific techniques
+where core component to identifying information specific to a task 
+is a query which representing the task being performed. 
+% This query can be explicitly formulated by a developer 
+% or implicitly derived from the code or the context 
+% in which a developer is working.
 
 
-
-Task-specific automated approaches 
-use many of the techniques discussed in Section~\ref{cp2:general-approaches}
-in conjunction with the text in a developer's task
- or the code in a developer's workspace
-as potential ways  
-to identify task specific information.
-A seminal tool that exemplifies 
-how these sources assist in locating task specific information is
-Hipikat~\cite{Cubranic2005}.
-It takes a query explicitly prompted by a developer 
-or implicitly based on the code that the developer 
-has inspect and  
-it recommends artifacts from a project's archive 
-that are pertinent to the query.
-While Hipikat makes recommendations at the artifact level,  
-this approach could be fine-tuned to identify 
-parts of an artifact that are relevant~\cite{Cubranic2005}
-and other studies have since built upon this core idea. 
-For example, Deep Intellisense 
-uses pattern matching to 
-identify 
-artifacts containing text that 
-would assist a developer
-better understand the code that they inspect~\cite{Holmes2008}
-while 
-CueMeIn takes the code 
-a developer is currently editing and it
-automatically finds 
-excerpts from web tutorials 
-that might contain explanations 
-for the classes and methods 
-of the method being edited~\cite{sun2021}. 
-
-
-
-
-
-
-With regards to the content in a developer's task (as captured through a feature 
-request or a bug report in an issue tracking system),
-a second potential way to find text relevant to the task at hand is through query-based summarization~\cite{Goldsteinet1999}.
-Query-based summarization allows 
-producing a summary tailored to a particular query
-and a small number of approaches have focused on
-producing task-specific summaries~\cite{Xu2017, silva2019, liu2019qapi}.
+Guided by this concept, 
+a small number~\cite{Xu2017, silva2019, liu2019qapi} of studies consider specific types of artifacts and
+they formulate the problem of identifying task-specific text as 
+a special case of query-based summarization~\cite{Goldsteinet1999}.
+That is, instead of producing a summary for the entire content of 
+an artifact (as described in Section~\ref{cp2:unsupervised}),
+such approaches first use \acs{IR} to identify a subset 
+of sentences relevant to a task and then, 
+a summary of these key sentences is produced.
 For example, AnswerBot~\cite{Xu2017}, a state-of-the-art summarization tool, 
 uses word embeddings to find which sentences in a Stack Overflow answer 
 are most similar to a question  representing a developer's task.
 The tool uses semantic similarity in conjunction with 
 Stack Overflow's meta-data to decide which text should it include
 in the summary that answers the developer's question. 
+As another example, Liu et al. parse the content 
+of API documents to build a knowledge graph 
+of the information within this type of artifact. 
+Their tool, KG-APISumm, uses this graph 
+to produce summaries that address information needs 
+of a particular input task~\cite{liu2019qapi}. 
 
 
 
+These tools (i.e., AnswerBot and KG-APISumm)
+target one type of artifact and also use meta-data specific to these artifacts to 
+assist in the automatic identification of task-relevant text. 
+For example, among other properties AnswerBot uses the number of votes an answer has and if it is the accepted answer to decide which answers it will use to produce a summary~\cite{Xu2017}. 
+In a similar manner, KG-APISumm uses 
+code blocks and HTML anchor links and other properties which are exclusive to API documents to build the knowledge graph used as part of its summarization approach~\cite{liu2019qapi}.
+As a result, these approaches are constrained to specific artifacts and do not 
+generalize to the different kinds of artifacts a developer might consult. 
 
 
-Task-specific techniques in related-work either consider a single type of artifact
-or have assumptions that prevent using them across different kinds of artifacts 
-in a generalizable manner. For example, 
-Deep Intellisense was evaluated in the artifacts of a single organization, 
-Microsoft, and the regular expressions that it uses might be unique to 
-how this organization stores its data. As another example, 
-query-based summarization approaches such as AnswerBot also use 
-an artifact's meta-data and it may not be possible to apply it 
-to artifacts that lack such meta-data. 
 We differ from these studies 
 by not using assumptions 
 specific to certain kinds of artifacts
 and by considering how to identify task-relevant text 
-across different types of artifacts.
+in a more generalizable manner.
 
 
 
-@article{hanauer2015,
-  title={Supporting information retrieval from electronic health records: A report of University of Michigan’s nine-year experience in developing and using the Electronic Medical Record Search Engine (EMERSE)},
-  author={Hanauer, David A and Mei, Qiaozhu and Law, James and Khanna, Ritu and Zheng, Kai},
-  journal={Journal of biomedical informatics},
-  volume={55},
-  pages={290--300},
-  year={2015},
-  publisher={Elsevier}
-}
+
+
+
+
+
+% the text identified by these techniques might indeed 
+
+
+% contain information relevant to a specific software task,
+% a key component that distinguish the techniques 
+%  is that they 
+
+
+
+
+% We now consider applications that assist developers in 
+% searching for artifacts that contain information 
+% for a particular task
+% and that automate the identification 
+% of text likely relevant to a developer's task;
+
+
+
+
+% We use the terms change task and task to refer to any change to a software system that serves a predefined purpose, such as a bug fix or an enhancement.
+
+
+% In this section, we detail textual approaches that automate the identification 
+% of text likely relevant to a developer's task. 
+
+
+
+% Task-specific automated approaches 
+% use many of the techniques discussed in Section~\ref{cp2:general-approaches}
+% in conjunction with the text in a developer's task
+%  or the code in a developer's workspace
+% as potential ways  
+% to identify task specific information.
+% A seminal tool that exemplifies 
+% how these sources assist in locating task specific information is
+% Hipikat~\cite{Cubranic2005}.
+% It takes a query explicitly prompted by a developer 
+% or implicitly based on the code that the developer 
+% has inspect and  
+% it recommends artifacts from a project's archive 
+% that are pertinent to the query.
+% While Hipikat makes recommendations at the artifact level,  
+% this approach could be fine-tuned to identify 
+% parts of an artifact that are relevant~\cite{Cubranic2005}
+% and other studies have since built upon this core idea. 
+% For example, Deep Intellisense 
+% uses pattern matching to 
+% identify 
+% artifacts containing text that 
+% would assist a developer
+% better understand the code that they inspect~\cite{Holmes2008}
+% while 
+% CueMeIn takes the code 
+% a developer is currently editing and it
+% automatically finds 
+% excerpts from web tutorials 
+% that might contain explanations 
+% for the classes and methods 
+% of the method being edited~\cite{sun2021}. 
+
+
+
+
+
+
+
+
+
+
+% In Section~\ref{cp2:general-approaches}, we described 
+% techniques for mining textual data. 
+% These techniques identify text that might assist a developer 
+% in performing certain activities such as finding 
+% text describing how to use an API~\cite{Robillard2015} 
+% or finding text with decisions made by members of a development 
+% community~\cite{fu2021}.

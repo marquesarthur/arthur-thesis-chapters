@@ -1,7 +1,7 @@
 
 
 
-\section{Automating the Identification of Relevant Text}
+\section{Techniques for Mining Unstructured Text}
 \label{cp2:general-approaches}
 
 
@@ -28,19 +28,16 @@ text that address an information need.
 
 
 
-\subsection{Information Retrieval Approaches}
-\label{cp2:information-retrieval}
+
+\subsection{Pattern Matching}
+\label{cp2:pattern-matching}
 
 
-\acf{IR} comprises techniques
-or approaches for finding entities (documents, paragraphs, sentences, etc.)
-that satisfy an information need~\cite{manning2010IR}.
-At its most basic level, 
-\acs{IR}
-uses the 
-frequency or co-occurrence of words (or phrases) to determine the relevance
-of an artifact with regards to an information need, often expressed as a query.
-We have shown how \acs{IR} identified
+
+Pattern matching approaches use regular expressions describing
+a sequence of tokens that represent
+the text to be identified~\cite{Bavota2016}. 
+We have shown how pattern matching identified
 books whose subject contained
 the keyword `\textit{android}' (Figure~\ref{fig:library-catalogue})
 and the same principle could assist 
@@ -52,10 +49,6 @@ as many web browsers allow via a `\textit{find in page}' feature (Figure~\ref{fi
 
 
 
-
-% As an example, Figure~\ref{fig:find-in-page}
-% shows that there are 220 matches in a web page 
-
 \medskip
 \begin{figure}[h!]
     \centering
@@ -65,11 +58,37 @@ as many web browsers allow via a `\textit{find in page}' feature (Figure~\ref{fi
 \end{figure}
 
 
+With the goal 
+ assists developers in finding information useful to 
+ understanding the source code,
+pattern matching has been applied to software engineering artifacts
+to, for example, match class elements mentioned in development mailing 
+ lists to source code files~\cite{panichella2012}.
+
+
+% In development mailing lists, Panichella et al. 
+% proposed an automatic approach leveraging \acf{IR} to extract 
+% text with useful information that assists in understanding code elements inspected by a developer~\cite{panichella2012}
 
 
 
-\acs{IR} identifies and structure all the words, or terms, 
-in an artifact so this information can be used for quick access. 
+
+\subsection{Information Retrieval }
+\label{cp2:information-retrieval}
+
+
+\acf{IR} comprises techniques
+or approaches for finding entities (documents, paragraphs, sentences, etc.)
+that satisfy an information need~\cite{manning2010IR}.
+At its most basic level, 
+\acs{IR}
+uses the 
+frequency or co-occurrence of words (or phrases) to determine the relevance
+of an artifact with regards to an information need, often expressed as a query.
+
+
+% For that, \acs{IR} identifies and structures all the words, or terms, 
+% in an artifact so this information can be used for quick access. 
 By counting how frequent is a word in 
 an artifact and across the entire collection of artifacts, 
 one can query which artifacts contain a term and where in the artifact a term appears. 
@@ -95,7 +114,7 @@ to identify relevant text across different kinds of artifacts (Chapter~\ref{ch:i
 
 
 
-\subsection{Natural Language Processing Approaches}
+\subsection{Natural Language Processing }
 \label{cp2:nlp}
 
 
@@ -136,7 +155,7 @@ did not uncover patterns that we could use for such a purpose.
 
 
 
-\subsection{Machine Learning Approaches}
+\subsection{Machine Learning }
 \label{cp2:machine-learning}
 
 
@@ -161,7 +180,8 @@ identify entities according to properties inferred from the data.
 
 
 
-\subsubsection{Supervised Learning Approaches}
+\subsubsection{Supervised Learning }
+\label{cp2:supervised}
 
 
 With regards to supervised learning approaches, 
@@ -206,7 +226,8 @@ has been a major limitation to their usage in software engineering research~\cit
 
 
 
-\subsubsection{Unsupervised Learning Approaches}
+\subsubsection{Unsupervised Learning}
+\label{cp2:unsupervised}
 
 
 
@@ -265,7 +286,7 @@ in the design of a generalizable technique.
 
 
 
-\subsection{Deep Learning Approaches}
+\subsection{Deep Learning }
 \label{cp2:deep-learning}
 
 
@@ -335,6 +356,7 @@ to identify relevant text across different types of artifacts.
 
 
 
+\art{Should I have a summary section and a table bundling examples of studies for each technique and the artifacts that they apply to? }
 
 
 
