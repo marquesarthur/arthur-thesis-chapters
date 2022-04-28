@@ -5,10 +5,6 @@
 % It still isn't sufficiently convincing to
 % show the novelty of this thesis.}
 
-\art{I tried to incorporate some of the arguments in our last meeting, but I am not certain about it. I haven't been feeling much confident lately.}
-
-
-
 
 To assist developers in discovering task-relevant information,
 software engineering researchers have proposed 
@@ -31,6 +27,8 @@ such artifacts to design artifact-specific techniques
 natural language artifacts 
 and techniques using \acf{IR}, \acf{NLP}, or \acf{ML}  to automatically identify
 text in certain kinds of natural language artifacts~\cite{panichella2012, Ko2006, Arya2019, Maalej2013}.
+
+
 However, designing and evaluating such approaches
 does not follow the same pace with which developers have started to 
 record pertinent information in a specific type of artifact~\cite{garousi2019}.
@@ -75,6 +73,14 @@ or ensure that an approach for this kind of artifact
 consistently 
 extract text from the myriad of styles under use~\cite{robillard2011field}.
 
+
+
+A second approach for general techniques could consider ways to relate the text in a task 
+to the text in a natural language artifact and  
+state-of-the-art tools (e.g.,~\cite{Xu2017, silva2019}) attempt to accomplish this using semantic techniques.
+These tools have similar constraints due to also using an artifact's meta-data and other limitations arise from how they make use of semantics,
+i.e., they default to a specific semantic approach~\cite{Ye2016} and do not investigate the range of semantic techniques~\cite{Mikolov2013, Devlin2018Bert, fillmore1976frame} 
+that might apply to text in software engineering artifacts.
 
 
 
