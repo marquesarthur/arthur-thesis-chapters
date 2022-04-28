@@ -32,7 +32,7 @@ Details for each metric are as follows.
 
 Precision measures the fraction of the text automatically identified  that participants deemed relevant (Equation~\ref{eq:precision-cp6}). 
 
-\smallskip
+\medskip
 \begin{small}
 \begin{equation}
     Precision = \frac{
@@ -48,7 +48,7 @@ Recall represents how many of all the manual highlights were identified by the s
 
 
 
-\smallskip
+\medskip
 \begin{small}
 \begin{equation}
     Recall = \frac{
@@ -66,7 +66,7 @@ Recall represents how many of all the manual highlights were identified by the s
 
 
 
-\smallskip
+\medskip
 \begin{small}
 \begin{equation}
     \triangle Precision = \frac{
@@ -125,10 +125,7 @@ To help future research in the field, we bundle the three Python programming tas
 
 Table~\ref{tbl:comparison-task-wise} summarizes the average of precision, pyramid precision, and recall metrics for each of the tasks in the experiment.
 Precision scores range from 0.55 to 0.68, while pyramid precision scores range from 0.55 to 0.57, which suggests that our tool failed to identify some of the text that participants deemed the most relevant.
-
-
-
-The results in Table~\ref{tbl:comparison-task-wise} corroborate 
+These results also corroborate 
 the correctness scores detailed in Figure~\ref{fig:correctness-by-task}. For example, 
 in the \texttt{distances} task, participants who performed the task with tool support had solutions less correct than participants in the control group.
 This was the task with the lowest precision, recall and pyramid precision values. 
@@ -138,6 +135,7 @@ In contrast, the task where participants assisted by our tool obtained the best 
 
 
 
+\input{sections/cp6/tbl-comparison-overall}
 
 
 
@@ -149,29 +147,23 @@ Miscellaneous web pages were the artifact type with the lowest scores. This resu
 on the usefulness of text per type of artifact.
 
 
-
-
-
-
-We also compare evaluation results to the ones in Chapter~\ref{ch:identifying}. 
-This comparison is interesting because it let us cross-examine our findings with new data~\cite{easterbrook2008},
-which Seaman emphasizes as an important method for empirical studies in software engineering~\cite{Seaman1999}.
-Figure~\ref{fig:eval-comparison} presents boxplot for precision and recall of the BERT technique with no filters 
-for each evaluation. We observe that the technique accuracy is comparable across the artifacts on each evaluation. 
-
-
-\input{sections/cp6/tbl-comparison-overall}
-
 \input{sections/cp6/tbl-comparison-per-artifact-type}
 
 
-\medskip
+We also compare evaluation results to the ones in Chapter~\ref{ch:identifying}. 
+This comparison is interesting because it let us cross-examine our findings with new data~\cite{easterbrook2008, Seaman1999}.
+Figure~\ref{fig:eval-comparison} presents boxplots for precision and recall of the BERT technique with no filters 
+for the tasks in the \acs{DS-android} corpus and the Python tasks (experiment). We observe that the technique's accuracy
+is comparable across the two evaluations. 
+
+
+
+\afterpage{
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{cp6/eval-comparison.pdf}
     \caption{Boxplots comparing precision and recall values when applying our semantic-based technique to the \acs{DS-python} and the \acs{DS-android} corpora}
     \label{fig:eval-comparison}
 \end{figure}
+}
 
-
-\clearpage

@@ -8,19 +8,25 @@
 % with the earlier chapters. Maybe something like "Evaluating an Automated Approach to Task-Relevant Text Identification"}
 
 In the last chapter, we showed that semantic-based approaches can help identify text in artifacts relevant to a task. 
-In this chapter, we consider whether these approaches can assist a software developer while they \textit{work} on a task.
+In this chapter, we consider whether the identified best approach---\textit{BERT with no filters}---can assist a software developer while they \textit{work} on a task.
+
+% we use the  semantic-based technique to
+% identify sentences that likely contain information useful to the input task,
+% embedding the approach 
 
 
 
-To investigate how semantic-based approaches might assist developers performing a task, we have designed a tool, in the form of a web browser plug-in, that automatically highlights 
-text relevant to a particular software task.
-This plug-in takes a developer's task and a software artifact as inputs and then, it applies its underlying semantic-based technique---\textit{BERT with no filters}---to identify sentences that likely contain information useful to the input task.
+% To investigate how semantic-based approaches might assist developers performing a task,
 
-We investigate benefits brought by using this tool, if any, through a controlled experiment
-where 24 participants completed three Python programming tasks using (or not) this tool. 
-With this experiment, we show that participants considered the majority of the text automatically identified in the artifacts 
+For that, we embed the approach into a web browser plug-in that automatically highlights 
+text relevant to a particular software task in web pages inspected by a developer.
+We investigate benefits brought by using this tool, which we call \acs{tool}, through a controlled experiment,
+thus addressing whether developers can effectively complete a software task 
+when provided with task-relevant text automatically extracted from natural language artifacts. 
+We report how  24 participants completed three Python programming tasks using (or not) \acs{tool}
+where results show that participants considered the majority of the text automatically identified in the artifacts 
 they perused useful and that 
-our tool assisted them in producing a more correct solution for one of the experimental tasks.
+the tool assisted them in producing a more correct solution for one of the experimental tasks.
 
 
 
