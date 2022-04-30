@@ -58,39 +58,19 @@ Other participants indicated the opposite, i.e., that textual highlights were es
 
 
 \smallskip
-This feedback suggests that participants  might use \acs{tool} differently. However, 
-our research questions did not consider which types of tasks (e.g., code-related or information-seeking tasks)
-and what factors (e.g., a participant's background or expertise)  influence the tool's usage.
-Answering these questions would lead to a different experiment with challenges and risks of its own
-and future research might consider this topic.
+This feedback suggests that we could have observed different usage behaviours if participants had the chance to decide when to invoke \acs{tool}.
+However, 
+our research questions did not consider
+ which types of tasks 
+and what factors  influence the tool's usage
+since answering these questions would have led to a different experiment with challenges and risks of its own.
 
 
 
-Furthermore, this feedback also raises one core limitation of our techniques. 
+This feedback also brings to light one core limitation of our techniques:
 automatically identifying text relevant to a task is of little to no help
 to developers who focus on code snippets or to developers who disregard 
 reading the text in a natural language artifact.
-
-% Due to these differences, it would be interesting to study developers performing a broader range of tasks over a wider period of time. 
-% This could allow us to understand when developers decide to use \acs{tool} and for which tasks. 
-
-
-
-% Where the feedback provided by these participants might indicate that text highlights can be used as a navigational tool that guides a developer towards the resources with the least effort and best gains.
-
-
-
-% given the limited time they have to spend on any given task, 
-
-
-% On the other hand, other participants indicated that the text in an artifact assisted them complete a task. 
-
-% Although there are many reasons that could explain the feedback provided, 
-
-
-
-
-% The feedback provided by these participants raises the question of when text is useful and for whom. 
 
 
 
@@ -106,25 +86,17 @@ and thus the reason why we favor recall.
 Nonetheless, this decision comes with a set of challenges that we now discuss.
 
 
-
-When favoring recall,  we may obtain more false positives---non-relevant text which our techniques indicated as relevant---and
-due to the searching and skimming behavior adopted by developers and the limited time they spend on any given task~\cite{Starke2009}, there is a chance that
+When favoring recall,  we may obtain more false positives---non-relevant text indicated as relevant---and
+due to the limited time developers spend inspecting a natural language artifact~\cite{Starke2009}, there is a chance that
  a developer could discard reading an artifact due to a false positive. 
  Although abandoning reading an artifact and moving to another artifact could lead to non-efficient work 
-as a developer might have to perform further searches and perhaps revisit artifacts that they have already inspected,
+ because
+a developer might have to perform further searches and perhaps revisit artifacts that they have already inspected,
 we believe that the benefits of automatically identifying relevant text outweighs these risks. 
 That is, inspecting an artifact without tool support is more time-consuming
-than jumping through each sentence automatically retrieved and judging its relevance to the task at hand. 
+than inspecting each sentence retrieved to judge their relevance to the task at hand. 
 
 
-
-
-
-% (contradicting our thesis statement)
-
-% Having to deal with more false positives also imposes additional burdens on a developer in deciding which groups to prioritize. If she prioritizes a group that contains too many false positives, our approach will lead to non-efficient work (contradicting our thesis statement).
-% We believe that our approach serves as an initial facilitator to the discovery of task-relevant information. If we can correctly direct a developer to relevant information extracted from multiple sources, the developer can further inspect the pertinent artifacts
-% and locate other relevant text that we could not identify.
 
 
 \paragraph{\textbf{Training Data.}}
@@ -132,10 +104,10 @@ than jumping through each sentence automatically retrieved and judging its relev
 
 In Chapter~\ref{ch:identifying}, we have shown that semantic-based approaches identify task-relevant textual information across
 different types of artifacts without relying on
-assumptions about the nature of an artifact or its structured data.
+assumptions about the nature of an artifact or its meta-data.
 However, we
 observe that the techniques with the best accuracy require training data. Producing this
-training data might require significant manual effort and this could be considered as an impediment for the use of such supervised techniques. % For example, each developer  
+ data might require significant manual effort and this could be considered as an impediment to the use of such  techniques. 
 
 
 
@@ -145,12 +117,11 @@ the fact that artifact-specific techniques, such as AnswerBot, have accuracy com
 a unique opportunity for the creation of synthetic data that one might use for training purposes.
 In a similar manner to how researchers created word embeddings for the software engineering domain~\cite{Efstathiou2018}, one might gather significantly large amounts of data from online resources
 and use techniques that apply to such resources to create the data needed for training.
-A requirement to using such a bootstrapping mechanism is that one must show that models trained on synthetic data do not simply replicate the underlying heuristics of the techniques used for bootstrapping. That is, we have to show that a technique trained
+A requirement to using such a bootstrapping mechanism is that we must show that models trained on synthetic data do not simply replicate the underlying heuristics of the techniques used for bootstrapping. That is, we have to show that a technique trained
 in this manner correlates data from a task and an artifact in ways that
 extend beyond what a technique used for bootstrapping already provides. For example, showing that
 it can identify task-relevant textual information in a different type of artifact or showing
 that its accuracy is significantly better than the technique used for bootstrapping.
-% We leave this investigation for future work.
 
 
 
@@ -160,22 +131,9 @@ that its accuracy is significantly better than the technique used for bootstrapp
 A second limitation of the semantic-based techniques we explored in Chapter~\ref{ch:identifying}
 relates to the cost of applying and deploying these techniques. 
 First, the hardware required by 
-the neural embeddings and the neural networks, 
-means the need of dedicated servers with significant 
+the neural embeddings and the neural networks
+requires dedicated servers with significant 
 memory and high-throughput computational power. Due to the high demand for commercial servers with such properties, deploying our tools for usage by software development communities might incur significant financial burdens. 
-The need for dedicated servers also means that our proposed techniques and our web browser plug-in cannot be run offline. If we consider a standard client-server architecture, such as the one of \acs{tool}, it means that one must send data about the task and artifacts that are working to a remote server for processing. This might not be always possible due to privacy reasons, i.e., outside the public domain, organizations would not be willing to use such type of tool and, depending on the size,  organizations might not have the resources needed to deploy such tools in-house. Due to these limitations, the techniques and tools described in this dissertation are proofs-of-concept.
+The need for dedicated servers also means that our proposed techniques and our web browser plug-in cannot be run offline. If we consider a standard client-server architecture, such as the one of \acs{tool}, it means that one must send data about the task and artifacts that they are working to a remote server for processing. This might not always be possible due to privacy reasons, i.e., outside the public domain, organizations would not be willing to use such type of tool and, depending on their size,  organizations might not have the resources needed to deploy such tools in-house. Due to these limitations, the techniques and tools described in this dissertation 
+must be treated as proofs-of-concept.
 
-
-% so that the models we used can be trained and can also make predictions in a 
-% reasonable amount of time
-
-
-
-
-
-
-
-
-
-% and that affect the web browser plug-in described 
-% and embedded in a tool in Chapter~\ref{ch:assisting}

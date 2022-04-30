@@ -24,7 +24,7 @@ this strategy:
 \begin{footnotesize}
 \begin{quote}
 ``\textit{It was much easier to follow with previously highlighted text.  
-    However it would have been nicer to have some sort of side bar/index of highlighted snippets
+    However, it would have been nicer to have some sort of side bar/index of highlighted snippets
     where I could know and scroll directly through the highlighted parts of a page.}''
 \end{quote}
 \end{footnotesize}
@@ -39,74 +39,58 @@ this strategy:
 \end{footnotesize}
 
 
-% \smallskip
-% \begin{footnotesize}
-% \begin{quote}
-% ``\textit{the highlights were helpful, but not in terms of orienting myself on the page.}''---P17
-% \end{quote}
-% \end{footnotesize}
-
-
-
- 
-
-
 \smallskip
 This feedback made us question other potential ways to present the text identified by \acs{tool}.
-For example, we could have followed design principles adopted by Unakite~\cite{Liu2018Unakite}---a tool that collects, organizes and keeps track of information using context menu---to make \acs{tool} display the text identified on its context menu.
-In this menu, a user could click on the text identified and navigate to the part of the documentation 
+For example, we could have followed design principles adopted by Unakite~\cite{Liu2018Unakite}---a tool that collects, organizes and keeps track of information---to make \acs{tool} display the text identified on its context menu.
+Figure~\ref{fig:navigational-cues} shows a mock up of \acs{tool} bundling the highlights identified for one of the artifacts in the \texttt{titanic} task (Section~\ref{cp6:tasks}).
+A user could click on the text identified and navigate to the part of the documentation 
 originally containing the text identified.
 
 
 
-% To discuss potential ways to visually represent the 
-% relevant text identified by \acs{tool}, we take inspiration from Strata~\cite{liu2021} and Libra~\cite{Ponzanelli2017}.
-A second approach to organize the text identified could consider 
-the semantic meaning of each sentence, as extract through frame semantics or other semantic-based approaches. 
-For instance, the frames identified could 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/cp7/navigational-cues}
+    \caption{Mock up of the highlights identified by \acs{tool} as navigational cues; by clicking on a highlight, a user could be directed to the part of a document containing that highlight}
+    \label{fig:navigational-cues}
+\end{figure}
+
+
+
+A second approach to organizing the text identified could consider 
+the semantic meaning of each sentence, as extracted through frame semantics or other semantic-based approaches. 
+For instance, semantic frames could 
 assist a user in comprehending the content of the text automatically identified
 without the need to read it. 
-Semantic tags could also be used to group the text identified in bubbles or a hierarchical representation 
-which, similar to Libra~\cite{Ponzanelli2017}, could help a user 
+Similar to Libra~\cite{Ponzanelli2017}, semantic frames could also be used to group the text identified in bubbles or a hierarchical representation 
+ helping a developer
 in deciding what portions of the text they would inspect first. 
-For example, a user could first read sentences 
-with frames associated with directives on how
-to use some API element and then, 
-jump to sentences with warnings, known issues,
-or limitations about that API. 
-Further research is needed to understand how to group and synthesize the text
-that is relevant to a task. 
+Figure~\ref{fig:semantic-cues} shows a mock up 
+with some of the semantic frames extracted 
+for the sentences in Figure~\ref{fig:navigational-cues}.
+Using the semantic frames identified,
+a developer could decide whether they would read sentences 
+describing some coding procedure (\textit{execution}), or sentences 
+with warnings or requirements (\textit{requirement} and \textit{being obligated})
+about the Pandas API. 
+To be useful, future research must consider how to identify 
+which frames, from all the frames available in a sentence, 
+better summarize the meaning of the text. 
 
 
 
 
-% By providing tags or labels indicating the information conveyed in a relevant sentence 
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{fig/cp7/semantic-cues}
+    \caption{Mock up of the highlights grouped by semantic frames; by hovering over a semantic frame, a user could quickly identify which of the text identified is associated with a certain semantic frame}
+    \label{fig:semantic-cues}
+\end{figure}
 
 
 
 
-% Libra's interface provides a bubble chart with bubbles representing 
-% web pages obtained from a search result list and axis representing 
-% how the content of a web page complements or adds to the content 
-% already seen by a developer~\cite{Ponzanelli2017}.
-% Following Libra's design, 
-% we could have used a bubble chart to present the text identified. 
-% A bubble could represent the semantic meaning of a sentence, as extract through frame semantic parsing.
-% Its radius could indicate the text's similarity with regards to the developers task
-% while the bubble position could represent its semantic
-% distance to the other relevant text identified and, by clicking on a bubble, 
-% \acs{tool} could direct a developer to the part of the artifact containing 
-% the text. This chart could assist both in navigating through the artifact's content 
-% and in comprehending the content of the text automatically identified.
 
-
-% A second approach 
-
-
-
-% \begin{figure}[h!]
-%   \centering	
-%   \includegraphics[width=.7\textwidth]{figs/bubble-representation.pdf}	
-%   \caption{Visual representation of task-relevant text. As a user selects a bubble (representing a group of semantically similar task-relevant text), the tool provides the synthesized text for that group. Figure adapted from the representation in ~\cite{Ponzanelli2017}}	
-%   \label{fig:bubble-representation}	
-% \end{figure}

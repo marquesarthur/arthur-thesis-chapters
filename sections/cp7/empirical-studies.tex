@@ -9,37 +9,46 @@
 \label{cp7:empirical-studies}
 
 
-% By reflecting 
-% on what is relevant, 
-% the annotated data in ou corpora is an approximation 
-% of what developers implicitly find relevant to a task. 
-
 
 
 At multiple points in this dissertation, participants produced annotated data 
 indicating the text that they deemed relevant to a software task. 
 These annotations reflect their \textit{explicit} reasoning about the information 
 available in the text and what they consider relevant to the tasks 
-that we presented them. 
-Due to differences that might arise from explict and implicit reasoning,
- we argue for the need for more empirical data 
-originating from
-software developers performing daily tasks
-and gathered in a non-obstructive way.
+that we presented them. However, 
+asking participants to indicate what was relevant might have 
+introduced deviations from what information
+they would implicitly use and deem relevant 
+when performing a task~\cite{Lazar2017}.
+
+
+
+
+Due to differences that might arise from explicit and implicit reasoning,
+ we argue for the need for more empirical data gathered in a non-obstructive way
+and originating from software developers performing daily tasks.
 Conducting empirical
  experiments in a more realistic environment is challenging~\cite{Kevic2015}.
 This effort is worthwhile as
 the richness of collected data can provide valuable insights
-to provide a foundation for tool development
-and eye-tracking~\cite{Cutrell2007, Petrusel2013, sharafi2020}
-is a promising approach to collect more realistic data without disrupting a developer's workflow.
+to provide a foundation for tool development.
+
+Recent studies with eye-trackers~\cite{Cutrell2007, Petrusel2013, sharafi2020}
+have shown that the technology provides new
+methods for
+data collection without disrupting a developer's workflow,
+which could lead to more realistic data on which text developers perceive as task-relevant.
 For example, one could
 extend the work done by Kevic and colleagues on
-tracing developers' eye for change tasks to
-also consider tracing data outside a developer's IDE~\cite{Kevic2015}
+tracing developers' eye for change tasks~\cite{Kevic2015} to
+also consider tracing data outside a developer's IDE
 for such a purpose.
 
 
+
+
+A second venue to enrich datasets on the text that is relevant to a task 
+is to identify who deemed what relevant. 
 In Chapter~\ref{ch:related-work}, we described 
 a series of studies that mine text from natural language artifacts.
 These studies provide annotated data 
@@ -47,67 +56,20 @@ resulting from coding procedures that usually do not take into account
 differences in what might be relevant. 
 In contrast, in our formative study (Chapter~\ref{ch:characterizing}),
 we have observed that there is variability in what text may be relevant 
-to a software task and, if future empirical studies
+to a software task and other researchers raised awareness to this fact~\cite{Bavota2016,Robillard2015}.
+If future empirical studies
 provide more data about who perceived which text as relevant, it could lead to benchmarks 
 for evaluating techniques
-focused on certain population  (e.g., experts versus novices developers~\cite{Crosby1990, Busjahn2015}). 
+focused on a certain population  (e.g., expert versus novice developers~\cite{Crosby1990, Busjahn2015}). 
 
 
 
 
 
-
-
-% In Chapter~\ref{ch:characterizing}, we have also shown that despite consistency in the key information 
-% needed to complete a task, there is variability in what text developers deem relevant to a 
-% certain task
-
-
-
-% Hence, differences in the annotated data and the information needs 
-% or certain population (e.g., experts versus novices developers~\cite{Crosby1990, Busjahn2015})
-% might not be captured in the data available in the existing corpora.
-% The corpora provided as part of this dissertation 
-% differs from such studies by indicating the number of developers that deemed some text relevant.
-
-
-
-We leave the investigation of other methods on how to determine which text 
-developers deem relevant 
+We leave the investigation of other data collection methods 
 and the creation of benchmarks with different properties
 as part of future research.
 
-
-
-
-
-% In fact, early stages in the design of the 
-% \acs{DS-android} corpus (Chapter~\ref{ch:android-corpus}) had considered using 
-% an eye-tracker for this purpose.
-% However, we were unable to pursue this line of work 
-% due to the COVID-19 pandemic and challenges related to
-% recruiting participants and conducting an in-person experiments.
-
-
-
-% A second challenge on 
-
-
-% Earlier studies
-% on extracting relevant
-% text from natural language artifacts have typically
-% relied on annotated corpora created using coding guidelines.
-% These guidelines have procedures to resolve disagreements and the 
-% final corpora often does not include iterations of the data considered relevant 
-% throughout the coding process.
-
-
-
-% Such observation corroborates 
-% findings from other studies which observe that 
-% individuals assessing the same artifact may have different
-% information needs~\cite{Bavota2016, Walters2014}
-% and that there are behaviour differences on how
 
 
 

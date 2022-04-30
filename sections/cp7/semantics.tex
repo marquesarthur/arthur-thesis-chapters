@@ -5,14 +5,18 @@
 
 
 
-In Chapter~\ref{ch:characterizing}, we used frame semantics---a general
-linguistic approach---to infer the meaning of the sentences
-that developers deemed relevant to complete a software task.
+In Chapter~\ref{ch:characterizing}, we used frame semantics~\cite{fillmore1976frame}
+to infer the meaning of the sentences
+that developers deemed relevant to  a software task.
 As one potential alternative to this approach, 
-we could have considered the taxonomies available 
-in other studies such as the knowledge types in API documents~\cite{Maalej2013}
+we could have considered 
+semantic meanings from 
+available in other studies 
+that analyzed certain kinds of software artifacts. 
+For example, the knowledge types in API documents~\cite{Maalej2013}
 or the information types in Open Source GitHub issues~\cite{Arya2019} or 
 in development mailing lists~\cite{Sorbo2015}.
+
 
 
 We decided to not use such taxonomies because the categories available in these and other studies 
@@ -20,8 +24,7 @@ are often based
 on a need for access to the meaning of
 the text
 and we were interested in assessing the
-applicability of generic semantic frame
-parsing for this purpose.
+applicability of a general linguistic approach for this purpose.
 To the best of our knowledge, there have been only a few uses of frame
 semantics in software engineering research~\cite{jha2017, kundi2017, alhoshan2019using}
 and these approaches
@@ -32,14 +35,7 @@ text in different kinds of natural language artifacts.
 
 
 
-
-
-Our the semantic analysis of the relevant text 
-found in API documents, GitHub issues, and \acs{qa} pages, 
-in Chapter~\ref{ch:characterizing} shows consistency 
-in the semantic frames identified 
-and, motivated by these findings, 
-we addressed the question of whether semantic
+We addressed the question of whether semantic
 frames can help identify the meaning of
 software engineering text
 in a study 
@@ -48,7 +44,8 @@ In this study, we assessed the applicability of generic semantic frame
 parsing to software engineering text
 aimed at supporting program
 comprehension activities.
-First, we assessed how the tool we used in our semantic analysis, i.e., SEMAFOR~\cite{das2014frame},
+First, we assessed how the tool we used in Chapter~\ref{ch:characterizing}
+to analyze the meaning of the text considered relevant (i.e., SEMAFOR~\cite{das2014frame})
  applies to text sampled from 1,802 documents drawn from existing datasets~\cite{Arya2019, Xu2017, Maalej2013, Chaparro2017}. 
 Based on the results from this analysis, 
 we proposed \textit{SEFrame}, a tool that tailors 
@@ -62,8 +59,7 @@ Nonetheless,
 future research could consider
 investigating other 
 frame semantic parsing tools (e.g.,~\cite{swayamdipta17, chen2021joint}) to more
-accurately classify the semantic information in software engineering
-text.
+accurately classify the semantics of software engineering text.
  
 
 
