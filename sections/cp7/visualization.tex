@@ -43,8 +43,8 @@ this strategy:
 This feedback made us question other potential ways to present the text identified by \acs{tool}.
 For example, we could have followed design principles adopted by Unakite~\cite{Liu2018Unakite}---a tool that collects, organizes and keeps track of information---to make \acs{tool} display the text identified on its context menu.
 Figure~\ref{fig:navigational-cues} shows a mock up of \acs{tool} bundling the highlights identified for one of the artifacts in the \texttt{titanic} task (Section~\ref{cp6:tasks}).
-A user could click on the text identified and navigate to the part of the documentation 
-originally containing the text identified.
+Using this context menu, a user could click on the text identified and navigate to the part of the documentation 
+originally containing the text.
 
 
 
@@ -59,10 +59,10 @@ originally containing the text identified.
 
 A second approach to organizing the text identified could consider 
 the semantic meaning of each sentence, as extracted through frame semantics or other semantic-based approaches. 
-For instance, semantic frames could 
+Semantic frames could 
 assist a user in comprehending the content of the text automatically identified
 without the need to read it. 
-Similar to Libra~\cite{Ponzanelli2017}, semantic frames could also be used to group the text identified in bubbles or a hierarchical representation 
+As done by Libra~\cite{Ponzanelli2017}, semantic frames could also be used to group the text identified in bubbles or a hierarchical representation 
  helping a developer
 in deciding what portions of the text they would inspect first. 
 Figure~\ref{fig:semantic-cues} shows a mock up 
@@ -73,12 +73,12 @@ a developer could decide whether they would read sentences
 describing some coding procedure (\textit{execution}), or sentences 
 with warnings or requirements (\textit{requirement} and \textit{being obligated})
 about the Pandas API. 
-To be useful, future research must consider how to identify 
-which frames, from all the frames available in a sentence, 
+To be useful, future research must consider how to identify from all the frames available in a sentence, 
+which frames
 better summarize the meaning of the text. 
 
 
-
+We leave the investigation of other ways to present the text identified as relevant to future research.
 
 
 
@@ -86,7 +86,7 @@ better summarize the meaning of the text.
 \begin{figure}
     \centering
     \includegraphics[width=0.90\textwidth]{fig/cp7/semantic-cues}
-    \caption{Mock up of the highlights grouped by semantic frames; by hovering over a semantic frame, a user could quickly identify which of the text identified is associated with a certain semantic frame}
+    \caption{Mock up of the highlights grouped by semantic frames; by hovering over a semantic frame, a user could quickly identify which of the text identified is associated with a certain meaning}
     \label{fig:semantic-cues}
 \end{figure}
 

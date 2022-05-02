@@ -20,7 +20,7 @@ with regards to how we applied BERT to our domain problem.
 A first decision on using a pre-trained model is on the selection of the base model itself, i.e., what data has been used to pre-train the model. 
 There are base models trained on text from Wikipedia~\cite{Devlin2018Bert},  online news~\cite{peters2018elmo}, 
 or source code~\cite{feng2020-codebert}, to  cite a few,
-and we could have explored how usage of these different could impact the accuracy or our 
+and we could have explored how usage of these different models could impact the accuracy or our 
 techniques. Nonetheless, we decided to use 
 the BERT base model as published on the model's original paper~\cite{Devlin2018Bert}.
 
@@ -28,41 +28,46 @@ the BERT base model as published on the model's original paper~\cite{Devlin2018B
 Our rationale for this decision is motivated by the fact that at the time we designed our techniques, 
 BERT had not been used in task-artifact sentence pairs. Hence, using the base model without modifications
 was helpful for establishing a baseline for future comparisons.
-Using a base model not designed to work on software-related textual artifacts 
-was not a risk to us since we observed that BERT outperformed 
-the word2vec technique with embeddings from the software engineering domain~\cite{Efstathiou2018}.
-We believe that a software-related BERT model might
-widen the differences we observed (Table~\ref{tbl:techniques-results-per-artifact}).
+Furthermore,  we observed that BERT outperformed 
+the word2vec technique with embeddings from the software engineering domain~\cite{Efstathiou2018}
+and thus, using this base model did not represent a risk to our study.
+% We believe that a software-related BERT model might
+% widen the differences we observed (Table~\ref{tbl:techniques-results-per-artifact}).
 
 
-With regards to software-specific models~\cite{feng2020-codebert, li2019neural}, we also emphasize 
+With regards to software-specific models (e.g., ~\cite{feng2020-codebert, li2019neural}), we also emphasize 
 that these models have been trained on either source code or source code and method level text documentation. 
 These datasets might not align with how developers discuss text in natural language artifacts~\cite{arya2020}, such 
-as Stack Overflow posts or web tutorials. Therefore, future research must consider how these models compare 
-to the model we used as well as whether a model trained on text originating from various kinds of 
-natural language software artifacts yields better results.
-To train such models, 
+as Stack Overflow posts or web tutorials. Therefore, future research must consider how 
+ models trained on text originating from various kinds of 
+natural language software artifacts compare to the base model that we used.
 
 
 
-A second decision relates to how we
+A second decision relates to the model fine-tuning procedures and how we
 divided our data for training and evaluation purposes. 
 In Chapter~\ref{ch:identifying}, 
 we split the Android tasks and their associated artifacts in two equal portions using 
 25 tasks for training---with 10\% of these tasks being used for validation---and 
 25 other tasks for evaluation.
-This division might affect BERT's fine-tuning and it would have been interesting 
+This division might have affected BERT's fine-tuning and it would have been interesting 
 to explore other data splits. 
 For example, at early iterations in the design of our techniques, 
 we used 10-fold cross validation~\cite{stone1974cross} 
 and other approaches could consider randomly selecting a smaller portion of 
 the data for evaluation purposes. 
-We refrained from further pursuing such data splits for the sake of simplicity.
-Nonetheless, in Chapter~\ref{ch:assisting},
-\acs{tool} was trained on all the 50 Android tasks 
-and we tested the tool's accuracy on an entirely new dataset (\acs{DS-python})
-observing that the model applies to unseen tasks and artifacts
-with similar accuracy (Figure~\ref{fig:eval-comparison}).
+We refrained from further pursuing such data splits 
+because we were interested in testing our approach over 
+a number of tasks with Stack Overflow artifacts (Section~\ref{cp6:comparison}) and other splits 
+could have affected this evaluation.
+
+
+Despite using only half of the tasks for our initial assessment, in Chapter~\ref{ch:assisting},
+\acs{tool} used a model trained on all the 50 Android tasks,
+ allowing us to verify that the model applies to unseen tasks and artifacts 
+ drawn from an entirely new dataset (\acs{DS-python}).
+ For this dataset, we found that the BERT technique with no filters has 
+ accuracy similar to the one in our previous assessment (Figure~\ref{fig:eval-comparison}).
 
 
 
