@@ -13,7 +13,8 @@
 \usepackage{enumitem}
 \usepackage{pdflscape}
 \usepackage{marginnote}
-% \usepackage{awesomebox} 
+
+\usepackage{tocloft} % for table of contents
 % \usepackage{fontawesome5}
 
 \usepackage{pifont}
@@ -175,7 +176,7 @@
 \begin{document}
 
 % TODO uncomment
-% \maketitle
+\maketitle
 
 % \makecommitteepage
 
@@ -188,14 +189,14 @@
 % \input{meta/preface}
 % \cleardoublepage
 
-% \tableofcontents
-% \cleardoublepage	% required by tocloft package
+\tableofcontents
+\cleardoublepage	% required by tocloft package
 
-% \listoftables
-% \cleardoublepage	% required by tocloft package
+\listoftables
+\cleardoublepage	% required by tocloft package
 
-% \listoffigures
-% \cleardoublepage	% required by tocloft package
+\listoffigures
+\cleardoublepage	% required by tocloft package
 
 \input{meta/glossary}	% always input, since other macros may rely on it
 
@@ -244,7 +245,12 @@
 \appendix
 %    6. Appendices (including copies of all required UBC Research
 %       Ethics Board's Certificates of Approval)
+
 % \input{appendix/appendix}
+
+% \input{appendix/appendix-cp3}
+% \input{appendix/appendix-cp4}
+% \input{appendix/appendix-cp6}
 
 \backmatter
 %    7. Index

@@ -3,3 +3,76 @@
 
 \section{Deep Learning Models for Software Engineering}
 \label{cp7:deep-learning}
+
+
+% https://machinelearningmastery.com/the-attention-mechanism-from-scratch/
+% https://stats.stackexchange.com/questions/421935/what-exactly-are-keys-queries-and-values-in-attention-mechanisms
+% https://jalammar.github.io/illustrated-transformer/
+
+
+In Chapter~\ref{ch:identifying} we used a deep learning neural network (BERT~\cite{Devlin2018Bert})
+to automatically identify text relevant to a particular input task. There are many considerations 
+that affect a neural network and, in this section, we discuss decisions we took 
+with regards to how we applied BERT to our domain problem. 
+
+
+
+A first decision on using a pre-trained model is on the selection of the base model itself, i.e., what data has been used to pre-train the model. 
+There are base models trained on text from Wikipedia~\cite{Devlin2018Bert},  online news~\cite{peters2018elmo}, 
+or source code~\cite{feng2020-codebert}, to  cite a few,
+and we could have explored how usage of these different could impact the accuracy or our 
+techniques. Nonetheless, we decided to use 
+the BERT base model as published on the model's original paper~\cite{Devlin2018Bert}.
+
+
+Our rationale for this decision is motivated by the fact that at the time we designed our techniques, 
+BERT had not been used in task-artifact sentence pairs. Hence, using the base model without modifications
+was helpful for establishing a baseline for future comparisons.
+Using a base model not designed to work on software-related textual artifacts 
+was not a risk to us since we observed that BERT outperformed 
+the word2vec technique with embeddings from the software engineering domain~\cite{Efstathiou2018}.
+We believe that a software-related BERT model might
+widen the differences we observed (Table~\ref{tbl:techniques-results-per-artifact}).
+
+
+With regards to software-specific models~\cite{feng2020-codebert, li2019neural}, we also emphasize 
+that these models have been trained on either source code or source code and method level text documentation. 
+These datasets might not align with how developers discuss text in natural language artifacts~\cite{arya2020}, such 
+as Stack Overflow posts or web tutorials. Therefore, future research must consider how these models compare 
+to the model we used as well as whether a model trained on text originating from various kinds of 
+natural language software artifacts yields better results.
+To train such models, 
+
+
+
+A second decision relates to how we
+divided our data for training and evaluation purposes. 
+In Chapter~\ref{ch:identifying}, 
+we split the Android tasks and their associated artifacts in two equal portions using 
+25 tasks for training---with 10\% of these tasks being used for validation---and 
+25 other tasks for evaluation.
+This division might affect BERT's fine-tuning and it would have been interesting 
+to explore other data splits. 
+For example, at early iterations in the design of our techniques, 
+we used 10-fold cross validation~\cite{stone1974cross} 
+and other approaches could consider randomly selecting a smaller portion of 
+the data for evaluation purposes. 
+We refrained from further pursuing such data splits for the sake of simplicity.
+Nonetheless, in Chapter~\ref{ch:assisting},
+\acs{tool} was trained on all the 50 Android tasks 
+and we tested the tool's accuracy on an entirely new dataset (\acs{DS-python})
+observing that the model applies to unseen tasks and artifacts
+with similar accuracy (Figure~\ref{fig:eval-comparison}).
+
+
+
+
+
+
+
+
+% pre-trained model (BERT~\cite{Devlin2018Bert})
+% and we fine tuned it to classify if an input sentence is relevant (or not) to an input task. 
+% For that, we decided to use the 
+
+% This model, was fine tuned using 

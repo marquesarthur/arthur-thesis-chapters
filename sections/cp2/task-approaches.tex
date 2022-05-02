@@ -28,23 +28,29 @@ these studies first use information retrieval techniques
 to identify a subset 
 of sentences relevant to a task and then, 
 a summary of these key sentences is produced.
-For instance, 
-AnswerBot~\cite{Xu2017} uses word embeddings to find which sentences in a Stack Overflow answer 
+
+
+
+AnswerBot~\cite{Xu2017} is an example of a query-based summarization tool.
+It uses word embeddings to find which sentences in a Stack Overflow answer 
 are most similar to a query representing a developer's task.
 The tool uses semantic similarity in conjunction with 
 Stack Overflow's meta-data to decide which text  it should include
-in the summary produced. 
+in the summary that it will produce. 
 A second query-based summarization tool by Liu et al. parses the content 
 of API documents to build a knowledge graph of the information within this type of artifact. 
-Their tool, KG-APISumm, uses this graph 
-to find nodes similar to an input task, 
-producing a task-specific summary for this type of artifact~\cite{liu2019qapi}. 
+Their tool, KG-APISumm~\cite{liu2019qapi}, uses this graph 
+to find nodes with text that matches the text of an input task, 
+producing a task-specific summary for this type of artifact. 
 
 
-It is worth noting that existing task-specific techniques
+However, these techniques
 target one type of artifact and they also use an artifact's meta-data to 
-assist in the automatic identification of task-relevant text. 
-For example, AnswerBot uses the number of votes an answer has and if it is the accepted answer to decide which answers it will use to produce a summary~\cite{Xu2017}
+assist in the automatic identification of task-relevant text, 
+limiting their use across the
+many different kinds of artifacts developers encounter
+daily in their work. 
+For example, AnswerBot uses the number of votes an answer has and if it is the accepted answer to decide which text it will use to produce a summary~\cite{Xu2017}
 while KG-APISumm uses 
 code blocks, HTML anchor links and other properties which are exclusive to API documents to build the knowledge graph used as part of its summarization approach~\cite{liu2019qapi}.
 We differ from these studies 

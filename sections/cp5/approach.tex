@@ -63,14 +63,15 @@ Since \textit{word2vec} represents words through a vector space, the similarity 
 \end{equation}
  
 \smallskip
-In turn, the similarity of two sentences can be obtained by first computing a vector representation for the entire sentence and then, by measuring the cosine angle between the obtained sentence vectors.
+In turn, the similarity of two sentences can be  by first computing a vector representation for the entire sentence and then, by measuring the cosine angle between the obtained sentence vectors.
 To obtain sentence vectors, we follow Conneau et al.'s guidelines~\cite{conneau2018}
 and we average the sum of the embeddings for each word in a sentence.
 
 
 
 
-Following these procedures, we use a Skip-gram model with word embeddings trained for the software engineering domain~\cite{Efstathiou2018} to compute the semantic similarity, or relevance, of the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact $A$ and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task  $T$. As both entities have multiple sentences, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained for this sentence and each of the sentences in a task.
+Following these procedures, we use a Skip-gram model with word embeddings trained for the software engineering domain~\cite{Efstathiou2018} to compute the semantic similarity, or relevance, of the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact $A$ and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task  $T$. As both entities have multiple sentences, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained for this sentence and 
+a vector representing the average of the embeddings of the text in a task.
 
 
 After we compute the semantic similarity of all the sentences in an input artifact with regards to an input task, we sort the obtained values from highest to lowest, outputting the top-n sentences with highest similarity as the ones likely relevant to an input software task.
@@ -114,7 +115,7 @@ Using training data, the model's attention mechanism will learn associations bet
 
 
 
-Following these procedures, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ as the most commonly predicted label for this sentence when we pair it to each of the sentences in a task $T$.
+Following these procedures, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ when we pair it to to a vector that represents all the sentences in a task $T$.
 Similar to the word2vec approach, we predict the relevance of all the sentences in an input artifact with regards to an input task and we use prediction probabilities to select 
 the top-n sentences with highest probability as the relevant ones.
 
