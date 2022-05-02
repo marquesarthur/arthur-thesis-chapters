@@ -1,0 +1,34 @@
+\begin{figure}
+\begin{mdframed}[backgroundcolor=gray!05] 
+\begin{scriptsize}
+
+{\large \textbf{Bugzilla}} \bigskip
+
+
+A software developer is writing a python program to generate custom Bugzilla reports that fit her company's needs. She wants to access the Bugzilla REST API through her python application.
+The application needs to obtain Bugzilla's custom fields and values such that it can use them to query and aggregate bugs based on the custom fields and their values. The developer reviews the Bugzilla REST API documentation and evaluates whether it can obtain the required information. As she reviews the API, she considers simplicity and payload size as driving factors for her solution, i.e. due to a large number of bugs that will be processed, the queries should return the bare minimum necessary to cluster bugs by their custom field values.
+
+
+\begin{center}
+\rule{10cm}{0.4pt}
+\end{center}
+
+How to obtain the custom fields and their values? How to query bugs using the custom
+fields and obtain the minimum data necessary to compute the company's statistics?
+
+\medskip
+
+\textbf{Artifacts}
+
+\begin{itemize}
+    \item \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/general.html}{Bugzilla REST API overview}
+    \item \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html}{Bugzilla Bugs endpoint}
+    \item \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/field.html}{Bugzilla Fields endpoint}
+\end{itemize}
+
+\end{scriptsize}
+\end{mdframed}
+\caption{Description for the Bugzilla task}
+\end{figure}
+
+    
