@@ -2,19 +2,48 @@
 
 
 
-\section{Limitations \& Trade-offs}
+%\section{Limitations \& Trade-offs}
+\section{Relevance}
 \label{cp7:tools}
 
+\gcm{A primary assumption in this dissertation
+is that there will be text in documents
+associated with a software development
+task that is commonly seen as \textit{relevant}
+to the task.} Chapter~\ref{} demonstrates
+that sufficient commonality of relevant
+text does exist to support the development
+of techniques and Chapter~\ref{} shows
+that the automatically identified text
+is seen as relevant. For instance,
+some participants in the \acs{tool}
+experiment indicated:
+
+\gcm{Is footnote size allowed?}
+\smallskip
+\begin{footnotesize}
+    \begin{quote}
+        ``\textit{The highlights were super useful, without them I would definitely had not been able to rapidly do the task.}''
+    \end{quote}
+\end{footnotesize}
 
 
+\begin{footnotesize}
+\begin{quote}
+    ``\textit{With the highlighted references, I was able to move much quicker. I quickly glanced at each resource, reading just the highlights to determine how valuable that resource was. The highlights allowed me to focus on the most relevant resources, gathering the necessary information to complete the task. 
+}''
+\end{quote}
+\end{footnotesize}
+
+Yet, others who participated in the \acs{tool}
+experiment disagreed with the concept that text
+in these documents was important at all:
+
+%\paragraph{\textbf{When is tool support needed?}} 
 
 
-
-\paragraph{\textbf{When is tool support needed?}} 
-
-
-A notable trade-off of answering which approaches can identify task-relevant text (Chapter~\ref{ch:characterizing}) and whether developers benefit from them (Chapter~\ref{ch:assisting}), is that our studies did not focus on when tool support is needed and for whom.
-For example, certain participants in the \acs{tool} experiment indicated that they focus more on code snippets
+%A notable trade-off of answering which approaches can identify task-relevant text (Chapter~\ref{ch:characterizing}) and whether developers benefit from them (Chapter~\ref{ch:assisting}), is that our studies did not focus on when tool support is needed and for whom.
+%For example, certain participants in the \acs{tool} experiment indicated that they focus more on code snippets
 and that they did not make use of the highlights provided by our tool:
 
 
@@ -34,42 +63,65 @@ and that they did not make use of the highlights provided by our tool:
 \end{footnotesize}
 
 
-While other participants indicated that textual highlights were essential to complete a task, even when the task required writing code:
+%While other participants indicated that textual highlights were essential to complete a task, even when the task required writing code:
+
+
+
+%\smallskip
+%\begin{footnotesize}
+%    \begin{quote}
+%        ``\textit{The highlights were super useful, without them I would definitely had not been able to rapidly do the task.}''
+%    \end{quote}
+%\end{footnotesize}
+
+
+%\begin{footnotesize}
+%\begin{quote}
+%    ``\textit{With the highlighted references, I was able to move much quicker. I quickly glanced at each resource, reading just the highlights to determine how valuable that resource was. The highlights allowed me to focus on the most relevant resources, gathering the necessary information to complete the task. 
+%}''
+%\end{quote}
+%\end{footnotesize}
 
 
 
 \smallskip
-\begin{footnotesize}
-    \begin{quote}
-        ``\textit{The highlights were super useful, without them I would definitely had not been able to rapidly do the task.}''
-    \end{quote}
-\end{footnotesize}
+This feedback suggests that the kind of information
+considered useful in a document varies with the
+developer. It suggests that techniques will need to
+be even more general than to work across document
+types: techniques will also need to work across
+the different kinds of information in a document.
+Future studies should more deeply investigate
+the kinds of information developers deem as
+relevant and explore how developers gauge relevance.
+
+How and what developers consider relevant in
+documents may also impact how techniques trade-off
+precision versus recall. 
+In Chapter~\ref{ch:identifying}, we indicated
+the techniques we explored favored locating
+all relevant text within an
+artifact, in other words recall, rather
+than focusing on 
+correctly determining relevant text, in other
+words precision. 
+We made this decision because, as described in 
+ (Chapter~\ref{ch:introduction}),
+missing relevant text would mean that a developer might have an incomplete or partial view of the information needed, which may lead to
+sub-optimal decisions.
+
+%This feedback suggests that we could have observed different usage behaviours if participants had the chance to decide when to invoke \acs{tool}.
+%However, 
+%our experimental design focused on comparing tasks using or not \acs{tool} and thus, participants did not have the option to 
+%request \acs{tool} to automatically identify task-relevant text on the fly. 
 
 
-\begin{footnotesize}
-\begin{quote}
-    ``\textit{With the highlighted references, I was able to move much quicker. I quickly glanced at each resource, reading just the highlights to determine how valuable that resource was. The highlights allowed me to focus on the most relevant resources, gathering the necessary information to complete the task. 
-}''
-\end{quote}
-\end{footnotesize}
-
-
-
-
-
-\smallskip
-This feedback suggests that we could have observed different usage behaviours if participants had the chance to decide when to invoke \acs{tool}.
-However, 
-our experimental design focused on comparing tasks using or not \acs{tool} and thus, participants did not have the option to 
-request \acs{tool} to automatically identify task-relevant text on the fly. 
-
-
-To understand who would use  \acs{tool} in which types of tasks or 
-what factors  influence the tool's usage,
-we would have to consider a different experiment with challenges and risks of its own.
-For example, designing a longitutional study investigating how developers 
-with different expertise and background
-of some open source community would use \acs{tool}.
+%To understand who would use  \acs{tool} in which types of tasks or 
+%what factors  influence the tool's usage,
+%we would have to consider a different experiment with challenges and risks of its own.
+%For example, designing a longitutional study investigating how developers 
+%with different expertise and background
+%of some open source community would use \acs{tool}.
 
 
 
@@ -81,30 +133,35 @@ of some open source community would use \acs{tool}.
 
 
 
-\paragraph{\textbf{Precision vs Recall.}}
-
-In Chapter~\ref{ch:identifying}, we discuss that our semantic-based techniques were designed favoring locating all relevant text within and
-artifact (\textit{i.e.,} recall) instead of 
-correctly determining the text's relevance (\textit{i.e.,} precision). 
-As we motivated in the introduction of this thesis (Chapter~\ref{ch:introduction}),
-missing relevant text means that a developer might have an incomplete or partial view of the information needed,
-and thus the reason why we favor recall. 
+%\paragraph{\textbf{Precision vs Recall.}}
 
 
-Nonetheless, when favoring recall,  we may obtain more false positives---non-relevant text indicated as relevant---and
-due to the limited time developers spend inspecting a natural language artifact~\cite{Starke2009}, there is a chance that
+
+
+However, when favoring recall,  we may obtain more false positives; non-relevant text indicated as relevant.
+Due to the limited time developers spend inspecting a natural language artifact~\cite{Starke2009}, there is a chance that
  a developer could discard reading an artifact due to a false positive. 
  Although abandoning reading an artifact and moving to another artifact could lead to non-efficient work
  (i.e., a developer might have to perform further searches and perhaps revisit artifacts that they have already inspected),
 we believe that the benefits of automatically identifying relevant text outweighs these risks. 
 That is, inspecting an artifact without tool support is more time-consuming
 than inspecting each sentence retrieved to judge their relevance to the task at hand. 
+Future studies could explore the ramifications
+of this trade-off in detail.
 
+\section{Technique Deployment}
 
+%\paragraph{\textbf{Training Data.}}
 
-
-\paragraph{\textbf{Training Data.}}
-
+\gcm{I think both training data and costs are
+more about how you would actually deploy
+your technique. I'm a bit confused
+on the training data whether you are suggesting
+that the technique needs to be trained on
+project-specific data? On Costs, I'm a bit
+confused as to whether needing a server 
+is just because of current hardware that
+might be eased in the future.}
 
 In Chapter~\ref{ch:identifying}, we have shown that semantic-based approaches identify task-relevant textual information across
 different types of artifacts without relying on
