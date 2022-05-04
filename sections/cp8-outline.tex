@@ -6,3 +6,61 @@
 
 
 
+The information that a developer seeks to aid in the completion of a task typically exists across different kinds of natural language software artifacts. In the artifacts that a developer consults, only some portions of the text will be useful to a developer's current task.
+Finding information that assists a developer in completing a task can be a time-consuming and cognitively frustrating process; to aid developers in this activity, researchers have proposed several artifact-centric techniques that automatically identify text likely relevant to a task.
+
+
+However, existing techniques are constrained to working on one or only a  few types of artifacts. As a result, these techniques might not follow the pace with which developers progress to using new kinds of technology. Furthermore, integrating them to allow developers to search for information seamlessly is challenging and costly.
+
+
+To address these limitations, we propose 
+a set of techniques that 
+build upon approaches to interpret the meaning, or semantics, of the text 
+for automating the identification of text relevant to a task.
+Our decision to use semantic-based approaches arises from the empirical 
+analysis of text originating from different kinds of artifacts, 
+that developers deem relevant to completing a set of software tasks
+where we have found consistency in the meaning of text considered relevant.
+
+
+
+We evaluate the  techniques proposed in this work by assessing 
+whether they can identify text that developers deemed relevant in a series of artifacts 
+associated with Android development tasks, 
+embedding the most-promising technique identified in a tool, \acs{tool},
+which highlights the text identified as relevant in the artifacts 
+that a developer inspects in their web browser. 
+A second evaluation focuses on how this tool might assist developers  
+while they work on a task, where we provide 
+initial empirical evidence on how  
+such a tool assists a software developer in completing a software task. 
+
+
+
+
+This thesis makes the following contributions to the field of software engineering and to research in mining unstructured text from natural language software artifacts:
+
+
+
+\begin{itemize}
+    \item it demonstrates consistency in the semantic meaning of text relevant to six information-seeking tasks and their associated artifacts, which include API documents, bug reports, and question-and-answer web pages;
+    \item it reports on the design of six semantic-based techniques that incorporate the semantics of words and sentences for identifying task-relevant text automatically;
+    \item it identifies BERT and frame semantics as the most promising approaches for identifying text in 
+    a number of artifacts relevant to Android development tasks; where these techniques have  accuracy comparable to a state-of-the-art approach     tailored to one kind of artifact~\cite{Xu2017}, i.e., Stack Overflow;
+    \item it provides empirical data demonstrating the usefulness of a semantic-based tool in assisting a 
+    developer in completing a software development task by automatically providing them with text relevant 
+    to their task.
+    
+\end{itemize}
+
+
+
+These contributions show that it is possible to design 
+more generalizable techniques
+that can evolve to 
+identify relevant text across the different kinds of natural language artifacts that 
+developers use to record information, where we identify semantic-based techniques as a promising way for determining relevancy. Future research in this field could consider other means to semantically relate the text in a task and the text in the artifacts that developers might peruse.
+A second possible direction is to take into account the many information needs that individuals might have and further tailor the identification of task-relevant information based on who performs which task.
+
+
+
