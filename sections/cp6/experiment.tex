@@ -23,8 +23,8 @@ We consider three questions:
 
 
 \begin{enumerate}[label=\textit{RQ}\arabic*]
-    \item Does usage of a semantic-based tool---\acs{tool}---help developers produce more correct solutions? 
-    \item How useful is the text identified by \acs{tool}, i.e., does the text automatically identified contains information that assists task completion? 
+    \item Does using of a semantic-based tool---\acs{tool}---help developers produce more correct solutions? 
+    \item How useful is the text identified by \acs{tool}, i.e., does  automatically-identified text contain information that assists task completion? 
     \item How does the text automatically identified by \acs{tool} compare to text 
     that humans perceive as relevant to a task?
 \end{enumerate}
@@ -34,7 +34,7 @@ We consider three questions:
 % 
 
 
-To answer these questions, we designed an experiment where 24 participants with software development background each attempted a
+To answer these questions, we designed an experiment where 24 participants with software development backgrounds each attempted a
 \textit{control} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
 Participants are asked to write a solution for both of their assigned tasks
 and we use the control task to collect what text a participant deems relevant to the task at hand.
@@ -51,7 +51,7 @@ This design, summarized in Figure~\ref{fig:tool-experiment-procedures} and detai
      
     \item discuss the usefulness of the text automatically identified  according to the feedback provided by the participants, which helps us answer \textit{RQ2}, and;
 
-    \item compare manual and tool identified task-relevant text, what addresses \textit{RQ3}. 
+    \item compare manual and tool identified task-relevant text, which addresses \textit{RQ3}. 
 \end{itemize}
  
 
@@ -75,8 +75,8 @@ The experiment's supplementary material is also publicly available~\cite{cp6_sup
 
 
 We opted for an experiment with tasks that could be completed by participants on their own time and computer.
-This decision was motived by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment~\cite{russo2021a, russo2021b}. 
-Since participants would follow instructions on their own, we decided to use tasks that are easy to understand and perform in a single experimental session, but that still required a participant  
+This decision was motivated by the COVID-19 pandemic and challenges related to recruiting participants and conducting an in-person experiment~\cite{russo2021a, russo2021b}. 
+Since participants would follow instructions on their own, we decided to use tasks that are easy to understand and perform in a single experimental session, but still required a participant  
 to seek information in artifacts associated with each task.
 
 
@@ -122,7 +122,7 @@ we follow procedures similar to the ones we used to create the \acs{DS-android} 
 That is, we use the Google search engine to obtain up to ten artifacts that likely contain 
 information that could help a participant correctly complete that task. 
 Three pilot runs ensured that the artifacts collected using such procedures had sufficient information to complete a task without 
-the need of additional resources. Based on these pilots, we simplified the description of the \texttt{distances} tasks removing the need to sort the list of suggested addresses, what also led to the removal of two artifacts associated with sorting. Table~\ref{tbl:python-task-distribution} details the final list 
+the need of additional resources. Based on these pilots, we simplified the description of the \texttt{distances} tasks by removing the need to sort the list of suggested addresses, which also led to the removal of two artifacts associated with sorting. Table~\ref{tbl:python-task-distribution} details the final list 
 of artifact types per task.
 
 
@@ -140,7 +140,7 @@ of artifact types per task.
 To ensure that participants had the same conditions to perform each task
 and also to minimize setup instructions, we used Google Colab\footnote{\url{https://colab.research.google.com/}} as our coding environment. 
 % \gcm{Say something here that Colab is an online coding notebook or something.}
-Colab is a product from Goole Research that allows people to write and execute Python code through their browser~\cite{google-colab}. 
+Colab is a product from Google Research that allows people to write and execute Python code through their browser~\cite{google-colab}. 
 % The platform is well suited for 
 
 
@@ -164,13 +164,13 @@ Colab is a product from Goole Research that allows people to write and execute P
 
 
 
-Colab provided participants with a code editor with amenities commonly found in modern IDEs, e.g., code completion and syntax highlighting. It also ensured that all the participants 
+Colab provided participants with a code editor with features commonly found in modern IDEs, e.g., code completion and syntax highlighting. It also ensured that all the participants 
 performed the tasks in the same Python version and it lifted 
 burdens that could arise from installing dependencies associated with the external modules used in each of our tasks. 
 
 
 Figure~\ref{fig:nytimes-task-colab} shows an example of the Colab coding environment. 
-First it handled dependencies management and then, 
+First, it handled dependencies management and then, 
 it presented a class containing a single method with a \texttt{TODO} block where 
 participants should write their solution. 
 The environment also provided a main function where participants could see the output
@@ -187,7 +187,7 @@ against the examples shown in each task description.
 
 We advertised our study to professionals developers and to computer science students at  several universities. 
 Our target population comprised professionals and third, fourth-year or graduate students.
-We expected participants to have experience in Object-Oriented programming languages, and to consult API documentation when performing a programming task.
+We expected participants to have experience in object-oriented programming languages, and to consult API documentation when performing a programming task.
 We gathered this background information as part of our demographics (Figure~\ref{fig:experiment-demographics})
 and no participants were excluded
 based on their background.
@@ -201,12 +201,12 @@ based on their background.
 
 We obtained twenty four responses to our study advertisement (3 self-identified as female and 21 as male). 
 At the time of the experiment, 10 participants were working as software
-developers and 14 were students (11 graduate and 3 undergrad).
+developers and 14 were students (11 graduate and 3 undergraduate).
 The majority of the students (71\%) also reported having some previous professional experience.
 
 
 On average, participants self-reported 8 years of programming experience ({\small $\pm$} 3.8, ranging from 3 to 17 years).
-The majority of the participants (54\%) had between 5 to 10 years of experience in Object-Oriented programming languages,
+The majority of the participants (54\%) had between 5 to 10 years of experience in object-oriented programming languages,
 closely followed by participants  with  3 to 4 years of experience (29\%). 
 Most of the participants also indicated that they did check API documents almost every time they performed a programming task. 
 
@@ -228,8 +228,7 @@ The email disclosed the purpose of the experiment, eligibility criteria, an esti
 to a web survey containing the experiment's consent form and tasks. 
 
 
-Once a participant consented to participate, the survey gathered demographics and then, 
-it gave participants further instructions 
+Once a participant consented to participate, the survey gathered demographics and provided further instructions 
 about how to perform each task, requesting them to install our tool, a web browser plug-in.
 Setup was followed by a short practice task---separate from the experimental tasks---that allowed participants to familiarize themselves with the content of a task, the tool, and the coding environment that we used (Colab). 
 
@@ -240,9 +239,9 @@ to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to
 
 
 Once a participant submitted their solutions, the survey
-asked them about any additional feeback that they wished to share and 
+asked them about any additional feedback that they wished to share and 
 offered them the opportunity to enter a raffle for one of two iPads 64 GB 
-to compensate them for their time, what concluded the experiment.
+to compensate them for their time, concluding the experiment.
 
 
 
@@ -313,7 +312,7 @@ The highlights were shown in a format similar to the one in Figure~\ref{fig:arti
 
 
 For this task, when a participant submitted their solution, we asked them to 
-rate on a 5 points Likert scale~\cite{likert1932technique} how helpful were the highlights shown by the tool.
+rate on a 5-point Likert scale~\cite{likert1932technique} how helpful were the highlights shown by the tool.
 Figure~\ref{fig:experiment-rating} shows an example of how we gathered data about the usefulness of the text automatically identified.
 Participants rated highlights on a per artifact basis.
 We gather input at the artifact level because it would be too demanding for a participant 
