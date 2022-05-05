@@ -10,7 +10,7 @@
 % https://jalammar.github.io/illustrated-transformer/
 
 
-In Chapter~\ref{ch:identifying} we used a deep learning neural network (BERT~\cite{Devlin2018Bert})
+In Chapter~\ref{ch:identifying}, we used a deep learning neural network (BERT~\cite{Devlin2018Bert})
 to automatically identify text relevant to a particular input task. There are many considerations 
 that affect a neural network and, in this section, we discuss decisions we took 
 with regards to how we applied BERT to our domain problem. 
@@ -23,16 +23,18 @@ or source code~\cite{feng2020-codebert}, to  cite a few,
 and we could have explored how usage of these different models could impact the accuracy or our 
 techniques. Nonetheless, we decided to use 
 the BERT base model as published on the model's original paper~\cite{Devlin2018Bert}.
-
-
-Our rationale for this decision is motivated by the fact that at the time we designed our techniques, 
-BERT had not been used in task-artifact sentence pairs.
-\gcm{I'm not following the first sentence.}
-Hence, using the base model without modifications
+Using the base model without modifications
 was helpful for establishing a baseline for future comparisons.
-Furthermore,  we observed that BERT outperformed 
+This model outperformed 
 the word2vec technique with embeddings from the software engineering domain~\cite{Efstathiou2018}
-and thus, using this base model did not represent a risk to our study.
+and thus, we believe that using the BERT base model did not represent a risk to our study.
+% Future studies should further investigate benefits brought by using 
+%  software-related models.
+
+
+% Our rationale for this decision is motivated by the fact that at the time we designed our techniques, 
+% BERT had not been used in task-artifact sentence pairs.
+% \gcm{I'm not following the first sentence.}
 % We believe that a software-related BERT model might
 % widen the differences we observed (Table~\ref{tbl:techniques-results-per-artifact}).
 
@@ -41,7 +43,7 @@ With regards to software-specific models (e.g., ~\cite{feng2020-codebert, li2019
 that these models have been trained on either source code or source code and method level text documentation. 
 These datasets might not align with how developers discuss text in natural language artifacts~\cite{arya2020}, such 
 as Stack Overflow posts or web tutorials. Therefore, future research must consider how 
- models trained on text originating from various kinds of 
+ models pre-trained on text originating from various kinds of 
 natural language software artifacts compare to the base model that we used.
 
 
@@ -61,11 +63,11 @@ the data for evaluation purposes.
 We refrained from further pursuing such data splits 
 because we were interested in testing our approach over 
 a number of tasks with Stack Overflow artifacts (Section~\ref{cp6:comparison}) and other splits 
-could have affected this evaluation.
+could have affected this evaluation. \art{this paragraph can be simplified. will return to it after the next meeting}
 
 
 Despite using only half of the tasks for our initial assessment, in Chapter~\ref{ch:assisting},
-\acs{tool} used a model trained on all the 50 Android tasks,
+\acs{tool} used a model fine-tuned on all the 50 Android tasks,
  allowing us to verify that the model applies to unseen tasks and artifacts 
  drawn from an entirely new dataset (\acs{DS-python}).
  For this dataset, we found that the BERT technique with no filters has 

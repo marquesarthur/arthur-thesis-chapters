@@ -1,0 +1,57 @@
+\section{Technique Deployment}
+
+%\paragraph{\textbf{Training Data.}}
+
+\gcm{I think both training data and costs are
+more about how you would actually deploy
+your technique. I'm a bit confused
+on the training data whether you are suggesting
+that the technique needs to be trained on
+project-specific data?} \art{not project specific data, 
+but it need training samples as the ones in the 
+datasets that we produced}
+
+\gcm{On Costs, I'm a bit
+confused as to whether needing a server 
+is just because of current hardware that
+might be eased in the future.} \art{that's basically it}
+
+In Chapter~\ref{ch:identifying}, we have shown that semantic-based approaches identify task-relevant textual information across
+different types of artifacts without relying on
+assumptions about the nature of an artifact or its meta-data.
+However, we
+observe that the techniques with the best accuracy require fine-tuning 
+a deep learning model
+and this could be considered as an impediment to the using or improving of such  techniques. 
+
+
+Fine-tuning requires data analogous to the corpora described in this thesis
+throughout Chapters~\ref{ch:characterizing} to~\ref{ch:assisting} 
+and although we acknowledge that the need for training data is a limitation inherent to supervised techniques,
+we mitigated some of the challenges of requiring large amounts of training data by using pre-trained models~\cite{erhan2010pre-train}.
+Furthermore, the fact that artifact-specific techniques, such as AnswerBot, have accuracy comparable to semantic-based approaches
+ provides
+a unique opportunity for the creation of synthetic data that one might use for training purposes.
+In a similar manner to how researchers created word embeddings for the software engineering domain~\cite{Efstathiou2018}, one might gather significantly large amounts of data from online resources
+and then, use techniques that apply to such resources to create the data needed for training.
+A requirement to using such a bootstrapping mechanism is that we must show that models trained on synthetic data do not simply replicate the underlying heuristics of the techniques used for bootstrapping. That is, we have to show that a technique trained
+in this manner correlates data from a task and an artifact in ways that
+extend beyond what a technique used for bootstrapping already provides. For example, showing that
+it can identify task-relevant textual information in a different type of artifact or showing
+that its accuracy is significantly better than the technique used for bootstrapping.
+
+
+
+% \paragraph{\textbf{Costs.}}
+
+
+A second limitation to deploying the techniques we explored
+relates to the current cost associated with these techniques. 
+First, the hardware needed by 
+the neural embeddings and the neural networks
+often requires dedicated servers with significant 
+memory and high-throughput computational power. Due to the high demand for commercial servers with such properties, deploying our tools for usage by software development communities might incur significant financial burdens. 
+The need for dedicated servers also means that our proposed techniques and our web browser plug-in cannot run offline. If we consider a standard client-server architecture, such as the one of \acs{tool}, it means that one must send data about the task and artifacts that they are working to a remote server for processing. This might not always be possible due to privacy reasons, i.e., outside the public domain, organizations would not be willing to use our tool and, depending on their size,  organizations might not have the resources needed for in-house solutions. Due to these limitations, the techniques and tools described in this dissertation 
+must be treated as proofs-of-concept and we hope that 
+these limitations might be eased in the future.
+
