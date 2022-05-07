@@ -329,10 +329,35 @@ risks are mitigated in that
 
 
 
-%  When interpreting the results, it is worth noting that achieving high accuracy in \acs{DS-android} is challenging
-%  due to the small fraction of sentences deemed relevant, which comprises 20\% of the entire data.
-%  For example, API documents in the corpus have an average of 109.22 sentences per document, from which 9.62 sentences are relevant. 
-%  This means that, with a target number of 10 sentences identified per technique, a $1.0$ recall is only possible when a technique identifies the exact 10 sentences that are relevant for this kind of artifact. 
+Other internal threats arise from the BERT pre-trained model we used. 
+There are base models trained on text from Wikipedia~\cite{Devlin2018Bert},  online news~\cite{peters2018elmo}, 
+or source code~\cite{feng2020-codebert}, to  cite a few,
+and we could have explored how usage of these different models could impact the accuracy or our 
+techniques. Nonetheless, we decided to use 
+the BERT base model as published on the model's original paper~\cite{Devlin2018Bert}
+to establishing a baseline for future comparisons. 
+After fine-tuning, the model we used outperformed 
+the word2vec technique with software engineering embeddings~\cite{Efstathiou2018}
+and we believe that using the BERT base model did not represent a risk to our study.
+Nonetheless, future research should consider how this model compares with other 
+general or software-specific pre-trained models.
+
+
+
+A second model-related threat concerns how we
+divided our data for training and evaluation purposes. 
+We split the Android tasks and their associated artifacts in two equal parts using 
+25 tasks for training and 25 other tasks for evaluation.
+This division might have affected BERT's overall accuracy and it would have been interesting 
+to explore other data splits. 
+We refrained from investigating other data splits 
+because we were interested in testing our approach over 
+a number of tasks with Stack Overflow artifacts
+so we could compare it to AnswerBot (Section~\ref{cp5:comparison})
+ and other splits 
+could have affected this evaluation.
+
+
 
 
 
@@ -340,6 +365,11 @@ The selection of tasks in the Android development domain could
 affect the generalizability of our work. Most notably, 
 aspects such as programming languages, frameworks, associated technologies, and others~\cite{baltes2019}
 influence the information sought by a developer as well as what they find relevant.
+We mitigate this threat by reporting how one of the most 
+most promising semantic-based techniques identified as part of our evaluation applies 
+to unseen tasks and artifacts associated with the Python programming language (Chapter~\ref{ch:assisting}). 
 The three annotators that we recruited to construct the \acs{DS-android} dataset are also not representative 
-of the entire developer population. We leave the investigation of software tasks in other programming languages or domains---and their associated natural language software artifacts---to future work.
+of the entire developer population. 
+
+% We leave the investigation of software tasks in other programming languages or domains---and their associated natural language software artifacts---to future work.
 

@@ -4,7 +4,7 @@
 
 %\section{Limitations \& Trade-offs}
 \section{Relevance}
-\label{cp7:tools}
+\label{cp7:relevance}
 
 A primary assumption in this dissertation
 is that there will be text in documents
@@ -19,7 +19,6 @@ is seen as relevant. For instance,
 some participants in the \acs{tool}
 experiment indicated:
 
-\gcm{Is footnote size allowed?} \art{removed}
 \smallskip
 \begin{quote}
     ``\textit{The highlights were super useful, without them I would definitely had not been able to rapidly do the task.}''
@@ -35,12 +34,6 @@ Yet, others who participated in the \acs{tool}
 experiment disagreed with the concept that text
 in these documents was important at all:
 
-%\paragraph{\textbf{When is tool support needed?}} 
-
-
-%A notable trade-off of answering which approaches can identify task-relevant text (Chapter~\ref{ch:characterizing}) and whether developers benefit from them (Chapter~\ref{ch:assisting}), is that our studies did not focus on when tool support is needed and for whom.
-%For example, certain participants in the \acs{tool} experiment indicated that they focus more on code snippets
-% and that they did not make use of the highlights provided by our tool:
 
 
 
@@ -55,37 +48,22 @@ in these documents was important at all:
 \end{quote}
 
 
-%While other participants indicated that textual highlights were essential to complete a task, even when the task required writing code:
-
-
-
-%\smallskip
-%\begin{footnotesize}
-%    \begin{quote}
-%        ``\textit{The highlights were super useful, without them I would definitely had not been able to rapidly do the task.}''
-%    \end{quote}
-%\end{footnotesize}
-
-
-%\begin{footnotesize}
-%\begin{quote}
-%    ``\textit{With the highlighted references, I was able to move much quicker. I quickly glanced at each resource, reading just the highlights to determine how valuable that resource was. The highlights allowed me to focus on the most relevant resources, gathering the necessary information to complete the task. 
-%}''
-%\end{quote}
-%\end{footnotesize}
-
 
 
 \smallskip
-This feedback suggests that the kind of information
-considered useful in a document varies with the
-developer. It suggests that techniques will need to
+This feedback suggests that the kind of information considered useful in a document not only differs based on 
+a developer's  \textit{explicit} versus \textit{implicit} reasoning, but also that it varies with the developer. 
+It suggests that techniques will need to
 be even more general to work across document
 types: techniques will also need to work across
 the different kinds of information in a document.
 Future studies should more deeply investigate
 the kinds of information developers deem as
 relevant and explore how developers gauge relevance.
+
+
+
+
 
 How and what developers consider relevant in
 documents may also impact how techniques trade-off
@@ -101,6 +79,28 @@ We made this decision because, as described in
  (Chapter~\ref{ch:introduction}),
 missing relevant text would mean that a developer might have an incomplete or partial view of the information needed, which may lead to
 sub-optimal decisions.
+
+
+
+
+
+
+However, when favoring recall,  we may obtain more false positives; non\-/relevant text indicated as relevant.
+Due to the limited time developers spend inspecting a natural language artifact~\cite{Starke2009}, there is a chance that
+ a developer could discard reading an artifact due to a false positive. 
+ Although abandoning reading an artifact and moving to another artifact could lead to non\-/efficient work
+ (i.e., a developer might have to perform further searches and perhaps revisit artifacts that they have already inspected),
+we believe that the benefits of automatically identifying relevant text outweigh these risks. 
+That is, inspecting an artifact without tool support is more time\-/consuming
+than inspecting each sentence retrieved to judge their relevance to the task at hand. 
+Future studies could explore the ramifications
+of this trade\-/off in detail.
+
+
+
+
+
+
 
 %This feedback suggests that we could have observed different usage behaviours if participants had the chance to decide when to invoke \acs{tool}.
 %However, 
@@ -126,18 +126,3 @@ sub-optimal decisions.
 
 
 %\paragraph{\textbf{Precision vs Recall.}}
-
-
-
-
-However, when favoring recall,  we may obtain more false positives; non-relevant text indicated as relevant.
-Due to the limited time developers spend inspecting a natural language artifact~\cite{Starke2009}, there is a chance that
- a developer could discard reading an artifact due to a false positive. 
- Although abandoning reading an artifact and moving to another artifact could lead to non-efficient work
- (i.e., a developer might have to perform further searches and perhaps revisit artifacts that they have already inspected),
-we believe that the benefits of automatically identifying relevant text outweigh these risks. 
-That is, inspecting an artifact without tool support is more time-consuming
-than inspecting each sentence retrieved to judge their relevance to the task at hand. 
-Future studies could explore the ramifications
-of this trade-off in detail.
-

@@ -1,23 +1,24 @@
 \section{Technique Deployment}
+\label{cp7:deployment}
 
 %\paragraph{\textbf{Training Data.}}
 
-\gcm{I think both training data and costs are
-more about how you would actually deploy
-your technique. I'm a bit confused
-on the training data whether you are suggesting
-that the technique needs to be trained on
-project-specific data?} \art{not project specific data, 
-but it need training samples as the ones in the 
-datasets that we produced}
+% \gcm{I think both training data and costs are
+% more about how you would actually deploy
+% your technique. I'm a bit confused
+% on the training data whether you are suggesting
+% that the technique needs to be trained on
+% project-specific data?} \art{not project specific data, 
+% but it need training samples as the ones in the 
+% datasets that we produced}
 
 
-make it more explicit, dev ops example is a good idea
+% make it more explicit, dev ops example is a good idea
 
-\gcm{On Costs, I'm a bit
-confused as to whether needing a server 
-is just because of current hardware that
-might be eased in the future.} \art{for now, yes}
+% \gcm{On Costs, I'm a bit
+% confused as to whether needing a server 
+% is just because of current hardware that
+% might be eased in the future.} \art{for now, yes}
 
 In Chapter~\ref{ch:identifying}, we have shown that semantic-based approaches identify task-relevant textual information across
 different types of artifacts without relying on
@@ -25,36 +26,44 @@ assumptions about the nature of an artifact or its meta-data.
 However, we
 observe that the techniques with the best accuracy require fine-tuning 
 a deep learning model
-and this could be considered as an impediment to the using or improving of such  techniques. 
+and this could be considered as an impediment to deploying such techniques. 
 
 
-Fine-tuning requires data analogous to the corpora described in this thesis
-throughout Chapters~\ref{ch:characterizing} to~\ref{ch:assisting} 
-and although we acknowledge that the need for training data is a limitation inherent to supervised techniques,
-we mitigated some of the challenges of requiring large amounts of training data by using pre-trained models~\cite{erhan2010pre-train}.
-Furthermore, the fact that artifact-specific techniques, such as AnswerBot, have accuracy comparable to semantic-based approaches
- provides
-a unique opportunity for the creation of synthetic data that one might use for training purposes.
-In a similar manner to how researchers created word embeddings for the software engineering domain~\cite{Efstathiou2018}, one might gather significantly large amounts of data from online resources
-and then, use techniques that apply to such resources to create the data needed for training.
-A requirement to using such a bootstrapping mechanism is that we must show that models trained on synthetic data do not simply replicate the underlying heuristics of the techniques used for bootstrapping. That is, we have to show that a technique trained
-in this manner correlates data from a task and an artifact in ways that
-extend beyond what a technique used for bootstrapping already provides. For example, showing that
-it can identify task-relevant textual information in a different type of artifact or showing
-that its accuracy is significantly better than the technique used for bootstrapping.
+Fine-tuning requires training data---tasks, natural language artifacts, and text annotated as relevant---and
+one potential limitation arises from how the training data might lead the model to identify 
+text that is not relevant to certain types of tasks.
+For example, with the adoption of Agile practices~\cite{fowler2001agile} and continuous  delivery~\cite{humble2010continuous}, 
+there has been a rise in automated approaches for organizing and facilitating 
+continuous delivery, which are commonly referred to as \textit{DevOps}~\cite{senapathi2018devops, leite2019ops}.
+DevOps tasks and natural language artifacts documenting DevOps tools 
+might significantly differ from tasks and artifacts associated with bug fixing or implementing new features
+and, despite the fact that we observed that a model fine-tuned with 50 Android tasks 
+was able to identify text relevant to Python tasks (Figure~\ref{fig:eval-comparison}), 
+it is not clear if a model fine-tuned with certain data is able to identify text relevant to tasks 
+in a different context. 
+Future research should more deeply investigate the extent to which 
+tasks and artifacts affect the task-relevant text identified by a model 
+that requires fine-tuning.
 
 
 
-% \paragraph{\textbf{Costs.}}
+
+
 
 
 A second limitation to deploying the techniques we explored
-relates to the current cost associated with these techniques. 
-First, the hardware needed by 
-the neural embeddings and the neural networks
-often requires dedicated servers with significant 
-memory and high-throughput computational power. Due to the high demand for commercial servers with such properties, deploying our tools for usage by software development communities might incur significant financial burdens. 
-The need for dedicated servers also means that our proposed techniques and our web browser plug-in cannot run offline. If we consider a standard client-server architecture, such as the one of \acs{tool}, it means that one must send data about the task and artifacts that they are working to a remote server for processing. This might not always be possible due to privacy reasons, i.e., outside the public domain, organizations would not be willing to use our tool and, depending on their size,  organizations might not have the resources needed for in-house solutions. Due to these limitations, the techniques and tools described in this dissertation 
-must be treated as proofs-of-concept and we hope that 
-these limitations might be eased in the future.
+relates to the current cost associated with deep learning models. 
+The neural embeddings and the neural networks we used
+ often requires dedicated servers with significant 
+memory and high-throughput computational power.
+ Due to the high demand for commercial servers with such properties, 
+ it might be difficult to deploy our tools for usage a large scale.
+We believe that hardware cost might be eased in the future.
+\art{I simplified the cost paragraph, but it might still be better to remove it}
+
+
+
+% The need for dedicated servers also means that our proposed techniques and our web browser plug-in cannot run offline. If we consider a standard client-server architecture, such as the one of \acs{tool}, it means that one must send data about the task and artifacts that they are working to a remote server for processing. This might not always be possible due to privacy reasons, i.e., outside the public domain, organizations would not be willing to use our tool and, depending on their size,  organizations might not have the resources needed for in-house solutions. Due to these limitations, the techniques and tools described in this dissertation 
+% must be treated as proofs-of-concept and we hope that 
+% these limitations might be eased in the future.
 
