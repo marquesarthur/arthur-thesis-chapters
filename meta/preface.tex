@@ -3,45 +3,89 @@
 
 \chapter{Preface}
 
-All of the work presented in this thesis was conducted in the Software Practices
+All of the work presented henceforth was conducted in the Software Practices
 Lab at the University of British Columbia, Point Grey campus.
-Parts of the research presented in this dissertation has been previously published in the following articles:
-
-
-% \begin{small}
-\begin{enumerate}
-    \item  Arthur Marques, ``\textit{Helping developers search and locate task-relevant information in natural language documents}'', 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE), 2019, pp. 1168-1171, doi: 10.1145/3338906.3341459
-    \item  Arthur Marques, Nick C. Bradley and Gail C. Murphy, ``\textit{Characterizing Task-Relevant Information in Natural Language Software Artifacts}'', IEEE International Conference on Software Maintenance and Evolution (ICSME), 2020, pp. 476-487, doi: 10.1109/ICSME46990.2020.00052.
-    \item  Arthur Marques, Giovanni Viviani and Gail C. Murphy, ``\textit{Assessing Semantic Frames to Support Program Comprehension Activities}'',  IEEE/ACM 29th International Conference on Program Comprehension (ICPC), 2021, pp. 13-24, doi: 10.1109/ICPC52881.2021.00011.
-    \item   Arthur Marques and Gail C. Murphy, ``\textit{Evaluating the Use of Semantics for Identifying Task-relevant Textual Information}'',  2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER), 2022, pp. 240-251, doi: 10.1109/SANER53432.2022.00039
-\end{enumerate}
-% \end{small}
-
-
-
-
-Part of this work involved other collaborators. Nick C. Bradley contributed in
-the interview analysis described in Chapter~\ref{ch:characterizing}.
-Alison Li, Katharine Kerr, and Tarc{\'i}sio Teixeira helped 
-in the creation of the dataset presented in Chapter~\ref{ch:android-corpus}.
-Giovanni Viviani helped in the analysis, design and implementation of the 
-semantic parser used in Chapter~\ref{ch:identifying}.
-Shaunak Tulshibagwale helped implementing some of the 
-data gathering scripts for the 
-corpora presented in Chapters~\ref{ch:identifying} and~\ref{ch:assisting}, respectively.
-The scripts that gathered data from Stack Overflow are an extension of 
- Nadi and Treude's scripts~\cite{nadi2019Rep}.
-Muhammad Abdul-Mageed was a supervisory committee member and helped providing access to the 
-Compute Canada research grid used in the design and evaluation of the
-approaches described in  Chapter~\ref{ch:identifying}.
-Gail C. Murphy was the supervisory author on this project
-and was involved throughout the project in concept formation, data analysis, and
-manuscript composition.
-
-
-
-
 All projects and associated methods were approved by the University of British Columbia's Research
 Ethics Board [certificates \#H18-02104 and \#H19-04054].
 
+
+
+Parts of the research presented in this dissertation has been previously published.
+I list publications in chronological order. Publications
+involved other collaborators who have participated in drafting and/or revision of the manuscripts. 
+
+
+\begin{enumerate}
+    \item Part of Chapter~\ref{ch:introduction} was published in the 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE)~\cite{marques2019}:
+
+
+    \begin{itemize}
+        \item A. Marques.
+            \textit{Helping Developers Search and Locate Task-relevant Information in Natural Language Documents}. 
+            In 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE),
+            pages 1168---1171, 2019.
+    \end{itemize}        
+
+
+\item A version of Chapter~\ref{ch:characterizing} was published in the IEEE  International Conference on Software Maintenance and Evolution (ICSME)~\cite{marques2020}:
+
+
+    \begin{itemize}
+        \item A. Marques, Nicholas C. Bradley, and G. C. Murphy.
+            \textit{Characterizing Task-Relevant Information in Natural Language Software Artifacts}. 
+            In IEEE  International Conference on Software Maintenance and Evolution (ICSME),
+            pages 476---487, 2020. 
+    \end{itemize}
+
+\item The tool \textit{SEFrame} used in Chapter~\ref{ch:identifying} and discussed in Chapter~\ref{ch:discussion} was published in the  IEEE/ACM 29th International Conference on Program Comprehension (ICPC)~\cite{marques2021}:
+
+
+    \begin{itemize}
+        \item A. Marques, Giovanni Viviani, and Gail C. Murphy.
+            \textit{Assessing Semantic Frames to Support Program Comprehension Activities}. 
+            In IEEE/ACM 29th International Conference on Program Comprehension (ICPC), 
+            pages 13---24, 2021.
+    \end{itemize}
+
+
+\item A version of Chapters~\ref{ch:android-corpus} and~\ref{ch:identifying} was published in the IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)~\cite{marques2022}: 
+
+
+    \begin{itemize}
+        \item A. Marques and Gail C. Murphy. 
+            \textit{Evaluating the Use of Semantics for Identifying Task-relevant Textual Information}. 
+            In IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER),
+            pages 240---251, 2022.
+    \end{itemize}
+
+\end{enumerate}
+
+
+
+Other contributions from the manuscript authors and other collaborators are detailed as follows.
+% nick
+Nick C. Bradley contributed in
+the interview analysis described in Chapter~\ref{ch:characterizing} and published in the 2nd manuscript.
+% giovanni
+Giovanni Viviani helped in the analysis, design and implementation of the 
+semantic parser used in Chapter~\ref{ch:identifying} and published in the 3rd manuscript.
+% dataset
+Alison Li, Katharine Kerr, and Tarc{\'i}sio Teixeira helped 
+in the creation of the dataset presented in Chapter~\ref{ch:android-corpus} and published in the 4th manuscript.
+% shaunak
+Shaunak Tulshibagwale helped implementing some of the 
+data gathering scripts for the 
+corpora presented in Chapters~\ref{ch:identifying} and~\ref{ch:assisting}, respectively.
+% nadi and treude
+The scripts that gathered data from Stack Overflow are an extension of 
+ Nadi and Treude's scripts~\cite{nadi2019Rep}.
+% muhammad
+Muhammad Abdul-Mageed was a supervisory committee member and helped providing access to the 
+Compute Canada research grid; he also provided valuable feedback throughout the course of this work. 
+% reid
+Reid Holmes was a supervisory committee member and provided valuable feedback throughout the course of this work. 
+% gail
+Gail C. Murphy was the supervisory author on this project
+and was involved throughout the project in concept formation, data analysis, and
+manuscript composition.
 
