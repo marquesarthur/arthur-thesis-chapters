@@ -7,7 +7,7 @@
 We introduce six novel semantic techniques that might 
 aid developers in identifying
 task-relevant text in software artifacts. Three of the
-techniques use word2vec~\cite{Mikolov2013} as a base for determining a ranked list of similar sentences between an artifact
+techniques use word embeddings (word2vec)~\cite{Mikolov2013} as a base for determining a ranked list of similar sentences between an artifact
 and a task description and three use BERT~\cite{Devlin2018Bert}.
 Each of these technique takes as input
 a task description and an artifact. The technique then identifies
@@ -113,9 +113,18 @@ alongside binary labels representing whether that sentence is relevant.
 Using training data, the model's attention mechanism will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. We use up to 10 epochs to train BERT, setting both \textit{batch size} and a \textit{sequence length} to 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
 
 
+Since there are far less relevant sentences in an artifact and, consequently,
+in the entire data, we apply \textit{undersampling} of the majority class 
+to improve the prediction performance on imbalanced data~\cite{tan2015online}.
+For every relevant sentence in an artifact, we randomly sample four 
+non-relevant sentences in that same artifact such that the final ratio 
+between relevant and non-relevant sentences is \textit{1:4}.
 
 
-Following these procedures, we take a fully trained model and we compute the relevance of a sentence $a_i \in A$ when we pair it to to a vector that represents all the sentences in a task $T$.
+
+
+
+Following these procedures, we take a fully trained model and we fine-tune it to compute the relevance of a sentence $a_i \in A$ when we pair it to a vector that represents the sentences in a task $T$.
 Similar to the word2vec approach, we predict the relevance of all the sentences in an input artifact with regards to an input task and we use prediction probabilities to select 
 the top-n sentences with highest probability as the relevant ones.
 

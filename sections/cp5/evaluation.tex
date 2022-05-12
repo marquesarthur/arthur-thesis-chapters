@@ -1,4 +1,3 @@
-\clearpage
 
 \section{Evaluation}
 \label{cp5:evaluation}
@@ -262,6 +261,11 @@ suggesting that the technique performs well across different types of artifacts.
 
 
 
+\afterpage{
+    \input{sections/cp5/tbl-results-overall}
+}
+
+
 
 When we compare techniques without any filters, differences between \texttt{word2vec} and \texttt{BERT} may be explained by how each of these two approaches compute relevance. 
 That is, all the words in a sentence  contribute equally to \texttt{word2vec}'s identification of task-relevant text via its semantic similarity function.
@@ -281,11 +285,6 @@ Some of our techniques also show consistent results over different types of arti
 generalize across a variety of software artifacts.
 
 
-
-
-\clearpage
-\input{sections/cp5/tbl-results-overall}
-\clearpage
 
 
 
