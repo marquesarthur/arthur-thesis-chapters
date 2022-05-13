@@ -7,23 +7,18 @@
 {\large \textbf{Task: Titanic}} \bigskip
 
 
-Picnics or outdoor lunches are great, especially during summer time. The student association often decides to meet at a rendezvous point and walk towards a picnic place what gives them time to small talk and catch-up with the latest news and gossips. \medskip
+Data about passengers on the Titanic offer an interesting yet simple scenario for data manipulation, filtering, and visualization. \medskip
 
-For example, students can meet at 
-\code{Walter C. Koerner Library, 1958 Main Mall, Vancouver, BC V6T 1Z2} 
-and decide to have picnic at 
-\code{Jericho Beach, Vancouver, BC}  \medskip
+
+For this particular dataset, each row provides information in the following format:
 
 \medskip
 
-\includegraphics[width=\textwidth]{appendix/cp6/jericho.png}
+\includegraphics[width=\textwidth]{appendix/cp6/titanic-table.png}
 
 \medskip
 
 
-Some students are not happy with walking distances and the student association wants to build a small system that finds the distance between a rendezvous location and a suggested picnic place.  \medskip
-
-Every week, students submit a picnic address and the system should find the place closest to the starting location. \medskip
 
 
 \begin{center}
@@ -32,14 +27,7 @@ Every week, students submit a picnic address and the system should find the plac
 
 \textbf{Task} \medskip
 
-
-
-Given a \code{string}
-representing rendezvous address and a \code{list}
-of suggested picnic addresses
-
-you must write an algorithm using the \code{geopy}
-module to find the closest picnic address. \medskip
+Given a \code{string} representing a url for the titanic dataset (in \code{csv} format), you must write an algorithm using the \code{pandas} and \code{seaborn} modules to create a barchart with the passengers' average fare according to the following constraints \medskip
 
 
 Constraints:
@@ -47,13 +35,15 @@ Constraints:
 \begin{itemize}
 
 
-    \item  The suggested address must be within 10 km from a meeting location.
+    \item Passengers age must be \code{>= 18}
 
-    \item  If no suggestion is within 10 km, you should return \code{None}
+    \item  Passengers age must be \code{<= 30}
 
-    \item  There can be invalid addresses either in the meeting place or in the suggestion list
+    \item Averages are affected by outliers, so you must ignore fares \code{>= 100}
 
-    \item  If two places have the same distance, your solution should return the address that appears first in the list of suggestions 
+    \item  The only variables of interest are \code{sex}, \code{age}, and \code{fare}
+
+    \item You must return a call to \code{seaborn.barplot} so that tests can plot the chart and check the values in the \code{x-axis} and \code{y-axis} according to the data.
 
 
 \end{itemize}
@@ -74,54 +64,16 @@ Constraints:
 
 
 \begin{python}
-rendezvous_address = "1958 Main Mall, Vancouver, BC V6T 1Z2"
-suggestions = ["Spanish Banks West Concession"]
+data = "https://raw.githubusercontent.com/mwaskom/" \
+  "seaborn-data/master/raw/titanic.csv"
 \end{python}
 
 \textbf{Output}
-
-
-\begin{python}
-expected = "Spanish Banks West Concession"
-\end{python}
-
-\textbf{Explanation} \medskip
-
-
-There is a single suggestion. The distance between the rendezvous address and the suggested location is less than the max allowed distance. Therefore, the expected output is \code{Spanish Banks West Concession}
-
-    
 
 
 \begin{center}
-\rule{10cm}{0.4pt}
+  \includegraphics[width=0.7\textwidth]{appendix/cp6/titanic-chart.png}
 \end{center}
-
-
-
-\textbf{Input}
-
-\begin{python}
-rendezvous_address = "1958 Main Mall, Vancouver, BC V6T 1Z2"
-suggestions = [
-    "Spanish Banks West Concession",
-    "Museum of Anthropology University of British Columbia"
-]
-\end{python}
-
-\textbf{Output}
-
-
-\begin{python}
-expected = "Museum of Anthropology University of British Columbia"
-\end{python}
-
-\textbf{Explanation} \medskip
-
-
-The distance between the meeting place and \code{Spanish Banks} is 5.7km.  The distance between the meeting place and the \code{Museum of Anthropology} is 600m. The museum is closer, hence it should be the expected output. 
-
-    
 
 
 \begin{center}
@@ -133,17 +85,18 @@ The distance between the meeting place and \code{Spanish Banks} is 5.7km.  The d
 \textbf{Resources}
 
 \begin{itemize}
-    \item \href{link}{}
-    \item \href{link}{}
-    \item \href{link}{}
-    \item  \href{link}{}
-    \item  \href{link}{}
-    \item  \href{link}{}
-    \item  \href{link}{}
-    \item  \href{link}{} 
-    \item  \href{link}{}
-    \item  \href{link}{}
-    \item  \href{link}{}
+    \item \href{https://pandas.pydata.org/docs/getting_started/intro_tutorials/02_read_write.html}{How do I read and write tabular data?}
+    \item \href{https://pandas.pydata.org/docs/getting_started/intro_tutorials/03_subset_data.html}{How do I select a subset of a DataFrame?}
+    \item \href{https://pandas.pydata.org/docs/reference/index.html}{API reference pandas.core.groupby}
+    \item \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html}{API reference pandas.DataFrame.sort\_values}
+    \item \href{https://seaborn.pydata.org/generated/seaborn.barplot.html}{API reference seaborn.barplot}
+    \item \href{https://cmdlinetips.com/2019/07/how-to-select-rows-of-pandas-dataframe-with-query-function/}{Pandas query(): How to Filter Rows of Pandas Dataframe?}
+    \item \href{https://seaborn.pydata.org/generated/seaborn.barplot.html}{How to Make a Seaborn Barplot}
+    \item \href{https://www.delftstack.com/howto/python-pandas/how-to-filter-dataframe-rows-based-on-column-values-in-pandas/}{Filter Dataframe Rows Based on Column Values in Pandas}
+    \item \href{https://stackoverflow.com/questions/17071871/how-do-i-select-rows-from-a-dataframe-based-on-column-values}{How do I select rows from a DataFrame based on column values?}
+    \item \href{https://stackoverflow.com/questions/32908315/could-not-interpret-input-error-with-seaborn-when-plotting-groupbys}{'Could not interpret input' error with Seaborn when plotting groupbys}
+    \item \href{https://stackoverflow.com/questions/51866908/difference-between-as-index-false-and-reset-index-in-pandas-groupby}{Difference between "as\_index = False", and "reset\_index()" in pandas groupby}
+    \item \href{https://stackoverflow.com/questions/32400867/pandas-read-csv-from-url}{Pandas read\_csv from url}
 \end{itemize}
 
 \end{scriptsize}
