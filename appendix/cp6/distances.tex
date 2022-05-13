@@ -1,0 +1,85 @@
+\begin{figure}
+\begin{mdframed}[backgroundcolor=gray!05] 
+\begin{scriptsize}
+
+{\large \textbf{Task: Distances}} \bigskip
+
+
+Picnics or outdoor lunches are great, especially during summer time. The student association often decides to meet at a rendezvous point and walk towards a picnic place what gives them time to small talk and catch-up with the latest news and gossips. \medskip
+
+For example, students can meet at 
+{\fontsize{8}{1}\usefont{OT1}{pcr}{m}{n}\selectfont\color{color_29791} \hl{Walter C. Koerner Library, 1958 Main Mall, Vancouver, BC V6T 1Z2}} 
+and decide to have picnic at 
+{\fontsize{8}{1}\usefont{OT1}{pcr}{m}{n}\selectfont\color{color_29791} \hl{Jericho Beach, Vancouver, BC}}  \medskip
+
+\medskip
+
+\includegraphics[width=\textwidth]{appendix/cp6/jericho.png}
+
+\medskip
+
+
+Some students are not happy with walking distances and the student association wants to build a small system that finds the distance between a rendezvous location and a suggested picnic place.  \medskip
+
+Every week, students submit a picnic address and the system should find the place closest to the starting location. \medskip
+
+
+\begin{center}
+\rule{10cm}{0.4pt}
+\end{center}
+
+\textbf{Task} \medskip
+
+
+
+Given a {\fontsize{8}{1}\usefont{OT1}{pcr}{m}{n}\selectfont\color{color_29791} \hl{string}}
+representing rendezvous address and a {\fontsize{8}{1}\usefont{OT1}{pcr}{m}{n}\selectfont\color{color_29791} \hl{list}}
+of suggested picnic addresses
+
+you must write an algorithm using the {\fontsize{8}{1}\usefont{OT1}{pcr}{m}{n}\selectfont\color{color_29791} \hl{geopy}}
+module to find the closest picnic address. \medskip
+
+
+Constraints:
+
+\begin{itemize}
+
+
+    \item  The suggested address must be within 10 km from a meeting location.
+
+    \item  If no suggestion is within 10 km, you should return {\fontsize{8}{1}\usefont{OT1}{pcr}{m}{n}\selectfont\color{color_29791} \hl{None}}
+
+    \item  There can be invalid addresses either in the meeting place or in the suggestion list
+
+    \item  If two places have the same distance, your solution should return the address that appears first in the list of suggestions 
+
+
+\end{itemize}
+
+\end{scriptsize}
+\end{mdframed}
+\end{figure}
+
+
+
+
+
+\begin{figure}[t]
+\begin{mdframed}[backgroundcolor=gray!05] 
+\begin{scriptsize}
+
+
+\textbf{Resources}
+
+\begin{itemize}
+    \item \href{}{}
+    \item \href{}{}
+    \item \href{}{}
+\end{itemize}
+
+\end{scriptsize}
+\end{mdframed}
+\caption{Description for the Distances task}
+\end{figure}
+
+    
