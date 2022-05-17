@@ -19,7 +19,7 @@ In contrast, this section focus on task-specific techniques.
 % in which a developer is working.
 
 %  (as described in Section~\ref{cp2:unsupervised})
-A small number~\cite{Xu2017, silva2019, liu2019qapi} of studies consider specific types of artifacts and
+A small number of studies~\cite{Xu2017, silva2019, liu2019qapi} consider specific types of artifacts and
 they formulate the problem of identifying task-specific text as 
 a special case of query-based summarization~\cite{Goldsteinet1999}. That is, 
 instead of producing a summary for the entire content of 
@@ -44,13 +44,13 @@ to find nodes with text that matches the text of an input task,
 producing a task-specific summary for this type of artifact. 
 
 
-However, these techniques
+These techniques
 target one type of artifact and they also use an artifact's meta-data to 
-assist in the automatic identification of task-relevant text, 
+assist in the automatic identification of task-relevant text, thus
 limiting their use across the
 many different kinds of artifacts developers encounter
 daily in their work. 
-For example, AnswerBot uses the number of votes an answer has and if it is the accepted answer to decide which text it will use to produce a summary~\cite{Xu2017}
+For example, AnswerBot uses the number of votes an answer has to decide which text it will use to produce a summary~\cite{Xu2017}
 while KG-APISumm uses 
 code blocks, HTML anchor links and other properties which are exclusive to API documents to build the knowledge graph used as part of its summarization approach~\cite{liu2019qapi}.
 We differ from these studies 

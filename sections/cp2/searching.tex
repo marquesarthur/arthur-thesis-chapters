@@ -10,12 +10,13 @@ artifacts, or documents, which might
 address an information need. 
 For this, information foraging theory~\cite{Pirolli1999} explains how a person navigates through  
 a search space looking for information patches  based on 
-a set of cues about the effort and gains that a patch provides to them~\cite{Pirolli1999}.
+a set of cues about the effort and gains that a patch provides to them.
 
 
-
-Searches happen between patches (e.g., consulting different sources) or within a patch (e.g., over the many sections in a web page) 
-and \textit{explicit} or \textit{implicit} factors affect judging the relevance of a patch~\cite{saracevic1975}.
+According to Pirolli and Card~\cite{Pirolli1999}, a forager performs scent-following activities, which represents 
+how they navigate a search space until they find a high-yield patch. 
+Once in a patch, a forager inspects its content until their information need is addressed or until the amount of new information available depletes, making the forager move to another patch. 
+In both instances (navigating between patches and searching within a patch), \textit{explicit} or \textit{implicit} factors affect how a forager judges the relevance of a patch~\cite{saracevic1975}.
 For example,
 consider an electronic library catalog and a search for `\textit{android notifications}'.
 Figure~\ref{fig:library-catalogue} shows two hypothetical results for this search. %to help illustrate explicit and implicit factors
@@ -28,28 +29,13 @@ that it might not be helpful for a software developer.
 
 
 
-\input{sections/cp2/library-search.tex}
 
 
 
 A similar search could be performed on a web search engine\footnote{e.g., \href{https://www.google.com/}{Google} or \href{https://www.bing.com/}{Microsoft Bing}}
-and for both library catalogs or web searches, researchers have investigated 
-what affects how a person finds pertinent results and their decision to inspect them.
-For example, in electronic library catalogs,
-Hildreth observed how keyword searches were used more than any other type of search (e.g., by author or by title)~\cite{hildreth1997}
-while other studies observed impatience and near-random search habits in novice librarians~\cite{novotny2004don}.
-In contemporary web search engines, researchers have  also 
-investigated how individuals formulate queries~\cite{gross2005have, bendersky2012},
-how prior knowledge helps them
-to more efficiently perform searches~\cite{DeGraaf2014},
-and what search results they inspect, going to the lengths
-of using eye-tracking technology for this purpose~\cite{Cutrell2007, marcos2015}.
-
-
-
-With the prominence of web search engines, other search problems also gained attention.
+and, with their prominence, other search problems also gained attention.
 Most notably,  Carbonell and Goldstein investigated the relevance and the novelty of search results~\cite{Carbonell1998}.
-That is, on the one hand, prioritizing relevance may lead to a scenario where all results contain redundant information, leaving some information needs unanswered. 
+On the one hand, prioritizing relevance may lead to a scenario where all results contain redundant information, leaving some information needs unanswered. 
 On the other hand, it might be difficult for an individual 
 to find information that corroborates and consolidates some knowledge if search results are too diverse~\cite{clark2013relevance}.  
 This has led researchers to investigated 
@@ -61,17 +47,48 @@ yet relevant results for a web search.
 
 
 
+% and for both library catalogs or web searches, researchers have investigated 
+% what affects how a person finds pertinent results and their decision to inspect them.
+% For example, in electronic library catalogs,
+% Hildreth observed how keyword searches were used more than any other type of search (e.g., by author or by title)~\cite{hildreth1997}
+% while other studies observed impatience and near-random search habits in novice librarians~\cite{novotny2004don}.
+% In contemporary web search engines, researchers have  also 
+% investigated how individuals formulate queries~\cite{gross2005have, bendersky2012},
+% how prior knowledge helps them
+% to more efficiently perform searches~\cite{DeGraaf2014},
+% and what search results they inspect, going to the lengths
+% of using eye-tracking technology for this purpose~\cite{Cutrell2007, marcos2015}.
 
 
-Across these general studies, and also in software engineering-specific studies~\cite{Starke2009, Brandt2009a, DeGraaf2014},
+\input{sections/cp2/library-search.tex}
+
+
+
+
+
+
+
+Across these information science studies, 
 a common trend is that the identification of good search terms is as, or even more
 important than the search algorithm itself~\cite{Kevic2014}. 
 Nonetheless, identifying good search terms is often challenging and 
 as a consequence, many searches are unsuccessful or retrieve resources that 
 a person loses time inspecting only to find that they are not pertinent to the task at hand~\cite{novotny2004don, Haiduc2013}.
 This indicates that individuals usually inspect multiple and potentially different types of artifacts 
-before finding relevant information, further motivating
-the work presented in this thesis.
+before finding relevant information.
+
+
+
+
+Within software engineering research, the concept of an information patch 
+is often more fine-grained and it usually relates to source code, where a significant body of work has 
+used information foraging theory in the context of 
+program comprehension, debugging, or refactoring activities~\cite{fleming2013, lawrance2010, piorkowski2013, Ko2006a}. More recently, researchers have also investigated developers' web search 
+behaviour~\cite{Starke2009, Brandt2009a, Xia2017}, concentrating on what developers search for on web search engines. 
+We differ from these studies by focusing 
+on different kids of natural language artifacts and 
+the natural language text within them.
+
 
 
 

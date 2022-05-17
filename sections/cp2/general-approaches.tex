@@ -71,7 +71,7 @@ matched class elements mentioned in development mailing
  lists to source code files
 to assist developers in finding information useful to 
  understanding the source code~\cite{panichella2012}.
-Although the heuristics and regular expressions used in this and other studies~\cite{nadi2020, Maalej2013}
+Although the heuristics and regular expressions used in this and other studies (e.g.,~\cite{nadi2020, Maalej2013})
 are lightweight and effective~\cite{Bavota2016}, 
 pattern-matching approaches 
 are often specific to certain kinds of domains and types of artifact~\cite{fucci2019}, 
@@ -132,7 +132,7 @@ to identify relevant text across different kinds of artifacts, as Chapter~\ref{c
 
 
 \acf{NLP} relies on the lexical or syntactical analysis of the text~\cite{jurafsky2014speech}
-and such analyses might assist in the automatic identification of text that satisfies some information needs. 
+and such analyses might assist in the automatic identification of text that satisfies an information need. 
 To illustrate some of the elements obtainable using \acs{NLP}, we consider a short sentence 
 instructing how to perform a file system operation: ``\textit{you can use io.StringIO}''.
 Figure~\ref{fig:nlp-analysis} shows elements extracted for this sentence using two \acs{NLP} techniques,
@@ -280,9 +280,8 @@ applied \acs{LDA}
 to gain insight into the types of questions 
 asked on Stack Overflow~\cite{Allamanis2013}
 while FRAPT is a tool that 
-uses \acs{LDA} to identity topics in a web tutorial,
-which are then used to identify
-key sentences in each of the topics identified~\cite{Jiang2017}.
+uses \acs{LDA} to identity topics in a web tutorial
+as well as relevant sentences in each of the topics identified~\cite{Jiang2017}.
 
 
 
@@ -336,17 +335,14 @@ use neural network architectures
 for the same range of problems discussed in Section~\ref{cp2:machine-learning}.
 As explained by Watson et al.~\cite{watson2022},
 neural network architectures are composed of several layers 
-that perform mathematical transformations on data passing through them. 
+that perform a series of transformations on data passing through them. 
 A set of parameters controls these transformations and 
 adjust the model being trained so that it can predict 
-the right outcome for any given input
-and researchers have proposed 
-several architectures (e.g., \acs{RNN}s~\cite{rumelhart1986rnn, sutskever2014seq2seq}, encoder-decoders~\cite{bahdanau2014neural}, Transformers~\cite{Vaswani2017attention}, etc.) 
+the right outcome for any given input.
+Using these concepts, researchers have proposed 
+several  \acs{DL} architectures (e.g., \acs{RNN}s~\cite{rumelhart1986rnn, sutskever2014seq2seq}, encoder-decoders~\cite{bahdanau2014neural}, Transformers~\cite{Vaswani2017attention}, etc.) 
 suitable for different problems. 
-
-
-
-As examples of architectures applied to software engineering  artifacts,
+For instance,
 Li et al. used an auto-encoder~\cite{liou2014autoencoder}
 to produce more accurate and diverse summaries 
 for bug reports~\cite{li2018deep} while 
