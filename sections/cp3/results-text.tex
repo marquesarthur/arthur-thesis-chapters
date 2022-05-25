@@ -44,7 +44,7 @@ investigating if the extracted entities co-occur in multiple HUs.
 
 Among noun phrases, we observe that 65\% of the HUs contain acronyms or coding elements.
 Existing approaches that rely on these elements to identify relevant text (e.g.,~\cite{Robillard2015} or~\cite{Jiang2016b}) would miss the remaining 35\% of the HUs in our corpus.
-This value may seem acceptable at first; however there are no guarantees that
+This value may seem acceptable at first; however, there are no guarantees that
 the identified 65\% HUs hold all the crucial information for task completion.
 As an example, some of the HUs from the mid and topmost tiers 
 do not contain obvious code elements that could signal their relevancy,
@@ -77,7 +77,7 @@ reflect common constructs of the English language rather than cues that we might
 There may be multiple explanations for these results, such as
 the fact our corpus contains a small number of natural language artifacts.
 Due to this reason, we also checked whether patterns from existing related work (i.e.,~\cite{Chaparro2017, Robillard2015}) applied to the text in our HUs, 
-but the small number of matching patters 
+but the small number of matching patterns 
 raises caution on
 their generalizability.
 
@@ -107,7 +107,7 @@ For our semantic analysis, we
 analyze the meaning of the text in the 
  HUs
 using frame semantic parsing~\cite{fillmore1976frame, jurafsky2014speech}.
-Semantic frames are centered around events, labelled frames, 
+Semantic frames are centered around events, called \textit{frames}, 
 which abstract both the event
 as well as relationships, entities or participants related to that
 event~\cite{fillmore1976frame, Baker1998frame}. 
@@ -134,11 +134,12 @@ As multiple sentences might have similar meanings,
 we analyze whether there are common frame elements 
 that provide cues to the relevancy of text.
 For this analysis, all frame elements were extracted automatically
-using the \textit{SEMAFOR} toolkit~\cite{das2014frame},
+using the \textit{SEMAFOR} tool~\cite{das2014frame},
 where we extract the frames of every HU, resulting in 3,719 frames across
 the 602 HUs. Only 346 distinct frames appear across these 3,719 frames
 parsed. The proportionally small number of distinct semantic frames
-occurring suggests that different HUs share frame elements. 
+occurring suggests that different HUs share frame elements
+and thus, we further inspect the most common frames identified.
 
 
 
@@ -221,7 +222,8 @@ on the prominence of certain frames in relevant or non-relevant sentences.
 
 
 
-Our analysis on the semantics of relevant text indicates that there exists some common aspect to the different sentences deemed as relevant.
+Our analysis on the semantics of relevant text provides initial evidence that there exists some common aspect in the meaning of 
+ the different sentences deemed as relevant.
 
 
 

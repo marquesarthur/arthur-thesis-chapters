@@ -96,19 +96,19 @@ At its most basic level,
 \acs{IR}
 uses the 
 frequency or co-occurrence of words (or phrases) to determine the relevance
-of an artifact with regards to an information need, often expressed as a query.
+of an artifact with regards to an information need, often expressed as an input query.
 
 
 % For that, \acs{IR} identifies and structures all the words, or terms, 
 % in an artifact so this information can be used for quick access. 
-By counting how frequent is a word in 
+By counting how frequent  a word is in 
 an artifact and across the entire collection of artifacts, 
-\acs{IR} can be used to query which artifacts contain that word, or where in an artifact it appears. 
-Using this principle, multiple schemes have been proposed 
+\acs{IR} can be used to find which artifacts contain that word, or where within an artifact it appears. 
+Using this principle, multiple \acs{IR} schemes have been proposed 
 to identify text based on 
-how not all the words in some vocabulary have the same relevance (\textit{TF-IDF})~\cite{luhn1957tf, jones2004idf}, 
+how not all the words in some vocabulary have the same weight (\textit{TF-IDF})~\cite{luhn1957tf, jones2004idf}, 
 how to  represent sentences (\textit{VSM})~\cite{salton1975vector}, 
-or how to account for different words that appear in a similar context (\textit{LSI})~\cite{dumais1994latent}.
+or how to account for different words that appear interchangeably in some context (\textit{LSI})~\cite{dumais1994latent}.
 
 
 
@@ -137,7 +137,7 @@ To illustrate some of the elements obtainable using \acs{NLP}, we consider a sho
 instructing how to perform a file system operation: ``\textit{you can use io.StringIO}''.
 Figure~\ref{fig:nlp-analysis} shows elements extracted for this sentence using two \acs{NLP} techniques,
 namely \acf{POS} tagging and dependency parsing.
-The formed assigns tags  ({\small \textit{PRP}, \textit{VP}, \textit{NNP},} etc.) to each word 
+The former assigns tags  ({\small \textit{PRP}, \textit{VP}, \textit{NNP},} etc.) to each word 
 in a sentence~\cite{taylor2003penn} while the latter identifies
 relationships between them, such as how 
 `\textit{io.StringIO}' is the direct object (\textit{obj})
@@ -196,12 +196,12 @@ identify entities according to properties inferred from the data.
 
 
 With regards to supervised learning approaches, 
-we consider the many families of classifiers that 
+we consider the families of classifiers that 
 determine
 \textit{(1)} if some entity belongs or not to a given class, as in binary classification
 \textit{(2)} which class, out of many, some input entity belongs to, as in multinomial classification, or
 \textit{(3)} which classes can be assigned to a given input, as in multi-label classification~\cite{alpaydin2020ml},
- investigating their application to software engineering problems.
+ and we detail their application to software engineering problems.
 
 
 
@@ -214,7 +214,7 @@ determine
 Among other applications, binary classifiers have been used 
 to classify text in bug reports that describes (or not) steps to reproduce a bug~\cite{Chaparro2016}
 or  to classify paragraphs which contain explanations 
-about an API element in web tutorials~\cite{Petrosyan2015}.
+about API elements in a web tutorials\cite{Petrosyan2015}.
 In turn, multinomial classifiers have been mostly used 
 to identify a category, out of many, that represents the type of information 
 associated with some text. For instance, Arya et al. identified 16 categories of  information available
@@ -225,7 +225,7 @@ In a similar manner, Fu and colleagues consider
 five types of decisions that might arise during 
 email exchanges (e.g., design, testing, management decisions, etc.)
 and they proposed a multinomial classifier 
-to automatically identify all the decisions present in 
+to automatically identify all the decisions present in emails of
 a development mailing list~\cite{fu2021}.
 
 

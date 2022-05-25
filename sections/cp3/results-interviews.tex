@@ -3,14 +3,14 @@
 
 To understand how participants identified relevant text (\textit{RQ3}), we analyzed the participants'
 interview responses using a card-sorting approach~\cite{spencer2009sorting}.
-We created index cards containing the interview questions and the participants' responses.
+We\footnote{The first two authors of~\cite{marques2020}: A. Marques and N. C. Bradley} created index cards containing the interview questions and the participants' responses.
 The cards were sorted into meaningful themes and then grouped into abstract categories.
 We refined themes over three iterations of the data.
 At each  iteration, we grouped cards containing responses on similar topics, analyzed the emerging theme, and evaluated
 whether there was a broader theme that incorporated two or more of the existing themes.
-To reduce individual bias, the first and second authors independently annotated a subset of the cards at every iteration.
+To reduce individual bias, the researchers involved in this analysis independently annotated a subset of the cards at every iteration.
 Disagreements occurred when more than one theme could apply to a sentence.
-The annotators discussed and resolved disagreements refining the set of themes in a subsequent iteration, where annotators had substantial agreement ($\kappa=0.82$).
+The annotators discussed and resolved disagreements refining the set of themes in a subsequent iteration, reaching substantial agreement ($\kappa=0.82$).
 
 
 
@@ -18,7 +18,8 @@ The annotators discussed and resolved disagreements refining the set of themes i
 
 From participants' comments, we identified nine themes that we group under two major categories.
 Table~\ref{tbl:themes-categories} details observed categories, themes, and the number of participants who made a comment pertaining to that theme.
-We discuss results per category illustrating comments that best exemplify a theme (grey highlight).
+We discuss results per category illustrating comments that best exemplify a theme. To facilitate the discussion we highlight themes (in gray)
+when we first mention them.
 
 
 
@@ -41,11 +42,11 @@ Some participants said they use these search strategies for all types of artifac
 % \pquote{}{P12} \medbreak
 
 \smallskip
-\begin{footnotesize}
+% \begin{footnotesize}
 \begin{quote}
     ``\textit{Definitively [my strategy] wasn't always the same. Going through a StackOverflow question, I would obviously read the first response. For API docs, keywords were the go to. Bug reports are hard. Comments are ordered chronologically and the first ones are sometimes not the most relevant ones}''---P12
 \end{quote}
-\end{footnotesize}
+% \end{footnotesize}
 
 
 Participants were also aware of the shortcomings of some artifact types and were less willingly to use faster but less accurate strategies like skimming or keyword-matching for these artifacts when the tasks were difficult. 
@@ -53,17 +54,18 @@ In these cases, participants mentioned that they used a \hl{\textit{scrutnizing}
 
 
 \smallskip
-\begin{footnotesize}
+% \begin{footnotesize}
 \begin{quote}
     ``\textit{I usually read every comment [in Stackoverflow]. Obviously, they are ranked, but, in general, every single comment could have something important}''---P11
 \end{quote}
-\end{footnotesize}
+% \end{footnotesize}
     
 
 
 Regardless of strategy, participants mentioned using 
 implicit criteria to decide when to (not) read some text.
-Such implicit criteria often relate to information foraging theory and how an individual follows some \hl{\textit{information scent}} for judging the value, or cost of investigating some text according to available cues~\cite{Pirolli1999}, such as the presence of bullet-points, bold text, or the conciseness and readablilty of the text.
+Such implicit criteria often relate to information foraging theory (Section~\ref{cp2:searching}) and how an individual follows some
+\hl{\textit{information scent}} for judging the cost of investigating some text according to available cues~\cite{Pirolli1999}, such as the presence of bullet-points, bold text, or the conciseness and readablilty of the text.
 
 
 
@@ -77,11 +79,11 @@ The most common challenge was \hl{\textit{missing information}} that other parti
 
 
 \smallskip
-\begin{footnotesize}
+% \begin{footnotesize}
 \begin{quote}
     ``\textit{This [highlight] is a valid alternative if you don't want to use the conflicts [method]. I basically didn't see this because of how I was searching}''---P2
 \end{quote}
-\end{footnotesize}
+% \end{footnotesize}
 
 
 
@@ -94,24 +96,24 @@ usually, participants missed information due to their workflows, as \textit{P15}
 
 
 \smallskip
-\begin{footnotesize}
+% \begin{footnotesize}
 \begin{quote}
     ``\textit{It's hard to say that I would have picked [those highlights] without being directed to that. I believe that I knew that there were specific questions coming, but even if I was doing it for myself, I would probably skim first and then, when I start to code, it would be a natural thing to get back and dive into the details}''---P15
 \end{quote}
-\end{footnotesize}
+% \end{footnotesize}
 
 
 
 Participants also missed information due to text \hl{\textit{verbosity}}. 
-Bloated text makes it harder for developers to locate task-relevant information~\cite{robillard2011field} and is more cognitively demanding to read:
+Bloated text makes it harder for developers to locate task-relevant information~\cite{robillard2011field} as it is more cognitively demanding to read verbose text:
 
 
 \smallskip
-\begin{footnotesize}
+% \begin{footnotesize}
 \begin{quote}
     ``\textit{When I looked at the API documentation, there was too much text. I was mentally exhausted just looking at it}''---P6
 \end{quote}
-\end{footnotesize}
+% \end{footnotesize}
 
 
 Participants noted that their \hl{\textit{familiarity}} with the task domain also affected how they located relevant information in the text.
@@ -119,11 +121,11 @@ Participants noted that their \hl{\textit{familiarity}} with the task domain als
 
 
 \smallskip
-\begin{footnotesize}
+% \begin{footnotesize}
 \begin{quote}
-    ``\textit{The easiest one was the one about ORM/JDBC [databases] because I was so familiar with these technologies}''---P02
+    ``\textit{The easiest one was the one about ORM/JDBC [databases] because I was so familiar with these technologies}''---P2
 \end{quote}
-\end{footnotesize}
+% \end{footnotesize}
 
 
 
@@ -132,15 +134,15 @@ Finally, when presented with \hl{\textit{ambiguous or contradictory}} informatio
 
 
 \smallskip
-\begin{footnotesize}
+% \begin{footnotesize}
 \begin{quote}
     ``\textit{I think it was in this one [highlight]. They said that \texttt{cmd} works in the same way as \texttt{Ctrl}, but I went with the one that says otherwise. [...] it was actually helpful to have two other highlights so I had a bit more reliance on the thing that was mentioned by more users.}''---P19
 \end{quote}
-\end{footnotesize}
+% \end{footnotesize}
 
 
 
-Our analysis on the participants' comments on their search strategies provide further insights into how developers forage for information in software development natural language artifacts. One of our key observations is that  developers use mixed strategies to locate task-relevant information. In doing so, developers often miss some information that might be relevant for task completion.
+Our analysis on the participants' comments on their search strategies provide further insights into how developers forage for information in software development natural language artifacts. One of our key observations is that  developers use mixed strategies to locate task-relevant information. In doing so, developers often miss some information that might be relevant to the task that they are performing.
 
 
 \medskip
