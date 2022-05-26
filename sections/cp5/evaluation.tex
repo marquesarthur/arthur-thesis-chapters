@@ -13,7 +13,7 @@ perform similarly to techniques specialized
 to particular kinds of artifacts.
 
 
-We first evaluate whether any of the
+Therefore, we first evaluate whether any of the
 six techniques we introduce performs
 similarly to a technique specialized to one
 kind of artifact. We chose to compare
@@ -22,11 +22,19 @@ that of AnswerBot on Stack Overflow
 answers because it is the technique closest to our work (Chapter~\ref{ch:related-work}). This
 evaluation helps answer: 
 
+\newpage
 
-\medskip
-\begin{bluequote}
-    \textit{How do our six semantic-based techniques compare to a state-of-the-art technique that is specific to a particular artifact type?} 
-\end{bluequote}
+\begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=*]
+
+    \item  \textit{How do our six semantic-based techniques compare to a state-of-the-art technique that is specific to a particular artifact type?} 
+
+\end{enumerate}
+
+
+% \medskip
+% \begin{bluequote}
+%     \textit{How do our six semantic-based techniques compare to a state-of-the-art technique that is specific to a particular artifact type?} 
+% \end{bluequote}
 
 
 
@@ -37,10 +45,19 @@ techniques can perform equivalently well across
 multiple artifact types.
 This evaluation helps answer:
 
-\medskip
-\begin{bluequote}
-    \textit{Which semantic-based technique provides the best results?} 
-\end{bluequote}
+
+
+
+\begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=*]
+    \setcounter{enumi}{1}
+
+    \item  \textit{Which semantic-based technique provides the best results?} 
+
+\end{enumerate}
+
+% \begin{bluequote}
+%     \textit{Which semantic-based technique provides the best results?} 
+% \end{bluequote}
 
 
 
@@ -93,12 +110,12 @@ reporting the average of each metric over all runs.
 
 
 
-We compute values for \textit{precision} and \textit{recall} metrics based on the sentences 
-deemed relevant to a task by \textit{at least two} human annotators.
-To minimize risks from a scenario where one of the techniques and their underlying approaches has a peak or
-bottom performance due to training procedures or due to factors beyond our control, 
-we compute results for each technique over 10 distinct executions over the test data, 
-reporting the average of each metric over all runs.
+% We compute values for \textit{precision} and \textit{recall} metrics based on the sentences 
+% deemed relevant to a task by \textit{at least two} human annotators.
+% To minimize risks from a scenario where one of the techniques and their underlying approaches has a peak or
+% bottom performance due to training procedures or due to factors beyond our control, 
+% we compute results for each technique over 10 distinct executions over the test data, 
+% reporting the average of each metric over all runs.
 
 
 For a detailed definition of each metric, we refer to the evaluation outcomes in Table~\ref{tbl:type-I-II-errors}, where  columns represent  labels provided by the annotators and rows,
@@ -113,7 +130,7 @@ the text identified as relevant or not by a technique.
 
 \paragraph{\textbf{Precision}}
 
-Precision measures the fraction of the sentences identified that are relevant over the total number of target sentences identified, as shown in Equation~\ref{eq:cp5:precision}.
+Precision measures the fraction of the sentences identified that are relevant over the total number of target sentences identified (Equation~\ref{eq:cp5:precision}).
 
 
 
@@ -149,7 +166,8 @@ and not locating all the relevant text may lead to incomplete or incorrect solut
 \label{cp5:comparison}
 
 
-
+As we have presented in Chapter~\ref{ch:related-work}, AnswerBot is a state-of-the-art summarization technique that applies to Stack Overflow posts~\cite{Xu2017}. Its relevant passage selection algorithm is close to our domain problem (i.e., identifying sentences likely relevant to an input task)
+and thus, the reason why we have decided to compare our techniques to it. 
 
 
 For a fair comparison between our techniques and AnswerBot (\texttt{AnsBot}), we must ensure that we obtain measurements for all the approaches under the same circumstances. 
@@ -157,7 +175,7 @@ This could mean applying our techniques to the tasks and artifacts used in Answe
 It would be interesting to report results for both scenarios, but golden data in AnswerBot represents how human evaluators judged the target sentences outputted by the tool.
 This comprises only a portion of the entire text available in a Stack Overflow answer, which can have more text that these evaluators could have judged as relevant. 
 Since we do not have access to AnswerBot's original judges to construct this data,
- we evaluate our techniques and \texttt{AnsBot} only on the tasks and Stack Overflow artifacts in the portion of the \texttt{DS-android} dataset that we use for testing.
+ we evaluate our techniques and \texttt{AnsBot} only on the tasks and Stack Overflow artifacts in the portion of the \acs{DS-android} dataset that we use for testing.
 
 
 Since \texttt{AnsBot} uses both textual properties and meta-data, 
@@ -173,7 +191,7 @@ We refer to this configuration in our results as \texttt{AnsBot\textsubscript{te
 
 
 Table~\ref{tbl:techniques-results-answerbot} shows values of precision and recall for  \texttt{AnsBot} and the semantic techniques that we explore. 
-In the table, rows provide details about a specific technique while columns discriminate 
+In the table, rows provide details about a specific base technique while columns discriminate 
 precision and recall values and which post-processing filters were applied. 
 We also mark results from paired Wilcoxon-Mann-Whitney tests~\cite{mannWhitneyU} 
 that check if the results between each technique and \texttt{AnsBot} are statistically different.
@@ -185,8 +203,8 @@ that check if the results between each technique and \texttt{AnsBot} are statist
 Overall, we observe that \texttt{AnsBot} achieves 0.59 precision and 0.63 recall---values explainable by the fact that the tool is tailored specifically to Stack Overflow.
 When we compare \texttt{AnsBot} to our techniques, we observe that the base
  \texttt{BERT} approach and the one using \texttt{frame-associations} achieve result comparable to \texttt{AnsBot}. Interestingly, the \texttt{frame-elements} filter does not provide significant improvements to the base approach. 
-The lack of differences may be explained by the fact that, to determine relevance, the attention mechanism used by BERT already correlates the text in a task and in an artifact (Section~\ref{cp5:approach-bert}), 
-and that the vector representations in the model are able to infer contextual information, which may serve as an implicit way to identify a sentence's meaning.
+% The lack of differences may be explained by the fact that, to determine relevance, the attention mechanism used by BERT already correlates the text in a task and in an artifact (Section~\ref{cp5:approach-bert}), 
+% and that the vector representations in the model are able to infer contextual information, which may serve as an implicit way to identify a sentence's meaning.
 For \texttt{word2vec}, we observe that the technique's results are significantly lower than \texttt{AnsBot}, which suggests that it fails to identify relevant text identified by \texttt{AnsBot}. 
 
 
@@ -202,9 +220,20 @@ use some of the properties of text that appears in highly voted or accepted answ
 \input{sections/cp5/tbl-results-stackoverflow-text}
 
 
-Results from our comparison to a state-of-the-art approach, namely AnswerBot, 
-indicate that text-based semantic techniques achieve comparable accuracy  
-when identifying relevant information in Stack Overflow artifacts.
+% Results from our comparison to a state-of-the-art approach, namely AnswerBot, 
+% indicate that text-based semantic techniques achieve comparable accuracy  
+% when identifying relevant information in Stack Overflow artifacts.
+
+
+
+\medskip
+\begin{bluequote}
+    \textit{Results from our comparison to a state-of-the-art approach, namely AnswerBot, 
+    indicate that text-based semantic techniques achieve comparable accuracy  
+    when identifying relevant information in Stack Overflow artifacts.}
+\end{bluequote}
+
+
 
 
 
@@ -221,7 +250,7 @@ we measure how much of the text that is relevant to a task (within an artifact)
 can our semantic-based techniques identify.
 To this end, we compute precision and recall metrics over all the artifacts in the test data. 
 To assist comparisons, we also report results for the text identified by a
-standard VSM lexical similarity approach. Several studies~\cite{Ko2006a, Freund2015, marques2020}
+standard \acf{VSM}~\cite{Salton1975vsm} lexical similarity approach. Several studies~\cite{Ko2006a, Freund2015, marques2020}
 have shown that developers often use keyword-matching as a first search strategy to locate text that might contain information relevant to their tasks.
 Thus, this \texttt{baseline} might assist us in interpreting 
 how much of the task-relevant text a developer would identify by themselves
@@ -243,7 +272,7 @@ For \texttt{BERT}, recall values range from $0.56$ to $0.58$ and, similar to our
 
 
 
-When we compare evaluation metrics to a \texttt{baseline} using VSM, we find that the baseline achieves precision and recall scores of $0.30$ and $0.33$ for the same data. 
+When we compare evaluation metrics to the \acs{VSM} \texttt{baseline}, we find that the baseline achieves precision and recall scores of $0.30$ and $0.33$ for the same data. 
 Although this result is not surprising, it suggests that a developer using keyword-matching could miss much of the task-relevant textual information in an artifact.
 
 
@@ -267,22 +296,28 @@ suggesting that the technique performs well across different types of artifacts.
 
 
 
-When we compare techniques without any filters, differences between \texttt{word2vec} and \texttt{BERT} may be explained by how each of these two approaches compute relevance. 
-That is, all the words in a sentence  contribute equally to \texttt{word2vec}'s identification of task-relevant text via its semantic similarity function.
+When we compare techniques without any filters, differences in the evaluation metrics of each base technique may be explained by how  \texttt{word2vec} and \texttt{BERT} compute relevance. 
+That is, all the words in a sentence  contribute equally to \texttt{word2vec}'s identification of task-relevant text via its cosine similarity function.
 If an artifact lacks much of the text that appears in a task description, this technique may not be able to identify the text deemed relevant. 
 \texttt{BERT} shortens this gap because relevance is computed via its attention mechanism, which might assign more 
 weight to words key to determining that the text is relevant to a task thus, explaining why the technique has better evaluation metrics.
 
 
 With sentence-level filters, there are improvements to most of the types of artifacts evaluated. 
-However, in certain techniques, the filters decreased the text identified, as when using the  \texttt{frame-elements} filter in Stack Overflow artifacts.
+However, in certain techniques, the filters decreased the relevant text identified, as when using the  \texttt{frame-elements} filter in Stack Overflow artifacts.
 It is possible that the text in these artifacts lacks any of the frames that we defined as meaningful, and thus, the reason why this filter reduced the amount of text identified.  
 
 
-Results from our evaluation across all artifact types indicate that 
-semantic techniques can find up to 58\% of the task-relevant textual information in an artifact. 
-Some of our techniques also show consistent results over different types of artifacts, suggesting that semantic techniques 
-generalize across a variety of software artifacts.
+
+
+
+\medskip
+\begin{bluequote}
+    \textit{Results from our evaluation across all artifact types indicate that 
+    semantic techniques can find up to 58\% of the task-relevant textual information in an artifact. 
+    Some of our techniques also show consistent results over different types of artifacts, providing initial evidence on the generalizability of semantic-based techniques 
+     across a variety of software artifacts.}
+\end{bluequote}
 
 
 
@@ -292,15 +327,17 @@ generalize across a variety of software artifacts.
 
 \subsection{Threats to Validity}
 
+% In this section, we discuss threats to the validity of our empirical assessment.
 
 
-We rely on the golden data for \acs{DS-android}
-to evaluate techniques, which impacts the 
+
+We rely on the golden data of \acs{DS-android}
+to evaluate the explored techniques; this impacts the 
 conclusions we draw.
-This golden data in turn relies on the
+This golden data  relies on the
 human annotations of text in artifacts that
 is related to a task-at-hand (Chapter~\ref{ch:android-corpus}).
-There is a possibility that this text marked by the annotators might not contain information 
+There is a possibility that the text marked by the annotators might not contain information 
 associated with the solution for the task, or that an annotator missed highlighting
 text that they deemed relevant.
 We minimize this threat by considering only the 
@@ -338,7 +375,7 @@ to establishing a baseline for future comparisons.
 After fine-tuning, the model we used outperformed 
 the word2vec technique with software engineering embeddings~\cite{Efstathiou2018}
 and we believe that using the BERT base model did not represent a risk to our study.
-Nonetheless, future research should consider how this model compares with other 
+Future research should consider how this model compares with other 
 general or software-specific pre-trained models.
 
 

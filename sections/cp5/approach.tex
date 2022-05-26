@@ -4,15 +4,15 @@
 
 
 
-We introduce six novel semantic techniques that might 
+We introduce six semantic techniques that might 
 aid developers in identifying
 task-relevant text in software artifacts. Three of the
 techniques use word embeddings (word2vec)~\cite{Mikolov2013} as a base for determining a ranked list of similar sentences between an artifact
-and a task description and three use BERT~\cite{Devlin2018Bert}.
-Each of these technique takes as input
+and a task description and three use BERT~\cite{Devlin2018Bert} for the same purpose.
+Each of these techniques takes as input
 a task description and an artifact. The technique then identifies
 sentences in the artifact pertinent to the task. The output
-from the technique is a ranked set of sentences from
+from the technique is a ranked list of sentences extracted from
 the artifact from most likely to be helpful for solving the
 task to the least helpful.
 
@@ -24,9 +24,9 @@ The four others apply \textit{frame semantics}~\cite{fillmore1976frame} to filte
  each of the sentences returned by the base techniques.
 A first filter---\textit{frame-elements}---retains only sentences
 that include certain frames. The second filter---\textit{frame-associations}---keeps
-sentences with certain co-occurrences of 
-frame semantics between the task description sentences
-and the artifact sentence. We describe word2vec, BERT and the filters in turn to
+sentences with certain co-occurring 
+frames which are extracted from the task description 
+and the artifact's sentences. We describe word2vec, BERT and the filters in turn to
 explain the six techniques.
 
 
@@ -39,9 +39,9 @@ explain the six techniques.
 
 
 
-To form the base of the first three techniques,  we use word semantics via word2vec in conjunction with information retrieval approaches.
-Information retrieval techniques are usually applied to look for documents relevant to a query prompted by a user~\cite{Bavota2016}, where the relevance of a document to a query is based on some function that indicates how similar the document's content is to that query~\cite{Manning2009IR}. Given the right \textit{similarity function}, information retrieval  techniques 
-can be also applied to identify sentences within a document, artifact in our problem formulation, that are relevant to a task.
+To form the base of the first three techniques,  we use word semantics via word2vec in conjunction with information retrieval approaches (Chapter~\ref{ch:related-work}).
+Information retrieval techniques are usually applied to look for documents relevant to a query prompted by a user~\cite{Bavota2016}, where the relevance of a document to a query is based on some function that indicates how similar the document's content is to that query~\cite{Manning2009IR}. Given the right \textit{similarity function}, \acs{IR}  techniques 
+can be also applied to identify sentences within a document (artifact in our problem formulation) that are relevant to a task.
 
 
 
@@ -63,15 +63,15 @@ Since \textit{word2vec} represents words through a vector space, the similarity 
 \end{equation}
  
 \smallskip
-In turn, the similarity of two sentences can be  by first computing a vector representation for the entire sentence and then, by measuring the cosine angle between the obtained sentence vectors.
+In turn, the similarity of two sentences can be obtained  by first computing a vector representation for the entire sentence and then, by measuring the cosine angle between the obtained sentence vectors.
 To obtain sentence vectors, we follow Conneau et al.'s guidelines~\cite{conneau2018}
 and we average the sum of the embeddings for each word in a sentence.
 
 
 
 
-Following these procedures, we use a Skip-gram model with word embeddings trained for the software engineering domain~\cite{Efstathiou2018} to compute the semantic similarity, or relevance, of the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact $A$ and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task  $T$. As both entities have multiple sentences, the semantic similarity of a sentence $a_i \in A$ is the maximum value obtained for this sentence and 
-a vector representing the average of the embeddings of the text in a task.
+Following these procedures, we use a Skip-gram model with word embeddings trained for the software engineering domain~\cite{Efstathiou2018} to compute the semantic similarity, or relevance, of the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact $A$ and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task  $T$. As both entities have multiple sentences, the semantic similarity of a sentence $a_i \in A$ is the value obtained for this sentence and 
+a vector representing the average of the embeddings of all the sentences in a task.
 
 
 After we compute the semantic similarity of all the sentences in an input artifact with regards to an input task, we sort the obtained values from highest to lowest, outputting the top-n sentences with highest similarity as the ones likely relevant to an input software task.
@@ -89,7 +89,7 @@ After we compute the semantic similarity of all the sentences in an input artifa
 In the Skip-gram model, context refers to the sentences used to train the model. This approach to context  does not allow the model to disambiguate words based on their surrounding text. In other words, a Skip-gram model will have a single vector representation for a word such as `\textit{company}' even when it can have different meanings, i.e., a business organization or being with someone. In contrast, 
 the \acf{BERT}~\cite{Devlin2018Bert} provides different representations for the same word based on the sentence in which a word appears.
 This additional layer allows the model to perform more complex operations,
-leading to state-of-the-art results in several tasks~\cite{Devlin2018Bert}. 
+leading to state-of-the-art results in several language tasks~\cite{Devlin2018Bert}. 
 
 
 
@@ -98,27 +98,26 @@ leading to state-of-the-art results in several tasks~\cite{Devlin2018Bert}.
 Typically, BERT is trained 
 on a massive amount of data. During training, a percentage of the tokens in a sentence---usually 15\%---are replaced with a special token and the model is optimized to predict these replaced, or \textit{masked}, tokens. 
 The model relies on a mechanism, called \textit{attention}~\cite{Vaswani2017attention} that correlates and weights all non-replaced tokens in the input so that the model maximizes predictions.
-To fully train a BERT model, one first creates a base model using a large amount of text and the general token prediction task. 
+To fully train a BERT model, one first creates a base model using a large amount of text and the general token prediction and sentence prediction tasks. 
 Then, this base model is fine-tuned to specific tasks, such as text classification, using a dataset specific to the fine-tuning steps. The procedures of \textit{training} and \textit{fine-tuning}
 allow using the model even when training data is scarce and the model transfers
-what it learned during training steps to the fine-tuning steps~\cite{Devlin2018Bert}.
+what it learned during pre-training steps to the fine-tuning steps~\cite{Devlin2018Bert}.
 
 
-We posit that BERT's attention mechanism and fine-tuning procedures can be used to train the model to classify 
-sentences in a natural language artifact as likely relevant to software task. 
-
-The second group of three techniques we introduce uses a BERT model to classify if a sentence is relevant or not to a task.
+We posit that BERT's attention mechanism and fine-tuning procedures can be used to train a model to classify 
+sentences in a natural language artifact as likely relevant to software task. Hence, the second group of three techniques we introduce uses a BERT model to classify if a sentence is relevant or not to a task.
 To this end, we take the sentences $\{a_1, a_2, \dots, a_n\}$ within a pertinent artifact $A$ and the sentences $\{t_1, t_2, \dots, t_m\}$ in a task $T$ and we feed them to the model as task-artifact input pairs 
 alongside binary labels representing whether that sentence is relevant. 
-Using training data, the model's attention mechanism will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. We use up to 10 epochs to train BERT, setting both \textit{batch size} and a \textit{sequence length} to 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
+Using training data, the model's attention mechanism will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. 
 
 
+We use up to 10 epochs to fine-tune BERT, setting both \textit{batch size} and a \textit{sequence length} to 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
 Since there are far less relevant sentences in an artifact and, consequently,
 in the entire data, we apply \textit{undersampling} of the majority class 
 to improve the prediction performance on imbalanced data~\cite{tan2015online}.
 For every relevant sentence in an artifact, we randomly sample four 
 non-relevant sentences in that same artifact such that the final ratio 
-between relevant and non-relevant sentences is \textit{1:4}.
+between each class is \textit{1} relevant sentence for every \textit{4} non-relevant ones.
 
 
 
@@ -153,7 +152,7 @@ If we seek to infer a sentence's meaning, an alternative would be to consider  \
 
 We define two filters using frame semantics that can be
 applied with either the word2vec or BERT base techniques as
- a post-processing step to identify sentences potentially relevant to a task based on the frame elements that the \textit{SEFrame} tool identifies~\cite{marques2020}.
+ a post-processing step to identify sentences potentially relevant to a task based on the frame elements available in a sentence.
 For that, we implement a set of filters that can be applied to the previous techniques as a post-processing step~\cite{Manning2009IR}.
 A filter takes the output of a technique $O$ and produces output $O^{\prime}$ where a sentence must match the filter's relevance criteria. For both filters, we use SEFrame~\cite{marques2021} to assign frames relevant to
 software engineering text.
@@ -168,8 +167,7 @@ software engineering text.
 This filter considers sentences identified with
 frames giving instructions, describing required events, explaining system procedures, and others as
  likely to contain information of interest. The rationale for
- the set of frames identified is based on findings from related work that have shown that 
-the meaning of the text is an indicator of its relevance to a software task~\cite{marques2020}.
+ the set of frames used in this filer is based on Chapter~\ref{ch:characterizing}'s findings on the prominence of certain frames as an indicator of a sentence's relevance to a software task.
 This filter takes a sentence $a_i \in A$ and checks whether any of the frame elements
 of this sentence match one meaningful frame $f \in F$ from a pre-established set\footnote{\label{full-list}See full list in our replication package~\cite{dsandroid}}. 
 
