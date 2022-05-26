@@ -1,4 +1,4 @@
-\section{State of the art}
+\section{State of the Art}
 \label{cp1:novelty}
 
 % \gcm{We need to talk about these section.
@@ -12,7 +12,7 @@ a number of techniques or tools
 to automate the identification of  text.
 Although effective in specific contexts, this support is generally constrained 
 to certain
-types of artifacts and support the multitude of artifact types that is constantly evolving
+types of artifacts and support to the multitude of artifact types that is constantly evolving
 is challenging, if not impractical.
 
 
@@ -37,32 +37,60 @@ it is possible
 that developers have progressed to using new kinds of technology,
 as observed in the recent shift from 
 development mailing lists to instant communication platforms such as Slack~\cite{Lin2016}. 
+% Hence, a developer would have to use several tools to encompass all the artifact 
+% types that they use to store information.
+
 
 
 
 % \art{need a better connecting argument to this sentence}
 
-Other approaches target long-lasting types of artifacts (e.g., API documents or bug reports). 
-Nonetheless, due to the number of tools that aid developers in locating text relevant to different activities associated with these artifacts (e.g., bug triaging or requirements traceability),
-it might be difficult for a developer to familiarize themselves 
-with all of the existing tools
-and to decide which tool to use in a given situation. \art{REV}
+% Other approaches target long-lasting types of artifacts (e.g., API documents or bug reports). 
+% Nonetheless, due to the number of tools that aid developers in locating text relevant to different activities associated with these artifacts (e.g., bug triaging or requirements traceability),
+% it might be difficult for a developer to familiarize themselves 
+% with all of the existing tools
+% and to decide which tool to use in a given situation. \art{REV}
 
 
 
 
-These barriers might be lifted by a tool that could serve as a single point of entry to the automatic identification of relevant text regardless of the kind of artifact a developer consults.
-Such a tool could integrate the many existing tools (or their underlying techniques) and decide which one 
+As an alternative to using several artifact-specific tools that assist in finding information in certain kinds of artifacts, we could also consider 
+a tool serving as a single point of entry to the automatic identification of relevant text regardless of the kind of artifact a developer consults.
+Such a tool could integrate the many existing tools (or their underlying techniques) and decide which tool 
 to use in which context. Nonetheless, 
-due to an ever-growing the number of technologies used to record information,
-anticipating the kinds of artifacts a developer might consult 
-as part of a task is equally difficult.
-Moreover, 
-deploying the right technique for an artifact type
-is challenging because developers 
-assessing that artifact may have different
-information needs than anticipated by these techniques~\cite{saracevic1975}.
-\art{REV}
+due to an ever-growing number of technologies used to record information,
+there are a number of costs and challenges involved with 
+developing and integrating each new technique that  
+becomes available to such a tool. 
+
+
+A second approach for general techniques could consider ways to relate the text in a task 
+to the text in a natural language artifact and  
+state-of-the-art tools (e.g.,~\cite{Xu2017, silva2019}) attempt to accomplish this using semantic techniques.
+However, these tools lack generalizability 
+due to their usage of artifact-specific meta-data. Other limitations arise from how they make use of semantics,
+i.e., they default to a specific semantic approach~\cite{Ye2016} and do not investigate the range of semantic techniques~\cite{Mikolov2013, Devlin2018Bert, fillmore1976frame} 
+that might apply to text in software engineering artifacts.
+
+
+
+
+
+
+These limitations suggest the need for a more generalizable technique
+that can evolve to 
+identify relevant text in potential new kinds of artifacts 
+and that is easier to deploy/install than many.
+If one technique could identify relevant text across all kinds
+of artifacts a developer encounters, the technique
+could apply in all situations and may be more adoptable in industry
+as a result. 
+
+
+
+% Moreover, deploying the right technique is also challenging because developers 
+% assessing certain artifact may have different
+% information needs than anticipated by techniques~\cite{saracevic1975}.
 
 
 
@@ -82,30 +110,6 @@ information needs than anticipated by these techniques~\cite{saracevic1975}.
 % or ensure that an approach for this kind of artifact
 % consistently 
 % extract text from the myriad of styles under use~\cite{robillard2011field}.
-
-
-
-A second approach for general techniques could consider ways to relate the text in a task 
-to the text in a natural language artifact and  
-state-of-the-art tools (e.g.,~\cite{Xu2017, silva2019}) attempt to accomplish this using semantic techniques.
-These tools have similar constraints due to also using an artifact's meta-data and other limitations arise from how they make use of semantics,
-i.e., they default to a specific semantic approach~\cite{Ye2016} and do not investigate the range of semantic techniques~\cite{Mikolov2013, Devlin2018Bert, fillmore1976frame} 
-that might apply to text in software engineering artifacts.
-
-
-
-
-
-
-These limitations suggest the need for a more generalizable technique
-that can evolve to 
-identify relevant text in potential new kinds of artifacts 
-and that is easier to deploy/install than many.
-If one technique could identify relevant text across all kinds
-of artifacts a developer encounters, the technique
-could apply in all situations and may be more adoptable in industry
-as a result. 
-
 
 
 

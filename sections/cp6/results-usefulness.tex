@@ -53,18 +53,29 @@ a section where they would have expected otherwise.
 
 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=.9\textwidth]{cp6/usefulness_overall.pdf}
-    \caption{Diverging stacked plot of the usefulness of the text automatically identified for each task}
-    \label{fig:usefulness-by-task}
-\end{figure}
-
 
 The mixed results for the \texttt{NYTimes} task might explain the lack of differences in the correctness scores observed for this task. 
 Although anecdotal, one interesting feedback for this task was from a participant who described that 
 their experience with the \texttt{BeautifulSoup} module influenced their negative ratings---``\textit{I have experience with BeautifulSoup and webscraping, and so my [negative] ratings of the usefulness of the highlights may have been influenced by that}''.
 
+
+
+\afterpage{
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=.85\textwidth]{cp6/usefulness_overall.pdf}
+    \caption{Diverging stacked plot of the usefulness of the text automatically identified for each task}
+    \label{fig:usefulness-by-task}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=.85\textwidth]{cp6/usefulness_per_type.pdf}
+    \caption{Diverging stacked plot of the usefulness of the text automatically identified for each type of artifact}
+    \label{fig:usefulness-by-artifact-type}
+\end{figure}
+}
 
 
 Surprisingly, when we look at the ratings per type of artifact (Figure~\ref{fig:usefulness-by-artifact-type}), API documents had the most useful highlights.
@@ -79,12 +90,6 @@ Due to their `\textit{tutorial}' format, these artifacts are lengthy and some pa
 
 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=.9\textwidth]{cp6/usefulness_per_type.pdf}
-    \caption{Diverging stacked plot of the usefulness of the text automatically identified for each type of artifact}
-    \label{fig:usefulness-by-artifact-type}
-\end{figure}
 
 
 

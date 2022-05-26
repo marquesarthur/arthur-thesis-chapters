@@ -100,6 +100,11 @@ innerrightmargin=4pt,innertopmargin=4pt,innerbottommargin=4pt]{mybox}
 \newcommand{\rev}[1]{\textcolor{steelblue}{#1}}
 \newcommand{\orange}[1]{\textcolor{orange}{#1}}
 
+\definecolor{color_29791}{rgb}{0,0,0}
+
+\newcommand{\code}[1]{{\fontsize{8}{1}\usefont{OT1}{pcr}{m}{n}\selectfont\color{color_29791} \hl{#1}}}
+
+
 
 \definecolor{Brow}{HTML}{792500}
 
@@ -183,6 +188,55 @@ innerrightmargin=4pt,innertopmargin=4pt,innerbottommargin=4pt]{mybox}
 % https://tex.stackexchange.com/questions/387499/how-to-create-a-border-that-looks-like-a-tag
 \definecolor{mybluea}{HTML}{87CEEB}
 \definecolor{myblueb}{HTML}{0000FF}
+
+
+
+
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{7.5} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{7.5}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% \usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+% frame=tb,                         % Any extra options here
+showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+
 
 % \newcommand{\mytag}[1]{\tikz{\node[rounded corners, text height=1.5ex, text depth=.25ex, fill=mybluea, draw=myblueb, text=myblueb] {#1};}%
 

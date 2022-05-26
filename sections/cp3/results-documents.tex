@@ -37,7 +37,7 @@ consider the full sentence as one HU.
 We first ask how much text within an artifact participants found relevant to a task
 since if almost all of the text  is relevant then there would not be a need for
 identifying text within an artifact.
-Figure~\ref{fig:task-artifact-ratio} presents the ratio of relevant and non-relevant text in each type of document.
+Figure~\ref{fig:task-artifact-ratio} presents the ratio of relevant text in each type of document.
 We compute the average ratio of HUs and text for each  artifact from each type of document.
 We report the mean of the ratio artifact-wise to prevent misinterpretations due to outliers,
 i.e., a lengthy document with few HUs or a document concentrating almost all the HUs
@@ -80,7 +80,7 @@ specific task.
 \begin{bluequote}
     \textit{Finding task-relevant information in a bug report,
     API document and Q\&A documents require filtering to less than
-    a 20\% of the documents' text.}
+    a 20\% of the document's text.}
 \end{bluequote}
 
 
@@ -105,7 +105,7 @@ the text relevant to a task. This method was originally used
 to quantify the content of summaries produced by different annotators.
 The more annotators who include the same content in their summaries,
 the more consistent the view of information relevant to a summary and
-the more weight given the selected content. We apply the same rationale
+the more weight is given to the selected content. We apply the same rationale
 to assess the level of agreement of which HUs are relevant to a task
 and whether agreement relates to how correctly
 a participant completes a task.
@@ -124,23 +124,24 @@ text (i.e.,~\cite{Petrosyan2015} and~\cite{Jiang2017}) and
 we aggregate HUs selected by a range of participants into three tiers.
 Table~\ref{tbl:task-hu} presents HUs per tier.
 Starting from the bottom tier, the pyramid represents the perceived relevance of information from less to more relevant.
-With this information, we test if the number of HUs identified at each tier affects how correct were the solutions provided by the participants (as measured by the questionnaires applied for each task). 
 
 
-Since have three independent variables (i.e., tiers) and one outcome variable (i.e., scores),
-we use a multivariate analysis of variance to test this hypothesis~\cite{wohlin2012} 
+We use the aggregated data (Table~\ref{tbl:task-hu}) to test if the number of HUs identified at each tier affects how correct were the solutions provided by the participants (as measured by the questionnaires applied for each task). 
+Since we have three independent variables (i.e., tiers) and one outcome variable (i.e., scores),
+we use a multivariate analysis of variance to test this hypothesis~\cite{wohlin2012}. 
 Results indicate a significant differences ($p\text{-value} < 0.01$) between participants' score and their HUs.
 We then conducted univariate tests on each tier,
 finding that 
 the number of HUs identified at the mid and top-tiers 
-positively affect participants scores, 
-what suggests that HUs from these two tiers contain key
+positively affect the correctness of a participant's questionnaire answer, 
+suggesting that HUs from these two tiers contain key
 information for completing a task.
 As expected, HUs at the bottom tier vary more per participant.
 Due to such variability, there is no clear indication
 that bottom tier HUs are from participants from a certain group, such as all those
 unfamiliar with a particular technology or  who successfully
-completed a task and those who did not.
+completed a task and those who did not (Section~\ref{cp3:threats} details threats for this analysis).
+
 
 
 
