@@ -101,9 +101,11 @@ of an artifact with regards to an information need, often expressed as an input 
 
 % For that, \acs{IR} identifies and structures all the words, or terms, 
 % in an artifact so this information can be used for quick access. 
-By counting how frequent  a word is in 
-an artifact and across the entire collection of artifacts, 
-\acs{IR} can be used to find which artifacts contain that word, or where within an artifact it appears. 
+
+Given a set of words in an input query,
+\acs{IR} finds which artifacts contain that word, or where within an artifact it appears,
+by counting how frequent each word is in 
+an artifact and across the entire collection of artifacts stored in a \acs{IR} system.
 Using this principle, multiple \acs{IR} schemes have been proposed 
 to identify text based on 
 how not all the words in some vocabulary have the same weight (\textit{TF-IDF})~\cite{luhn1957tf, jones2004idf}, 
@@ -224,7 +226,7 @@ to automatically identify such categories~\cite{Arya2019}.
 In a similar manner, Fu and colleagues consider 
 five types of decisions that might arise during 
 email exchanges (e.g., design, testing, management decisions, etc.)
-and they proposed a multinomial classifier 
+and they proposed a multilabel classifier 
 to automatically identify all the decisions present in emails of
 a development mailing list~\cite{fu2021}.
 
@@ -289,7 +291,7 @@ Although unsupervised techniques lift the need for labeled training data,
 they still use human-engineered features, 
 which are often specific to certain 
 types of artifact. Therefore, 
-both supervised and unsupervised \acs{ML}
+both supervised and unsupervised machine learning techniques
 have limitations that might prevent their usage 
 in the design of a generalizable technique.
 
@@ -309,7 +311,7 @@ deep learning an interesting
 approach to
 uncover regularities 
 that are not obvious or easily identified
-by software engineering researchers.
+by feature engineers or researchers.
 
 
 
@@ -332,7 +334,7 @@ of task-relevant text.
 
 Many other \acs{DL} studies in software engineering~\cite{ferreira2021,li2018deep}
 use neural network architectures 
-for the same range of problems discussed in Section~\ref{cp2:machine-learning}.
+for the same range of problems we presented when discussing machine learning techniques for mining unstructured text (Section~\ref{cp2:machine-learning}).
 As explained by Watson et al.~\cite{watson2022},
 neural network architectures are composed of several layers 
 that perform a series of transformations on data passing through them. 
