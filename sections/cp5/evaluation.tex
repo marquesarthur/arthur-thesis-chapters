@@ -79,7 +79,7 @@ To evaluate the six techniques and determine how much of the task-relevant text 
 
 We configure each technique to identify a target number of 10 relevant sentences for each task-artifact pair.
 This decision is based on the fact that no more than 15\% of the content of any artifact in our dataset is deemed relevant to a task, which, on average, accounts for 8.93 sentences (Chapter~\ref{ch:android-corpus}).
-Researchers have also used the same target number of 10 sentences when evaluating techniques  (e.g.,~\cite{Xu2017} or~\cite{Lotufo2012}) able to identify relevant text for certain kinds of artifacts, what will also facilitate comparing our results to related work.
+Researchers have also used the same target number of 10 sentences when evaluating techniques  (e.g.,~\cite{Xu2017} or~\cite{Lotufo2012}) able to identify relevant text for certain kinds of artifacts, which will also facilitate comparing our results to related work.
 
 
 \subsubsection{Training \& Testing Data}
@@ -155,7 +155,7 @@ Precision measures the fraction of the sentences identified that are relevant ov
 Precision means identifying only text that is relevant, whereas recall means identifying all relevant text.
 Ideally, we would aim for a technique with high precision and high recall. Unfortunately, this is often not possible and we must reach a compromise.
 As described earlier, our goal is to support developers to locate text that might be relevant to their task, 
-and not locating all the relevant text may lead to incomplete or incorrect solutions, thus the reason why we favour recall.
+and not locating all the relevant text may lead to incomplete or incorrect solutions, thus the reason we favour recall.
 
 
 
@@ -247,7 +247,7 @@ use some of the properties of text that appears in highly voted or accepted answ
 
 Provided that we can identify task-relevant textual information with accuracy comparable to a state-of-the-art approach, 
 we measure how much of the text that is relevant to a task (within an artifact)
-can our semantic-based techniques identify.
+ our semantic-based techniques can identify.
 To this end, we compute precision and recall metrics over all the artifacts in the test data. 
 To assist comparisons, we also report results for the text identified by a
 standard \acf{VSM}~\cite{Salton1975vsm} lexical similarity approach. Several studies~\cite{Ko2006a, Freund2015, marques2020}
@@ -382,7 +382,7 @@ general or software-specific pre-trained models.
 
 A second model-related threat concerns how we
 divided our data for training and evaluation purposes. 
-We split the Android tasks and their associated artifacts in two equal parts using 
+We split the Android tasks and their associated artifacts into two equal parts using 
 25 tasks for training and 25 other tasks for evaluation.
 This division might have affected BERT's overall accuracy and it would have been interesting 
 to explore other data splits. 

@@ -14,12 +14,12 @@ a task description and an artifact. The technique then identifies
 sentences in the artifact pertinent to the task. The output
 from the technique is a ranked list of sentences extracted from
 the artifact from most likely to be helpful for solving the
-task to the least helpful.
+task to the least likely.
 
 
 
 Table~\ref{tbl:approaches-summary} provides an overview of the six techniques.
-Two techniques simply returns the results of \textit{word2vec} or \textit{BERT}.
+Two techniques simply return the results of \textit{word2vec} or \textit{BERT}.
 The four others apply \textit{frame semantics}~\cite{fillmore1976frame} to filter
  each of the sentences returned by the base techniques.
 A first filter---\textit{frame-elements}---retains only sentences
@@ -58,7 +58,7 @@ With a significantly large text corpus, the model associates similar vector embe
 Since \textit{word2vec} represents words through a vector space, the similarity of two words $i$ and $j$ can be obtained computing the cosine similarity~\cite{Manning2009IR} between the corresponding vectors of each word, i.e., $w_i$ and $w_j$:
 
 \begin{equation}
-    sim(w_t,w_a) = \frac{w_t^Tw_a}{\|w_t\| \|w_a\|}
+    sim(w_i,w_j) = \frac{w_i^Tw_j}{\|w_i\| \|w_j\|}
     \label{eq:word-sim}
 \end{equation}
  
@@ -112,7 +112,7 @@ Using training data, the model's attention mechanism will learn associations bet
 
 
 We use up to 10 epochs to fine-tune BERT, setting both \textit{batch size} and a \textit{sequence length} to 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
-Since there are far less relevant sentences in an artifact and, consequently,
+Since there are far fewer relevant sentences in an artifact and, consequently,
 in the entire data, we apply \textit{undersampling} of the majority class 
 to improve the prediction performance on imbalanced data~\cite{tan2015online}.
 For every relevant sentence in an artifact, we randomly sample four 
@@ -169,7 +169,7 @@ frames giving instructions, describing required events, explaining system proced
  likely to contain information of interest. The rationale for
  the set of frames used in this filer is based on Chapter~\ref{ch:characterizing}'s findings on the prominence of certain frames as an indicator of a sentence's relevance to a software task.
 This filter takes a sentence $a_i \in A$ and checks whether any of the frame elements
-of this sentence match one meaningful frame $f \in F$ from a pre-established set\footnote{\label{full-list}See full list in our replication package~\cite{dsandroid}}. 
+of this sentence match one meaningful frame $f \in F$ from a pre-established set\footnote{See full list in our replication package~\cite{dsandroid}}. 
 
 \begin{small}
 \begin{equation}
@@ -192,7 +192,7 @@ This filter considers that the relevance of a sentence depends on the intentiona
 For example, for a task that requires diagnosing an error, sentences in a bug report that describe success or failure 
 of an action are likely relevant. 
 This rationale is represented by a set of associated frame pairs, where each element represents a frame originating from a task and another frame originating from a sentence.
-This filter checks if a task-artifact frame pair obtained from an input artifact and input task appear in a pre-established set of pairs\cref{full-list}.
+This filter checks if a task-artifact frame pair obtained from an input artifact and input task appear in a pre-established set of pairs\footnote{See full list in our replication package~\cite{dsandroid}}.
 
 
 \begin{small}

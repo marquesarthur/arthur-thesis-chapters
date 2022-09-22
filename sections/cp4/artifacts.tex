@@ -15,7 +15,7 @@ The artifacts sought to find useful information or knowledge for completing a ta
  depend on the type of task a developer performs.
 For example, when using a new framework or library, a developer refers to official API documentation~\cite{Li2013,robillard2011field} while, for debugging or error diagnostic tasks, community-based sources are preferred~\cite{Li2013,Breu2010}.
 Despite such variability, researchers have observed that web blogs, API documentation, and community forums are sources
-commonly used by developer to forage information that assists task completion~\cite{Li2013, josyula2018}.
+commonly used by developers to forage for information that assists task completion~\cite{Li2013, josyula2018}.
 
 
 
@@ -76,11 +76,11 @@ Last, we need to extract the natural language text within an artifact so that
 techniques that automate the identification of text relevant to a task can be built 
 using our corpus.  This step requires processing an artifact's content 
 into a sequence of individual sentences,
-what prompted us to follow common procedures for processing the artifact types found in our corpus~\cite{Arya2019, nadi2020}.
-That is, given a search result \texttt{URL}, we use use a series of python 
+which prompted us to follow common procedures for processing the artifact types found in our corpus~\cite{Arya2019, nadi2020}.
+That is, given a search result \texttt{URL}, we use use a series of Python 
 APIs\footnote{\texttt{BeautifulSoup}~\cite{beautifulsoup4},
 \texttt{StackAPI}~\cite{StackAPI} and \texttt{PyGithub}~\cite{PyGithub}}
-to fetch the artifacts' content
+to fetch the artifacts' contents
 and then, we use the Stanford CoreNLP toolkit~\cite{CoreNLP} to identify 
 individual sentences in the artifacts' content.
 
