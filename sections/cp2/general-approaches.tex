@@ -139,7 +139,7 @@ To illustrate some of the elements obtainable using \acs{NLP}, we consider a sho
 instructing how to perform a file system operation: ``\textit{you can use io.StringIO}''.
 Figure~\ref{fig:nlp-analysis} shows elements extracted for this sentence using two \acs{NLP} techniques,
 namely \acf{POS} tagging and dependency parsing.
-The former assigns tags  ({\small \textit{PRP}, \textit{VP}, \textit{NNP},} etc.) to each word 
+The former assigns tags\footnote{\url{https://cs.nyu.edu/~grishman/jet/guide/PennPOS.html}} ({\small \textit{PRP}, \textit{VP}, \textit{NNP},} etc.) to each word 
 in a sentence~\cite{taylor2003penn} while the latter identifies
 relationships between them, such as how 
 `\textit{io.StringIO}' is the direct object (\textit{obj})
@@ -147,7 +147,6 @@ associated with the verb `\textit{use}'.
 
 
 
-\medskip
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.40\textwidth]{cp2/textual-analysis.png}
@@ -216,7 +215,7 @@ determine
 Among other applications, binary classifiers have been used 
 to classify text in bug reports that describes (or not) steps to reproduce a bug~\cite{Chaparro2016}
 or  to classify paragraphs which contain explanations 
-about API elements in a web tutorials\cite{Petrosyan2015}.
+about API elements in a web tutorials~\cite{Petrosyan2015}.
 In turn, multinomial classifiers have been mostly used 
 to identify a category, out of many, that represents the type of information 
 associated with some text. For instance, Arya et al. identified 16 categories of  information available
@@ -251,7 +250,7 @@ Common applications of unsupervised learning
 to natural language software artifacts 
 comprise text summarization~\cite{Goldsteinet1999} and data clustering, which might help an individual both in understanding the key information in an 
 artifact and also in deciding which information patches are 
- worth of their time~\cite{Lotufo2012}.
+ worth their time~\cite{Lotufo2012}.
 
 
 Unsupervised summarization approaches are often based on 
