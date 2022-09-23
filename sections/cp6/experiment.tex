@@ -34,10 +34,11 @@ We consider three questions:
 }
 
 
-To answer these questions, we designed an experiment where 24 participants with software development backgrounds each attempted a
-\textit{control} and \textit{tool-assisted} task randomly drawn from a list of well-known Python programming tasks.
-Participants are asked to write a solution for both of their assigned tasks
-and we use the control task to collect what text a participant deems relevant to the task at hand.
+To answer these questions, we designed an experiment where 24 participants with software development backgrounds each attempted 
+\rev{two randomly assigned tasks} drawn from a list with three well-known Python programming tasks.
+Participants are asked to write a solution for \rev{a \textit{control} and a \textit{tool-assisted} task}.
+\rev{Tasks configurations (control and tool-assisted) were equally balanced and }
+we use the control task to collect what text a participant deems relevant to the task at hand.
 In the tool-assisted task, we gather input on the usefulness of the text automatically identified and shown by our tool. 
 This design, summarized in Figure~\ref{fig:tool-experiment-procedures} and detailed in the following subsections,  allow us to:
 
@@ -237,13 +238,19 @@ Setup was followed by a short practice task---separate from the experimental tas
 
 Once a participant completed the practice task, the survey randomly assigned to them a \textit{control} task, which was followed by a randomly assigned \textit{tool-assisted} task---different from the control task.
 For each task, including the practice tasks, the survey provided to the participants a link 
-to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. While tasks were randomly assigned, we made sure that a similar number of participants attempted a task with and without tool support, as Table~\ref{tbl:python-task-distribution} shows.
+to the task description (Figure~\ref{fig:nytimes-task-github}) and asked them to submit a solution for the task, i.e., written Python code. 
+
 
 
 Once a participant submitted their solutions, the survey
 asked them about any additional feedback that they wished to share and 
 offered them the opportunity to enter a raffle for one of two 64 GB  iPads 
 to compensate them for their time, concluding the experiment.
+
+
+While tasks were randomly assigned, \rev{we emphasize that the survey tool kept track of the number of times a task performed in the control and tool-assisted configurations.}
+Hence, a similar number of participants attempted a task with and without tool support, as Table~\ref{tbl:python-task-distribution} shows.
+
 
 
 
@@ -304,8 +311,8 @@ shared that they performed their highlights just before finishing a task.
 
 
 In the tool-assisted task, our tool automatically highlighted text that 
-its underlying semantic-based technique identified as relevant to the participant's task\footnote{
-    We configure the tool to identify no more than 10\% of the sentences of an input artifact as relevant.
+its underlying semantic-based technique identified as relevant to the task\footnote{
+    We configure the tool to identify no more than 10\% of the sentences of an input artifact as relevant \rev{with regards to an input task title}.
     This number was determined based on the average number of sentences indicated as relevant by human annotators in the artifacts of the \acs{DS-android} corpus.
 }.
 The highlights were shown in a format similar to the one in Figure~\ref{fig:artifact-pre-highlight}, but without the need for any actions by a participant.

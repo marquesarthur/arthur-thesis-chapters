@@ -37,8 +37,10 @@ We selected 14 projects,
 ranging from mail clients\footnote{\url{https://github.com/k9mail/k-9}}
 to development frameworks\footnote{\url{https://github.com/libgdx/libgdx}},
 by filtering the list of top-starred projects in GitHub to those with the \textit{Java} and \textit{Android} tags.
-We then randomly selected 25 distinct issues originating from these starred projects as the GitHub tasks of our corpus (average of 1.78 issues per project).
-While selecting issues, we took care to check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
+We then randomly selected 25 distinct issues  originating from these starred projects as the GitHub tasks of our corpus.
+While selecting issues, we \rev{balanced the number of issues selected per project} (average of 1.78 issues per project)
+\rev{and we ensured that all the issues were resolved}. We also took care to 
+check that they had at least one follow-up comment and that the issue title did not contain certain words, e.g., {\small \texttt{test}} or {\small  \texttt{ignore}},
 as these words indicate issues  created automatically by scripts or bots---a common pitfall that researchers must be aware of when mining GitHub~\cite{kalliamvakou2014}.
 
 
