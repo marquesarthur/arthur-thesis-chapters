@@ -64,8 +64,8 @@ Since \textit{word2vec} represents words through a vector space, the similarity 
  
 \smallskip
 In turn, the similarity of two sentences can be obtained  by first computing a vector representation for the entire sentence and then, by measuring the cosine angle between the obtained sentence vectors.
-To obtain sentence vectors, we follow Conneau et al.'s guidelines~\cite{conneau2018}
-and we average the sum of the embeddings for each word in a sentence.
+To obtain sentence vectors, \rev{we are guided by related work (e.g.,~\cite{Ye2016, Jiang2016b})} and 
+ we average the sum of the embeddings for each word in a sentence~\cite{conneau2018}.
 
 
 
@@ -111,6 +111,7 @@ alongside binary labels representing whether that sentence is relevant.
 Using training data, the model's attention mechanism will learn associations between each pair such that it can predict if a sentence is relevant for the task provided. 
 
 
+\rev{We hyper-parameters commonly adopted by software engineering researchers to fine-tune our model~\cite{watson2022, ferreira2021, li2018deep}.}
 We use up to 10 epochs to fine-tune BERT, setting both \textit{batch size} and a \textit{sequence length} to 64. Cross-Entropy is our loss function, and the model is trained to minimize it using the Adam optimizer at a learning rate of \textit{1e-5} with early stopping. 
 Since there are far fewer relevant sentences in an artifact and, consequently,
 in the entire data, we apply \textit{undersampling} of the majority class 
