@@ -28,14 +28,12 @@ which we use to answer the research questions
 presented earlier in this chapter.
 
 
-\input{sections/cp3/tbl-experimental-design.tex}
-
-
 
 \acs{UBC} Behavioural Research Ethics Board  approved this experiment under the certificate \textit{H18-02104}.
 The experiment's supplementary material is also publicly available~\cite{dssynthetic}.
 
 
+\input{sections/cp3/tbl-experimental-design.tex}
 
 
 \subsection{Tasks}
@@ -103,15 +101,20 @@ tasks.
 
 
 
+
+\input{sections/cp3/tbl-assumption-examples.tex}
+% \input{sections/cp3/tables/corpus-overview}
+
+
 To produce the curated set of artifacts for each task, we then carefully read each candidate artifact.
 Selection criteria considered an artifact's content and possible effects that 
 could arise from interacting with a piece of text:
 (1) strengthening an assumption, (2) contradicting or eliminating an assumption, or 
 (3) combining multiple pieces of text to yield a conclusion~\cite{clark2013relevance}.
-As examples of these criteria in action, the \texttt{Lucene}
+Table~\ref{tbl:assumptions} shows examples of these criteria in action, the \texttt{Lucene}
 artifacts chosen contain
 complementary sources where sentences in different artifacts
-pertain to the same topic
+pertain to the same topic (\rev{i.e., how the length of an document affects Lucene's BM25 similarity function})
 while the artifacts chosen for
 the \texttt{GPMDPU} task contain contradictory information; two bug reports
 argue that a feature is not supported while a third states otherwise.
@@ -129,13 +132,12 @@ likely obtain a similar list of artifacts for inspection.
 Table~\ref{tbl:corpus-stats} reports on the 20 artifacts used for the
 experiment: 10 are documents describing APIs, 5 are bug reports, and 5
 are Q\&A forum entries. These documents comprise nearly 1874
-sentences and the average reading time~\cite{Just1980} of all artifacts of each task
+sentences and the average reading time\footnote{\rev{Based on the average readers' reading speed of 200 words per minute~\cite{Just1980}}} of all artifacts of each task
 is equivalent to 18.3 minutes ($\pm 5.5$ minutes). 
 
 
 
 
-\input{sections/cp3/tables/corpus-overview}
 
 
 
@@ -162,8 +164,12 @@ and 16 out of the 20 participants reported professional experience with an avera
 
 
 
+\input{sections/cp3/tables/corpus-overview}
+
 \subsection{Procedures}
 \label{cp3:procedures}
+
+
 
 
 
@@ -175,15 +181,21 @@ changes made based on the pilot sessions.
 
 
 Each session began with a short tutorial explaining the
-experiment's purpose and describing how to use a provided tool (in
-the form of a browser extension) to
-highlight text relevant to a given task.
+experiment's purpose, i.e., \rev{determine what text developers deem relevant to a particular software task}.
+\rev{Then, as a means to identify the task-relevant text,
+participants were provided with a tool (in
+the form of a browser extension) that allowed them to 
+highlight text they considered relevant to their assigned tasks.}
 The concept of relevance was left to a participant's judgment as any
 definition or explanation could introduce bias.
 Each participant was able to practice use of the
 tool on an example that was separate from the experimental tasks and
 artifacts. We added this description of the tool and ability to 
 practice with the tool after the first two pilot sessions. 
+
+
+
+% \input{sections/cp3/tbl-assumption-examples.tex}
 
 
 Participants worked on the assigned tasks in a given order and were
@@ -259,7 +271,7 @@ associated with six information-seeking tasks.
 Figure~\ref{fig:task-highlights-heatmap} illustrates the data gathered with this experiment. 
 It shows a portion of a task description used in the experiment (left-side) and it
 provides an overview of highlights (right-side) selected by
-participants using our highlighting tool. 
+participants. 
 A post-experiment interview also gathered data 
 about a participant's
 reasoning process for determining relevance.
