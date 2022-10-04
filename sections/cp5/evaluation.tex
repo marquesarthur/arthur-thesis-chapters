@@ -22,7 +22,6 @@ that of AnswerBot on Stack Overflow
 answers because it is the technique closest to our work (Chapter~\ref{ch:related-work}). This
 evaluation helps answer: 
 
-\newpage
 
 \begin{enumerate}[label=\textit{RQ\arabic*},leftmargin=*]
 
@@ -104,10 +103,9 @@ Stack Overflow artifact among its associated artifacts.
 
 We compute values for \textit{precision} and \textit{recall} metrics based on the sentences 
 deemed relevant to a task by \textit{at least two} human annotators.
-To minimize risks from a scenario where one of the techniques and their underlying approaches has a peak or
-bottom performance due to training procedures or due to factors beyond our control, 
-we compute results for each technique over 10 distinct executions over the test data, 
-reporting the average of each metric over all runs.
+To minimize risks from a scenario where \rev{BERT training procedures produce a model with}   peak or bottom performance, 
+we compute results for \rev{this} technique over 10 distinct executions over the test data, 
+reporting the average of each metric over all runs. \rev{The other techniques have the same output across distinct runs.}
 
 
 
