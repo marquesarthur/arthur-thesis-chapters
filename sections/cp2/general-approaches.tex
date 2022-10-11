@@ -96,8 +96,9 @@ limiting their use in the design of a generalizable technique.
 % or approaches for finding documents, paragraphs, sentences, etc. 
 % that satisfy an information need ()~\cite{manning2010IR}.
 
-\acf{IR} comprises \rev{the structure, analysis, storage, search, and retrieval of information~\cite{salton1983} and it has many sub-fields~\cite{zhang2016, liu2019data, tamine2010}, including: 
-\textit{ad-hoc retrieval} referring to the basis upon which an IR system strives to return an accurate set of documents relevant to an input query;
+\acf{IR} comprises \rev{the structure, analysis, storage, search, and retrieval of information~\cite{salton1983}.
+\acs{IR} has many sub-fields~\cite{zhang2016, liu2019data, tamine2010}, including: 
+\textit{ad-hoc retrieval} referring to the basis upon which an \acs{IR} system strives to return an accurate set of documents relevant to an input query;
 \textit{question answering} referring to finding answers to an input question; and
 \textit{contextual retrieval} referring to finding information based on a particular context, such as a user's task.}
 
@@ -106,23 +107,19 @@ limiting their use in the design of a generalizable technique.
 
 
 \rev{
-Among these sub-fields, the work in this thesis is closer to contextual retrieval, where multiple attributes model context, such as a user's intentions, tasks, needs, and the environment in which information activities occur~\cite{dourish2004we}. For example, a context-aware \acs{IR} system could provide different results 
-based on a user's age~\cite{kofod2003case}.} 
-
-
-
+Among these sub-fields, the work in this thesis is closest to contextual retrieval, where multiple attributes model context, such as a user's intentions, tasks, needs, and the environment in which information activities occur~\cite{dourish2004we}.}
+%For example, a context-aware \acs{IR} system could provide different results 
+%based on a user's age~\cite{kofod2003case}.} 
 \rev{If we focus on `task context', the information available on a software task  can serve as a starting point to an input query, where} classical \acs{IR} systems use the frequency or co-occurrence of words (or phrases) to determine the relevance of an artifact for that input query.
 
-
-
-
 Given a set of words in an input query,
-\acs{IR} finds which artifacts contain that word, or where within an artifact it appears
-and, based on this principle, multiple \acs{IR} schemes have been proposed 
-to identify text based on 
-how not all the words in some vocabulary have the same weight (\textit{TF-IDF})~\cite{luhn1957tf, jones2004idf}, 
-how to  represent sentences (\textit{VSM})~\cite{Salton1975vsm}, 
-or how to account for different words that appear interchangeably in some context (\textit{LSI})~\cite{dumais1994latent}. \rev{We discuss other and more complex schemes using \acf{NLP}, \acf{ML}, or \acf{DL} in later sections of this chapter.}
+\acs{IR} finds which artifacts contain that word, or where within an artifact the word appears.
+Multiple \acs{IR} approaches have been proposed,
+such as identifying text based on the differing 
+weight words have in a vocabulary
+ (\textit{TF-IDF})~\cite{luhn1957tf, jones2004idf}, 
+  representing sentences (\textit{VSM})~\cite{Salton1975vsm}, 
+and accounting for how words  appear interchangeably in some context (\textit{LSI})~\cite{dumais1994latent}. \rev{We discuss other  more complex schemes involving \acf{NLP}, \acf{ML}, and \acf{DL} in later sections of this chapter.}
 
 
 
