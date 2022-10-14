@@ -257,7 +257,7 @@
 	{\large \@author}\\[1em]
 	\ifx\@previousdegrees\empty\relax\else\@previousdegrees\vspace{2em}\fi
 
-	{\Large \textsc{a thesis submitted in partial fulfillment}}\\
+	{\Large \textsc{a dissertation submitted in partial fulfillment}}\\
 	{\Large \textsc{of the requirements for the degree of}}\\[1em]
 
 	{\large \textbf{\@degreetitle}}\\[1em]
@@ -292,7 +292,7 @@
     \begin{singlespace}
     \noindent The following individuals certify that they have read,
     and recommend to the Faculty of Graduate and Postdoctoral Studies
-    for acceptance, the thesis entitled:\\[1em]
+    for acceptance, the dissertation entitled:\\[1em]
         {\large \textbf{\@title}}\\[1em]
     submitted by 
 	\textbf{\@author}
